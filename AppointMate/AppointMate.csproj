@@ -15,13 +15,6 @@
     <Folder Include="APIModels\Requests\" />
     <Folder Include="APIModels\Responses\Customers\" />
     <Folder Include="APIModels\Responses\Services\" />
-    <Folder Include="DataModels\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Atom">
-      <HintPath>bin\Debug\net7.0\Atom.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

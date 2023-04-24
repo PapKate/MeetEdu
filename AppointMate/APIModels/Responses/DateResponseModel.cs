@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// The date response model
+    /// </summary>
     public class DateResponseModel : BaseResponseModel
     {
         #region Public Properties
