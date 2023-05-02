@@ -1,4 +1,4 @@
-﻿namespace AppointMate.DataModels.Classes
+﻿namespace AppointMate
 {
     /// <summary>
     /// Represents a phone number

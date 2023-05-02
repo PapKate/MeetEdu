@@ -8,6 +8,11 @@
         #region Private Members
 
         /// <summary>
+        /// The member of the <see cref="Category"/> property
+        /// </summary>
+        private string? mCategory;
+
+        /// <summary>
         /// The member of the <see cref="Description"/> property
         /// </summary>
         private string? mDescription;
@@ -24,7 +29,11 @@
         /// <summary>
         /// The category
         /// </summary>
-        public string Category { get; set; }
+        public string Category
+        {
+            get => mCategory ?? string.Empty;
+            set => mCategory = value;
+        }
 
         /// <summary>
         /// The description
@@ -58,6 +67,10 @@
         /// The large image URL
         /// </summary>
         public Uri? LargeImageUrl { get; set; }
+
+        // Embedded Owner
+
+        // Embedded Staff Member
 
         #endregion
 
