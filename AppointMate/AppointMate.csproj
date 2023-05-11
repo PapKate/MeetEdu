@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="APIModels\Requests\" />
-    <Folder Include="APIModels\Responses\Services\" />
   </ItemGroup>
 
 </Project>

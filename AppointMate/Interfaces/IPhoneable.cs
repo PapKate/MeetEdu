@@ -17,32 +17,35 @@ namespace AppointMate
     }
 
     /// <summary>
-    /// Provides abstractions for an object that has a description
+    /// Provides abstractions for an object that has a company id
     /// </summary>
-    public interface IDescribable
+    public interface ICompanyIdentifiable
     {
-        #region Properties
-
         /// <summary>
-        /// The description
+        /// The company id
         /// </summary>
-        string Description { get; set; }
-
-        #endregion
+        string CompanyId { get; set; }
     }
 
     /// <summary>
-    /// Provides abstractions for an object that has a description and a small description
+    /// Provides abstractions for an object that has an id
     /// </summary>
-    public interface ITotalDescribable : IDescribable
+    public interface IIdentifiable
     {
-        #region Properties
-
         /// <summary>
-        /// The small description
+        /// The id
         /// </summary>
-        string SmallDescription { get; set; }
+        string Id { get; set; }
+    }
 
-        #endregion
+    /// <summary>
+    /// Provides abstractions for an object that has a source and an id
+    /// </summary>
+    public interface IEmbeddedIdentifiable : IIdentifiable
+    {
+        /// <summary>
+        /// The <see cref="IIdentifiable.Id"/> of the object that was used for creating the embedded object
+        /// </summary>
+        string Source { get; set; }
     }
 }

@@ -3,7 +3,7 @@
     /// <summary>
     /// The base response model
     /// </summary>
-    public class BaseResponseModel
+    public class BaseResponseModel : IIdentifiable
     {
         #region Private Properties
 

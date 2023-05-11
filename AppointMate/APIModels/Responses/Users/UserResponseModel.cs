@@ -4,7 +4,7 @@ namespace AppointMate
     /// <summary>
     /// The user response model
     /// </summary>
-    public class UserResponseModel : DateResponseModel, IImageable, IEmailable, IPhoneable
+    public abstract class UserResponseModel : DateResponseModel, IImageable, IEmailable, IPhoneable
     {
         #region Private Members
 
@@ -106,7 +106,7 @@ namespace AppointMate
         /// <summary>
         /// The billing information
         /// </summary>
-        public BillingResponseModel? Billing { get; set; }  
+        public BillingResponseModel? Billing { get; set; }
 
         #endregion
 
@@ -116,6 +116,86 @@ namespace AppointMate
         /// Default constructor
         /// </summary>
         public UserResponseModel() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
+    public class EmbeddedUserResponseModel : EmbeddedStandardResponseModel
+    {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="FirstName"/> property
+        /// </summary>
+        private string? mFirstName;
+
+        /// <summary>
+        /// The member of the <see cref="LastName"/> property
+        /// </summary>
+        private string? mLastName;
+
+        /// <summary>
+        /// The member of the <see cref="Username"/> property
+        /// </summary>
+        private string? mUsername;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The username
+        /// </summary>
+        public string Username
+        {
+            get => mUsername ?? string.Empty;
+            set => mUsername = value;
+        }
+
+        /// <summary>
+        /// The first name
+        /// </summary>
+        public string FirstName
+        {
+            get => mFirstName ?? string.Empty;
+            set => mFirstName = value;
+        }
+
+        /// <summary>
+        /// The last name
+        /// </summary>
+        public string LastName
+        {
+            get => mLastName ?? string.Empty;
+            set => mLastName = value;
+        }
+
+        /// <summary>
+        /// The small image URL
+        /// </summary>
+        public Uri? SmallImageUrl { get; set; }
+
+        /// <summary>
+        /// The image URL
+        /// </summary>
+        public Uri? NormalImageUrl { get; set; }
+
+        /// <summary>
+        /// The large image URL
+        /// </summary>
+        public Uri? LargeImageUrl { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public EmbeddedUserResponseModel() : base()
         {
 
         }

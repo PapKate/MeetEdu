@@ -13,14 +13,9 @@
 
         // Embedded staff member
 
-        // Embedded service
+        // Embedded service session
 
         // Embedded customer
-
-        /// <summary>
-        /// The service
-        /// </summary>
-        public ServiceResponseModel? Service { get; set; }
 
         /// <summary>
         /// The date and time

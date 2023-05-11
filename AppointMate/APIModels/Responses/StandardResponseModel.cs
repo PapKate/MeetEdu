@@ -1,9 +1,11 @@
-﻿namespace AppointMate
+﻿using System.Security.Principal;
+
+namespace AppointMate
 {
     /// <summary>
     /// The standard response model
     /// </summary>
-    public class StandardResponseModel : DateResponseModel
+    public class StandardResponseModel : DateResponseModel, INameable, IColorable
     {
         #region Private Properties
 
@@ -53,4 +55,69 @@
 
         #endregion
     }
+
+    /// <summary>
+    /// The embedded standard response model
+    /// </summary>
+    public class EmbeddedStandardResponseModel : IEmbeddedIdentifiable, INameable, IColorable
+    {
+        #region Private Properties
+
+        /// <summary>
+        /// The member of the <see cref="Name"/> property
+        /// </summary>
+        private string? mName;
+
+        /// <summary>
+        /// The member of the <see cref="Color"/> property
+        /// </summary>
+        private string? mColor;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The id
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// The id of the entity that was used for creating the current 
+        /// </summary>
+        public string Source { get; set; }
+
+        /// <summary>
+        /// The name
+        /// </summary>
+        public string Name
+        {
+            get => mName ?? string.Empty;
+            set => mName = value;
+        }
+
+        /// <summary>
+        /// The color
+        /// </summary>
+        public string Color
+        {
+            get => mColor ?? string.Empty;
+            set => mColor = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public EmbeddedStandardResponseModel() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
 }
