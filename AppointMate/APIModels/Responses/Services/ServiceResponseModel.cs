@@ -98,7 +98,7 @@
         #endregion
     }
 
-    public class EmbeddedServiceResponseModel : EmbeddedStandardResponseModel
+    public class EmbeddedServiceResponseModel : EmbeddedStandardResponseModel, ICompanyIdentifiable 
     {
         #region Private Members
 
@@ -107,6 +107,11 @@
         /// </summary>
         private string? mSmallDescription;
 
+        /// <summary>
+        /// The member of the <see cref="CompanyId"/> property
+        /// </summary>
+        private string? mCompanyId;
+
         #endregion
 
         #region Public Properties
@@ -114,7 +119,11 @@
         /// <summary>
         /// The company id
         /// </summary>
-        public string CompanyId { get; set; }
+        public string CompanyId
+        {
+            get => mCompanyId ?? string.Empty;
+            set => mCompanyId = value;
+        }
 
         /// <summary>
         /// The small description

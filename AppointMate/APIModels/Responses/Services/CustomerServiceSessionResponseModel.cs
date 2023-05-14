@@ -41,14 +41,24 @@
         public TimeSpan Duration { get; set; }
 
         /// <summary>
+        /// A flag indicating whether it is confirmed or not
+        /// </summary>
+        public bool IsConfirmed { get; set; }
+
+        /// <summary>
+        /// The session status
+        /// </summary>
+        public SessionStatus SessionStatus { get; set; }
+
+        /// <summary>
         /// The staff member
         /// </summary>
-        public EmbeddedStaffMemberResponseModel StaffMember { get; set; }
+        public EmbeddedStaffMemberResponseModel? StaffMember { get; set; }
 
         /// <summary>
         /// The service
         /// </summary>
-        public EmbeddedCustomerServiceResponseModel CustomerService { get; set; }
+        public EmbeddedCustomerServiceResponseModel? CustomerService { get; set; }
 
         #endregion
 
@@ -64,39 +74,4 @@
 
         #endregion
     }
-
-    public class CustomerServiceResponseModel
-    {
-        #region Public Properties
-
-        /// <summary>
-        /// The service
-        /// </summary>
-        public EmbeddedServiceResponseModel? Service { get; set; }
-
-        /// <summary>
-        /// The customer
-        /// </summary>
-        public EmbeddedCustomerResponseModel? Customer { get; set; }
-
-        #endregion
-    }
-
-    public class EmbeddedCustomerServiceResponseModel
-    {
-        #region Public Properties
-
-        /// <summary>
-        /// The service
-        /// </summary>
-        public EmbeddedServiceResponseModel? Service { get; set; }
-
-        /// <summary>
-        /// The customer
-        /// </summary>
-        public EmbeddedCustomerResponseModel? Customer { get; set; }
-
-        #endregion
-    }
-
 }
