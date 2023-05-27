@@ -3,7 +3,7 @@
     /// <summary>
     /// The customer service response model
     /// </summary>
-    public class CustomerServiceResponseModel
+    public class CustomerServiceResponseModel : BaseResponseModel
     {
         #region Public Properties
 

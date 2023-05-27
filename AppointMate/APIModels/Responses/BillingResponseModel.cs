@@ -1,5 +1,4 @@
-﻿using AppointMate.DataModels.Classes;
-
+﻿
 namespace AppointMate
 {
     public class BillingResponseModel : ShippingResponseModel, IEmailable, IPhoneable

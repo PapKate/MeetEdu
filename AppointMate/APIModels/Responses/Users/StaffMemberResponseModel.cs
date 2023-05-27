@@ -17,11 +17,6 @@
         /// </summary>
         private IEnumerable<string>? mRoles;
 
-        /// <summary>
-        /// The member of the <see cref="Schedule"/> property
-        /// </summary>
-        private IEnumerable<DayOfWeekTimeRange>? mSchedule;
-
         #endregion
 
         #region Public Properties
@@ -36,22 +31,23 @@
         }
 
         /// <summary>
+        /// A flag indicating whether they are an owner
+        /// </summary>
+        public bool IsOwner { get; set; }
+
+        /// <summary>
         /// The roles
         /// </summary>
         public IEnumerable<string> Roles 
         {
             get => mRoles ?? Enumerable.Empty<string>();
             set => mRoles = value;
-        } 
+        }
 
         /// <summary>
-        /// The schedule
+        /// The work hours
         /// </summary>
-        public IEnumerable<DayOfWeekTimeRange> Schedule 
-        { 
-            get => mSchedule ?? Enumerable.Empty<DayOfWeekTimeRange>();
-            set => mSchedule = value;
-        }
+        public WeeklyScheduleResponseModel? WorkHours { get; set; }
 
         #endregion
 
@@ -94,6 +90,11 @@
             get => mQuote ?? string.Empty;
             set => mQuote = value;
         }
+
+        /// <summary>
+        /// A flag indicating whether they are an owner
+        /// </summary>
+        public bool IsOwner { get; set; }
 
         /// <summary>
         /// The roles

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Folder Include="APIModels\Requests\" />
+    <Folder Include="APIModels\Responses\Categories\" />
   </ItemGroup>
 
 </Project>

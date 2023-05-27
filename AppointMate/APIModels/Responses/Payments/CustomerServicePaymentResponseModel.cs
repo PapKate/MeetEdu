@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a customer subscription payment
     /// </summary>
-    public class CustomerSubscriptionPaymentResponseModel : DateResponseModel, IPayable
+    public class CustomerServicePaymentResponseModel : DateResponseModel, IPayable
     {
         #region Private Methods
 
@@ -59,7 +59,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerSubscriptionPaymentResponseModel() : base()
+        public CustomerServicePaymentResponseModel() : base()
         {
 
         }
