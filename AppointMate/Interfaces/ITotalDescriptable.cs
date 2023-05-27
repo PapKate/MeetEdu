@@ -4,7 +4,7 @@ namespace AppointMate
     /// <summary>
     /// Provides abstractions for an object that has a description and a small description
     /// </summary>
-    public interface ITotalDescribable : IDescriptable
+    public interface ITotalDescriptable : IDescriptable
     {
         #region Properties
 

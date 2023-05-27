@@ -54,6 +54,16 @@ namespace AppointMate
         }
 
         #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Returns a string that represents the current object.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => Name;
+
+        #endregion
     }
 
     /// <summary>
@@ -62,6 +72,16 @@ namespace AppointMate
     public class EmbeddedStandardResponseModel : IEmbeddedIdentifiable, INameable, IColorable
     {
         #region Private Properties
+
+        /// <summary>
+        /// The member of the <see cref="Id"/> property
+        /// </summary>
+        private string? mId;
+
+        /// <summary>
+        /// The member of the <see cref="Source"/> property
+        /// </summary>
+        private string? mSource;
 
         /// <summary>
         /// The member of the <see cref="Name"/> property
@@ -80,12 +100,20 @@ namespace AppointMate
         /// <summary>
         /// The id
         /// </summary>
-        public string Id { get; set; }
+        public string Id
+        {
+            get => mId ?? string.Empty;
+            set => mId = value;
+        }
 
         /// <summary>
         /// The id of the entity that was used for creating the current 
         /// </summary>
-        public string Source { get; set; }
+        public string Source
+        {
+            get => mSource ?? string.Empty;
+            set => mSource = value;
+        }
 
         /// <summary>
         /// The name
@@ -116,6 +144,16 @@ namespace AppointMate
         {
 
         }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Returns a string that represents the current object.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => Name;
 
         #endregion
     }
