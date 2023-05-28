@@ -3,7 +3,7 @@
     /// <summary>
     /// The service response model
     /// </summary>
-    public class ServiceResponseModel : StandardResponseModel, IDescriptable
+    public class ServiceResponseModel : StandardResponseModel, IDescriptable, INoteable
     {
         #region Private Members
 
@@ -133,16 +133,6 @@
             get => mSmallDescription ?? string.Empty;
             set => mSmallDescription = value;
         }
-
-        /// <summary>
-        /// A flag indicating whether it is on sale or not
-        /// </summary>
-        public bool IsOnSale { get; set; }
-
-        /// <summary>
-        /// The price
-        /// </summary>
-        public decimal Price { get; set; }
 
         #endregion
 

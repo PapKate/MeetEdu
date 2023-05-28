@@ -39,4 +39,44 @@
 
         #endregion
     }
+
+    /// <summary>
+    /// The base for all the embedded response models
+    /// </summary>
+    public class BaseEmbeddedResponseModel : BaseResponseModel, IEmbeddableIdentifiable
+    {
+        #region Private Properties
+
+        /// <summary>
+        /// The member of the <see cref="Source"/> property
+        /// </summary>
+        private string? mSource;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The id of the entity that was used for creating the current 
+        /// </summary>
+        public string Source
+        {
+            get => mSource ?? string.Empty;
+            set => mSource = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public BaseEmbeddedResponseModel() : base()
+        {
+
+        }
+
+        #endregion
+    }
 }

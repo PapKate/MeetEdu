@@ -69,19 +69,9 @@ namespace AppointMate
     /// <summary>
     /// The embedded standard response model
     /// </summary>
-    public class EmbeddedStandardResponseModel : IEmbeddedIdentifiable, INameable, IColorable
+    public class EmbeddedStandardResponseModel : BaseEmbeddedResponseModel, INameable, IColorable
     {
         #region Private Properties
-
-        /// <summary>
-        /// The member of the <see cref="Id"/> property
-        /// </summary>
-        private string? mId;
-
-        /// <summary>
-        /// The member of the <see cref="Source"/> property
-        /// </summary>
-        private string? mSource;
 
         /// <summary>
         /// The member of the <see cref="Name"/> property
@@ -96,24 +86,6 @@ namespace AppointMate
         #endregion
 
         #region Public Properties
-
-        /// <summary>
-        /// The id
-        /// </summary>
-        public string Id
-        {
-            get => mId ?? string.Empty;
-            set => mId = value;
-        }
-
-        /// <summary>
-        /// The id of the entity that was used for creating the current 
-        /// </summary>
-        public string Source
-        {
-            get => mSource ?? string.Empty;
-            set => mSource = value;
-        }
 
         /// <summary>
         /// The name

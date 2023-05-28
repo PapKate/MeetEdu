@@ -1,13 +1,11 @@
-﻿using System;
-
-namespace AppointMate
+﻿namespace AppointMate
 {
     /// <summary>
-    /// Represents a customer service payment
+    /// Represents a customer service scheduled payment
     /// </summary>
-    public class CustomerServicePaymentResponseModel : DateResponseModel, INoteable, IPayable
+    public class CustomerServiceScheduledPaymentResponseModel : DateResponseModel, INoteable, IPayable
     {
-        #region Private Methods
+        #region Private Properties
 
         /// <summary>
         /// The member of the <see cref="Note"/> property
@@ -26,31 +24,26 @@ namespace AppointMate
         /// <summary>
         /// The note
         /// </summary>
-        public string Note 
-        { 
+        public string Note
+        {
             get => mNote ?? string.Empty;
             set => mNote = value;
         }
 
         /// <summary>
-        /// The payment method
+        /// The date scheduled
         /// </summary>
-        public EmbeddedPaymentMethodResponseModel? PaymentMethod { get; set; }
+        public DateTimeOffset DateScheduled { get; set; }
 
         /// <summary>
-        /// The sum of the flat rate and the percent commission
+        /// A flag indicating whether a the scheduled payment was paid or not
         /// </summary>
-        public decimal CommissionAmount { get; set; }
+        public bool IsPaid { get; set; }
 
         /// <summary>
-        /// The amount accumulated by the flat rate commission
+        /// The payment date if any
         /// </summary>
-        public decimal FlatRateCommissionAmount { get; set; }
-
-        /// <summary>
-        /// The amount accumulated by the commission
-        /// </summary>
-        public decimal PercentCommissionAmount { get; set; }
+        public DateTimeOffset? DatePaid { get; set; }
 
         #endregion
 
@@ -59,7 +52,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerServicePaymentResponseModel() : base()
+        public CustomerServiceScheduledPaymentResponseModel() : base()
         {
 
         }
