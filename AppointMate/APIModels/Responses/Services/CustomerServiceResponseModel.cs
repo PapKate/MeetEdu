@@ -22,11 +22,6 @@
         #region Public Properties
 
         /// <summary>
-        /// The amount
-        /// </summary>
-        public decimal Amount { get; set; }
-
-        /// <summary>
         /// The purchased amount
         /// </summary>
         public decimal PurchasedAmount { get; set; }

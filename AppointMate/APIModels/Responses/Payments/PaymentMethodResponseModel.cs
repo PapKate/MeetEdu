@@ -3,7 +3,7 @@
     /// <summary>
     /// The payment method response model
     /// </summary>
-    public class PaymentMethodResponseModel : StandardResponseModel, IDescriptable, IImageable, IVectorImageable
+    public class PaymentMethodResponseModel : StandardResponseModel, IDescriptable, IImageable, IIconPathDatable
     {
         #region Private Members
 
@@ -11,6 +11,11 @@
         /// The member of the <see cref="Description"/> property
         /// </summary>
         private string? mDescription;
+
+        /// <summary>
+        /// The member of the <see cref="PathData"/> property
+        /// </summary>
+        private string? mPathData;
 
         #endregion
 
@@ -26,9 +31,13 @@
         }
 
         /// <summary>
-        /// The icon path data
+        /// The path data of the icon
         /// </summary>
-        public VectorSource? VectorSource { get; set; }
+        public string IconPathData
+        {
+            get => mPathData ?? string.Empty;
+            set => mPathData = value;
+        }
 
         /// <summary>
         /// The small image URL
@@ -86,11 +95,11 @@
         /// <summary>
         /// The icon path data
         /// </summary>
+        /// The small image URL
+        /// </summary>
         public VectorSource? VectorSource { get; set; }
 
         /// <summary>
-        /// The small image URL
-        /// </summary>
         public Uri? SmallImageUrl { get; set; }
 
         /// <summary>

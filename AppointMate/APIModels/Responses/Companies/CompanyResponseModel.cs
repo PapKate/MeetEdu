@@ -23,9 +23,9 @@
         private string? mDescription;
 
         /// <summary>
-        /// The member of the <see cref="StaffMembers"/> property
+        /// The member of the <see cref="Categories"/> property
         /// </summary>
-        private IEnumerable<EmbeddedStaffMemberResponseModel>? mStaffMembers;
+        private IEnumerable<EmbeddedCategoryResponseModel>? mCategories;
 
         #endregion
 
@@ -94,12 +94,12 @@
         public ShippingResponseModel? Shipping { get; set; }
 
         /// <summary>
-        /// The staff members
+        /// The categories
         /// </summary>
-        public IEnumerable<EmbeddedStaffMemberResponseModel> StaffMembers
+        public IEnumerable<EmbeddedCategoryResponseModel> Categories
         {
-            get => mStaffMembers ?? Enumerable.Empty<EmbeddedStaffMemberResponseModel>();
-            set => mStaffMembers = value;
+            get => mCategories ?? Enumerable.Empty<EmbeddedCategoryResponseModel>();
+            set => mCategories = value;
         }
 
         #endregion
@@ -110,82 +110,6 @@
         /// Default constructor
         /// </summary>
         public CompanyResponseModel() : base()
-        {
-
-        }
-
-        #endregion
-    }
-
-    public class EmbeddedCompanyResponseModel : EmbeddedStandardResponseModel, IImageable
-    {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="Category"/> property
-        /// </summary>
-        private string? mCategory;
-
-        /// <summary>
-        /// The member of the <see cref="Description"/> property
-        /// </summary>
-        private string? mDescription;
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// The category
-        /// </summary>
-        public string Category
-        {
-            get => mCategory ?? string.Empty;
-            set => mCategory = value;
-        }
-        
-        /// <summary>
-        /// The description
-        /// </summary>
-        public string Description
-        {
-            get => mDescription ?? string.Empty;
-            set => mDescription = value;
-        }
-
-        /// <summary>
-        /// The work hours
-        /// </summary>
-        public WeeklyScheduleResponseModel? WorkHours { get; set; }
-
-        /// <summary>
-        /// The small image URL
-        /// </summary>
-        public Uri? SmallImageUrl { get; set; }
-
-        /// <summary>
-        /// The image URL
-        /// </summary>
-        public Uri? NormalImageUrl { get; set; }
-
-        /// <summary>
-        /// The large image URL
-        /// </summary>
-        public Uri? LargeImageUrl { get; set; }
-
-        /// <summary>
-        /// The location
-        /// </summary>
-        public LocationResponseModel? Location { get; set; }
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public EmbeddedCompanyResponseModel() : base()
         {
 
         }

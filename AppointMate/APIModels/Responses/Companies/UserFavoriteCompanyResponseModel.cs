@@ -1,18 +1,21 @@
 ﻿namespace AppointMate
 {
-    public class CustomerSavedCompanyResponseModel : BaseResponseModel
+    /// <summary>
+    /// Only entity
+    /// </summary>
+    public class UserFavoriteCompanyResponseModel : BaseResponseModel
     {
         #region Public Properties
 
         /// <summary>
         /// The company
         /// </summary>
-        public EmbeddedCompanyResponseModel? Company { get; set; }
+        public string? CompanyId { get; set; }
 
         /// <summary>
-        /// The customer
+        /// The user
         /// </summary>
-        public EmbeddedCustomerResponseModel? Customer { get; set; }
+        public string? UserId { get; set; }
 
         #endregion
 
@@ -21,7 +24,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerSavedCompanyResponseModel() : base()
+        public UserFavoriteCompanyResponseModel() : base()
         {
 
         }

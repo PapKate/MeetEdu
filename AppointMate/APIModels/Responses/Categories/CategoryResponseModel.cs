@@ -74,25 +74,7 @@
     /// </summary>
     public class EmbeddedCategoryResponseModel : EmbeddedStandardResponseModel
     {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="Parent"/> property
-        /// </summary>
-        private string? mParent;
-
-        #endregion
-
         #region Public Properties
-
-        /// <summary>
-        /// The parent
-        /// </summary>
-        public string Parent
-        {
-            get => mParent ?? string.Empty;
-            set => mParent = value;
-        }
 
         /// <summary>
         /// The small image URL
