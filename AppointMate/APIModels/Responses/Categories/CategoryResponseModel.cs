@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a category
     /// </summary>
-    public class CategoryResponseModel : StandardResponseModel, IDescriptable, IParentable<string>
+    public class CategoryResponseModel : StandardResponseModel, IDescriptable, IParentable<string>, IImageable
     {
         #region Private Members
 
@@ -39,6 +39,21 @@
             set => mDescription = value;
         }
 
+        /// <summary>
+        /// The small image URL
+        /// </summary>
+        public Uri? SmallImageUrl { get; set; }
+
+        /// <summary>
+        /// The image URL
+        /// </summary>
+        public Uri? NormalImageUrl { get; set; }
+
+        /// <summary>
+        /// The large image URL
+        /// </summary>
+        public Uri? LargeImageUrl { get; set; }
+
         #endregion
 
         #region Constructors
@@ -59,6 +74,43 @@
     /// </summary>
     public class EmbeddedCategoryResponseModel : EmbeddedStandardResponseModel
     {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="Parent"/> property
+        /// </summary>
+        private string? mParent;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The parent
+        /// </summary>
+        public string Parent
+        {
+            get => mParent ?? string.Empty;
+            set => mParent = value;
+        }
+
+        /// <summary>
+        /// The small image URL
+        /// </summary>
+        public Uri? SmallImageUrl { get; set; }
+
+        /// <summary>
+        /// The image URL
+        /// </summary>
+        public Uri? NormalImageUrl { get; set; }
+
+        /// <summary>
+        /// The large image URL
+        /// </summary>
+        public Uri? LargeImageUrl { get; set; }
+
+        #endregion
+
         #region Constructors
 
         /// <summary>

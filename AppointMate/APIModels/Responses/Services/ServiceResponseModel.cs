@@ -22,6 +22,11 @@
         /// </summary>
         private string? mNote;
 
+        /// <summary>
+        /// The member of the <see cref="Categories"/> property
+        /// </summary>
+        private IEnumerable<EmbeddedCategoryResponseModel>? mCategories;
+
         #endregion
 
         #region Public Properties
@@ -81,6 +86,15 @@
         { 
             get => mNote ?? string.Empty;
             set => mNote = value;
+        }
+
+        /// <summary>
+        /// The categories
+        /// </summary>
+        public IEnumerable<EmbeddedCategoryResponseModel> Categories
+        {
+            get => mCategories ?? Enumerable.Empty<EmbeddedCategoryResponseModel>();
+            set => mCategories = value;
         }
 
         #endregion
