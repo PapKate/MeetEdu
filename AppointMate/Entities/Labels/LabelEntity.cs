@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a label
     /// </summary>
-    public class LabelResponseModel : StandardResponseModel, IDescriptable
+    public class LabelEntity : StandardEntity, IDescriptable
     {
         #region Private Members
 
@@ -32,7 +32,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public LabelResponseModel()
+        public LabelEntity()
         {
 
         }
@@ -41,20 +41,16 @@
     }
 
     /// <summary>
-    /// A minimal version of the <see cref="LabelResponseModel"/> used when embedding
+    /// A minimal version of the <see cref="LabelEntity"/> used when embedding
     /// </summary>
-    public class EmbeddedLabelResponseModel : EmbeddedStandardResponseModel
+    public class EmbeddedLabelEntity : EmbeddedStandardEntity
     {
-        #region Public Properties
-
-        #endregion
-
         #region Constructors
 
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedLabelResponseModel() : base()
+        public EmbeddedLabelEntity() : base()
         {
 
         }

@@ -50,6 +50,11 @@
         }
 
         /// <summary>
+        /// The radius for the distance where at home services can be provided in Km
+        /// </summary>
+        public double AtHomeRadius { get; set; }
+
+        /// <summary>
         /// The note
         /// </summary>
         public string Note

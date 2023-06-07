@@ -3,7 +3,7 @@
     /// <summary>
     /// The scheduled appointment response model
     /// </summary>
-    public class ScheduledAppointment : DateResponseModel
+    public class ScheduledAppointmentEntity : DateEntity
     {
         #region Private Members
 
@@ -29,7 +29,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public ScheduledAppointment() : base()
+        public ScheduledAppointmentEntity() : base()
         {
 
         }

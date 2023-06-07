@@ -1,9 +1,13 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+using System.Runtime.InteropServices.ObjectiveC;
+
+namespace AppointMate
 {
     /// <summary>
     /// The service response model
     /// </summary>
-    public class ServiceResponseModel : StandardResponseModel, IDescriptable, INoteable
+    public class ServiceEntity: StandardEntity, IDescriptable, INoteable, ICompanyIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -25,11 +29,16 @@
         /// <summary>
         /// The member of the <see cref="Categories"/> property
         /// </summary>
-        private IEnumerable<EmbeddedCategoryResponseModel>? mCategories;
+        private IEnumerable<EmbeddedCategoryEntity>? mCategories;
 
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// A flag indicating whether it is at home
@@ -39,8 +48,8 @@
         /// <summary>
         /// The description
         /// </summary>
-        public string Description 
-        { 
+        public string Description
+        {
             get => mDescription ?? string.Empty;
             set => mDescription = value;
         }
@@ -87,8 +96,8 @@
         /// <summary>
         /// The note
         /// </summary>
-        public string Note 
-        { 
+        public string Note
+        {
             get => mNote ?? string.Empty;
             set => mNote = value;
         }
@@ -96,9 +105,9 @@
         /// <summary>
         /// The categories
         /// </summary>
-        public IEnumerable<EmbeddedCategoryResponseModel> Categories
+        public IEnumerable<EmbeddedCategoryEntity> Categories
         {
-            get => mCategories ?? Enumerable.Empty<EmbeddedCategoryResponseModel>();
+            get => mCategories ?? Enumerable.Empty<EmbeddedCategoryEntity>();
             set => mCategories = value;
         }
 
@@ -109,7 +118,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public ServiceResponseModel() : base()
+        public ServiceEntity() : base()
         {
 
         }
@@ -117,7 +126,7 @@
         #endregion
     }
 
-    public class EmbeddedServiceResponseModel : EmbeddedStandardResponseModel, ICompanyIdentifiable 
+    public class EmbeddedServiceEntity : EmbeddedStandardEntity, ICompanyIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -126,11 +135,6 @@
         /// </summary>
         private string? mSmallDescription;
 
-        /// <summary>
-        /// The member of the <see cref="CompanyId"/> property
-        /// </summary>
-        private string? mCompanyId;
-
         #endregion
 
         #region Public Properties
@@ -138,11 +142,7 @@
         /// <summary>
         /// The company id
         /// </summary>
-        public string CompanyId
-        {
-            get => mCompanyId ?? string.Empty;
-            set => mCompanyId = value;
-        }
+        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// The small description
@@ -160,7 +160,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedServiceResponseModel() : base()
+        public EmbeddedServiceEntity() : base()
         {
 
         }

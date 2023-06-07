@@ -1,6 +1,6 @@
 ﻿namespace AppointMate
 {
-    public class CustomerServiceReview : BaseResponseModel, INoteable
+    public class CustomerServiceReviewResponseModel : BaseResponseModel, INoteable
     {
         #region Private Members
 
@@ -39,7 +39,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerServiceReview() : base()
+        public CustomerServiceReviewResponseModel() : base()
         {
 
         }

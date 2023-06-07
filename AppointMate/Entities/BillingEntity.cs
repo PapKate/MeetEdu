@@ -1,7 +1,6 @@
-﻿
-namespace AppointMate
+﻿namespace AppointMate
 {
-    public class BillingResponseModel : ShippingResponseModel, IEmailable, IPhoneable
+    public class BillingEntity : ShippingEntity, IEmailable, IPhoneable
     {
         #region Private Members
 
@@ -35,7 +34,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public BillingResponseModel() : base()
+        public BillingEntity() : base()
         {
 
         }
