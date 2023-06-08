@@ -1,13 +1,10 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
-    public class CompanyLayoutResponseModel : DateResponseModel, IDescriptable, ICompanyIdentifiable<string>
+    public class CompanyLayoutEntity : DateEntity, IDescriptable, ICompanyIdentifiable<ObjectId>
     {
         #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="CompanyId"/> property
-        /// </summary>
-        private string? mCompanyId;
 
         /// <summary>
         /// The member of the <see cref="Description"/> property
@@ -17,7 +14,7 @@
         /// <summary>
         /// The member of the <see cref="Rooms"/> property
         /// </summary>
-        private IEnumerable<CompanyRoomResponseModel>? mRooms;
+        private IEnumerable<CompanyRoomEntity>? mRooms;
 
         #endregion
 
@@ -26,11 +23,7 @@
         /// <summary>
         /// The company id
         /// </summary>
-        public string CompanyId
-        {
-            get => mCompanyId ?? string.Empty;
-            set => mCompanyId = value;
-        }
+        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// The description
@@ -44,9 +37,9 @@
         /// <summary>
         /// The rooms
         /// </summary>
-        public IEnumerable<CompanyRoomResponseModel> Rooms 
-        { 
-            get => mRooms ?? Enumerable.Empty<CompanyRoomResponseModel>();
+        public IEnumerable<CompanyRoomEntity> Rooms
+        {
+            get => mRooms ?? Enumerable.Empty<CompanyRoomEntity>();
             set => mRooms = value;
         }
 
@@ -57,7 +50,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyLayoutResponseModel() : base()
+        public CompanyLayoutEntity() : base()
         {
 
         }
