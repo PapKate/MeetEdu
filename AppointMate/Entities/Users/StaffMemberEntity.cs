@@ -3,7 +3,7 @@
 namespace AppointMate
 {
     /// <summary>
-    /// The staff response model
+    /// Represents a staff member document in the MongoDB
     /// </summary>
     public class StaffMemberEntity : UserEntity, IUserIdentifiable<ObjectId>
     {
@@ -71,6 +71,10 @@ namespace AppointMate
         #endregion
     }
 
+    /// <summary>
+    /// A minimal version of the <see cref="StaffMemberEntity"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
+    /// </summary>
     public class EmbeddedStaffMemberEntity : EmbeddedUserEntity
     {
         #region Private Members

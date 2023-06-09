@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Represents a weekly schedule document in the MongoDB
+    /// </summary>
     public class WeeklyScheduleEntity : BaseEntity, INoteable
     {
         #region Private Members

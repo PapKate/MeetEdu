@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// The standard response model
     /// </summary>
-    public class StandardResponseModel : DateResponseModel, INameable, IColorable
+    public abstract class StandardResponseModel : DateResponseModel, INameable, IColorable
     {
         #region Private Properties
 
@@ -69,7 +69,7 @@ namespace AppointMate
     /// <summary>
     /// The embedded standard response model
     /// </summary>
-    public class EmbeddedStandardResponseModel : BaseEmbeddedResponseModel, INameable, IColorable
+    public abstract class EmbeddedStandardResponseModel : BaseEmbeddedResponseModel, INameable, IColorable
     {
         #region Private Properties
 

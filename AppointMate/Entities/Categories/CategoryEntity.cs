@@ -3,7 +3,7 @@
 namespace AppointMate
 {
     /// <summary>
-    /// Represents a category
+    /// Represents a category document in the MongoDB
     /// </summary>
     public class CategoryEntity : StandardEntity, IDescriptable, IParentable<ObjectId>, IImageable
     {
@@ -63,7 +63,8 @@ namespace AppointMate
     }
 
     /// <summary>
-    /// A minimal version of the <see cref="CategoryEntity "/> used when embedding
+    /// A minimal version of the <see cref="CategoryEntity"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
     /// </summary>
     public class EmbeddedCategoryEntity : EmbeddedStandardEntity
     {

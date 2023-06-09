@@ -3,7 +3,7 @@
 namespace AppointMate
 {
     /// <summary>
-    /// The customer response model
+    /// Represents a customer document in the MongoDB
     /// </summary>
     public class CustomerEntity: UserEntity, ICompanyIdentifiable<ObjectId>, IUserIdentifiable<ObjectId>
     {
@@ -50,7 +50,8 @@ namespace AppointMate
     }
 
     /// <summary>
-    /// The embedded customer response model
+    /// A minimal version of the <see cref="CustomerEntity"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
     /// </summary>
     public class EmbeddedCustomerEntity : EmbeddedUserEntity, ICompanyIdentifiable<ObjectId>, IUserIdentifiable<ObjectId>
     {

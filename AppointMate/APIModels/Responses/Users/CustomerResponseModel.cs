@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The customer response model
+    /// Represents a customer
     /// </summary>
     public class CustomerResponseModel : UserResponseModel, ICompanyIdentifiable<string>
     {
@@ -70,7 +70,7 @@
     }
 
     /// <summary>
-    /// The embedded customer response model
+    /// A minimal version of the <see cref="CustomerResponseModel"/> used when embedding
     /// </summary>
     public class EmbeddedCustomerResponseModel : EmbeddedUserResponseModel
     {

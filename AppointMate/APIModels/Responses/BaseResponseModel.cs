@@ -3,7 +3,7 @@
     /// <summary>
     /// The base response model
     /// </summary>
-    public class BaseResponseModel : IIdentifiable<string>
+    public abstract class BaseResponseModel : IIdentifiable<string>
     {
         #region Private Properties
 
@@ -43,7 +43,7 @@
     /// <summary>
     /// The base for all the embedded response models
     /// </summary>
-    public class BaseEmbeddedResponseModel : BaseResponseModel, IEmbeddableIdentifiable<string>
+    public abstract class BaseEmbeddedResponseModel : BaseResponseModel, IEmbeddableIdentifiable<string>
     {
         #region Private Properties
 

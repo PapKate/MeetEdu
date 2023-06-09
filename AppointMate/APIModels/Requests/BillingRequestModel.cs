@@ -1,6 +1,9 @@
 ﻿
 namespace AppointMate
 {
+    /// <summary>
+    /// Request model used for a billing
+    /// </summary>
     public class BillingRequestModel : ShippingRequestModel, IPhoneable
     {
         #region Public Properties

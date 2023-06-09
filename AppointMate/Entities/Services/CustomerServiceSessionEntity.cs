@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The session response model
+    /// Represents a customer service session document in the MongoDB
     /// </summary>
     public class CustomerServiceSessionEntity : StandardResponseModel, IDescriptable
     {
@@ -76,7 +76,8 @@
     }
 
     /// <summary>
-    /// The session response model
+    /// A minimal version of the <see cref="CustomerServiceSessionEntity"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
     /// </summary>
     public class EmbeddedCustomerServiceSessionEntity : EmbeddedStandardEntity
     {

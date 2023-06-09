@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The payment method response model
+    /// Represents a payment method
     /// </summary>
     public class PaymentMethodResponseModel : StandardResponseModel, IDescriptable, IImageable, IIconPathDatable
     {
@@ -86,7 +86,7 @@
     }
 
     /// <summary>
-    /// The payment method response model
+    /// A minimal version of the <see cref="PaymentMethodResponseModel"/> used when embedding
     /// </summary>
     public class EmbeddedPaymentMethodResponseModel : EmbeddedStandardResponseModel, IImageable, IVectorImageable
     {

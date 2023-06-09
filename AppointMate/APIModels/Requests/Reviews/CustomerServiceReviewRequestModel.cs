@@ -1,13 +1,11 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Request model used for a review
+    /// </summary>
     public class CustomerServiceReviewRequestModel : BaseRequestModel
     {
         #region Public Properties
-
-        /// <summary>
-        /// The customer service
-        /// </summary>
-        public IEnumerable<EmbeddedCustomerServiceSessionRequestModel>? CustomerServiceSessions { get; set; }
 
         /// <summary>
         /// The note

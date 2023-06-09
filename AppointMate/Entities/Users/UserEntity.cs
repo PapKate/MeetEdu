@@ -1,9 +1,9 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The user response model
+    /// Represents a user document in the MongoDB
     /// </summary>
-    public abstract class UserEntity: DateEntity, IImageable, IEmailable, IPhoneable
+    public class UserEntity: DateEntity, IImageable, IEmailable, IPhoneable
     {
         #region Private Members
 
@@ -122,6 +122,10 @@
         #endregion
     }
 
+    /// <summary>
+    /// A minimal version of the <see cref="UserEntity"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
+    /// </summary>
     public class EmbeddedUserEntity : EmbeddedStandardEntity
     {
         #region Private Members

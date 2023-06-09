@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Represents a customer point offset log document in the MongoDB
+    /// </summary>
     public class CustomerPointOffsetLogEntity : IDateCreatable, INoteable, IOffsetable
     {
         #region Private Members

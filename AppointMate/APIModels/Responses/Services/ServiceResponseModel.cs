@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The service response model
+    /// Represents a service
     /// </summary>
     public class ServiceResponseModel : StandardResponseModel, IDescriptable, INoteable
     {
@@ -122,6 +122,9 @@
         #endregion
     }
 
+    /// <summary>
+    /// A minimal version of the <see cref="ServiceResponseModel"/> used when embedding
+    /// </summary>
     public class EmbeddedServiceResponseModel : EmbeddedStandardResponseModel, ICompanyIdentifiable<string> 
     {
         #region Private Members

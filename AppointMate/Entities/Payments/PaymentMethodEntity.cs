@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The payment method response model
+    /// Represents a payment method document in the MongoDB
     /// </summary>
     public class PaymentMethodEntity : StandardEntity, IDescriptable, IImageable, IIconPathDatable
     {

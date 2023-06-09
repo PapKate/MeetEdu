@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Request model used for a note
+    /// </summary>
     public class CustomerNoteRequestModel : StandardRequestModel
     {
         #region Public Properties
@@ -23,16 +26,6 @@
         /// A flag indicating whether the note automatically hides
         /// </summary>
         public bool? IsHidingAutomatically { get; set; }
-
-        /// <summary>
-        /// The customer
-        /// </summary>
-        public EmbeddedCustomerRequestModel? Customer { get; set; }
-
-        /// <summary>
-        /// The labels
-        /// </summary>
-        public IEnumerable<EmbeddedLabelRequestModel>? Labels { get; set; }
 
         #endregion
 

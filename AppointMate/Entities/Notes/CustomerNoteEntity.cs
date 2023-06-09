@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Represents a customer note document in the MongoDB
+    /// </summary>
     public class CustomerNoteEntity : StandardEntity
     {
         #region Private Members

@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Represents a note
+    /// </summary>
     public class CustomerNoteResponseModel : StandardResponseModel
     {
         #region Private Members

@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Represents a shipping document in the MongoDB
+    /// </summary>
     public class ShippingEntity : LocationEntity
     {
         #region Private Properties

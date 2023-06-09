@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,15 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="APIModels\Requests\Categories\" />
-    <Folder Include="APIModels\Requests\Companies\" />
-    <Folder Include="APIModels\Requests\Labels\" />
-    <Folder Include="APIModels\Requests\Reviews\" />
-    <Folder Include="APIModels\Requests\Points\" />
-    <Folder Include="APIModels\Requests\Payments\" />
-    <Folder Include="APIModels\Requests\Notes\" />
     <Folder Include="Controllers\" />
-    <Folder Include="DI\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 

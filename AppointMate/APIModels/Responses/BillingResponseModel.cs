@@ -1,6 +1,9 @@
 ﻿
 namespace AppointMate
 {
+    /// <summary>
+    /// Represents a billing
+    /// </summary>
     public class BillingResponseModel : ShippingResponseModel, IEmailable, IPhoneable
     {
         #region Private Members

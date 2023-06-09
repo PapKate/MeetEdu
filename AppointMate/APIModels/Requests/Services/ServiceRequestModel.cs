@@ -1,19 +1,10 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The service response model
+    /// Request model used for a service
     /// </summary>
     public class ServiceRequestModel : StandardRequestModel
     {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="Categories"/> property
-        /// </summary>
-        private IEnumerable<EmbeddedCategoryResponseModel>? mCategories;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
@@ -71,11 +62,6 @@
         /// </summary>
         public string? Note { get; set; }
 
-        /// <summary>
-        /// The categories
-        /// </summary>
-        public IEnumerable<EmbeddedCategoryRequestModel>? Categories { get; set; }
-
         #endregion
 
         #region Constructors
@@ -84,47 +70,6 @@
         /// Default constructor
         /// </summary>
         public ServiceRequestModel() : base()
-        {
-
-        }
-
-        #endregion
-    }
-
-    public class EmbeddedServiceRequestModel : EmbeddedStandardRequestModel, ICompanyIdentifiable<string>
-    {
-        #region Private Members
-        /// <summary>
-        /// The member of the <see cref="CompanyId"/> property
-        /// </summary>
-        private string? mCompanyId;
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// The company id
-        /// </summary>
-        public string CompanyId
-        {
-            get => mCompanyId ?? string.Empty;
-            set => mCompanyId = value;
-        }
-
-        /// <summary>
-        /// The small description
-        /// </summary>
-        public string? SmallDescription { get; set; }
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public EmbeddedServiceRequestModel() : base()
         {
 
         }

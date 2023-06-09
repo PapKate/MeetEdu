@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Represents a customer service scheduled payment
+    /// Represents a customer service scheduled payment document in the MongoDB
     /// </summary>
     public class CustomerServiceScheduledPaymentEntity: DateEntity, INoteable, IPayable
     {

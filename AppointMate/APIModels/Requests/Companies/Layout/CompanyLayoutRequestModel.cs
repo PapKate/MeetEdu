@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Request model used for a company layout
+    /// </summary>
     public class CompanyLayoutRequestModel : BaseRequestModel, ICompanyIdentifiable<string>
     {
         #region Private Members
@@ -26,11 +29,6 @@
         /// The description
         /// </summary>
         public string? Description { get; set; }
-
-        /// <summary>
-        /// The rooms
-        /// </summary>
-        public IEnumerable<CompanyRoomRequestModel>? Rooms { get; set; }
 
         #endregion
 

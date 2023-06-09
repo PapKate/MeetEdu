@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Represents a customer service scheduled payment
+    /// Request model used for a customer service scheduled payment
     /// </summary>
     public class CustomerServiceScheduledPaymentRequestModel : BaseRequestModel
     {

@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Represents a billing document in the MongoDB
+    /// </summary>
     public class BillingEntity : ShippingEntity, IEmailable, IPhoneable
     {
         #region Private Members

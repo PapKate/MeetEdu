@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The customer service response model
+    /// Represents a customer service 
     /// </summary>
     public class CustomerServiceResponseModel : DateResponseModel
     {
@@ -85,7 +85,7 @@
     }
 
     /// <summary>
-    /// The embedded customer service response model
+    /// A minimal version of the <see cref="CustomerServiceResponseModel"/> used when embedding
     /// </summary>
     public class EmbeddedCustomerServiceResponseModel : BaseEmbeddedResponseModel
     {

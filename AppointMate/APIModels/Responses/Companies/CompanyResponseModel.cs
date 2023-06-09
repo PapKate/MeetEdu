@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The company response model
+    /// Represents a company
     /// </summary>
     public class CompanyResponseModel : StandardResponseModel, IImageable, INoteable
     {

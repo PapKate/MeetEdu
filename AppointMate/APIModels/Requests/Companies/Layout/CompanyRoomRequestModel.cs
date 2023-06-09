@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The company room response model
+    /// Request model used for a company room
     /// </summary>
     public class CompanyRoomRequestModel : StandardRequestModel, IImageable
     {

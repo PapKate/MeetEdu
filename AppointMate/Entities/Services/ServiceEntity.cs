@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.ObjectiveC;
 namespace AppointMate
 {
     /// <summary>
-    /// The service response model
+    /// Represents a service document in the MongoDB
     /// </summary>
     public class ServiceEntity: StandardEntity, IDescriptable, INoteable
     {
@@ -121,6 +121,10 @@ namespace AppointMate
         #endregion
     }
 
+    /// <summary>
+    /// A minimal version of the <see cref="ServiceEntity"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
+    /// </summary>
     public class EmbeddedServiceEntity : EmbeddedStandardEntity, ICompanyIdentifiable<ObjectId>
     {
         #region Private Members

@@ -3,7 +3,7 @@
 namespace AppointMate
 {
     /// <summary>
-    /// Represents a customer service payment
+    /// Request model used for a customer service payment
     /// </summary>
     public class CustomerServicePaymentRequestModel : BaseRequestModel
     {
@@ -18,11 +18,6 @@ namespace AppointMate
         /// The note
         /// </summary>
         public string? Note { get; set; }
-
-        /// <summary>
-        /// The payment method
-        /// </summary>
-        public EmbeddedPaymentMethodRequestModel? PaymentMethod { get; set; }
 
         /// <summary>
         /// The sum of the flat rate and the percent commission

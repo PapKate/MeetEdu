@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The company response model
+    /// Represents a company document in the MongoDB
     /// </summary>
     public class CompanyEntity : StandardEntity, IImageable, INoteable
     {

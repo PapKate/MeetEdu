@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Represents a customer service review
+    /// </summary>
     public class CustomerServiceReviewResponseModel : BaseResponseModel, INoteable
     {
         #region Private Members

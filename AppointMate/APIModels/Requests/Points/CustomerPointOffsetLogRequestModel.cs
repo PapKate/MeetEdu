@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Request model used for a customer point offset log
+    /// </summary>
     public class CustomerPointOffsetLogRequestModel 
     {
         #region Public Properties

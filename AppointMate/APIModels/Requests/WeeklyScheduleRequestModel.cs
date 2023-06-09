@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Request model used for a weekly schedule
+    /// </summary>
     public class WeeklyScheduleRequestModel : BaseRequestModel
     {
         #region Public Properties

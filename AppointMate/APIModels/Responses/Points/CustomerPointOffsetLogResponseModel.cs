@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Represents a customer point offset
+    /// </summary>
     public class CustomerPointOffsetLogResponseModel : IDateCreatable, INoteable, IOffsetable
     {
         #region Private Members

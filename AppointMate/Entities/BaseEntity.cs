@@ -2,7 +2,10 @@
 
 namespace AppointMate
 {
-    public class BaseEntity : IIdentifiable<ObjectId>
+    /// <summary>
+    /// The base for a document in the MongoDB
+    /// </summary>
+    public abstract class BaseEntity : IIdentifiable<ObjectId>
     {
         #region Public Properties
 

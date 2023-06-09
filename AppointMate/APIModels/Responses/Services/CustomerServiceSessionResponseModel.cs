@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The session response model
+    /// Represents a customer service session
     /// </summary>
     public class CustomerServiceSessionResponseModel : StandardResponseModel, IDescriptable
     {
@@ -76,7 +76,7 @@
     }
 
     /// <summary>
-    /// The session response model
+    /// A minimal version of the <see cref="CustomerServiceSessionResponseModel"/> used when embedding
     /// </summary>
     public class EmbeddedCustomerServiceSessionResponseModel : EmbeddedStandardResponseModel
     {

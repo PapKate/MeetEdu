@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The customer service response model
+    /// Represents a customer service document in the MongoDB
     /// </summary>
     public class CustomerServiceEntity : DateResponseModel
     {
@@ -85,7 +85,8 @@
     }
 
     /// <summary>
-    /// The embedded customer service response model
+    /// A minimal version of the <see cref="CustomerServiceEntity"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
     /// </summary>
     public class EmbeddedCustomerServiceEntity
     {

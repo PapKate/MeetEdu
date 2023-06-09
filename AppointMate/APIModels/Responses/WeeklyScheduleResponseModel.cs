@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Represents a weekly schedule
+    /// </summary>
     public class WeeklyScheduleResponseModel : BaseResponseModel, INoteable
     {
         #region Private Members

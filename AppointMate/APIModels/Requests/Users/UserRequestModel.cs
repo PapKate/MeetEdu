@@ -4,7 +4,7 @@ using AppointMate;
 namespace AppointMate
 {
     /// <summary>
-    /// The user response model
+    /// Request model used for a user
     /// </summary>
     public abstract class UserRequestModel : BaseRequestModel, IImageable, IPhoneable
     {
@@ -78,55 +78,6 @@ namespace AppointMate
         /// Default constructor
         /// </summary>
         public UserRequestModel() : base()
-        {
-
-        }
-
-        #endregion
-    }
-
-    public class EmbeddedUserRequestModel : EmbeddedStandardRequestModel
-    {
-        #region Public Properties
-
-        /// <summary>
-        /// The username
-        /// </summary>
-        public string? Username { get; set; }
-
-        /// <summary>
-        /// The first name
-        /// </summary>
-        public string? FirstName { get; set; }
-
-        /// <summary>
-        /// The last name
-        /// </summary>
-        public string? LastName { get; set; }
-
-        /// <summary>
-        /// The small image URL
-        /// </summary>
-        public Uri? SmallImageUrl { get; set; }
-
-        /// <summary>
-        /// The image URL
-        /// </summary>
-        public Uri? NormalImageUrl { get; set; }
-
-        /// <summary>
-        /// The large image URL
-        /// </summary>
-        public Uri? LargeImageUrl { get; set; }
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public EmbeddedUserRequestModel() : base()
         {
 
         }

@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The company response model
+    /// Request model used for a company
     /// </summary>
     public class CompanyRequestModel : StandardRequestModel, IImageable
     {
@@ -28,11 +28,6 @@
         public string? Note { get; set; }
 
         /// <summary>
-        /// The work hours
-        /// </summary>
-        public WeeklyScheduleResponseModel? WorkHours { get; set; }
-
-        /// <summary>
         /// The small image URL
         /// </summary>
         public Uri? SmallImageUrl { get; set; }
@@ -46,26 +41,6 @@
         /// The large image URL
         /// </summary>
         public Uri? LargeImageUrl { get; set; }
-
-        /// <summary>
-        /// The location
-        /// </summary>
-        public LocationRequestModel? Location { get; set; }
-
-        /// <summary>
-        /// The billing information
-        /// </summary>
-        public BillingRequestModel? Billing { get; set; }
-
-        /// <summary>
-        /// The shipping information
-        /// </summary>
-        public ShippingRequestModel? Shipping { get; set; }
-
-        /// <summary>
-        /// The categories
-        /// </summary>
-        public IEnumerable<EmbeddedCategoryRequestModel>? Categories { get; set; }
 
         #endregion
 

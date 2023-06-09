@@ -2,7 +2,7 @@
 namespace AppointMate
 {
     /// <summary>
-    /// The user response model
+    /// Represents a user
     /// </summary>
     public abstract class UserResponseModel : DateResponseModel, IImageable, IEmailable, IPhoneable
     {
@@ -123,6 +123,9 @@ namespace AppointMate
         #endregion
     }
 
+    /// <summary>
+    /// A minimal version of the <see cref="UserResponseModel"/> used when embedding
+    /// </summary>
     public class EmbeddedUserResponseModel : EmbeddedStandardResponseModel
     {
         #region Private Members

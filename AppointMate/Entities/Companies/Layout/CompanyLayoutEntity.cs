@@ -2,6 +2,9 @@
 
 namespace AppointMate
 {
+    /// <summary>
+    /// Represents a company layout document in the MongoDB
+    /// </summary>
     public class CompanyLayoutEntity : DateEntity, IDescriptable, ICompanyIdentifiable<ObjectId>
     {
         #region Private Members

@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Represents a label
+    /// Represents a label document in the MongoDB
     /// </summary>
     public class LabelEntity : StandardEntity, IDescriptable
     {
@@ -41,7 +41,8 @@
     }
 
     /// <summary>
-    /// A minimal version of the <see cref="LabelEntity"/> used when embedding
+    /// A minimal version of the <see cref="LabelEntity"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
     /// </summary>
     public class EmbeddedLabelEntity : EmbeddedStandardEntity
     {

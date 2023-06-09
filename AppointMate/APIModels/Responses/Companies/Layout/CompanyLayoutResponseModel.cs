@@ -1,5 +1,8 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Represents a company layout
+    /// </summary>
     public class CompanyLayoutResponseModel : DateResponseModel, IDescriptable, ICompanyIdentifiable<string>
     {
         #region Private Members

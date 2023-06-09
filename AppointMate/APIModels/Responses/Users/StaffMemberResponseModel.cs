@@ -1,7 +1,7 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// The staff response model
+    /// Represents a staff member
     /// </summary>
     public class StaffMemberResponseModel : UserResponseModel
     {
@@ -64,6 +64,9 @@
         #endregion
     }
 
+    /// <summary>
+    /// A minimal version of the <see cref="StaffMemberResponseModel"/> used when embedding
+    /// </summary>
     public class EmbeddedStaffMemberResponseModel : EmbeddedUserResponseModel
     {
         #region Private Members
