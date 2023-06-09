@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a label
     /// </summary>
-    public class LabelResponseModel : StandardResponseModel, IDescriptable
+    public class LabelRequestModel : StandardRequestModel
     {
         #region Private Members
 
@@ -19,11 +19,7 @@
         /// <summary>
         /// The description
         /// </summary>
-        public string Description
-        {
-            get => mDescription ?? string.Empty;
-            set => mDescription = value;
-        }
+        public string? Description { get; set; }
 
         #endregion
 
@@ -32,7 +28,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public LabelResponseModel()
+        public LabelRequestModel()
         {
 
         }
@@ -43,14 +39,14 @@
     /// <summary>
     /// A minimal version of the <see cref="LabelResponseModel"/> used when embedding
     /// </summary>
-    public class EmbeddedLabelResponseModel : EmbeddedStandardResponseModel
+    public class EmbeddedLabelRequestModel : EmbeddedStandardRequestModel
     {
         #region Constructors
 
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedLabelResponseModel() : base()
+        public EmbeddedLabelRequestModel() : base()
         {
 
         }
@@ -63,7 +59,7 @@
         /// Returns a string that represents the current object.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => Name;
+        public override string ToString() => Name ?? string.Empty;
 
         #endregion
     }

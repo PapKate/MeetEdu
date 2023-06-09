@@ -1,31 +1,21 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Represents a time range
+    /// Represents a price range
     /// </summary>
-    public record struct TimeRange : IReadOnlyRangeable<TimeOnly>
+    public record struct PriceRange : IReadOnlyRangeable<double>
     {
         #region Public Properties
 
         /// <summary>
-        /// The start
-        /// </summary>
-        public TimeOnly Start { get; }
-
-        /// <summary>
-        /// The end
-        /// </summary>
-        public TimeOnly End { get; }
-
-        /// <summary>
         /// The minimum value
         /// </summary>
-        TimeOnly IReadOnlyRangeable<TimeOnly>.Minimum => Start;
+        public double Minimum { get; set; }
 
         /// <summary>
         /// The maximum value
         /// </summary>
-        TimeOnly IReadOnlyRangeable<TimeOnly>.Maximum => End;
+        public double Maximum { get; set; }
 
         #endregion
 
@@ -36,17 +26,17 @@
         /// </summary>
         /// <param name="value1">The first value</param>
         /// <param name="value2">The second value</param>
-        public TimeRange(TimeOnly value1, TimeOnly value2)
+        public PriceRange(double value1, double value2)
         {
             if (value2.CompareTo(value1) >= 0)
             {
-                Start = value1;
-                End = value2;
+                Minimum = value1;
+                Maximum = value2;
             }
             else
             {
-                Start = value2;
-                End = value1;
+                Minimum = value2;
+                Maximum = value1;
             }
         }
 

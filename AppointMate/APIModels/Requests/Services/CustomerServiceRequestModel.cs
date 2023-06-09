@@ -3,43 +3,29 @@
     /// <summary>
     /// The customer service response model
     /// </summary>
-    public class CustomerServiceResponseModel : DateResponseModel
+    public class CustomerServiceRequestModel : BaseRequestModel
     {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="Payments"/> property
-        /// </summary>
-        private IEnumerable<CustomerServicePaymentResponseModel>? mPayments;
-
-        /// <summary>
-        /// The member of the <see cref="ScheduledPayments"/> property
-        /// </summary>
-        private IEnumerable<CustomerServiceScheduledPaymentResponseModel>? mScheduledPayments;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
         /// The purchased amount
         /// </summary>
-        public decimal PurchasedAmount { get; set; }
+        public decimal? PurchasedAmount { get; set; }
 
         /// <summary>
         /// The amount that's paid by the customer
         /// </summary>
-        public decimal PaidAmount { get; set; }
+        public decimal? PaidAmount { get; set; }
 
         /// <summary>
         /// The amount that is owed by the customer
         /// </summary>
-        public decimal OwedAmount { get; set; }
+        public decimal? OwedAmount { get; set; }
 
         /// <summary>
         /// A flag indicating whether the subscription's amount is fully paid or not
         /// </summary>
-        public bool HasOwed { get; set; }
+        public bool? HasOwed { get; set; }
 
         /// <summary>
         /// The service
@@ -54,20 +40,12 @@
         /// <summary>
         /// The payments
         /// </summary>
-        public IEnumerable<CustomerServicePaymentResponseModel> Payments
-        { 
-            get => mPayments ?? Enumerable.Empty<CustomerServicePaymentResponseModel>();
-            set => mPayments = value;
-        }
+        public IEnumerable<CustomerServicePaymentRequestModel>? Payments { get; set; }
 
         /// <summary>
         /// The scheduled payments
         /// </summary>
-        public IEnumerable<CustomerServiceScheduledPaymentResponseModel> ScheduledPayments
-        {
-            get => mScheduledPayments ?? Enumerable.Empty<CustomerServiceScheduledPaymentResponseModel>();
-            set => mScheduledPayments = value;
-        }
+        public IEnumerable<CustomerServiceScheduledPaymentRequestModel>? ScheduledPayments { get; set; }
 
         #endregion
 
@@ -76,7 +54,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerServiceResponseModel() : base()
+        public CustomerServiceRequestModel() : base()
         {
 
         }
@@ -87,7 +65,7 @@
     /// <summary>
     /// The embedded customer service response model
     /// </summary>
-    public class EmbeddedCustomerServiceResponseModel : BaseEmbeddedResponseModel
+    public class EmbeddedCustomerServiceRequestModel : BaseEmbeddedRequestModel
     {
         #region Public Properties
 
@@ -108,7 +86,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedCustomerServiceResponseModel() : base()
+        public EmbeddedCustomerServiceRequestModel() : base()
         {
 
         }

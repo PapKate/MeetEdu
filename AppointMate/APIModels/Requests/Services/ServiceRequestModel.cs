@@ -3,24 +3,9 @@
     /// <summary>
     /// The service response model
     /// </summary>
-    public class ServiceResponseModel : StandardResponseModel, IDescriptable, INoteable
+    public class ServiceRequestModel : StandardRequestModel
     {
         #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="Description"/> property
-        /// </summary>
-        private string? mDescription;
-
-        /// <summary>
-        /// The member of the <see cref="SmallDescription"/> property
-        /// </summary>
-        private string? mSmallDescription;
-
-        /// <summary>
-        /// The member of the <see cref="SessionsNote"/> property
-        /// </summary>
-        private string? mNote;
 
         /// <summary>
         /// The member of the <see cref="Categories"/> property
@@ -34,78 +19,62 @@
         /// <summary>
         /// A flag indicating whether it is at home
         /// </summary>
-        public bool IsAtHome { get; set; }
+        public bool? IsAtHome { get; set; }
 
         /// <summary>
         /// The description
         /// </summary>
-        public string Description 
-        { 
-            get => mDescription ?? string.Empty;
-            set => mDescription = value;
-        }
+        public string? Description { get; set; }
 
         /// <summary>
         /// The small description
         /// </summary>
-        public string SmallDescription
-        {
-            get => mSmallDescription ?? string.Empty;
-            set => mSmallDescription = value;
-        }
+        public string? SmallDescription { get; set; }
 
         /// <summary>
         /// The number of sessions range
         /// </summary>
-        public SessionsRange SessionsRange { get; set; }
+        public SessionsRange? SessionsRange { get; set; }
 
         /// <summary>
         /// The indicative days between sessions
         /// </summary>
-        public DaysBetweenSessionsRange DaysBetweenSessionsRange { get; set; }  
+        public DaysBetweenSessionsRange? DaysBetweenSessionsRange { get; set; }
 
         /// <summary>
         /// The duration range
         /// </summary>
-        public DurationRange DurationRange { get; set; }
+        public DurationRange? DurationRange { get; set; }
 
         /// <summary>
         /// A flag indicating whether it is on sale or not
         /// </summary>
-        public bool IsOnSale { get; set; }
+        public bool? IsOnSale { get; set; }
 
         /// <summary>
         /// The price
         /// </summary>
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         /// <summary>
         /// The price on sale
         /// </summary>
-        public decimal OnSalePrice { get; set; }
+        public decimal? OnSalePrice { get; set; }
 
         /// <summary>
         /// The regular price 
         /// </summary>
-        public decimal RegularPrice { get; set; }
+        public decimal? RegularPrice { get; set; }
 
         /// <summary>
         /// The note
         /// </summary>
-        public string Note 
-        { 
-            get => mNote ?? string.Empty;
-            set => mNote = value;
-        }
+        public string? Note { get; set; }
 
         /// <summary>
         /// The categories
         /// </summary>
-        public IEnumerable<EmbeddedCategoryResponseModel> Categories
-        {
-            get => mCategories ?? Enumerable.Empty<EmbeddedCategoryResponseModel>();
-            set => mCategories = value;
-        }
+        public IEnumerable<EmbeddedCategoryRequestModel>? Categories { get; set; }
 
         #endregion
 
@@ -114,7 +83,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public ServiceResponseModel() : base()
+        public ServiceRequestModel() : base()
         {
 
         }
@@ -122,15 +91,9 @@
         #endregion
     }
 
-    public class EmbeddedServiceResponseModel : EmbeddedStandardResponseModel, ICompanyIdentifiable<string> 
+    public class EmbeddedServiceRequestModel : EmbeddedStandardRequestModel, ICompanyIdentifiable<string>
     {
         #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="SmallDescription"/> property
-        /// </summary>
-        private string? mSmallDescription;
-
         /// <summary>
         /// The member of the <see cref="CompanyId"/> property
         /// </summary>
@@ -152,11 +115,7 @@
         /// <summary>
         /// The small description
         /// </summary>
-        public string SmallDescription
-        {
-            get => mSmallDescription ?? string.Empty;
-            set => mSmallDescription = value;
-        }
+        public string? SmallDescription { get; set; }
 
         #endregion
 
@@ -165,7 +124,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedServiceResponseModel() : base()
+        public EmbeddedServiceRequestModel() : base()
         {
 
         }

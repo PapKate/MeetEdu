@@ -7,7 +7,7 @@ namespace AppointMate
     /// <summary>
     /// The service response model
     /// </summary>
-    public class ServiceEntity: StandardEntity, IDescriptable, INoteable, ICompanyIdentifiable<ObjectId>
+    public class ServiceEntity: StandardEntity, IDescriptable, INoteable
     {
         #region Private Members
 
@@ -34,11 +34,6 @@ namespace AppointMate
         #endregion
 
         #region Public Properties
-
-        /// <summary>
-        /// The company id
-        /// </summary>
-        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// A flag indicating whether it is at home

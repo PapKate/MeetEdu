@@ -1,9 +1,6 @@
 ﻿namespace AppointMate
 {
-    /// <summary>
-    /// Only entity
-    /// </summary>
-    public class UserFavoriteCompanyResponseModel : BaseResponseModel, ICompanyIdentifiable<string>, IUserIdentifiable<string>
+    public class CompanyLayoutRequestModel : BaseRequestModel, ICompanyIdentifiable<string>
     {
         #region Private Members
 
@@ -12,32 +9,28 @@
         /// </summary>
         private string? mCompanyId;
 
-        /// <summary>
-        /// The member of the <see cref="UserId"/> property
-        /// </summary>
-        private string? mUserId;
-
         #endregion
 
         #region Public Properties
 
         /// <summary>
-        /// The company
+        /// The company id
         /// </summary>
-        public string CompanyId 
+        public string CompanyId
         {
             get => mCompanyId ?? string.Empty;
             set => mCompanyId = value;
         }
 
         /// <summary>
-        /// The user
+        /// The description
         /// </summary>
-        public string UserId
-        {
-            get => mUserId ?? string.Empty;
-            set => mUserId = value;
-        }
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// The rooms
+        /// </summary>
+        public IEnumerable<CompanyRoomRequestModel>? Rooms { get; set; }
 
         #endregion
 
@@ -46,7 +39,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public UserFavoriteCompanyResponseModel() : base()
+        public CompanyLayoutRequestModel() : base()
         {
 
         }
