@@ -1,48 +1,232 @@
-﻿using AutoMapper;
-
-using Microsoft.AspNetCore.Mvc;
-
-using MongoDB.Bson;
-using MongoDB.Driver.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using System.ComponentModel;
-using System.Collections.Concurrent;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 
-
+using System.Linq.Expressions;
+using System.Threading;
 
 namespace AppointMate
 {
     /// <summary>
-    /// Helper - additional methods for all the repositories
+    /// Helper Methods for the repositories
     /// </summary>
     public static class RepositoryHelpers
     {
         #region Public Methods
 
-        #endregion
-    }
+        /// <summary>
+        /// Adds the specified <paramref name="entity"/> to the specified <paramref name="collection"/>
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="entity">The entity</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<TEntity> AddAsync<TEntity>(this IMongoCollection<TEntity> collection, TEntity entity, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+        {
+            await collection.InsertOneAsync(entity, null, cancellationToken);
 
-    /// <summary>
-    /// Helper methods for entities
-    /// </summary>
-    public static class EntityHelpers
-    {
-        #region Private Members
+            return entity;
+        }
 
         /// <summary>
-        /// Maps a <see cref="Type.FullName"/> that implements the <see cref="IMongoCompanyIdentifiable"/> to information related to its <see cref="IMongoCompanyIdentifiable"/> sub properties
+        /// Adds the specified <paramref name="entities"/> to the specified <paramref name="collection"/>
         /// </summary>
-        private static readonly ConcurrentDictionary<string, CompanyEntityCompanyIdentifiablePropertiesInformationDataModel> mTypeToIdentifiablePropertiesMapper = new();
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="entities">The entity</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<IEnumerable<TEntity>> AddRangeAsync<TEntity>(this IMongoCollection<TEntity> collection, IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+        {
+            await collection.InsertManyAsync(entities, null, cancellationToken);
+            return entities;
+        }
 
-        #endregion
+        /// <summary>
+        /// Returns the first document that matches the requirements and <see cref="null"/> if none is found
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="filter">The filter expression</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<TEntity> FirstOrDefaultAsync<TEntity>(this IMongoCollection<TEntity> collection, Expression<Func<TEntity, bool>> filter, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+        {
+            var result = await collection.FindAsync<TEntity>(filter);
 
-        #region Public Methods
+            return await result.FirstOrDefaultAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Returns the first document that matches the requirements and <see cref="null"/> if none is found
+        /// </summary>
+        /// <typeparam name="T">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="id">The id of the document</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static Task<TEntity> FirstOrDefaultAsync<TEntity>(this IMongoCollection<TEntity> collection, ObjectId id, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+            => collection.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+
+        /// <summary>
+        /// Returns the first document that matches the requirements
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="filter">The filter expression</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<TEntity> FirstAsync<TEntity>(this IMongoCollection<TEntity> collection, Expression<Func<TEntity, bool>> filter, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+        {
+            var result = await collection.FindAsync<TEntity>(filter);
+
+            return await result.FirstAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Returns the first document that matches the requirements and <see cref="null"/> if none is found
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="id">The id of the document</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static Task<TEntity> FirstAsync<TEntity>(this IMongoCollection<TEntity> collection, ObjectId id, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+            => collection.FirstAsync(x => x.Id == id, cancellationToken);
+
+        /// <summary>
+        /// Returns the documents that match the requirements and <see cref="null"/> if none is found
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<IEnumerable<TEntity>> SelectAsync<TEntity>(this IMongoCollection<TEntity> collection, Expression<Func<TEntity, bool>> filter, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+        {
+            var items = await collection.FindAsync(filter, cancellationToken: cancellationToken);
+
+            return await items.ToListAsync();
+        }
+
+        /// <summary>
+        /// Returns the first document that matches the requirements and throws a <see cref="InvalidOperationException"/> if none is found
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="filter">The filter expression</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<bool> AnyAsync<TEntity>(this IMongoCollection<TEntity> collection, Expression<Func<TEntity, bool>> filter, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+        {
+            var result = await collection.FindAsync<TEntity>(filter);
+
+            return await result.AnyAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Returns the first document that matches the requirements and throws a <see cref="InvalidOperationException"/> if none is found
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="id">The id of the document</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static Task<bool> AnyAsync<TEntity>(this IMongoCollection<TEntity> collection, ObjectId id, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+            => collection.AnyAsync(x => x.Id == id, cancellationToken);
+
+        /// <summary>
+        /// Updates the specified <paramref name="entity"/> while keeping its id the same.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="entity">The new updated document</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<TEntity> UpdateAsync<TEntity>(this IMongoCollection<TEntity> collection, TEntity entity, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+        {
+            await collection.ReplaceOneAsync(x => x.Id == entity.Id, entity, new ReplaceOptions() { IsUpsert = false }, cancellationToken);
+
+            return await collection.FirstAsync(entity.Id);
+        }
+
+        /// <summary>
+        /// Updates the specified <paramref name="entities"/> while keeping their id the same
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entities</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="entities">The entities</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<IEnumerable<TEntity>> UpdateRangeAsync<TEntity>(this IMongoCollection<TEntity> collection, IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+        {
+            var updates = new List<WriteModel<TEntity>>();
+            foreach (var entity in entities)
+                updates.Add(new ReplaceOneModel<TEntity>(Builders<TEntity>.Filter.Eq(x => x.Id, entity.Id), entity) { IsUpsert = true });
+
+            await collection.BulkWriteAsync(updates, null, cancellationToken);
+
+            return entities;
+        }
+
+        /// <summary>
+        /// Deletes the specified <paramref name="entity"/> from the collection.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="entity">The new updated document</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<TEntity> DeleteAsync<TEntity>(this IMongoCollection<TEntity> collection, Expression<Func<TEntity,bool>> filter, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+            => await collection.FindOneAndDeleteAsync(filter, cancellationToken: cancellationToken);
+
+        /// <summary>
+        /// Deletes the specified <paramref name="entity"/> from the collection.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="entity">The new updated document</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<TEntity> DeleteAsync<TEntity>(this IMongoCollection<TEntity> collection, ObjectId id, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+            => await collection.FindOneAndDeleteAsync(x => x.Id == id, cancellationToken: cancellationToken);
+
+        /// <summary>
+        /// Deletes the specified <paramref name="entity"/> from the collection.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="entity">The new updated document</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<TEntity> DeleteAsync<TEntity>(this IMongoCollection<TEntity> collection, TEntity entity, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+            => await collection.DeleteAsync(entity, cancellationToken);
+
+        /// <summary>
+        /// Deletes the specified <paramref name="entities"/> from the collection.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="entities">The new updated document</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<DeleteResult> DeleteRangeAsync<TEntity>(this IMongoCollection<TEntity> collection, IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+            => await collection.DeleteManyAsync(x => entities.Contains(x), cancellationToken);
 
         /// <summary>
         /// Updates the property of the entity selected by the specified <paramref name="entityDocumentPropertySelector"/>
@@ -233,258 +417,6 @@ namespace AppointMate
             }
         }
 
-        /// <summary>
-        /// Creates and returns an entity of the specified type using the specified
-        /// <paramref name="model"/>
-        /// </summary>
-        /// <typeparam name="TEntity">The type of the entity</typeparam>
-        /// <param name="model">The model</param>
-        /// <returns></returns>
-        public static TEntity FromRequestModel<TEntity>(object model)
-            where TEntity : BaseEntity, new()
-        {
-            var entity = new TEntity();
-
-            DI.Mapper.Map(model, entity);
-
-            return entity;
-        }
-
-        /// <summary>
-        /// Creates and returns an entity of the specified type using the specified
-        /// <paramref name="model"/>
-        /// </summary>
-        /// <typeparam name="TEntity">The type of the entity</typeparam>
-        /// <param name="model">The model</param>
-        /// <param name="companyId">The company id</param>
-        /// <returns></returns>
-        public static TEntity FromRequestModel<TEntity>(object model, ObjectId companyId)
-            where TEntity : BaseEntity, ICompanyIdentifiable, new()
-        {
-            var entity = new TEntity()
-            {
-                CompanyId = companyId
-            };
-
-            DI.Mapper.Map(model, entity);
-
-            return entity;
-        }
-
-        /// <summary>
-        /// Creates and returns an entity of the specified type using the specified
-        /// <paramref name="model"/>
-        /// </summary>
-        /// <typeparam name="TEntity">The type of the entity</typeparam>
-        /// <typeparam name="TRequestModel">The type of the request model</typeparam>
-        /// <param name="model">The type of the model</param>
-        /// <param name="updateNonAutoMapperValues">
-        /// Updates the values of the entity with the values of the specified <paramref name="model"/>.
-        /// NOTE: This method only affects the properties that can't be mapped by the <see cref="Mapper"/> and are not <see cref="null"/>!
-        /// </param>
-        /// <returns></returns>
-        public static async Task<TEntity> FromRequestModelAsync<TEntity, TRequestModel>(TRequestModel model, Func<TRequestModel, TEntity, Task> updateNonAutoMapperValues)
-            where TEntity : BaseEntity, new()
-        {
-            var entity = new TEntity();
-
-            DI.Mapper.Map(model, entity);
-
-            await updateNonAutoMapperValues(model, entity);
-
-            return entity;
-        }
-
-
-        /// <summary>
-        /// Creates and returns an entity of the specified type using the specified
-        /// <paramref name="model"/>
-        /// </summary>
-        /// <typeparam name="TEntity">The type of the entity</typeparam>
-        /// <typeparam name="TRequestModel">The type of the request model</typeparam>
-        /// <param name="model">The type of the model</param>
-        /// <param name="companyId">The company id</param>
-        /// <param name="updateNonAutoMapperValues">
-        /// Updates the values of the entity with the values of the specified <paramref name="model"/>.
-        /// NOTE: This method only affects the properties that can't be mapped by the <see cref="Mapper"/> and are not <see cref="null"/>!
-        /// </param>
-        /// <returns></returns>
-        public static async Task<TEntity> FromRequestModelAsync<TEntity, TRequestModel>(TRequestModel model, ObjectId companyId, Func<TRequestModel, TEntity, ObjectId, Task> updateNonAutoMapperValues)
-            where TEntity : BaseEntity, ICompanyIdentifiable, new()
-        {
-            var entity = new TEntity()
-            {
-                CompanyId = companyId
-            };
-
-            DI.Mapper.Map(model, entity);
-
-            await updateNonAutoMapperValues(model, entity, companyId);
-
-            return entity;
-        }
-
-        /// <summary>
-        /// Creates and returns a response model of a specified type using the specified <paramref name="entity"/>
-        /// </summary>
-        /// <typeparam name="TResponseModel">The type of the response model</typeparam>
-        /// <param name="entity">The entity</param>
-        /// <returns></returns>
-        public static TResponseModel ToResponseModel<TResponseModel>(BaseEntity entity)
-            where TResponseModel : new()
-        {
-            return DI.Mapper.Map(entity, new TResponseModel());
-        }
-
-        /// <summary>
-        /// Creates and returns an embedded entity from the specified <paramref name="entity"/>
-        /// </summary>
-        /// <typeparam name="TEmbeddedEntity">The type of the embedded entity</typeparam>
-        /// <param name="entity">The entity</param>
-        /// <returns></returns>
-        public static TEmbeddedEntity ToEmbeddedEntity<TEmbeddedEntity>(BaseEntity entity)
-            where TEmbeddedEntity : BaseEntity, new()
-        {
-            var embeddedEntity = new TEmbeddedEntity();
-
-            DI.Mapper.Map(entity, embeddedEntity);
-
-            return embeddedEntity;
-        }
-
-        /// <summary>
-        /// Initializes the specified <paramref name="entity"/> by setting all of the values of its sub properties
-        /// that implement the <see cref="IMongoCompanyIdentifiable"/> interface the <see cref="IMongoCompanyIdentifiable.CompanyId"/>
-        /// as its current company id value
-        /// </summary>
-        /// <typeparam name="TEntity">The type of the entity that implements the <see cref="IMongoCompanyIdentifiable"/></typeparam>
-        /// <param name="entity">The entity</param>
-        public static void InitializeCompanyEntity<TEntity>(TEntity entity)
-          where TEntity : ICompanyIdentifiable
-        {
-            // Get the type of the entity
-            // NOTE: We are getting the type of the instance because the supplied entity could be
-            //       a class that inherits from the TEntity!
-            var entityType = entity.GetType();
-
-            // Try to get the properties information and if the properties information isn't created for the specified type...
-            if (!mTypeToIdentifiablePropertiesMapper.TryGetValue(entityType.FullName!, out var propertiesInformation))
-            {
-                var companyIdentifiableProperties = new List<PropertyInfo>();
-                var enumerableCompanyIdentifiableProperties = new List<PropertyInfo>();
-
-                // For every property...
-                foreach (var property in entityType.GetProperties())
-                {
-                    // Check if the property is an enumerable
-                    var isEnumerable = property.PropertyType.IsGenericIEnumerable();
-                    // Get the non-enumerableType
-                    var nonEnumerableType = TypeHelpers.GetNonEnumerableType(property.PropertyType);
-
-                    // If the non-enumerable type implements the ICompanyIdentifiable interface...
-                    if (nonEnumerableType.GetInterfaces().Any(x => x == typeof(ICompanyIdentifiable)))
-                    {
-                        // If the property was an enumerable...
-                        if (isEnumerable)
-                            // Add it to the enumerable properties
-                            enumerableCompanyIdentifiableProperties.Add(property);
-                        // Else...
-                        else
-                            // Add it to the standard properties
-                            companyIdentifiableProperties.Add(property);
-                    }
-                }
-
-                // Create the information model
-                propertiesInformation = new CompanyEntityCompanyIdentifiablePropertiesInformationDataModel(entityType, companyIdentifiableProperties, enumerableCompanyIdentifiableProperties);
-
-                // Map it
-                mTypeToIdentifiablePropertiesMapper.TryAdd(entityType.FullName!, propertiesInformation);
-            }
-
-            // For every company identifiable property...
-            foreach (var companyIdentifiableProperty in propertiesInformation.CompanyIdentifiableProperties)
-            {
-                // Get the value
-                var value = (ICompanyIdentifiable?)companyIdentifiableProperty.GetValue(entity);
-
-                // If there isn't a value...
-                if (value == null)
-                    // Continue
-                    continue;
-
-                // Set its company id
-                value.CompanyId = entity.CompanyId;
-                // Set the company id to its children
-                value.EndInit();
-            }
-
-            // For every enumerable company identifiable property...
-            foreach (var enumerableCompanyIdentifiableProperty in propertiesInformation.EnumerableCompanyIdentifiableProperties)
-            {
-                // Get the value
-                var value = (IEnumerable<ICompanyIdentifiable>?)enumerableCompanyIdentifiableProperty.GetValue(entity);
-
-                // If there isn't a value...
-                if (value == null)
-                    // Continue
-                    continue;
-
-                // For every value...
-                foreach (var v in value)
-                {
-                    // Sets its company id
-                    v.CompanyId = entity.CompanyId;
-                    // Set the company id to its children
-                    v.EndInit();
-                }
-            }
-        }
-
-        #endregion
-
-        #region Private Classes
-
-        private sealed class CompanyEntityCompanyIdentifiablePropertiesInformationDataModel
-        {
-            #region Public Properties
-
-            /// <summary>
-            /// The parent type that implements the <see cref="IMongoCompanyIdentifiable"/>
-            /// </summary>
-            public Type Type { get; }
-
-            /// <summary>
-            /// The properties of the <see cref="Type"/> that implement the <see cref="IMongoCompanyIdentifiable"/>
-            /// </summary>
-            public IEnumerable<PropertyInfo> CompanyIdentifiableProperties { get; }
-
-            /// <summary>
-            /// The enumerable properties of the <see cref="Type"/> whose generic type implement the <see cref="IMongoCompanyIdentifiable"/>
-            /// </summary>
-            public IEnumerable<PropertyInfo> EnumerableCompanyIdentifiableProperties { get; }
-
-            #endregion
-
-            #region Constructors
-
-            /// <summary>
-            /// Default constructor
-            /// </summary>
-            /// <param name="type">The parent type that implements the <see cref="IMongoCompanyIdentifiable"/></param>
-            /// <param name="companyIdentifiableProperties">The properties of the <see cref="Type"/> that implement the <see cref="IMongoCompanyIdentifiable"/></param>
-            /// <param name="enumerableCompanyIdentifiableProperties">The enumerable properties of the <see cref="Type"/> whose generic type implement the <see cref="IMongoCompanyIdentifiable"/></param>
-            public CompanyEntityCompanyIdentifiablePropertiesInformationDataModel(Type type, IEnumerable<PropertyInfo> companyIdentifiableProperties, IEnumerable<PropertyInfo> enumerableCompanyIdentifiableProperties) : base()
-            {
-                Type = type ?? throw new ArgumentNullException(nameof(type));
-                CompanyIdentifiableProperties = companyIdentifiableProperties ?? new List<PropertyInfo>();
-                EnumerableCompanyIdentifiableProperties = enumerableCompanyIdentifiableProperties ?? new List<PropertyInfo>();
-            }
-
-            #endregion
-        }
-
         #endregion
     }
-
 }
