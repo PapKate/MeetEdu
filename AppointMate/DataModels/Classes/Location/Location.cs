@@ -1,9 +1,9 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Represents a location document in the MongoDB
+    /// Represents a location
     /// </summary>
-    public class LocationEntity : IAddressable
+    public class Location : IAddressable
     {
         #region Private Properties
 
@@ -108,7 +108,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public LocationEntity() : base()
+        public Location() : base()
         {
 
         }

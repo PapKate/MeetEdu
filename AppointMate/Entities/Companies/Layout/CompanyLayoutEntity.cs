@@ -17,7 +17,7 @@ namespace AppointMate
         /// <summary>
         /// The member of the <see cref="Rooms"/> property
         /// </summary>
-        private IEnumerable<CompanyRoomEntity>? mRooms;
+        private IEnumerable<CompanyLayoutRoomEntity>? mRooms;
 
         #endregion
 
@@ -40,9 +40,9 @@ namespace AppointMate
         /// <summary>
         /// The rooms
         /// </summary>
-        public IEnumerable<CompanyRoomEntity> Rooms
+        public IEnumerable<CompanyLayoutRoomEntity> Rooms
         {
-            get => mRooms ?? Enumerable.Empty<CompanyRoomEntity>();
+            get => mRooms ?? Enumerable.Empty<CompanyLayoutRoomEntity>();
             set => mRooms = value;
         }
 

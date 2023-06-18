@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a company room document in the MongoDB
     /// </summary>
-    public class CompanyRoomEntity : StandardEntity, INoteable, IImageable
+    public class CompanyLayoutRoomEntity : StandardEntity, INoteable, IImageable
     {
         #region Private Members
 
@@ -52,7 +52,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyRoomEntity() : base()
+        public CompanyLayoutRoomEntity() : base()
         {
 
         }

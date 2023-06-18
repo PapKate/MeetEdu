@@ -86,17 +86,17 @@
         /// <summary>
         /// The location
         /// </summary>
-        public LocationResponseModel? Location { get; set; }
+        public Location? Location { get; set; }
 
         /// <summary>
         /// The billing information
         /// </summary>
-        public BillingResponseModel? Billing { get; set; }
+        public Billing? Billing { get; set; }
 
         /// <summary>
         /// The shipping information
         /// </summary>
-        public ShippingResponseModel? Shipping { get; set; }
+        public Shipping? Shipping { get; set; }
 
         /// <summary>
         /// The categories

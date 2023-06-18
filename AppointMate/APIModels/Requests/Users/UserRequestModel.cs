@@ -63,12 +63,12 @@ namespace AppointMate
         /// <summary>
         /// The shipping information
         /// </summary>
-        public ShippingRequestModel? Shipping { get; set; }
+        public Shipping? Shipping { get; set; }
 
         /// <summary>
         /// The billing information
         /// </summary>
-        public BillingRequestModel? Billing { get; set; }
+        public Billing? Billing { get; set; }
 
         #endregion
 

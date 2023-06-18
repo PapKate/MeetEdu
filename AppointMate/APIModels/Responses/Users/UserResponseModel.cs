@@ -101,12 +101,12 @@ namespace AppointMate
         /// <summary>
         /// The shipping information
         /// </summary>
-        public ShippingResponseModel? Shipping { get; set; }
+        public Shipping? Shipping { get; set; }
 
         /// <summary>
         /// The billing information
         /// </summary>
-        public BillingResponseModel? Billing { get; set; }
+        public Billing? Billing { get; set; }
 
         #endregion
 
