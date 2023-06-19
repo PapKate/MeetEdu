@@ -47,6 +47,25 @@ namespace AppointMate
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity</typeparam>
         /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static TEntity FromRequestModel<TEntity>(object model, Action<TEntity>? action = null)
+            where TEntity : BaseEntity, new()
+        {
+            var entity = new TEntity();
+
+            DI.Mapper.Map(model, entity);
+            // Calls the action
+            action?.Invoke(entity);
+            
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns an entity of the specified type using the specified
+        /// <paramref name="model"/>
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity</typeparam>
+        /// <param name="model">The model</param>
         /// <param name="companyId">The company id</param>
         /// <returns></returns>
         public static TEntity FromRequestModel<TEntity>(object model, ObjectId companyId)
@@ -207,7 +226,7 @@ namespace AppointMate
                 // Set its company id
                 value.CompanyId = entity.CompanyId;
                 // Set the company id to its children
-                value.EndInit();
+                //value.EndInit();
             }
 
             // For every enumerable company identifiable property...
@@ -227,7 +246,7 @@ namespace AppointMate
                     // Sets its company id
                     v.CompanyId = entity.CompanyId;
                     // Set the company id to its children
-                    v.EndInit();
+                    //v.EndInit();
                 }
             }
         }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model used for a company room
     /// </summary>
-    public class CompanyRoomRequestModel : StandardRequestModel, IImageable
+    public class CompanyLayoutRoomRequestModel : StandardRequestModel, IImageable
     {
         #region Public Properties
 
@@ -39,7 +39,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyRoomRequestModel() : base()
+        public CompanyLayoutRoomRequestModel() : base()
         {
 
         }

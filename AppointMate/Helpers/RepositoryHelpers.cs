@@ -161,6 +161,25 @@ namespace AppointMate
         }
 
         /// <summary>
+        /// Updates the <typeparamref name="TEntity"/> with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static async Task<TEntity?> UpdateAsync<TEntity, TRequestModel>(this IMongoCollection<TEntity> collection, ObjectId id, TRequestModel model)
+            where TEntity : BaseEntity
+            where TRequestModel : BaseRequestModel
+        {
+            var entity = await collection.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (entity is null)
+                return null;
+
+            DI.Mapper.Map(model, entity);
+            return await collection.UpdateAsync(entity);
+        }
+
+        /// <summary>
         /// Updates the specified <paramref name="entities"/> while keeping their id the same
         /// </summary>
         /// <typeparam name="TEntity">The type of the entities</typeparam>

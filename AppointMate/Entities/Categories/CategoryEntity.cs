@@ -24,6 +24,11 @@ namespace AppointMate
         public ObjectId Parent { get; set; }
 
         /// <summary>
+        /// The object id
+        /// </summary>
+        public ObjectId ObjectId { get; set; }
+
+        /// <summary>
         /// The description
         /// </summary>
         public string Description
