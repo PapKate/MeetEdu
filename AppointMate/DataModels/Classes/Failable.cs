@@ -341,7 +341,7 @@ namespace AppointMate
         /// <summary>
         /// The error message
         /// </summary>
-        public override string? ErrorMessage { get => DI.Localization.OperationAborted + "!"; set { } }
+        public override string? ErrorMessage { get => EnglishLocalization.OperationAborted + "!"; set { } }
 
         /// <summary>
         /// The error type

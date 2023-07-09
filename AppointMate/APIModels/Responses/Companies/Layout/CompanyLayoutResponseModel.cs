@@ -20,7 +20,7 @@
         /// <summary>
         /// The member of the <see cref="Rooms"/> property
         /// </summary>
-        private IEnumerable<CompanyRoomResponseModel>? mRooms;
+        private IEnumerable<CompanyLayoutRoomResponseModel>? mRooms;
 
         #endregion
 
@@ -47,9 +47,9 @@
         /// <summary>
         /// The rooms
         /// </summary>
-        public IEnumerable<CompanyRoomResponseModel> Rooms 
+        public IEnumerable<CompanyLayoutRoomResponseModel> Rooms 
         { 
-            get => mRooms ?? Enumerable.Empty<CompanyRoomResponseModel>();
+            get => mRooms ?? Enumerable.Empty<CompanyLayoutRoomResponseModel>();
             set => mRooms = value;
         }
 

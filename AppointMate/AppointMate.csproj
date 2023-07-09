@@ -4,7 +4,11 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <DocumentationFile></DocumentationFile>
+    
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>.\AppointMate.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Repositories\StaffMembers\" />
   </ItemGroup>
 
 </Project>

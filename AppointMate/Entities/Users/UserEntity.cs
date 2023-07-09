@@ -68,6 +68,11 @@
         }
 
         /// <summary>
+        /// Gets or sets a salted and hashed representation of the password for this user.
+        /// </summary>
+        public string PasswordHash { get; set; }
+
+        /// <summary>
         /// A flag indicating whether the email is confirmed or not
         /// </summary>
         public bool IsEmailConfirmed { get; set; }
@@ -100,12 +105,12 @@
         /// <summary>
         /// The shipping information
         /// </summary>
-        public ShippingEntity? Shipping { get; set; }
+        public Shipping? Shipping { get; set; }
 
         /// <summary>
         /// The billing information
         /// </summary>
-        public BillingEntity? Billing { get; set; }
+        public Billing? Billing { get; set; }
 
         #endregion
 

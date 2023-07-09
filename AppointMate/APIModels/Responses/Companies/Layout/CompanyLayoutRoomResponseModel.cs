@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a company room
     /// </summary>
-    public class CompanyRoomResponseModel : StandardResponseModel, INoteable, IImageable
+    public class CompanyLayoutRoomResponseModel : StandardResponseModel, INoteable, IImageable
     {
         #region Private Members
 
@@ -52,7 +52,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyRoomResponseModel() : base()
+        public CompanyLayoutRoomResponseModel() : base()
         {
 
         }
