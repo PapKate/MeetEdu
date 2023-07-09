@@ -20,9 +20,9 @@ namespace AppointMate
         public const string CompaniesCollectionName = Signature + "Companies";
 
         /// <summary>
-        /// The company categories collection name
+        /// The company labels collection name
         /// </summary>
-        public const string CompanyCategoriesCollectionName = Signature + "CompanyCategories";
+        public const string CompanyLabelsCollectionName = Signature + "CompanyLabels";
 
         /// <summary>
         /// The company layouts collection name
@@ -80,9 +80,9 @@ namespace AppointMate
         public const string ServicesCollectionName = Signature + "Services";
 
         /// <summary>
-        /// The services collection name
+        /// The service labels collection name
         /// </summary>
-        public const string ServiceCategoriesCollectionName = Signature + "ServiceCategories";
+        public const string ServiceLabelsCollectionName = Signature + "ServiceLabels";
 
         /// <summary>
         /// The customer services collection name
@@ -111,17 +111,22 @@ namespace AppointMate
 
         #endregion
 
-        #region Categories
+        #region Labels
 
         /// <summary>
         /// The company categories collection
         /// </summary>
-        public static IMongoCollection<CategoryEntity> CompanyCategories => DI.Database.GetCollection<CategoryEntity>(CompanyCategoriesCollectionName);
+        public static IMongoCollection<LabelEntity> CompanyLabels => DI.Database.GetCollection<LabelEntity>(CompanyLabelsCollectionName);
 
         /// <summary>
         /// The service categories collection
         /// </summary>
-        public static IMongoCollection<CategoryEntity> SerivceCategories => DI.Database.GetCollection<CategoryEntity>(ServiceCategoriesCollectionName);
+        public static IMongoCollection<LabelEntity> SerivceLabels => DI.Database.GetCollection<LabelEntity>(ServiceLabelsCollectionName);
+
+        /// <summary>
+        /// The customer labels collection
+        /// </summary>
+        public static IMongoCollection<LabelEntity> CustomerLabels => DI.Database.GetCollection<LabelEntity>(CustomerLabelsCollectionName);
 
         #endregion
 
@@ -136,15 +141,6 @@ namespace AppointMate
         /// The company layouts collection
         /// </summary>
         public static IMongoCollection<CompanyLayoutEntity> CompanyLayouts => DI.Database.GetCollection<CompanyLayoutEntity>(CompanyLayoutsCollectionName);
-
-        #endregion
-
-        #region Labels
-
-        /// <summary>
-        /// The customer labels collection
-        /// </summary>
-        public static IMongoCollection<LabelEntity> CustomerLabels => DI.Database.GetCollection<LabelEntity>(CustomerLabelsCollectionName);
 
         #endregion
 

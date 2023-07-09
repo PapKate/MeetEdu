@@ -1,9 +1,11 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a label document in the MongoDB
     /// </summary>
-    public class LabelEntity : StandardEntity, IDescriptable
+    public class LabelEntity : StandardEntity, IDescriptable, ICompanyIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -15,6 +17,11 @@
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// The description

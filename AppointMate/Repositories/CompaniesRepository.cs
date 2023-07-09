@@ -81,25 +81,25 @@ namespace AppointMate
             return entity;
         }
 
-        #region Categories
+        #region Labels
 
         /// <summary>
-        /// Add a company category
+        /// Add a company label
         /// </summary>
         /// <param name="companyId">The company id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CategoryEntity>> AddCompanyCategoryAsync(ObjectId companyId, CategoryRequestModel model)
-            => await AppointMateDbMapper.CompanyCategories.AddAsync(EntityHelpers.FromRequestModel<CategoryEntity>(model, x => x.ObjectId = companyId));
+        public async Task<WebServerFailable<LabelEntity>> AddCompanyLabelAsync(ObjectId companyId, LabelRequestModel model)
+            => await AppointMateDbMapper.CompanyLabels.AddAsync(EntityHelpers.FromRequestModel<LabelEntity>(model, x => x.CompanyId = companyId));
 
         /// <summary>
-        /// Adds a list of company categories 
+        /// Adds a list of company labels
         /// </summary>
         /// <param name="companyId">The company id</param>
         /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<CategoryEntity>>> AddCompanyCategoriesAsync(ObjectId companyId, IEnumerable<CategoryRequestModel> models)
-            => new WebServerFailable<IEnumerable<CategoryEntity>>(await AppointMateDbMapper.CompanyCategories.AddRangeAsync(models.Select(x => EntityHelpers.FromRequestModel<CategoryEntity>(x, e => e.ObjectId = companyId)).ToList()));
+        public async Task<WebServerFailable<IEnumerable<LabelEntity>>> AddCompanyLabelsAsync(ObjectId companyId, IEnumerable<LabelRequestModel> models)
+            => new WebServerFailable<IEnumerable<LabelEntity>>(await AppointMateDbMapper.CompanyLabels.AddRangeAsync(models.Select(x => EntityHelpers.FromRequestModel<LabelEntity>(x, e => e.CompanyId = companyId)).ToList()));
 
         /// <summary>
         /// Updates the company with the specified <paramref name="categoryId"/>
@@ -107,12 +107,12 @@ namespace AppointMate
         /// <param name="categoryId">The company id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CategoryEntity>> UpdateCompanyCategoryAsync(ObjectId categoryId, CategoryRequestModel model)
+        public async Task<WebServerFailable<LabelEntity>> UpdateCompanyLabelAsync(ObjectId categoryId, LabelRequestModel model)
         {
-            var entity = await AppointMateDbMapper.CompanyCategories.UpdateAsync(categoryId, model);
+            var entity = await AppointMateDbMapper.CompanyLabels.UpdateAsync(categoryId, model);
 
             if (entity is null)
-                return WebServerFailable.NotFound(categoryId, nameof(AppointMateDbMapper.CompanyCategories));
+                return WebServerFailable.NotFound(categoryId, nameof(AppointMateDbMapper.CompanyLabels));
 
             return entity;
         }
@@ -122,8 +122,8 @@ namespace AppointMate
     /// </summary>
     /// <param name="categoryId">The category id</param>
     /// <returns></returns>
-    public async Task<WebServerFailable<CategoryEntity>> DeleteCompanyCategoryAsync(ObjectId categoryId)
-            => await AppointMateDbMapper.CompanyCategories.DeleteAsync(categoryId);
+    public async Task<WebServerFailable<LabelEntity>> DeleteCompanyLabelAsync(ObjectId categoryId)
+            => await AppointMateDbMapper.CompanyLabels.DeleteAsync(categoryId);
 
         #endregion
 

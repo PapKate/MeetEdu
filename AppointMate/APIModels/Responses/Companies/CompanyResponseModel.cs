@@ -23,9 +23,9 @@
         private string? mDescription;
 
         /// <summary>
-        /// The member of the <see cref="Categories"/> property
+        /// The member of the <see cref="Labels"/> property
         /// </summary>
-        private IEnumerable<EmbeddedCategoryResponseModel>? mCategories;
+        private IEnumerable<EmbeddedLabelResponseModel>? mLabels;
 
         #endregion
 
@@ -99,12 +99,12 @@
         public Shipping? Shipping { get; set; }
 
         /// <summary>
-        /// The categories
+        /// The labels
         /// </summary>
-        public IEnumerable<EmbeddedCategoryResponseModel> Categories
+        public IEnumerable<EmbeddedLabelResponseModel> Labels
         {
-            get => mCategories ?? Enumerable.Empty<EmbeddedCategoryResponseModel>();
-            set => mCategories = value;
+            get => mLabels ?? Enumerable.Empty<EmbeddedLabelResponseModel>();
+            set => mLabels = value;
         }
 
         #endregion

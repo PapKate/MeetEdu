@@ -14,41 +14,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:AppointMate.CategoryRequestModel">
-            <summary>
-            Request model used for a category
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryRequestModel.Parent">
-            <summary>
-            The parent
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryRequestModel.Description">
-            <summary>
-            The description
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryRequestModel.SmallImageUrl">
-            <summary>
-            The small image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryRequestModel.NormalImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryRequestModel.LargeImageUrl">
-            <summary>
-            The large image URL
-            </summary>
-        </member>
-        <member name="M:AppointMate.CategoryRequestModel.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
         <member name="T:AppointMate.CompanyRequestModel">
             <summary>
             Request model used for a company
@@ -734,76 +699,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:AppointMate.CategoryResponseModel">
-            <summary>
-            Represents a category
-            </summary>
-        </member>
-        <member name="F:AppointMate.CategoryResponseModel.mParent">
-            <summary>
-            The member of the <see cref="P:AppointMate.CategoryResponseModel.Parent"/> property
-            </summary>
-        </member>
-        <member name="F:AppointMate.CategoryResponseModel.mDescription">
-            <summary>
-            The member of the <see cref="P:AppointMate.CategoryResponseModel.Description"/> property
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryResponseModel.Parent">
-            <summary>
-            The parent
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryResponseModel.Description">
-            <summary>
-            The description
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryResponseModel.SmallImageUrl">
-            <summary>
-            The small image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryResponseModel.NormalImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryResponseModel.LargeImageUrl">
-            <summary>
-            The large image URL
-            </summary>
-        </member>
-        <member name="M:AppointMate.CategoryResponseModel.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="T:AppointMate.EmbeddedCategoryResponseModel">
-            <summary>
-            A minimal version of the <see cref="T:AppointMate.CategoryResponseModel"/> used when embedding
-            </summary>
-        </member>
-        <member name="P:AppointMate.EmbeddedCategoryResponseModel.SmallImageUrl">
-            <summary>
-            The small image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.EmbeddedCategoryResponseModel.NormalImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.EmbeddedCategoryResponseModel.LargeImageUrl">
-            <summary>
-            The large image URL
-            </summary>
-        </member>
-        <member name="M:AppointMate.EmbeddedCategoryResponseModel.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
         <member name="T:AppointMate.CompanyResponseModel">
             <summary>
             Represents a company
@@ -824,9 +719,9 @@
             The member of the <see cref="P:AppointMate.CompanyResponseModel.Description"/> property
             </summary>
         </member>
-        <member name="F:AppointMate.CompanyResponseModel.mCategories">
+        <member name="F:AppointMate.CompanyResponseModel.mLabels">
             <summary>
-            The member of the <see cref="P:AppointMate.CompanyResponseModel.Categories"/> property
+            The member of the <see cref="P:AppointMate.CompanyResponseModel.Labels"/> property
             </summary>
         </member>
         <member name="P:AppointMate.CompanyResponseModel.Category">
@@ -884,9 +779,9 @@
             The shipping information
             </summary>
         </member>
-        <member name="P:AppointMate.CompanyResponseModel.Categories">
+        <member name="P:AppointMate.CompanyResponseModel.Labels">
             <summary>
-            The categories
+            The labels
             </summary>
         </member>
         <member name="M:AppointMate.CompanyResponseModel.#ctor">
@@ -1523,12 +1418,12 @@
         </member>
         <member name="F:AppointMate.ServiceResponseModel.mNote">
             <summary>
-            The member of the <see cref="!:SessionsNote"/> property
+            The member of the <see cref="P:AppointMate.ServiceResponseModel.Note"/> property
             </summary>
         </member>
-        <member name="F:AppointMate.ServiceResponseModel.mCategories">
+        <member name="F:AppointMate.ServiceResponseModel.mLabels">
             <summary>
-            The member of the <see cref="P:AppointMate.ServiceResponseModel.Categories"/> property
+            The member of the <see cref="P:AppointMate.ServiceResponseModel.Labels"/> property
             </summary>
         </member>
         <member name="P:AppointMate.ServiceResponseModel.IsAtHome">
@@ -1586,9 +1481,9 @@
             The note
             </summary>
         </member>
-        <member name="P:AppointMate.ServiceResponseModel.Categories">
+        <member name="P:AppointMate.ServiceResponseModel.Labels">
             <summary>
-            The categories
+            The labels
             </summary>
         </member>
         <member name="M:AppointMate.ServiceResponseModel.#ctor">
@@ -2055,6 +1950,31 @@
         <member name="T:AppointMate.FrameworkConstructionExtensions">
             <summary>
             Extension methods 
+            </summary>
+        </member>
+        <member name="F:AppointMate.FrameworkConstructionExtensions.RequestModelSuffix">
+            <summary>
+            The request model suffix
+            </summary>
+        </member>
+        <member name="F:AppointMate.FrameworkConstructionExtensions.EntitySuffix">
+            <summary>
+            The entity suffix
+            </summary>
+        </member>
+        <member name="F:AppointMate.FrameworkConstructionExtensions.EmbeddedPrefix">
+            <summary>
+            The embedded model suffix
+            </summary>
+        </member>
+        <member name="F:AppointMate.FrameworkConstructionExtensions.ResponseModelSuffix">
+            <summary>
+            The response model suffix
+            </summary>
+        </member>
+        <member name="F:AppointMate.FrameworkConstructionExtensions.APIArgsSuffix">
+            <summary>
+            The API args suffix
             </summary>
         </member>
         <member name="T:AppointMate.CompanyLayoutRoomDataModel">
@@ -2655,6 +2575,18 @@
             Serves as the default hash function.
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:AppointMate.VectorSource.op_Implicit(System.String)~AppointMate.VectorSource">
+            <summary>
+            Create a vector source from the specified <paramref name="pathData"/>
+            </summary>
+            <param name="pathData">The path data</param>
+        </member>
+        <member name="M:AppointMate.VectorSource.op_Implicit(System.Uri)~AppointMate.VectorSource">
+            <summary>
+            Create a vector source from the specified <paramref name="uriSource"/>
+            </summary>
+            <param name="uriSource">The URI source</param>
         </member>
         <member name="T:AppointMate.CountryCode">
             <summary>
@@ -4185,9 +4117,9 @@
             The companies collection name
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateDbMapper.CompanyCategoriesCollectionName">
+        <member name="F:AppointMate.AppointMateDbMapper.CompanyLabelsCollectionName">
             <summary>
-            The company categories collection name
+            The company labels collection name
             </summary>
         </member>
         <member name="F:AppointMate.AppointMateDbMapper.CompanyLayoutsCollectionName">
@@ -4245,9 +4177,9 @@
             The services collection name
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateDbMapper.ServiceCategoriesCollectionName">
+        <member name="F:AppointMate.AppointMateDbMapper.ServiceLabelsCollectionName">
             <summary>
-            The services collection name
+            The service labels collection name
             </summary>
         </member>
         <member name="F:AppointMate.AppointMateDbMapper.CustomerServicesCollectionName">
@@ -4275,14 +4207,19 @@
             The customer service scheduled payments collection name
             </summary>
         </member>
-        <member name="P:AppointMate.AppointMateDbMapper.CompanyCategories">
+        <member name="P:AppointMate.AppointMateDbMapper.CompanyLabels">
             <summary>
             The company categories collection
             </summary>
         </member>
-        <member name="P:AppointMate.AppointMateDbMapper.SerivceCategories">
+        <member name="P:AppointMate.AppointMateDbMapper.SerivceLabels">
             <summary>
             The service categories collection
+            </summary>
+        </member>
+        <member name="P:AppointMate.AppointMateDbMapper.CustomerLabels">
+            <summary>
+            The customer labels collection
             </summary>
         </member>
         <member name="P:AppointMate.AppointMateDbMapper.Companies">
@@ -4293,11 +4230,6 @@
         <member name="P:AppointMate.AppointMateDbMapper.CompanyLayouts">
             <summary>
             The company layouts collection
-            </summary>
-        </member>
-        <member name="P:AppointMate.AppointMateDbMapper.CustomerLabels">
-            <summary>
-            The customer labels collection
             </summary>
         </member>
         <member name="P:AppointMate.AppointMateDbMapper.CustomerNotes">
@@ -4438,77 +4370,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:AppointMate.CategoryEntity">
-            <summary>
-            Represents a category document in the MongoDB
-            </summary>
-        </member>
-        <member name="F:AppointMate.CategoryEntity.mDescription">
-            <summary>
-            The member of the <see cref="P:AppointMate.CategoryEntity.Description"/> property
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryEntity.Parent">
-            <summary>
-            The parent
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryEntity.ObjectId">
-            <summary>
-            The object id
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryEntity.Description">
-            <summary>
-            The description
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryEntity.SmallImageUrl">
-            <summary>
-            The small image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryEntity.NormalImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.CategoryEntity.LargeImageUrl">
-            <summary>
-            The large image URL
-            </summary>
-        </member>
-        <member name="M:AppointMate.CategoryEntity.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="T:AppointMate.EmbeddedCategoryEntity">
-            <summary>
-            A minimal version of the <see cref="T:AppointMate.CategoryEntity"/> that contains the fields that are 
-            more frequently used when embedding documents in the MongoDB
-            </summary>
-        </member>
-        <member name="P:AppointMate.EmbeddedCategoryEntity.SmallImageUrl">
-            <summary>
-            The small image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.EmbeddedCategoryEntity.NormalImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.EmbeddedCategoryEntity.LargeImageUrl">
-            <summary>
-            The large image URL
-            </summary>
-        </member>
-        <member name="M:AppointMate.EmbeddedCategoryEntity.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
         <member name="T:AppointMate.CompanyEntity">
             <summary>
             Represents a company document in the MongoDB
@@ -4529,9 +4390,9 @@
             The member of the <see cref="P:AppointMate.CompanyEntity.Description"/> property
             </summary>
         </member>
-        <member name="F:AppointMate.CompanyEntity.mCategories">
+        <member name="F:AppointMate.CompanyEntity.mLabels">
             <summary>
-            The member of the <see cref="P:AppointMate.CompanyEntity.Categories"/> property
+            The member of the <see cref="P:AppointMate.CompanyEntity.Labels"/> property
             </summary>
         </member>
         <member name="P:AppointMate.CompanyEntity.Category">
@@ -4589,9 +4450,9 @@
             The shipping information
             </summary>
         </member>
-        <member name="P:AppointMate.CompanyEntity.Categories">
+        <member name="P:AppointMate.CompanyEntity.Labels">
             <summary>
-            The categories
+            The labels
             </summary>
         </member>
         <member name="M:AppointMate.CompanyEntity.#ctor">
@@ -4696,6 +4557,11 @@
         <member name="F:AppointMate.LabelEntity.mDescription">
             <summary>
             The member of the <see cref="P:AppointMate.LabelEntity.Description"/> property
+            </summary>
+        </member>
+        <member name="P:AppointMate.LabelEntity.CompanyId">
+            <summary>
+            The company id
             </summary>
         </member>
         <member name="P:AppointMate.LabelEntity.Description">
@@ -4882,9 +4748,9 @@
             The member of the <see cref="P:AppointMate.PaymentMethodEntity.Description"/> property
             </summary>
         </member>
-        <member name="F:AppointMate.PaymentMethodEntity.mPathData">
+        <member name="F:AppointMate.PaymentMethodEntity.mIconPathData">
             <summary>
-            The member of the <see cref="!:PathData"/> property
+            The member of the <see cref="P:AppointMate.PaymentMethodEntity.IconPathData"/> property
             </summary>
         </member>
         <member name="P:AppointMate.PaymentMethodEntity.Description">
@@ -4938,8 +4804,16 @@
             The payment method response model
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:AppointMate.EmbeddedPaymentMethodEntity.VectorSource" -->
-        <!-- Badly formed XML comment ignored for member "P:AppointMate.EmbeddedPaymentMethodEntity.SmallImageUrl" -->
+        <member name="P:AppointMate.EmbeddedPaymentMethodEntity.VectorSource">
+            <summary>
+            The icon path data
+            </summary>
+        </member>
+        <member name="P:AppointMate.EmbeddedPaymentMethodEntity.SmallImageUrl">
+            <summary>
+            The small image URL
+            </summary>
+        </member>
         <member name="P:AppointMate.EmbeddedPaymentMethodEntity.NormalImageUrl">
             <summary>
             The image URL
@@ -5252,12 +5126,12 @@
         </member>
         <member name="F:AppointMate.ServiceEntity.mNote">
             <summary>
-            The member of the <see cref="!:SessionsNote"/> property
+            The member of the <see cref="P:AppointMate.ServiceEntity.Note"/> property
             </summary>
         </member>
-        <member name="F:AppointMate.ServiceEntity.mCategories">
+        <member name="F:AppointMate.ServiceEntity.mLabels">
             <summary>
-            The member of the <see cref="P:AppointMate.ServiceEntity.Categories"/> property
+            The member of the <see cref="P:AppointMate.ServiceEntity.Labels"/> property
             </summary>
         </member>
         <member name="P:AppointMate.ServiceEntity.IsAtHome">
@@ -5310,9 +5184,9 @@
             The note
             </summary>
         </member>
-        <member name="P:AppointMate.ServiceEntity.Categories">
+        <member name="P:AppointMate.ServiceEntity.Labels">
             <summary>
-            The categories
+            The labels
             </summary>
         </member>
         <member name="M:AppointMate.ServiceEntity.#ctor">
@@ -5576,6 +5450,11 @@
             The member of the <see cref="P:AppointMate.UserEntity.Username"/> property
             </summary>
         </member>
+        <member name="F:AppointMate.UserEntity.mPasswordHash">
+            <summary>
+            The member of the <see cref="P:AppointMate.UserEntity.PasswordHash"/> property
+            </summary>
+        </member>
         <member name="F:AppointMate.UserEntity.mEmail">
             <summary>
             The member of the <see cref="P:AppointMate.UserEntity.Email"/> property
@@ -5836,6 +5715,11 @@
             <param name="separator">The separator</param>
             <returns></returns>
         </member>
+        <member name="T:AppointMate.IServiceCollectionExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>
+            </summary>
+        </member>
         <member name="F:AppointMate.IServiceCollectionExtensions.EntityToDTONamespaceMaps">
             <summary>
             The maps of the namespaces between the entities and the DTOs
@@ -5847,6 +5731,11 @@
             </summary>
             <param name="services">The services</param>
             <returns></returns>
+        </member>
+        <member name="T:AppointMate.EntityToDTONamespaceMap">
+            <summary>
+            The map from entities to data transfer objects
+            </summary>
         </member>
         <member name="P:AppointMate.EntityToDTONamespaceMap.EntityNamespace">
             <summary>
@@ -6100,6 +5989,21 @@
             </summary>
             <param name="failable">The failable</param>
             <returns></returns>
+        </member>
+        <member name="T:AppointMate.NumericHelpers">
+            <summary>
+            Helper methods for numbers
+            </summary>
+        </member>
+        <member name="F:AppointMate.NumericHelpers.DefaultDecimalPrecision">
+            <summary>
+            The default decimal precision
+            </summary>
+        </member>
+        <member name="F:AppointMate.NumericHelpers.DefaultMode">
+            <summary>
+            The default mode of <see cref="T:System.MidpointRounding"/>
+            </summary>
         </member>
         <member name="M:AppointMate.NumericHelpers.Round(System.Decimal,System.UInt32,System.MidpointRounding)">
             <summary>
@@ -6756,6 +6660,16 @@
             The icon path data
             </summary>
         </member>
+        <member name="T:AppointMate.EnglishLocalization">
+            <summary>
+            The English localization
+            </summary>
+        </member>
+        <member name="F:AppointMate.EnglishLocalization.OperationAborted">
+            <summary>
+            Operation aborted error message
+            </summary>
+        </member>
         <member name="T:AppointMate.LocalizationConstants">
             <summary>
             Constants related to localization
@@ -7260,23 +7174,23 @@
             <param name="id">The company id</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.CompaniesRepository.AddCompanyCategoryAsync(MongoDB.Bson.ObjectId,AppointMate.CategoryRequestModel)">
+        <member name="M:AppointMate.CompaniesRepository.AddCompanyLabelAsync(MongoDB.Bson.ObjectId,AppointMate.LabelRequestModel)">
             <summary>
-            Add a company category
+            Add a company label
             </summary>
             <param name="companyId">The company id</param>
             <param name="model">The model</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.CompaniesRepository.AddCompanyCategoriesAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{AppointMate.CategoryRequestModel})">
+        <member name="M:AppointMate.CompaniesRepository.AddCompanyLabelsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{AppointMate.LabelRequestModel})">
             <summary>
-            Adds a list of company categories 
+            Adds a list of company labels
             </summary>
             <param name="companyId">The company id</param>
             <param name="models">The models</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.CompaniesRepository.UpdateCompanyCategoryAsync(MongoDB.Bson.ObjectId,AppointMate.CategoryRequestModel)">
+        <member name="M:AppointMate.CompaniesRepository.UpdateCompanyLabelAsync(MongoDB.Bson.ObjectId,AppointMate.LabelRequestModel)">
             <summary>
             Updates the company with the specified <paramref name="categoryId"/>
             </summary>
@@ -7284,7 +7198,7 @@
             <param name="model">The model</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.CompaniesRepository.DeleteCompanyCategoryAsync(MongoDB.Bson.ObjectId)">
+        <member name="M:AppointMate.CompaniesRepository.DeleteCompanyLabelAsync(MongoDB.Bson.ObjectId)">
             <summary>
             Deletes the company category with the specified <paramref name="categoryId"/>
             </summary>

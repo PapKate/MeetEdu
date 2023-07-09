@@ -27,9 +27,9 @@ namespace AppointMate
         private string? mNote;
 
         /// <summary>
-        /// The member of the <see cref="Categories"/> property
+        /// The member of the <see cref="Labels"/> property
         /// </summary>
-        private IEnumerable<EmbeddedCategoryEntity>? mCategories;
+        private IEnumerable<EmbeddedLabelEntity>? mLabels;
 
         #endregion
 
@@ -98,12 +98,12 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// The categories
+        /// The labels
         /// </summary>
-        public IEnumerable<EmbeddedCategoryEntity> Categories
+        public IEnumerable<EmbeddedLabelEntity> Labels
         {
-            get => mCategories ?? Enumerable.Empty<EmbeddedCategoryEntity>();
-            set => mCategories = value;
+            get => mLabels ?? Enumerable.Empty<EmbeddedLabelEntity>();
+            set => mLabels = value;
         }
 
         #endregion
