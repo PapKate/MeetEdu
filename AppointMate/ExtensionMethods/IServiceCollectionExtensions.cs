@@ -5,6 +5,9 @@ using System.Reflection;
 
 namespace AppointMate
 {
+    /// <summary>
+    /// Extension methods for <see cref="IServiceCollection"/>
+    /// </summary>
     public static class IServiceCollectionExtensions
     {
         #region Constants
@@ -144,7 +147,9 @@ namespace AppointMate
         #endregion
     }
 
-
+    /// <summary>
+    /// The map from entities to data transfer objects
+    /// </summary>
     public record EntityToDTONamespaceMap
     {
         #region Public Properties

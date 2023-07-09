@@ -23,6 +23,11 @@
         private string? mUsername;
 
         /// <summary>
+        /// The member of the <see cref="PasswordHash"/> property
+        /// </summary>
+        private string? mPasswordHash;
+
+        /// <summary>
         /// The member of the <see cref="Email"/> property
         /// </summary>
         private string? mEmail;
@@ -70,7 +75,11 @@
         /// <summary>
         /// Gets or sets a salted and hashed representation of the password for this user.
         /// </summary>
-        public string PasswordHash { get; set; }
+        public string PasswordHash
+        {
+            get => mPasswordHash ?? string.Empty;
+            set => mPasswordHash = value;
+        }
 
         /// <summary>
         /// A flag indicating whether the email is confirmed or not

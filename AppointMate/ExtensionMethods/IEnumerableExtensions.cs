@@ -11,7 +11,7 @@ namespace AppointMate
         #region Public Methods
 
         /// <summary>
-        /// Checks if the specified <paramref name="enumerable"/> is <see cref="null"/> or 
+        /// Checks if the specified <paramref name="enumerable"/> is null or 
         /// if it doesn't have any items.
         /// </summary>
         /// <param name="enumerable">The enumerable</param>

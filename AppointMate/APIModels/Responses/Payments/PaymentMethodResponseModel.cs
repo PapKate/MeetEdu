@@ -13,7 +13,7 @@
         private string? mDescription;
 
         /// <summary>
-        /// The member of the <see cref="PathData"/> property
+        /// The member of the <see cref="IconPathData"/> property
         /// </summary>
         private string? mPathData;
 
@@ -95,11 +95,11 @@
         /// <summary>
         /// The icon path data
         /// </summary>
-        /// The small image URL
-        /// </summary>
         public VectorSource? VectorSource { get; set; }
 
         /// <summary>
+        /// The small image URL
+        /// </summary>
         public Uri? SmallImageUrl { get; set; }
 
         /// <summary>

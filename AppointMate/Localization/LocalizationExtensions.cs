@@ -19,7 +19,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -43,7 +43,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -67,7 +67,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -91,7 +91,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -115,7 +115,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -139,7 +139,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -163,7 +163,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -187,7 +187,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -211,7 +211,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -235,7 +235,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -259,7 +259,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a localized currency value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -287,7 +287,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -311,7 +311,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -335,7 +335,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -359,7 +359,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -383,7 +383,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -407,7 +407,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -431,7 +431,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -455,7 +455,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -479,7 +479,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -503,7 +503,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
@@ -527,7 +527,7 @@
         /// <summary>
         /// Returns a <see cref="string"/> that represents the specified <paramref name="value"/>
         /// as a percentage value.
-        /// NOTE: <see cref="null"/> is returned if the <paramref name="value"/> is also <see cref="null"/>!
+        /// NOTE: null is returned if the <paramref name="value"/> is also null!
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>

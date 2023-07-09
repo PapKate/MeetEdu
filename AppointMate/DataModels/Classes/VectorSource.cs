@@ -114,8 +114,16 @@
 
         #region Operators
 
+        /// <summary>
+        /// Create a vector source from the specified <paramref name="pathData"/>
+        /// </summary>
+        /// <param name="pathData">The path data</param>
         public static implicit operator VectorSource(string pathData) => FromPathData(pathData);
 
+        /// <summary>
+        /// Create a vector source from the specified <paramref name="uriSource"/>
+        /// </summary>
+        /// <param name="uriSource">The URI source</param>
         public static implicit operator VectorSource(Uri uriSource) => FromUriSource(uriSource);
 
         #endregion

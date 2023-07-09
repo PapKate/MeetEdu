@@ -37,7 +37,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyEntity>> AddCompanyAsync(CompanyRequestModel model) 
+        public async Task<CompanyEntity> AddCompanyAsync(CompanyRequestModel model) 
             => await AppointMateDbMapper.Companies.AddAsync(EntityHelpers.FromRequestModel<CompanyEntity>(model));
 
         /// <summary>
@@ -64,13 +64,22 @@ namespace AppointMate
             return entity;
         }
 
-    /// <summary>
-    /// Deletes the company with the specified <paramref name="companyId"/>
-    /// </summary>
-    /// <param name="companyId">The company id</param>
-    /// <returns></returns>
-    public async Task<WebServerFailable<CompanyEntity>> DeleteCompanyAsync(ObjectId companyId) 
-            => await AppointMateDbMapper.Companies.DeleteAsync(companyId);
+        /// <summary>
+        /// Deletes the company with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The company id</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<CompanyEntity>> DeleteCompanyAsync(ObjectId id)
+        {
+            var entity = await AppointMateDbMapper.Companies.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (entity is null)
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Companies));
+
+            await AppointMateDbMapper.Companies.DeleteOneAsync(x => x.Id == id);
+
+            return entity;
+        }
 
         #region Categories
 
@@ -170,7 +179,7 @@ namespace AppointMate
         /// <param name="layoutId">The layout id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyLayoutRoomEntity>> AddCompanyLayoutRoomAsync(ObjectId layoutId, CompanyLayoutRoomRequestModel model)
+        public async Task<WebServerFailable<CompanyLayoutEntity>> AddCompanyLayoutRoomAsync(ObjectId layoutId, CompanyLayoutRoomDataModel model)
         {
             // Get the layout with the specified id
             var layout = await AppointMateDbMapper.CompanyLayouts.FirstOrDefaultAsync(layoutId);
@@ -179,27 +188,15 @@ namespace AppointMate
             if (layout is null)
                 // Return not found
                 return WebServerFailable.NotFound(layoutId, nameof(AppointMateDbMapper.CompanyLayouts));
-
-            // A list for the rooms
-            var rooms = new List<CompanyLayoutRoomEntity>();
-
-            // Adds to the list the rooms that exist in the layout
-            rooms.AddRange(layout.Rooms);
-
-            // Create the entity with the mapped values from the request model
-            var room = DI.Mapper.Map<CompanyLayoutRoomRequestModel, CompanyLayoutRoomEntity>(model);
-
-            // Add the room to the list
-            rooms.Add(room);
-
-            // Set as layout rooms the list
-            layout.Rooms = rooms;
-
+          
+            // Add the room to the layout
+            layout.Rooms.Add(model);
+            
             // Update the layout
             await AppointMateDbMapper.CompanyLayouts.UpdateAsync(layout);
 
             // Return the layout
-            return room;
+            return layout;
         }
 
         /// <summary>
@@ -208,7 +205,7 @@ namespace AppointMate
         /// <param name="layoutId">The layout id</param>
         /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<CompanyLayoutRoomEntity>>> AddCompanyLayoutRoomsAsync(ObjectId layoutId, IEnumerable<CompanyLayoutRoomRequestModel> models)
+        public async Task<WebServerFailable<CompanyLayoutEntity>> AddCompanyLayoutRoomsAsync(ObjectId layoutId, IEnumerable<CompanyLayoutRoomDataModel> models)
         {
             // Get the layout with the specified id
             var layout = await AppointMateDbMapper.CompanyLayouts.FirstOrDefaultAsync(layoutId);
@@ -219,16 +216,10 @@ namespace AppointMate
                 return WebServerFailable.NotFound(layoutId, nameof(AppointMateDbMapper.CompanyLayouts));
 
             // A list for the rooms
-            var rooms = new List<CompanyLayoutRoomEntity>();
+            var rooms = layout.Rooms.ToList();
 
-            // Adds to the list the rooms that exist in the layout
-            rooms.AddRange(layout.Rooms);
-
-            // Create the entity with the mapped values from the request model
-            var newRooms = models.Select(DI.Mapper.Map<CompanyLayoutRoomRequestModel, CompanyLayoutRoomEntity>).ToList();
-
-            // Add the room to the list
-            rooms.AddRange(newRooms);
+            // Add the rooms to the list
+            rooms.AddRange(models);
 
             // Set as layout rooms the list
             layout.Rooms = rooms;
@@ -237,17 +228,67 @@ namespace AppointMate
             await AppointMateDbMapper.CompanyLayouts.UpdateAsync(layout);
 
             // Return the layout
-            return new WebServerFailable<IEnumerable<CompanyLayoutRoomEntity>>(layout.Rooms);
+            return layout;
         }
 
         /// <summary>
-        /// Add a company layout room
+        /// Replaces the layout rooms with the specified <paramref name="models"/>
+        /// of the company layout with the specified <paramref name="layoutId"/>
         /// </summary>
         /// <param name="layoutId">The layout id</param>
-        /// <param name="roomId">The room id</param>
-        /// <param name="model">The model</param>
+        /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyLayoutRoomEntity>> UpdateCompanyLayoutRoomAsync(ObjectId layoutId, ObjectId roomId, CompanyLayoutRoomRequestModel model)
+        public async Task<WebServerFailable<CompanyLayoutEntity>> UpdateCompanyLayoutRoomsAsync(ObjectId layoutId, IEnumerable<CompanyLayoutRoomDataModel> models)
+        {
+            return await ExecuteAgainstCompanyLayoutAsync(
+                layoutId,
+                async (layout) =>
+                {
+                    // A list for the rooms
+                    var rooms = models.ToList();
+
+                    // Set as layout rooms the list
+                    layout.Rooms = rooms;
+
+                    // Update the layout 
+                    await AppointMateDbMapper.CompanyLayouts.UpdateAsync(layout);
+                });
+        }
+
+        /// <summary>
+        /// Deletes the company layout rooms 
+        /// from the company layout with the specified <paramref name="layoutId"/>
+        /// </summary>
+        /// <param name="layoutId">The layout id</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<CompanyLayoutEntity>> DeleteCompanyLayoutRoomsAsync(ObjectId layoutId)
+        {
+            return await ExecuteAgainstCompanyLayoutAsync(
+                layoutId,
+                async (layout) =>
+                {
+                    layout.Rooms.Clear();
+
+                    // Update the layout 
+                    await AppointMateDbMapper.CompanyLayouts.UpdateAsync(layout);
+                });
+        }
+
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Executes the specified <paramref name="action"/> against the layout with the specified <paramref name="layoutId"/>
+        /// </summary>
+        /// <param name="layoutId">The layout id</param>
+        /// <param name="action">The action</param>
+        /// <returns></returns>
+        private static async Task<WebServerFailable<CompanyLayoutEntity>> ExecuteAgainstCompanyLayoutAsync(ObjectId layoutId, Func<CompanyLayoutEntity, Task> action)
         {
             // Get the layout with the specified id
             var layout = await AppointMateDbMapper.CompanyLayouts.FirstOrDefaultAsync(layoutId);
@@ -257,27 +298,12 @@ namespace AppointMate
                 // Return not found
                 return WebServerFailable.NotFound(layoutId, nameof(AppointMateDbMapper.CompanyLayouts));
 
-            // Get the room with the specified id
-            var room = layout.Rooms.FirstOrDefault(x => x.Id == roomId);
+            // Execute the action
+            await action(layout);
 
-            // If the room does not exist...
-            if (room is null)
-                // Return not found
-                return WebServerFailable.NotFound(roomId, $"Room in {nameof(AppointMateDbMapper.CompanyLayouts)}");
-
-            // Update the entity with the mapped values from the request model
-            room = DI.Mapper.Map<CompanyLayoutRoomRequestModel, CompanyLayoutRoomEntity>(model);
-
-            // Update the layout 
-            await RepositoryHelpers.UpdateAsync(AppointMateDbMapper.CompanyLayouts, layout);
-
-            // Return the room
-            return room;
+            // Return the layout
+            return layout;
         }
-
-        #endregion
-
-        #endregion
 
         #endregion
     }

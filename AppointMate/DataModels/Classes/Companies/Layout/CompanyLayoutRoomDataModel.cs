@@ -1,11 +1,22 @@
-﻿namespace AppointMate
+﻿
+namespace AppointMate
 {
     /// <summary>
     /// Represents a company room document in the MongoDB
     /// </summary>
-    public class CompanyLayoutRoomEntity : StandardEntity, INoteable, IImageable
+    public class CompanyLayoutRoomDataModel : INameable, IColorable, INoteable, IImageable
     {
         #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="Name"/> property
+        /// </summary>
+        private string? mName;
+
+        /// <summary>
+        /// The member of the <see cref="Color"/> property
+        /// </summary>
+        private string? mColor;
 
         /// <summary>
         /// The member of the <see cref="Note"/> property
@@ -15,6 +26,24 @@
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The name
+        /// </summary>
+        public string Name
+        {
+            get => mName ?? string.Empty;
+            set => mName = value;
+        }
+
+        /// <summary>
+        /// The color
+        /// </summary>
+        public string Color
+        {
+            get => mColor ?? string.Empty;
+            set => mColor = value;
+        }
 
         /// <summary>
         /// The note
@@ -52,7 +81,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyLayoutRoomEntity() : base()
+        public CompanyLayoutRoomDataModel() : base()
         {
 
         }

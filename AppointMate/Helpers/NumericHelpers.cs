@@ -1,11 +1,20 @@
 ﻿namespace AppointMate
 {
+    /// <summary>
+    /// Helper methods for numbers
+    /// </summary>
     public static class NumericHelpers
     {
         #region Constants
 
+        /// <summary>
+        /// The default decimal precision
+        /// </summary>
         public const uint DefaultDecimalPrecision = 2;
 
+        /// <summary>
+        /// The default mode of <see cref="MidpointRounding"/>
+        /// </summary>
         public const MidpointRounding DefaultMode = MidpointRounding.AwayFromZero;
 
         #endregion

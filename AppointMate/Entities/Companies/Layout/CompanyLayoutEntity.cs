@@ -1,4 +1,10 @@
-﻿using MongoDB.Bson;
+﻿using AutoMapper;
+
+using Microsoft.AspNetCore.Http;
+using MongoDB.Bson;
+using MongoDB.Driver;
+
+using System.ComponentModel.Design;
 
 namespace AppointMate
 {
@@ -17,7 +23,7 @@ namespace AppointMate
         /// <summary>
         /// The member of the <see cref="Rooms"/> property
         /// </summary>
-        private IEnumerable<CompanyLayoutRoomEntity>? mRooms;
+        private IList<CompanyLayoutRoomDataModel>? mRooms;
 
         #endregion
 
@@ -40,9 +46,15 @@ namespace AppointMate
         /// <summary>
         /// The rooms
         /// </summary>
-        public IEnumerable<CompanyLayoutRoomEntity> Rooms
+        public IList<CompanyLayoutRoomDataModel> Rooms
         {
-            get => mRooms ?? Enumerable.Empty<CompanyLayoutRoomEntity>();
+            get
+            {
+                if (mRooms is null)
+                    mRooms = new List<CompanyLayoutRoomDataModel>();
+
+                return mRooms;
+            }
             set => mRooms = value;
         }
 
@@ -57,6 +69,34 @@ namespace AppointMate
         {
 
         }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="CompanyLayoutEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="companyId">The company id</param>
+        /// <returns></returns>
+        public static CompanyLayoutEntity FromRequestModel(CompanyLayoutRequestModel model, ObjectId companyId)
+        {
+            var entity = new CompanyLayoutEntity();
+
+            DI.Mapper.Map(model, entity);
+            entity.CompanyId = companyId;
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="CompanyLayoutResponseModel"/> from the current <see cref="CompanyLayoutEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public CompanyLayoutResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<CompanyLayoutResponseModel>(this);
+
+
 
         #endregion
     }

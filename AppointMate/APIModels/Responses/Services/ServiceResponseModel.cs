@@ -18,7 +18,7 @@
         private string? mSmallDescription;
 
         /// <summary>
-        /// The member of the <see cref="SessionsNote"/> property
+        /// The member of the <see cref="Note"/> property
         /// </summary>
         private string? mNote;
 
