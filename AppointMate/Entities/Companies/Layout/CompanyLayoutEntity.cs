@@ -96,8 +96,6 @@ namespace AppointMate
         public CompanyLayoutResponseModel ToResponseModel()
             => EntityHelpers.ToResponseModel<CompanyLayoutResponseModel>(this);
 
-
-
         #endregion
     }
 }

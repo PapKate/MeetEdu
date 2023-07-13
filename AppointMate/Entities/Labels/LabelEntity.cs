@@ -45,6 +45,34 @@ namespace AppointMate
         }
 
         #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="LabelEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="companyId">The company id</param>
+        /// <returns></returns>
+        public static LabelEntity FromRequestModel(LabelRequestModel model, ObjectId companyId)
+        {
+            var entity = new LabelEntity();
+
+            DI.Mapper.Map(model, entity);
+            entity.CompanyId = companyId;
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="LabelResponseModel"/> from the current <see cref="LabelEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public LabelResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<LabelResponseModel>(this);
+
+
+
+        #endregion
     }
 
     /// <summary>
