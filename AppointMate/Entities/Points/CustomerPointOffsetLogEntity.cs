@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a customer point offset log document in the MongoDB
     /// </summary>
-    public class CustomerPointOffsetLogEntity : IDateCreatable, INoteable, IOffsetable
+    public class CustomerPointOffsetLogEntity : BaseEntity, IDateCreatable, INoteable, IOffsetable
     {
         #region Private Members
 
@@ -70,6 +70,31 @@
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="CustomerPointOffsetLogEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="customer">The customer</param>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static CustomerPointOffsetLogEntity FromRequestModel(CustomerEntity customer, CustomerPointOffsetLogRequestModel model)
+        {
+            var entity = new CustomerPointOffsetLogEntity();
+
+            DI.Mapper.Map(model, entity);
+            entity.IsPositive = model.Offset > 0;
+            entity.DateCreated = DateTimeOffset.Now;
+            entity.Customer = customer.ToEmbeddedEntity();
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="CustomerPointOffsetLogResponseModel"/> from the current <see cref="CustomerPointOffsetLogEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public CustomerPointOffsetLogResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<CustomerPointOffsetLogResponseModel>(this);
 
         /// <summary>
         /// Returns a string that represents the current object

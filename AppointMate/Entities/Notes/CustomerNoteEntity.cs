@@ -12,11 +12,6 @@
         /// </summary>
         private string? mMessage;
 
-        /// <summary>
-        /// The member of the <see cref="Labels"/> property
-        /// </summary>
-        private IEnumerable<EmbeddedLabelEntity>? mLabels;
-
         #endregion
 
         #region Public Properties
@@ -50,15 +45,6 @@
         /// </summary>
         public EmbeddedCustomerEntity? Customer { get; set; }
 
-        /// <summary>
-        /// The labels
-        /// </summary>
-        public IEnumerable<EmbeddedLabelEntity> Labels
-        {
-            get => mLabels ?? Enumerable.Empty<EmbeddedLabelEntity>();
-            set => mLabels = value;
-        }
-
         #endregion
 
         #region Constructors
@@ -70,6 +56,40 @@
         {
 
         }
+
+        #endregion
+
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="CustomerNoteEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="customer">The customer</param>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static CustomerNoteEntity FromRequestModel(CustomerEntity customer, CustomerNoteRequestModel model)
+        {
+            var entity = new CustomerNoteEntity();
+
+            DI.Mapper.Map(model, entity);
+            entity.Customer = customer.ToEmbeddedEntity();
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="CustomerNoteResponseModel"/> from the current <see cref="CustomerNoteEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public CustomerNoteResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<CustomerNoteResponseModel>(this);
+
+        /// <summary>
+        /// Returns a string that represents the current object
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => $"Type: {Type}, Customer: {Customer?.Name}";
 
         #endregion
     }

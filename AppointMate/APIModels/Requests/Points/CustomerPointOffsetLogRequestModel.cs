@@ -8,34 +8,14 @@
         #region Public Properties
 
         /// <summary>
-        /// The creation date
-        /// </summary>
-        public DateTimeOffset? DateCreated { get; set; }
-
-        /// <summary>
         /// The customer
         /// </summary>
         public EmbeddedCustomerResponseModel? Customer { get; set; }
 
         /// <summary>
-        /// The old points of the customer
-        /// </summary>
-        public uint? OldPoints { get; set; }
-
-        /// <summary>
         /// The offset
         /// </summary>
-        public int? Offset { get; set; }
-
-        /// <summary>
-        /// A flag indicating whether the offset was positive or not
-        /// </summary>
-        public bool? IsPositive { get; set; }
-
-        /// <summary>
-        /// The new points of the customer
-        /// </summary>
-        public uint? NewPoints { get; set; }
+        public int Offset { get; set; }
 
         /// <summary>
         /// The note
