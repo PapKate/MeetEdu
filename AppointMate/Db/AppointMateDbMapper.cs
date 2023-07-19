@@ -192,7 +192,7 @@ namespace AppointMate
         /// <summary>
         /// The service labels collection
         /// </summary>
-        public static IMongoCollection<LabelEntity> SerivceLabels => DI.Database.GetCollection<LabelEntity>(ServiceLabelsCollectionName);
+        public static IMongoCollection<LabelEntity> ServiceLabels => DI.Database.GetCollection<LabelEntity>(ServiceLabelsCollectionName);
 
         #endregion
 

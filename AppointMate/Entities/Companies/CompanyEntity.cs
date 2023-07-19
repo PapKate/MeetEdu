@@ -144,6 +144,15 @@ namespace AppointMate
         public CompanyResponseModel ToResponseModel()
             => EntityHelpers.ToResponseModel<CompanyResponseModel>(this);
 
+        /// <summary>
+        /// Returns a string that represents the current object.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Name;
+        }
+
         #endregion
     }
 }

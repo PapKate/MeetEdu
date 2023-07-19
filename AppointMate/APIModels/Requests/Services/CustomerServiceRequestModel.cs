@@ -8,6 +8,16 @@
         #region Public Properties
 
         /// <summary>
+        /// The customer id
+        /// </summary>
+        public string? CustomerId { get; set; }
+
+        /// <summary>
+        /// The service id
+        /// </summary>
+        public string? ServiceId { get; set; }
+
+        /// <summary>
         /// The purchased amount
         /// </summary>
         public decimal? PurchasedAmount { get; set; }
@@ -26,6 +36,16 @@
         /// A flag indicating whether the subscription's amount is fully paid or not
         /// </summary>
         public bool? HasOwed { get; set; }
+
+        /// <summary>
+        /// The payments
+        /// </summary>
+        public IEnumerable<CustomerServicePaymentRequestModel>? Payments { get; set; }
+
+        /// <summary>
+        /// The scheduled payments
+        /// </summary>
+        public IEnumerable<CustomerServiceScheduledPaymentRequestModel>? ScheduledPayments { get; set; }
 
         #endregion
 

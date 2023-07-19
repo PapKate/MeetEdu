@@ -10,6 +10,11 @@ namespace AppointMate
         #region Public Properties
 
         /// <summary>
+        /// The id of the payment method
+        /// </summary>
+        public string? PaymentMethodId { get; set; }
+
+        /// <summary>
         /// The amount
         /// </summary>
         public decimal? Amount { get; set; }

@@ -1,4 +1,9 @@
-﻿using System;
+﻿using AutoMapper;
+
+using MongoDB.Bson;
+using MongoDB.Driver;
+
+using System;
 
 namespace AppointMate
 {
@@ -67,6 +72,37 @@ namespace AppointMate
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="CustomerServicePaymentEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static async Task<CustomerServicePaymentEntity> FromRequestModelAsync(CustomerServicePaymentRequestModel model)
+        {
+            var entity = EntityHelpers.FromRequestModel<CustomerServicePaymentEntity>(model);
+
+            await UpdateNonAutoMapperValuesAsync(model, entity);
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
+        /// NOTE: This method only affects the properties that can't be mapped by the <see cref="Mapper"/> and are not null!
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="entity">The entity</param>
+        /// <param name="companyId">The company id</param>
+        /// <returns></returns>
+        public static Task UpdateNonAutoMapperValuesAsync(CustomerServicePaymentRequestModel model, CustomerServicePaymentEntity entity) 
+            => EntityHelpers.UpdateNonAutoMapperValueAsync(
+                        model,
+                        entity,
+                        x => x.PaymentMethodId,
+                        x => x.PaymentMethod,
+                        AppointMateDbMapper.PaymentMethods.AsQueryable(),
+                        x => x.ToEmbeddedEntity(entity.Amount));
 
         /// <summary>
         /// Returns a string that represents the current object.

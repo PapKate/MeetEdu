@@ -261,7 +261,7 @@ namespace AppointMate
             Action<TEntity, TSourceEntity>? updateAction = null)
             where TEntity : BaseEntity
             where TSourceEntity : BaseEntity
-            where TEmbeddedEntity : BaseEntity
+            where TEmbeddedEntity : BaseEmbeddedEntity
         {
             // Get model property
             var modelProperty = modelIdPropertySelector.GetPropertyInfo();

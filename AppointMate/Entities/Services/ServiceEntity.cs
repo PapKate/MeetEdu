@@ -119,6 +119,46 @@ namespace AppointMate
         }
 
         #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="ServiceEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static ServiceEntity FromRequestModel(ServiceRequestModel model)
+        {
+            var entity = new ServiceEntity();
+
+            DI.Mapper.Map(model, entity);
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="ServiceResponseModel"/> from the current <see cref="ServiceEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public ServiceResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<ServiceResponseModel>(this);
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedServiceEntity"/> from the current <see cref="ServiceEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public EmbeddedServiceEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedServiceEntity>(this);
+
+        /// <summary>
+        /// Returns a string that represents the current object.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        #endregion
     }
 
     /// <summary>

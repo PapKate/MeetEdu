@@ -200,7 +200,6 @@ namespace AppointMate
             return entity;
         }
 
-
         #endregion
 
         #endregion
