@@ -4,7 +4,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a user
     /// </summary>
-    public abstract class UserResponseModel : DateResponseModel, IImageable, IEmailable, IPhoneable
+    public class UserResponseModel : DateResponseModel, IImageable, IEmailable, IPhoneable
     {
         #region Private Members
 

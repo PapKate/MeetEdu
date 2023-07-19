@@ -15,9 +15,9 @@ namespace AppointMate
         private string? mQuote;
 
         /// <summary>
-        /// The member of the <see cref="Roles"/> property
+        /// The member of the <see cref="Labels"/> property
         /// </summary>
-        private IEnumerable<string>? mRoles;
+        private IEnumerable<LabelEntity>? mLabels;
 
         #endregion
 
@@ -43,18 +43,18 @@ namespace AppointMate
         public bool IsOwner { get; set; }
 
         /// <summary>
-        /// The roles
+        /// The labels
         /// </summary>
-        public IEnumerable<string> Roles
+        public IEnumerable<LabelEntity> Labels
         {
-            get => mRoles ?? Enumerable.Empty<string>();
-            set => mRoles = value;
+            get => mLabels ?? Enumerable.Empty<LabelEntity>();
+            set => mLabels = value;
         }
 
         /// <summary>
         /// The work hours
         /// </summary>
-        public WeeklyScheduleResponseModel? WorkHours { get; set; }
+        public WeeklyScheduleEntity? WorkHours { get; set; }
 
         #endregion
 
@@ -67,6 +67,37 @@ namespace AppointMate
         {
 
         }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="StaffMemberEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static StaffMemberEntity FromRequestModel(StaffMemberRequestModel model)
+        {
+            var entity = new StaffMemberEntity();
+
+            DI.Mapper.Map(model, entity);
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="StaffMemberResponseModel"/> from the current <see cref="StaffMemberEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public new StaffMemberResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<StaffMemberResponseModel>(this);
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedStaffMemberEntity"/> from the current <see cref="StaffMemberEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public new EmbeddedStaffMemberEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedStaffMemberEntity>(this);
 
         #endregion
     }

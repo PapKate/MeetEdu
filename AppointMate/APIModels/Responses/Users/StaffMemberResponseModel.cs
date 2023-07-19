@@ -13,9 +13,9 @@
         private string? mQuote;
 
         /// <summary>
-        /// The member of the <see cref="Roles"/> property
+        /// The member of the <see cref="Labels"/> property
         /// </summary>
-        private IEnumerable<string>? mRoles;
+        private IEnumerable<LabelResponseModel>? mLabels;
 
         #endregion
 
@@ -36,18 +36,18 @@
         public bool IsOwner { get; set; }
 
         /// <summary>
-        /// The roles
+        /// The labels
         /// </summary>
-        public IEnumerable<string> Roles 
+        public IEnumerable<LabelResponseModel> Labels 
         {
-            get => mRoles ?? Enumerable.Empty<string>();
-            set => mRoles = value;
+            get => mLabels ?? Enumerable.Empty<LabelResponseModel>();
+            set => mLabels = value;
         }
 
         /// <summary>
         /// The work hours
         /// </summary>
-        public WeeklyScheduleResponseModel? WorkHours { get; set; }
+        public WeeklyScheduleEntity? WorkHours { get; set; }
 
         #endregion
 

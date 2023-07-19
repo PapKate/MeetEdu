@@ -1,4 +1,5 @@
-﻿namespace AppointMate
+﻿
+namespace AppointMate
 {
     /// <summary>
     /// Represents a company document in the MongoDB
@@ -66,7 +67,7 @@
         /// <summary>
         /// The work hours
         /// </summary>
-        public WeeklyScheduleEntity? WorkHours { get; set; }
+        public WeeklyScheduleDataModel? WorkHours { get; set; }
 
         /// <summary>
         /// The small image URL
@@ -118,6 +119,30 @@
         {
 
         }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="CompanyEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static CompanyEntity FromRequestModel(CompanyRequestModel model)
+        {
+            var entity = new CompanyEntity();
+
+            DI.Mapper.Map(model, entity);
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="CompanyResponseModel"/> from the current <see cref="CompanyEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public CompanyResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<CompanyResponseModel>(this);
 
         #endregion
     }

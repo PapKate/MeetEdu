@@ -18,14 +18,14 @@
         public bool? IsOwner { get; set; }
 
         /// <summary>
-        /// The roles
+        /// The labels
         /// </summary>
-        public IEnumerable<string>? Roles { get; set; }
+        public IEnumerable<LabelRequestModel>? Labels { get; set; }
 
         /// <summary>
         /// The work hours
         /// </summary>
-        public WeeklyScheduleResponseModel? WorkHours { get; set; }
+        public WeeklyScheduleRequestModel? WorkHours { get; set; }
 
         #endregion
 

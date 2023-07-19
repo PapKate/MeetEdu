@@ -1,9 +1,11 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a weekly schedule document in the MongoDB
     /// </summary>
-    public class WeeklyScheduleEntity : BaseEntity, INoteable
+    public class WeeklyScheduleEntity : DateEntity, INoteable
     {
         #region Private Members
 
@@ -20,6 +22,11 @@
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The staff member id
+        /// </summary>
+        public ObjectId StaffMemberId { get; set; }
 
         /// <summary>
         /// The work hours
@@ -50,6 +57,33 @@
         {
 
         }
+
+        #endregion
+
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="WeeklyScheduleEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="staffMemberId">The staff member id</param>
+        /// <returns></returns>
+        public static WeeklyScheduleEntity FromRequestModel(WeeklyScheduleRequestModel model, ObjectId staffMemberId)
+        {
+            var entity = new WeeklyScheduleEntity();
+
+            DI.Mapper.Map(model, entity);
+            entity.StaffMemberId = staffMemberId;
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="LabelResponseModel"/> from the current <see cref="WeeklyScheduleEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public WeeklyScheduleResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<WeeklyScheduleResponseModel>(this);
 
         #endregion
     }

@@ -47,6 +47,37 @@ namespace AppointMate
         }
 
         #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="CustomerEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static CustomerEntity FromRequestModel(CustomerRequestModel model)
+        {
+            var entity = new CustomerEntity();
+
+            DI.Mapper.Map(model, entity);
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="CustomerResponseModel"/> from the current <see cref="CustomerEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public new CustomerResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<CustomerResponseModel>(this);
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedCustomerEntity"/> from the current <see cref="CustomerEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public new EmbeddedCustomerEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedCustomerEntity>(this);
+
+        #endregion
     }
 
     /// <summary>

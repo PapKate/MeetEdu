@@ -70,7 +70,12 @@ namespace AppointMate
         public LabelResponseModel ToResponseModel()
             => EntityHelpers.ToResponseModel<LabelResponseModel>(this);
 
-
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedLabelEntity"/> from the current <see cref="LabelEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public EmbeddedLabelEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedLabelEntity>(this);
 
         #endregion
     }

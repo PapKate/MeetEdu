@@ -35,6 +35,11 @@ namespace AppointMate
         public const string StaffMembersCollectionName = Signature + "StaffMembers";
 
         /// <summary>
+        /// The company staff member labels collection name
+        /// </summary>
+        public const string StaffMemberLabelsCollectionName = Signature + "StaffMemberLabels";
+
+        /// <summary>
         /// The staff member weekly schedules collection name
         /// </summary>
         public const string StaffMemberWeeklySchedulesCollectionName = Signature + "StaffMemberWeeklySchedules";
@@ -111,25 +116,6 @@ namespace AppointMate
 
         #endregion
 
-        #region Labels
-
-        /// <summary>
-        /// The company categories collection
-        /// </summary>
-        public static IMongoCollection<LabelEntity> CompanyLabels => DI.Database.GetCollection<LabelEntity>(CompanyLabelsCollectionName);
-
-        /// <summary>
-        /// The service categories collection
-        /// </summary>
-        public static IMongoCollection<LabelEntity> SerivceLabels => DI.Database.GetCollection<LabelEntity>(ServiceLabelsCollectionName);
-
-        /// <summary>
-        /// The customer labels collection
-        /// </summary>
-        public static IMongoCollection<LabelEntity> CustomerLabels => DI.Database.GetCollection<LabelEntity>(CustomerLabelsCollectionName);
-
-        #endregion
-
         #region Companies
 
         /// <summary>
@@ -138,18 +124,14 @@ namespace AppointMate
         public static IMongoCollection<CompanyEntity> Companies => DI.Database.GetCollection<CompanyEntity>(CompaniesCollectionName);
 
         /// <summary>
+        /// The company labels collection
+        /// </summary>
+        public static IMongoCollection<LabelEntity> CompanyLabels => DI.Database.GetCollection<LabelEntity>(CompanyLabelsCollectionName);
+
+        /// <summary>
         /// The company layouts collection
         /// </summary>
         public static IMongoCollection<CompanyLayoutEntity> CompanyLayouts => DI.Database.GetCollection<CompanyLayoutEntity>(CompanyLayoutsCollectionName);
-
-        #endregion
-
-        #region Notes
-
-        /// <summary>
-        /// The customer notes collection
-        /// </summary>
-        public static IMongoCollection<CustomerNoteEntity> CustomerNotes => DI.Database.GetCollection<CustomerNoteEntity>(CustomerNotesCollectionName);
 
         #endregion
 
@@ -207,6 +189,11 @@ namespace AppointMate
         /// </summary>
         public static IMongoCollection<CustomerServiceSessionEntity> CustomerServiceSessions => DI.Database.GetCollection<CustomerServiceSessionEntity>(CustomerServiceSessionsCollectionName);
 
+        /// <summary>
+        /// The service labels collection
+        /// </summary>
+        public static IMongoCollection<LabelEntity> SerivceLabels => DI.Database.GetCollection<LabelEntity>(ServiceLabelsCollectionName);
+
         #endregion
 
         #region Users
@@ -225,6 +212,16 @@ namespace AppointMate
         /// </summary>
         public static IMongoCollection<CustomerEntity> Customers => DI.Database.GetCollection<CustomerEntity>(CustomersCollectionName);
 
+        /// <summary>
+        /// The customer labels collection
+        /// </summary>
+        public static IMongoCollection<LabelEntity> CustomerLabels => DI.Database.GetCollection<LabelEntity>(CustomerLabelsCollectionName);
+
+        /// <summary>
+        /// The customer notes collection
+        /// </summary>
+        public static IMongoCollection<CustomerNoteEntity> CustomerNotes => DI.Database.GetCollection<CustomerNoteEntity>(CustomerNotesCollectionName);
+
         #endregion
 
         #region Staff Members
@@ -235,9 +232,14 @@ namespace AppointMate
         public static IMongoCollection<StaffMemberEntity> StaffMembers => DI.Database.GetCollection<StaffMemberEntity>(StaffMembersCollectionName);
 
         /// <summary>
+        /// The staff member labels collection
+        /// </summary>
+        public static IMongoCollection<LabelEntity> StaffMemberLabels => DI.Database.GetCollection<LabelEntity>(StaffMemberLabelsCollectionName);
+
+        /// <summary>
         /// The staff members weekly schedules collection
         /// </summary>
-        public static IMongoCollection<StaffMemberEntity> StaffMemberWeeklySchedules => DI.Database.GetCollection<StaffMemberEntity>(StaffMemberWeeklySchedulesCollectionName);
+        public static IMongoCollection<WeeklyScheduleEntity> StaffMemberWeeklySchedules => DI.Database.GetCollection<WeeklyScheduleEntity>(StaffMemberWeeklySchedulesCollectionName);
 
         #endregion
     }

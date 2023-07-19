@@ -1977,6 +1977,36 @@
             The API args suffix
             </summary>
         </member>
+        <member name="T:AppointMate.CompanyStaffMemberRoleDataModel">
+            <summary>
+            The response model for the role
+            </summary>
+        </member>
+        <member name="F:AppointMate.CompanyStaffMemberRoleDataModel.mName">
+            <summary>
+            The member of the <see cref="P:AppointMate.CompanyStaffMemberRoleDataModel.Name"/> property
+            </summary>
+        </member>
+        <member name="F:AppointMate.CompanyStaffMemberRoleDataModel.mColor">
+            <summary>
+            The member of the <see cref="P:AppointMate.CompanyStaffMemberRoleDataModel.Color"/> property
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyStaffMemberRoleDataModel.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyStaffMemberRoleDataModel.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="M:AppointMate.CompanyStaffMemberRoleDataModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:AppointMate.CompanyLayoutRoomDataModel">
             <summary>
             Represents a company room document in the MongoDB
@@ -4122,6 +4152,11 @@
             The company labels collection name
             </summary>
         </member>
+        <member name="F:AppointMate.AppointMateDbMapper.CompanyStaffMemberRolesCollectionName">
+            <summary>
+            The company staff member roles collection name
+            </summary>
+        </member>
         <member name="F:AppointMate.AppointMateDbMapper.CompanyLayoutsCollectionName">
             <summary>
             The company layouts collection name
@@ -4450,6 +4485,11 @@
             The shipping information
             </summary>
         </member>
+        <member name="P:AppointMate.CompanyEntity.Roles">
+            <summary>
+            The roles
+            </summary>
+        </member>
         <member name="P:AppointMate.CompanyEntity.Labels">
             <summary>
             The labels
@@ -4459,6 +4499,19 @@
             <summary>
             Default constructor
             </summary>
+        </member>
+        <member name="M:AppointMate.CompanyEntity.FromRequestModel(AppointMate.CompanyRequestModel)">
+            <summary>
+            Creates and returns a <see cref="T:AppointMate.CompanyEntity"/> from the specified <paramref name="model"/>
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.CompanyEntity.ToResponseModel">
+            <summary>
+            Creates and returns a <see cref="T:AppointMate.CompanyResponseModel"/> from the current <see cref="T:AppointMate.CompanyEntity"/>
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:AppointMate.CompanyLayoutEntity">
             <summary>
@@ -4573,6 +4626,20 @@
             <summary>
             Default constructor
             </summary>
+        </member>
+        <member name="M:AppointMate.LabelEntity.FromRequestModel(AppointMate.LabelRequestModel,MongoDB.Bson.ObjectId)">
+            <summary>
+            Creates and returns a <see cref="T:AppointMate.LabelEntity"/> from the specified <paramref name="model"/>
+            </summary>
+            <param name="model">The model</param>
+            <param name="companyId">The company id</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.LabelEntity.ToResponseModel">
+            <summary>
+            Creates and returns a <see cref="T:AppointMate.LabelResponseModel"/> from the current <see cref="T:AppointMate.LabelEntity"/>
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:AppointMate.EmbeddedLabelEntity">
             <summary>
@@ -5393,6 +5460,19 @@
             <summary>
             Default constructor
             </summary>
+        </member>
+        <member name="M:AppointMate.StaffMemberEntity.FromRequestModel(AppointMate.StaffMemberRequestModel)">
+            <summary>
+            Creates and returns a <see cref="T:AppointMate.StaffMemberEntity"/> from the specified <paramref name="model"/>
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.StaffMemberEntity.ToResponseModel">
+            <summary>
+            Creates and returns a <see cref="T:AppointMate.StaffMemberResponseModel"/> from the current <see cref="T:AppointMate.StaffMemberEntity"/>
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:AppointMate.EmbeddedStaffMemberEntity">
             <summary>
@@ -7161,9 +7241,9 @@
         </member>
         <member name="M:AppointMate.CompaniesRepository.UpdateCompanyAsync(MongoDB.Bson.ObjectId,AppointMate.CompanyRequestModel)">
             <summary>
-            Updates the company with the specified <paramref name="companyId"/>
+            Updates the company with the specified <paramref name="id"/>
             </summary>
-            <param name="companyId">The company id</param>
+            <param name="id">The id</param>
             <param name="model">The model</param>
             <returns></returns>
         </member>
@@ -7192,17 +7272,17 @@
         </member>
         <member name="M:AppointMate.CompaniesRepository.UpdateCompanyLabelAsync(MongoDB.Bson.ObjectId,AppointMate.LabelRequestModel)">
             <summary>
-            Updates the company with the specified <paramref name="categoryId"/>
+            Updates the company with the specified <paramref name="id"/>
             </summary>
-            <param name="categoryId">The company id</param>
+            <param name="id">The company id</param>
             <param name="model">The model</param>
             <returns></returns>
         </member>
         <member name="M:AppointMate.CompaniesRepository.DeleteCompanyLabelAsync(MongoDB.Bson.ObjectId)">
             <summary>
-            Deletes the company category with the specified <paramref name="categoryId"/>
+            Deletes the company label with the specified <paramref name="id"/>
             </summary>
-            <param name="categoryId">The category id</param>
+            <param name="id">The label id</param>
             <returns></returns>
         </member>
         <member name="M:AppointMate.CompaniesRepository.AddCompanyLayoutAsync(MongoDB.Bson.ObjectId,AppointMate.CompanyLayoutRequestModel)">
@@ -7282,11 +7362,6 @@
             Provides methods for managing staff members
             </summary>
         </member>
-        <member name="F:AppointMate.StaffMembersRepository.mUserManager">
-            <summary>
-            The user manager
-            </summary>
-        </member>
         <member name="P:AppointMate.StaffMembersRepository.Instance">
             <summary>
             The single instance of the <see cref="T:AppointMate.StaffMembersRepository"/>
@@ -7296,6 +7371,35 @@
             <summary>
             Default constructor
             </summary>
+        </member>
+        <member name="M:AppointMate.StaffMembersRepository.AddStaffMemberAsync(AppointMate.StaffMemberRequestModel)">
+            <summary>
+            Adds a staff member
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.StaffMembersRepository.AddCompaniesAsync(System.Collections.Generic.IEnumerable{AppointMate.StaffMemberRequestModel})">
+            <summary>
+            Adds a list of staff members 
+            </summary>
+            <param name="models">The models</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.StaffMembersRepository.UpdateStaffMemberAsync(MongoDB.Bson.ObjectId,AppointMate.StaffMemberRequestModel)">
+            <summary>
+            Updates the staff member with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.StaffMembersRepository.DeleteStaffMemberAsync(MongoDB.Bson.ObjectId)">
+            <summary>
+            Deletes the staff member with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
         </member>
         <member name="T:AppointMate.WebServerFailable">
             <summary>

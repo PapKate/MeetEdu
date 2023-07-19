@@ -156,7 +156,7 @@ namespace AppointMate
         /// <param name="entity">The entity</param>
         /// <returns></returns>
         public static TEmbeddedEntity ToEmbeddedEntity<TEmbeddedEntity>(BaseEntity entity)
-            where TEmbeddedEntity : BaseEntity, new()
+            where TEmbeddedEntity : BaseEmbeddedEntity, new()
         {
             var embeddedEntity = new TEmbeddedEntity();
 
