@@ -48,5 +48,29 @@
         }
 
         #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="ServiceEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static CustomerServiceReviewEntity FromRequestModel(CustomerServiceReviewRequestModel model)
+        {
+            var entity = new CustomerServiceReviewEntity();
+
+            DI.Mapper.Map(model, entity);
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="CustomerServiceReviewResponseModel"/> from the current <see cref="CustomerServiceReviewEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public CustomerServiceReviewResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<CustomerServiceReviewResponseModel>(this);
+
+        #endregion
     }
 }

@@ -41,11 +41,11 @@ namespace AppointMate
             => await AppointMateDbMapper.Services.AddAsync(ServiceEntity.FromRequestModel(model));
 
         /// <summary>
-        /// Adds a list of companies 
+        /// Adds a list of services 
         /// </summary>
         /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<ServiceEntity>>> AddCompaniesAsync(IEnumerable<ServiceRequestModel> models)
+        public async Task<WebServerFailable<IEnumerable<ServiceEntity>>> AddServicesAsync(IEnumerable<ServiceRequestModel> models)
             => new WebServerFailable<IEnumerable<ServiceEntity>>(await AppointMateDbMapper.Services.AddRangeAsync(models.Select(ServiceEntity.FromRequestModel).ToList()));
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace AppointMate
             var entity = await AppointMateDbMapper.Services.UpdateAsync(id, model);
 
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Companies));
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Services));
 
             return entity;
         }
@@ -67,7 +67,7 @@ namespace AppointMate
         /// <summary>
         /// Deletes the service with the specified <paramref name="id"/>
         /// </summary>
-        /// <param name="id">The service id</param>
+        /// <param name="id">The id</param>
         /// <returns></returns>
         public async Task<WebServerFailable<ServiceEntity>> DeleteServiceAsync(ObjectId id)
         {

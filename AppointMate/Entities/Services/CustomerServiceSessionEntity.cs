@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a customer service session document in the MongoDB
     /// </summary>
-    public class CustomerServiceSessionEntity : StandardResponseModel, IDescriptable
+    public class CustomerServiceSessionEntity : StandardEntity, IDescriptable
     {
         #region Private Members
 
@@ -71,6 +71,37 @@
         {
 
         }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="ServiceEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static CustomerServiceSessionEntity FromRequestModel(CustomerServiceSessionRequestModel model)
+        {
+            var entity = new CustomerServiceSessionEntity();
+
+            DI.Mapper.Map(model, entity);
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="CustomerServiceSessionResponseModel"/> from the current <see cref="CustomerServiceSessionEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public CustomerServiceSessionResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<CustomerServiceSessionResponseModel>(this);
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedCustomerServiceSessionEntity"/> from the current <see cref="CustomerServiceSessionEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public EmbeddedCustomerServiceSessionEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedCustomerServiceSessionEntity>(this);
 
         #endregion
     }

@@ -1,9 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Core.Servers;
 using MongoDB.Driver.Linq;
 
-using System.ComponentModel.Design;
 
 namespace AppointMate
 {
@@ -109,6 +107,112 @@ namespace AppointMate
             // Delete the customer service
             return await AppointMateDbMapper.CustomerServices.DeleteAsync(id);
         }
+
+        #region Reviews
+
+        /// <summary>
+        /// Adds a customer service review
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public async Task<CustomerServiceReviewEntity> AddCustomerServiceReviewAsync(CustomerServiceReviewRequestModel model)
+            => await AppointMateDbMapper.CustomerServiceReviews.AddAsync(CustomerServiceReviewEntity.FromRequestModel(model));
+
+        /// <summary>
+        /// Adds a list of customer service reviews 
+        /// </summary>
+        /// <param name="models">The models</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<IEnumerable<CustomerServiceReviewEntity>>> AddCustomerServiceReviewsAsync(IEnumerable<CustomerServiceReviewRequestModel> models)
+            => new WebServerFailable<IEnumerable<CustomerServiceReviewEntity>>(await AppointMateDbMapper.CustomerServiceReviews.AddRangeAsync(models.Select(CustomerServiceReviewEntity.FromRequestModel).ToList()));
+
+        /// <summary>
+        /// Updates the customer service review with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<CustomerServiceReviewEntity>> UpdateCustomerServiceReviewAsync(ObjectId id, CustomerServiceReviewRequestModel model)
+        {
+            var entity = await AppointMateDbMapper.CustomerServiceReviews.UpdateAsync(id, model);
+
+            if (entity is null)
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.CustomerServiceReviews));
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Deletes the customer service review with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<CustomerServiceReviewEntity>> DeleteCustomerServiceReviewAsync(ObjectId id)
+        {
+            var entity = await AppointMateDbMapper.CustomerServiceReviews.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (entity is null)
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.CustomerServiceReviews));
+
+            await AppointMateDbMapper.CustomerServiceReviews.DeleteOneAsync(x => x.Id == id);
+
+            return entity;
+        }
+
+        #endregion
+
+        #region Sessions
+
+        /// <summary>
+        /// Adds a customer service session
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public async Task<CustomerServiceSessionEntity> AddCustomerServiceSessionAsync(CustomerServiceSessionRequestModel model)
+            => await AppointMateDbMapper.CustomerServiceSessions.AddAsync(CustomerServiceSessionEntity.FromRequestModel(model));
+
+        /// <summary>
+        /// Adds a list of customer service sessions 
+        /// </summary>
+        /// <param name="models">The models</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<IEnumerable<CustomerServiceSessionEntity>>> AddCustomerServiceSessionsAsync(IEnumerable<CustomerServiceSessionRequestModel> models)
+            => new WebServerFailable<IEnumerable<CustomerServiceSessionEntity>>(await AppointMateDbMapper.CustomerServiceSessions.AddRangeAsync(models.Select(CustomerServiceSessionEntity.FromRequestModel).ToList()));
+
+        /// <summary>
+        /// Updates the customer service session with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<CustomerServiceSessionEntity>> UpdateCustomerServiceSessionAsync(ObjectId id, CustomerServiceSessionRequestModel model)
+        {
+            var entity = await AppointMateDbMapper.CustomerServiceSessions.UpdateAsync(id, model);
+
+            if (entity is null)
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.CustomerServiceSessions));
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Deletes the customer service session with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<CustomerServiceSessionEntity>> DeleteCustomerServiceSessionAsync(ObjectId id)
+        {
+            var entity = await AppointMateDbMapper.CustomerServiceSessions.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (entity is null)
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.CustomerServiceSessions));
+
+            await AppointMateDbMapper.CustomerServiceSessions.DeleteOneAsync(x => x.Id == id);
+
+            return entity;
+        }
+
+        #endregion
 
         #endregion
     }

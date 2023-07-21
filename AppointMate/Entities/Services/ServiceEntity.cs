@@ -149,15 +149,6 @@ namespace AppointMate
         public EmbeddedServiceEntity ToEmbeddedEntity()
             => EntityHelpers.ToEmbeddedEntity<EmbeddedServiceEntity>(this);
 
-        /// <summary>
-        /// Returns a string that represents the current object.
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return Name;
-        }
-
         #endregion
     }
 
