@@ -45,7 +45,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<StaffMemberEntity>>> AddCompaniesAsync(IEnumerable<StaffMemberRequestModel> models)
+        public async Task<WebServerFailable<IEnumerable<StaffMemberEntity>>> AddStaffMembersAsync(IEnumerable<StaffMemberRequestModel> models)
             => new WebServerFailable<IEnumerable<StaffMemberEntity>>(await AppointMateDbMapper.StaffMembers.AddRangeAsync(models.Select(StaffMemberEntity.FromRequestModel).ToList()));
 
         /// <summary>

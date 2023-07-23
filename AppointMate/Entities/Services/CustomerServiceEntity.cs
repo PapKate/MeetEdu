@@ -212,7 +212,7 @@ namespace AppointMate
     /// A minimal version of the <see cref="CustomerServiceEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedCustomerServiceEntity : BaseEmbeddedEntity
+    public class EmbeddedCustomerServiceEntity : EmbeddedBaseEntity
     {
         #region Public Properties
 

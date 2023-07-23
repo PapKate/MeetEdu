@@ -156,7 +156,7 @@ namespace AppointMate
         /// <param name="entity">The entity</param>
         /// <returns></returns>
         public static TEmbeddedEntity ToEmbeddedEntity<TEmbeddedEntity>(BaseEntity entity)
-            where TEmbeddedEntity : BaseEmbeddedEntity, new()
+            where TEmbeddedEntity : EmbeddedBaseEntity, new()
         {
             var embeddedEntity = new TEmbeddedEntity();
 
@@ -261,7 +261,7 @@ namespace AppointMate
             Action<TEntity, TSourceEntity>? updateAction = null)
             where TEntity : BaseEntity
             where TSourceEntity : BaseEntity
-            where TEmbeddedEntity : BaseEmbeddedEntity
+            where TEmbeddedEntity : EmbeddedBaseEntity?
         {
             // Get model property
             var modelProperty = modelIdPropertySelector.GetPropertyInfo();
@@ -322,7 +322,7 @@ namespace AppointMate
             Func<TSourceEntity, TEmbeddedEntity> projection)
             where TEntity : BaseEntity
             where TSourceEntity : BaseEntity
-            where TEmbeddedEntity : BaseEntity
+            where TEmbeddedEntity : EmbeddedBaseEntity?
         {
             // Get model property
             var modelProperty = modelIdsPropertySelector.GetPropertyInfo();

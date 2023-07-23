@@ -32,7 +32,7 @@ namespace AppointMate
     /// <summary>
     /// The base for all the embedded entities
     /// </summary>
-    public class BaseEmbeddedEntity : BaseEntity, IEmbeddableIdentifiable<ObjectId>
+    public class EmbeddedBaseEntity : BaseEntity, IEmbeddableIdentifiable<ObjectId>
     {
         #region Public Properties
 
@@ -48,7 +48,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public BaseEmbeddedEntity() : base()
+        public EmbeddedBaseEntity() : base()
         {
 
         }

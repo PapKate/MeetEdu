@@ -20,12 +20,12 @@
         /// <summary>
         /// The labels
         /// </summary>
-        public IEnumerable<LabelRequestModel>? Labels { get; set; }
+        public IEnumerable<string>? Labels { get; set; }
 
         /// <summary>
         /// The work hours
         /// </summary>
-        public WeeklyScheduleRequestModel? WorkHours { get; set; }
+        public string? WorkHours { get; set; }
 
         #endregion
 

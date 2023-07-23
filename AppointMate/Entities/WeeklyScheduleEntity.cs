@@ -60,7 +60,6 @@ namespace AppointMate
 
         #endregion
 
-
         #region Public Methods
 
         /// <summary>
@@ -79,12 +78,65 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="LabelResponseModel"/> from the current <see cref="WeeklyScheduleEntity"/>
+        /// Creates and returns a <see cref="WeeklyScheduleResponseModel"/> from the current <see cref="WeeklyScheduleEntity"/>
         /// </summary>
         /// <returns></returns>
         public WeeklyScheduleResponseModel ToResponseModel()
             => EntityHelpers.ToResponseModel<WeeklyScheduleResponseModel>(this);
 
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedWeeklyScheduleEntity"/> from the current <see cref="WeeklyScheduleEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public EmbeddedWeeklyScheduleEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedWeeklyScheduleEntity>(this);
+
         #endregion
+    }
+
+    /// <summary>
+    /// Represents a weekly schedule embedded document in the MongoDB
+    /// </summary>
+    public class EmbeddedWeeklyScheduleEntity : EmbeddedBaseEntity
+    {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="WorkHours"/> property
+        /// </summary>
+        private IEnumerable<DayOfWeekTimeRange>? mWorkHours;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The staff member id
+        /// </summary>
+        public ObjectId StaffMemberId { get; set; }
+
+        /// <summary>
+        /// The work hours
+        /// </summary>
+        public IEnumerable<DayOfWeekTimeRange> WorkHours
+        {
+            get => mWorkHours ?? Enumerable.Empty<DayOfWeekTimeRange>();
+            set => mWorkHours = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public EmbeddedWeeklyScheduleEntity() : base()
+        {
+
+        }
+
+        #endregion
+
     }
 }

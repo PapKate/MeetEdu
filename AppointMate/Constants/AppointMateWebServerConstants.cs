@@ -8,6 +8,11 @@
         #region Properties
 
         /// <summary>
+        /// Error message indicating invalid registration credentials
+        /// </summary>
+        public const string InvalidRegistrationCredentialsErrorMessage = "Please provide all required details to register for an account!";
+
+        /// <summary>
         /// Error message indicating insufficient customer points
         /// </summary>
         public const string InsufficientCustomerPointsErrorMessage = "Insufficient customer points";

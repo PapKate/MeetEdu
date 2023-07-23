@@ -99,7 +99,7 @@
         /// <param name="obj1">The first phone number</param>
         /// <param name="obj2">The second phone number</param>
         /// <returns></returns>
-        public static bool operator ==(PhoneNumber obj1, PhoneNumber obj2) => Equals(obj1, obj2);
+        public static bool operator ==(PhoneNumber? obj1, PhoneNumber? obj2) => Equals(obj1, obj2);
 
         /// <summary>
         /// Determines whether tow specified <see cref="PhoneNumber"/>s have different values
@@ -107,13 +107,13 @@
         /// <param name="obj1">The first phone number</param>
         /// <param name="obj2">The second phone number</param>
         /// <returns></returns>
-        public static bool operator !=(PhoneNumber obj1, PhoneNumber obj2) => !(obj1 == obj2);
+        public static bool operator !=(PhoneNumber? obj1, PhoneNumber? obj2) => !(obj1 == obj2);
 
         /// <summary>
         /// Returns the string representation of the specified <paramref name="phoneNumber"/>
         /// </summary>
         /// <param name="phoneNumber">The phone number</param>
-        public static implicit operator string(PhoneNumber phoneNumber) => phoneNumber.ToString();
+        public static implicit operator string(PhoneNumber? phoneNumber) => phoneNumber.ToString();
 
         #endregion
     }

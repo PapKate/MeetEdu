@@ -26,6 +26,15 @@ namespace AppointMate
         public string? LastName { get; set; }
 
         /// <summary>
+        /// Gets or sets a salted and hashed representation of the password for this user.
+        /// </summary>
+        public string PasswordHash
+        {
+            get => mPasswordHash ?? string.Empty;
+            set => mPasswordHash = value;
+        }
+
+        /// <summary>
         /// The email
         /// </summary>
         public string? Email { get; set; }

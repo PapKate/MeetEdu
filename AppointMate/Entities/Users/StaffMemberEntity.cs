@@ -1,4 +1,7 @@
-﻿using MongoDB.Bson;
+﻿using AutoMapper;
+
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace AppointMate
 {
@@ -17,7 +20,7 @@ namespace AppointMate
         /// <summary>
         /// The member of the <see cref="Labels"/> property
         /// </summary>
-        private IEnumerable<LabelEntity>? mLabels;
+        private IEnumerable<EmbeddedLabelEntity>? mLabels;
 
         #endregion
 
@@ -45,16 +48,11 @@ namespace AppointMate
         /// <summary>
         /// The labels
         /// </summary>
-        public IEnumerable<LabelEntity> Labels
+        public IEnumerable<EmbeddedLabelEntity> Labels
         {
-            get => mLabels ?? Enumerable.Empty<LabelEntity>();
+            get => mLabels ?? Enumerable.Empty<EmbeddedLabelEntity>();
             set => mLabels = value;
         }
-
-        /// <summary>
-        /// The work hours
-        /// </summary>
-        public WeeklyScheduleEntity? WorkHours { get; set; }
 
         #endregion
 
@@ -93,6 +91,25 @@ namespace AppointMate
             => EntityHelpers.ToResponseModel<StaffMemberResponseModel>(this);
 
         /// <summary>
+        /// Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
+        /// NOTE: This method only affects the properties that can't be mapped by the <see cref="Mapper"/> and are not null!
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="entity">The entity</param>
+        /// <returns></returns>
+        public static void UpdateNonAutoMapperValues(StaffMemberRequestModel model, StaffMemberEntity entity)
+        {
+            // If there are labels...
+            if(model.Labels is null)
+                // Return
+                return;
+            
+            var labels = AppointMateDbMapper.StaffMemberLabels.AsQueryable().Where(x => model.Labels.Any(y => y == x.Id.ToString())).ToList();
+
+            entity.Labels = labels.Select(x => x.ToEmbeddedEntity()); 
+        }
+
+        /// <summary>
         /// Creates and returns a <see cref="EmbeddedStaffMemberEntity"/> from the current <see cref="StaffMemberEntity"/>
         /// </summary>
         /// <returns></returns>
@@ -116,9 +133,9 @@ namespace AppointMate
         private string? mQuote;
 
         /// <summary>
-        /// The member of the <see cref="Roles"/> property
+        /// The member of the <see cref="Labels"/> property
         /// </summary>
-        private IEnumerable<string>? mRoles;
+        private IEnumerable<string>? mLabels;
 
         #endregion
 
@@ -139,12 +156,12 @@ namespace AppointMate
         public bool IsOwner { get; set; }
 
         /// <summary>
-        /// The roles
+        /// The labels
         /// </summary>
-        public IEnumerable<string> Roles
+        public IEnumerable<string> Labels
         {
-            get => mRoles ?? Enumerable.Empty<string>();
-            set => mRoles = value;
+            get => mLabels ?? Enumerable.Empty<string>();
+            set => mLabels = value;
         }
 
         #endregion

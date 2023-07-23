@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Core.Servers;
 using MongoDB.Driver.Linq;
 
 namespace AppointMate

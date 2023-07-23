@@ -93,13 +93,12 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <param name="entity">The entity</param>
-        /// <param name="companyId">The company id</param>
         /// <returns></returns>
-        public static Task UpdateNonAutoMapperValuesAsync(CustomerServicePaymentRequestModel model, CustomerServicePaymentEntity entity) 
-            => EntityHelpers.UpdateNonAutoMapperValueAsync(
+        public static async Task UpdateNonAutoMapperValuesAsync(CustomerServicePaymentRequestModel model, CustomerServicePaymentEntity entity) 
+            => await EntityHelpers.UpdateNonAutoMapperValueAsync(
                         model,
                         entity,
-                        x => x.PaymentMethodId,
+                        x => x.PaymentMethodId ?? string.Empty,
                         x => x.PaymentMethod,
                         AppointMateDbMapper.PaymentMethods.AsQueryable(),
                         x => x.ToEmbeddedEntity(entity.Amount));
