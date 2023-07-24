@@ -126,7 +126,7 @@ namespace AppointMate
     /// <summary>
     /// A minimal version of the <see cref="UserResponseModel"/> used when embedding
     /// </summary>
-    public class EmbeddedUserResponseModel : EmbeddedStandardResponseModel
+    public class EmbeddedUserResponseModel : EmbeddedBaseResponseModel
     {
         #region Private Members
 

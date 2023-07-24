@@ -3,41 +3,19 @@
     /// <summary>
     /// Request model used for a customer
     /// </summary>
-    public class CustomerRequestModel : UserRequestModel, ICompanyIdentifiable<string>
+    public class CustomerRequestModel : BaseRequestModel
     {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="CompanyId"/> property
-        /// </summary>
-        private string? mCompanyId;
-
-        /// <summary>
-        /// The member of the <see cref="UserId"/> property
-        /// </summary>
-        private string? mUserId;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
         /// The company id
         /// </summary>
-        public string CompanyId
-        {
-            get => mCompanyId ?? string.Empty;
-            set => mCompanyId = value;
-        }
+        public string? CompanyId { get; set; }
 
         /// <summary>
         /// The id of the user
         /// </summary>
-        public string UserId
-        {
-            get => mUserId ?? string.Empty;
-            set => mUserId = value;
-        }
+        public string? UserId { get; set; }
 
         #endregion
 

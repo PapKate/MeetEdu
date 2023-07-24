@@ -62,7 +62,7 @@ namespace AppointMate
         /// <summary>
         /// The customer point offset logs collection name
         /// </summary>
-        public const string CustomerCustomerPointOffsetLogsCollectionName = Signature + "CustomerPointOffsetLogs";
+        public const string CustomerPointOffsetLogsCollectionName = Signature + "CustomerPointOffsetLogs";
 
         /// <summary>
         /// The payment methods collection name
@@ -75,9 +75,9 @@ namespace AppointMate
         public const string UsersCollectionName = Signature + "Users";
 
         /// <summary>
-        /// The user favorite companies collection name
+        /// The customer favorite companies collection name
         /// </summary>
-        public const string UserFavoriteCompaniesCollectionName = Signature + "UserFavoriteCompanies";
+        public const string CustomerFavoriteCompaniesCollectionName = Signature + "CustomerFavoriteCompanies";
 
         /// <summary>
         /// The services collection name
@@ -159,16 +159,7 @@ namespace AppointMate
         /// <summary>
         /// The customer point offset logs collection
         /// </summary>
-        public static IMongoCollection<CustomerPointOffsetLogEntity> CustomerPointOffsetLogs => DI.Database.GetCollection<CustomerPointOffsetLogEntity>(CustomerCustomerPointOffsetLogsCollectionName);
-
-        #endregion
-
-        #region Reviews
-
-        /// <summary>
-        /// The customer service reviews collection
-        /// </summary>
-        public static IMongoCollection<CustomerServiceReviewEntity> CustomerServiceReviews => DI.Database.GetCollection<CustomerServiceReviewEntity>(CustomerServiceReviewsCollectionName);
+        public static IMongoCollection<CustomerPointOffsetLogEntity> CustomerPointOffsetLogs => DI.Database.GetCollection<CustomerPointOffsetLogEntity>(CustomerPointOffsetLogsCollectionName);
 
         #endregion
 
@@ -221,6 +212,16 @@ namespace AppointMate
         /// The customer notes collection
         /// </summary>
         public static IMongoCollection<CustomerNoteEntity> CustomerNotes => DI.Database.GetCollection<CustomerNoteEntity>(CustomerNotesCollectionName);
+
+        /// <summary>
+        /// The customer service reviews collection
+        /// </summary>
+        public static IMongoCollection<CustomerServiceReviewEntity> CustomerServiceReviews => DI.Database.GetCollection<CustomerServiceReviewEntity>(CustomerServiceReviewsCollectionName);
+
+        /// <summary>
+        /// The customer favorite companies collection
+        /// </summary>
+        public static IMongoCollection<CustomerFavoriteCompanyEntity> CustomerFavoriteCompanies => DI.Database.GetCollection<CustomerFavoriteCompanyEntity>(CustomerFavoriteCompaniesCollectionName);
 
         #endregion
 

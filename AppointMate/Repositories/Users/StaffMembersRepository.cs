@@ -33,20 +33,63 @@ namespace AppointMate
         #region Public Methods
 
         /// <summary>
-        /// Adds a staff member
+        /// Register a staff member that was previously not a user
         /// </summary>
+        /// <param name="companyId">The company id</param>
+        /// <param name="user">The user request model</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<StaffMemberEntity> AddStaffMemberAsync(StaffMemberRequestModel model)
-            => await AppointMateDbMapper.StaffMembers.AddAsync(StaffMemberEntity.FromRequestModel(model));
+        public async Task<WebServerFailable<StaffMemberEntity>> RegisterStaffMemberAsync(ObjectId companyId, UserRequestModel user, StaffMemberRequestModel model)
+        {
+            // Adds the user 
+            var userEntity = await UsersRepository.Instance.AddUserAsync(user);
+
+            var entity = StaffMemberEntity.FromRequestModel(companyId, userEntity.Id, model);
+            
+            await AppointMateDbMapper.StaffMembers.AddAsync(entity);
+
+            // Returns the entity
+            return entity;
+        }
 
         /// <summary>
-        /// Adds a list of staff members 
+        /// Registers a staff member that is already a user
         /// </summary>
-        /// <param name="models">The models</param>
+        /// <param name="companyId">The company id</param>
+        /// <param name="userId">The user id</param>
+        /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<StaffMemberEntity>>> AddStaffMembersAsync(IEnumerable<StaffMemberRequestModel> models)
-            => new WebServerFailable<IEnumerable<StaffMemberEntity>>(await AppointMateDbMapper.StaffMembers.AddRangeAsync(models.Select(StaffMemberEntity.FromRequestModel).ToList()));
+        public async Task<WebServerFailable<StaffMemberEntity>> RegisterStaffMemberAsync(ObjectId companyId, ObjectId userId, StaffMemberRequestModel model)
+        {
+            // Gets the user with the specified id
+            var user = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+            if (user is null)
+                return AppointMateWebServerConstants.InvalidRegistrationCredentialsErrorMessage;
+
+            var entity = StaffMemberEntity.FromRequestModel(companyId, user.Id, model);
+
+            await AppointMateDbMapper.StaffMembers.AddAsync(entity);
+
+            // Returns the entity
+            return entity;
+        }
+
+        ///// <summary>
+        ///// Adds a staff member
+        ///// </summary>
+        ///// <param name="model">The model</param>
+        ///// <returns></returns>
+        //public async Task<StaffMemberEntity> AddStaffMemberAsync(StaffMemberRequestModel model)
+        //    => await AppointMateDbMapper.StaffMembers.AddAsync(StaffMemberEntity.FromRequestModel(model));
+
+        ///// <summary>
+        ///// Adds a list of staff members 
+        ///// </summary>
+        ///// <param name="models">The models</param>
+        ///// <returns></returns>
+        //public async Task<WebServerFailable<IEnumerable<StaffMemberEntity>>> AddStaffMembersAsync(IEnumerable<StaffMemberRequestModel> models)
+        //    => new WebServerFailable<IEnumerable<StaffMemberEntity>>(await AppointMateDbMapper.StaffMembers.AddRangeAsync(models.Select(StaffMemberEntity.FromRequestModel).ToList()));
 
         /// <summary>
         /// Updates the staff member with the specified <paramref name="id"/>
@@ -56,10 +99,14 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<StaffMemberEntity>> UpdateStaffMemberAsync(ObjectId id, StaffMemberRequestModel model)
         {
-            var entity = await AppointMateDbMapper.StaffMembers.UpdateAsync(id, model);
+            var entity = await AppointMateDbMapper.StaffMembers.FirstOrDefaultAsync(id);
 
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.StaffMembers));
+
+            StaffMemberEntity.UpdateNonAutoMapperValues(model, entity);
+
+            await AppointMateDbMapper.StaffMembers.UpdateAsync(entity);
 
             return entity;
         }

@@ -8,7 +8,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a staff member document in the MongoDB
     /// </summary>
-    public class StaffMemberEntity : UserEntity, IUserIdentifiable<ObjectId>
+    public class StaffMemberEntity : DateEntity, IUserIdentifiable<ObjectId>, ICompanyIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -30,6 +30,11 @@ namespace AppointMate
         /// The id of the user
         /// </summary>
         public ObjectId UserId { get; set; }
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// The quote
@@ -73,13 +78,20 @@ namespace AppointMate
         /// <summary>
         /// Creates and returns a <see cref="StaffMemberEntity"/> from the specified <paramref name="model"/>
         /// </summary>
+        /// <param name="companyId"></param>
+        /// <param name="userId"></param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static StaffMemberEntity FromRequestModel(StaffMemberRequestModel model)
+        public static StaffMemberEntity FromRequestModel(ObjectId companyId, ObjectId userId, StaffMemberRequestModel model)
         {
             var entity = new StaffMemberEntity();
 
             DI.Mapper.Map(model, entity);
+            entity.UserId = userId;
+            entity.CompanyId = companyId;
+
+            UpdateNonAutoMapperValues(model, entity);
+
             return entity;
         }
 
@@ -87,7 +99,7 @@ namespace AppointMate
         /// Creates and returns a <see cref="StaffMemberResponseModel"/> from the current <see cref="StaffMemberEntity"/>
         /// </summary>
         /// <returns></returns>
-        public new StaffMemberResponseModel ToResponseModel()
+        public StaffMemberResponseModel ToResponseModel()
             => EntityHelpers.ToResponseModel<StaffMemberResponseModel>(this);
 
         /// <summary>
@@ -113,7 +125,7 @@ namespace AppointMate
         /// Creates and returns a <see cref="EmbeddedStaffMemberEntity"/> from the current <see cref="StaffMemberEntity"/>
         /// </summary>
         /// <returns></returns>
-        public new EmbeddedStaffMemberEntity ToEmbeddedEntity()
+        public EmbeddedStaffMemberEntity ToEmbeddedEntity()
             => EntityHelpers.ToEmbeddedEntity<EmbeddedStaffMemberEntity>(this);
 
         #endregion
@@ -123,7 +135,7 @@ namespace AppointMate
     /// A minimal version of the <see cref="StaffMemberEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedStaffMemberEntity : EmbeddedUserEntity
+    public class EmbeddedStaffMemberEntity : EmbeddedBaseEntity
     {
         #region Private Members
 
@@ -140,6 +152,16 @@ namespace AppointMate
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The id of the user
+        /// </summary>
+        public ObjectId UserId { get; set; }
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// The quote

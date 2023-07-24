@@ -1,4 +1,6 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a customer service review document in the MongoDB
@@ -15,6 +17,16 @@
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The customer id
+        /// </summary>
+        public ObjectId CustomerId { get; set; }
+
+        /// <summary>
+        /// The service id
+        /// </summary>
+        public ObjectId ServiceId { get; set; }
 
         /// <summary>
         /// The customer service

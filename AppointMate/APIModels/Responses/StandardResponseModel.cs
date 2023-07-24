@@ -69,7 +69,7 @@ namespace AppointMate
     /// <summary>
     /// The embedded standard response model
     /// </summary>
-    public abstract class EmbeddedStandardResponseModel : BaseEmbeddedResponseModel, INameable, IColorable
+    public abstract class EmbeddedStandardResponseModel : EmbeddedBaseResponseModel, INameable, IColorable
     {
         #region Private Properties
 

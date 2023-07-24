@@ -43,7 +43,7 @@
     /// <summary>
     /// The base for all the embedded response models
     /// </summary>
-    public abstract class BaseEmbeddedResponseModel : BaseResponseModel, IEmbeddableIdentifiable<string>
+    public abstract class EmbeddedBaseResponseModel : BaseResponseModel, IEmbeddableIdentifiable<string>
     {
         #region Private Properties
 
@@ -72,7 +72,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public BaseEmbeddedResponseModel() : base()
+        public EmbeddedBaseResponseModel() : base()
         {
 
         }

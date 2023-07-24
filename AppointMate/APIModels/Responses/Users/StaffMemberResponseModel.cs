@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a staff member
     /// </summary>
-    public class StaffMemberResponseModel : UserResponseModel
+    public class StaffMemberResponseModel : DateResponseModel
     {
         #region Private Members
 
@@ -67,7 +67,7 @@
     /// <summary>
     /// A minimal version of the <see cref="StaffMemberResponseModel"/> used when embedding
     /// </summary>
-    public class EmbeddedStaffMemberResponseModel : EmbeddedUserResponseModel
+    public class EmbeddedStaffMemberResponseModel : EmbeddedBaseEntity
     {
         #region Private Members
 

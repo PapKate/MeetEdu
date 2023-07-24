@@ -1,11 +1,13 @@
-﻿using MongoDB.Bson;
+﻿using AutoMapper;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace AppointMate
 {
     /// <summary>
     /// Represents a customer document in the MongoDB
     /// </summary>
-    public class CustomerEntity: UserEntity, ICompanyIdentifiable<ObjectId>, IUserIdentifiable<ObjectId>
+    public class CustomerEntity: DateEntity, ICompanyIdentifiable<ObjectId>, IUserIdentifiable<ObjectId>
     {
         #region Public Properties
 
@@ -53,13 +55,18 @@ namespace AppointMate
         /// <summary>
         /// Creates and returns a <see cref="CustomerEntity"/> from the specified <paramref name="model"/>
         /// </summary>
+        /// <param name="companyId"></param>
+        /// <param name="userId"></param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static CustomerEntity FromRequestModel(CustomerRequestModel model)
+        public static CustomerEntity FromRequestModel(ObjectId companyId, ObjectId userId, CustomerRequestModel model)
         {
             var entity = new CustomerEntity();
 
             DI.Mapper.Map(model, entity);
+            entity.CompanyId = companyId;
+            entity.UserId = userId; 
+
             return entity;
         }
 
@@ -67,14 +74,33 @@ namespace AppointMate
         /// Creates and returns a <see cref="CustomerResponseModel"/> from the current <see cref="CustomerEntity"/>
         /// </summary>
         /// <returns></returns>
-        public new CustomerResponseModel ToResponseModel()
+        public CustomerResponseModel ToResponseModel()
             => EntityHelpers.ToResponseModel<CustomerResponseModel>(this);
+
+        /// <summary>
+        /// Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
+        /// NOTE: This method only affects the properties that can't be mapped by the <see cref="Mapper"/> and are not null!
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="entity">The entity</param>
+        /// <returns></returns>
+        public static async void UpdateNonAutoMapperValues(CustomerRequestModel model, CustomerEntity entity)
+        {
+            var customerSessions = await AppointMateDbMapper.CustomerServiceSessions.SelectAsync(x => x.CustomerId == entity.Id);
+            entity.TotalAppointments = (uint)customerSessions.Count();
+
+            var customerFavoriteCompanies = await AppointMateDbMapper.CustomerFavoriteCompanies.SelectAsync(x => x.CustomerId == entity.Id);
+            entity.TotalFavoriteCompanies = (uint)customerSessions.Count();
+            
+            var customerReviews = await AppointMateDbMapper.CustomerServiceReviews.SelectAsync(x => x.CustomerId == entity.Id);
+            entity.TotalReviews = (uint)customerReviews.Count();
+        }
 
         /// <summary>
         /// Creates and returns a <see cref="EmbeddedCustomerEntity"/> from the current <see cref="CustomerEntity"/>
         /// </summary>
         /// <returns></returns>
-        public new EmbeddedCustomerEntity ToEmbeddedEntity()
+        public EmbeddedCustomerEntity ToEmbeddedEntity()
             => EntityHelpers.ToEmbeddedEntity<EmbeddedCustomerEntity>(this);
 
         #endregion
@@ -84,7 +110,7 @@ namespace AppointMate
     /// A minimal version of the <see cref="CustomerEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedCustomerEntity : EmbeddedUserEntity, ICompanyIdentifiable<ObjectId>, IUserIdentifiable<ObjectId>
+    public class EmbeddedCustomerEntity : EmbeddedBaseEntity, ICompanyIdentifiable<ObjectId>, IUserIdentifiable<ObjectId>
     {
         #region Public Properties
 

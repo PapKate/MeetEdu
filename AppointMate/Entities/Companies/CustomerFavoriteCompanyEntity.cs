@@ -3,7 +3,7 @@
     /// <summary>
     /// Only entity
     /// </summary>
-    public class UserFavoriteCompanyEntity: BaseEntity
+    public class CustomerFavoriteCompanyEntity: BaseEntity
     {
         #region Public Properties
 
@@ -24,7 +24,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public UserFavoriteCompanyEntity() : base()
+        public CustomerFavoriteCompanyEntity() : base()
         {
 
         }

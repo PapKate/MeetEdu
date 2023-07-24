@@ -33,20 +33,63 @@ namespace AppointMate
         #region Public Methods
 
         /// <summary>
-        /// Adds a customer
+        /// Register a customer that was previously not a user
         /// </summary>
+        /// <param name="companyId">The company id</param>
+        /// <param name="user">The user request model</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<CustomerEntity> AddCustomerAsync(CustomerRequestModel model)
-            => await AppointMateDbMapper.Customers.AddAsync(CustomerEntity.FromRequestModel(model));
+        public async Task<WebServerFailable<CustomerEntity>> RegisterCustomerAsync(ObjectId companyId, UserRequestModel user, CustomerRequestModel model)
+        {
+            // Adds the user 
+            var userEntity = await UsersRepository.Instance.AddUserAsync(user);
+
+            var entity = CustomerEntity.FromRequestModel(companyId, userEntity.Id, model);
+
+            await AppointMateDbMapper.Customers.AddAsync(entity);
+
+            // Returns the entity
+            return entity;
+        }
 
         /// <summary>
-        /// Adds a list of customers
+        /// Registers a customer that is already a user
         /// </summary>
-        /// <param name="models">The models</param>
+        /// <param name="companyId">The company id</param>
+        /// <param name="userId">The user id</param>
+        /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<CustomerEntity>>> AddCustomersAsync(IEnumerable<CustomerRequestModel> models)
-            => new WebServerFailable<IEnumerable<CustomerEntity>>(await AppointMateDbMapper.Customers.AddRangeAsync(models.Select(CustomerEntity.FromRequestModel).ToList()));
+        public async Task<WebServerFailable<CustomerEntity>> RegisterCustomerAsync(ObjectId companyId, ObjectId userId, CustomerRequestModel model)
+        {
+            // Gets the user with the specified id
+            var user = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+            if (user is null)
+                return AppointMateWebServerConstants.InvalidRegistrationCredentialsErrorMessage;
+
+            var entity = CustomerEntity.FromRequestModel(companyId, user.Id, model);
+
+            await AppointMateDbMapper.Customers.AddAsync(entity);
+
+            // Returns the entity
+            return entity;
+        }
+
+        ///// <summary>
+        ///// Adds a customer
+        ///// </summary>
+        ///// <param name="model">The model</param>
+        ///// <returns></returns>
+        //public async Task<CustomerEntity> AddCustomerAsync(CustomerRequestModel model)
+        //    => await AppointMateDbMapper.Customers.AddAsync(CustomerEntity.FromRequestModel(model));
+
+        ///// <summary>
+        ///// Adds a list of customers
+        ///// </summary>
+        ///// <param name="models">The models</param>
+        ///// <returns></returns>
+        //public async Task<WebServerFailable<IEnumerable<CustomerEntity>>> AddCustomersAsync(IEnumerable<CustomerRequestModel> models)
+        //    => new WebServerFailable<IEnumerable<CustomerEntity>>(await AppointMateDbMapper.Customers.AddRangeAsync(models.Select(CustomerEntity.FromRequestModel).ToList()));
 
         /// <summary>
         /// Updates the customer with the specified <paramref name="id"/>

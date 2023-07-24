@@ -3,9 +3,19 @@
     /// <summary>
     /// Request model used for a staff member
     /// </summary>
-    public class StaffMemberRequestModel : UserRequestModel
+    public class StaffMemberRequestModel : BaseRequestModel
     {
         #region Public Properties
+
+        /// <summary>
+        /// The user id
+        /// </summary>
+        public string? UserId { get; set; }
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public string? CompanyId { get; set; }
 
         /// <summary>
         /// The quote
@@ -21,11 +31,6 @@
         /// The labels
         /// </summary>
         public IEnumerable<string>? Labels { get; set; }
-
-        /// <summary>
-        /// The work hours
-        /// </summary>
-        public string? WorkHours { get; set; }
 
         #endregion
 

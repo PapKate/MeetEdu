@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a customer
     /// </summary>
-    public class CustomerResponseModel : UserResponseModel, ICompanyIdentifiable<string>
+    public class CustomerResponseModel : DateResponseModel, ICompanyIdentifiable<string>
     {
         #region Private Members
 
@@ -72,7 +72,7 @@
     /// <summary>
     /// A minimal version of the <see cref="CustomerResponseModel"/> used when embedding
     /// </summary>
-    public class EmbeddedCustomerResponseModel : EmbeddedUserResponseModel
+    public class EmbeddedCustomerResponseModel : EmbeddedBaseResponseModel
     {
         #region Private Members
 

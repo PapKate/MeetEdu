@@ -87,7 +87,7 @@
     /// <summary>
     /// A minimal version of the <see cref="CustomerServiceResponseModel"/> used when embedding
     /// </summary>
-    public class EmbeddedCustomerServiceResponseModel : BaseEmbeddedResponseModel
+    public class EmbeddedCustomerServiceResponseModel : EmbeddedBaseResponseModel
     {
         #region Public Properties
 
