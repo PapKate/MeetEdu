@@ -38,6 +38,17 @@
         public bool? HasOwed { get; set; }
 
         /// <summary>
+        /// The date of the first or only session 
+        /// NOTE: If the service has only one session the start and end date are the same!
+        /// </summary>
+        public DateTimeOffset DateStart { get; set; }
+
+        /// <summary>
+        /// The number of sessions
+        /// </summary>
+        public uint TotalSessions { get; set; }
+
+        /// <summary>
         /// The payments
         /// </summary>
         public IEnumerable<CustomerServicePaymentRequestModel>? Payments { get; set; }

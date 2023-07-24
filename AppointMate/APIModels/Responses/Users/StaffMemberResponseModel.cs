@@ -43,12 +43,7 @@
             get => mLabels ?? Enumerable.Empty<LabelResponseModel>();
             set => mLabels = value;
         }
-
-        /// <summary>
-        /// The work hours
-        /// </summary>
-        public WeeklyScheduleEntity? WorkHours { get; set; }
-
+        
         #endregion
 
         #region Constructors
@@ -77,9 +72,9 @@
         private string? mQuote;
 
         /// <summary>
-        /// The member of the <see cref="Roles"/> property
+        /// The member of the <see cref="Labels"/> property
         /// </summary>
-        private IEnumerable<string>? mRoles;
+        private IEnumerable<string>? mLabels;
 
         #endregion
 
@@ -100,12 +95,12 @@
         public bool IsOwner { get; set; }
 
         /// <summary>
-        /// The roles
+        /// The labels
         /// </summary>
-        public IEnumerable<string> Roles
+        public IEnumerable<string> Labels
         {
-            get => mRoles ?? Enumerable.Empty<string>();
-            set => mRoles = value;
+            get => mLabels ?? Enumerable.Empty<string>();
+            set => mLabels = value;
         }
 
         #endregion

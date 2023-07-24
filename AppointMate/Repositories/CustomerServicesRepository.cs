@@ -36,10 +36,18 @@ namespace AppointMate
         /// <summary>
         /// Adds a customer service
         /// </summary>
+        /// <param name="serviceId">The service id</param>
+        /// <param name="customerId">The customer id</param>
         /// <param name="model">The model</param>
+        /// <param name="session">The session model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CustomerServiceEntity>> AddCustomerServiceAsync(CustomerServiceRequestModel model)
+        public async Task<WebServerFailable<AddCustomerServiceResult>> AddCustomerServiceAsync(CustomerServiceRequestModel model, CustomerServiceSessionRequestModel session)
         {
+            // If there is no session...
+            if (session is null)
+                // Return error message
+                return AppointMateWebServerConstants.NoSessionWasCreatedErrorMessage;
+
             // Create the customer service
             var result = await CustomerServiceEntity.FromRequestModelAsync(model);
 
@@ -47,8 +55,13 @@ namespace AppointMate
             if (!result.IsSuccessful || result.Result is null)
                 // Return
                 return result.ToUnsuccessfulWebServerFailable();
+            
+            await AppointMateDbMapper.CustomerServices.AddAsync(result.Result);
+            
+            var sessionEntity = CustomerServiceSessionEntity.FromRequestModel(session);
+            await AppointMateDbMapper.CustomerServiceSessions.AddAsync(sessionEntity);
 
-            return await AppointMateDbMapper.CustomerServices.AddAsync(result.Result);
+            return new AddCustomerServiceResult(result.Result, sessionEntity);
         }
 
         /// <summary>
@@ -102,7 +115,22 @@ namespace AppointMate
                 // Return
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.CustomerServices));
 
-            // TODO: Customer service payments and scheduled payments and sessions
+            // If the service has already started...
+            if(customerService.DateStart < DateTimeOffset.Now)
+            {
+                // Gets the future scheduled payments
+                var scheduledPayments = customerService.ScheduledPayments.Where(x => x.DateScheduled > DateTimeOffset.Now).ToList();
+                // Deletes them
+                await AppointMateDbMapper.CustomerServiceScheduledPayments.DeleteManyAsync(x => scheduledPayments.Any(y => y == x));
+
+                // Calculates the canceled amount
+                customerService.CancelledAmount = scheduledPayments.Select(x => x.Amount).Sum();
+                customerService.DateCanceled = DateTimeOffset.Now;
+                customerService.IsCanceled = true;
+
+                // Deletes the future sessions
+                await AppointMateDbMapper.CustomerServiceSessions.DeleteManyAsync(x => x.CustomerId == customerService.CustomerId && x.ServiceId == customerService.ServiceId);
+            }
 
             // Delete the customer service
             return await AppointMateDbMapper.CustomerServices.DeleteAsync(id);
@@ -211,8 +239,18 @@ namespace AppointMate
 
             return entity;
         }
+        #endregion
 
         #endregion
+        
+        #region Public Classes
+        
+        /// <summary>
+        /// The result of adding a service
+        /// </summary>
+        /// <param name="CustomerService"> The customer service </param>
+        /// <param name="Session"> The session </param>
+        public record AddCustomerServiceResult(CustomerServiceEntity CustomerService, CustomerServiceSessionEntity Session);
 
         #endregion
     }

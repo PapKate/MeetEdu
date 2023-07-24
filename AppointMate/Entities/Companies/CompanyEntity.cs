@@ -14,9 +14,9 @@ namespace AppointMate
         private string? mNote;
 
         /// <summary>
-        /// The member of the <see cref="Category"/> property
+        /// The member of the <see cref="Categories"/> property
         /// </summary>
-        private string? mCategory;
+        private IEnumerable<CompanyType>? mCategories;
 
         /// <summary>
         /// The member of the <see cref="Description"/> property
@@ -33,12 +33,12 @@ namespace AppointMate
         #region Public Properties
 
         /// <summary>
-        /// The category
+        /// The categories
         /// </summary>
-        public string Category
+        public IEnumerable<CompanyType> Categories
         {
-            get => mCategory ?? string.Empty;
-            set => mCategory = value;
+            get => mCategories ?? Enumerable.Empty<CompanyType>();
+            set => mCategories = value;
         }
 
         /// <summary>
@@ -70,19 +70,9 @@ namespace AppointMate
         public WeeklyScheduleDataModel? WorkHours { get; set; }
 
         /// <summary>
-        /// The small image URL
-        /// </summary>
-        public Uri? SmallImageUrl { get; set; }
-
-        /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? NormalImageUrl { get; set; }
-
-        /// <summary>
-        /// The large image URL
-        /// </summary>
-        public Uri? LargeImageUrl { get; set; }
+        public Uri? ImageUrl { get; set; }
 
         /// <summary>
         /// The location
@@ -145,12 +135,98 @@ namespace AppointMate
             => EntityHelpers.ToResponseModel<CompanyResponseModel>(this);
 
         /// <summary>
-        /// Returns a string that represents the current object.
+        /// Creates and returns a <see cref="EmbeddedUserEntity"/> from the current <see cref="UserEntity"/>
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        public EmbeddedCompanyEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedCompanyEntity>(this);
+
+        #endregion
+    }
+
+    /// <summary>
+    /// The embedded company
+    /// </summary>
+    public class EmbeddedCompanyEntity : EmbeddedStandardEntity
+    {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="Note"/> property
+        /// </summary>
+        private string? mNote;
+
+        /// <summary>
+        /// The member of the <see cref="Categories"/> property
+        /// </summary>
+        private IEnumerable<CompanyType>? mCategories;
+
+        /// <summary>
+        /// The member of the <see cref="Description"/> property
+        /// </summary>
+        private string? mDescription;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The categories
+        /// </summary>
+        public IEnumerable<CompanyType> Categories
         {
-            return Name;
+            get => mCategories ?? Enumerable.Empty<CompanyType>();
+            set => mCategories = value;
+        }
+
+        /// <summary>
+        /// The description
+        /// </summary>
+        public string Description
+        {
+            get => mDescription ?? string.Empty;
+            set => mDescription = value;
+        }
+
+        /// <summary>
+        /// The radius for the distance where at home services can be provided in Km
+        /// </summary>
+        public double AtHomeRadius { get; set; }
+
+        /// <summary>
+        /// The note
+        /// </summary>
+        public string Note
+        {
+            get => mNote ?? string.Empty;
+            set => mNote = value;
+        }
+
+        /// <summary>
+        /// The work hours
+        /// </summary>
+        public WeeklyScheduleDataModel? WorkHours { get; set; }
+
+        /// <summary>
+        /// The image URL
+        /// </summary>
+        public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The location
+        /// </summary>
+        public Location? Location { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public EmbeddedCompanyEntity() : base()
+        {
+            
         }
 
         #endregion

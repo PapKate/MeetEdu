@@ -10,6 +10,11 @@
         /// <summary>
         /// Error message indicating invalid registration credentials
         /// </summary>
+        public const string NoSessionWasCreatedErrorMessage = "No session was created. Please add a session and try again.";
+
+        /// <summary>
+        /// Error message indicating invalid registration credentials
+        /// </summary>
         public const string InvalidRegistrationCredentialsErrorMessage = "Please provide all required details to register for an account!";
 
         /// <summary>

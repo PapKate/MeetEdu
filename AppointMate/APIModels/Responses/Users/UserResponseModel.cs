@@ -79,19 +79,9 @@ namespace AppointMate
         public PhoneNumber? PhoneNumber { get; set; }
 
         /// <summary>
-        /// The small image URL
-        /// </summary>
-        public Uri? SmallImageUrl { get; set; }
-
-        /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? NormalImageUrl { get; set; }
-
-        /// <summary>
-        /// The large image URL
-        /// </summary>
-        public Uri? LargeImageUrl { get; set; }
+        public Uri? ImageUrl { get; set; }
 
         /// <summary>
         /// The birthday
@@ -126,7 +116,7 @@ namespace AppointMate
     /// <summary>
     /// A minimal version of the <see cref="UserResponseModel"/> used when embedding
     /// </summary>
-    public class EmbeddedUserResponseModel : EmbeddedBaseResponseModel
+    public class EmbeddedUserResponseModel : EmbeddedBaseResponseModel, IImageable
     {
         #region Private Members
 
@@ -177,19 +167,9 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// The small image URL
-        /// </summary>
-        public Uri? SmallImageUrl { get; set; }
-
-        /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? NormalImageUrl { get; set; }
-
-        /// <summary>
-        /// The large image URL
-        /// </summary>
-        public Uri? LargeImageUrl { get; set; }
+        public Uri? ImageUrl { get; set; }
 
         #endregion
 

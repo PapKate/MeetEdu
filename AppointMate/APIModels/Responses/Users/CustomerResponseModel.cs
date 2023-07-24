@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a customer
     /// </summary>
-    public class CustomerResponseModel : DateResponseModel, ICompanyIdentifiable<string>
+    public class CustomerResponseModel : DateResponseModel, ICompanyIdentifiable<string>, IUserIdentifiable<string>
     {
         #region Private Members
 

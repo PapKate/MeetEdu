@@ -92,19 +92,9 @@
         public PhoneNumber? PhoneNumber { get; set; }
 
         /// <summary>
-        /// The small image URL
-        /// </summary>
-        public Uri? SmallImageUrl { get; set; }
-
-        /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? NormalImageUrl { get; set; }
-
-        /// <summary>
-        /// The large image URL
-        /// </summary>
-        public Uri? LargeImageUrl { get; set; }
+        public Uri? ImageUrl { get; set; }
 
         /// <summary>
         /// The birthday
@@ -171,7 +161,7 @@
     /// A minimal version of the <see cref="UserEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedUserEntity : EmbeddedStandardEntity
+    public class EmbeddedUserEntity : EmbeddedBaseEntity, IImageable
     {
         #region Private Members
 
@@ -222,19 +212,9 @@
         }
 
         /// <summary>
-        /// The small image URL
-        /// </summary>
-        public Uri? SmallImageUrl { get; set; }
-
-        /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? NormalImageUrl { get; set; }
-
-        /// <summary>
-        /// The large image URL
-        /// </summary>
-        public Uri? LargeImageUrl { get; set; }
+        public Uri? ImageUrl { get; set; }
 
         #endregion
 

@@ -32,6 +32,16 @@ namespace AppointMate
         #region Public Properties
 
         /// <summary>
+        /// The customer id
+        /// </summary>
+        public ObjectId CustomerId { get; set; }
+
+        /// <summary>
+        /// The service id
+        /// </summary>
+        public ObjectId ServiceId { get; set; }
+
+        /// <summary>
         /// The amount
         /// </summary>
         public decimal Amount { get => PurchasedAmount - CancelledAmount; set { } }
@@ -81,6 +91,23 @@ namespace AppointMate
         /// The date the customer subscription was canceled
         /// </summary>
         public DateTimeOffset? DateCanceled { get; set; }
+
+        /// <summary>
+        /// The number of sessions
+        /// </summary>
+        public uint TotalSessions { get; set; }
+
+        /// <summary>
+        /// The date of the first or only session 
+        /// NOTE: If the service has only one session the start and end date are the same!
+        /// </summary>
+        public DateTimeOffset DateStart { get; set; }
+
+        /// <summary>
+        /// The date of the last or only session 
+        /// NOTE: If the service has only one session the start and end date are the same!
+        /// </summary>
+        public DateTimeOffset? DateEnd { get; set; }
 
         /// <summary>
         /// The service
@@ -156,6 +183,10 @@ namespace AppointMate
 
             entity.Customer = customer.ToEmbeddedEntity();
             entity.Service = service.ToEmbeddedEntity();
+
+            // If the service has only one session...
+            if (model.TotalSessions == 1)
+                entity.DateEnd = entity.DateStart;
 
             // If there are payments...
             if (!model.Payments.IsNullOrEmpty())

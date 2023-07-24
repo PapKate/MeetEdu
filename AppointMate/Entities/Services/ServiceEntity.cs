@@ -59,6 +59,11 @@ namespace AppointMate
         }
 
         /// <summary>
+        /// A flag indicating whether it has multiple sessions
+        /// </summary>
+        public bool HasMultipleSessions { get; set; }
+
+        /// <summary>
         /// The number of sessions range
         /// </summary>
         public SessionsRange SessionsRange { get; set; }

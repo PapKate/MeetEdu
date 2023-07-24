@@ -1,21 +1,28 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Only entity
     /// </summary>
-    public class CustomerFavoriteCompanyEntity: BaseEntity
+    public class CustomerFavoriteCompanyEntity: BaseEntity, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
     {
         #region Public Properties
 
         /// <summary>
-        /// The company
+        /// The company id
         /// </summary>
-        public string? CompanyId { get; set; }
+        public ObjectId CompanyId { get; set; }
 
         /// <summary>
-        /// The user
+        /// The customer id
         /// </summary>
-        public string? UserId { get; set; }
+        public ObjectId CustomerId { get; set; }
+
+        /// <summary>
+        /// The company
+        /// </summary>
+        public EmbeddedCompanyEntity? Comppany { get; set; }
 
         #endregion
 

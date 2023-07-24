@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a customer service session document in the MongoDB
     /// </summary>
-    public class CustomerServiceSessionEntity : StandardEntity, IDescriptable
+    public class CustomerServiceSessionEntity : StandardEntity, IDescriptable, ICustomerIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -98,6 +98,7 @@ namespace AppointMate
             var entity = new CustomerServiceSessionEntity();
 
             DI.Mapper.Map(model, entity);
+
             return entity;
         }
 
