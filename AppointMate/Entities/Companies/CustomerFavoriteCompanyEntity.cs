@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Only entity
     /// </summary>
-    public class CustomerFavoriteCompanyEntity: BaseEntity, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
+    public class CustomerFavoriteCompanyEntity : DateEntity, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
     {
         #region Public Properties
 

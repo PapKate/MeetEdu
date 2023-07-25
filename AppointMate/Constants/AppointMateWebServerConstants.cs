@@ -8,6 +8,11 @@
         #region Properties
 
         /// <summary>
+        /// Error message indicating no companies were found with the specified ids
+        /// </summary>
+        public const string NoCompaniesWereFoundWithTheSpecifiedIdsErrorMessage = "No companies were found with the specified ids.";
+
+        /// <summary>
         /// Error message indicating invalid registration credentials
         /// </summary>
         public const string NoSessionWasCreatedErrorMessage = "No session was created. Please add a session and try again.";

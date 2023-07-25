@@ -59,6 +59,9 @@ namespace AppointMate
             await AppointMateDbMapper.CustomerServices.AddAsync(result.Result);
             
             var sessionEntity = CustomerServiceSessionEntity.FromRequestModel(session);
+            sessionEntity.Index = 1;
+
+            // Adds the first session
             await AppointMateDbMapper.CustomerServiceSessions.AddAsync(sessionEntity);
 
             return new AddCustomerServiceResult(result.Result, sessionEntity);
