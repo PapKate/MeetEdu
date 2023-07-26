@@ -132,7 +132,7 @@ namespace AppointMate
                 customerService.IsCanceled = true;
 
                 // Deletes the future sessions
-                await AppointMateDbMapper.CustomerServiceSessions.DeleteManyAsync(x => x.CustomerId == customerService.CustomerId && x.ServiceId == customerService.ServiceId);
+                await AppointMateDbMapper.CustomerServiceSessions.DeleteManyAsync(x => x.UserId == customerService.CustomerId && x.ServiceId == customerService.ServiceId);
             }
 
             // Delete the customer service

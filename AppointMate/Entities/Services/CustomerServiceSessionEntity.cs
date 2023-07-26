@@ -21,7 +21,7 @@ namespace AppointMate
         /// <summary>
         /// The customer id
         /// </summary>
-        public ObjectId CustomerId { get; set; }
+        public ObjectId UserId { get; set; }
 
         /// <summary>
         /// The service id

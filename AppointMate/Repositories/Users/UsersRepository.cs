@@ -1,6 +1,5 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Core.Servers;
 using MongoDB.Driver.Linq;
 
 namespace AppointMate
@@ -81,6 +80,96 @@ namespace AppointMate
 
             return entity;
         }
+
+        #region Favorite Companies
+
+        /// <summary>
+        /// Adds a favorite company to the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The user id</param>
+        /// <param name="companyId">The comapny id</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<UserFavoriteCompanyEntity>> AddUserFavoriteCompanyAsync(ObjectId userId, ObjectId companyId)
+        {
+            // Get the user with the specified id
+            var user = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+            // If the user does not exist...
+            if (user is null)
+                return WebServerFailable.NotFound(userId, nameof(AppointMateDbMapper.Users));
+
+            // Gets the company with the specified id
+            var company = await AppointMateDbMapper.Companies.FirstOrDefaultAsync(x => x.Id == companyId);
+
+            // If the company does not exist...
+            if (company is null)
+                return WebServerFailable.NotFound(companyId, nameof(AppointMateDbMapper.Companies));
+
+            // Create the favorite company
+            var entity = new UserFavoriteCompanyEntity()
+            {
+                CompanyId = companyId,
+                UserId = userId,
+                Comppany = company.ToEmbeddedEntity()
+            };
+
+            // Adds the favorite company
+            await AppointMateDbMapper.UserFavoriteCompanies.AddAsync(entity);
+
+            // Returns the entity
+            return entity;
+        }
+
+        /// <summary>
+        /// Adds a list of favorite companies to the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The user id</param>
+        /// <param name="companyIds">The company ids</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<IEnumerable<UserFavoriteCompanyEntity>>> AddUserFavoriteCompaniesAsync(ObjectId userId, IEnumerable<ObjectId> companyIds)
+        {
+            // Get the user with the specified id
+            var user = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+            // If the user does not exist...
+            if (user is null)
+                return WebServerFailable.NotFound(userId, nameof(AppointMateDbMapper.Users));
+
+            // Gets the companies with the specified ids
+            var companies = await AppointMateDbMapper.Companies.SelectAsync(x => companyIds.Any(y => y == x.Id));
+
+            // If the company does not exist...
+            if (companies is null)
+                return AppointMateWebServerConstants.NoCompaniesWereFoundWithTheSpecifiedIdsErrorMessage;
+
+            return new WebServerFailable<IEnumerable<UserFavoriteCompanyEntity>>(await AppointMateDbMapper.UserFavoriteCompanies.AddRangeAsync(companies.Select(x =>
+                new UserFavoriteCompanyEntity()
+                {
+                    CompanyId = x.Id,
+                    UserId = userId,
+                    Comppany = x.ToEmbeddedEntity()
+                })
+            .ToList()));
+        }
+
+        /// <summary>
+        /// Deletes the user favorite company with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<UserFavoriteCompanyEntity>> DeleteUserFavoriteCompanyAsync(ObjectId id)
+        {
+            var entity = await AppointMateDbMapper.UserFavoriteCompanies.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (entity is null)
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.UserFavoriteCompanies));
+
+            await AppointMateDbMapper.UserFavoriteCompanies.DeleteOneAsync(x => x.Id == id);
+
+            return entity;
+        }
+
+        #endregion
 
         #endregion
     }

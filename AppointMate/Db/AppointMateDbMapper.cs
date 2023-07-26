@@ -25,6 +25,11 @@ namespace AppointMate
         public const string CompanyLabelsCollectionName = Signature + "CompanyLabels";
 
         /// <summary>
+        /// The company contact collection name
+        /// </summary>
+        public const string CompanyContactMessagesCollectionName = Signature + "CompanyContactMessages";
+
+        /// <summary>
         /// The company layouts collection name
         /// </summary>
         public const string CompanyLayoutsCollectionName = Signature + "CompanyLayouts";
@@ -77,7 +82,7 @@ namespace AppointMate
         /// <summary>
         /// The customer favorite companies collection name
         /// </summary>
-        public const string CustomerFavoriteCompaniesCollectionName = Signature + "CustomerFavoriteCompanies";
+        public const string UserFavoriteCompaniesCollectionName = Signature + "CustomerFavoriteCompanies";
 
         /// <summary>
         /// The services collection name
@@ -132,6 +137,11 @@ namespace AppointMate
         /// The company layouts collection
         /// </summary>
         public static IMongoCollection<CompanyLayoutEntity> CompanyLayouts => DI.Database.GetCollection<CompanyLayoutEntity>(CompanyLayoutsCollectionName);
+
+        /// <summary>
+        /// The company contact messages collection
+        /// </summary>
+        public static IMongoCollection<CompanyContactMessageEntity> CompanyContactMessages => DI.Database.GetCollection<CompanyContactMessageEntity>(CompanyContactMessagesCollectionName);
 
         #endregion
 
@@ -194,6 +204,11 @@ namespace AppointMate
         /// </summary>
         public static IMongoCollection<UserEntity> Users => DI.Database.GetCollection<UserEntity>(UsersCollectionName);
 
+        /// <summary>
+        /// The user favorite companies collection
+        /// </summary>
+        public static IMongoCollection<UserFavoriteCompanyEntity> UserFavoriteCompanies => DI.Database.GetCollection<UserFavoriteCompanyEntity>(UserFavoriteCompaniesCollectionName);
+
         #endregion
 
         #region Customers
@@ -217,11 +232,6 @@ namespace AppointMate
         /// The customer service reviews collection
         /// </summary>
         public static IMongoCollection<CustomerServiceReviewEntity> CustomerServiceReviews => DI.Database.GetCollection<CustomerServiceReviewEntity>(CustomerServiceReviewsCollectionName);
-
-        /// <summary>
-        /// The customer favorite companies collection
-        /// </summary>
-        public static IMongoCollection<CustomerFavoriteCompanyEntity> CustomerFavoriteCompanies => DI.Database.GetCollection<CustomerFavoriteCompanyEntity>(CustomerFavoriteCompaniesCollectionName);
 
         #endregion
 

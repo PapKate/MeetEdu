@@ -86,10 +86,10 @@ namespace AppointMate
         /// <returns></returns>
         public static async void UpdateNonAutoMapperValues(CustomerRequestModel model, CustomerEntity entity)
         {
-            var customerSessions = await AppointMateDbMapper.CustomerServiceSessions.SelectAsync(x => x.CustomerId == entity.Id);
+            var customerSessions = await AppointMateDbMapper.CustomerServiceSessions.SelectAsync(x => x.UserId == entity.Id);
             entity.TotalAppointments = (uint)customerSessions.Count();
 
-            var customerFavoriteCompanies = await AppointMateDbMapper.CustomerFavoriteCompanies.SelectAsync(x => x.CustomerId == entity.Id);
+            var customerFavoriteCompanies = await AppointMateDbMapper.UserFavoriteCompanies.SelectAsync(x => x.UserId == entity.Id);
             entity.TotalFavoriteCompanies = (uint)customerSessions.Count();
             
             var customerReviews = await AppointMateDbMapper.CustomerServiceReviews.SelectAsync(x => x.CustomerId == entity.Id);

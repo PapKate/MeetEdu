@@ -56,9 +56,14 @@
         public EmbeddedStaffMemberResponseModel? StaffMember { get; set; }
 
         /// <summary>
+        /// The customer
+        /// </summary>
+        public EmbeddedCustomerResponseModel? Customer { get; set; }
+
+        /// <summary>
         /// The service
         /// </summary>
-        public EmbeddedCustomerServiceResponseModel? CustomerService { get; set; }
+        public EmbeddedServiceResponseModel? Service { get; set; }
 
         #endregion
 
@@ -108,9 +113,14 @@
         public SessionStatus SessionStatus { get; set; }
 
         /// <summary>
+        /// The customer
+        /// </summary>
+        public EmbeddedCustomerResponseModel? Customer { get; set; }
+
+        /// <summary>
         /// The service
         /// </summary>
-        public EmbeddedCustomerServiceResponseModel? CustomerService { get; set; }
+        public EmbeddedServiceResponseModel? Service { get; set; }
 
         #endregion
 

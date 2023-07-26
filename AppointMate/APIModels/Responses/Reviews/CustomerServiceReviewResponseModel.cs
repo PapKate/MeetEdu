@@ -17,6 +17,11 @@
         #region Public Properties
 
         /// <summary>
+        /// The customer
+        /// </summary>
+        public EmbeddedCustomerResponseModel? Customer { get; set; }
+
+        /// <summary>
         /// The customer service
         /// </summary>
         public IEnumerable<EmbeddedCustomerServiceSessionResponseModel>? CustomerServiceSessions { get; set; }

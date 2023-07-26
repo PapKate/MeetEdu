@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Only entity
     /// </summary>
-    public class CustomerFavoriteCompanyEntity : DateEntity, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
+    public class UserFavoriteCompanyEntity : DateEntity, ICompanyIdentifiable<ObjectId>, IUserIdentifiable<ObjectId>
     {
         #region Public Properties
 
@@ -15,9 +15,9 @@ namespace AppointMate
         public ObjectId CompanyId { get; set; }
 
         /// <summary>
-        /// The customer id
+        /// The user id
         /// </summary>
-        public ObjectId CustomerId { get; set; }
+        public ObjectId UserId { get; set; }
 
         /// <summary>
         /// The company
@@ -31,7 +31,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerFavoriteCompanyEntity() : base()
+        public UserFavoriteCompanyEntity() : base()
         {
 
         }

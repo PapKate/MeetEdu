@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MongoDB.Bson;
+
+using System;
+using System.ComponentModel.Design;
 
 namespace AppointMate
 {

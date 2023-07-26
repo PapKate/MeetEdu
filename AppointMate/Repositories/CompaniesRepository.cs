@@ -127,6 +127,52 @@ namespace AppointMate
 
         #endregion
 
+        #region Contact Messages
+
+        /// <summary>
+        /// Add a company contact message 
+        /// </summary>
+        /// <param name="companyId">The company id</param>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<CompanyContactMessageEntity>> AddCompanyContactMessageAsync(ObjectId companyId, CompanyContactMessageRequestModel model)
+            => await AppointMateDbMapper.CompanyContactMessages.AddAsync(CompanyContactMessageEntity.FromRequestModel(model, companyId));
+
+        /// <summary>
+        /// Adds a list of company contact messages 
+        /// </summary>
+        /// <param name="companyId">The company id</param>
+        /// <param name="models">The models</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<IEnumerable<CompanyContactMessageEntity>>> AddCompanyContactMessagesAsync(ObjectId companyId, IEnumerable<CompanyContactMessageRequestModel> models)
+            => new WebServerFailable<IEnumerable<CompanyContactMessageEntity>>(await AppointMateDbMapper.CompanyContactMessages.AddRangeAsync(models.Select(x => CompanyContactMessageEntity.FromRequestModel(x, companyId)).ToList()));
+
+        /// <summary>
+        /// Updates the contact message with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<CompanyContactMessageEntity>> UpdateCompanyContactMessageAsync(ObjectId id, CompanyContactMessageRequestModel model)
+        {
+            var entity = await AppointMateDbMapper.CompanyContactMessages.UpdateAsync(id, model);
+
+            if (entity is null)
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.CompanyContactMessages));
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Deletes the company contact message with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<CompanyContactMessageEntity>> DeleteCompanyContactMessageAsync(ObjectId id)
+                => await AppointMateDbMapper.CompanyContactMessages.DeleteAsync(id);
+
+        #endregion
+
         #region Layouts
 
         /// <summary>
