@@ -42,9 +42,12 @@ namespace AppointMate
         public async Task<WebServerFailable<StaffMemberEntity>> RegisterStaffMemberAsync(ObjectId companyId, UserRequestModel user, StaffMemberRequestModel model)
         {
             // Adds the user 
-            var userEntity = await UsersRepository.Instance.AddUserAsync(user);
+            var result = await UsersRepository.Instance.AddUserAsync(user);
 
-            var entity = StaffMemberEntity.FromRequestModel(companyId, userEntity.Id, model);
+            if (!result.IsSuccessful || result.Result is null)
+                return AppointMateWebServerConstants.InvalidRegistrationCredentialsErrorMessage;
+
+            var entity = StaffMemberEntity.FromRequestModel(companyId, result.Result.Id, model);
             
             await AppointMateDbMapper.StaffMembers.AddAsync(entity);
 

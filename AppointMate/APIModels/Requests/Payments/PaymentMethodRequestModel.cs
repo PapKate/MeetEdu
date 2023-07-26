@@ -18,19 +18,9 @@
         public string? IconPathData { get; set; }
 
         /// <summary>
-        /// The small image URL
-        /// </summary>
-        public Uri? SmallImageUrl { get; set; }
-
-        /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? NormalImageUrl { get; set; }
-
-        /// <summary>
-        /// The large image URL
-        /// </summary>
-        public Uri? LargeImageUrl { get; set; }
+        public Uri? ImageUrl { get; set; }
 
         /// <summary>
         /// The flat rate commission

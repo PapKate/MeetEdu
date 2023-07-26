@@ -37,16 +37,20 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<UserEntity> AddUserAsync(UserRequestModel model)
-            => await AppointMateDbMapper.Users.AddAsync(UserEntity.FromRequestModel(model));
+        public async Task<WebServerFailable<UserEntity>> AddUserAsync(UserRequestModel model)
+        {
+            if (model.Username.IsNullOrEmpty()
+            || model.FirstName.IsNullOrEmpty()
+            || model.LastName.IsNullOrEmpty()
+            || model.Email.IsNullOrEmpty()
+            || model.PasswordHash.IsNullOrEmpty()
+            || model.PhoneNumber is null
+            || model.Billing is null
+            || model.DateOfBirth is null)
+                return AppointMateWebServerConstants.InvalidRegistrationCredentialsErrorMessage;
 
-        /// <summary>
-        /// Adds a list of users
-        /// </summary>
-        /// <param name="models">The models</param>
-        /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<UserEntity>>> AddUsersAsync(IEnumerable<UserRequestModel> models)
-            => new WebServerFailable<IEnumerable<UserEntity>>(await AppointMateDbMapper.Users.AddRangeAsync(models.Select(UserEntity.FromRequestModel).ToList()));
+            return await AppointMateDbMapper.Users.AddAsync(UserEntity.FromRequestModel(model));
+        }
 
         /// <summary>
         /// Updates the user with the specified <paramref name="id"/>

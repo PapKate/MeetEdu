@@ -55,17 +55,13 @@ namespace AppointMate
         /// <summary>
         /// Creates and returns a <see cref="CustomerEntity"/> from the specified <paramref name="model"/>
         /// </summary>
-        /// <param name="companyId"></param>
-        /// <param name="userId"></param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static CustomerEntity FromRequestModel(ObjectId companyId, ObjectId userId, CustomerRequestModel model)
+        public static CustomerEntity FromRequestModel(CustomerRequestModel model)
         {
             var entity = new CustomerEntity();
 
             DI.Mapper.Map(model, entity);
-            entity.CompanyId = companyId;
-            entity.UserId = userId; 
 
             return entity;
         }

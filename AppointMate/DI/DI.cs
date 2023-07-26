@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 
+using Microsoft.Extensions.DependencyInjection;
+
 using MongoDB.Driver;
 
 namespace AppointMate
@@ -41,6 +43,36 @@ namespace AppointMate
         /// The dependency injection service provider
         /// </summary>
         public static IServiceProvider? Provider { get; set; }
+
+        /// <summary>
+        /// The accounts manager
+        /// </summary>
+        public static AccountsRepository AccountsRepository => (AccountsRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(AccountsRepository))!;
+
+        /// <summary>
+        /// The users manager
+        /// </summary>
+        public static UsersRepository UsersRepository => (UsersRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(UsersRepository))!;
+
+        /// <summary>
+        /// The companies manager
+        /// </summary>
+        public static CompaniesRepository CompaniesRepository=> (CompaniesRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(CompaniesRepository))!;
+
+        /// <summary>
+        /// The staff members manager
+        /// </summary>
+        public static StaffMembersRepository StaffMembersRepository => (StaffMembersRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(StaffMembersRepository))!;
+
+        /// <summary>
+        /// The customers manager
+        /// </summary>
+        public static CustomersRepository CustomersRepository => (CustomersRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(CustomersRepository))!;
+
+        /// <summary>
+        /// The services manager
+        /// </summary>
+        public static ServicesRepository ServicesRepository => (ServicesRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(ServicesRepository))!;    
 
         #endregion
 
