@@ -36,8 +36,6 @@ namespace AppointMate
         /// <summary>
         /// Adds a customer service
         /// </summary>
-        /// <param name="serviceId">The service id</param>
-        /// <param name="customerId">The customer id</param>
         /// <param name="model">The model</param>
         /// <param name="session">The session model</param>
         /// <returns></returns>

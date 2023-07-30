@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AppointMate.Helpers;
 
+using Microsoft.AspNetCore.Mvc;
+
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 using System.Linq;
@@ -54,19 +57,27 @@ namespace AppointMate
         /// <summary>
         /// Gets the services
         /// </summary>
+        /// <param name="cancellationToken">The cancelation token</param>
         /// <returns></returns>
         [HttpGet]
         [Route(AppointMateAPIRoutes.ServicesRoute)]
-        public async Task<ActionResult<IEnumerable<ServiceResponseModel>>> GetServicesAsync()
-        {
-            var entities = await AppointMateDbMapper.Services.AsQueryable().ToListAsync();
+        public async Task<ActionResult<IEnumerable<ServiceResponseModel>>?> GetServicesAsync(CancellationToken cancellationToken = default) 
+            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Services, x => true, false, x => x.Price, null, x => x.ToResponseModel(), cancellationToken);
 
-            entities.OrderBy(x => x.Price).GroupBy(x => x.Name);
-
-            return Ok(entities);
-        }
+        /// <summary>
+        /// Gets the service
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancelation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(AppointMateAPIRoutes.ServiceRoute)]
+        public async Task<ActionResult<ServiceResponseModel>?> GetServiceAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Services, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
 
         #endregion
+
+
 
         #endregion
     }
