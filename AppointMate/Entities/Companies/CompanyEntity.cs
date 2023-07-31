@@ -1,4 +1,6 @@
 ﻿
+using AutoMapper;
+
 namespace AppointMate
 {
     /// <summary>
@@ -51,6 +53,11 @@ namespace AppointMate
         }
 
         /// <summary>
+        /// A flag indicating whether the company provides at home services
+        /// </summary>
+        public bool HasAtHomeServices { get; set; }
+
+        /// <summary>
         /// The radius for the distance where at home services can be provided in Km
         /// </summary>
         public double AtHomeRadius { get; set; }
@@ -67,7 +74,7 @@ namespace AppointMate
         /// <summary>
         /// The work hours
         /// </summary>
-        public WeeklyScheduleDataModel? WorkHours { get; set; }
+        public WeeklySchedule? WorkHours { get; set; }
 
         /// <summary>
         /// The image URL
@@ -98,6 +105,16 @@ namespace AppointMate
             set => mLabels = value;
         }
 
+        /// <summary>
+        /// The average number of stars from the customer reviews
+        /// </summary>
+        public double TotalReviewStars { get; set; }
+
+        /// <summary>
+        /// The number of customer reviews
+        /// </summary>
+        public uint TotalReviews { get; set; }
+
         #endregion
 
         #region Constructors
@@ -124,6 +141,9 @@ namespace AppointMate
             var entity = new CompanyEntity();
 
             DI.Mapper.Map(model, entity);
+
+            UpdateNonAutoMapperValues(model, entity);
+
             return entity;
         }
 
@@ -135,7 +155,35 @@ namespace AppointMate
             => EntityHelpers.ToResponseModel<CompanyResponseModel>(this);
 
         /// <summary>
-        /// Creates and returns a <see cref="EmbeddedUserEntity"/> from the current <see cref="UserEntity"/>
+        /// Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
+        /// NOTE: This method only affects the properties that can't be mapped by the <see cref="Mapper"/> and are not null!
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="entity">The entity</param>
+        /// <returns></returns>
+        public static async void UpdateNonAutoMapperValues(CompanyRequestModel model, CompanyEntity entity)
+        {
+            var reviews = await AppointMateDbMapper.CustomerServiceReviews.SelectAsync(x => x.CompanyId == entity.Id);
+
+            // If there are reviews...
+            if(reviews is not null)
+            {
+                var reviewsCount = (uint)reviews.Count();
+                entity.TotalReviewStars = double.Round(reviews.Sum(x => x.NumberOfStars) / reviewsCount, 2);
+                entity.TotalReviews = reviewsCount;
+            }
+
+            // If there are labels...
+            if (model.Labels is not null)
+            {
+                var labels = await AppointMateDbMapper.CompanyLabels.SelectAsync(x => model.Labels.Any(y => y == x.Id.ToString()));
+
+                entity.Labels = labels.Select(x => x.ToEmbeddedEntity());
+            }
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedCompanyEntity"/> from the current <see cref="CompanyEntity"/>
         /// </summary>
         /// <returns></returns>
         public EmbeddedCompanyEntity ToEmbeddedEntity()
@@ -152,19 +200,9 @@ namespace AppointMate
         #region Private Members
 
         /// <summary>
-        /// The member of the <see cref="Note"/> property
-        /// </summary>
-        private string? mNote;
-
-        /// <summary>
         /// The member of the <see cref="Categories"/> property
         /// </summary>
         private IEnumerable<CompanyType>? mCategories;
-
-        /// <summary>
-        /// The member of the <see cref="Description"/> property
-        /// </summary>
-        private string? mDescription;
 
         #endregion
 
@@ -180,32 +218,14 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// The description
+        /// The average number of stars from the customer reviews
         /// </summary>
-        public string Description
-        {
-            get => mDescription ?? string.Empty;
-            set => mDescription = value;
-        }
+        public double TotalReviewStars { get; set; }
 
         /// <summary>
-        /// The radius for the distance where at home services can be provided in Km
+        /// The number of customer reviews
         /// </summary>
-        public double AtHomeRadius { get; set; }
-
-        /// <summary>
-        /// The note
-        /// </summary>
-        public string Note
-        {
-            get => mNote ?? string.Empty;
-            set => mNote = value;
-        }
-
-        /// <summary>
-        /// The work hours
-        /// </summary>
-        public WeeklyScheduleDataModel? WorkHours { get; set; }
+        public uint TotalReviews { get; set; }
 
         /// <summary>
         /// The image URL

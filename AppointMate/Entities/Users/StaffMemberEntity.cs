@@ -109,14 +109,14 @@ namespace AppointMate
         /// <param name="model">The model</param>
         /// <param name="entity">The entity</param>
         /// <returns></returns>
-        public static void UpdateNonAutoMapperValues(StaffMemberRequestModel model, StaffMemberEntity entity)
+        public static async void UpdateNonAutoMapperValues(StaffMemberRequestModel model, StaffMemberEntity entity)
         {
             // If there are labels...
             if(model.Labels is null)
                 // Return
                 return;
-            
-            var labels = AppointMateDbMapper.StaffMemberLabels.AsQueryable().Where(x => model.Labels.Any(y => y == x.Id.ToString())).ToList();
+
+            var labels = await AppointMateDbMapper.StaffMemberLabels.SelectAsync(x => model.Labels.Any(y => y == x.Id.ToString()));
 
             entity.Labels = labels.Select(x => x.ToEmbeddedEntity()); 
         }

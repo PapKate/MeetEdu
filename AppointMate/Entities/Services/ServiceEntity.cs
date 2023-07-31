@@ -1,4 +1,6 @@
-﻿using MongoDB.Bson;
+﻿using AutoMapper;
+
+using MongoDB.Bson;
 
 using System.Runtime.InteropServices.ObjectiveC;
 
@@ -111,6 +113,11 @@ namespace AppointMate
             set => mLabels = value;
         }
 
+        /// <summary>
+        /// The company
+        /// </summary>
+        public EmbeddedCompanyEntity? Company { get; set; }
+
         #endregion
 
         #region Constructors
@@ -137,6 +144,9 @@ namespace AppointMate
             var entity = new ServiceEntity();
 
             DI.Mapper.Map(model, entity);
+
+            UpdateNonAutoMapperValues(model, entity);
+
             return entity;
         }
 
@@ -144,8 +154,22 @@ namespace AppointMate
         /// Creates and returns a <see cref="ServiceResponseModel"/> from the current <see cref="ServiceEntity"/>
         /// </summary>
         /// <returns></returns>
-        public ServiceResponseModel ToResponseModel()
+        public ServiceResponseModel ToResponseModel() 
             => EntityHelpers.ToResponseModel<ServiceResponseModel>(this);
+
+        /// <summary>
+        /// Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
+        /// NOTE: This method only affects the properties that can't be mapped by the <see cref="Mapper"/> and are not null!
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="entity">The entity</param>
+        /// <returns></returns>
+        public static async void UpdateNonAutoMapperValues(ServiceRequestModel model, ServiceEntity entity)
+        {
+            var company = await AppointMateDbMapper.Companies.FirstOrDefaultAsync(x => x.Id.ToString() == model.CompanyId);
+
+            entity.Company = company.ToEmbeddedEntity();
+        }
 
         /// <summary>
         /// Creates and returns a <see cref="EmbeddedServiceEntity"/> from the current <see cref="ServiceEntity"/>

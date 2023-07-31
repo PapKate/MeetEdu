@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a customer service review document in the MongoDB
     /// </summary>
-    public class CustomerServiceReviewEntity : BaseEntity, INoteable
+    public class CustomerServiceReviewEntity : BaseEntity, INoteable, ICompanyIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -27,6 +27,11 @@ namespace AppointMate
         /// The service id
         /// </summary>
         public ObjectId ServiceId { get; set; }
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// The customer service

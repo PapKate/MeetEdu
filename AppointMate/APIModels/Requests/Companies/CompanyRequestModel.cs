@@ -32,6 +32,11 @@
         /// </summary>
         public Uri? ImageUrl { get; set; }
 
+        /// <summary>
+        /// The labels
+        /// </summary>
+        public IEnumerable<string>? Labels { get; set; }
+
         #endregion
 
         #region Constructors

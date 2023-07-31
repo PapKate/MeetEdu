@@ -29,7 +29,7 @@ namespace AppointMate.Helpers
         /// <param name="isAscending">A flag indicating whether the order is ascending or descending</param>
         /// <param name="orderSelector">The order selector</param>
         /// <param name="args">The args</param>
-        /// <param name="cancellationToken">The cancelation token</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         public static async Task<ActionResult<IEnumerable<TResponse>>?> GetManyAsync<TResponse, TEntity, TKey>(IMongoCollection<TEntity> collection, Expression<Func<TEntity, bool>> filter, bool isAscending, Func<TEntity, TKey>? orderSelector, APIArgs? args, Func<TEntity, TResponse> projector, CancellationToken cancellationToken = default)
             where TResponse : BaseResponseModel
@@ -73,7 +73,7 @@ namespace AppointMate.Helpers
         /// <param name="collection">The collection</param>
         /// <param name="projector">The projector</param>
         /// <param name="filter">The filter</param>
-        /// <param name="cancellationToken">The cancelation token</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         public static async Task<ActionResult<TResponse>?> GetAsync<TResponse, TEntity>(IMongoCollection<TEntity> collection, Expression<Func<TEntity, bool>> filter, Func<TEntity, TResponse> projector, CancellationToken cancellationToken = default)
             where TResponse : BaseResponseModel

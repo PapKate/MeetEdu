@@ -3,7 +3,7 @@
     /// <summary>
     /// The weekly schedule
     /// </summary>
-    public class WeeklyScheduleDataModel
+    public class WeeklySchedule
     {
         #region Private Members
 
@@ -46,7 +46,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public WeeklyScheduleDataModel() : base()
+        public WeeklySchedule() : base()
         {
 
         }

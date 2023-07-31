@@ -19,11 +19,6 @@ namespace AppointMate
         /// </summary>
         public ObjectId UserId { get; set; }
 
-        /// <summary>
-        /// The company
-        /// </summary>
-        public EmbeddedCompanyEntity? Comppany { get; set; }
-
         #endregion
 
         #region Constructors

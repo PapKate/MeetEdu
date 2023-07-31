@@ -1,11 +1,18 @@
-﻿namespace AppointMate
+﻿using System.ComponentModel.Design;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a service
     /// </summary>
-    public class ServiceResponseModel : StandardResponseModel, IDescriptable, INoteable
+    public class ServiceResponseModel : StandardResponseModel, IDescriptable, INoteable, ICompanyIdentifiable<string>
     {
         #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="CompanyId"/> property
+        /// </summary>
+        private string? mCompanyId;
 
         /// <summary>
         /// The member of the <see cref="Description"/> property
@@ -30,6 +37,15 @@
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public string CompanyId
+        {
+            get => mCompanyId ?? string.Empty;
+            set => mCompanyId = value;
+        }
 
         /// <summary>
         /// A flag indicating whether it is at home
@@ -106,6 +122,11 @@
             get => mLabels ?? Enumerable.Empty<EmbeddedLabelResponseModel>();
             set => mLabels = value;
         }
+
+        /// <summary>
+        /// The company
+        /// </summary>
+        public EmbeddedCompanyResponseModel? Company { get; set; }
 
         #endregion
 

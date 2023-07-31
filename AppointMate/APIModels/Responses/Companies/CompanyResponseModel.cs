@@ -111,4 +111,65 @@
 
         #endregion
     }
+
+
+    /// <summary>
+    /// The embedded company
+    /// </summary>
+    public class EmbeddedCompanyResponseModel : EmbeddedStandardResponseModel
+    {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="Categories"/> property
+        /// </summary>
+        private IEnumerable<CompanyType>? mCategories;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The categories
+        /// </summary>
+        public IEnumerable<CompanyType> Categories
+        {
+            get => mCategories ?? Enumerable.Empty<CompanyType>();
+            set => mCategories = value;
+        }
+
+        /// <summary>
+        /// The average number of stars from the customer reviews
+        /// </summary>
+        public double TotalReviewStars { get; set; }
+
+        /// <summary>
+        /// The number of customer reviews
+        /// </summary>
+        public uint TotalReviews { get; set; }
+
+        /// <summary>
+        /// The image URL
+        /// </summary>
+        public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The location
+        /// </summary>
+        public Location? Location { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public EmbeddedCompanyResponseModel() : base()
+        {
+
+        }
+
+        #endregion
+    }
 }
