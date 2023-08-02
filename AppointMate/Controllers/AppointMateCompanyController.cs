@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
+using System.Collections;
 using System.Linq;
 
 namespace AppointMate
@@ -57,12 +58,28 @@ namespace AppointMate
         /// <summary>
         /// Gets the services
         /// </summary>
+        /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
         [Route(AppointMateAPIRoutes.ServicesRoute)]
-        public async Task<ActionResult<IEnumerable<ServiceResponseModel>>?> GetServicesAsync(CancellationToken cancellationToken = default) 
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Services, x => true, false, x => x.Price, null, x => x.ToResponseModel(), cancellationToken);
+        public Task<ActionResult<IEnumerable<IGrouping<string, ServiceResponseModel>>>> GetServicesAsync(APIArgs args, CancellationToken cancellationToken = default)
+        {
+            var groupEntities = AppointMateDbMapper.Services.AsQueryable()
+                            .OrderBy(x => x.Price).GroupBy(x  => x.Name)
+                            .Skip((args.Page * args.PerPage) + args.Offset).Take(args.PerPage)
+                            .ToList();
+
+            var groupResponses = new List<IGrouping<string, ServiceResponseModel>>();
+            foreach (var group in groupEntities)
+            {
+                // Convert the group to IGrouping<string, ServiceResponseModel>
+                var grouping = new Grouping<string, ServiceResponseModel>(group.Key, group.Select(x => x.ToResponseModel()));
+                groupResponses.Add(grouping);
+            }
+
+            return Task.FromResult(new ActionResult<IEnumerable<IGrouping<string, ServiceResponseModel>>>(groupResponses.AsEnumerable()));
+        }
 
         /// <summary>
         /// Gets the service with the specified <paramref name="id"/>
@@ -73,7 +90,9 @@ namespace AppointMate
         [HttpGet]
         [Route(AppointMateAPIRoutes.ServiceRoute)]
         public async Task<ActionResult<ServiceResponseModel>?> GetServiceAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Services, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
+        {
+            return await ControllerHelpers.GetAsync(AppointMateDbMapper.Services, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
+        }
 
         #endregion
 
@@ -186,6 +205,56 @@ namespace AppointMate
         }
 
         #endregion
+
+
+
+        #endregion
+
+        #region Public Classes
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TElement"></typeparam>
+        public class Grouping<TKey, TElement> : IGrouping<TKey, TElement>
+        {
+            private readonly IEnumerable<TElement> _elements;
+
+            /// <summary>
+            /// Default constructor
+            /// </summary>
+            /// <param name="key"></param>
+            /// <param name="elements"></param>
+            public Grouping(TKey key, IEnumerable<TElement> elements)
+            {
+                Key = key;
+                _elements = elements;
+            }
+
+            /// <summary>
+            /// The key
+            /// </summary>
+            public TKey Key { get; private set; }
+
+            /// <summary>
+            /// An enumerator that can be used to iterate through the collection
+            /// </summary>
+            /// <returns></returns>
+            public IEnumerator<TElement> GetEnumerator()
+            {
+                return _elements.GetEnumerator();
+            }
+
+            /// <summary>
+            /// An enumerator that can be used to iterate through the collection
+            /// </summary>
+            /// <returns></returns>
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
+        }
 
         #endregion
     }

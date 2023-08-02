@@ -244,7 +244,7 @@ namespace AppointMate
 
         #endregion
         
-        #region Public Classes
+        #region Public Records
         
         /// <summary>
         /// The result of adding a service
