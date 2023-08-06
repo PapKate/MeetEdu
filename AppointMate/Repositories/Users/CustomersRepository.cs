@@ -77,9 +77,18 @@ namespace AppointMate
         {
             var entity = await AppointMateDbMapper.Customers.FirstOrDefaultAsync(x => x.Id == id);
 
+            // If the customer does not exist...
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Customers));
 
+            // Gets the customer services
+            var services = await AppointMateDbMapper.CustomerServices.SelectAsync(x => x.CustomerId == id && x.DateStart < DateTimeOffset.Now);
+
+            // If the customer has past services...
+            if (services is not null)
+                return new WebServerFailable<CustomerEntity>(entity).ToUnsuccessfulWebServerFailable("The user cannot be removed from the customers list because they have an existing service.");
+
+            // Deletes the customer
             await AppointMateDbMapper.Customers.DeleteOneAsync(x => x.Id == id);
 
             return entity;

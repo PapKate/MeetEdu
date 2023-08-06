@@ -63,50 +63,49 @@ namespace AppointMate
         /// <returns></returns>
         [HttpGet]
         [Route(AppointMateAPIRoutes.ServicesRoute)]
-        public Task<ActionResult<IEnumerable<IGrouping<string, ServiceResponseModel>>>> GetServicesAsync(APIArgs args, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<ServiceCompaniesResult>>> GetServicesAsync([FromQuery]StandardAPIArgs args, CancellationToken cancellationToken = default)
         {
-            var groupEntities = AppointMateDbMapper.Services.AsQueryable()
-                            .OrderBy(x => x.Price).GroupBy(x  => x.Name)
-                            .Skip((args.Page * args.PerPage) + args.Offset).Take(args.PerPage)
-                            .ToList();
+            var filters = new List<FilterDefinition<ServiceEntity>>();
 
-            var groupResponses = new List<IGrouping<string, ServiceResponseModel>>();
-            foreach (var group in groupEntities)
+            if(!args.IncludeCompanies.IsNullOrEmpty())
             {
-                // Convert the group to IGrouping<string, ServiceResponseModel>
-                var grouping = new Grouping<string, ServiceResponseModel>(group.Key, group.Select(x => x.ToResponseModel()));
-                groupResponses.Add(grouping);
+                var ids = args.IncludeCompanies.Select(x => x.ToObjectId()).ToList();
+                filters.Add(Builders<ServiceEntity>.Filter.In(x => x.Company!.Source, ids));
+            }
+            
+            if(!args.ExcludeCompanies.IsNullOrEmpty())
+            {
+                var ids = args.ExcludeCompanies.Select(x => x.ToObjectId()).ToList();
+                filters.Add(Builders<ServiceEntity>.Filter.Nin(x => x.Company!.Source, ids));
             }
 
-            return Task.FromResult(new ActionResult<IEnumerable<IGrouping<string, ServiceResponseModel>>>(groupResponses.AsEnumerable()));
+            var filter = Builders<ServiceEntity>.Filter.And(filters);
+
+            var services = await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Services, filter, x => x.Name, true, args, x => x.ToResponseModel(), cancellationToken);
         }
 
         /// <summary>
-        /// Gets the service with the specified <paramref name="id"/>
+        /// Gets the services with the specified <paramref name="name"/>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="name">The id</param>
+        /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
         [Route(AppointMateAPIRoutes.ServiceRoute)]
-        public async Task<ActionResult<ServiceResponseModel>?> GetServiceAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<ServiceCompaniesResult>> GetServiceAsync([FromRoute] string name, APIArgs args, CancellationToken cancellationToken = default)
         {
-            return await ControllerHelpers.GetAsync(AppointMateDbMapper.Services, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
+            var documents = await AppointMateDbMapper.Services.SelectAsync(x => x.Name == name, cancellationToken);
+            var services = documents.OrderBy(x => x.Price)
+                                         .Skip((args.Page * args.PerPage) + args.Offset).Take(args.PerPage)
+                                         .ToList();
+
+            return new ServiceCompaniesResult(name, services.Select(x => x.ToResponseModel()));
         }
 
         #endregion
 
         #region Companies
-
-        /// <summary>
-        /// Gets the companies
-        /// </summary>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route(AppointMateAPIRoutes.CompaniesRoute)]
-        public async Task<ActionResult<IEnumerable<CompanyResponseModel>>?> GetCompaniesAsync(CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Companies, x => true, false, x => x.Name, null, x => x.ToResponseModel(), cancellationToken);
 
         /// <summary>
         /// Gets the company with the specified <paramref name="id"/>
@@ -118,6 +117,45 @@ namespace AppointMate
         [Route(AppointMateAPIRoutes.CompanyRoute)]
         public async Task<ActionResult<CompanyResponseModel>?> GetCompanyAsync([FromRoute] string id, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetAsync(AppointMateDbMapper.Companies, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
+
+        #endregion
+
+        #region Users
+
+        /// <summary>
+        /// Gets the user with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(AppointMateAPIRoutes.UserRoute)]
+        public async Task<ActionResult<UserResponseModel>?> GetUserAsync([FromRoute] string id, CancellationToken cancellationToken = default) 
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Users, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
+
+        #region User Services
+
+        /// <summary>
+        /// Gets the services of the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(AppointMateAPIRoutes.UserServicesRoute)]
+        public async Task<ActionResult<IEnumerable<CustomerServiceResponseModel>>> GetUserServicesAsync([FromRoute] string userId, CancellationToken cancellationToken = default) 
+            => (await DI.UsersRepository.GetUserServicesAsync(userId.ToObjectId())).ToActionResult(x => x.Select(y => y.ToResponseModel()));
+
+        /// <summary>
+        /// Gets the user service with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(AppointMateAPIRoutes.UserServiceRoute)]
+        public async Task<ActionResult<CustomerServiceResponseModel>?> GetUserServiceAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.CustomerServices, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
 
         #endregion
 
@@ -139,7 +177,6 @@ namespace AppointMate
             return entity.ToActionResult(x => true);
         }
 
-
         /// <summary>
         /// Gets the favorite companies of the user with the specified <paramref name="id"/>
         /// </summary>
@@ -158,7 +195,7 @@ namespace AppointMate
                 return NotFound();
 
             var companies = await AppointMateDbMapper.Companies.SelectAsync(x => favorites.Any(y => y.CompanyId == x.Id));
-
+            
             return new OkObjectResult(companies.Select(x => x.ToResponseModel()));
         }
 
@@ -196,7 +233,7 @@ namespace AppointMate
         {
             var response = await DI.UsersRepository.DeleteUserFavoriteCompanyAsync(id.ToObjectId());
 
-            if (!response.IsSuccessful || response.Result is null) 
+            if (!response.IsSuccessful || response.Result is null)
                 return StatusCode(response.StatusCode ?? 400, response);
 
             var company = await GetCompanyAsync(response.Result.CompanyId.ToString());
@@ -206,55 +243,7 @@ namespace AppointMate
 
         #endregion
 
-
-
         #endregion
-
-        #region Public Classes
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TKey"></typeparam>
-        /// <typeparam name="TElement"></typeparam>
-        public class Grouping<TKey, TElement> : IGrouping<TKey, TElement>
-        {
-            private readonly IEnumerable<TElement> _elements;
-
-            /// <summary>
-            /// Default constructor
-            /// </summary>
-            /// <param name="key"></param>
-            /// <param name="elements"></param>
-            public Grouping(TKey key, IEnumerable<TElement> elements)
-            {
-                Key = key;
-                _elements = elements;
-            }
-
-            /// <summary>
-            /// The key
-            /// </summary>
-            public TKey Key { get; private set; }
-
-            /// <summary>
-            /// An enumerator that can be used to iterate through the collection
-            /// </summary>
-            /// <returns></returns>
-            public IEnumerator<TElement> GetEnumerator()
-            {
-                return _elements.GetEnumerator();
-            }
-
-            /// <summary>
-            /// An enumerator that can be used to iterate through the collection
-            /// </summary>
-            /// <returns></returns>
-            IEnumerator IEnumerable.GetEnumerator()
-            {
-                return GetEnumerator();
-            }
-        }
 
         #endregion
     }

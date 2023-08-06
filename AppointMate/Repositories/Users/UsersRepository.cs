@@ -69,14 +69,16 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// Deletes the company with the specified <paramref name="id"/>
+        /// Deletes the user with the specified <paramref name="id"/>
         /// </summary>
-        /// <param name="id">The company id</param>
+        /// <param name="id">The id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<UserEntity>> DeleteCompanyAsync(ObjectId id)
+        public async Task<WebServerFailable<UserEntity>> DeleteIserAsync(ObjectId id)
         {
+            // Gets the user
             var entity = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id == id);
 
+            // If the user does not exist...
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Users));
 
@@ -91,7 +93,7 @@ namespace AppointMate
         /// Adds a favorite company to the user with the specified <paramref name="userId"/>
         /// </summary>
         /// <param name="userId">The user id</param>
-        /// <param name="companyId">The comapny id</param>
+        /// <param name="companyId">The company id</param>
         /// <returns></returns>
         public async Task<WebServerFailable<UserFavoriteCompanyEntity>> AddUserFavoriteCompanyAsync(ObjectId userId, ObjectId companyId)
         {
@@ -114,7 +116,6 @@ namespace AppointMate
             {
                 CompanyId = companyId,
                 UserId = userId,
-                Comppany = company.ToEmbeddedEntity()
             };
 
             // Adds the favorite company
@@ -151,7 +152,6 @@ namespace AppointMate
                 {
                     CompanyId = x.Id,
                     UserId = userId,
-                    Comppany = x.ToEmbeddedEntity()
                 })
             .ToList()));
         }
@@ -171,6 +171,29 @@ namespace AppointMate
             await AppointMateDbMapper.UserFavoriteCompanies.DeleteOneAsync(x => x.Id == id);
 
             return entity;
+        }
+
+        #endregion
+
+        #region Services
+
+        /// <summary>
+        /// Gets the services of the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The id</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<IEnumerable<CustomerServiceEntity>>> GetUserServicesAsync(ObjectId userId)
+        {
+            // Gets the customers that represent the user in companies
+            var customers = await AppointMateDbMapper.Customers.SelectAsync(x => x.UserId == userId);
+
+            // If no customer exits...
+            if(customers is null)
+                return AppointMateWebServerConstants.GetCustomerWithUserIdNotFoundErrorMessage(userId);
+
+            var services = await AppointMateDbMapper.CustomerServices.SelectAsync(x => customers.Any(y => y.Id == x.CustomerId));
+            
+            return new WebServerFailable<IEnumerable<CustomerServiceEntity>>(services);
         }
 
         #endregion

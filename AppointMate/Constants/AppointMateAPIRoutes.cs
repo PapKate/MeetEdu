@@ -1,4 +1,6 @@
-﻿namespace AppointMate
+﻿using System.Runtime.CompilerServices;
+
+namespace AppointMate
 {
     /// <summary>
     /// The AppontMate related API routes
@@ -6,22 +8,22 @@
     public static class AppointMateAPIRoutes
     {
         /// <summary>
-        /// The base route
-        /// <code>api/v1</code>
+        /// The app route
+        /// <code>/appointMate/api/v1</code>
         /// </summary>
-        private const string BaseRoute = "api/v1";
+        private const string AppRoute = "/appointMate";
 
         /// <summary>
-        /// The app route
-        /// <code>api/v1/appointMate</code>
+        /// The base route
+        /// <code>/appointMate/api/v1</code>
         /// </summary>
-        private const string AppRoute = BaseRoute + "/appointMate";
+        private const string BaseAPIRoute = AppRoute + "api/v1";
 
         #region Login
 
         /// <summary>
         /// The login route
-        /// <code>api/v1/appointMate/login</code>
+        /// <code>/appointMate/api/v1/login</code>
         /// </summary>
         public const string LogInRoute = AppRoute + "/logIn";
 
@@ -31,7 +33,7 @@
 
         /// <summary>
         /// The register route
-        /// <code>api/v1/appointMate/register</code>
+        /// <code>/appointMate/api/v1/register</code>
         /// </summary>
         public const string RegisterRoute = AppRoute + "/register";
 
@@ -41,19 +43,19 @@
 
         /// <summary>
         /// The companies route
-        /// <code>api/v1/appointMate/companies</code>
+        /// <code>/appointMate/api/v1/companies</code>
         /// </summary>
         public const string CompaniesRoute = AppRoute + "/companies";
 
         /// <summary>
         /// The company route
-        /// <code>api/v1/appointMate/companies/1</code>
+        /// <code>/appointMate/api/v1/companies/1</code>
         /// </summary>
         public const string CompanyRoute = CompaniesRoute + "/{companyId}";
 
         /// <summary>
         /// The route for the company with the specified <paramref name="companyId"/>
-        /// <code>api/v1/appointMate/companies/<paramref name="companyId"/></code>
+        /// <code>/appointMate/api/v1/companies/<paramref name="companyId"/></code>
         /// </summary>
         public static string GetCompanyRoute(string companyId) => CompaniesRoute + $"/{companyId}";
 
@@ -61,19 +63,19 @@
 
         /// <summary>
         /// The company services route
-        /// <code>api/v1/appointMate/companies/1/services</code>
+        /// <code>/appointMate/api/v1/companies/1/services</code>
         /// </summary>
         public const string CompanyServicesRoute = CompanyRoute + "/services";
 
         /// <summary>
         /// The company service route
-        /// <code>api/v1/appointMate/companies/1/services/3</code>
+        /// <code>/appointMate/api/v1/companies/1/services/3</code>
         /// </summary>
         public const string CompanyServiceRoute = CompanyServicesRoute + "/{serviceId}";
 
         /// <summary>
         /// The route for the company service with the specified <paramref name="serviceId"/>
-        /// <code>api/v1/appointMate/companies/1/services/<paramref name="serviceId"/></code>
+        /// <code>/appointMate/api/v1/companies/1/services/<paramref name="serviceId"/></code>
         /// </summary>
         public static string GetCompanyServiceRoute(string serviceId) => CompanyServicesRoute + $"/{serviceId}";
 
@@ -81,19 +83,19 @@
 
         /// <summary>
         /// The company services route
-        /// <code>api/v1/appointMate/companies/1/services/1/sessions</code>
+        /// <code>/appointMate/api/v1/companies/1/services/1/sessions</code>
         /// </summary>
         public const string CompanyServiceSessionsRoute = CompanyServiceRoute + "/services";
 
         /// <summary>
         /// The company service route
-        /// <code>api/v1/appointMate/companies/1/services/3/sessions/1</code>
+        /// <code>/appointMate/api/v1/companies/1/services/3/sessions/1</code>
         /// </summary>
         public const string CompanyServiceSessionRoute = CompanyServiceRoute + "/{sessionId}";
 
         /// <summary>
         /// The route for the company service with the specified <paramref name="sessionId"/>
-        /// <code>api/v1/appointMate/companies/1/services/1/sessions/<paramref name="sessionId"/></code>
+        /// <code>/appointMate/api/v1/companies/1/services/1/sessions/<paramref name="sessionId"/></code>
         /// </summary>
         public static string GetCompanyServiceSessionRoute(string sessionId) => CompanyServicesRoute + $"/{sessionId}";
 
@@ -105,19 +107,19 @@
 
         /// <summary>
         /// The company staff member route
-        /// <code>api/v1/appointMate/companies/1/staffMembers</code>
+        /// <code>/appointMate/api/v1/companies/1/staffMembers</code>
         /// </summary>
         public const string CompanyStaffMembersRoute = CompanyRoute + "/staffMembers";
 
         /// <summary>
         /// The company staff member route
-        /// <code>api/v1/appointMate/companies/1/staffMembers/3</code>
+        /// <code>/appointMate/api/v1/companies/1/staffMembers/3</code>
         /// </summary>
         public const string CompanyStaffMemberRoute = CompanyStaffMembersRoute + "/{staffMemberId}";
 
         /// <summary>
         /// The route for the company staff member with the specified <paramref name="staffMemberId"/>
-        /// <code>api/v1/appointMate/companies/1/staffMembers/<paramref name="staffMemberId"/></code>
+        /// <code>/appointMate/api/v1/companies/1/staffMembers/<paramref name="staffMemberId"/></code>
         /// </summary>
         public static string GetCompanyStaffMemberRoute(string staffMemberId) => CompanyStaffMembersRoute + $"/{staffMemberId}";
 
@@ -127,43 +129,21 @@
 
         /// <summary>
         /// The company contact messages route
-        /// <code>api/v1/appointMate/companies/1/contactMessages</code>
+        /// <code>/appointMate/api/v1/companies/1/contactMessages</code>
         /// </summary>
         public const string CompanyContactMessagesRoute = CompanyRoute + "/contactMessages";
 
         /// <summary>
         /// The company contact message route
-        /// <code>api/v1/appointMate/companies/1/contactMessages/3</code>
+        /// <code>/appointMate/api/v1/companies/1/contactMessages/3</code>
         /// </summary>
         public const string CompanyyContactMessageRoute = CompanyContactMessagesRoute + "/{contactMessageId}";
 
         /// <summary>
         /// The route for the company contact message with the specified <paramref name="contactMessageId"/>
-        /// <code>api/v1/appointMate/companies/1/contactMessages/<paramref name="contactMessageId"/></code>
+        /// <code>/appointMate/api/v1/companies/1/contactMessages/<paramref name="contactMessageId"/></code>
         /// </summary>
         public static string GetCompanyyContactMessageRoute(string contactMessageId) => CompanyStaffMembersRoute + $"/{contactMessageId}";
-
-        #endregion
-
-        #region Customers
-
-        /// <summary>
-        /// The customers route
-        /// <code>api/v1/appointMate/companies/1/customers</code>
-        /// </summary>
-        public const string CompanyCustomersRoute = CompanyRoute + "/customers";
-
-        /// <summary>
-        /// The customer route
-        /// <code>api/v1/appointMate/companies/1/customers/1</code>
-        /// </summary>
-        public const string CompanyCustomerRoute = CompanyCustomersRoute + "/{customerId}";
-
-        /// <summary>
-        /// The route for the customer with the specified <paramref name="customerId"/>
-        /// <code>api/v1/appointMate/companies/1/customers/<paramref name="customerId"/></code>
-        /// </summary>
-        public static string GetCompanyCustomerRoute(string customerId) => CompanyCustomersRoute + $"/{customerId}";
 
         #endregion
 
@@ -173,21 +153,21 @@
 
         /// <summary>
         /// The services route
-        /// <code>api/v1/appointMate/services</code>
+        /// <code>/appointMate/api/v1/services</code>
         /// </summary>
         public const string ServicesRoute = AppRoute + "/services";
 
         /// <summary>
         /// The service route
-        /// <code>api/v1/appointMate/services/1</code>
+        /// <code>/appointMate/api/v1/services/name</code>
         /// </summary>
-        public const string ServiceRoute = ServicesRoute + "/{serviceId}";
+        public const string ServiceRoute = ServicesRoute + "/{serviceName}";
 
         /// <summary>
-        /// The route for the service with the specified <paramref name="customerId"/>
-        /// <code>api/v1/appointMate/services/<paramref name="customerId"/></code>
+        /// The route for the service with the specified <paramref name="serviceName"/>
+        /// <code>/appointMate/api/v1/services/<paramref name="serviceName"/></code>
         /// </summary>
-        public static string GetServiceRoute(string customerId) => ServicesRoute + $"/{customerId}";
+        public static string GetServiceRoute(string serviceName) => ServicesRoute + $"/{serviceName}";
 
         #endregion
 
@@ -195,39 +175,39 @@
 
         /// <summary>
         /// The users route
-        /// <code>api/v1/appointMate/users</code>
+        /// <code>/appointMate/api/v1/users</code>
         /// </summary>
-        public const string CustomersRoute = AppRoute + "/customers";
+        public const string UsersRoute = AppRoute + "/users";
 
         /// <summary>
         /// The customer route
-        /// <code>api/v1/appointMate/users/1</code>
+        /// <code>/appointMate/api/v1/users/1</code>
         /// </summary>
-        public const string CustomerRoute = CustomersRoute + "/{customerId}";
+        public const string UserRoute = UsersRoute + "/{userId}";
 
         /// <summary>
-        /// The route for the customer with the specified <paramref name="customerId"/>
-        /// <code>api/v1/appointMate/users/<paramref name="customerId"/></code>
+        /// The route for the customer with the specified <paramref name="userId"/>
+        /// <code>/appointMate/api/v1/users/<paramref name="userId"/></code>
         /// </summary>
-        public static string GetCustomerRoute(string customerId) => CustomersRoute + $"/{customerId}";
+        public static string GetUserRoute(string userId) => UsersRoute + $"/{userId}";
 
         #region Notes
 
         /// <summary>
         /// The user notes route
-        /// <code>api/v1/appointMate/users/1/notes</code>
+        /// <code>/appointMate/api/v1/users/1/notes</code>
         /// </summary>
-        public const string UserNotesRoute = CustomerRoute + "/notes";
+        public const string UserNotesRoute = UserRoute + "/notes";
 
         /// <summary>
         /// The user note route
-        /// <code>api/v1/appointMate/users/1/notes/3</code>
+        /// <code>/appointMate/api/v1/users/1/notes/3</code>
         /// </summary>
         public const string UserNoteRoute = UserNotesRoute + "/{noteId}";
 
         /// <summary>
         /// The route for the user note with the specified <paramref name="noteId"/>
-        /// <code>api/v1/appointMate/users/1/notes/<paramref name="noteId"/></code>
+        /// <code>/appointMate/api/v1/users/1/notes/<paramref name="noteId"/></code>
         /// </summary>
         public static string GetUserNoteRoute(string noteId) => UserNotesRoute + $"/{noteId}";
 
@@ -237,19 +217,19 @@
 
         /// <summary>
         /// The user favorite company route
-        /// <code>api/v1/appointMate/users/1/favoriteCompanies</code>
+        /// <code>/appointMate/api/v1/users/1/favoriteCompanies</code>
         /// </summary>
-        public const string UserFavoriteCompaniesRoute = CustomerRoute + "/favoriteCompanies";
+        public const string UserFavoriteCompaniesRoute = UserRoute + "/favoriteCompanies";
 
         /// <summary>
         /// The user favorite company route
-        /// <code>api/v1/appointMate/users/1/favoriteCompanies/3</code>
+        /// <code>/appointMate/api/v1/users/1/favoriteCompanies/3</code>
         /// </summary>
         public const string UserFavoriteCompanyRoute = UserFavoriteCompaniesRoute + "/{companyId}";
 
         /// <summary>
         /// The route for the user favorite company with the specified <paramref name="companyId"/>
-        /// <code>api/v1/appointMate/users/1/favoriteCompanies/<paramref name="companyId"/></code>
+        /// <code>/appointMate/api/v1/users/1/favoriteCompanies/<paramref name="companyId"/></code>
         /// </summary>
         public static string GetUserFavoriteCompanyRoute(string companyId) => UserFavoriteCompaniesRoute + $"/{companyId}";
 
@@ -258,20 +238,20 @@
         #region Reviews
 
         /// <summary>
-        /// The user reviwes route
-        /// <code>api/v1/appointMate/users/1/reviews</code>
+        /// The user reviews route
+        /// <code>/appointMate/api/v1/users/1/reviews</code>
         /// </summary>
-        public const string UserReviewsRoute = CustomerRoute + "/reviews";
+        public const string UserReviewsRoute = UserRoute + "/reviews";
 
         /// <summary>
         /// The user review route
-        /// <code>api/v1/appointMate/users/1/reviews/3</code>
+        /// <code>/appointMate/api/v1/users/1/reviews/3</code>
         /// </summary>
         public const string UserReviewRoute = UserReviewsRoute + "/{reviewsId}";
 
         /// <summary>
         /// The route for the user review with the specified <paramref name="reviewId"/>
-        /// <code>api/v1/appointMate/users/1/reviews/<paramref name="reviewId"/></code>
+        /// <code>/appointMate/api/v1/users/1/reviews/<paramref name="reviewId"/></code>
         /// </summary>
         public static string GetUserReviewRoute(string reviewId) => UserReviewsRoute + $"/{reviewId}";
 
@@ -281,21 +261,65 @@
 
         /// <summary>
         /// The user point offset log route
-        /// <code>api/v1/appointMate/users/1/reviews</code>
+        /// <code>/appointMate/api/v1/users/1/reviews</code>
         /// </summary>
-        public const string UserPointOffsetLogsRoute = CustomerRoute + "/pointOffsetLogs";
+        public const string UserPointOffsetLogsRoute = UserRoute + "/pointOffsetLogs";
 
         /// <summary>
         /// The user point offset log route
-        /// <code>api/v1/appointMate/users/1/pointOffsetLogs/3</code>
+        /// <code>/appointMate/api/v1/users/1/pointOffsetLogs/3</code>
         /// </summary>
         public const string UserPointOffsetLogRoute = UserPointOffsetLogsRoute + "/{pointOffsetLogId}";
 
         /// <summary>
         /// The route for the user point offset log with the specified <paramref name="pointOffsetLogId"/>
-        /// <code>api/v1/appointMate/users/1/reviews/<paramref name="pointOffsetLogId"/></code>
+        /// <code>/appointMate/api/v1/users/1/reviews/<paramref name="pointOffsetLogId"/></code>
         /// </summary>
         public static string GetUserPointOffsetLogRoute(string pointOffsetLogId) => UserPointOffsetLogsRoute + $"/{pointOffsetLogId}";
+
+        #endregion
+
+        #region User Services
+
+        /// <summary>
+        /// The services route
+        /// <code>/appointMate/api/v1/users/1/services</code>
+        /// </summary>
+        public const string UserServicesRoute = UserRoute + "/services";
+
+        /// <summary>
+        /// The service route
+        /// <code>/appointMate/api/v1/users/1/services/2</code>
+        /// </summary>
+        public const string UserServiceRoute = UserServicesRoute + "/{serviceId}";
+
+        /// <summary>
+        /// The route for the service with the specified <paramref name="serviceId"/>
+        /// <code>/appointMate/api/v1/users/<paramref name="customerId"/>/services/<paramref name="serviceId"/></code>
+        /// </summary>
+        public static string GetUserServiceRoute(string customerId, string serviceId) => GetUserRoute(customerId) + $"/services/{serviceId}";
+
+        #endregion
+
+        #region User Sessions
+
+        /// <summary>
+        /// The user sessions route
+        /// <code>/appointMate/api/v1/users/1/sessions</code>
+        /// </summary>
+        public const string UserSessionsRoute = UserRoute + "/sessions";
+
+        /// <summary>
+        /// The user session route
+        /// <code>/appointMate/api/v1/users/1/sessions/2</code>
+        /// </summary>
+        public const string UserSessionRoute = UserSessionsRoute + "/{sessionId}";
+
+        /// <summary>
+        /// The route for the user session with the specified <paramref name="sessionId"/>
+        /// <code>/appointMate/api/v1/users/<paramref name="userId"/>/services/<paramref name="sessionId"/></code>
+        /// </summary>
+        public static string GetUserSessionRoute(string userId, string sessionId) => GetUserRoute(userId) + $"/services/{sessionId}";
 
         #endregion
 

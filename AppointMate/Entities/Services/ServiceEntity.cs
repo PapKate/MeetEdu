@@ -9,7 +9,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a service document in the MongoDB
     /// </summary>
-    public class ServiceEntity: StandardEntity, IDescriptable, INoteable
+    public class ServiceEntity: StandardEntity, IDescriptable, INoteable, ICompanyIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -36,6 +36,11 @@ namespace AppointMate
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// A flag indicating whether it is at home

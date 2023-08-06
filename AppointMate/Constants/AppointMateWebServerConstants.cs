@@ -1,11 +1,13 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Web server constants related to the AppointMate application
     /// </summary>
     public static class AppointMateWebServerConstants
     {
-        #region Properties
+        #region Public Properties
 
         /// <summary>
         /// Error message indicating no companies were found with the specified ids
@@ -52,6 +54,17 @@
         /// </summary>
         public const string TheCustomerServicePurchasedAmountCanNotBeSetToLessThanTheAmountOfTheScheduledPaymentsErrorMessage = "The customer service purchased amount can not be set to less than the amount of the scheduled payments!";
 
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Error message indicating that there are no customers with the specified user id
+        /// </summary>
+        /// <param name="id">The user id</param>
+        /// <returns></returns>
+        public static string GetCustomerWithUserIdNotFoundErrorMessage(ObjectId id) => $"There are no customers that have user id {id}";
 
         #endregion
     }
