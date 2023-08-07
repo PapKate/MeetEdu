@@ -79,14 +79,14 @@ namespace AppointMate
         /// <param name="userId">The user id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static UserPointOffsetLogEntity FromRequestModel(string userId, CustomerPointOffsetLogRequestModel model)
+        public static UserPointOffsetLogEntity FromRequestModel(ObjectId userId, CustomerPointOffsetLogRequestModel model)
         {
             var entity = new UserPointOffsetLogEntity();
 
             DI.Mapper.Map(model, entity);
             entity.IsPositive = model.Offset > 0;
             entity.DateCreated = DateTimeOffset.Now;
-            entity.UserId = userId.ToObjectId();
+            entity.UserId = userId;
 
             return entity;
         }

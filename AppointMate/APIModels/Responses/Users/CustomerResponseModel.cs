@@ -72,7 +72,7 @@
     /// <summary>
     /// A minimal version of the <see cref="CustomerResponseModel"/> used when embedding
     /// </summary>
-    public class EmbeddedCustomerResponseModel : EmbeddedBaseResponseModel, ICompanyIdentifiable<string>, IUserIdentifiable<string>, ICustomerIdentifiable<string>
+    public class EmbeddedCustomerResponseModel : EmbeddedBaseResponseModel, ICompanyIdentifiable<string>, IUserIdentifiable<string>
     {
         #region Private Members
 

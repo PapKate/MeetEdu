@@ -55,53 +55,53 @@ namespace AppointMate
 
         #region Services
 
-        /// <summary>
-        /// Gets the services
-        /// </summary>
-        /// <param name="args">The arguments</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route(AppointMateAPIRoutes.ServicesRoute)]
-        public async Task<ActionResult<IEnumerable<ServiceCompaniesResult>>> GetServicesAsync([FromQuery]CompanyRelatedAPIArgs args, CancellationToken cancellationToken = default)
-        {
-            var filters = new List<FilterDefinition<ServiceEntity>>();
+        ///// <summary>
+        ///// Gets the services
+        ///// </summary>
+        ///// <param name="args">The arguments</param>
+        ///// <param name="cancellationToken">The cancellation token</param>
+        ///// <returns></returns>
+        //[HttpGet]
+        //[Route(AppointMateAPIRoutes.ServicesRoute)]
+        //public async Task<ActionResult<IEnumerable<ServiceCompaniesResult>>> GetServicesAsync([FromQuery]CompanyRelatedAPIArgs args, CancellationToken cancellationToken = default)
+        //{
+        //    var filters = new List<FilterDefinition<ServiceEntity>>();
 
-            if(!args.IncludeCompanies.IsNullOrEmpty())
-            {
-                var ids = args.IncludeCompanies.Select(x => x.ToObjectId()).ToList();
-                filters.Add(Builders<ServiceEntity>.Filter.In(x => x.Company!.Source, ids));
-            }
+        //    if(!args.IncludeCompanies.IsNullOrEmpty())
+        //    {
+        //        var ids = args.IncludeCompanies.Select(x => x.ToObjectId()).ToList();
+        //        filters.Add(Builders<ServiceEntity>.Filter.In(x => x.Company!.Source, ids));
+        //    }
             
-            if(!args.ExcludeCompanies.IsNullOrEmpty())
-            {
-                var ids = args.ExcludeCompanies.Select(x => x.ToObjectId()).ToList();
-                filters.Add(Builders<ServiceEntity>.Filter.Nin(x => x.Company!.Source, ids));
-            }
+        //    if(!args.ExcludeCompanies.IsNullOrEmpty())
+        //    {
+        //        var ids = args.ExcludeCompanies.Select(x => x.ToObjectId()).ToList();
+        //        filters.Add(Builders<ServiceEntity>.Filter.Nin(x => x.Company!.Source, ids));
+        //    }
 
-            var filter = Builders<ServiceEntity>.Filter.And(filters);
+        //    var filter = Builders<ServiceEntity>.Filter.And(filters);
 
-            var services = await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Services, filter, x => x.Name, true, args, x => x.ToResponseModel(), cancellationToken);
-        }
+        //    var services = await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Services, filter, x => x.Name, true, args, x => x.ToResponseModel(), cancellationToken);
+        //}
 
-        /// <summary>
-        /// Gets the services with the specified <paramref name="name"/>
-        /// </summary>
-        /// <param name="name">The id</param>
-        /// <param name="args">The arguments</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route(AppointMateAPIRoutes.ServiceRoute)]
-        public async Task<ActionResult<ServiceCompaniesResult>> GetServiceAsync([FromRoute] string name, APIArgs args, CancellationToken cancellationToken = default)
-        {
-            var documents = await AppointMateDbMapper.Services.SelectAsync(x => x.Name == name, cancellationToken);
-            var services = documents.OrderBy(x => x.Price)
-                                         .Skip((args.Page * args.PerPage) + args.Offset).Take(args.PerPage)
-                                         .ToList();
+        ///// <summary>
+        ///// Gets the services with the specified <paramref name="name"/>
+        ///// </summary>
+        ///// <param name="name">The id</param>
+        ///// <param name="args">The arguments</param>
+        ///// <param name="cancellationToken">The cancellation token</param>
+        ///// <returns></returns>
+        //[HttpGet]
+        //[Route(AppointMateAPIRoutes.ServiceRoute)]
+        //public async Task<ActionResult<ServiceCompaniesResult>> GetServiceAsync([FromRoute] string name, APIArgs args, CancellationToken cancellationToken = default)
+        //{
+        //    var documents = await AppointMateDbMapper.Services.SelectAsync(x => x.Name == name, cancellationToken);
+        //    var services = documents.OrderBy(x => x.Price)
+        //                                 .Skip((args.Page * args.PerPage) + args.Offset).Take(args.PerPage)
+        //                                 .ToList();
 
-            return new ServiceCompaniesResult(name, services.Select(x => x.ToResponseModel()));
-        }
+        //    return new ServiceCompaniesResult(name, services.Select(x => x.ToResponseModel()));
+        //}
 
         #endregion
 

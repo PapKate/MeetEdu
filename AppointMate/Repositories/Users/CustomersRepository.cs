@@ -112,7 +112,7 @@ namespace AppointMate
                 return WebServerFailable.NotFound(customerId, nameof(AppointMateDbMapper.Customers));
 
             // Gets the previous point offset for the specified customer
-            var previousPointOffsets = await AppointMateDbMapper.CustomerPointOffsetLogs.SelectAsync(x => x.Customer == customer.ToEmbeddedEntity());
+            var previousPointOffsets = await AppointMateDbMapper.CustomerPointOffsetLogs.SelectAsync(x => x.UserId == customer.UserId);
 
             // Gets the last point offset that was created
             var previousPointOffset = previousPointOffsets.OrderByDescending(x => x.DateCreated).FirstOrDefault();
@@ -124,7 +124,7 @@ namespace AppointMate
             if (oldPoints + model.Offset < 0)
                 return AppointMateWebServerConstants.InsufficientCustomerPointsErrorMessage;
 
-            var entity = UserPointOffsetLogEntity.FromRequestModel(customer, model);
+            var entity = UserPointOffsetLogEntity.FromRequestModel(customer.UserId, model);
 
             entity.OldPoints = oldPoints;
             entity.NewPoints = (uint)(oldPoints + model.Offset);
