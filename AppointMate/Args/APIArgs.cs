@@ -60,7 +60,7 @@
     /// <summary>
     /// Arguments used for retrieving data that belong to a company
     /// </summary>
-    public class StandardAPIArgs : APIArgs
+    public class CompanyRelatedAPIArgs : APIArgs
     {
         #region Public Properties
 
@@ -81,7 +81,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public StandardAPIArgs() : base()
+        public CompanyRelatedAPIArgs() : base()
         {
 
         }
@@ -92,7 +92,7 @@
     /// <summary>
     /// Arguments used for retrieving grouped services
     /// </summary>
-    public class GroupedServiceAPIArgs : StandardAPIArgs
+    public class GroupedServiceAPIArgs : CompanyRelatedAPIArgs
     {
         #region Private Methods
 
@@ -149,7 +149,7 @@
     /// <summary>
     /// Arguments used for retrieving services
     /// </summary>
-    public class CustomerServiceAPIArgs : StandardAPIArgs
+    public class CustomerRelatedAPIArgs : CompanyRelatedAPIArgs
     {
         #region Public Properties
 
@@ -170,7 +170,77 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerServiceAPIArgs() : base()
+        public CustomerRelatedAPIArgs() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Arguments used for retrieving sessions
+    /// </summary>
+    public class SessionAPIArgs : CustomerRelatedAPIArgs
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// Limit the result to entries with specific service ids
+        /// </summary>
+        public IEnumerable<string>? IncludeServices { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific service ids
+        /// </summary>
+        public IEnumerable<string>? ExcludeServices { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific <see cref="SessionStatus"/>
+        /// </summary>
+        public SessionStatus? SessionStatus { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public SessionAPIArgs() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
+
+    /// <summary>
+    /// Arguments used for retrieving payments
+    /// </summary>
+    public class PaymentAPIArgs : CustomerRelatedAPIArgs
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// Limit the result to entries with specific payment method ids
+        /// </summary>
+        public IEnumerable<string>? IncludePaymentMethods { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific payment method ids
+        /// </summary>
+        public IEnumerable<string>? ExcludePaymentMethods { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public PaymentAPIArgs() : base()
         {
 
         }

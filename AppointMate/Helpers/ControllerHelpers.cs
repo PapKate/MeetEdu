@@ -122,7 +122,7 @@ namespace AppointMate.Helpers
             }
 
             // If the args are not null
-            if (args is not null)
+            if (args is not null && args.PerPage > 0)
             {
                 // Limit the results
                 query = query.Skip((args.Page * args.PerPage) + args.Offset)

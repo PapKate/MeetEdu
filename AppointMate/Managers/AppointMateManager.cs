@@ -68,14 +68,22 @@ namespace AppointMate
         #region Staff Members
 
         /// <summary>
-        /// Gets the staff members that belong to the company with the specified <paramref name="companyId"/>
+        /// Gets the staff members
         /// </summary>
-        /// <param name="companyId">The id</param>
         /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<IEnumerable<StaffMemberEntity>> GetStaffMembersAsync(string companyId, StandardAPIArgs? args, CancellationToken cancellationToken = default)
-            => await ManagerHelpers.GetManyAsync(AppointMateDbMapper.StaffMembers, Builders<StaffMemberEntity>.Filter.Eq(x => x.CompanyId, companyId.ToObjectId()), args, cancellationToken);
+        public async Task<IEnumerable<StaffMemberEntity>> GetStaffMembersAsync(CompanyRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+        {
+            var filters = new List<FilterDefinition<StaffMemberEntity>>();
+
+            if (args is not null)
+                filters = CreateFilters<StaffMemberEntity>(args);
+
+            var filter = Builders<StaffMemberEntity>.Filter.And(filters);
+
+            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.StaffMembers, filter, args, cancellationToken);
+        }
 
         /// <summary>
         /// Gets the staff member with the specified <paramref name="id"/>
@@ -110,15 +118,23 @@ namespace AppointMate
         /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<IEnumerable<CustomerEntity>> GetCustomers(string userId, StandardAPIArgs? args, CancellationToken cancellationToken = default)
-            => await ManagerHelpers.GetManyAsync(AppointMateDbMapper.Customers, Builders<CustomerEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), args, cancellationToken);
+        public async Task<IEnumerable<CustomerEntity>> GetCustomersAsync(string userId, CompanyRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+        {
+            var filters = new List<FilterDefinition<CustomerEntity>>();
+
+            if (args is not null)
+                filters = CreateFilters<CustomerEntity>(args);
+            
+            filters.Add(Builders<CustomerEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()));
+
+            var filter = Builders<CustomerEntity>.Filter.And(filters);
+
+            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.Customers, filter, args, cancellationToken);
+        }
 
         #endregion
 
         #region Services
-
-        // Get Group by name services pagination = 3
-        // Get Group by name services pagination = 4
 
         /// <summary>
         /// Gets the services grouped by name
@@ -164,41 +180,13 @@ namespace AppointMate
         /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<IEnumerable<CustomerServiceEntity>> GetCustomerServicesAsync(CustomerServiceAPIArgs? args, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CustomerServiceEntity>> GetCustomerServicesAsync(CustomerRelatedAPIArgs? args, CancellationToken cancellationToken = default)
         {
             var filters = new List<FilterDefinition<CustomerServiceEntity>>();
 
             // If there are arguments...
             if (args is not null)
-            {
-                // If there is a limit to the companies to include...
-                if (!args.IncludeCompanies.IsNullOrEmpty())
-                {
-                    var ids = args.IncludeCompanies.Select(x => x.ToObjectId()).ToList();
-                    filters.Add(Builders<CustomerServiceEntity>.Filter.In(x => x.Service!.CompanyId, ids));
-                }
-
-                // If there is a limit to the companies to exclude...
-                if (!args.ExcludeCompanies.IsNullOrEmpty())
-                {
-                    var ids = args.ExcludeCompanies.Select(x => x.ToObjectId()).ToList();
-                    filters.Add(Builders<CustomerServiceEntity>.Filter.Nin(x => x.Service!.CompanyId, ids));
-                }
-
-                // If there is a limit to the customers to include...
-                if (!args.IncludeCustomers.IsNullOrEmpty())
-                {
-                    var ids = args.IncludeCustomers.Select(x => x.ToObjectId()).ToList();
-                    filters.Add(Builders<CustomerServiceEntity>.Filter.In(x => x.CustomerId, ids));
-                }
-
-                // If there is a limit to the customers to exclude...
-                if (!args.ExcludeCustomers.IsNullOrEmpty())
-                {
-                    var ids = args.ExcludeCustomers.Select(x => x.ToObjectId()).ToList();
-                    filters.Add(Builders<CustomerServiceEntity>.Filter.Nin(x => x.CustomerId, ids));
-                }
-            }
+                filters = CreateFilters<CustomerServiceEntity>(args);
 
             var filter = Builders<CustomerServiceEntity>.Filter.And(filters);
 
@@ -211,60 +199,342 @@ namespace AppointMate
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<CustomerServiceEntity> GetCustomerServiceAsync(string id, CancellationToken cancellationToken = default)
-        {
-            return await ManagerHelpers.GetAsync(AppointMateDbMapper.CustomerServices, Builders<CustomerServiceEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
-        }
+        public async Task<CustomerServiceEntity> GetCustomerServiceAsync(string id, CancellationToken cancellationToken = default) 
+            => await ManagerHelpers.GetAsync(AppointMateDbMapper.CustomerServices, Builders<CustomerServiceEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
 
         #endregion
 
         #region Sessions
 
-        // Get service sessions by user id -> filter date
-        // Get service sessions count by user id -> filter for status
-        // Get service sessions by user id and service id
+        /// <summary>
+        /// Gets the sessions 
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<CustomerServiceSessionEntity>> GetSessionsAsync(SessionAPIArgs? args, CancellationToken cancellationToken = default)
+        {
+            var filters = new List<FilterDefinition<CustomerServiceSessionEntity>>();
+
+            // If there are arguments...
+            if (args is not null)
+            {
+                filters = CreateFilters<CustomerServiceSessionEntity>(args);
+
+                // If there is a specified session status...
+                if (args.SessionStatus is not null)
+                    filters.Add(Builders<CustomerServiceSessionEntity>.Filter.Eq(x => x.SessionStatus, args.SessionStatus));
+            }
+
+            var filter = Builders<CustomerServiceSessionEntity>.Filter.And(filters);
+
+            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.CustomerServiceSessions, filter, x => x.DateAndTime, false, args, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets the session with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<CustomerServiceSessionEntity> GetSessionAsync(string id, CancellationToken cancellationToken = default)
+            => await ManagerHelpers.GetAsync(AppointMateDbMapper.CustomerServiceSessions, Builders<CustomerServiceSessionEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
 
         #endregion
 
         #region Notes
 
-        // Get notes by user id
+        /// <summary>
+        /// Gets the notes
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<CustomerNoteEntity>> GetNotesAsync(CustomerRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+        {
+            var filters = new List<FilterDefinition<CustomerNoteEntity>>();
+
+            // If there are arguments...
+            if (args is not null)
+                filters = CreateFilters<CustomerNoteEntity>(args);
+            
+            var filter = Builders<CustomerNoteEntity>.Filter.And(filters);
+
+            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.CustomerNotes, filter, args, cancellationToken);
+        }
 
         #endregion
 
         #region Offset Point Logs
 
-        // Get offset point logs by user id
+        /// <summary>
+        /// Gets the point offset logs for the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The user id</param>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<UserPointOffsetLogEntity>> GetPointOffsetLogsAsync(string userId, APIArgs? args, CancellationToken cancellationToken = default)
+        {
+            var filters = new List<FilterDefinition<UserPointOffsetLogEntity>>
+            {
+                Builders<UserPointOffsetLogEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId())
+            };
 
-        // Get offset point logs total by user id
-        // Get offset point logs total earned by user id
-        // Get offset point logs total spend by user id
+            var filter = Builders<UserPointOffsetLogEntity>.Filter.And(filters);
+
+            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.CustomerPointOffsetLogs, filter, args, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets the point offset logs for the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The user id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<long> GetPointOffsetLogsCountAsync(string userId, CancellationToken cancellationToken = default) 
+            => await AppointMateDbMapper.CustomerPointOffsetLogs.CountDocumentsAsync(Builders<UserPointOffsetLogEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), cancellationToken: cancellationToken);
+        
+        /// <summary>
+        /// Gets the total point earned for the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The user id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<int> GetTotalPointsEarnedAsync(string userId, CancellationToken cancellationToken = default)
+        {
+            var pointOffsets = await AppointMateDbMapper.CustomerPointOffsetLogs.SelectAsync(x => x.IsPositive == true && x.UserId == userId.ToObjectId(), cancellationToken);
+
+            return pointOffsets.Sum(x => x.Offset);
+        }
+
+        /// <summary>
+        /// Gets the total point spent for the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The user id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<int> GetTotalPointsSpentAsync(string userId, CancellationToken cancellationToken = default)
+        {
+            var pointOffsets = await AppointMateDbMapper.CustomerPointOffsetLogs.SelectAsync(x => x.IsPositive == false && x.UserId == userId.ToObjectId(), cancellationToken);
+
+            return pointOffsets.Sum(x => x.Offset);
+        }
 
         #endregion
 
         #region Reviews
 
-        // Gets customer reviews by company id -> Select all the reviews for each service of the company with the specified id and calculate average rating of company
-        // Get customer reviews by customer id
-        // Get customer reviews Count by customer id
+        /// <summary>
+        /// Gets the reviews for the company with the specified <paramref name="companyId"/>
+        /// </summary>
+        /// <param name="companyId">The company id</param>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<CustomerServiceReviewEntity>> GetReviewsAsync(string companyId, APIArgs? args, CancellationToken cancellationToken = default) 
+            => await ManagerHelpers.GetManyAsync(AppointMateDbMapper.CustomerServiceReviews, Builders<CustomerServiceReviewEntity>.Filter.Eq(x => x.CompanyId, companyId.ToObjectId()), args, cancellationToken);
 
-        // Get customer review by id
+        /// <summary>
+        /// Gets the reviews
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<CustomerServiceReviewEntity>> GetReviewsAsync(CustomerRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+        {
+            var filters = new List<FilterDefinition<CustomerServiceReviewEntity>>();
+
+            // If there are arguments...
+            if (args is not null)
+                filters = CreateFilters<CustomerServiceReviewEntity>(args);
+
+            var filter = Builders<CustomerServiceReviewEntity>.Filter.And(filters);
+
+            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.CustomerServiceReviews, filter, args, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets the review with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<CustomerServiceReviewEntity> GetCustomerReviewAsync(string id, CancellationToken cancellationToken = default)
+            => await ManagerHelpers.GetAsync(AppointMateDbMapper.CustomerServiceReviews, Builders<CustomerServiceReviewEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
 
         #endregion
 
         #region Favorite Companies
 
-        // Get favorite companies by user id
-        // Get favorite companies count by user id
+        /// <summary>
+        /// Gets the customers that represent the user with the specified <paramref name="userId"/> in a company
+        /// </summary>
+        /// <param name="userId">The user id</param>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<UserFavoriteCompanyEntity>> GetFavoriteCompaniesAsync(string userId, CompanyRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+            => await ManagerHelpers.GetManyAsync(AppointMateDbMapper.UserFavoriteCompanies, Builders<UserFavoriteCompanyEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), args, cancellationToken);
+
+        /// <summary>
+        /// Gets the total number of favorite companies for the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The user id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<long> GetFavoriteCompaniesCountAsync(string userId, CancellationToken cancellationToken = default)
+            => await AppointMateDbMapper.UserFavoriteCompanies.CountDocumentsAsync(Builders<UserFavoriteCompanyEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), cancellationToken: cancellationToken);
 
         #endregion
 
         #region Payments
 
-        // Get payments sum by customer id and payment method
-        // Get payments count by customer id and payment method
+        /// <summary>
+        /// Gets the total number of payments
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<long> GetPaymentsCountAsync(PaymentAPIArgs? args, CancellationToken cancellationToken = default)
+        {
+            var filters = new List<FilterDefinition<CustomerServicePaymentEntity>>();
+
+            // If there are arguments...
+            if (args is not null)
+                filters = CreateFilters<CustomerServicePaymentEntity>(args);
+
+            var filter = Builders<CustomerServicePaymentEntity>.Filter.And(filters);
+
+            return await AppointMateDbMapper.CustomerServicePayments.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets the payments
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<CustomerServicePaymentEntity>> GetReviewsAsync(PaymentAPIArgs? args, CancellationToken cancellationToken = default)
+        {
+            var filters = new List<FilterDefinition<CustomerServicePaymentEntity>>();
+
+            // If there are arguments...
+            if (args is not null)
+            {
+                filters = CreateFilters<CustomerServicePaymentEntity>(args);
+
+                // If there is a limit to the payment methods to include...
+                if (!args.IncludePaymentMethods.IsNullOrEmpty())
+                {
+                    var ids = args.IncludePaymentMethods.Select(x => x.ToObjectId()).ToList();
+                    filters.Add(Builders<CustomerServicePaymentEntity>.Filter.In(x => x.PaymentMethod!.Source, ids));
+                }
+
+                // If there is a limit to the payment methods to exclude...
+                if (!args.ExcludePaymentMethods.IsNullOrEmpty())
+                {
+                    var ids = args.ExcludePaymentMethods.Select(x => x.ToObjectId()).ToList();
+                    filters.Add(Builders<CustomerServicePaymentEntity>.Filter.Nin(x => x.PaymentMethod!.Source, ids));
+                }
+            }
+
+            var filter = Builders<CustomerServicePaymentEntity>.Filter.And(filters);
+
+            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.CustomerServicePayments, filter, args, cancellationToken);
+        }
 
         #endregion
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Creates the filters for the specified <paramref name="args"/>
+        /// </summary>
+        /// <typeparam name="T">The document type</typeparam>
+        /// <param name="args">The arguments</param>
+        /// <returns></returns>
+        private List<FilterDefinition<T>> CreateFilters<T>(CompanyRelatedAPIArgs args)
+            where T : BaseEntity, ICompanyIdentifiable<ObjectId>
+        {
+            var filters = new List<FilterDefinition<T>>();
+
+            // If there is a limit to the companies to include...
+            if (!args.IncludeCompanies.IsNullOrEmpty())
+            {
+                var ids = args.IncludeCompanies.Select(x => x.ToObjectId()).ToList();
+                filters.Add(Builders<T>.Filter.In(x => x.CompanyId, ids));
+            }
+
+            // If there is a limit to the companies to exclude...
+            if (!args.ExcludeCompanies.IsNullOrEmpty())
+            {
+                var ids = args.ExcludeCompanies.Select(x => x.ToObjectId()).ToList();
+                filters.Add(Builders<T>.Filter.Nin(x => x.CompanyId, ids));
+            }
+
+            return filters;
+        }
+
+        /// <summary>
+        /// Creates the filters for the specified <paramref name="args"/>
+        /// </summary>
+        /// <typeparam name="T">The document type</typeparam>
+        /// <param name="args">The arguments</param>
+        /// <returns></returns>
+        private List<FilterDefinition<T>> CreateFilters<T>(CustomerRelatedAPIArgs args)
+            where T : BaseEntity, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
+        {
+            var filters = new List<FilterDefinition<T>>();
+
+            filters.AddRange(CreateFilters<T>((CompanyRelatedAPIArgs)args));
+
+            // If there is a limit to the customers to include...
+            if (!args.IncludeCustomers.IsNullOrEmpty())
+            {
+                var ids = args.IncludeCustomers.Select(x => x.ToObjectId()).ToList();
+                filters.Add(Builders<T>.Filter.In(x => x.CustomerId, ids));
+            }
+
+            // If there is a limit to the customers to exclude...
+            if (!args.ExcludeCustomers.IsNullOrEmpty())
+            {
+                var ids = args.ExcludeCustomers.Select(x => x.ToObjectId()).ToList();
+                filters.Add(Builders<T>.Filter.Nin(x => x.CustomerId, ids));
+            }
+
+            return filters;
+        }
+
+        /// <summary>
+        /// Creates the filters for the specified <paramref name="args"/>
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <returns></returns>
+        private List<FilterDefinition<CustomerServicePaymentEntity>> CreateFilters(PaymentAPIArgs args)
+        {
+            var filters = new List<FilterDefinition<CustomerServicePaymentEntity>>();
+
+            filters.AddRange(CreateFilters<CustomerServicePaymentEntity>(args));
+
+            // If there is a limit to the payment methods to include...
+            if (!args.IncludePaymentMethods.IsNullOrEmpty())
+            {
+                var ids = args.IncludePaymentMethods.Select(x => x.ToObjectId()).ToList();
+                filters.Add(Builders<CustomerServicePaymentEntity>.Filter.In(x => x.PaymentMethod!.Source, ids));
+            }
+
+            // If there is a limit to the payment methods to exclude...
+            if (!args.ExcludePaymentMethods.IsNullOrEmpty())
+            {
+                var ids = args.ExcludePaymentMethods.Select(x => x.ToObjectId()).ToList();
+                filters.Add(Builders<CustomerServicePaymentEntity>.Filter.Nin(x => x.PaymentMethod!.Source, ids));
+            }
+
+            return filters;
+        }
 
         #endregion
     }

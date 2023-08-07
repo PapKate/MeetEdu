@@ -13,7 +13,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a customer service document in the MongoDB
     /// </summary>
-    public class CustomerServiceEntity : DateEntity
+    public class CustomerServiceEntity : DateEntity, ICustomerIdentifiable<ObjectId>, ICompanyIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -30,6 +30,11 @@ namespace AppointMate
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// The customer id

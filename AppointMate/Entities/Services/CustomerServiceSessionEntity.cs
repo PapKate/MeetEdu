@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a customer service session document in the MongoDB
     /// </summary>
-    public class CustomerServiceSessionEntity : StandardEntity, IDescriptable, ICustomerIdentifiable<ObjectId>
+    public class CustomerServiceSessionEntity : StandardEntity, IDescriptable, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -19,9 +19,14 @@ namespace AppointMate
         #region Public Properties
 
         /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
+
+        /// <summary>
         /// The customer id
         /// </summary>
-        public ObjectId UserId { get; set; }
+        public ObjectId CustomerId { get; set; }
 
         /// <summary>
         /// The service id

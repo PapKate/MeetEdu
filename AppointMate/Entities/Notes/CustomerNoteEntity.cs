@@ -1,9 +1,11 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a customer note document in the MongoDB
     /// </summary>
-    public class CustomerNoteEntity : StandardEntity
+    public class CustomerNoteEntity : StandardEntity, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -15,6 +17,16 @@
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
+
+        /// <summary>
+        /// The customer id
+        /// </summary>
+        public ObjectId CustomerId { get; set; }
 
         /// <summary>
         /// The message
@@ -89,7 +101,7 @@
         /// Returns a string that represents the current object
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => $"Type: {Type}, Customer: {Customer?.Name}";
+        public override string ToString() => $"Type: {Type}, Customer:";
 
         #endregion
     }

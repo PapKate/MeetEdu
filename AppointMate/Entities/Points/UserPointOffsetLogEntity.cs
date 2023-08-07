@@ -1,9 +1,11 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a customer point offset log document in the MongoDB
     /// </summary>
-    public class CustomerPointOffsetLogEntity : BaseEntity, IDateCreatable, INoteable, IOffsetable
+    public class UserPointOffsetLogEntity : BaseEntity, IDateCreatable, INoteable, IOffsetable, IUserIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -17,14 +19,14 @@
         #region Public Properties
 
         /// <summary>
+        /// The user id
+        /// </summary>
+        public ObjectId UserId { get; set; }
+
+        /// <summary>
         /// The creation date
         /// </summary>
         public DateTimeOffset DateCreated { get; set; }
-
-        /// <summary>
-        /// The customer
-        /// </summary>
-        public EmbeddedCustomerEntity? Customer { get; set; }
 
         /// <summary>
         /// The old points of the customer
@@ -62,7 +64,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerPointOffsetLogEntity() : base()
+        public UserPointOffsetLogEntity() : base()
         {
 
         }
@@ -72,25 +74,25 @@
         #region Public Methods
 
         /// <summary>
-        /// Creates and returns a <see cref="CustomerPointOffsetLogEntity"/> from the specified <paramref name="model"/>
+        /// Creates and returns a <see cref="UserPointOffsetLogEntity"/> from the specified <paramref name="model"/>
         /// </summary>
-        /// <param name="customer">The customer</param>
+        /// <param name="userId">The user id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static CustomerPointOffsetLogEntity FromRequestModel(CustomerEntity customer, CustomerPointOffsetLogRequestModel model)
+        public static UserPointOffsetLogEntity FromRequestModel(string userId, CustomerPointOffsetLogRequestModel model)
         {
-            var entity = new CustomerPointOffsetLogEntity();
+            var entity = new UserPointOffsetLogEntity();
 
             DI.Mapper.Map(model, entity);
             entity.IsPositive = model.Offset > 0;
             entity.DateCreated = DateTimeOffset.Now;
-            entity.Customer = customer.ToEmbeddedEntity();
+            entity.UserId = userId.ToObjectId();
 
             return entity;
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CustomerPointOffsetLogResponseModel"/> from the current <see cref="CustomerPointOffsetLogEntity"/>
+        /// Creates and returns a <see cref="CustomerPointOffsetLogResponseModel"/> from the current <see cref="UserPointOffsetLogEntity"/>
         /// </summary>
         /// <returns></returns>
         public CustomerPointOffsetLogResponseModel ToResponseModel()

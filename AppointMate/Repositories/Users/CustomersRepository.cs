@@ -102,7 +102,7 @@ namespace AppointMate
         /// <param name="customerId">The customer id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CustomerPointOffsetLogEntity>> AddCustomerPointOffsetLogAsync(ObjectId customerId, CustomerPointOffsetLogRequestModel model)
+        public async Task<WebServerFailable<UserPointOffsetLogEntity>> AddCustomerPointOffsetLogAsync(ObjectId customerId, CustomerPointOffsetLogRequestModel model)
         {
             // Get the customer with the specified id
             var customer = await AppointMateDbMapper.Customers.FirstOrDefaultAsync(x => x.Id == customerId);
@@ -124,7 +124,7 @@ namespace AppointMate
             if (oldPoints + model.Offset < 0)
                 return AppointMateWebServerConstants.InsufficientCustomerPointsErrorMessage;
 
-            var entity = CustomerPointOffsetLogEntity.FromRequestModel(customer, model);
+            var entity = UserPointOffsetLogEntity.FromRequestModel(customer, model);
 
             entity.OldPoints = oldPoints;
             entity.NewPoints = (uint)(oldPoints + model.Offset);

@@ -10,7 +10,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a customer service payment document in the MongoDB
     /// </summary>
-    public class CustomerServicePaymentEntity: DateEntity, INoteable, IPayable
+    public class CustomerServicePaymentEntity: DateEntity, INoteable, IPayable, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
     {
         #region Private Methods
 
@@ -22,6 +22,16 @@ namespace AppointMate
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
+
+        /// <summary>
+        /// The customer id
+        /// </summary>
+        public ObjectId CustomerId { get; set; }
 
         /// <summary>
         /// The amount
@@ -41,6 +51,11 @@ namespace AppointMate
         /// The payment method
         /// </summary>
         public EmbeddedPaymentMethodEntity? PaymentMethod { get; set; }
+
+        /// <summary>
+        /// The customer service
+        /// </summary>
+        public EmbeddedCustomerServiceEntity CustomerService { get; set; }
 
         /// <summary>
         /// The sum of the flat rate and the percent commission

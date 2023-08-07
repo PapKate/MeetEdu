@@ -63,7 +63,7 @@ namespace AppointMate
         /// <returns></returns>
         [HttpGet]
         [Route(AppointMateAPIRoutes.ServicesRoute)]
-        public async Task<ActionResult<IEnumerable<ServiceCompaniesResult>>> GetServicesAsync([FromQuery]StandardAPIArgs args, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<ServiceCompaniesResult>>> GetServicesAsync([FromQuery]CompanyRelatedAPIArgs args, CancellationToken cancellationToken = default)
         {
             var filters = new List<FilterDefinition<ServiceEntity>>();
 

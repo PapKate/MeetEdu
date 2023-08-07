@@ -25,14 +25,14 @@
         /// <summary>
         /// The customer id
         /// </summary>
-        new T UserId { get; set; }
+        new T CustomerId { get; set; }
 
         /// <summary>
         /// The customer id
         /// </summary>
         object? ICustomerIdentifiable.CustomerId
         {
-            get => UserId;
+            get => CustomerId;
             set { }
         }
 

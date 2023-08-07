@@ -169,7 +169,7 @@ namespace AppointMate
         /// <summary>
         /// The customer point offset logs collection
         /// </summary>
-        public static IMongoCollection<CustomerPointOffsetLogEntity> CustomerPointOffsetLogs => DI.Database.GetCollection<CustomerPointOffsetLogEntity>(CustomerPointOffsetLogsCollectionName);
+        public static IMongoCollection<UserPointOffsetLogEntity> CustomerPointOffsetLogs => DI.Database.GetCollection<UserPointOffsetLogEntity>(CustomerPointOffsetLogsCollectionName);
 
         #endregion
 
