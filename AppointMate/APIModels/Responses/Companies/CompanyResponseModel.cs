@@ -13,9 +13,9 @@
         private string? mNote;
 
         /// <summary>
-        /// The member of the <see cref="Category"/> property
+        /// The member of the <see cref="Categories"/> property
         /// </summary>
-        private string? mCategory;
+        private IEnumerable<CompanyType>? mCategories;
 
         /// <summary>
         /// The member of the <see cref="Description"/> property
@@ -32,12 +32,12 @@
         #region Public Properties
 
         /// <summary>
-        /// The category
+        /// The categories
         /// </summary>
-        public string Category
+        public IEnumerable<CompanyType> Categories
         {
-            get => mCategory ?? string.Empty;
-            set => mCategory = value;
+            get => mCategories ?? Enumerable.Empty<CompanyType>();
+            set => mCategories = value;
         }
 
         /// <summary>
@@ -48,6 +48,11 @@
             get => mDescription ?? string.Empty;
             set => mDescription = value;
         }
+
+        /// <summary>
+        /// A flag indicating whether the company provides at home services
+        /// </summary>
+        public bool HasAtHomeServices { get; set; }
 
         /// <summary>
         /// The radius for the distance where at home services can be provided in Km
@@ -66,7 +71,7 @@
         /// <summary>
         /// The work hours
         /// </summary>
-        public WeeklyScheduleResponseModel? WorkHours { get; set; }
+        public WeeklySchedule? WorkHours { get; set; }
 
         /// <summary>
         /// The image URL
@@ -96,6 +101,16 @@
             get => mLabels ?? Enumerable.Empty<EmbeddedLabelResponseModel>();
             set => mLabels = value;
         }
+
+        /// <summary>
+        /// The average number of stars from the customer reviews
+        /// </summary>
+        public double TotalReviewStars { get; set; }
+
+        /// <summary>
+        /// The number of customer reviews
+        /// </summary>
+        public uint TotalReviews { get; set; }
 
         #endregion
 

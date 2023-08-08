@@ -1,11 +1,22 @@
-﻿namespace AppointMate
+﻿
+namespace AppointMate
 {
     /// <summary>
     /// Represents a note
     /// </summary>
-    public class CustomerNoteResponseModel : StandardResponseModel
+    public class CustomerNoteResponseModel : StandardResponseModel, ICompanyIdentifiable<string>, ICustomerIdentifiable<string>
     {
         #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="CompanyId"/> property
+        /// </summary>
+        private string? mCompanyId;
+
+        /// <summary>
+        /// The member of the <see cref="CustomerId"/> property
+        /// </summary>
+        private string? mCustomerId;
 
         /// <summary>
         /// The member of the <see cref="Message"/> property
@@ -20,6 +31,24 @@
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public string CompanyId
+        {
+            get => mCompanyId ?? string.Empty;
+            set => mCompanyId = value;
+        }
+
+        /// <summary>
+        /// The customer id
+        /// </summary>
+        public string CustomerId
+        {
+            get => mCustomerId ?? string.Empty;
+            set => mCustomerId = value;
+        }
 
         /// <summary>
         /// The message

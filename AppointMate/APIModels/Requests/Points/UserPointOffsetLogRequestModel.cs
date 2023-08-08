@@ -1,21 +1,22 @@
-﻿namespace AppointMate
+﻿
+namespace AppointMate
 {
     /// <summary>
     /// Request model used for a customer point offset log
     /// </summary>
-    public class CustomerPointOffsetLogRequestModel 
+    public class UserPointOffsetLogRequestModel 
     {
         #region Public Properties
 
         /// <summary>
-        /// The customer
+        /// The user id
         /// </summary>
-        public EmbeddedCustomerResponseModel? Customer { get; set; }
+        public string? UserId { get; set; }
 
         /// <summary>
         /// The offset
         /// </summary>
-        public int Offset { get; set; }
+        public int? Offset { get; set; }
 
         /// <summary>
         /// The note
@@ -29,7 +30,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerPointOffsetLogRequestModel() : base()
+        public UserPointOffsetLogRequestModel() : base()
         {
 
         }
@@ -42,7 +43,7 @@
         /// Returns a string that represents the current object
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => $"Note: {Note}, Offset: {Offset}";
+        public override string ToString() => $"User: {UserId}, Note: {Note}, Offset: {Offset}";
 
         #endregion
     }

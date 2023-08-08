@@ -8,6 +8,16 @@
         #region Public Properties
 
         /// <summary>
+        /// The company id
+        /// </summary>
+        public string? CompanyId { get; set; }
+
+        /// <summary>
+        /// The customer id
+        /// </summary>
+        public string? CustomerId { get; set; }
+
+        /// <summary>
         /// The message
         /// </summary>
         public string? Message { get; set; }

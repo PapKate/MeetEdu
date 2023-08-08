@@ -14,6 +14,71 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:AppointMate.CompanyRequestModel">
+            <summary>
+            Request model used for a company
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.Categories">
+            <summary>
+            The categories
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.HasAtHomeServices">
+            <summary>
+            A flag indicating whether the company provides at home services
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.AtHomeRadius">
+            <summary>
+            The radius for the distance where at home services can be provided in Km
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.WorkHours">
+            <summary>
+            The work hours
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.Location">
+            <summary>
+            The location
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.Billing">
+            <summary>
+            The billing information
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.Shipping">
+            <summary>
+            The shipping information
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyRequestModel.Labels">
+            <summary>
+            The labels
+            </summary>
+        </member>
+        <member name="M:AppointMate.CompanyRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:AppointMate.CompanyContactMessageRequestModel">
             <summary>
             Request model used for a company contact message
@@ -54,49 +119,14 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:AppointMate.CompanyRequestModel">
-            <summary>
-            Request model used for a company
-            </summary>
-        </member>
-        <member name="P:AppointMate.CompanyRequestModel.Category">
-            <summary>
-            The category
-            </summary>
-        </member>
-        <member name="P:AppointMate.CompanyRequestModel.Description">
-            <summary>
-            The description
-            </summary>
-        </member>
-        <member name="P:AppointMate.CompanyRequestModel.AtHomeRadius">
-            <summary>
-            The radius for the distance where at home services can be provided in Km
-            </summary>
-        </member>
-        <member name="P:AppointMate.CompanyRequestModel.Note">
-            <summary>
-            The note
-            </summary>
-        </member>
-        <member name="P:AppointMate.CompanyRequestModel.ImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:AppointMate.CompanyRequestModel.Labels">
-            <summary>
-            The labels
-            </summary>
-        </member>
-        <member name="M:AppointMate.CompanyRequestModel.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
         <member name="T:AppointMate.CompanyLayoutRequestModel">
             <summary>
             Request model used for a company layout
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyLayoutRequestModel.CompanyId">
+            <summary>
+            The company id
             </summary>
         </member>
         <member name="P:AppointMate.CompanyLayoutRequestModel.Description">
@@ -117,6 +147,11 @@
         <member name="T:AppointMate.LabelRequestModel">
             <summary>
             Request model used for a label
+            </summary>
+        </member>
+        <member name="P:AppointMate.LabelRequestModel.CompanyId">
+            <summary>
+            The company id
             </summary>
         </member>
         <member name="P:AppointMate.LabelRequestModel.Description">
@@ -159,6 +194,16 @@
         <member name="T:AppointMate.CustomerNoteRequestModel">
             <summary>
             Request model used for a note
+            </summary>
+        </member>
+        <member name="P:AppointMate.CustomerNoteRequestModel.CompanyId">
+            <summary>
+            The company id
+            </summary>
+        </member>
+        <member name="P:AppointMate.CustomerNoteRequestModel.CustomerId">
+            <summary>
+            The customer id
             </summary>
         </member>
         <member name="P:AppointMate.CustomerNoteRequestModel.Message">
@@ -314,32 +359,32 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:AppointMate.CustomerPointOffsetLogRequestModel">
+        <member name="T:AppointMate.UserPointOffsetLogRequestModel">
             <summary>
             Request model used for a customer point offset log
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerPointOffsetLogRequestModel.Customer">
+        <member name="P:AppointMate.UserPointOffsetLogRequestModel.UserId">
             <summary>
-            The customer
+            The user id
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerPointOffsetLogRequestModel.Offset">
+        <member name="P:AppointMate.UserPointOffsetLogRequestModel.Offset">
             <summary>
             The offset
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerPointOffsetLogRequestModel.Note">
+        <member name="P:AppointMate.UserPointOffsetLogRequestModel.Note">
             <summary>
             The note
             </summary>
         </member>
-        <member name="M:AppointMate.CustomerPointOffsetLogRequestModel.#ctor">
+        <member name="M:AppointMate.UserPointOffsetLogRequestModel.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:AppointMate.CustomerPointOffsetLogRequestModel.ToString">
+        <member name="M:AppointMate.UserPointOffsetLogRequestModel.ToString">
             <summary>
             Returns a string that represents the current object
             </summary>
@@ -348,6 +393,21 @@
         <member name="T:AppointMate.CustomerServiceReviewRequestModel">
             <summary>
             Request model used for a review
+            </summary>
+        </member>
+        <member name="P:AppointMate.CustomerServiceReviewRequestModel.CustomerId">
+            <summary>
+            The customer id
+            </summary>
+        </member>
+        <member name="P:AppointMate.CustomerServiceReviewRequestModel.ServiceId">
+            <summary>
+            The service id
+            </summary>
+        </member>
+        <member name="P:AppointMate.CustomerServiceReviewRequestModel.CompanyId">
+            <summary>
+            The company id
             </summary>
         </member>
         <member name="P:AppointMate.CustomerServiceReviewRequestModel.Note">
@@ -757,9 +817,9 @@
             The member of the <see cref="P:AppointMate.CompanyResponseModel.Note"/> property
             </summary>
         </member>
-        <member name="F:AppointMate.CompanyResponseModel.mCategory">
+        <member name="F:AppointMate.CompanyResponseModel.mCategories">
             <summary>
-            The member of the <see cref="P:AppointMate.CompanyResponseModel.Category"/> property
+            The member of the <see cref="P:AppointMate.CompanyResponseModel.Categories"/> property
             </summary>
         </member>
         <member name="F:AppointMate.CompanyResponseModel.mDescription">
@@ -772,14 +832,19 @@
             The member of the <see cref="P:AppointMate.CompanyResponseModel.Labels"/> property
             </summary>
         </member>
-        <member name="P:AppointMate.CompanyResponseModel.Category">
+        <member name="P:AppointMate.CompanyResponseModel.Categories">
             <summary>
-            The category
+            The categories
             </summary>
         </member>
         <member name="P:AppointMate.CompanyResponseModel.Description">
             <summary>
             The description
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyResponseModel.HasAtHomeServices">
+            <summary>
+            A flag indicating whether the company provides at home services
             </summary>
         </member>
         <member name="P:AppointMate.CompanyResponseModel.AtHomeRadius">
@@ -820,6 +885,16 @@
         <member name="P:AppointMate.CompanyResponseModel.Labels">
             <summary>
             The labels
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyResponseModel.TotalReviewStars">
+            <summary>
+            The average number of stars from the customer reviews
+            </summary>
+        </member>
+        <member name="P:AppointMate.CompanyResponseModel.TotalReviews">
+            <summary>
+            The number of customer reviews
             </summary>
         </member>
         <member name="M:AppointMate.CompanyResponseModel.#ctor">
@@ -870,6 +945,11 @@
         <member name="T:AppointMate.CompanyContactMessageResponseModel">
             <summary>
             Represents a company contact message
+            </summary>
+        </member>
+        <member name="F:AppointMate.CompanyContactMessageResponseModel.mCompanyId">
+            <summary>
+            The member of the <see cref="P:AppointMate.CompanyContactMessageResponseModel.CompanyId"/> property
             </summary>
         </member>
         <member name="F:AppointMate.CompanyContactMessageResponseModel.mFirstName">
@@ -997,6 +1077,16 @@
             The member of the <see cref="P:AppointMate.LabelResponseModel.Description"/> property
             </summary>
         </member>
+        <member name="F:AppointMate.LabelResponseModel.mCompanyId">
+            <summary>
+            The member of the <see cref="P:AppointMate.LabelResponseModel.CompanyId"/> property
+            </summary>
+        </member>
+        <member name="P:AppointMate.LabelResponseModel.CompanyId">
+            <summary>
+            The company id
+            </summary>
+        </member>
         <member name="P:AppointMate.LabelResponseModel.Description">
             <summary>
             The description
@@ -1012,20 +1102,34 @@
             A minimal version of the <see cref="T:AppointMate.LabelResponseModel"/> used when embedding
             </summary>
         </member>
+        <member name="F:AppointMate.EmbeddedLabelResponseModel.mCompanyId">
+            <summary>
+            The member of the <see cref="P:AppointMate.EmbeddedLabelResponseModel.CompanyId"/> property
+            </summary>
+        </member>
+        <member name="P:AppointMate.EmbeddedLabelResponseModel.CompanyId">
+            <summary>
+            The company id
+            </summary>
+        </member>
         <member name="M:AppointMate.EmbeddedLabelResponseModel.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:AppointMate.EmbeddedLabelResponseModel.ToString">
-            <summary>
-            Returns a string that represents the current object.
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:AppointMate.CustomerNoteResponseModel">
             <summary>
             Represents a note
+            </summary>
+        </member>
+        <member name="F:AppointMate.CustomerNoteResponseModel.mCompanyId">
+            <summary>
+            The member of the <see cref="P:AppointMate.CustomerNoteResponseModel.CompanyId"/> property
+            </summary>
+        </member>
+        <member name="F:AppointMate.CustomerNoteResponseModel.mCustomerId">
+            <summary>
+            The member of the <see cref="P:AppointMate.CustomerNoteResponseModel.CustomerId"/> property
             </summary>
         </member>
         <member name="F:AppointMate.CustomerNoteResponseModel.mMessage">
@@ -1036,6 +1140,16 @@
         <member name="F:AppointMate.CustomerNoteResponseModel.mLabels">
             <summary>
             The member of the <see cref="P:AppointMate.CustomerNoteResponseModel.Labels"/> property
+            </summary>
+        </member>
+        <member name="P:AppointMate.CustomerNoteResponseModel.CompanyId">
+            <summary>
+            The company id
+            </summary>
+        </member>
+        <member name="P:AppointMate.CustomerNoteResponseModel.CustomerId">
+            <summary>
+            The customer id
             </summary>
         </member>
         <member name="P:AppointMate.CustomerNoteResponseModel.Message">
@@ -1258,57 +1372,62 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:AppointMate.CustomerPointOffsetLogResponseModel">
+        <member name="T:AppointMate.UserPointOffsetLogResponseModel">
             <summary>
             Represents a customer point offset
             </summary>
         </member>
-        <member name="F:AppointMate.CustomerPointOffsetLogResponseModel.mNote">
+        <member name="F:AppointMate.UserPointOffsetLogResponseModel.mUserId">
             <summary>
-            The member of the <see cref="P:AppointMate.CustomerPointOffsetLogResponseModel.Note"/> property
+            The member of the <see cref="P:AppointMate.UserPointOffsetLogResponseModel.UserId"/> property
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerPointOffsetLogResponseModel.DateCreated">
+        <member name="F:AppointMate.UserPointOffsetLogResponseModel.mNote">
+            <summary>
+            The member of the <see cref="P:AppointMate.UserPointOffsetLogResponseModel.Note"/> property
+            </summary>
+        </member>
+        <member name="P:AppointMate.UserPointOffsetLogResponseModel.UserId">
+            <summary>
+            The user id
+            </summary>
+        </member>
+        <member name="P:AppointMate.UserPointOffsetLogResponseModel.DateCreated">
             <summary>
             The creation date
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerPointOffsetLogResponseModel.Customer">
-            <summary>
-            The customer
-            </summary>
-        </member>
-        <member name="P:AppointMate.CustomerPointOffsetLogResponseModel.OldPoints">
+        <member name="P:AppointMate.UserPointOffsetLogResponseModel.OldPoints">
             <summary>
             The old points of the customer
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerPointOffsetLogResponseModel.Offset">
+        <member name="P:AppointMate.UserPointOffsetLogResponseModel.Offset">
             <summary>
             The offset
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerPointOffsetLogResponseModel.IsPositive">
+        <member name="P:AppointMate.UserPointOffsetLogResponseModel.IsPositive">
             <summary>
             A flag indicating whether the offset was positive or not
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerPointOffsetLogResponseModel.NewPoints">
+        <member name="P:AppointMate.UserPointOffsetLogResponseModel.NewPoints">
             <summary>
             The new points of the customer
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerPointOffsetLogResponseModel.Note">
+        <member name="P:AppointMate.UserPointOffsetLogResponseModel.Note">
             <summary>
             The note
             </summary>
         </member>
-        <member name="M:AppointMate.CustomerPointOffsetLogResponseModel.#ctor">
+        <member name="M:AppointMate.UserPointOffsetLogResponseModel.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:AppointMate.CustomerPointOffsetLogResponseModel.ToString">
+        <member name="M:AppointMate.UserPointOffsetLogResponseModel.ToString">
             <summary>
             Returns a string that represents the current object
             </summary>
@@ -1319,14 +1438,39 @@
             Represents a customer service review
             </summary>
         </member>
+        <member name="F:AppointMate.CustomerServiceReviewResponseModel.mCustomerId">
+            <summary>
+            The member of the <see cref="P:AppointMate.CustomerServiceReviewResponseModel.CustomerId"/> property
+            </summary>
+        </member>
+        <member name="F:AppointMate.CustomerServiceReviewResponseModel.mServiceId">
+            <summary>
+            The member of the <see cref="P:AppointMate.CustomerServiceReviewResponseModel.ServiceId"/> property
+            </summary>
+        </member>
+        <member name="F:AppointMate.CustomerServiceReviewResponseModel.mCompanyId">
+            <summary>
+            The member of the <see cref="P:AppointMate.CustomerServiceReviewResponseModel.CompanyId"/> property
+            </summary>
+        </member>
         <member name="F:AppointMate.CustomerServiceReviewResponseModel.mNote">
             <summary>
             The member of the <see cref="P:AppointMate.CustomerServiceReviewResponseModel.Note"/> property
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerServiceReviewResponseModel.Customer">
+        <member name="P:AppointMate.CustomerServiceReviewResponseModel.CustomerId">
             <summary>
-            The customer
+            The customer id
+            </summary>
+        </member>
+        <member name="P:AppointMate.CustomerServiceReviewResponseModel.ServiceId">
+            <summary>
+            The service id
+            </summary>
+        </member>
+        <member name="P:AppointMate.CustomerServiceReviewResponseModel.CompanyId">
+            <summary>
+            The company id
             </summary>
         </member>
         <member name="P:AppointMate.CustomerServiceReviewResponseModel.CustomerServiceSessions">
@@ -6088,16 +6232,15 @@
             more frequently used when embedding documents in the MongoDB
             </summary>
         </member>
+        <member name="P:AppointMate.EmbeddedLabelEntity.CompanyId">
+            <summary>
+            The company id
+            </summary>
+        </member>
         <member name="M:AppointMate.EmbeddedLabelEntity.#ctor">
             <summary>
             Default constructor
             </summary>
-        </member>
-        <member name="M:AppointMate.EmbeddedLabelEntity.ToString">
-            <summary>
-            Returns a string that represents the current object.
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:AppointMate.CustomerNoteEntity">
             <summary>
@@ -6488,7 +6631,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:AppointMate.UserPointOffsetLogEntity.FromRequestModel(MongoDB.Bson.ObjectId,AppointMate.CustomerPointOffsetLogRequestModel)">
+        <member name="M:AppointMate.UserPointOffsetLogEntity.FromRequestModel(MongoDB.Bson.ObjectId,AppointMate.UserPointOffsetLogRequestModel)">
             <summary>
             Creates and returns a <see cref="T:AppointMate.UserPointOffsetLogEntity"/> from the specified <paramref name="model"/>
             </summary>
@@ -6498,7 +6641,7 @@
         </member>
         <member name="M:AppointMate.UserPointOffsetLogEntity.ToResponseModel">
             <summary>
-            Creates and returns a <see cref="T:AppointMate.CustomerPointOffsetLogResponseModel"/> from the current <see cref="T:AppointMate.UserPointOffsetLogEntity"/>
+            Creates and returns a <see cref="T:AppointMate.UserPointOffsetLogResponseModel"/> from the current <see cref="T:AppointMate.UserPointOffsetLogEntity"/>
             </summary>
             <returns></returns>
         </member>
@@ -6516,6 +6659,11 @@
         <member name="F:AppointMate.CustomerServiceReviewEntity.mNote">
             <summary>
             The member of the <see cref="P:AppointMate.CustomerServiceReviewEntity.Note"/> property
+            </summary>
+        </member>
+        <member name="F:AppointMate.CustomerServiceReviewEntity.mCustomerServiceSessions">
+            <summary>
+            The member of the <see cref="P:AppointMate.CustomerServiceReviewEntity.CustomerServiceSessions"/> property
             </summary>
         </member>
         <member name="P:AppointMate.CustomerServiceReviewEntity.CustomerId">
@@ -6553,10 +6701,11 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:AppointMate.CustomerServiceReviewEntity.FromRequestModel(AppointMate.CustomerServiceReviewRequestModel)">
+        <member name="M:AppointMate.CustomerServiceReviewEntity.FromRequestModelAsync(System.String,AppointMate.CustomerServiceReviewRequestModel)">
             <summary>
             Creates and returns a <see cref="T:AppointMate.ServiceEntity"/> from the specified <paramref name="model"/>
             </summary>
+            <param name="serviceId">The service</param>
             <param name="model">The model</param>
             <returns></returns>
         </member>
@@ -6817,6 +6966,21 @@
             <summary>
             A minimal version of the <see cref="T:AppointMate.CustomerServiceSessionEntity"/> that contains the fields that are 
             more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="P:AppointMate.EmbeddedCustomerServiceSessionEntity.CompanyId">
+            <summary>
+            The company id
+            </summary>
+        </member>
+        <member name="P:AppointMate.EmbeddedCustomerServiceSessionEntity.CustomerId">
+            <summary>
+            The customer id
+            </summary>
+        </member>
+        <member name="P:AppointMate.EmbeddedCustomerServiceSessionEntity.ServiceId">
+            <summary>
+            The service id
             </summary>
         </member>
         <member name="P:AppointMate.EmbeddedCustomerServiceSessionEntity.Index">
@@ -9762,18 +9926,12 @@
             <param name="id">The id</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.CustomerServicesRepository.AddCustomerServiceReviewAsync(AppointMate.CustomerServiceReviewRequestModel)">
+        <member name="M:AppointMate.CustomerServicesRepository.AddCustomerServiceReviewAsync(System.String,AppointMate.CustomerServiceReviewRequestModel)">
             <summary>
             Adds a customer service review
             </summary>
+            <param name="serviceId"></param>
             <param name="model">The model</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.CustomerServicesRepository.AddCustomerServiceReviewsAsync(System.Collections.Generic.IEnumerable{AppointMate.CustomerServiceReviewRequestModel})">
-            <summary>
-            Adds a list of customer service reviews 
-            </summary>
-            <param name="models">The models</param>
             <returns></returns>
         </member>
         <member name="M:AppointMate.CustomerServicesRepository.UpdateCustomerServiceReviewAsync(MongoDB.Bson.ObjectId,AppointMate.CustomerServiceReviewRequestModel)">
@@ -10001,7 +10159,7 @@
             <param name="id">The customer id</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.CustomersRepository.AddCustomerPointOffsetLogAsync(MongoDB.Bson.ObjectId,AppointMate.CustomerPointOffsetLogRequestModel)">
+        <member name="M:AppointMate.CustomersRepository.AddCustomerPointOffsetLogAsync(MongoDB.Bson.ObjectId,AppointMate.UserPointOffsetLogRequestModel)">
             <summary>
             Adds a point offset log to the customer with the specified <paramref name="customerId"/>
             </summary>

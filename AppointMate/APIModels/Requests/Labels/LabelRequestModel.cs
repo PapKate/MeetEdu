@@ -1,4 +1,6 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Request model used for a label
@@ -6,6 +8,11 @@
     public class LabelRequestModel : StandardRequestModel
     {
         #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public string? CompanyId { get; set; }
 
         /// <summary>
         /// The description

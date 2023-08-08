@@ -8,9 +8,14 @@
         #region Public Properties
 
         /// <summary>
-        /// The category
+        /// The categories
         /// </summary>
-        public string? Category { get; set; }
+        public IEnumerable<CompanyType>? Categories { get; set; }
+
+        /// <summary>
+        /// A flag indicating whether the company provides at home services
+        /// </summary>
+        public bool? HasAtHomeServices { get; set; } 
 
         /// <summary>
         /// The description
@@ -28,9 +33,29 @@
         public string? Note { get; set; }
 
         /// <summary>
+        /// The work hours
+        /// </summary>
+        public WeeklySchedule? WorkHours { get; set; }
+
+        /// <summary>
         /// The image URL
         /// </summary>
         public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The location
+        /// </summary>
+        public Location? Location { get; set; }
+
+        /// <summary>
+        /// The billing information
+        /// </summary>
+        public Billing? Billing { get; set; }
+
+        /// <summary>
+        /// The shipping information
+        /// </summary>
+        public Shipping? Shipping { get; set; }
 
         /// <summary>
         /// The labels

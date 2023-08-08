@@ -10,6 +10,11 @@ namespace AppointMate
         #region Public Properties
 
         /// <summary>
+        /// The company id
+        /// </summary>
+        public string? CompanyId { get; set; }
+
+        /// <summary>
         /// The description
         /// </summary>
         public string? Description { get; set; }

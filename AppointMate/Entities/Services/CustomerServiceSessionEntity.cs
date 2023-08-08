@@ -128,9 +128,24 @@ namespace AppointMate
     /// A minimal version of the <see cref="CustomerServiceSessionEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedCustomerServiceSessionEntity : EmbeddedStandardEntity
+    public class EmbeddedCustomerServiceSessionEntity : EmbeddedStandardEntity, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
     {
         #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId CompanyId { get; set; }
+
+        /// <summary>
+        /// The customer id
+        /// </summary>
+        public ObjectId CustomerId { get; set; }
+
+        /// <summary>
+        /// The service id
+        /// </summary>
+        public ObjectId ServiceId { get; set; }
 
         /// <summary>
         /// The number of the session

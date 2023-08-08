@@ -1,11 +1,18 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a customer point offset
     /// </summary>
-    public class CustomerPointOffsetLogResponseModel : IDateCreatable, INoteable, IOffsetable
+    public class UserPointOffsetLogResponseModel : IDateCreatable, INoteable, IOffsetable, IUserIdentifiable<string>
     {
         #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="UserId"/> property
+        /// </summary>
+        private string? mUserId;
 
         /// <summary>
         /// The member of the <see cref="Note"/> property
@@ -17,14 +24,18 @@
         #region Public Properties
 
         /// <summary>
+        /// The user id
+        /// </summary>
+        public string UserId
+        {
+            get => mUserId ?? string.Empty;
+            set => mUserId = value;
+        }
+
+        /// <summary>
         /// The creation date
         /// </summary>
         public DateTimeOffset DateCreated { get; set; }
-
-        /// <summary>
-        /// The customer
-        /// </summary>
-        public EmbeddedCustomerResponseModel? Customer { get; set; }
 
         /// <summary>
         /// The old points of the customer
@@ -62,7 +73,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerPointOffsetLogResponseModel() : base()
+        public UserPointOffsetLogResponseModel() : base()
         {
 
         }

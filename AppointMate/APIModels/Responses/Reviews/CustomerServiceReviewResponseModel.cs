@@ -1,11 +1,28 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a customer service review
     /// </summary>
-    public class CustomerServiceReviewResponseModel : BaseResponseModel, INoteable
+    public class CustomerServiceReviewResponseModel : DateResponseModel, INoteable, ICompanyIdentifiable<string>, ICustomerIdentifiable<string>
     {
         #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="CustomerId"/> property
+        /// </summary>
+        private string? mCustomerId;
+
+        /// <summary>
+        /// The member of the <see cref="ServiceId"/> property
+        /// </summary>
+        private string? mServiceId;
+
+        /// <summary>
+        /// The member of the <see cref="CompanyId"/> property
+        /// </summary>
+        private string? mCompanyId;
 
         /// <summary>
         /// The member of the <see cref="Note"/> property
@@ -17,9 +34,31 @@
         #region Public Properties
 
         /// <summary>
-        /// The customer
+        /// The customer id
         /// </summary>
-        public EmbeddedCustomerResponseModel? Customer { get; set; }
+        public string CustomerId
+        {
+            get => mCustomerId ?? string.Empty;
+            set => mCustomerId = value;
+        }
+
+        /// <summary>
+        /// The service id
+        /// </summary>
+        public string ServiceId
+        {
+            get => mServiceId ?? string.Empty;
+            set => mServiceId = value;
+        }
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public string CompanyId
+        {
+            get => mCompanyId ?? string.Empty;
+            set => mCompanyId = value;
+        }
 
         /// <summary>
         /// The customer service

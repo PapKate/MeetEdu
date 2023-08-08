@@ -79,7 +79,7 @@ namespace AppointMate
         /// <param name="userId">The user id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static UserPointOffsetLogEntity FromRequestModel(ObjectId userId, CustomerPointOffsetLogRequestModel model)
+        public static UserPointOffsetLogEntity FromRequestModel(ObjectId userId, UserPointOffsetLogRequestModel model)
         {
             var entity = new UserPointOffsetLogEntity();
 
@@ -92,11 +92,11 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CustomerPointOffsetLogResponseModel"/> from the current <see cref="UserPointOffsetLogEntity"/>
+        /// Creates and returns a <see cref="UserPointOffsetLogResponseModel"/> from the current <see cref="UserPointOffsetLogEntity"/>
         /// </summary>
         /// <returns></returns>
-        public CustomerPointOffsetLogResponseModel ToResponseModel()
-            => EntityHelpers.ToResponseModel<CustomerPointOffsetLogResponseModel>(this);
+        public UserPointOffsetLogResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<UserPointOffsetLogResponseModel>(this);
 
         /// <summary>
         /// Returns a string that represents the current object

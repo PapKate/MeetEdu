@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a customer service review document in the MongoDB
     /// </summary>
-    public class CustomerServiceReviewEntity : BaseEntity, INoteable, ICompanyIdentifiable<ObjectId>
+    public class CustomerServiceReviewEntity : DateEntity, INoteable, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -13,6 +13,11 @@ namespace AppointMate
         /// The member of the <see cref="Note"/> property
         /// </summary>
         private string? mNote;
+
+        /// <summary>
+        /// The member of the <see cref="CustomerServiceSessions"/> property
+        /// </summary>
+        private IEnumerable<EmbeddedCustomerServiceSessionEntity>? mCustomerServiceSessions;
 
         #endregion
 
@@ -36,7 +41,11 @@ namespace AppointMate
         /// <summary>
         /// The customer service
         /// </summary>
-        public IEnumerable<EmbeddedCustomerServiceSessionEntity>? CustomerServiceSessions { get; set; }
+        public IEnumerable<EmbeddedCustomerServiceSessionEntity>? CustomerServiceSessions 
+        { 
+            get => mCustomerServiceSessions ?? Enumerable.Empty<EmbeddedCustomerServiceSessionEntity>();
+            set => mCustomerServiceSessions = value;
+        }
 
         /// <summary>
         /// The note
@@ -71,13 +80,19 @@ namespace AppointMate
         /// <summary>
         /// Creates and returns a <see cref="ServiceEntity"/> from the specified <paramref name="model"/>
         /// </summary>
+        /// <param name="serviceId">The service</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static CustomerServiceReviewEntity FromRequestModel(CustomerServiceReviewRequestModel model)
+        public static async Task<CustomerServiceReviewEntity> FromRequestModelAsync(string serviceId, CustomerServiceReviewRequestModel model)
         {
             var entity = new CustomerServiceReviewEntity();
 
             DI.Mapper.Map(model, entity);
+
+            var serviceSessions = await AppointMateDbMapper.CustomerServiceSessions.SelectAsync(x => x.ServiceId == serviceId.ToObjectId());
+
+            entity.CustomerServiceSessions = serviceSessions.Select(x => x.ToEmbeddedEntity());
+
             return entity;
         }
 

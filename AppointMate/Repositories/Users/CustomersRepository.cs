@@ -102,7 +102,7 @@ namespace AppointMate
         /// <param name="customerId">The customer id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<UserPointOffsetLogEntity>> AddCustomerPointOffsetLogAsync(ObjectId customerId, CustomerPointOffsetLogRequestModel model)
+        public async Task<WebServerFailable<UserPointOffsetLogEntity>> AddCustomerPointOffsetLogAsync(ObjectId customerId, UserPointOffsetLogRequestModel model)
         {
             // Get the customer with the specified id
             var customer = await AppointMateDbMapper.Customers.FirstOrDefaultAsync(x => x.Id == customerId);

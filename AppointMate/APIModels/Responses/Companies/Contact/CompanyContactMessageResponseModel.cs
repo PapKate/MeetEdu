@@ -5,9 +5,14 @@ namespace AppointMate
     /// <summary>
     /// Represents a company contact message
     /// </summary>
-    public class CompanyContactMessageResponseModel : DateResponseModel, ICompanyIdentifiable<ObjectId>
+    public class CompanyContactMessageResponseModel : DateResponseModel, ICompanyIdentifiable<string>
     {
         #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="CompanyId"/> property
+        /// </summary>
+        private string? mCompanyId;
 
         /// <summary>
         /// The member of the <see cref="FirstName"/> property
@@ -36,7 +41,11 @@ namespace AppointMate
         /// <summary>
         /// The company id
         /// </summary>
-        public ObjectId CompanyId { get; set; }
+        public string CompanyId 
+        { 
+            get => mCompanyId ?? string.Empty;
+            set => mCompanyId = value;
+        }
 
         /// <summary>
         /// The first name

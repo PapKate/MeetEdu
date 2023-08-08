@@ -142,18 +142,11 @@ namespace AppointMate
         /// <summary>
         /// Adds a customer service review
         /// </summary>
+        /// <param name="serviceId"></param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<CustomerServiceReviewEntity> AddCustomerServiceReviewAsync(CustomerServiceReviewRequestModel model)
-            => await AppointMateDbMapper.CustomerServiceReviews.AddAsync(CustomerServiceReviewEntity.FromRequestModel(model));
-
-        /// <summary>
-        /// Adds a list of customer service reviews 
-        /// </summary>
-        /// <param name="models">The models</param>
-        /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<CustomerServiceReviewEntity>>> AddCustomerServiceReviewsAsync(IEnumerable<CustomerServiceReviewRequestModel> models)
-            => new WebServerFailable<IEnumerable<CustomerServiceReviewEntity>>(await AppointMateDbMapper.CustomerServiceReviews.AddRangeAsync(models.Select(CustomerServiceReviewEntity.FromRequestModel).ToList()));
+        public async Task<CustomerServiceReviewEntity> AddCustomerServiceReviewAsync(string serviceId, CustomerServiceReviewRequestModel model)
+            => await AppointMateDbMapper.CustomerServiceReviews.AddAsync(await CustomerServiceReviewEntity.FromRequestModelAsync(serviceId, model));
 
         /// <summary>
         /// Updates the customer service review with the specified <paramref name="id"/>
