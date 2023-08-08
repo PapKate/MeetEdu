@@ -52,11 +52,7 @@ namespace AppointMate
                 var assemblies = new List<Assembly>
                 {
                     // For the request models
-                    Assembly.GetAssembly(typeof(UserRequestModel))!,
-                    // For the entities
-                    Assembly.GetAssembly(typeof(UserEntity))!,
-                    // For the response models
-                    Assembly.GetAssembly(typeof(UserResponseModel))!,
+                    Assembly.GetAssembly(typeof(UserRequestModel))!
                 };
 
                 // For every Atom assembly...
@@ -78,9 +74,6 @@ namespace AppointMate
 
                         if (type.Name.EndsWith(FrameworkConstructionExtensions.ResponseModelSuffix))
                             responseModelTypes.Add(type);
-
-                        if (type.Name.EndsWith(FrameworkConstructionExtensions.APIArgsSuffix))
-                            apiArgTypes.Add(type);
                     }
                 }
 

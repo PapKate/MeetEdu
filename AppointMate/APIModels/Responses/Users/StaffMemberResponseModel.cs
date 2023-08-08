@@ -15,7 +15,7 @@
         /// <summary>
         /// The member of the <see cref="Labels"/> property
         /// </summary>
-        private IEnumerable<LabelResponseModel>? mLabels;
+        private IEnumerable<EmbeddedLabelResponseModel>? mLabels;
 
         #endregion
 
@@ -38,9 +38,9 @@
         /// <summary>
         /// The labels
         /// </summary>
-        public IEnumerable<LabelResponseModel> Labels 
+        public IEnumerable<EmbeddedLabelResponseModel> Labels 
         {
-            get => mLabels ?? Enumerable.Empty<LabelResponseModel>();
+            get => mLabels ?? Enumerable.Empty<EmbeddedLabelResponseModel>();
             set => mLabels = value;
         }
         
@@ -74,7 +74,7 @@
         /// <summary>
         /// The member of the <see cref="Labels"/> property
         /// </summary>
-        private IEnumerable<string>? mLabels;
+        private IEnumerable<EmbeddedLabelResponseModel>? mLabels;
 
         #endregion
 
@@ -97,9 +97,9 @@
         /// <summary>
         /// The labels
         /// </summary>
-        public IEnumerable<string> Labels
+        public IEnumerable<EmbeddedLabelResponseModel> Labels
         {
-            get => mLabels ?? Enumerable.Empty<string>();
+            get => mLabels ?? Enumerable.Empty<EmbeddedLabelResponseModel>();
             set => mLabels = value;
         }
 
