@@ -1,21 +1,118 @@
-﻿@using static Atom.Personalization
+﻿
+@using static AppointMate.Personalization
 @using static Atom.Blazor.Personalization
 
 @namespace AppointMate
 
 
-<div class="headerContainer foregroundControl @CssClasses" id="@Id" style="@Style">
-    yes
+<div class="headerContainer" style="@CssConstants.BackColor.SetCssVariable(BackColor!)">
+    <h1 class="headerAppName">@AppName</h1>
+       
+    <div class="headerUserContainer">
+        <span class="headerUserUsername">@(Username.IsNullOrEmpty() ? AppointMateConstants.Explorer : Username)</span>
+        <div class="headerUserProfileImageContainer headerExplorerProfileImageContainer">
+            <img class="headerUserProfileImage" src="@(UserImageUrl is null ? Personalization.ExplorerProfileImage : UserImageUrl)" alt="userProfileImage" />
+        </div>
+        <div class="headerDropDownMenu">
+            <DropDownMenu @ref="mAccountMenu"
+                          TItem="@RouteModel"
+                          IsNullable="false"
+                          TextSelector="@(x => x.Name)"
+                          ButtonBackground="transparent"
+                          BoxShadow="@BoxShadow"
+                          Background="@White"
+                          BorderRadius="@NormalBorderRadius" 
+                          ButtonBorderRadius="@CircleBorderRadius"
+                          Style="right: 0; top: 4.5rem;"/>
+        </div>
+    </div>
+
 </div>
 
 <style>
     .headerContainer {
         position: sticky;
-        display: flex;
         width: 100%;
         height: 4rem;
-        font-size:200%;
-        font-weight: 800;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: @VeryVeryLargeGap;
+        padding: @LargePadding @VeryLargePadding;
+        background: @Orange.NormalizedColor();
+        color: @White.NormalizedColor();
         box-shadow: @BoxShadow;
     }
+
+    .headerAppName {
+        font-size: 200%;
+        font-weight: 800;
+        filter: @LightFilterDropShadow;
+    }
+
+    .headerUserContainer {
+        position: relative;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        gap:  @LargeGap;
+    }
+
+    .headerUserUsername {
+        font-size: 140%;
+        font-weight: 600;
+    }
+
+    .headerUserProfileImageContainer {
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+        border-radius: @CircleBorderRadius;
+        box-shadow: @BoxShadow;
+    }
+
+    .headerUserProfileImage {
+        position: sticky;
+        width: 100%;
+        height: auto;
+    }
+
+    .headerExplorerProfileImageContainer {
+        padding: 3px;
+        background: @White.NormalizedColor();
+    }
+
+    .headerDropDownMenu {
+        position: absolute;
+        right:0;
+        width: 3rem;
+        height: 3rem;
+        border-radius: @CircleBorderRadius;
+    }
+
+        .headerDropDownMenu .menuButton {
+            color: @DarkGray.NormalizedColor();
+        }
+
+            .headerDropDownMenu .menuButton:nth-child(9){
+                color: @LightGray.NormalizedColor();
+            }
+
+                .headerDropDownMenu .menuButton:nth-child(9)::before {
+                    content: '';
+                    position:absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background: @LightGray.NormalizedColor();
+                }
+
+            .headerDropDownMenu .div .menuButton .menuButtonContent {
+                display: none;
+            }
+
+            .headerDropDownMenu .div .menuButton .dropDownMenuAdditionalData {
+                display: none;
+            }
 </style>

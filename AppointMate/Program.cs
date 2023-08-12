@@ -26,7 +26,10 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
+builder.Services.AddServerSideBlazor().AddCircuitOptions(o =>
+{
+    o.DetailedErrors = true;
+}); 
 
 var app = builder.Build();
 

@@ -48,6 +48,15 @@ namespace AppointMate
 
         #endregion
 
+        #region BackColor
+
+        /// <summary>
+        /// The back color
+        /// </summary>
+        public const string BackColor = "--backColor";
+
+        #endregion
+
         #endregion
     }
 

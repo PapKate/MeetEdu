@@ -1,11 +1,14 @@
 ﻿:root {
-    --fontFamily: Calibri, sans-serif;
+    --fontFamily: Objektiv VF Trial, sans-serif;
     --foreColor: "000000";
     --hoverForeColor: "000000";
 }
 
 body {
-    background-color: lightblue;
+}
+
+h1 {
+    margin : 0;
 }
 
 .foregroundControl {

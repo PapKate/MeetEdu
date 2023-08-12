@@ -2426,9 +2426,19 @@
             The header component
             </summary>
         </member>
+        <member name="F:AppointMate.Header.mAccountMenu">
+            <summary>
+            The drop down menu for the account
+            </summary>
+        </member>
         <member name="P:AppointMate.Header.AppName">
             <summary>
             The app name
+            </summary>
+        </member>
+        <member name="P:AppointMate.Header.BackColor">
+            <summary>
+            The back color
             </summary>
         </member>
         <member name="P:AppointMate.Header.Username">
@@ -2442,6 +2452,42 @@
             </summary>
         </member>
         <member name="M:AppointMate.Header.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:AppointMate.Header.OnAfterRender(System.Boolean)">
+            <summary>
+            Method invoked after each time the component has been rendered
+            </summary>
+            <param name="firstRender">Set to true if this is the first time the method has been invoked on this component instance; otherwise false</param>
+        </member>
+        <member name="T:AppointMate.RouteModel">
+            <summary>
+            The route model
+            </summary>
+        </member>
+        <member name="F:AppointMate.RouteModel.mName">
+            <summary>
+            The member of the <see cref="P:AppointMate.RouteModel.Name"/> property
+            </summary>
+        </member>
+        <member name="F:AppointMate.RouteModel.mRoute">
+            <summary>
+            The member of the <see cref="P:AppointMate.RouteModel.Route"/> property
+            </summary>
+        </member>
+        <member name="P:AppointMate.RouteModel.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:AppointMate.RouteModel.Route">
+            <summary>
+            The route
+            </summary>
+        </member>
+        <member name="M:AppointMate.RouteModel.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -2762,6 +2808,106 @@
             <code>api/v1/coreMate/staffMembers/1/companies/<paramref name="companyId"/></code>
             </summary>
         </member>
+        <member name="T:AppointMate.AppointMateConstants">
+            <summary>
+            The constants for the AppointMate app
+            </summary>
+        </member>
+        <member name="F:AppointMate.AppointMateConstants.AppName">
+            <summary>
+            The app name
+            </summary>
+        </member>
+        <member name="F:AppointMate.AppointMateConstants.Explorer">
+            <summary>
+            Explorer
+            </summary>
+        </member>
+        <member name="F:AppointMate.AppointMateConstants.MyAccount">
+            <summary>
+            My account
+            </summary>
+        </member>
+        <member name="F:AppointMate.AppointMateConstants.Appointments">
+            <summary>
+            Appointments
+            </summary>
+        </member>
+        <member name="F:AppointMate.AppointMateConstants.Favorites">
+            <summary>
+            Favorites
+            </summary>
+        </member>
+        <member name="F:AppointMate.AppointMateConstants.Settings">
+            <summary>
+            Settings
+            </summary>
+        </member>
+        <member name="F:AppointMate.AppointMateConstants.LogIn">
+            <summary>
+            Log in
+            </summary>
+        </member>
+        <member name="F:AppointMate.AppointMateConstants.LogOut">
+            <summary>
+            Log out
+            </summary>
+        </member>
+        <member name="T:AppointMate.Personalization">
+            <summary>
+            The personalization constants for the AppointMate app
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Blue">
+            <summary>
+            Blue (NCS)
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Green">
+            <summary>
+            Emerald
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Red">
+            <summary>
+            Bittersweet
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Orange">
+            <summary>
+            Orange (web)
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.DarkGray">
+            <summary>
+            Jet
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.LightGray">
+            <summary>
+            Timberwolf
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Pink">
+            <summary>
+            Dogwood rose
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.White">
+            <summary>
+            White
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Black">
+            <summary>
+            Black
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.ExplorerProfileImage">
+            <summary>
+            The explorer profile image
+            </summary>
+        </member>
         <member name="T:AppointMate.AppointMateWebServerConstants">
             <summary>
             Web server constants related to the AppointMate application
@@ -2852,6 +2998,11 @@
         <member name="F:AppointMate.CssConstants.DisabledForeColor">
             <summary>
             The disabled fore color
+            </summary>
+        </member>
+        <member name="F:AppointMate.CssConstants.BackColor">
+            <summary>
+            The back color
             </summary>
         </member>
         <member name="T:AppointMate.CssConstantExtensions">
