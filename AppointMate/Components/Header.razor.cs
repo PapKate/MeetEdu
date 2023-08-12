@@ -33,6 +33,12 @@ namespace AppointMate
         public string? BackColor { get; set; }
 
         /// <summary>
+        /// The fore color
+        /// </summary>
+        [Parameter]
+        public string? ForeColor { get; set; }
+
+        /// <summary>
         /// The username
         /// </summary>
         [Parameter]

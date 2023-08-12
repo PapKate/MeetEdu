@@ -1,5 +1,5 @@
 using AppointMate;
-
+using MudBlazor.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -29,7 +29,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor().AddCircuitOptions(o =>
 {
     o.DetailedErrors = true;
-}); 
+});
+
+builder.Services.AddMudServices();
 
 var app = builder.Build();
 

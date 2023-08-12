@@ -2441,6 +2441,11 @@
             The back color
             </summary>
         </member>
+        <member name="P:AppointMate.Header.ForeColor">
+            <summary>
+            The fore color
+            </summary>
+        </member>
         <member name="P:AppointMate.Header.Username">
             <summary>
             The username
@@ -2853,61 +2858,6 @@
             Log out
             </summary>
         </member>
-        <member name="T:AppointMate.Personalization">
-            <summary>
-            The personalization constants for the AppointMate app
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.Blue">
-            <summary>
-            Blue (NCS)
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.Green">
-            <summary>
-            Emerald
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.Red">
-            <summary>
-            Bittersweet
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.Orange">
-            <summary>
-            Orange (web)
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.DarkGray">
-            <summary>
-            Jet
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.LightGray">
-            <summary>
-            Timberwolf
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.Pink">
-            <summary>
-            Dogwood rose
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.White">
-            <summary>
-            White
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.Black">
-            <summary>
-            Black
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.ExplorerProfileImage">
-            <summary>
-            The explorer profile image
-            </summary>
-        </member>
         <member name="T:AppointMate.AppointMateWebServerConstants">
             <summary>
             Web server constants related to the AppointMate application
@@ -3064,6 +3014,66 @@
         <member name="F:AppointMate.FrameworkConstructionExtensions.APIArgsSuffix">
             <summary>
             The API args suffix
+            </summary>
+        </member>
+        <member name="T:AppointMate.Personalization">
+            <summary>
+            The personalization constants for the AppointMate app
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Blue">
+            <summary>
+            Blue (NCS)
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Green">
+            <summary>
+            Emerald
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Red">
+            <summary>
+            Bittersweet
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Orange">
+            <summary>
+            Orange (web)
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.DarkGray">
+            <summary>
+            Jet
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Gray">
+            <summary>
+            Onyx
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.LightGray">
+            <summary>
+            Timberwolf
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Pink">
+            <summary>
+            Dogwood rose
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.White">
+            <summary>
+            White
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Black">
+            <summary>
+            Black
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.ExplorerProfileImage">
+            <summary>
+            The explorer profile image
             </summary>
         </member>
         <member name="T:AppointMate.RegexConstants">
@@ -10616,6 +10626,21 @@
             </summary>
             <param name="userId">The id</param>
             <returns></returns>
+        </member>
+        <member name="T:AppointMate.Shared.MainLayout">
+            <summary>
+            The main layout
+            </summary>
+        </member>
+        <member name="F:AppointMate.Shared.MainLayout._mudTheme">
+            <summary>
+            The theme provider
+            </summary>
+        </member>
+        <member name="M:AppointMate.Shared.MainLayout.#ctor">
+            <summary>
+            Default constructor
+            </summary>
         </member>
         <member name="T:AppointMate.WebServerFailable">
             <summary>

@@ -5,25 +5,13 @@
 @namespace AppointMate
 
 
-<div class="headerContainer" style="@CssConstants.BackColor.SetCssVariable(BackColor!)">
+<div class="headerContainer" style="@CssConstants.BackColor.SetCssVariable(BackColor!) @CssConstants.ForeColor.SetCssVariable(ForeColor!)">
     <h1 class="headerAppName">@AppName</h1>
        
     <div class="headerUserContainer">
         <span class="headerUserUsername">@(Username.IsNullOrEmpty() ? AppointMateConstants.Explorer : Username)</span>
         <div class="headerUserProfileImageContainer headerExplorerProfileImageContainer">
             <img class="headerUserProfileImage" src="@(UserImageUrl is null ? Personalization.ExplorerProfileImage : UserImageUrl)" alt="userProfileImage" />
-        </div>
-        <div class="headerDropDownMenu">
-            <DropDownMenu @ref="mAccountMenu"
-                          TItem="@RouteModel"
-                          IsNullable="false"
-                          TextSelector="@(x => x.Name)"
-                          ButtonBackground="transparent"
-                          BoxShadow="@BoxShadow"
-                          Background="@White"
-                          BorderRadius="@NormalBorderRadius" 
-                          ButtonBorderRadius="@CircleBorderRadius"
-                          Style="right: 0; top: 4.5rem;"/>
         </div>
     </div>
 
@@ -81,38 +69,5 @@
         padding: 3px;
         background: @White.NormalizedColor();
     }
-
-    .headerDropDownMenu {
-        position: absolute;
-        right:0;
-        width: 3rem;
-        height: 3rem;
-        border-radius: @CircleBorderRadius;
-    }
-
-        .headerDropDownMenu .menuButton {
-            color: @DarkGray.NormalizedColor();
-        }
-
-            .headerDropDownMenu .menuButton:nth-child(9){
-                color: @LightGray.NormalizedColor();
-            }
-
-                .headerDropDownMenu .menuButton:nth-child(9)::before {
-                    content: '';
-                    position:absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 1px;
-                    background: @LightGray.NormalizedColor();
-                }
-
-            .headerDropDownMenu .div .menuButton .menuButtonContent {
-                display: none;
-            }
-
-            .headerDropDownMenu .div .menuButton .dropDownMenuAdditionalData {
-                display: none;
-            }
+    
 </style>
