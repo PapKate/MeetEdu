@@ -22,7 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Reference Include="Atom">
+      <HintPath>bin\Debug\net7.0\Atom.dll</HintPath>
+    </Reference>
+    <Reference Include="Atom.Blazor">
+      <HintPath>bin\Debug\net7.0\Atom.Blazor.dll</HintPath>
+    </Reference>
+    <Reference Include="Atom.Blazor.Controls">
+      <HintPath>bin\Debug\net7.0\Atom.Blazor.Controls.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

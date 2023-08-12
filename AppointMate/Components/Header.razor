@@ -1,0 +1,21 @@
+﻿@using static Atom.Personalization
+@using static Atom.Blazor.Personalization
+
+@namespace AppointMate
+
+
+<div class="headerContainer foregroundControl @CssClasses" id="@Id" style="@Style">
+    yes
+</div>
+
+<style>
+    .headerContainer {
+        position: sticky;
+        display: flex;
+        width: 100%;
+        height: 4rem;
+        font-size:200%;
+        font-weight: 800;
+        box-shadow: @BoxShadow;
+    }
+</style>

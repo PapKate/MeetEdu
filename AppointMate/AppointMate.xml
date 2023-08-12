@@ -2421,6 +2421,31 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:AppointMate.Header">
+            <summary>
+            The header component
+            </summary>
+        </member>
+        <member name="P:AppointMate.Header.AppName">
+            <summary>
+            The app name
+            </summary>
+        </member>
+        <member name="P:AppointMate.Header.Username">
+            <summary>
+            The username
+            </summary>
+        </member>
+        <member name="P:AppointMate.Header.UserImageUrl">
+            <summary>
+            The user image URL
+            </summary>
+        </member>
+        <member name="M:AppointMate.Header.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:AppointMate.AppointMateAPIRoutes">
             <summary>
             The AppontMate related API routes
@@ -2792,6 +2817,72 @@
             Error message indicating that there are no customers with the specified user id
             </summary>
             <param name="id">The user id</param>
+            <returns></returns>
+        </member>
+        <member name="T:AppointMate.CssConstants">
+            <summary>
+            Constants for CSS
+            </summary>
+        </member>
+        <member name="F:AppointMate.CssConstants.FontFamily">
+            <summary>
+            The font family
+            </summary>
+        </member>
+        <member name="F:AppointMate.CssConstants.ForeColor">
+            <summary>
+            The fore color
+            </summary>
+        </member>
+        <member name="F:AppointMate.CssConstants.HoverForeColor">
+            <summary>
+            The hover fore color
+            </summary>
+        </member>
+        <member name="F:AppointMate.CssConstants.MouseDownForeColor">
+            <summary>
+            The mouse down fore color
+            </summary>
+        </member>
+        <member name="F:AppointMate.CssConstants.SelectedForeColor">
+            <summary>
+            The is selected fore color
+            </summary>
+        </member>
+        <member name="F:AppointMate.CssConstants.DisabledForeColor">
+            <summary>
+            The disabled fore color
+            </summary>
+        </member>
+        <member name="T:AppointMate.CssConstantExtensions">
+            <summary>
+            Extension methods for <see cref="T:AppointMate.CssConstants"/>
+            </summary>
+        </member>
+        <member name="M:AppointMate.CssConstantExtensions.SetCssVariable(System.String,System.Object)">
+            <summary>
+            Sets the <paramref name="value"/> to the CSS variable with the specified <paramref name="name"/>
+            <code>--name: value;</code>
+            </summary>
+            <param name="name">The name</param>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.CssConstantExtensions.SetCssVariable(System.String,System.String)">
+            <summary>
+            Sets the <paramref name="value"/> to the CSS variable with the specified <paramref name="name"/>
+            <code>--name: value;</code>
+            </summary>
+            <param name="name">The name</param>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.CssConstantExtensions.GetCssVariable(System.String)">
+            <summary>
+            Gets the CSS variable with the specified <paramref name="name"/>
+            <code>var(--name)</code>
+            </summary>
+            <param name="name">The name</param>
             <returns></returns>
         </member>
         <member name="T:AppointMate.FrameworkConstructionExtensions">

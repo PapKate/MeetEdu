@@ -1,0 +1,15 @@
+﻿:root {
+    --fontFamily: Calibri, sans-serif;
+    --foreColor: "000000";
+    --hoverForeColor: "000000";
+}
+
+body {
+    background-color: lightblue;
+}
+
+.foregroundControl {
+    color: var(--foreColor);
+}
+
+   
