@@ -2823,6 +2823,11 @@
             The app name
             </summary>
         </member>
+        <member name="F:AppointMate.AppointMateConstants.PopularSearches">
+            <summary>
+            Popular searches
+            </summary>
+        </member>
         <member name="F:AppointMate.AppointMateConstants.Explorer">
             <summary>
             Explorer
@@ -8189,6 +8194,13 @@
             <param name="date">The date</param>
             <returns></returns>
         </member>
+        <member name="M:AppointMate.AppointMateHelpers.SplitCamelCase(System.String)">
+            <summary>
+            Splits the specified <paramref name="value"/> by uppercase 
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
         <member name="T:AppointMate.Helpers.ControllerHelpers">
             <summary>
             Helper methods for <see cref="T:Microsoft.AspNetCore.Mvc.Controller"/>s
@@ -9933,6 +9945,47 @@
             <param name="args">The arguments</param>
             <returns></returns>
         </member>
+        <member name="T:AppointMate.Pages.ErrorModel">
+            <summary>
+            The error model
+            </summary>
+        </member>
+        <member name="P:AppointMate.Pages.ErrorModel.RequestId">
+            <summary>
+            The request id
+            </summary>
+        </member>
+        <member name="P:AppointMate.Pages.ErrorModel.ShowRequestId">
+            <summary>
+            A flag indicating whether the request id is visible or not
+            </summary>
+        </member>
+        <member name="F:AppointMate.Pages.ErrorModel._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AppointMate.Pages.ErrorModel.#ctor(Microsoft.Extensions.Logging.ILogger{AppointMate.Pages.ErrorModel})">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AppointMate.Pages.ErrorModel.OnGet">
+            <summary>
+            On get
+            </summary>
+        </member>
+        <member name="P:AppointMate.Index.SearchText">
+            <summary>
+            The search text
+            </summary>
+        </member>
+        <member name="M:AppointMate.Index.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:AppointMate.AccountsRepository">
             <summary>
             The manager for the accounts
@@ -10632,7 +10685,7 @@
             The main layout
             </summary>
         </member>
-        <member name="F:AppointMate.Shared.MainLayout._mudTheme">
+        <member name="F:AppointMate.Shared.MainLayout.mMyTheme">
             <summary>
             The theme provider
             </summary>

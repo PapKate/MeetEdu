@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 
+using System.Text.RegularExpressions;
+
 namespace AppointMate
 {
     /// <summary>
@@ -17,6 +19,18 @@ namespace AppointMate
             var daysUntilMonday = ((int)date.DayOfWeek - (int)DayOfWeek.Monday + 7) % 7;
             var firstDateOfWeek = date.AddDays(-daysUntilMonday);
             return DateOnly.FromDateTime(firstDateOfWeek.Date);
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> by uppercase 
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns></returns>
+        public static List<string> SplitCamelCase(string value)
+        {
+            var upperCaseRegx = @"([A-Z]?[a-z]+)";
+
+            return Regex.Split(value, upperCaseRegx).Where(str => !string.IsNullOrEmpty(str)).ToList();
         }
     }
 }

@@ -1,5 +1,8 @@
 ﻿@inherits LayoutComponentBase
 
+@using static AppointMate.Personalization
+@using static Atom.Blazor.Personalization
+
 <PageTitle>AppointMate</PageTitle>
 
 
@@ -9,6 +12,44 @@
     </main>
 </div>
 
-<MudThemeProvider />
+<MudThemeProvider Theme="@mMyTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
+
+<style>
+
+
+    .searchBarContainer {
+        position: relative;
+        height: 40px;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: @DarkGray.NormalizedColor();
+        border: solid 1px @LightGray.NormalizedColor();
+        border-radius: @VeryLargeBorderRadius;
+        overflow: hidden;
+    }
+
+    .searchBarSearchArea {
+        position: relative;
+        width: 88%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: @LargePadding;
+    }
+
+    .searchBarSearchButtons {
+        position: relative;
+        display: flex;
+    }
+
+    .searchButton {
+        height: 40px;
+    }
+
+
+</style>

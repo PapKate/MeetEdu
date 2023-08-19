@@ -10,7 +10,12 @@
         /// <summary>
         /// The app name
         /// </summary>
-        public const string AppName = "AppointMate";
+        public const string AppName = "MeetEdu";
+
+        /// <summary>
+        /// Popular searches
+        /// </summary>
+        public const string PopularSearches = "Popular searches";
 
         /// <summary>
         /// Explorer

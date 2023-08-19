@@ -1,14 +1,193 @@
 ﻿@page "/"
 
-@using static Atom.Personalization
+@using static AppointMate.Personalization
+@using static Atom.Blazor.Personalization
 
+@namespace AppointMate
 
 <PageTitle>AppointMate</PageTitle>
 
-<Header AppName="@AppointMateConstants.AppName" Username="Lime" BackColor="@Blue" ForeColor="@WhiteSmoke" />
-<Header AppName="@AppointMateConstants.AppName" Username="Lime" BackColor="@BlazeOrange" ForeColor="@DarkGray"/>
+<Header AppName="@AppointMateConstants.AppName" 
+        Username="Lime" 
+        BackColor="@Orange" 
+        ForeColor="@White"/>
 
-<h1>Hello, world!</h1>
+<div class="backgroundContainer">
+    <img class="backgroundImageTopLeft" src="icons/blob2.png" alt="blob" >
+    <img class="backgroundImageTopRight" src="icons/blob1.png" alt="blob" />
+    <img class="backgroundImageBottomLeft" src="icons/blob1.png" alt="blob" />
+    <img class="backgroundImageBottomRight" src="icons/blob2.png" alt="blob" />
+</div>
 
-Welcome to your new app.
+<div class="appContainer">
 
+    <div class="searchSectionContainer">
+        <div class="searchSectionLogoAndNameContainer">
+            <img class="searchSectionLogo" src="icons/logo.png" alt="logo"/>
+            <h1 class="searchSectionName">
+                <span class="searchSectionNameFirst">@AppointMateHelpers.SplitCamelCase(AppointMateConstants.AppName)[0]</span>
+                <span class="searchSectionNameSecond">@AppointMateHelpers.SplitCamelCase(AppointMateConstants.AppName)[1]</span>
+            </h1>
+        </div>
+
+        <div class="searchBarContainer" style="--mud-default-borderradius:0">
+            <div class="searchBarSearchArea">
+                <MudInput T="string" @bind-Value="@SearchText" 
+                          Label="Search" 
+                          Placeholder="Search..." 
+                          DisableUnderLine="true" 
+                          FullWidth="true" 
+                          Variant="Variant.Text"/>
+            </div>
+            <div class="searchBarSearchButtons">
+                <MudIconButton Icon="@Icons.Material.Filled.Search"
+                               Variant="Variant.Filled" 
+                               DisableElevation="true" 
+                               Color="Color.Primary"
+                               Class="rounded-0 searchButton"
+                               aria-label="search"/>
+                <MudDivider Vertical="true" FlexItem="true"/>
+                <MudIconButton Icon="@Icons.Material.Filled.Pages" 
+                               Variant="Variant.Filled" 
+                               DisableElevation="true" 
+                               Color="Color.Primary" 
+                               Class="rounded-0 searchButton" 
+                               aria-label="categories"/>
+            </div>
+        </div>
+
+        <div class="searchSectionPopularSearchesContainer">
+            <div class="searchSectionPopularSearchesHeader">
+                <div class="searchSectionPopularSearchesImageContainer">
+                    <img class="searchSectionPopularSearchesImage" src="icons/trending.png" alt="image fire"/>
+                </div>
+
+                <h3 class="searchSectionPopularSearchesText">@AppointMateConstants.PopularSearches</h3>
+            </div>
+            <div class="searchSectionPopularSearchesWrapper">
+                <span class="searchSectionPopularSearch">University</span>
+                <span class="searchSectionPopularSearch">IEK</span>
+                <span class="searchSectionPopularSearch">Kindergarten</span>
+                <span class="searchSectionPopularSearch">Primary school</span>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<style>
+    .searchSectionContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: @XXLargeGap;
+        padding: @XXLargePadding;
+        padding-top: 8%;
+        border: solid 1px @LightGray.NormalizedColor();
+        border-radius: 0px 0px @VeryLargeBorderRadius @VeryLargeBorderRadius;
+    }
+
+    .searchSectionLogoAndNameContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .searchSectionLogo {
+        position: relative;
+        width: 16%;
+        height: auto;
+        filter: @LightFilterDropShadow;
+    }
+
+    .searchSectionName {
+        position: relative;
+        display: flex;
+        font-weight: 900;
+        font-size: 400%;
+    }
+
+    .searchSectionNameFirst {
+        color: @Red.NormalizedColor();
+    }
+
+    .searchSectionNameSecond {
+        color: @Orange.NormalizedColor();
+    }
+
+    .searchSectionPopularSearchesContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: start;
+        gap: @VeryVeryLargeGap;
+    }
+
+    .searchSectionPopularSearchesHeader {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: @LargeGap;
+    }
+
+    .searchSectionPopularSearchesImageContainer {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: @NormalPadding;
+        background: @ControlHelpers.HexToRGBA(Orange, 0.4);
+        border-radius: @CircleBorderRadius;
+        filter: @LightFilterDropShadow;
+    }
+
+    .searchSectionPopularSearchesImage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        filter: @LightFilterDropShadow;
+    }
+
+    .searchSectionPopularSearchesText {
+        color: @DarkGray.NormalizedColor();
+        font-weight: 700;
+        font-size: 140%;
+    }
+
+    .searchSectionPopularSearchesWrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: @LargeGap;
+    }
+
+    .searchSectionPopularSearch {
+        position: relative;
+        font-size: 92%;
+        color: @Gray.NormalizedColor();
+        padding: @NormalPadding @LargePadding;
+        border: solid 1px @LightGray.NormalizedColor();
+        border-radius: @VeryLargeBorderRadius;
+    }
+
+</style>
