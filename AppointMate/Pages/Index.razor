@@ -5,11 +5,11 @@
 
 @namespace AppointMate
 
-<PageTitle>AppointMate</PageTitle>
+<PageTitle>@AppointMateConstants.AppName</PageTitle>
 
 <Header AppName="@AppointMateConstants.AppName" 
         Username="Lime" 
-        BackColor="@Orange" 
+        BackColor="@Blue" 
         ForeColor="@White"/>
 
 <div class="backgroundContainer">
@@ -23,38 +23,14 @@
 
     <div class="searchSectionContainer">
         <div class="searchSectionLogoAndNameContainer">
-            <img class="searchSectionLogo" src="icons/logo.png" alt="logo"/>
+            <img class="searchSectionLogo" src="icons/academic.png" alt="logo"/>
             <h1 class="searchSectionName">
                 <span class="searchSectionNameFirst">@AppointMateHelpers.SplitCamelCase(AppointMateConstants.AppName)[0]</span>
                 <span class="searchSectionNameSecond">@AppointMateHelpers.SplitCamelCase(AppointMateConstants.AppName)[1]</span>
             </h1>
         </div>
 
-        <div class="searchBarContainer" style="--mud-default-borderradius:0">
-            <div class="searchBarSearchArea">
-                <MudInput T="string" @bind-Value="@SearchText" 
-                          Label="Search" 
-                          Placeholder="Search..." 
-                          DisableUnderLine="true" 
-                          FullWidth="true" 
-                          Variant="Variant.Text"/>
-            </div>
-            <div class="searchBarSearchButtons">
-                <MudIconButton Icon="@Icons.Material.Filled.Search"
-                               Variant="Variant.Filled" 
-                               DisableElevation="true" 
-                               Color="Color.Primary"
-                               Class="rounded-0 searchButton"
-                               aria-label="search"/>
-                <MudDivider Vertical="true" FlexItem="true"/>
-                <MudIconButton Icon="@Icons.Material.Filled.Pages" 
-                               Variant="Variant.Filled" 
-                               DisableElevation="true" 
-                               Color="Color.Primary" 
-                               Class="rounded-0 searchButton" 
-                               aria-label="categories"/>
-            </div>
-        </div>
+        <SearchBar @bind-Text="@SearchText" />
 
         <div class="searchSectionPopularSearchesContainer">
             <div class="searchSectionPopularSearchesHeader">
@@ -71,10 +47,18 @@
                 <span class="searchSectionPopularSearch">Primary school</span>
             </div>
         </div>
-
-
     </div>
+    <div class="uniCollaborationsContainer">
+        <UniversityBox Color="EBCA97" Name="University Of Patras" Image="./icons/papa.png" />
+        <UniversityBox Color="952927" Name="Aristotle University Of Thessaloniki" Image="./icons/apth.png" />
+        <UniversityBox Color="0067C8" Name="University Of Macedonia" Image="./icons/pamak.png" />
+        <UniversityBox Color="C5C5C5" Name="National Technical University of Athens" Image="./icons/metsovio.png" />
 
+        <UniversityBox Color="D8726A" Name="University Of Crete" Image="./icons/crete.png" />
+        <UniversityBox Color="646464" Name="National and Kapodistrian University of Athens" Image="./icons/ekpa.png" />
+        <UniversityBox Color="A1DAFB" Name="University Of Thessaly" Image="./icons/uth.png" />
+        <UniversityBox Color="B69A56" Name="Hellenic Mediterranean University" Image="./icons/mesogeiako.png" />
+    </div>
 </div>
 
 <style>
@@ -118,11 +102,11 @@
     }
 
     .searchSectionNameFirst {
-        color: @Red.NormalizedColor();
+        color: @Blue.NormalizedColor();
     }
 
     .searchSectionNameSecond {
-        color: @Orange.NormalizedColor();
+        color: @Green.NormalizedColor();
     }
 
     .searchSectionPopularSearchesContainer {
@@ -155,7 +139,7 @@
         justify-content: center;
         align-items: center;
         padding: @NormalPadding;
-        background: @ControlHelpers.HexToRGBA(Orange, 0.4);
+        background: @ControlHelpers.HexToRGBA(Green, 0.4);
         border-radius: @CircleBorderRadius;
         filter: @LightFilterDropShadow;
     }
@@ -188,6 +172,15 @@
         padding: @NormalPadding @LargePadding;
         border: solid 1px @LightGray.NormalizedColor();
         border-radius: @VeryLargeBorderRadius;
+    }
+
+    .uniCollaborationsContainer {
+        position: relative;
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: @XXLargeGap;
+        padding: 4%;
     }
 
 </style>

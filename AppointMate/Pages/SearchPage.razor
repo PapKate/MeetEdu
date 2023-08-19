@@ -1,0 +1,50 @@
+﻿@page "/search"
+
+@using static AppointMate.Personalization
+@using static Atom.Blazor.Personalization
+
+@namespace AppointMate
+
+<PageTitle>@AppointMateConstants.AppName" Search</PageTitle>
+
+<Header AppName="@AppointMateConstants.AppName"
+        Username="Lime"
+        BackColor="@Blue"
+        ForeColor="@White" />
+
+<div class="backgroundContainer">
+    <img class="backgroundImageTopLeft" src="icons/blob2.png" alt="blob">
+    <img class="backgroundImageTopRight" src="icons/blob1.png" alt="blob" />
+    <img class="backgroundImageBottomLeft" src="icons/blob1.png" alt="blob" />
+    <img class="backgroundImageBottomRight" src="icons/blob2.png" alt="blob" />
+</div>
+
+<div class="appContainer searchPageContainer">
+    <div class="searchPageSearchBarContainer">
+        <SearchBar @bind-Text="@SearchText" />
+    </div>
+
+    <DepartmentPreview />
+    <DepartmentPreview />
+    
+</div>
+
+<style>
+    .searchPageContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 40px;
+    }
+
+    .searchPageSearchBarContainer {
+        position: relative;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+</style>

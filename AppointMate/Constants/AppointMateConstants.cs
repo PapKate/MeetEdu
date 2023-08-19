@@ -52,6 +52,18 @@
         /// </summary>
         public const string LogOut = "Log out";
 
+        /// <summary>
+        /// Departments
+        /// </summary>
+        public const string Departments = "Departments";
+
+        /// <summary>
+        /// Faculty
+        /// </summary>
+        public const string Faculty = "Faculty";
+
+
+
         #endregion
     }
 }

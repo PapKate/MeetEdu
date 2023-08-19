@@ -8,19 +8,19 @@
         #region Public Properties
 
         /// <summary>
-        /// Blue (NCS)
+        /// Brandeis Blue 
         /// </summary>
-        public const string Blue = "0090C1";
+        public const string Blue = "256EFF";
 
         /// <summary>
         /// Emerald
         /// </summary>
-        public const string Green = "06D6A0";
+        public const string Green = "3DDC97";
 
         /// <summary>
-        /// Bittersweet
+        /// Folly
         /// </summary>
-        public const string Red = "F25F5C";
+        public const string Red = "FF495C";
 
         /// <summary>
         /// Orange (web)
@@ -28,24 +28,34 @@
         public const string Orange = "FAA916";
 
         /// <summary>
-        /// Jet
+        /// Mustard
         /// </summary>
-        public const string DarkGray = "2F2F2F";
-
-        /// <summary>
-        /// Onyx
-        /// </summary>
-        public const string Gray = "424242";
-
-        /// <summary>
-        /// Timberwolf
-        /// </summary>
-        public const string LightGray = "DAD7CD";
+        public const string Yellow = "FFDC5E";
 
         /// <summary>
         /// Dogwood rose
         /// </summary>
         public const string Pink = "CC3363";
+
+        /// <summary>
+        /// Dark Magenta
+        /// </summary>
+        public const string Purple = "861388";
+
+        /// <summary>
+        /// Jet
+        /// </summary>
+        public const string DarkGray = "333333";
+
+        /// <summary>
+        /// Silver
+        /// </summary>
+        public const string Gray = "C5C5C5";
+
+        /// <summary>
+        /// Timberwolf
+        /// </summary>
+        public const string LightGray = "DAD7CD";
 
         /// <summary>
         /// White

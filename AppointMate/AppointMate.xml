@@ -2421,6 +2421,16 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:AppointMate.DepartmentPreview">
+            <summary>
+            Represents the preview of a department 
+            </summary>
+        </member>
+        <member name="M:AppointMate.DepartmentPreview.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:AppointMate.Header">
             <summary>
             The header component
@@ -2493,6 +2503,83 @@
             </summary>
         </member>
         <member name="M:AppointMate.RouteModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:AppointMate.SearchBar">
+            <summary>
+            The search bar component
+            </summary>
+        </member>
+        <member name="F:AppointMate.SearchBar.mIsSearchForDepartments">
+            <summary>
+            The member of the <see cref="P:AppointMate.SearchBar.IsSearchForDepartments"/> property
+            </summary>
+        </member>
+        <member name="F:AppointMate.SearchBar.mSearchCategory">
+            <summary>
+            The search category
+            </summary>
+        </member>
+        <member name="F:AppointMate.SearchBar.mSearchIcon">
+            <summary>
+            The search icon
+            </summary>
+        </member>
+        <member name="F:AppointMate.SearchBar.mSearchBackColor">
+            <summary>
+            The search back color
+            </summary>
+        </member>
+        <member name="P:AppointMate.SearchBar.Text">
+            <summary>
+            The search text
+            </summary>
+        </member>
+        <member name="P:AppointMate.SearchBar.IsSearchForDepartments">
+            <summary>
+            A flag indicating whether the search regarding departments or not
+            </summary>
+        </member>
+        <member name="M:AppointMate.SearchBar.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:AppointMate.SearchBar.OnTextChanged(System.String)">
+            <summary>
+            Handles the text change
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="P:AppointMate.SearchBar.TextChanged">
+            <summary>
+            Fires when the <see cref="P:AppointMate.SearchBar.Text"/> is changed
+            </summary>
+        </member>
+        <member name="T:AppointMate.UniversityBox">
+            <summary>
+            The University display box
+            </summary>
+        </member>
+        <member name="P:AppointMate.UniversityBox.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:AppointMate.UniversityBox.Image">
+            <summary>
+            The image
+            </summary>
+        </member>
+        <member name="P:AppointMate.UniversityBox.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="M:AppointMate.UniversityBox.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -2863,6 +2950,16 @@
             Log out
             </summary>
         </member>
+        <member name="F:AppointMate.AppointMateConstants.Departments">
+            <summary>
+            Departments
+            </summary>
+        </member>
+        <member name="F:AppointMate.AppointMateConstants.Faculty">
+            <summary>
+            Faculty
+            </summary>
+        </member>
         <member name="T:AppointMate.AppointMateWebServerConstants">
             <summary>
             Web server constants related to the AppointMate application
@@ -2925,39 +3022,24 @@
             Constants for CSS
             </summary>
         </member>
-        <member name="F:AppointMate.CssConstants.FontFamily">
+        <member name="F:AppointMate.CssConstants.FontFamilyVariable">
             <summary>
             The font family
             </summary>
         </member>
-        <member name="F:AppointMate.CssConstants.ForeColor">
+        <member name="F:AppointMate.CssConstants.ForeColorVariable">
             <summary>
             The fore color
             </summary>
         </member>
-        <member name="F:AppointMate.CssConstants.HoverForeColor">
-            <summary>
-            The hover fore color
-            </summary>
-        </member>
-        <member name="F:AppointMate.CssConstants.MouseDownForeColor">
-            <summary>
-            The mouse down fore color
-            </summary>
-        </member>
-        <member name="F:AppointMate.CssConstants.SelectedForeColor">
-            <summary>
-            The is selected fore color
-            </summary>
-        </member>
-        <member name="F:AppointMate.CssConstants.DisabledForeColor">
-            <summary>
-            The disabled fore color
-            </summary>
-        </member>
-        <member name="F:AppointMate.CssConstants.BackColor">
+        <member name="F:AppointMate.CssConstants.BackColorVariable">
             <summary>
             The back color
+            </summary>
+        </member>
+        <member name="F:AppointMate.CssConstants.BorderColorVariable">
+            <summary>
+            The border color
             </summary>
         </member>
         <member name="T:AppointMate.CssConstantExtensions">
@@ -2974,7 +3056,7 @@
             <param name="value">The value</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.CssConstantExtensions.SetCssVariable(System.String,System.String)">
+        <member name="M:AppointMate.CssConstantExtensions.SetCssColor(System.String,System.String)">
             <summary>
             Sets the <paramref name="value"/> to the CSS variable with the specified <paramref name="name"/>
             <code>--name: value;</code>
@@ -3021,6 +3103,21 @@
             The API args suffix
             </summary>
         </member>
+        <member name="T:AppointMate.IconPaths">
+            <summary>
+            Icon paths
+            </summary>
+        </member>
+        <member name="F:AppointMate.IconPaths.HeartPath">
+            <summary>
+            The heart icon path
+            </summary>
+        </member>
+        <member name="F:AppointMate.IconPaths.HeartOutlinePath">
+            <summary>
+            The heart outline icon path
+            </summary>
+        </member>
         <member name="T:AppointMate.Personalization">
             <summary>
             The personalization constants for the AppointMate app
@@ -3028,7 +3125,7 @@
         </member>
         <member name="F:AppointMate.Personalization.Blue">
             <summary>
-            Blue (NCS)
+            Brandeis Blue 
             </summary>
         </member>
         <member name="F:AppointMate.Personalization.Green">
@@ -3038,12 +3135,27 @@
         </member>
         <member name="F:AppointMate.Personalization.Red">
             <summary>
-            Bittersweet
+            Folly
             </summary>
         </member>
         <member name="F:AppointMate.Personalization.Orange">
             <summary>
             Orange (web)
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Yellow">
+            <summary>
+            Mustard
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Pink">
+            <summary>
+            Dogwood rose
+            </summary>
+        </member>
+        <member name="F:AppointMate.Personalization.Purple">
+            <summary>
+            Dark Magenta
             </summary>
         </member>
         <member name="F:AppointMate.Personalization.DarkGray">
@@ -3053,17 +3165,12 @@
         </member>
         <member name="F:AppointMate.Personalization.Gray">
             <summary>
-            Onyx
+            Silver
             </summary>
         </member>
         <member name="F:AppointMate.Personalization.LightGray">
             <summary>
             Timberwolf
-            </summary>
-        </member>
-        <member name="F:AppointMate.Personalization.Pink">
-            <summary>
-            Dogwood rose
             </summary>
         </member>
         <member name="F:AppointMate.Personalization.White">
@@ -9976,12 +10083,32 @@
             On get
             </summary>
         </member>
+        <member name="T:AppointMate.Index">
+            <summary>
+            The main page
+            </summary>
+        </member>
         <member name="P:AppointMate.Index.SearchText">
             <summary>
             The search text
             </summary>
         </member>
         <member name="M:AppointMate.Index.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:AppointMate.SearchPage">
+            <summary>
+            The search page
+            </summary>
+        </member>
+        <member name="P:AppointMate.SearchPage.SearchText">
+            <summary>
+            The search text
+            </summary>
+        </member>
+        <member name="M:AppointMate.SearchPage.#ctor">
             <summary>
             Default constructor
             </summary>

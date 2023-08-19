@@ -1,7 +1,12 @@
 ﻿using Microsoft.AspNetCore.Components;
 
+using MudBlazor;
+
 namespace AppointMate
 {
+    /// <summary>
+    /// The main page
+    /// </summary>
     public partial class Index
     {
         #region Public Properties

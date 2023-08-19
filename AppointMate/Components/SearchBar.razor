@@ -1,0 +1,37 @@
+﻿@namespace AppointMate
+
+<div class="searchBarContainer" style="--mud-default-borderradius:0">
+    <div class="searchBarSearchArea">
+        <MudTextField @bind-Value="@Text"
+                      DebounceInterval="500"
+                      Placeholder="Search..."
+                      DisableUnderLine="true"
+                      FullWidth="true"
+                      Variant="Variant.Text"
+                      OnDebounceIntervalElapsed="@((e) => OnTextChanged(e))" />
+    </div>
+    <div class="searchBarSearchButtons">
+        <MudIconButton Icon="@Icons.Material.Filled.Search"
+                       Variant="Variant.Filled"
+                       DisableElevation="true"
+                       Color="@mSearchBackColor"
+                       Class="rounded-0 searchButton"
+                       aria-label="search" />
+        <MudDivider Vertical="true" FlexItem="true" />
+        <MudButton StartIcon="@mSearchIcon"
+                   Variant="Variant.Filled"
+                   DisableElevation="true"
+                   Color="@mSearchBackColor"
+                   Class="rounded-0 searchButton searchCategoryButton"
+                   aria-label="categories"
+                   OnClick="@(() => IsSearchForDepartments = !IsSearchForDepartments)">
+            @mSearchCategory
+        </MudButton>
+    </div>
+</div>
+
+<style>
+    .mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
+        margin: 0;
+    }
+</style>

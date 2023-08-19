@@ -17,45 +17,22 @@ namespace AppointMate
         /// <summary>
         /// The font family
         /// </summary>
-        public const string FontFamily = "--fontFamily";
-
-        #region ForeColor
+        public const string FontFamilyVariable = "--fontFamily";
 
         /// <summary>
         /// The fore color
         /// </summary>
-        public const string ForeColor = "--foreColor";
-
-        /// <summary>
-        /// The hover fore color
-        /// </summary>
-        public const string HoverForeColor = "--hoverForeColor";
-
-        /// <summary>
-        /// The mouse down fore color
-        /// </summary>
-        public const string MouseDownForeColor = "--mouseDownForeColor";
-
-        /// <summary>
-        /// The is selected fore color
-        /// </summary>
-        public const string SelectedForeColor = "--selectedForeColor";
-
-        /// <summary>
-        /// The disabled fore color
-        /// </summary>
-        public const string DisabledForeColor = "--disabledForeColor";
-
-        #endregion
-
-        #region BackColor
+        public const string ForeColorVariable = "--foreColor";
 
         /// <summary>
         /// The back color
         /// </summary>
-        public const string BackColor = "--backColor";
+        public const string BackColorVariable = "--backColor";
 
-        #endregion
+        /// <summary>
+        /// The border color
+        /// </summary>
+        public const string BorderColorVariable = "--borderColor";
 
         #endregion
     }
@@ -84,7 +61,7 @@ namespace AppointMate
         /// <param name="name">The name</param>
         /// <param name="value">The value</param>
         /// <returns></returns>
-        public static string SetCssVariable(this string name, string value)
+        public static string SetCssColor(this string name, string value)
             => $"{name}: {(value.IsHexValue() ? value.NormalizedColor() : value)};";
 
         /// <summary>
