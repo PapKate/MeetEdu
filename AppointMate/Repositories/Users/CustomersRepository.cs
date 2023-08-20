@@ -41,7 +41,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<MemberEntity>> AddCustomerAsync(CustomerRequestModel model)
+        public async Task<WebServerFailable<MemberEntity>> AddCustomerAsync(MemberRequestModel model)
         {
             // Gets the user with the specified id
             var user = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id.ToString() == model.UserId);
@@ -58,7 +58,7 @@ namespace AppointMate
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<MemberEntity>> UpdateCustomerAsync(ObjectId id, CustomerRequestModel model)
+        public async Task<WebServerFailable<MemberEntity>> UpdateCustomerAsync(ObjectId id, MemberRequestModel model)
         {
             var entity = await AppointMateDbMapper.Customers.UpdateAsync(id, model);
 

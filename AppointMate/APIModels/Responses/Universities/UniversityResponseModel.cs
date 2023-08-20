@@ -5,30 +5,12 @@
     /// </summary>
     public class UniversityResponseModel : StandardResponseModel, IImageable
     {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="Fields"/> property
-        /// </summary>
-        private IEnumerable<string>? mFields;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
         /// The image
         /// </summary>
         public Uri? ImageUrl { get; set; }
-
-        /// <summary>
-        /// The fields of study
-        /// </summary>
-        public IEnumerable<string> Fields
-        {
-            get => mFields ?? Enumerable.Empty<string>();
-            set => mFields = value;
-        }
 
         #endregion
 

@@ -1,16 +1,16 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Request model used for a secretary 
+    /// Request model used for a university
     /// </summary>
-    public class SecretaryResponseModel : StaffMemberResponseModel
+    public class UniversityRequestModel : StandardRequestModel
     {
         #region Public Properties
 
         /// <summary>
-        /// The role
+        /// The image
         /// </summary>
-        public SecretaryRole Role { get; set; }
+        public Uri? ImageUrl { get; set; }
 
         #endregion
 
@@ -19,7 +19,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public SecretaryResponseModel() : base()
+        public UniversityRequestModel() : base()
         {
 
         }

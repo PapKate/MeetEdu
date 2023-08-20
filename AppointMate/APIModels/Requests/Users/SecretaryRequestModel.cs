@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model used for a secretary 
     /// </summary>
-    public class SecretaryResponseModel : StaffMemberResponseModel
+    public class SecretaryRequestModel : StaffMemberRequestModel
     {
         #region Public Properties
 
@@ -19,7 +19,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public SecretaryResponseModel() : base()
+        public SecretaryRequestModel() : base()
         {
 
         }

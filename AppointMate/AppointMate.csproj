@@ -35,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="APIModels\Requests\Appointments\" />
     <Folder Include="wwwroot\icons\" />
   </ItemGroup>
 

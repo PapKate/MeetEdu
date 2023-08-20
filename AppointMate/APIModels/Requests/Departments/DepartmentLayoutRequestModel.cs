@@ -1,18 +1,16 @@
-﻿using MongoDB.Bson;
-
-namespace AppointMate
+﻿namespace AppointMate
 {
     /// <summary>
-    /// Request model used for a company layout
+    /// Request model for a department layout
     /// </summary>
-    public class CompanyLayoutRequestModel : BaseRequestModel
+    public class DepartmentLayoutRequestModel
     {
         #region Public Properties
 
         /// <summary>
-        /// The company id
+        /// The department id
         /// </summary>
-        public string? CompanyId { get; set; }
+        public string? DepartmentId { get; set; }
 
         /// <summary>
         /// The description
@@ -20,9 +18,9 @@ namespace AppointMate
         public string? Description { get; set; }
 
         /// <summary>
-        /// The rooms
+        /// The layout
         /// </summary>
-        public IEnumerable<DepartmentLayoutDataModel>? Rooms { get; set; }
+        public IList<DepartmentLayoutDataModel>? Rooms { get; set; }
 
         #endregion
 
@@ -31,7 +29,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyLayoutRequestModel() : base()
+        public DepartmentLayoutRequestModel() : base()
         {
 
         }

@@ -18,6 +18,11 @@
         private string? mDescription;
 
         /// <summary>
+        /// The member of the <see cref="Fields"/> property
+        /// </summary>
+        private IEnumerable<string>? mFields;
+
+        /// <summary>
         /// The member of the <see cref="Labels"/> property
         /// </summary>
         private IEnumerable<EmbeddedLabelResponseModel>? mLabels;
@@ -30,6 +35,15 @@
         /// The category
         /// </summary>
         public DepartmentType Category { get; set; }
+
+        /// <summary>
+        /// The fields of study
+        /// </summary>
+        public IEnumerable<string> Fields
+        {
+            get => mFields ?? Enumerable.Empty<string>();
+            set => mFields = value;
+        }
 
         /// <summary>
         /// The description

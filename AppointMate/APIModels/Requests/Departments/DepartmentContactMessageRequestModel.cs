@@ -1,18 +1,16 @@
-﻿using MongoDB.Bson;
-
-namespace AppointMate
+﻿namespace AppointMate
 {
     /// <summary>
-    /// Request model used for a company contact message
+    /// Request model for a department contact message
     /// </summary>
-    public class CompanyContactMessageRequestModel : BaseRequestModel
+    public class DepartmentContactMessageRequestModel : BaseRequestModel
     {
         #region Public Properties
 
         /// <summary>
-        /// The company id
+        /// The department id
         /// </summary>
-        public string? CompanyId { get; set; }
+        public string? DepartmentId { get; set; }
 
         /// <summary>
         /// The first name
@@ -46,7 +44,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyContactMessageRequestModel() : base()
+        public DepartmentContactMessageRequestModel() : base()
         {
 
         }

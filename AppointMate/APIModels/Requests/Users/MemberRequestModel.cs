@@ -1,16 +1,11 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Request model used for a customer
+    /// Request model used for a member
     /// </summary>
-    public class CustomerRequestModel : BaseRequestModel
+    public class MemberRequestModel : BaseRequestModel
     {
         #region Public Properties
-
-        /// <summary>
-        /// The company id
-        /// </summary>
-        public string? CompanyId { get; set; }
 
         /// <summary>
         /// The id of the user
@@ -24,7 +19,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerRequestModel() : base()
+        public MemberRequestModel() : base()
         {
 
         }

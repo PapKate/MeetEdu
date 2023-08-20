@@ -21,15 +21,6 @@
         /// </summary>
         public Uri? ImageUrl { get; set; }
 
-        /// <summary>
-        /// The fields of study
-        /// </summary>
-        public IEnumerable<string> Fields 
-        { 
-            get => mFields ?? Enumerable.Empty<string>();
-            set => mFields = value;
-        }
-
         #endregion
 
         #region Constructors

@@ -1,21 +1,21 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Request model used for a company
+    /// Request model for a department
     /// </summary>
-    public class CompanyRequestModel : StandardRequestModel, IImageable
+    public class DepartmentRequestModel : StandardRequestModel
     {
         #region Public Properties
 
         /// <summary>
-        /// The categories
+        /// The category
         /// </summary>
-        public IEnumerable<DepartmentType>? Categories { get; set; }
+        public DepartmentType? Category { get; set; }
 
         /// <summary>
-        /// A flag indicating whether the company provides at home services
+        /// The fields of study
         /// </summary>
-        public bool? HasAtHomeServices { get; set; } 
+        public IEnumerable<string>? Fields { get; set; }
 
         /// <summary>
         /// The description
@@ -23,14 +23,14 @@
         public string? Description { get; set; }
 
         /// <summary>
-        /// The radius for the distance where at home services can be provided in Km
-        /// </summary>
-        public double? AtHomeRadius { get; set; }
-
-        /// <summary>
         /// The note
         /// </summary>
         public string? Note { get; set; }
+
+        /// <summary>
+        /// The number of staff members
+        /// </summary>
+        public uint? TotalStaffMembers { get; set; }
 
         /// <summary>
         /// The work hours
@@ -60,7 +60,7 @@
         /// <summary>
         /// The labels
         /// </summary>
-        public IEnumerable<string>? Labels { get; set; }
+        public IEnumerable<EmbeddedLabelResponseModel>? Labels { get; set; }
 
         #endregion
 
@@ -69,7 +69,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyRequestModel() : base()
+        public DepartmentRequestModel() : base()
         {
 
         }

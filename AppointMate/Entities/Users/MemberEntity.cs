@@ -57,7 +57,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static MemberEntity FromRequestModel(CustomerRequestModel model)
+        public static MemberEntity FromRequestModel(MemberRequestModel model)
         {
             var entity = new MemberEntity();
 
@@ -80,7 +80,7 @@ namespace AppointMate
         /// <param name="model">The model</param>
         /// <param name="entity">The entity</param>
         /// <returns></returns>
-        public static async void UpdateNonAutoMapperValues(CustomerRequestModel model, MemberEntity entity)
+        public static async void UpdateNonAutoMapperValues(MemberRequestModel model, MemberEntity entity)
         {
             var customerSessions = await AppointMateDbMapper.CustomerServiceSessions.SelectAsync(x => x.CustomerId == entity.Id);
             entity.TotalAppointments = (uint)customerSessions.Count();

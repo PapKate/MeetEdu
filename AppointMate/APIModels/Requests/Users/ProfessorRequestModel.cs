@@ -1,26 +1,26 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Request model used for a staff member
+    /// Request model used for a professor 
     /// </summary>
-    public abstract class StaffMemberRequestModel : BaseRequestModel
+    public class ProfessorRequestModel : StaffMemberRequestModel
     {
         #region Public Properties
 
         /// <summary>
-        /// The user id
+        /// The personal websites 
         /// </summary>
-        public string? UserId { get; set; }
+        public IEnumerable<Uri>? Websites { get; set; }
 
         /// <summary>
-        /// The department id
+        /// The field of study
         /// </summary>
-        public string? DepartmentId { get; set; }
+        public string? Field { get; set; }
 
         /// <summary>
-        /// The weekly schedule
+        /// The research interests
         /// </summary>
-        public WeeklySchedule? WeeklySchedule { get; set; }
+        public string? ResearchInterests { get; set; }
 
         #endregion
 
@@ -29,7 +29,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public StaffMemberRequestModel() : base()
+        public ProfessorRequestModel() : base()
         {
 
         }

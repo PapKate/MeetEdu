@@ -3,26 +3,26 @@
 namespace AppointMate
 {
     /// <summary>
-    /// Request model used for a review
+    /// Request model for an appointment template
     /// </summary>
-    public class CustomerServiceReviewRequestModel : BaseRequestModel
+    public class AppointmentTemplateRequestModel
     {
         #region Public Properties
 
         /// <summary>
-        /// The customer id
+        /// The professor id
         /// </summary>
-        public string? CustomerId { get; set; }
+        public string? ProfessorId { get; set; }
 
         /// <summary>
-        /// The service id
+        /// A flag indicating whether it has a remote option or not
         /// </summary>
-        public string? ServiceId { get; set; }
+        public bool? HasRemoteOption { get; set; }
 
         /// <summary>
-        /// The company id
+        /// The description
         /// </summary>
-        public string? CompanyId { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// The note
@@ -30,9 +30,9 @@ namespace AppointMate
         public string? Note { get; set; }
 
         /// <summary>
-        /// The number of stars
+        /// The duration
         /// </summary>
-        public uint? NumberOfStars { get; set; }
+        public TimeSpan? Duration { get; set; }
 
         #endregion
 
@@ -41,7 +41,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerServiceReviewRequestModel() : base()
+        public AppointmentTemplateRequestModel() : base()
         {
 
         }
