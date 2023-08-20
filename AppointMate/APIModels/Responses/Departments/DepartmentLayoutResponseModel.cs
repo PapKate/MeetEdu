@@ -1,16 +1,16 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Represents a company layout
+    /// Represents a company layout document in the MongoDB
     /// </summary>
-    public class CompanyLayoutResponseModel : DateResponseModel, IDescriptable, IDepartmentIdentifiable<string>
+    public class DepartmentLayoutResponseModel : DateResponseModel, IDescriptable, IDepartmentIdentifiable<string>
     {
         #region Private Members
 
         /// <summary>
         /// The member of the <see cref="DepartmentId"/> property
         /// </summary>
-        private string? mCompanyId;
+        private string? mDepartmentId;
 
         /// <summary>
         /// The member of the <see cref="Description"/> property
@@ -20,19 +20,19 @@
         /// <summary>
         /// The member of the <see cref="Rooms"/> property
         /// </summary>
-        private IEnumerable<CompanyLayoutRoomDataModel>? mRooms;
+        private IList<DepartmentLayoutDataModel>? mRooms;
 
         #endregion
 
         #region Public Properties
 
         /// <summary>
-        /// The company id
+        /// The department id
         /// </summary>
         public string DepartmentId
         {
-            get => mCompanyId ?? string.Empty;
-            set => mCompanyId = value;
+            get => mDepartmentId ?? string.Empty;
+            set => mDepartmentId = value;
         }
 
         /// <summary>
@@ -45,11 +45,17 @@
         }
 
         /// <summary>
-        /// The rooms
+        /// The layout
         /// </summary>
-        public IEnumerable<CompanyLayoutRoomDataModel> Rooms 
-        { 
-            get => mRooms ?? Enumerable.Empty<CompanyLayoutRoomDataModel>();
+        public IList<DepartmentLayoutDataModel> Rooms
+        {
+            get
+            {
+                if (mRooms is null)
+                    mRooms = new List<DepartmentLayoutDataModel>();
+
+                return mRooms;
+            }
             set => mRooms = value;
         }
 
@@ -60,7 +66,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyLayoutResponseModel() : base()
+        public DepartmentLayoutResponseModel() : base()
         {
 
         }

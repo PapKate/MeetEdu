@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-
-using Microsoft.AspNetCore.Http;
-using MongoDB.Bson;
-using MongoDB.Driver;
-
-using System.ComponentModel.Design;
+﻿using MongoDB.Bson;
 
 namespace AppointMate
 {
@@ -23,7 +17,7 @@ namespace AppointMate
         /// <summary>
         /// The member of the <see cref="Rooms"/> property
         /// </summary>
-        private IList<CompanyLayoutRoomDataModel>? mRooms;
+        private IList<DepartmentLayoutDataModel>? mRooms;
 
         #endregion
 
@@ -46,12 +40,12 @@ namespace AppointMate
         /// <summary>
         /// The rooms
         /// </summary>
-        public IList<CompanyLayoutRoomDataModel> Rooms
+        public IList<DepartmentLayoutDataModel> Rooms
         {
             get
             {
                 if (mRooms is null)
-                    mRooms = new List<CompanyLayoutRoomDataModel>();
+                    mRooms = new List<DepartmentLayoutDataModel>();
 
                 return mRooms;
             }

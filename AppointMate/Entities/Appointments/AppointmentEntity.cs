@@ -130,7 +130,7 @@ namespace AppointMate
     /// A minimal version of the <see cref="AppointmentEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedAppointmentEntity : EmbeddedDepartmentContactMessageEntity
+    public class EmbeddedAppointmentEntity : EmbeddedDepartmentContactMessageEntity, IProfessorIdentifiable<ObjectId>
     {
         #region Public Properties
 

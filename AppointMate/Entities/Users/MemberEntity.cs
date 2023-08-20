@@ -31,6 +31,11 @@ namespace AppointMate
         /// </summary>
         public uint TotalSavedProfessors { get; set; }
 
+        /// <summary>
+        /// The user
+        /// </summary>
+        public EmbeddedUserEntity? User { get; set; }
+
         #endregion
 
         #region Constructors
@@ -80,7 +85,7 @@ namespace AppointMate
             var customerSessions = await AppointMateDbMapper.CustomerServiceSessions.SelectAsync(x => x.CustomerId == entity.Id);
             entity.TotalAppointments = (uint)customerSessions.Count();
 
-            var customerFavoriteCompanies = await AppointMateDbMapper.UserFavoriteCompanies.SelectAsync(x => x.UserId == entity.Id);
+            var customerFavoriteCompanies = await AppointMateDbMapper.UserFavoriteCompanies.SelectAsync(x => x.MemberId == entity.Id);
             entity.TotalSavedCompanies = (uint)customerSessions.Count();
             
             var customerReviews = await AppointMateDbMapper.CustomerServiceReviews.SelectAsync(x => x.CustomerId == entity.Id);
@@ -109,6 +114,11 @@ namespace AppointMate
         /// The id of the user
         /// </summary>
         public ObjectId UserId { get; set; }
+
+        /// <summary>
+        /// The user
+        /// </summary>
+        public EmbeddedUserEntity? User { get; set; }
 
         #endregion
 

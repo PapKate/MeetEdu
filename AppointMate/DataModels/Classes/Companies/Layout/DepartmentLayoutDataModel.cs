@@ -4,7 +4,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a company room document in the MongoDB
     /// </summary>
-    public class CompanyLayoutRoomDataModel : INameable, IColorable, INoteable, IImageable
+    public class DepartmentLayoutDataModel : INameable, IColorable, INoteable, IImageable
     {
         #region Private Members
 
@@ -71,7 +71,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyLayoutRoomDataModel() : base()
+        public DepartmentLayoutDataModel() : base()
         {
 
         }

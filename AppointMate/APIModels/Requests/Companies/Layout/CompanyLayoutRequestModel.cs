@@ -22,7 +22,7 @@ namespace AppointMate
         /// <summary>
         /// The rooms
         /// </summary>
-        public IEnumerable<CompanyLayoutRoomDataModel>? Rooms { get; set; }
+        public IEnumerable<DepartmentLayoutDataModel>? Rooms { get; set; }
 
         #endregion
 

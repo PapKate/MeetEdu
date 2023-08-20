@@ -1,12 +1,9 @@
-﻿using AutoMapper;
-using MongoDB.Bson;
-
-namespace AppointMate
+﻿namespace AppointMate
 {
     /// <summary>
-    /// Represents a professor document in the MongoDB
+    /// Represents a professor 
     /// </summary>
-    public class ProfessorEntity : StaffMemberEntity
+    public class ProfessorResponseModel : StaffMemberResponseModel
     {
         #region Private Members
 
@@ -32,8 +29,8 @@ namespace AppointMate
         /// <summary>
         /// The personal websites 
         /// </summary>
-        public IEnumerable<Uri> Websites 
-        { 
+        public IEnumerable<Uri> Websites
+        {
             get => mWebsites ?? Enumerable.Empty<Uri>();
             set => mWebsites = value;
         }
@@ -56,11 +53,6 @@ namespace AppointMate
             set => mResearchInterests = value;
         }
 
-        /// <summary>
-        /// The staff member
-        /// </summary>
-        public EmbeddedStaffMemberEntity? StaffMember { get; set; }
-
         #endregion
 
         #region Constructors
@@ -68,20 +60,19 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public ProfessorEntity() : base()
+        public ProfessorResponseModel() : base()
         {
 
         }
 
         #endregion
-
     }
 
     /// <summary>
-    /// A minimal version of the <see cref="ProfessorEntity"/> that contains the fields that are 
+    /// A minimal version of the <see cref="ProfessorResponseModel"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedProfessorEntity : EmbeddedBaseEntity
+    public class EmbeddedProfessorResponseModel : EmbeddedStaffMemberResponseModel
     {
         #region Private Members
 
@@ -103,11 +94,6 @@ namespace AppointMate
             set => mField = value;
         }
 
-        /// <summary>
-        /// The staff member
-        /// </summary>
-        public EmbeddedStaffMemberEntity? StaffMember { get; set; }
-
         #endregion
 
         #region Constructors
@@ -115,7 +101,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedProfessorEntity() : base()
+        public EmbeddedProfessorResponseModel() : base()
         {
 
         }

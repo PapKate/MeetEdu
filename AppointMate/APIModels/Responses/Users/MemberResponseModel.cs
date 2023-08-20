@@ -1,9 +1,9 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Represents a staff member
+    /// Represents a member
     /// </summary>
-    public abstract class StaffMemberResponseModel : DateResponseModel, IUserIdentifiable<string>, IDepartmentIdentifiable<string>
+    public class MemberResponseModel : DateResponseModel, IUserIdentifiable<string>
     {
         #region Private Members
 
@@ -11,16 +11,6 @@
         /// The member of the <see cref="UserId"/> property
         /// </summary>
         private string? mUserId;
-
-        /// <summary>
-        /// The member of the <see cref="DepartmentId"/> property
-        /// </summary>
-        private string? mDepartmentId;
-
-        /// <summary>
-        /// The member of the <see cref="Quote"/> property
-        /// </summary>
-        private string? mQuote;
 
         #endregion
 
@@ -36,27 +26,19 @@
         }
 
         /// <summary>
-        /// The department id
+        /// The total number of appointments
         /// </summary>
-        public string DepartmentId
-        {
-            get => mDepartmentId ?? string.Empty;
-            set => mDepartmentId = value;
-        }
+        public uint TotalAppointments { get; set; }
 
         /// <summary>
-        /// The quote
+        /// The total number of saved companies
         /// </summary>
-        public string Quote 
-        { 
-            get => mQuote ?? string.Empty;
-            set => mQuote = value;
-        }
+        public uint TotalSavedCompanies { get; set; }
 
         /// <summary>
-        /// The weekly schedule
+        /// The total number of saved professors
         /// </summary>
-        public WeeklySchedule? WeeklySchedule { get; set; }
+        public uint TotalSavedProfessors { get; set; }
 
         /// <summary>
         /// The user
@@ -70,7 +52,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public StaffMemberResponseModel() : base()
+        public MemberResponseModel() : base()
         {
 
         }
@@ -79,10 +61,10 @@
     }
 
     /// <summary>
-    /// A minimal version of the <see cref="StaffMemberResponseModel"/> that contains the fields that are 
+    /// A minimal version of the <see cref="MemberResponseModel"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public abstract class EmbeddedStaffMemberResponseModel : EmbeddedBaseEntity, IUserIdentifiable<string>, IDepartmentIdentifiable<string>
+    public class EmbeddedMemberResponseModel : EmbeddedBaseResponseModel, IUserIdentifiable<string>
     {
         #region Private Members
 
@@ -90,11 +72,6 @@
         /// The member of the <see cref="UserId"/> property
         /// </summary>
         private string? mUserId;
-
-        /// <summary>
-        /// The member of the <see cref="DepartmentId"/> property
-        /// </summary>
-        private string? mDepartmentId;
 
         #endregion
 
@@ -110,20 +87,6 @@
         }
 
         /// <summary>
-        /// The department id
-        /// </summary>
-        public string DepartmentId
-        {
-            get => mDepartmentId ?? string.Empty;
-            set => mDepartmentId = value;
-        }
-
-        /// <summary>
-        /// The weekly schedule
-        /// </summary>
-        public WeeklySchedule? WeeklySchedule { get; set; }
-
-        /// <summary>
         /// The user
         /// </summary>
         public EmbeddedUserResponseModel? User { get; set; }
@@ -135,7 +98,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedStaffMemberResponseModel() : base()
+        public EmbeddedMemberResponseModel() : base()
         {
 
         }

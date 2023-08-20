@@ -22,12 +22,12 @@ namespace AppointMate
         #region Public Properties
 
         /// <summary>
-        /// The id of the user
+        /// The user id
         /// </summary>
         public ObjectId UserId { get; set; }
 
         /// <summary>
-        /// The company id
+        /// The department id
         /// </summary>
         public ObjectId DepartmentId { get; set; }
 
@@ -69,12 +69,12 @@ namespace AppointMate
     /// A minimal version of the <see cref="StaffMemberEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedStaffMemberEntity : EmbeddedBaseEntity
+    public abstract class EmbeddedStaffMemberEntity : EmbeddedBaseEntity, IUserIdentifiable<ObjectId>, IDepartmentIdentifiable<ObjectId>
     {
         #region Public Properties
 
         /// <summary>
-        /// The id of the user
+        /// The user id
         /// </summary>
         public ObjectId UserId { get; set; }
 

@@ -16,11 +16,6 @@ namespace AppointMate
         private string? mNote;
 
         /// <summary>
-        /// The member of the <see cref="Category"/> property
-        /// </summary>
-        private IEnumerable<DepartmentType>? mCategories;
-
-        /// <summary>
         /// The member of the <see cref="Description"/> property
         /// </summary>
         private string? mDescription;
@@ -178,15 +173,6 @@ namespace AppointMate
     /// </summary>
     public class EmbeddedDepartmentEntity : EmbeddedStandardEntity, IImageable
     {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="Categories"/> property
-        /// </summary>
-        private IEnumerable<DepartmentType>? mCategories;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>

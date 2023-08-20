@@ -3,16 +3,16 @@
 namespace AppointMate
 {
     /// <summary>
-    /// Represents a company contact message
+    /// Represents a department contact message 
     /// </summary>
-    public class CompanyContactMessageResponseModel : DateResponseModel, IDepartmentIdentifiable<string>
+    public class DepartmentContactMessageResponseModel : DateResponseModel, IDepartmentIdentifiable<string>
     {
         #region Private Members
 
         /// <summary>
         /// The member of the <see cref="DepartmentId"/> property
         /// </summary>
-        private string? mCompanyId;
+        private string? mDepartmentId;
 
         /// <summary>
         /// The member of the <see cref="FirstName"/> property
@@ -39,12 +39,12 @@ namespace AppointMate
         #region Public Properties
 
         /// <summary>
-        /// The company id
+        /// The department id
         /// </summary>
-        public string DepartmentId 
-        { 
-            get => mCompanyId ?? string.Empty;
-            set => mCompanyId = value;
+        public string DepartmentId
+        {
+            get => mDepartmentId ?? string.Empty;
+            set => mDepartmentId = value;
         }
 
         /// <summary>
@@ -95,7 +95,67 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyContactMessageResponseModel() : base()
+        public DepartmentContactMessageResponseModel() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// A minimal version of the <see cref="DepartmentContactMessageResponseModel"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
+    /// </summary>
+    public class EmbeddedDepartmentContactMessageResponseModel : EmbeddedBaseResponseModel
+    {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="DepartmentId"/> property
+        /// </summary>
+        private string? mDepartmentId;
+
+        /// <summary>
+        /// The member of the <see cref="Email"/> property
+        /// </summary>
+        private string? mEmail;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The department id
+        /// </summary>
+        public string DepartmentId
+        {
+            get => mDepartmentId ?? string.Empty;
+            set => mDepartmentId = value;
+        }
+
+        /// <summary>
+        /// The email
+        /// </summary>
+        public string Email
+        {
+            get => mEmail ?? string.Empty;
+            set => mEmail = value;
+        }
+
+        /// <summary>
+        /// The phone number
+        /// </summary>
+        public PhoneNumber? PhoneNumber { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public EmbeddedDepartmentContactMessageResponseModel() : base()
         {
 
         }

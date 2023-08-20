@@ -1,9 +1,9 @@
 ﻿namespace AppointMate
 {
     /// <summary>
-    /// Represents a company
+    /// Represents a department 
     /// </summary>
-    public class CompanyResponseModel : StandardResponseModel, IImageable, INoteable
+    public class DepartmentResponseModel : StandardResponseModel, IImageable, INoteable
     {
         #region Private Members
 
@@ -11,11 +11,6 @@
         /// The member of the <see cref="Note"/> property
         /// </summary>
         private string? mNote;
-
-        /// <summary>
-        /// The member of the <see cref="Categories"/> property
-        /// </summary>
-        private IEnumerable<DepartmentType>? mCategories;
 
         /// <summary>
         /// The member of the <see cref="Description"/> property
@@ -32,32 +27,18 @@
         #region Public Properties
 
         /// <summary>
-        /// The categories
+        /// The category
         /// </summary>
-        public IEnumerable<DepartmentType> Categories
-        {
-            get => mCategories ?? Enumerable.Empty<DepartmentType>();
-            set => mCategories = value;
-        }
+        public DepartmentType Category { get; set; }
 
         /// <summary>
         /// The description
         /// </summary>
-        public string Description 
-        { 
+        public string Description
+        {
             get => mDescription ?? string.Empty;
             set => mDescription = value;
         }
-
-        /// <summary>
-        /// A flag indicating whether the company provides at home services
-        /// </summary>
-        public bool HasAtHomeServices { get; set; }
-
-        /// <summary>
-        /// The radius for the distance where at home services can be provided in Km
-        /// </summary>
-        public double AtHomeRadius { get; set; }
 
         /// <summary>
         /// The note
@@ -67,6 +48,11 @@
             get => mNote ?? string.Empty;
             set => mNote = value;
         }
+
+        /// <summary>
+        /// The number of staff members
+        /// </summary>
+        public uint TotalStaffMembers { get; set; }
 
         /// <summary>
         /// The work hours
@@ -102,16 +88,6 @@
             set => mLabels = value;
         }
 
-        /// <summary>
-        /// The average number of stars from the customer reviews
-        /// </summary>
-        public double TotalReviewStars { get; set; }
-
-        /// <summary>
-        /// The number of customer reviews
-        /// </summary>
-        public uint TotalReviews { get; set; }
-
         #endregion
 
         #region Constructors
@@ -119,7 +95,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyResponseModel() : base()
+        public DepartmentResponseModel() : base()
         {
 
         }
@@ -129,39 +105,17 @@
 
 
     /// <summary>
-    /// The embedded company
+    /// A minimal version of the <see cref="DepartmentResponseModel "/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedCompanyResponseModel : EmbeddedStandardResponseModel
+    public class EmbeddedDepartmentResponseModel : EmbeddedStandardResponseModel, IImageable
     {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="Categories"/> property
-        /// </summary>
-        private IEnumerable<DepartmentType>? mCategories;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
-        /// The categories
+        /// The number of staff members
         /// </summary>
-        public IEnumerable<DepartmentType> Categories
-        {
-            get => mCategories ?? Enumerable.Empty<DepartmentType>();
-            set => mCategories = value;
-        }
-
-        /// <summary>
-        /// The average number of stars from the customer reviews
-        /// </summary>
-        public double TotalReviewStars { get; set; }
-
-        /// <summary>
-        /// The number of customer reviews
-        /// </summary>
-        public uint TotalReviews { get; set; }
+        public uint TotalStaffMembers { get; set; }
 
         /// <summary>
         /// The image URL
@@ -180,7 +134,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedCompanyResponseModel() : base()
+        public EmbeddedDepartmentResponseModel() : base()
         {
 
         }
