@@ -56,11 +56,6 @@ namespace AppointMate
             set => mResearchInterests = value;
         }
 
-        /// <summary>
-        /// The staff member
-        /// </summary>
-        public EmbeddedStaffMemberEntity? StaffMember { get; set; }
-
         #endregion
 
         #region Constructors
@@ -75,6 +70,37 @@ namespace AppointMate
 
         #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="ProfessorEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static ProfessorEntity FromRequestModelAsync(ProfessorRequestModel model)
+        {
+            var entity = new ProfessorEntity();
+
+            DI.Mapper.Map(model, entity);
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="ProfessorResponseModel"/> from the current <see cref="ProfessorEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public ProfessorResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<ProfessorResponseModel>(this);
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedProfessorEntity"/> from the current <see cref="ProfessorEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public EmbeddedProfessorEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedProfessorEntity>(this);
+
+        #endregion
     }
 
     /// <summary>

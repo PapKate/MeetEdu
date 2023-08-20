@@ -74,7 +74,7 @@ namespace AppointMate
         /// <param name="model">The model</param>
         /// <param name="companyId">The company id</param>
         /// <returns></returns>
-        public static DepartmentLayoutEntity FromRequestModel(CompanyLayoutRequestModel model, ObjectId companyId)
+        public static DepartmentLayoutEntity FromRequestModel(DepartmentLayoutRequestModel model, ObjectId companyId)
         {
             var entity = new DepartmentLayoutEntity();
 
@@ -84,11 +84,11 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CompanyLayoutResponseModel"/> from the current <see cref="DepartmentLayoutEntity"/>
+        /// Creates and returns a <see cref="DepartmentLayoutResponseModel"/> from the current <see cref="DepartmentLayoutEntity"/>
         /// </summary>
         /// <returns></returns>
-        public CompanyLayoutResponseModel ToResponseModel()
-            => EntityHelpers.ToResponseModel<CompanyLayoutResponseModel>(this);
+        public DepartmentLayoutResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<DepartmentLayoutResponseModel>(this);
 
         #endregion
     }

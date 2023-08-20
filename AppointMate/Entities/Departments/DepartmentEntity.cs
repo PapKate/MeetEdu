@@ -126,7 +126,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static DepartmentEntity FromRequestModel(CompanyRequestModel model)
+        public static DepartmentEntity FromRequestModel(DepartmentRequestModel model)
         {
             var entity = new DepartmentEntity();
 
@@ -138,11 +138,11 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CompanyResponseModel"/> from the current <see cref="DepartmentEntity"/>
+        /// Creates and returns a <see cref="DepartmentResponseModel"/> from the current <see cref="DepartmentEntity"/>
         /// </summary>
         /// <returns></returns>
-        public CompanyResponseModel ToResponseModel()
-            => EntityHelpers.ToResponseModel<CompanyResponseModel>(this);
+        public DepartmentResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<DepartmentResponseModel>(this);
 
         /// <summary>
         /// Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
@@ -151,21 +151,12 @@ namespace AppointMate
         /// <param name="model">The model</param>
         /// <param name="entity">The entity</param>
         /// <returns></returns>
-        public static async void UpdateNonAutoMapperValues(CompanyRequestModel model, DepartmentEntity entity)
+        public static async void UpdateNonAutoMapperValues(DepartmentRequestModel model, DepartmentEntity entity)
         {
-            var reviews = await AppointMateDbMapper.CustomerServiceReviews.SelectAsync(x => x.CompanyId == entity.Id);
-
-            // If there are reviews...
-            if (reviews is not null)
-            {
-                var reviewsCount = (uint)reviews.Count();
-                entity.TotalStaffMembers = reviewsCount;
-            }
-
             // If there are labels...
             if (model.Labels is not null)
             {
-                var labels = await AppointMateDbMapper.CompanyLabels.SelectAsync(x => model.Labels.Any(y => y == x.Id.ToString()));
+                var labels = await AppointMateDbMapper.DepartmentLabels.SelectAsync(x => model.Labels.Any(y => y.ToObjectId() == x.Id));
 
                 entity.Labels = labels.Select(x => x.ToEmbeddedEntity());
             }

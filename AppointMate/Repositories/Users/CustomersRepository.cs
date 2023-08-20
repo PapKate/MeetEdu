@@ -82,7 +82,7 @@ namespace AppointMate
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Customers));
 
             // Gets the customer services
-            var services = await AppointMateDbMapper.CustomerServices.SelectAsync(x => x.CustomerId == id && x.DateStart < DateTimeOffset.Now);
+            var services = await AppointMateDbMapper.Appointments.SelectAsync(x => x.CustomerId == id && x.DateStart < DateTimeOffset.Now);
 
             // If the customer has past services...
             if (services is not null)

@@ -81,7 +81,7 @@ namespace AppointMate
 
         //    var filter = Builders<ServiceEntity>.Filter.And(filters);
 
-        //    var services = await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Services, filter, x => x.Name, true, args, x => x.ToResponseModel(), cancellationToken);
+        //    var services = await ControllerHelpers.GetManyAsync(AppointMateDbMapper.AppointmentTemplates, filter, x => x.Name, true, args, x => x.ToResponseModel(), cancellationToken);
         //}
 
         ///// <summary>
@@ -95,7 +95,7 @@ namespace AppointMate
         //[Route(AppointMateAPIRoutes.ServiceRoute)]
         //public async Task<ActionResult<ServiceCompaniesResult>> GetServiceAsync([FromRoute] string name, APIArgs args, CancellationToken cancellationToken = default)
         //{
-        //    var documents = await AppointMateDbMapper.Services.SelectAsync(x => x.Name == name, cancellationToken);
+        //    var documents = await AppointMateDbMapper.AppointmentTemplates.SelectAsync(x => x.Name == name, cancellationToken);
         //    var services = documents.OrderBy(x => x.Price)
         //                                 .Skip((args.Page * args.PerPage) + args.Offset).Take(args.PerPage)
         //                                 .ToList();
@@ -116,7 +116,7 @@ namespace AppointMate
         [HttpGet]
         [Route(AppointMateAPIRoutes.CompanyRoute)]
         public async Task<ActionResult<CompanyResponseModel>?> GetCompanyAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Companies, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Departments, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
 
         #endregion
 
@@ -155,7 +155,7 @@ namespace AppointMate
         [HttpGet]
         [Route(AppointMateAPIRoutes.UserServiceRoute)]
         public async Task<ActionResult<CustomerServiceResponseModel>?> GetUserServiceAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.CustomerServices, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Appointments, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
 
         #endregion
 
@@ -188,13 +188,13 @@ namespace AppointMate
         public async Task<ActionResult<IEnumerable<CompanyResponseModel>>?> GetUserFavoriteCompaniesAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user favorite company with the specified user id
-            var favorites = await AppointMateDbMapper.UserFavoriteCompanies.SelectAsync(x => x.UserId.ToString() == id);
+            var favorites = await AppointMateDbMapper.MemberSavedDepartments.SelectAsync(x => x.UserId.ToString() == id);
 
             // If no favorite company is found...
             if (favorites is null)
                 return NotFound();
 
-            var companies = await AppointMateDbMapper.Companies.SelectAsync(x => favorites.Any(y => y.DepartmentId == x.Id));
+            var companies = await AppointMateDbMapper.Departments.SelectAsync(x => favorites.Any(y => y.DepartmentId == x.Id));
             
             return new OkObjectResult(companies.Select(x => x.ToResponseModel()));
         }
@@ -210,13 +210,13 @@ namespace AppointMate
         public async Task<ActionResult<CompanyResponseModel>?> GetUserFavoriteCompanyAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user favorite company with the specified id
-            var favorite = await AppointMateDbMapper.UserFavoriteCompanies.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+            var favorite = await AppointMateDbMapper.MemberSavedDepartments.FirstOrDefaultAsync(x => x.Id.ToString() == id);
 
             // If the favorite company is not found...
             if (favorite is null)
                 return NotFound();
 
-            var company = await AppointMateDbMapper.Companies.FirstOrDefaultAsync(x => x.Id == favorite.DepartmentId);
+            var company = await AppointMateDbMapper.Departments.FirstOrDefaultAsync(x => x.Id == favorite.DepartmentId);
 
             return new OkObjectResult(company.ToResponseModel());
         }

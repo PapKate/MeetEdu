@@ -77,50 +77,41 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static async Task<WebServerFailable<AppointmentEntity>> FromRequestModelAsync(CustomerServiceRequestModel model)
+        public static async Task<WebServerFailable<AppointmentEntity>> FromRequestModelAsync(AppointmentRequestModel model)
         {
-            // If no customer id was specified...
-            if(model.CustomerId is null)
-                return AppointMateWebServerConstants.NoCustomerIdSpecifiedInTheRequestErrorMessage;
+            // If no subject id was specified...
+            if(model.SubjectId is null)
+                return AppointMateWebServerConstants.NoAppointmentTemplateIdSpecifiedInTheRequestErrorMessage;
 
-            // If no service id was specified...
-            if (model.ServiceId is null)
-                return AppointMateWebServerConstants.NoServiceIdSpecifiedInTheRequestErrorMessage;
+            // Gets the appointment template with the specified id
+            var template = await AppointMateDbMapper.AppointmentTemplates.FirstOrDefaultAsync(x => x.Id == model.SubjectId.ToObjectId());
 
-            // Gets the customer with the specified id
-            var customer = await AppointMateDbMapper.Customers.FirstOrDefaultAsync(x => x.Id == model.CustomerId.ToObjectId());
-
-            // If no customer is found...
-            if (customer is null)
+            // If no template is found...
+            if (template is null)
                 // Return
-                return WebServerFailable.NotFound(model.CustomerId, nameof(AppointMateDbMapper.Customers));
-
-            // Gets the service with the specified id
-            var service = await AppointMateDbMapper.Services.FirstOrDefaultAsync(x => x.Id == model.ServiceId.ToObjectId());
+                return WebServerFailable.NotFound(model.SubjectId, nameof(AppointMateDbMapper.AppointmentTemplates));
 
             var entity = new AppointmentEntity();
 
             DI.Mapper.Map(model, entity);
-
-
-            entity.DateCreated = DateTime.UtcNow;
+            entity.Subject = template.ToEmbeddedEntity();
             entity.DateModified = DateTime.UtcNow;
 
             return entity;
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CustomerServiceResponseModel"/> from the current <see cref="AppointmentEntity"/>
+        /// Creates and returns a <see cref="AppointmentResponseModel"/> from the current <see cref="AppointmentEntity"/>
         /// </summary>
         /// <returns></returns>
-        public new CustomerServiceResponseModel ToResponseModel()
-            => EntityHelpers.ToResponseModel<CustomerServiceResponseModel>(this);
+        public new AppointmentResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<AppointmentResponseModel>(this);
 
         /// <summary>
-        /// Creates and returns a <see cref="EmbeddedMemberEntity"/> from the current <see cref="AppointmentEntity"/>
+        /// Creates and returns a <see cref="EmbeddedAppointmentEntity"/> from the current <see cref="AppointmentEntity"/>
         /// </summary>
         /// <returns></returns>
-        public EmbeddedAppointmentEntity ToEmbeddedEntity()
+        public new EmbeddedAppointmentEntity ToEmbeddedEntity()
             => EntityHelpers.ToEmbeddedEntity<EmbeddedAppointmentEntity>(this);
 
         #endregion

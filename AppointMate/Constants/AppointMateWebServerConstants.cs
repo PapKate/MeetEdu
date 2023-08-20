@@ -40,6 +40,11 @@ namespace AppointMate
         public const string NoCustomerIdSpecifiedInTheRequestErrorMessage = "No customer id was specified in the request";
 
         /// <summary>
+        /// Error message indicating no appointment template id was specified
+        /// </summary>
+        public const string NoAppointmentTemplateIdSpecifiedInTheRequestErrorMessage = "No appointment template id was specified in the request";
+
+        /// <summary>
         /// Error message indicating no service id was specified
         /// </summary>
         public const string NoServiceIdSpecifiedInTheRequestErrorMessage = "No service id was specified in the request";

@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a department contact message 
     /// </summary>
-    public class DepartmentContactMessageResponseModel : DateResponseModel, IDepartmentIdentifiable<string>
+    public class DepartmentContactMessageResponseModel : DateResponseModel, IDepartmentIdentifiable<string>, IMemberIdentifiable<string?>
     {
         #region Private Members
 
@@ -46,6 +46,11 @@ namespace AppointMate
             get => mDepartmentId ?? string.Empty;
             set => mDepartmentId = value;
         }
+
+        /// <summary>
+        /// The member id
+        /// </summary>
+        public string? MemberId { get; set; }
 
         /// <summary>
         /// The first name

@@ -24,7 +24,7 @@ namespace AppointMate
         /// <summary>
         /// The total number of saved companies
         /// </summary>
-        public uint TotalSavedCompanies { get; set; }
+        public uint TotalSavedDepartments { get; set; }
 
         /// <summary>
         /// The total number of saved professors
@@ -63,15 +63,17 @@ namespace AppointMate
 
             DI.Mapper.Map(model, entity);
 
+            UpdateNonAutoMapperValues(model, entity);
+            
             return entity;
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CustomerResponseModel"/> from the current <see cref="MemberEntity"/>
+        /// Creates and returns a <see cref="MemberResponseModel"/> from the current <see cref="MemberEntity"/>
         /// </summary>
         /// <returns></returns>
-        public CustomerResponseModel ToResponseModel()
-            => EntityHelpers.ToResponseModel<CustomerResponseModel>(this);
+        public MemberResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<MemberResponseModel>(this);
 
         /// <summary>
         /// Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
@@ -82,14 +84,14 @@ namespace AppointMate
         /// <returns></returns>
         public static async void UpdateNonAutoMapperValues(MemberRequestModel model, MemberEntity entity)
         {
-            var customerSessions = await AppointMateDbMapper.CustomerServiceSessions.SelectAsync(x => x.CustomerId == entity.Id);
+            var customerSessions = await AppointMateDbMapper.Appointments.SelectAsync(x => x.MemberId == entity.Id);
             entity.TotalAppointments = (uint)customerSessions.Count();
 
-            var customerFavoriteCompanies = await AppointMateDbMapper.UserFavoriteCompanies.SelectAsync(x => x.MemberId == entity.Id);
-            entity.TotalSavedCompanies = (uint)customerSessions.Count();
+            var savedDepartments = await AppointMateDbMapper.MemberSavedDepartments.SelectAsync(x => x.MemberId == entity.Id);
+            entity.TotalSavedDepartments = (uint)savedDepartments.Count();
             
-            var customerReviews = await AppointMateDbMapper.CustomerServiceReviews.SelectAsync(x => x.CustomerId == entity.Id);
-            entity.TotalSavedProfessors = (uint)customerReviews.Count();
+            var savedProfs = await AppointMateDbMapper.MemberSavedProfessors.SelectAsync(x => x.MemberId == entity.Id);
+            entity.TotalSavedProfessors = (uint)savedProfs.Count();
         }
 
         /// <summary>

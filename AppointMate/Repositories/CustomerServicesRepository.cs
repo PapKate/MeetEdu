@@ -54,7 +54,7 @@ namespace AppointMate
                 // Return
                 return result.ToUnsuccessfulWebServerFailable();
             
-            await AppointMateDbMapper.CustomerServices.AddAsync(result.Result);
+            await AppointMateDbMapper.Appointments.AddAsync(result.Result);
             
             var sessionEntity = CustomerServiceSessionEntity.FromRequestModel(session);
             sessionEntity.Index = 1;
@@ -73,12 +73,12 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<AppointmentEntity>> UpdateCustomerServiceAsync(ObjectId id, CustomerServiceRequestModel model)
         {
-            var customerService = await AppointMateDbMapper.CustomerServices.FirstOrDefaultAsync(x => x.Id == id);
+            var customerService = await AppointMateDbMapper.Appointments.FirstOrDefaultAsync(x => x.Id == id);
 
             // If the customer service does not exist...
             if(customerService is null)
                 // Return
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.CustomerServices));
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Appointments));
 
             var amount = model.PurchasedAmount ?? customerService.Amount;
 
@@ -99,7 +99,7 @@ namespace AppointMate
             DI.Mapper.Map(model, customerService);
 
             // Update the customer service
-            return await AppointMateDbMapper.CustomerServices.UpdateAsync(customerService);
+            return await AppointMateDbMapper.Appointments.UpdateAsync(customerService);
         }
 
         /// <summary>
@@ -109,12 +109,12 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<AppointmentEntity>> DeleteCustomerServiceAsync(ObjectId id)
         {
-            var customerService = await AppointMateDbMapper.CustomerServices.FirstOrDefaultAsync(x => x.Id == id);
+            var customerService = await AppointMateDbMapper.Appointments.FirstOrDefaultAsync(x => x.Id == id);
 
             // If the customer service does not exist...
             if (customerService is null)
                 // Return
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.CustomerServices));
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Appointments));
 
             // If the service has already started...
             if(customerService.DateStart < DateTimeOffset.Now)
@@ -134,7 +134,7 @@ namespace AppointMate
             }
 
             // Delete the customer service
-            return await AppointMateDbMapper.CustomerServices.DeleteAsync(id);
+            return await AppointMateDbMapper.Appointments.DeleteAsync(id);
         }
 
         #region Reviews

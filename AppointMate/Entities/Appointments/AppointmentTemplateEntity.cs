@@ -7,7 +7,7 @@ namespace AppointMate
     /// <summary>
     /// Represents an appointment template document in the MongoDB
     /// </summary>
-    public class AppointmentTemplateEntity: StandardEntity, IDescriptable, INoteable, IProfessorIdentifiable<ObjectId>
+    public class AppointmentTemplateEntity : StandardEntity, IDescriptable, INoteable, IProfessorIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -79,7 +79,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static AppointmentTemplateEntity FromRequestModel(ServiceRequestModel model)
+        public static AppointmentTemplateEntity FromRequestModel(AppointmentTemplateRequestModel model)
         {
             var entity = new AppointmentTemplateEntity();
 
@@ -89,11 +89,18 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="ServiceResponseModel"/> from the current <see cref="AppointmentTemplateEntity"/>
+        /// Creates and returns a <see cref="AppointmentTemplateResponseModel"/> from the current <see cref="AppointmentTemplateEntity"/>
         /// </summary>
         /// <returns></returns>
-        public ServiceResponseModel ToResponseModel() 
-            => EntityHelpers.ToResponseModel<ServiceResponseModel>(this);
+        public AppointmentTemplateResponseModel ToResponseModel() 
+            => EntityHelpers.ToResponseModel<AppointmentTemplateResponseModel>(this);
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedAppointmentTemplateEntity"/> from the current <see cref="AppointmentTemplateEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public EmbeddedAppointmentTemplateEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedAppointmentTemplateEntity>(this);
 
         #endregion
     }

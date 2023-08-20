@@ -105,11 +105,11 @@ namespace AppointMate
                 return WebServerFailable.NotFound(userId, nameof(AppointMateDbMapper.Users));
 
             // Gets the company with the specified id
-            var company = await AppointMateDbMapper.Companies.FirstOrDefaultAsync(x => x.Id == companyId);
+            var company = await AppointMateDbMapper.Departments.FirstOrDefaultAsync(x => x.Id == companyId);
 
             // If the company does not exist...
             if (company is null)
-                return WebServerFailable.NotFound(companyId, nameof(AppointMateDbMapper.Companies));
+                return WebServerFailable.NotFound(companyId, nameof(AppointMateDbMapper.Departments));
 
             // Create the favorite company
             var entity = new MemberSavedDepartmentEntity()
@@ -119,7 +119,7 @@ namespace AppointMate
             };
 
             // Adds the favorite company
-            await AppointMateDbMapper.UserFavoriteCompanies.AddAsync(entity);
+            await AppointMateDbMapper.MemberSavedDepartments.AddAsync(entity);
 
             // Returns the entity
             return entity;
@@ -141,13 +141,13 @@ namespace AppointMate
                 return WebServerFailable.NotFound(userId, nameof(AppointMateDbMapper.Users));
 
             // Gets the companies with the specified ids
-            var companies = await AppointMateDbMapper.Companies.SelectAsync(x => companyIds.Any(y => y == x.Id));
+            var companies = await AppointMateDbMapper.Departments.SelectAsync(x => companyIds.Any(y => y == x.Id));
 
             // If the company does not exist...
             if (companies is null)
                 return AppointMateWebServerConstants.NoCompaniesWereFoundWithTheSpecifiedIdsErrorMessage;
 
-            return new WebServerFailable<IEnumerable<MemberSavedDepartmentEntity>>(await AppointMateDbMapper.UserFavoriteCompanies.AddRangeAsync(companies.Select(x =>
+            return new WebServerFailable<IEnumerable<MemberSavedDepartmentEntity>>(await AppointMateDbMapper.MemberSavedDepartments.AddRangeAsync(companies.Select(x =>
                 new MemberSavedDepartmentEntity()
                 {
                     DepartmentId = x.Id,
@@ -163,12 +163,12 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<MemberSavedDepartmentEntity>> DeleteUserFavoriteCompanyAsync(ObjectId id)
         {
-            var entity = await AppointMateDbMapper.UserFavoriteCompanies.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await AppointMateDbMapper.MemberSavedDepartments.FirstOrDefaultAsync(x => x.Id == id);
 
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.UserFavoriteCompanies));
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.MemberSavedDepartments));
 
-            await AppointMateDbMapper.UserFavoriteCompanies.DeleteOneAsync(x => x.Id == id);
+            await AppointMateDbMapper.MemberSavedDepartments.DeleteOneAsync(x => x.Id == id);
 
             return entity;
         }
@@ -191,7 +191,7 @@ namespace AppointMate
             if(customers is null)
                 return AppointMateWebServerConstants.GetCustomerWithUserIdNotFoundErrorMessage(userId);
 
-            var services = await AppointMateDbMapper.CustomerServices.SelectAsync(x => customers.Any(y => y.Id == x.CustomerId));
+            var services = await AppointMateDbMapper.Appointments.SelectAsync(x => customers.Any(y => y.Id == x.CustomerId));
             
             return new WebServerFailable<IEnumerable<AppointmentEntity>>(services);
         }

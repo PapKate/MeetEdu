@@ -3,7 +3,7 @@
 namespace AppointMate
 {
     /// <summary>
-    /// Global access points for the AppointMate application database 
+    /// Global access points for the MeetEdu application database 
     /// </summary>
     public static class AppointMateDbMapper
     {
@@ -12,67 +12,42 @@ namespace AppointMate
         /// <summary>
         /// The AppointMate signature used for identifying the AppointMate entities
         /// </summary>
-        public const string Signature = "AppointMate_";
+        public const string Signature = "MeetEdu_";
 
         /// <summary>
-        /// The companies collection name
+        /// The universities collection name
         /// </summary>
-        public const string CompaniesCollectionName = Signature + "Companies";
+        public const string UniversitiesCollectionName = Signature + "Universities";
 
         /// <summary>
-        /// The company labels collection name
+        /// The departments collection name
         /// </summary>
-        public const string CompanyLabelsCollectionName = Signature + "CompanyLabels";
+        public const string DepartmentsCollectionName = Signature + "Departments";
 
         /// <summary>
-        /// The company contact collection name
+        /// The department labels collection name
         /// </summary>
-        public const string CompanyContactMessagesCollectionName = Signature + "CompanyContactMessages";
+        public const string DepartmentLabelsCollectionName = Signature + "DepartmentLabels";
 
         /// <summary>
-        /// The company layouts collection name
+        /// The department contact collection name
         /// </summary>
-        public const string CompanyLayoutsCollectionName = Signature + "CompanyLayouts";
+        public const string DepartmentContactMessagesCollectionName = Signature + "DepartmentContactMessages";
 
         /// <summary>
-        /// The staff members collection name
+        /// The department layouts collection name
         /// </summary>
-        public const string StaffMembersCollectionName = Signature + "StaffMembers";
+        public const string DepartmentLayoutsCollectionName = Signature + "DepartmentLayouts";
 
         /// <summary>
-        /// The company staff member labels collection name
+        /// The appointment templates collection name
         /// </summary>
-        public const string StaffMemberLabelsCollectionName = Signature + "StaffMemberLabels";
+        public const string AppointmentTemplatesCollectionName = Signature + "AppointmentTemplates";
 
         /// <summary>
-        /// The staff member weekly schedules collection name
+        /// The appointments collection name
         /// </summary>
-        public const string StaffMemberWeeklySchedulesCollectionName = Signature + "StaffMemberWeeklySchedules";
-
-        /// <summary>
-        /// The customer labels collection name
-        /// </summary>
-        public const string CustomerLabelsCollectionName = Signature + "CustomerLabels";
-
-        /// <summary>
-        /// The customers collection name
-        /// </summary>
-        public const string CustomersCollectionName = Signature + "Customers";
-
-        /// <summary>
-        /// The customer notes collection name
-        /// </summary>
-        public const string CustomerNotesCollectionName = Signature + "CustomerNotes";
-
-        /// <summary>
-        /// The customer point offset logs collection name
-        /// </summary>
-        public const string CustomerPointOffsetLogsCollectionName = Signature + "CustomerPointOffsetLogs";
-
-        /// <summary>
-        /// The payment methods collection name
-        /// </summary>
-        public const string PaymentMethodsCollectionName = Signature + "PaymentMethods";
+        public const string AppointmentsCollectionName = Signature + "Appointments";
 
         /// <summary>
         /// The users collection name
@@ -80,120 +55,76 @@ namespace AppointMate
         public const string UsersCollectionName = Signature + "Users";
 
         /// <summary>
-        /// The customer favorite companies collection name
+        /// The professors collection name
         /// </summary>
-        public const string UserFavoriteCompaniesCollectionName = Signature + "CustomerFavoriteCompanies";
+        public const string ProfessorsCollectionName = Signature + "Professors";
 
         /// <summary>
-        /// The services collection name
+        /// The secretaries collection name
         /// </summary>
-        public const string ServicesCollectionName = Signature + "Services";
+        public const string SecretariesCollectionName = Signature + "Secretaries";
 
         /// <summary>
-        /// The service labels collection name
+        /// The members collection name
         /// </summary>
-        public const string ServiceLabelsCollectionName = Signature + "ServiceLabels";
+        public const string MembersCollectionName = Signature + "Members";
 
         /// <summary>
-        /// The customer services collection name
+        /// The member saved departments collection name
         /// </summary>
-        public const string CustomerServicesCollectionName = Signature + "CustomerServices";
+        public const string MemberSavedDepartmentsCollectionName = Signature + "MemberSavedDepartments";
 
         /// <summary>
-        /// The customer service reviews collection name
+        /// The member saved professors collection name
         /// </summary>
-        public const string CustomerServiceReviewsCollectionName = Signature + "CustomerServiceReviews";
-
-        /// <summary>
-        /// The customer service sessions collection name
-        /// </summary>
-        public const string CustomerServiceSessionsCollectionName = Signature + "CustomerServiceSessions";
-
-        /// <summary>
-        /// The customer service payments collection name
-        /// </summary>
-        public const string CustomerServicePaymentsCollectionName = Signature + "CustomerServicePayments";
-
-        /// <summary>
-        /// The customer service scheduled payments collection name
-        /// </summary>
-        public const string CustomerServiceScheduledPaymentsCollectionName = Signature + "CustomerServiceScheduledPayments";
+        public const string MemberSavedProfessorsCollectionName = Signature + "MemberSavedProfessors";
 
         #endregion
 
-        #region Companies
+        #region Universities
 
         /// <summary>
-        /// The companies collection
+        /// The universities collection
         /// </summary>
-        public static IMongoCollection<DepartmentEntity> Companies => DI.Database.GetCollection<DepartmentEntity>(CompaniesCollectionName);
-
-        /// <summary>
-        /// The company labels collection
-        /// </summary>
-        public static IMongoCollection<LabelEntity> CompanyLabels => DI.Database.GetCollection<LabelEntity>(CompanyLabelsCollectionName);
-
-        /// <summary>
-        /// The company layouts collection
-        /// </summary>
-        public static IMongoCollection<DepartmentLayoutEntity> CompanyLayouts => DI.Database.GetCollection<DepartmentLayoutEntity>(CompanyLayoutsCollectionName);
-
-        /// <summary>
-        /// The company contact messages collection
-        /// </summary>
-        public static IMongoCollection<DepartmentContactMessageEntity> CompanyContactMessages => DI.Database.GetCollection<DepartmentContactMessageEntity>(CompanyContactMessagesCollectionName);
+        public static IMongoCollection<UniversityEntity> Universities => DI.Database.GetCollection<UniversityEntity>(UniversitiesCollectionName);
 
         #endregion
 
-        #region Payments
+        #region Departments
 
         /// <summary>
-        /// The payment methods collection
+        /// The departments collection
         /// </summary>
-        public static IMongoCollection<PaymentMethodEntity> PaymentMethods => DI.Database.GetCollection<PaymentMethodEntity>(PaymentMethodsCollectionName);
+        public static IMongoCollection<DepartmentEntity> Departments => DI.Database.GetCollection<DepartmentEntity>(DepartmentsCollectionName);
 
         /// <summary>
-        /// The customer service payments collection
+        /// The department labels collection
         /// </summary>
-        public static IMongoCollection<CustomerServicePaymentEntity> CustomerServicePayments => DI.Database.GetCollection<CustomerServicePaymentEntity>(CustomerServicePaymentsCollectionName);
+        public static IMongoCollection<LabelEntity> DepartmentLabels => DI.Database.GetCollection<LabelEntity>(DepartmentLabelsCollectionName);
 
         /// <summary>
-        /// The customer service scheduled payments collection
+        /// The department layouts collection
         /// </summary>
-        public static IMongoCollection<CustomerServiceScheduledPaymentEntity> CustomerServiceScheduledPayments => DI.Database.GetCollection<CustomerServiceScheduledPaymentEntity>(CustomerServiceScheduledPaymentsCollectionName);
+        public static IMongoCollection<DepartmentLayoutEntity> DepartmentLayouts => DI.Database.GetCollection<DepartmentLayoutEntity>(DepartmentLayoutsCollectionName);
+
+        /// <summary>
+        /// The department contact messages collection
+        /// </summary>
+        public static IMongoCollection<DepartmentContactMessageEntity> DepartmentContactMessages => DI.Database.GetCollection<DepartmentContactMessageEntity>(DepartmentContactMessagesCollectionName);
 
         #endregion
 
-        #region Points
+        #region Appointments
 
         /// <summary>
-        /// The customer point offset logs collection
+        /// The appointment templates collection
         /// </summary>
-        public static IMongoCollection<UserPointOffsetLogEntity> CustomerPointOffsetLogs => DI.Database.GetCollection<UserPointOffsetLogEntity>(CustomerPointOffsetLogsCollectionName);
-
-        #endregion
-
-        #region Services
+        public static IMongoCollection<AppointmentTemplateEntity> AppointmentTemplates => DI.Database.GetCollection<AppointmentTemplateEntity>(AppointmentTemplatesCollectionName);
 
         /// <summary>
-        /// The services collection
+        /// The appointments collection
         /// </summary>
-        public static IMongoCollection<AppointmentTemplateEntity> Services => DI.Database.GetCollection<AppointmentTemplateEntity>(ServicesCollectionName);
-
-        /// <summary>
-        /// The customer services collection
-        /// </summary>
-        public static IMongoCollection<AppointmentEntity> CustomerServices => DI.Database.GetCollection<AppointmentEntity>(CustomerServicesCollectionName);
-
-        /// <summary>
-        /// The customer service sessions collection
-        /// </summary>
-        public static IMongoCollection<CustomerServiceSessionEntity> CustomerServiceSessions => DI.Database.GetCollection<CustomerServiceSessionEntity>(CustomerServiceSessionsCollectionName);
-
-        /// <summary>
-        /// The service labels collection
-        /// </summary>
-        public static IMongoCollection<LabelEntity> ServiceLabels => DI.Database.GetCollection<LabelEntity>(ServiceLabelsCollectionName);
+        public static IMongoCollection<AppointmentEntity> Appointments => DI.Database.GetCollection<AppointmentEntity>(AppointmentsCollectionName);
 
         #endregion
 
@@ -203,54 +134,43 @@ namespace AppointMate
         /// The users collection
         /// </summary>
         public static IMongoCollection<UserEntity> Users => DI.Database.GetCollection<UserEntity>(UsersCollectionName);
-
-        /// <summary>
-        /// The user favorite companies collection
-        /// </summary>
-        public static IMongoCollection<MemberSavedDepartmentEntity> UserFavoriteCompanies => DI.Database.GetCollection<MemberSavedDepartmentEntity>(UserFavoriteCompaniesCollectionName);
-
+        
         #endregion
 
-        #region Customers
+        #region Members
 
         /// <summary>
         /// The customers collection
         /// </summary>
-        public static IMongoCollection<MemberEntity> Customers => DI.Database.GetCollection<MemberEntity>(CustomersCollectionName);
+        public static IMongoCollection<MemberEntity> Customers => DI.Database.GetCollection<MemberEntity>(MembersCollectionName);
 
         /// <summary>
-        /// The customer labels collection
+        /// The member saved departments collection
         /// </summary>
-        public static IMongoCollection<LabelEntity> CustomerLabels => DI.Database.GetCollection<LabelEntity>(CustomerLabelsCollectionName);
+        public static IMongoCollection<MemberSavedDepartmentEntity> MemberSavedDepartments => DI.Database.GetCollection<MemberSavedDepartmentEntity>(MemberSavedDepartmentsCollectionName);
 
         /// <summary>
-        /// The customer notes collection
+        /// The member saved departments collection
         /// </summary>
-        public static IMongoCollection<CustomerNoteEntity> CustomerNotes => DI.Database.GetCollection<CustomerNoteEntity>(CustomerNotesCollectionName);
-
-        /// <summary>
-        /// The customer service reviews collection
-        /// </summary>
-        public static IMongoCollection<CustomerServiceReviewEntity> CustomerServiceReviews => DI.Database.GetCollection<CustomerServiceReviewEntity>(CustomerServiceReviewsCollectionName);
+        public static IMongoCollection<MemberSavedProfessorEntity> MemberSavedProfessors => DI.Database.GetCollection<MemberSavedProfessorEntity>(MemberSavedProfessorsCollectionName);
 
         #endregion
 
-        #region Staff Members
+        #region Professors
 
         /// <summary>
-        /// The staff members collection
+        /// The professors collection
         /// </summary>
-        public static IMongoCollection<StaffMemberEntity> StaffMembers => DI.Database.GetCollection<StaffMemberEntity>(StaffMembersCollectionName);
+        public static IMongoCollection<ProfessorEntity> Professors => DI.Database.GetCollection<ProfessorEntity>(ProfessorsCollectionName);
+
+        #endregion
+
+        #region Professors
 
         /// <summary>
-        /// The staff member labels collection
+        /// The secretaries collection
         /// </summary>
-        public static IMongoCollection<LabelEntity> StaffMemberLabels => DI.Database.GetCollection<LabelEntity>(StaffMemberLabelsCollectionName);
-
-        /// <summary>
-        /// The staff members weekly schedules collection
-        /// </summary>
-        public static IMongoCollection<WeeklyScheduleEntity> StaffMemberWeeklySchedules => DI.Database.GetCollection<WeeklyScheduleEntity>(StaffMemberWeeklySchedulesCollectionName);
+        public static IMongoCollection<SecretaryEntity> Secretaries => DI.Database.GetCollection<SecretaryEntity>(SecretariesCollectionName);
 
         #endregion
     }

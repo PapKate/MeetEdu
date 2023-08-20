@@ -13,6 +13,11 @@
         public string? DepartmentId { get; set; }
 
         /// <summary>
+        /// The member id
+        /// </summary>
+        public string? MemberId { get; set; }
+
+        /// <summary>
         /// The first name
         /// </summary>
         public string? FirstName { get; set; }

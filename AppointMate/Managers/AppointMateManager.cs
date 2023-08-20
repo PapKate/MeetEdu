@@ -61,7 +61,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         public async Task<DepartmentEntity> GetComanyAsync(string id, CancellationToken cancellationToken = default)
-            => await ManagerHelpers.GetAsync(AppointMateDbMapper.Companies, Builders<DepartmentEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
+            => await ManagerHelpers.GetAsync(AppointMateDbMapper.Departments, Builders<DepartmentEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
 
         #endregion
 
@@ -82,7 +82,7 @@ namespace AppointMate
 
             var filter = Builders<StaffMemberEntity>.Filter.And(filters);
 
-            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.StaffMembers, filter, args, cancellationToken);
+            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.Professors, filter, args, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         public async Task<StaffMemberEntity> GetStaffMemberAsync(string id, CancellationToken cancellationToken = default)
-            => await ManagerHelpers.GetAsync(AppointMateDbMapper.StaffMembers, Builders<StaffMemberEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
+            => await ManagerHelpers.GetAsync(AppointMateDbMapper.Professors, Builders<StaffMemberEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
 
         #endregion
 
@@ -144,7 +144,7 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<IEnumerable<ServiceCompaniesResult>> GetServicesByName(GroupedServiceAPIArgs args, CancellationToken cancellationToken = default)
         {
-            var query = AppointMateDbMapper.Services.Aggregate()
+            var query = AppointMateDbMapper.AppointmentTemplates.Aggregate()
                 .Group(
                     x => x.Name,
                     g => new ServiceCompaniesResult
@@ -168,7 +168,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         public async Task<AppointmentTemplateEntity> GetServiceAsync(string id, CancellationToken cancellationToken = default) 
-            => await ManagerHelpers.GetAsync(AppointMateDbMapper.Services, Builders<AppointmentTemplateEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
+            => await ManagerHelpers.GetAsync(AppointMateDbMapper.AppointmentTemplates, Builders<AppointmentTemplateEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
 
         #endregion
 
@@ -190,7 +190,7 @@ namespace AppointMate
 
             var filter = Builders<AppointmentEntity>.Filter.And(filters);
 
-            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.CustomerServices, filter, args, cancellationToken);
+            return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.Appointments, filter, args, cancellationToken);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         public async Task<AppointmentEntity> GetCustomerServiceAsync(string id, CancellationToken cancellationToken = default) 
-            => await ManagerHelpers.GetAsync(AppointMateDbMapper.CustomerServices, Builders<AppointmentEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
+            => await ManagerHelpers.GetAsync(AppointMateDbMapper.Appointments, Builders<AppointmentEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
 
         #endregion
 
@@ -375,7 +375,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         public async Task<IEnumerable<MemberSavedDepartmentEntity>> GetFavoriteCompaniesAsync(string userId, CompanyRelatedAPIArgs? args, CancellationToken cancellationToken = default)
-            => await ManagerHelpers.GetManyAsync(AppointMateDbMapper.UserFavoriteCompanies, Builders<MemberSavedDepartmentEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), args, cancellationToken);
+            => await ManagerHelpers.GetManyAsync(AppointMateDbMapper.MemberSavedDepartments, Builders<MemberSavedDepartmentEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), args, cancellationToken);
 
         /// <summary>
         /// Gets the total number of favorite companies for the user with the specified <paramref name="userId"/>
@@ -384,7 +384,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         public async Task<long> GetFavoriteCompaniesCountAsync(string userId, CancellationToken cancellationToken = default)
-            => await AppointMateDbMapper.UserFavoriteCompanies.CountDocumentsAsync(Builders<MemberSavedDepartmentEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), cancellationToken: cancellationToken);
+            => await AppointMateDbMapper.MemberSavedDepartments.CountDocumentsAsync(Builders<MemberSavedDepartmentEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), cancellationToken: cancellationToken);
 
         #endregion
 

@@ -7,7 +7,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a department contact message document in the MongoDB
     /// </summary>
-    public class DepartmentContactMessageEntity : DateEntity, IDepartmentIdentifiable<ObjectId>
+    public class DepartmentContactMessageEntity : DateEntity, IDepartmentIdentifiable<ObjectId>, IMemberIdentifiable<ObjectId?>
     {
         #region Private Members
 
@@ -36,9 +36,14 @@ namespace AppointMate
         #region Public Properties
 
         /// <summary>
-        /// The company id
+        /// The department id
         /// </summary>
         public ObjectId DepartmentId { get; set; }
+
+        /// <summary>
+        /// The member id
+        /// </summary>
+        public ObjectId? MemberId { get; set; }
 
         /// <summary>
         /// The first name
@@ -101,23 +106,30 @@ namespace AppointMate
         /// Creates and returns a <see cref="DepartmentContactMessageEntity"/> from the specified <paramref name="model"/>
         /// </summary>
         /// <param name="model">The model</param>
-        /// <param name="companyId">The company id</param>
+        /// <param name="departmentId">The department id</param>
         /// <returns></returns>
-        public static DepartmentContactMessageEntity FromRequestModel(CompanyContactMessageRequestModel model, ObjectId companyId)
+        public static DepartmentContactMessageEntity FromRequestModel(DepartmentContactMessageRequestModel model, ObjectId departmentId)
         {
             var entity = new DepartmentContactMessageEntity();
 
             DI.Mapper.Map(model, entity);
-            entity.DepartmentId = companyId;
+            entity.DepartmentId = departmentId;
             return entity;
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CompanyContactMessageResponseModel"/> from the current <see cref="DepartmentContactMessageEntity"/>
+        /// Creates and returns a <see cref="DepartmentContactMessageResponseModel"/> from the current <see cref="DepartmentContactMessageEntity"/>
         /// </summary>
         /// <returns></returns>
-        public CompanyContactMessageResponseModel ToResponseModel()
-            => EntityHelpers.ToResponseModel<CompanyContactMessageResponseModel>(this);
+        public DepartmentContactMessageResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<DepartmentContactMessageResponseModel>(this);
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedDepartmentContactMessageEntity"/> from the current <see cref="DepartmentContactMessageEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public EmbeddedDepartmentContactMessageEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedDepartmentContactMessageEntity>(this);
 
         #endregion
     }

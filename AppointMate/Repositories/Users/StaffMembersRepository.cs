@@ -49,7 +49,7 @@ namespace AppointMate
 
             var entity = StaffMemberEntity.FromRequestModel(companyId, result.Result.Id, model);
             
-            await AppointMateDbMapper.StaffMembers.AddAsync(entity);
+            await AppointMateDbMapper.Professors.AddAsync(entity);
 
             // Returns the entity
             return entity;
@@ -72,7 +72,7 @@ namespace AppointMate
 
             var entity = StaffMemberEntity.FromRequestModel(companyId, user.Id, model);
 
-            await AppointMateDbMapper.StaffMembers.AddAsync(entity);
+            await AppointMateDbMapper.Professors.AddAsync(entity);
 
             // Returns the entity
             return entity;
@@ -84,7 +84,7 @@ namespace AppointMate
         ///// <param name="model">The model</param>
         ///// <returns></returns>
         //public async Task<StaffMemberEntity> AddStaffMemberAsync(StaffMemberRequestModel model)
-        //    => await AppointMateDbMapper.StaffMembers.AddAsync(StaffMemberEntity.FromRequestModel(model));
+        //    => await AppointMateDbMapper.Professors.AddAsync(StaffMemberEntity.FromRequestModel(model));
 
         ///// <summary>
         ///// Adds a list of staff members 
@@ -92,7 +92,7 @@ namespace AppointMate
         ///// <param name="models">The models</param>
         ///// <returns></returns>
         //public async Task<WebServerFailable<IEnumerable<StaffMemberEntity>>> AddStaffMembersAsync(IEnumerable<StaffMemberRequestModel> models)
-        //    => new WebServerFailable<IEnumerable<StaffMemberEntity>>(await AppointMateDbMapper.StaffMembers.AddRangeAsync(models.Select(StaffMemberEntity.FromRequestModel).ToList()));
+        //    => new WebServerFailable<IEnumerable<StaffMemberEntity>>(await AppointMateDbMapper.Professors.AddRangeAsync(models.Select(StaffMemberEntity.FromRequestModel).ToList()));
 
         /// <summary>
         /// Updates the staff member with the specified <paramref name="id"/>
@@ -102,14 +102,14 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<StaffMemberEntity>> UpdateStaffMemberAsync(ObjectId id, StaffMemberRequestModel model)
         {
-            var entity = await AppointMateDbMapper.StaffMembers.FirstOrDefaultAsync(id);
+            var entity = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(id);
 
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.StaffMembers));
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Professors));
 
             StaffMemberEntity.UpdateNonAutoMapperValues(model, entity);
 
-            await AppointMateDbMapper.StaffMembers.UpdateAsync(entity);
+            await AppointMateDbMapper.Professors.UpdateAsync(entity);
 
             return entity;
         }
@@ -121,12 +121,12 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<StaffMemberEntity>> DeleteStaffMemberAsync(ObjectId id)
         {
-            var entity = await AppointMateDbMapper.StaffMembers.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == id);
 
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.StaffMembers));
+                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Professors));
 
-            await AppointMateDbMapper.StaffMembers.DeleteOneAsync(x => x.Id == id);
+            await AppointMateDbMapper.Professors.DeleteOneAsync(x => x.Id == id);
 
             return entity;
         }

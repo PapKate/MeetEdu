@@ -1,19 +1,12 @@
-﻿namespace AppointMate
+﻿using AutoMapper;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a university document in the MongoDB
     /// </summary>
     public class UniversityEntity : StandardEntity, IImageable
     {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="Fields"/> property
-        /// </summary>
-        private IEnumerable<string>? mFields;
-
-        #endregion
-        
         #region Public Properties
 
         /// <summary>
@@ -32,6 +25,38 @@
         {
 
         }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="UniversityEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static UniversityEntity FromRequestModel(UniversityRequestModel model)
+        {
+            var entity = new UniversityEntity();
+
+            DI.Mapper.Map(model, entity);
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="UniversityResponseModel"/> from the current <see cref="UniversityEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public UniversityResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<UniversityResponseModel>(this);
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedUniversityEntity"/> from the current <see cref="UniversityEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public EmbeddedUniversityEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedUniversityEntity>(this);
 
         #endregion
     }

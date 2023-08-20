@@ -60,7 +60,7 @@
         /// <summary>
         /// The labels
         /// </summary>
-        public IEnumerable<EmbeddedLabelResponseModel>? Labels { get; set; }
+        public IEnumerable<string>? Labels { get; set; }
 
         #endregion
 
