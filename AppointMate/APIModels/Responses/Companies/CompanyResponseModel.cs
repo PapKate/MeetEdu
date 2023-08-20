@@ -15,7 +15,7 @@
         /// <summary>
         /// The member of the <see cref="Categories"/> property
         /// </summary>
-        private IEnumerable<CompanyType>? mCategories;
+        private IEnumerable<DepartmentType>? mCategories;
 
         /// <summary>
         /// The member of the <see cref="Description"/> property
@@ -34,9 +34,9 @@
         /// <summary>
         /// The categories
         /// </summary>
-        public IEnumerable<CompanyType> Categories
+        public IEnumerable<DepartmentType> Categories
         {
-            get => mCategories ?? Enumerable.Empty<CompanyType>();
+            get => mCategories ?? Enumerable.Empty<DepartmentType>();
             set => mCategories = value;
         }
 
@@ -138,7 +138,7 @@
         /// <summary>
         /// The member of the <see cref="Categories"/> property
         /// </summary>
-        private IEnumerable<CompanyType>? mCategories;
+        private IEnumerable<DepartmentType>? mCategories;
 
         #endregion
 
@@ -147,9 +147,9 @@
         /// <summary>
         /// The categories
         /// </summary>
-        public IEnumerable<CompanyType> Categories
+        public IEnumerable<DepartmentType> Categories
         {
-            get => mCategories ?? Enumerable.Empty<CompanyType>();
+            get => mCategories ?? Enumerable.Empty<DepartmentType>();
             set => mCategories = value;
         }
 

@@ -11,7 +11,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a company layout document in the MongoDB
     /// </summary>
-    public class CompanyLayoutEntity : DateEntity, IDescriptable, ICompanyIdentifiable<ObjectId>
+    public class DepartmentLayoutEntity : DateEntity, IDescriptable, IDepartmentIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -32,7 +32,7 @@ namespace AppointMate
         /// <summary>
         /// The company id
         /// </summary>
-        public ObjectId CompanyId { get; set; }
+        public ObjectId DepartmentId { get; set; }
 
         /// <summary>
         /// The description
@@ -65,7 +65,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyLayoutEntity() : base()
+        public DepartmentLayoutEntity() : base()
         {
 
         }
@@ -75,22 +75,22 @@ namespace AppointMate
         #region Public Methods
 
         /// <summary>
-        /// Creates and returns a <see cref="CompanyLayoutEntity"/> from the specified <paramref name="model"/>
+        /// Creates and returns a <see cref="DepartmentLayoutEntity"/> from the specified <paramref name="model"/>
         /// </summary>
         /// <param name="model">The model</param>
         /// <param name="companyId">The company id</param>
         /// <returns></returns>
-        public static CompanyLayoutEntity FromRequestModel(CompanyLayoutRequestModel model, ObjectId companyId)
+        public static DepartmentLayoutEntity FromRequestModel(CompanyLayoutRequestModel model, ObjectId companyId)
         {
-            var entity = new CompanyLayoutEntity();
+            var entity = new DepartmentLayoutEntity();
 
             DI.Mapper.Map(model, entity);
-            entity.CompanyId = companyId;
+            entity.DepartmentId = companyId;
             return entity;
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CompanyLayoutResponseModel"/> from the current <see cref="CompanyLayoutEntity"/>
+        /// Creates and returns a <see cref="CompanyLayoutResponseModel"/> from the current <see cref="DepartmentLayoutEntity"/>
         /// </summary>
         /// <returns></returns>
         public CompanyLayoutResponseModel ToResponseModel()

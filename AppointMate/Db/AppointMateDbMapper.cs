@@ -126,7 +126,7 @@ namespace AppointMate
         /// <summary>
         /// The companies collection
         /// </summary>
-        public static IMongoCollection<CompanyEntity> Companies => DI.Database.GetCollection<CompanyEntity>(CompaniesCollectionName);
+        public static IMongoCollection<DepartmentEntity> Companies => DI.Database.GetCollection<DepartmentEntity>(CompaniesCollectionName);
 
         /// <summary>
         /// The company labels collection
@@ -136,12 +136,12 @@ namespace AppointMate
         /// <summary>
         /// The company layouts collection
         /// </summary>
-        public static IMongoCollection<CompanyLayoutEntity> CompanyLayouts => DI.Database.GetCollection<CompanyLayoutEntity>(CompanyLayoutsCollectionName);
+        public static IMongoCollection<DepartmentLayoutEntity> CompanyLayouts => DI.Database.GetCollection<DepartmentLayoutEntity>(CompanyLayoutsCollectionName);
 
         /// <summary>
         /// The company contact messages collection
         /// </summary>
-        public static IMongoCollection<CompanyContactMessageEntity> CompanyContactMessages => DI.Database.GetCollection<CompanyContactMessageEntity>(CompanyContactMessagesCollectionName);
+        public static IMongoCollection<DepartmentContactMessageEntity> CompanyContactMessages => DI.Database.GetCollection<DepartmentContactMessageEntity>(CompanyContactMessagesCollectionName);
 
         #endregion
 
@@ -178,12 +178,12 @@ namespace AppointMate
         /// <summary>
         /// The services collection
         /// </summary>
-        public static IMongoCollection<ServiceEntity> Services => DI.Database.GetCollection<ServiceEntity>(ServicesCollectionName);
+        public static IMongoCollection<AppointmentTemplateEntity> Services => DI.Database.GetCollection<AppointmentTemplateEntity>(ServicesCollectionName);
 
         /// <summary>
         /// The customer services collection
         /// </summary>
-        public static IMongoCollection<CustomerServiceEntity> CustomerServices => DI.Database.GetCollection<CustomerServiceEntity>(CustomerServicesCollectionName);
+        public static IMongoCollection<AppointmentEntity> CustomerServices => DI.Database.GetCollection<AppointmentEntity>(CustomerServicesCollectionName);
 
         /// <summary>
         /// The customer service sessions collection
@@ -207,7 +207,7 @@ namespace AppointMate
         /// <summary>
         /// The user favorite companies collection
         /// </summary>
-        public static IMongoCollection<UserFavoriteCompanyEntity> UserFavoriteCompanies => DI.Database.GetCollection<UserFavoriteCompanyEntity>(UserFavoriteCompaniesCollectionName);
+        public static IMongoCollection<MemberSavedDepartmentEntity> UserFavoriteCompanies => DI.Database.GetCollection<MemberSavedDepartmentEntity>(UserFavoriteCompaniesCollectionName);
 
         #endregion
 
@@ -216,7 +216,7 @@ namespace AppointMate
         /// <summary>
         /// The customers collection
         /// </summary>
-        public static IMongoCollection<CustomerEntity> Customers => DI.Database.GetCollection<CustomerEntity>(CustomersCollectionName);
+        public static IMongoCollection<MemberEntity> Customers => DI.Database.GetCollection<MemberEntity>(CustomersCollectionName);
 
         /// <summary>
         /// The customer labels collection

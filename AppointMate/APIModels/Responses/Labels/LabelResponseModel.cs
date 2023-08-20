@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a label
     /// </summary>
-    public class LabelResponseModel : StandardResponseModel, IDescriptable, ICompanyIdentifiable<string>
+    public class LabelResponseModel : StandardResponseModel, IDescriptable, IDepartmentIdentifiable<string>
     {
         #region Private Members
 
@@ -15,7 +15,7 @@ namespace AppointMate
         private string? mDescription;
 
         /// <summary>
-        /// The member of the <see cref="CompanyId"/> property
+        /// The member of the <see cref="DepartmentId"/> property
         /// </summary>
         private string? mCompanyId;
 
@@ -26,7 +26,7 @@ namespace AppointMate
         /// <summary>
         /// The company id
         /// </summary>
-        public string CompanyId
+        public string DepartmentId
         {
             get => mCompanyId ?? string.Empty;
             set => mCompanyId = value;
@@ -59,12 +59,12 @@ namespace AppointMate
     /// <summary>
     /// A minimal version of the <see cref="LabelResponseModel"/> used when embedding
     /// </summary>
-    public class EmbeddedLabelResponseModel : EmbeddedStandardResponseModel, ICompanyIdentifiable<string>
+    public class EmbeddedLabelResponseModel : EmbeddedStandardResponseModel, IDepartmentIdentifiable<string>
     {
         #region Private Members
 
         /// <summary>
-        /// The member of the <see cref="CompanyId"/> property
+        /// The member of the <see cref="DepartmentId"/> property
         /// </summary>
         private string? mCompanyId;
 
@@ -75,7 +75,7 @@ namespace AppointMate
         /// <summary>
         /// The company id
         /// </summary>
-        public string CompanyId
+        public string DepartmentId
         {
             get => mCompanyId ?? string.Empty;
             set => mCompanyId = value;

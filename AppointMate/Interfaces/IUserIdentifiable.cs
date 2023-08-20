@@ -28,7 +28,7 @@
         new T UserId { get; set; }
 
         /// <summary>
-        /// The company id
+        /// The user id
         /// </summary>
         object? IUserIdentifiable.UserId
         {

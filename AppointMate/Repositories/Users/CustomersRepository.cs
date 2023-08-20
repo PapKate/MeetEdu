@@ -41,7 +41,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CustomerEntity>> AddCustomerAsync(CustomerRequestModel model)
+        public async Task<WebServerFailable<MemberEntity>> AddCustomerAsync(CustomerRequestModel model)
         {
             // Gets the user with the specified id
             var user = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id.ToString() == model.UserId);
@@ -49,7 +49,7 @@ namespace AppointMate
             if (user is null)
                 return AppointMateWebServerConstants.InvalidRegistrationCredentialsErrorMessage;
 
-            return await AppointMateDbMapper.Customers.AddAsync(CustomerEntity.FromRequestModel(model));
+            return await AppointMateDbMapper.Customers.AddAsync(MemberEntity.FromRequestModel(model));
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace AppointMate
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CustomerEntity>> UpdateCustomerAsync(ObjectId id, CustomerRequestModel model)
+        public async Task<WebServerFailable<MemberEntity>> UpdateCustomerAsync(ObjectId id, CustomerRequestModel model)
         {
             var entity = await AppointMateDbMapper.Customers.UpdateAsync(id, model);
 
@@ -73,7 +73,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="id">The customer id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CustomerEntity>> DeleteCustomerAsync(ObjectId id)
+        public async Task<WebServerFailable<MemberEntity>> DeleteCustomerAsync(ObjectId id)
         {
             var entity = await AppointMateDbMapper.Customers.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -86,7 +86,7 @@ namespace AppointMate
 
             // If the customer has past services...
             if (services is not null)
-                return new WebServerFailable<CustomerEntity>(entity).ToUnsuccessfulWebServerFailable("The user cannot be removed from the customers list because they have an existing service.");
+                return new WebServerFailable<MemberEntity>(entity).ToUnsuccessfulWebServerFailable("The user cannot be removed from the customers list because they have an existing service.");
 
             // Deletes the customer
             await AppointMateDbMapper.Customers.DeleteOneAsync(x => x.Id == id);

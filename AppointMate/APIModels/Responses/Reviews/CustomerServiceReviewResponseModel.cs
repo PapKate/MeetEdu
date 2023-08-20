@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a customer service review
     /// </summary>
-    public class CustomerServiceReviewResponseModel : DateResponseModel, INoteable, ICompanyIdentifiable<string>, ICustomerIdentifiable<string>
+    public class CustomerServiceReviewResponseModel : DateResponseModel, INoteable, IDepartmentIdentifiable<string>, ICustomerIdentifiable<string>
     {
         #region Private Members
 
@@ -20,7 +20,7 @@ namespace AppointMate
         private string? mServiceId;
 
         /// <summary>
-        /// The member of the <see cref="CompanyId"/> property
+        /// The member of the <see cref="DepartmentId"/> property
         /// </summary>
         private string? mCompanyId;
 
@@ -54,7 +54,7 @@ namespace AppointMate
         /// <summary>
         /// The company id
         /// </summary>
-        public string CompanyId
+        public string DepartmentId
         {
             get => mCompanyId ?? string.Empty;
             set => mCompanyId = value;

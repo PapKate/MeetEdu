@@ -37,16 +37,16 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<CompanyEntity> AddCompanyAsync(CompanyRequestModel model) 
-            => await AppointMateDbMapper.Companies.AddAsync(CompanyEntity.FromRequestModel(model));
+        public async Task<DepartmentEntity> AddCompanyAsync(CompanyRequestModel model) 
+            => await AppointMateDbMapper.Companies.AddAsync(DepartmentEntity.FromRequestModel(model));
 
         /// <summary>
         /// Adds a list of companies 
         /// </summary>
         /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<CompanyEntity>>> AddCompaniesAsync(IEnumerable<CompanyRequestModel> models) 
-            => new WebServerFailable<IEnumerable<CompanyEntity>>(await AppointMateDbMapper.Companies.AddRangeAsync(models.Select(CompanyEntity.FromRequestModel).ToList()));
+        public async Task<WebServerFailable<IEnumerable<DepartmentEntity>>> AddCompaniesAsync(IEnumerable<CompanyRequestModel> models) 
+            => new WebServerFailable<IEnumerable<DepartmentEntity>>(await AppointMateDbMapper.Companies.AddRangeAsync(models.Select(DepartmentEntity.FromRequestModel).ToList()));
 
         /// <summary>
         /// Updates the company with the specified <paramref name="id"/>
@@ -54,7 +54,7 @@ namespace AppointMate
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyEntity>> UpdateCompanyAsync(ObjectId id, CompanyRequestModel model)
+        public async Task<WebServerFailable<DepartmentEntity>> UpdateCompanyAsync(ObjectId id, CompanyRequestModel model)
         {
             var entity = await AppointMateDbMapper.Companies.UpdateAsync(id, model);
 
@@ -69,7 +69,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="id">The company id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyEntity>> DeleteCompanyAsync(ObjectId id)
+        public async Task<WebServerFailable<DepartmentEntity>> DeleteCompanyAsync(ObjectId id)
         {
             var entity = await AppointMateDbMapper.Companies.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -135,8 +135,8 @@ namespace AppointMate
         /// <param name="companyId">The company id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyContactMessageEntity>> AddCompanyContactMessageAsync(ObjectId companyId, CompanyContactMessageRequestModel model)
-            => await AppointMateDbMapper.CompanyContactMessages.AddAsync(CompanyContactMessageEntity.FromRequestModel(model, companyId));
+        public async Task<WebServerFailable<DepartmentContactMessageEntity>> AddCompanyContactMessageAsync(ObjectId companyId, CompanyContactMessageRequestModel model)
+            => await AppointMateDbMapper.CompanyContactMessages.AddAsync(DepartmentContactMessageEntity.FromRequestModel(model, companyId));
 
         /// <summary>
         /// Adds a list of company contact messages 
@@ -144,8 +144,8 @@ namespace AppointMate
         /// <param name="companyId">The company id</param>
         /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<CompanyContactMessageEntity>>> AddCompanyContactMessagesAsync(ObjectId companyId, IEnumerable<CompanyContactMessageRequestModel> models)
-            => new WebServerFailable<IEnumerable<CompanyContactMessageEntity>>(await AppointMateDbMapper.CompanyContactMessages.AddRangeAsync(models.Select(x => CompanyContactMessageEntity.FromRequestModel(x, companyId)).ToList()));
+        public async Task<WebServerFailable<IEnumerable<DepartmentContactMessageEntity>>> AddCompanyContactMessagesAsync(ObjectId companyId, IEnumerable<CompanyContactMessageRequestModel> models)
+            => new WebServerFailable<IEnumerable<DepartmentContactMessageEntity>>(await AppointMateDbMapper.CompanyContactMessages.AddRangeAsync(models.Select(x => DepartmentContactMessageEntity.FromRequestModel(x, companyId)).ToList()));
 
         /// <summary>
         /// Updates the contact message with the specified <paramref name="id"/>
@@ -153,7 +153,7 @@ namespace AppointMate
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyContactMessageEntity>> UpdateCompanyContactMessageAsync(ObjectId id, CompanyContactMessageRequestModel model)
+        public async Task<WebServerFailable<DepartmentContactMessageEntity>> UpdateCompanyContactMessageAsync(ObjectId id, CompanyContactMessageRequestModel model)
         {
             var entity = await AppointMateDbMapper.CompanyContactMessages.UpdateAsync(id, model);
 
@@ -168,7 +168,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyContactMessageEntity>> DeleteCompanyContactMessageAsync(ObjectId id)
+        public async Task<WebServerFailable<DepartmentContactMessageEntity>> DeleteCompanyContactMessageAsync(ObjectId id)
                 => await AppointMateDbMapper.CompanyContactMessages.DeleteAsync(id);
 
         #endregion
@@ -181,8 +181,8 @@ namespace AppointMate
         /// <param name="companyId">The company id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyLayoutEntity>> AddCompanyLayoutAsync(ObjectId companyId, CompanyLayoutRequestModel model)
-            => await AppointMateDbMapper.CompanyLayouts.AddAsync(CompanyLayoutEntity.FromRequestModel(model, companyId));
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddCompanyLayoutAsync(ObjectId companyId, CompanyLayoutRequestModel model)
+            => await AppointMateDbMapper.CompanyLayouts.AddAsync(DepartmentLayoutEntity.FromRequestModel(model, companyId));
 
         /// <summary>
         /// Adds a list of company layouts 
@@ -190,8 +190,8 @@ namespace AppointMate
         /// <param name="companyId">The company id</param>
         /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<CompanyLayoutEntity>>> AddCompanyLayoutsAsync(ObjectId companyId, IEnumerable<CompanyLayoutRequestModel> models)
-            => new WebServerFailable<IEnumerable<CompanyLayoutEntity>>(await AppointMateDbMapper.CompanyLayouts.AddRangeAsync(models.Select(x => CompanyLayoutEntity.FromRequestModel(x, companyId)).ToList()));
+        public async Task<WebServerFailable<IEnumerable<DepartmentLayoutEntity>>> AddCompanyLayoutsAsync(ObjectId companyId, IEnumerable<CompanyLayoutRequestModel> models)
+            => new WebServerFailable<IEnumerable<DepartmentLayoutEntity>>(await AppointMateDbMapper.CompanyLayouts.AddRangeAsync(models.Select(x => DepartmentLayoutEntity.FromRequestModel(x, companyId)).ToList()));
 
         /// <summary>
         /// Updates the layout with the specified <paramref name="layoutId"/>
@@ -199,7 +199,7 @@ namespace AppointMate
         /// <param name="layoutId">The layout id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyLayoutEntity>> UpdateCompanyLayoutAsync(ObjectId layoutId, CompanyLayoutRequestModel model)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> UpdateCompanyLayoutAsync(ObjectId layoutId, CompanyLayoutRequestModel model)
         {
             var entity = await AppointMateDbMapper.CompanyLayouts.UpdateAsync(layoutId, model);
 
@@ -214,7 +214,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="layoutId">The layout id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyLayoutEntity>> DeleteCompanyLayoutAsync(ObjectId layoutId)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> DeleteCompanyLayoutAsync(ObjectId layoutId)
             => await AppointMateDbMapper.CompanyLayouts.DeleteAsync(layoutId);
 
         #region Rooms
@@ -225,7 +225,7 @@ namespace AppointMate
         /// <param name="layoutId">The layout id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyLayoutEntity>> AddCompanyLayoutRoomAsync(ObjectId layoutId, CompanyLayoutRoomDataModel model)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddCompanyLayoutRoomAsync(ObjectId layoutId, CompanyLayoutRoomDataModel model)
         {
             // Get the layout with the specified id
             var layout = await AppointMateDbMapper.CompanyLayouts.FirstOrDefaultAsync(layoutId);
@@ -251,7 +251,7 @@ namespace AppointMate
         /// <param name="layoutId">The layout id</param>
         /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyLayoutEntity>> AddCompanyLayoutRoomsAsync(ObjectId layoutId, IEnumerable<CompanyLayoutRoomDataModel> models)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddCompanyLayoutRoomsAsync(ObjectId layoutId, IEnumerable<CompanyLayoutRoomDataModel> models)
         {
             // Get the layout with the specified id
             var layout = await AppointMateDbMapper.CompanyLayouts.FirstOrDefaultAsync(layoutId);
@@ -284,7 +284,7 @@ namespace AppointMate
         /// <param name="layoutId">The layout id</param>
         /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyLayoutEntity>> UpdateCompanyLayoutRoomsAsync(ObjectId layoutId, IEnumerable<CompanyLayoutRoomDataModel> models)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> UpdateCompanyLayoutRoomsAsync(ObjectId layoutId, IEnumerable<CompanyLayoutRoomDataModel> models)
         {
             return await ExecuteAgainstCompanyLayoutAsync(
                 layoutId,
@@ -307,7 +307,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="layoutId">The layout id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CompanyLayoutEntity>> DeleteCompanyLayoutRoomsAsync(ObjectId layoutId)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> DeleteCompanyLayoutRoomsAsync(ObjectId layoutId)
         {
             return await ExecuteAgainstCompanyLayoutAsync(
                 layoutId,
@@ -334,7 +334,7 @@ namespace AppointMate
         /// <param name="layoutId">The layout id</param>
         /// <param name="action">The action</param>
         /// <returns></returns>
-        private static async Task<WebServerFailable<CompanyLayoutEntity>> ExecuteAgainstCompanyLayoutAsync(ObjectId layoutId, Func<CompanyLayoutEntity, Task> action)
+        private static async Task<WebServerFailable<DepartmentLayoutEntity>> ExecuteAgainstCompanyLayoutAsync(ObjectId layoutId, Func<DepartmentLayoutEntity, Task> action)
         {
             // Get the layout with the specified id
             var layout = await AppointMateDbMapper.CompanyLayouts.FirstOrDefaultAsync(layoutId);

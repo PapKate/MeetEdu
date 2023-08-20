@@ -60,8 +60,8 @@ namespace AppointMate
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<CompanyEntity> GetComanyAsync(string id, CancellationToken cancellationToken = default)
-            => await ManagerHelpers.GetAsync(AppointMateDbMapper.Companies, Builders<CompanyEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
+        public async Task<DepartmentEntity> GetComanyAsync(string id, CancellationToken cancellationToken = default)
+            => await ManagerHelpers.GetAsync(AppointMateDbMapper.Companies, Builders<DepartmentEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
 
         #endregion
 
@@ -118,16 +118,16 @@ namespace AppointMate
         /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<IEnumerable<CustomerEntity>> GetCustomersAsync(string userId, CompanyRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<MemberEntity>> GetCustomersAsync(string userId, CompanyRelatedAPIArgs? args, CancellationToken cancellationToken = default)
         {
-            var filters = new List<FilterDefinition<CustomerEntity>>();
+            var filters = new List<FilterDefinition<MemberEntity>>();
 
             if (args is not null)
-                filters = CreateFilters<CustomerEntity>(args);
+                filters = CreateFilters<MemberEntity>(args);
             
-            filters.Add(Builders<CustomerEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()));
+            filters.Add(Builders<MemberEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()));
 
-            var filter = Builders<CustomerEntity>.Filter.And(filters);
+            var filter = Builders<MemberEntity>.Filter.And(filters);
 
             return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.Customers, filter, args, cancellationToken);
         }
@@ -167,8 +167,8 @@ namespace AppointMate
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<ServiceEntity> GetServiceAsync(string id, CancellationToken cancellationToken = default) 
-            => await ManagerHelpers.GetAsync(AppointMateDbMapper.Services, Builders<ServiceEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
+        public async Task<AppointmentTemplateEntity> GetServiceAsync(string id, CancellationToken cancellationToken = default) 
+            => await ManagerHelpers.GetAsync(AppointMateDbMapper.Services, Builders<AppointmentTemplateEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
 
         #endregion
 
@@ -180,15 +180,15 @@ namespace AppointMate
         /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<IEnumerable<CustomerServiceEntity>> GetCustomerServicesAsync(CustomerRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<AppointmentEntity>> GetCustomerServicesAsync(CustomerRelatedAPIArgs? args, CancellationToken cancellationToken = default)
         {
-            var filters = new List<FilterDefinition<CustomerServiceEntity>>();
+            var filters = new List<FilterDefinition<AppointmentEntity>>();
 
             // If there are arguments...
             if (args is not null)
-                filters = CreateFilters<CustomerServiceEntity>(args);
+                filters = CreateFilters<AppointmentEntity>(args);
 
-            var filter = Builders<CustomerServiceEntity>.Filter.And(filters);
+            var filter = Builders<AppointmentEntity>.Filter.And(filters);
 
             return await ManagerHelpers.GetManyAsync(AppointMateDbMapper.CustomerServices, filter, args, cancellationToken);
         }
@@ -199,8 +199,8 @@ namespace AppointMate
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<CustomerServiceEntity> GetCustomerServiceAsync(string id, CancellationToken cancellationToken = default) 
-            => await ManagerHelpers.GetAsync(AppointMateDbMapper.CustomerServices, Builders<CustomerServiceEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
+        public async Task<AppointmentEntity> GetCustomerServiceAsync(string id, CancellationToken cancellationToken = default) 
+            => await ManagerHelpers.GetAsync(AppointMateDbMapper.CustomerServices, Builders<AppointmentEntity>.Filter.Eq(x => x.Id, id.ToObjectId()), cancellationToken);
 
         #endregion
 
@@ -374,8 +374,8 @@ namespace AppointMate
         /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<IEnumerable<UserFavoriteCompanyEntity>> GetFavoriteCompaniesAsync(string userId, CompanyRelatedAPIArgs? args, CancellationToken cancellationToken = default)
-            => await ManagerHelpers.GetManyAsync(AppointMateDbMapper.UserFavoriteCompanies, Builders<UserFavoriteCompanyEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), args, cancellationToken);
+        public async Task<IEnumerable<MemberSavedDepartmentEntity>> GetFavoriteCompaniesAsync(string userId, CompanyRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+            => await ManagerHelpers.GetManyAsync(AppointMateDbMapper.UserFavoriteCompanies, Builders<MemberSavedDepartmentEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), args, cancellationToken);
 
         /// <summary>
         /// Gets the total number of favorite companies for the user with the specified <paramref name="userId"/>
@@ -384,7 +384,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         public async Task<long> GetFavoriteCompaniesCountAsync(string userId, CancellationToken cancellationToken = default)
-            => await AppointMateDbMapper.UserFavoriteCompanies.CountDocumentsAsync(Builders<UserFavoriteCompanyEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), cancellationToken: cancellationToken);
+            => await AppointMateDbMapper.UserFavoriteCompanies.CountDocumentsAsync(Builders<MemberSavedDepartmentEntity>.Filter.Eq(x => x.UserId, userId.ToObjectId()), cancellationToken: cancellationToken);
 
         #endregion
 
@@ -457,7 +457,7 @@ namespace AppointMate
         /// <param name="args">The arguments</param>
         /// <returns></returns>
         private List<FilterDefinition<T>> CreateFilters<T>(CompanyRelatedAPIArgs args)
-            where T : BaseEntity, ICompanyIdentifiable<ObjectId>
+            where T : BaseEntity, IDepartmentIdentifiable<ObjectId>
         {
             var filters = new List<FilterDefinition<T>>();
 
@@ -465,14 +465,14 @@ namespace AppointMate
             if (!args.IncludeCompanies.IsNullOrEmpty())
             {
                 var ids = args.IncludeCompanies.Select(x => x.ToObjectId()).ToList();
-                filters.Add(Builders<T>.Filter.In(x => x.CompanyId, ids));
+                filters.Add(Builders<T>.Filter.In(x => x.DepartmentId, ids));
             }
 
             // If there is a limit to the companies to exclude...
             if (!args.ExcludeCompanies.IsNullOrEmpty())
             {
                 var ids = args.ExcludeCompanies.Select(x => x.ToObjectId()).ToList();
-                filters.Add(Builders<T>.Filter.Nin(x => x.CompanyId, ids));
+                filters.Add(Builders<T>.Filter.Nin(x => x.DepartmentId, ids));
             }
 
             return filters;
@@ -485,7 +485,7 @@ namespace AppointMate
         /// <param name="args">The arguments</param>
         /// <returns></returns>
         private List<FilterDefinition<T>> CreateFilters<T>(CustomerRelatedAPIArgs args)
-            where T : BaseEntity, ICompanyIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
+            where T : BaseEntity, IDepartmentIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
         {
             var filters = new List<FilterDefinition<T>>();
 

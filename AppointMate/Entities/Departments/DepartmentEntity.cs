@@ -4,9 +4,9 @@ using AutoMapper;
 namespace AppointMate
 {
     /// <summary>
-    /// Represents a company document in the MongoDB
+    /// Represents a department document in the MongoDB
     /// </summary>
-    public class CompanyEntity : StandardEntity, IImageable, INoteable
+    public class DepartmentEntity : StandardEntity, IImageable, INoteable
     {
         #region Private Members
 
@@ -16,9 +16,9 @@ namespace AppointMate
         private string? mNote;
 
         /// <summary>
-        /// The member of the <see cref="Categories"/> property
+        /// The member of the <see cref="Category"/> property
         /// </summary>
-        private IEnumerable<CompanyType>? mCategories;
+        private IEnumerable<DepartmentType>? mCategories;
 
         /// <summary>
         /// The member of the <see cref="Description"/> property
@@ -35,13 +35,9 @@ namespace AppointMate
         #region Public Properties
 
         /// <summary>
-        /// The categories
+        /// The category
         /// </summary>
-        public IEnumerable<CompanyType> Categories
-        {
-            get => mCategories ?? Enumerable.Empty<CompanyType>();
-            set => mCategories = value;
-        }
+        public DepartmentType Category { get; set; }
 
         /// <summary>
         /// The description
@@ -53,16 +49,6 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// A flag indicating whether the company provides at home services
-        /// </summary>
-        public bool HasAtHomeServices { get; set; }
-
-        /// <summary>
-        /// The radius for the distance where at home services can be provided in Km
-        /// </summary>
-        public double AtHomeRadius { get; set; }
-
-        /// <summary>
         /// The note
         /// </summary>
         public string Note
@@ -70,6 +56,11 @@ namespace AppointMate
             get => mNote ?? string.Empty;
             set => mNote = value;
         }
+
+        /// <summary>
+        /// The number of staff members
+        /// </summary>
+        public uint TotalStaffMembers { get; set; }
 
         /// <summary>
         /// The work hours
@@ -105,16 +96,6 @@ namespace AppointMate
             set => mLabels = value;
         }
 
-        /// <summary>
-        /// The average number of stars from the customer reviews
-        /// </summary>
-        public double TotalReviewStars { get; set; }
-
-        /// <summary>
-        /// The number of customer reviews
-        /// </summary>
-        public uint TotalReviews { get; set; }
-
         #endregion
 
         #region Constructors
@@ -122,7 +103,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyEntity() : base()
+        public DepartmentEntity() : base()
         {
 
         }
@@ -132,13 +113,13 @@ namespace AppointMate
         #region Public Methods
 
         /// <summary>
-        /// Creates and returns a <see cref="CompanyEntity"/> from the specified <paramref name="model"/>
+        /// Creates and returns a <see cref="DepartmentEntity"/> from the specified <paramref name="model"/>
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static CompanyEntity FromRequestModel(CompanyRequestModel model)
+        public static DepartmentEntity FromRequestModel(CompanyRequestModel model)
         {
-            var entity = new CompanyEntity();
+            var entity = new DepartmentEntity();
 
             DI.Mapper.Map(model, entity);
 
@@ -148,7 +129,7 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CompanyResponseModel"/> from the current <see cref="CompanyEntity"/>
+        /// Creates and returns a <see cref="CompanyResponseModel"/> from the current <see cref="DepartmentEntity"/>
         /// </summary>
         /// <returns></returns>
         public CompanyResponseModel ToResponseModel()
@@ -161,16 +142,15 @@ namespace AppointMate
         /// <param name="model">The model</param>
         /// <param name="entity">The entity</param>
         /// <returns></returns>
-        public static async void UpdateNonAutoMapperValues(CompanyRequestModel model, CompanyEntity entity)
+        public static async void UpdateNonAutoMapperValues(CompanyRequestModel model, DepartmentEntity entity)
         {
             var reviews = await AppointMateDbMapper.CustomerServiceReviews.SelectAsync(x => x.CompanyId == entity.Id);
 
             // If there are reviews...
-            if(reviews is not null)
+            if (reviews is not null)
             {
                 var reviewsCount = (uint)reviews.Count();
-                entity.TotalReviewStars = double.Round(reviews.Sum(x => x.NumberOfStars) / reviewsCount, 2);
-                entity.TotalReviews = reviewsCount;
+                entity.TotalStaffMembers = reviewsCount;
             }
 
             // If there are labels...
@@ -183,49 +163,36 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="EmbeddedCompanyEntity"/> from the current <see cref="CompanyEntity"/>
+        /// Creates and returns a <see cref="EmbeddedDepartmentEntity"/> from the current <see cref="DepartmentEntity"/>
         /// </summary>
         /// <returns></returns>
-        public EmbeddedCompanyEntity ToEmbeddedEntity()
-            => EntityHelpers.ToEmbeddedEntity<EmbeddedCompanyEntity>(this);
+        public EmbeddedDepartmentEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedDepartmentEntity>(this);
 
         #endregion
     }
 
     /// <summary>
-    /// The embedded company
+    /// A minimal version of the <see cref="DepartmentEntity"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedCompanyEntity : EmbeddedStandardEntity
+    public class EmbeddedDepartmentEntity : EmbeddedStandardEntity, IImageable
     {
         #region Private Members
 
         /// <summary>
         /// The member of the <see cref="Categories"/> property
         /// </summary>
-        private IEnumerable<CompanyType>? mCategories;
+        private IEnumerable<DepartmentType>? mCategories;
 
         #endregion
 
         #region Public Properties
 
         /// <summary>
-        /// The categories
+        /// The number of staff members
         /// </summary>
-        public IEnumerable<CompanyType> Categories
-        {
-            get => mCategories ?? Enumerable.Empty<CompanyType>();
-            set => mCategories = value;
-        }
-
-        /// <summary>
-        /// The average number of stars from the customer reviews
-        /// </summary>
-        public double TotalReviewStars { get; set; }
-
-        /// <summary>
-        /// The number of customer reviews
-        /// </summary>
-        public uint TotalReviews { get; set; }
+        public uint TotalStaffMembers { get; set; }
 
         /// <summary>
         /// The image URL
@@ -244,7 +211,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedCompanyEntity() : base()
+        public EmbeddedDepartmentEntity() : base()
         {
             
         }

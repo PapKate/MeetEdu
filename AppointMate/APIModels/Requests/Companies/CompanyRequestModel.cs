@@ -10,7 +10,7 @@
         /// <summary>
         /// The categories
         /// </summary>
-        public IEnumerable<CompanyType>? Categories { get; set; }
+        public IEnumerable<DepartmentType>? Categories { get; set; }
 
         /// <summary>
         /// A flag indicating whether the company provides at home services

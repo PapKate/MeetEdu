@@ -3,12 +3,12 @@
     /// <summary>
     /// Represents a company layout
     /// </summary>
-    public class CompanyLayoutResponseModel : DateResponseModel, IDescriptable, ICompanyIdentifiable<string>
+    public class CompanyLayoutResponseModel : DateResponseModel, IDescriptable, IDepartmentIdentifiable<string>
     {
         #region Private Members
 
         /// <summary>
-        /// The member of the <see cref="CompanyId"/> property
+        /// The member of the <see cref="DepartmentId"/> property
         /// </summary>
         private string? mCompanyId;
 
@@ -29,7 +29,7 @@
         /// <summary>
         /// The company id
         /// </summary>
-        public string CompanyId
+        public string DepartmentId
         {
             get => mCompanyId ?? string.Empty;
             set => mCompanyId = value;

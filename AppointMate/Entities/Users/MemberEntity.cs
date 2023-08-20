@@ -5,16 +5,11 @@ using MongoDB.Driver;
 namespace AppointMate
 {
     /// <summary>
-    /// Represents a customer document in the MongoDB
+    /// Represents a member document in the MongoDB
     /// </summary>
-    public class CustomerEntity: DateEntity, ICompanyIdentifiable<ObjectId>, IUserIdentifiable<ObjectId>
+    public class MemberEntity: DateEntity, IUserIdentifiable<ObjectId>
     {
         #region Public Properties
-
-        /// <summary>
-        /// The company id
-        /// </summary>
-        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// The id of the user
@@ -27,14 +22,14 @@ namespace AppointMate
         public uint TotalAppointments { get; set; }
 
         /// <summary>
-        /// The total number of favorite companies
+        /// The total number of saved companies
         /// </summary>
-        public uint TotalFavoriteCompanies { get; set; }
+        public uint TotalSavedCompanies { get; set; }
 
         /// <summary>
-        /// The total number of reviews
+        /// The total number of saved professors
         /// </summary>
-        public uint TotalReviews { get; set; }
+        public uint TotalSavedProfessors { get; set; }
 
         #endregion
 
@@ -43,7 +38,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CustomerEntity() : base()
+        public MemberEntity() : base()
         {
 
         }
@@ -53,13 +48,13 @@ namespace AppointMate
         #region Public Methods
 
         /// <summary>
-        /// Creates and returns a <see cref="CustomerEntity"/> from the specified <paramref name="model"/>
+        /// Creates and returns a <see cref="MemberEntity"/> from the specified <paramref name="model"/>
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static CustomerEntity FromRequestModel(CustomerRequestModel model)
+        public static MemberEntity FromRequestModel(CustomerRequestModel model)
         {
-            var entity = new CustomerEntity();
+            var entity = new MemberEntity();
 
             DI.Mapper.Map(model, entity);
 
@@ -67,7 +62,7 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CustomerResponseModel"/> from the current <see cref="CustomerEntity"/>
+        /// Creates and returns a <see cref="CustomerResponseModel"/> from the current <see cref="MemberEntity"/>
         /// </summary>
         /// <returns></returns>
         public CustomerResponseModel ToResponseModel()
@@ -80,40 +75,35 @@ namespace AppointMate
         /// <param name="model">The model</param>
         /// <param name="entity">The entity</param>
         /// <returns></returns>
-        public static async void UpdateNonAutoMapperValues(CustomerRequestModel model, CustomerEntity entity)
+        public static async void UpdateNonAutoMapperValues(CustomerRequestModel model, MemberEntity entity)
         {
             var customerSessions = await AppointMateDbMapper.CustomerServiceSessions.SelectAsync(x => x.CustomerId == entity.Id);
             entity.TotalAppointments = (uint)customerSessions.Count();
 
             var customerFavoriteCompanies = await AppointMateDbMapper.UserFavoriteCompanies.SelectAsync(x => x.UserId == entity.Id);
-            entity.TotalFavoriteCompanies = (uint)customerSessions.Count();
+            entity.TotalSavedCompanies = (uint)customerSessions.Count();
             
             var customerReviews = await AppointMateDbMapper.CustomerServiceReviews.SelectAsync(x => x.CustomerId == entity.Id);
-            entity.TotalReviews = (uint)customerReviews.Count();
+            entity.TotalSavedProfessors = (uint)customerReviews.Count();
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="EmbeddedCustomerEntity"/> from the current <see cref="CustomerEntity"/>
+        /// Creates and returns a <see cref="EmbeddedMemberEntity"/> from the current <see cref="MemberEntity"/>
         /// </summary>
         /// <returns></returns>
-        public EmbeddedCustomerEntity ToEmbeddedEntity()
-            => EntityHelpers.ToEmbeddedEntity<EmbeddedCustomerEntity>(this);
+        public EmbeddedMemberEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedMemberEntity>(this);
 
         #endregion
     }
 
     /// <summary>
-    /// A minimal version of the <see cref="CustomerEntity"/> that contains the fields that are 
+    /// A minimal version of the <see cref="MemberEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedCustomerEntity : EmbeddedBaseEntity, ICompanyIdentifiable<ObjectId>, IUserIdentifiable<ObjectId>
+    public class EmbeddedMemberEntity : EmbeddedBaseEntity, IUserIdentifiable<ObjectId>
     {
         #region Public Properties
-
-        /// <summary>
-        /// The company id
-        /// </summary>
-        public ObjectId CompanyId { get; set; }
 
         /// <summary>
         /// The id of the user
@@ -127,7 +117,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedCustomerEntity() : base()
+        public EmbeddedMemberEntity() : base()
         {
 
         }

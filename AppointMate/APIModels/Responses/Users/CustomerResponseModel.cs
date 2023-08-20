@@ -3,12 +3,12 @@
     /// <summary>
     /// Represents a customer
     /// </summary>
-    public class CustomerResponseModel : DateResponseModel, ICompanyIdentifiable<string>, IUserIdentifiable<string>
+    public class CustomerResponseModel : DateResponseModel, IDepartmentIdentifiable<string>, IUserIdentifiable<string>
     {
         #region Private Members
 
         /// <summary>
-        /// The member of the <see cref="CompanyId"/> property
+        /// The member of the <see cref="DepartmentId"/> property
         /// </summary>
         private string? mCompanyId;
 
@@ -24,7 +24,7 @@
         /// <summary>
         /// The company id
         /// </summary>
-        public string CompanyId
+        public string DepartmentId
         { 
             get => mCompanyId ?? string.Empty;
             set => mCompanyId = value;
@@ -72,12 +72,12 @@
     /// <summary>
     /// A minimal version of the <see cref="CustomerResponseModel"/> used when embedding
     /// </summary>
-    public class EmbeddedCustomerResponseModel : EmbeddedBaseResponseModel, ICompanyIdentifiable<string>, IUserIdentifiable<string>
+    public class EmbeddedCustomerResponseModel : EmbeddedBaseResponseModel, IDepartmentIdentifiable<string>, IUserIdentifiable<string>
     {
         #region Private Members
 
         /// <summary>
-        /// The member of the <see cref="CompanyId"/> property
+        /// The member of the <see cref="DepartmentId"/> property
         /// </summary>
         private string? mCompanyId;
 
@@ -93,7 +93,7 @@
         /// <summary>
         /// The company id
         /// </summary>
-        public string CompanyId
+        public string DepartmentId
         {
             get => mCompanyId ?? string.Empty;
             set => mCompanyId = value;

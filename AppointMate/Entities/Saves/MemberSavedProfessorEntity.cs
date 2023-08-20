@@ -5,19 +5,19 @@ namespace AppointMate
     /// <summary>
     /// Only entity
     /// </summary>
-    public class UserFavoriteCompanyEntity : DateEntity, ICompanyIdentifiable<ObjectId>, IUserIdentifiable<ObjectId>
+    public class MemberSavedProfessorEntity : DateEntity, IProfessorIdentifiable<ObjectId>, IMemberIdentifiable<ObjectId>
     {
         #region Public Properties
 
         /// <summary>
-        /// The company id
+        /// The professor id
         /// </summary>
-        public ObjectId CompanyId { get; set; }
+        public ObjectId ProfessorId { get; set; }
 
         /// <summary>
-        /// The user id
+        /// The member id
         /// </summary>
-        public ObjectId UserId { get; set; }
+        public ObjectId MemberId { get; set; }
 
         #endregion
 
@@ -26,7 +26,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public UserFavoriteCompanyEntity() : base()
+        public MemberSavedProfessorEntity() : base()
         {
 
         }

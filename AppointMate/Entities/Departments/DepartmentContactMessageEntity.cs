@@ -5,9 +5,9 @@ using MongoDB.Bson;
 namespace AppointMate
 {
     /// <summary>
-    /// Represents a company contact message document in the MongoDB
+    /// Represents a department contact message document in the MongoDB
     /// </summary>
-    public class CompanyContactMessageEntity : DateEntity, ICompanyIdentifiable<ObjectId>
+    public class DepartmentContactMessageEntity : DateEntity, IDepartmentIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -38,7 +38,7 @@ namespace AppointMate
         /// <summary>
         /// The company id
         /// </summary>
-        public ObjectId CompanyId { get; set; }
+        public ObjectId DepartmentId { get; set; }
 
         /// <summary>
         /// The first name
@@ -88,7 +88,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyContactMessageEntity() : base()
+        public DepartmentContactMessageEntity() : base()
         {
 
         }
@@ -98,26 +98,77 @@ namespace AppointMate
         #region Public Methods
 
         /// <summary>
-        /// Creates and returns a <see cref="CompanyContactMessageEntity"/> from the specified <paramref name="model"/>
+        /// Creates and returns a <see cref="DepartmentContactMessageEntity"/> from the specified <paramref name="model"/>
         /// </summary>
         /// <param name="model">The model</param>
         /// <param name="companyId">The company id</param>
         /// <returns></returns>
-        public static CompanyContactMessageEntity FromRequestModel(CompanyContactMessageRequestModel model, ObjectId companyId)
+        public static DepartmentContactMessageEntity FromRequestModel(CompanyContactMessageRequestModel model, ObjectId companyId)
         {
-            var entity = new CompanyContactMessageEntity();
+            var entity = new DepartmentContactMessageEntity();
 
             DI.Mapper.Map(model, entity);
-            entity.CompanyId = companyId;
+            entity.DepartmentId = companyId;
             return entity;
         }
 
         /// <summary>
-        /// Creates and returns a <see cref="CompanyContactMessageResponseModel"/> from the current <see cref="CompanyContactMessageEntity"/>
+        /// Creates and returns a <see cref="CompanyContactMessageResponseModel"/> from the current <see cref="DepartmentContactMessageEntity"/>
         /// </summary>
         /// <returns></returns>
         public CompanyContactMessageResponseModel ToResponseModel()
             => EntityHelpers.ToResponseModel<CompanyContactMessageResponseModel>(this);
+
+        #endregion
+    }
+
+    /// <summary>
+    /// A minimal version of the <see cref="DepartmentContactMessageEntity"/> that contains the fields that are 
+    /// more frequently used when embedding documents in the MongoDB
+    /// </summary>
+    public class EmbeddedDepartmentContactMessageEntity : EmbeddedBaseEntity
+    {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="Email"/> property
+        /// </summary>
+        private string? mEmail;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The company id
+        /// </summary>
+        public ObjectId DepartmentId { get; set; }
+
+        /// <summary>
+        /// The email
+        /// </summary>
+        public string Email
+        {
+            get => mEmail ?? string.Empty;
+            set => mEmail = value;
+        }
+
+        /// <summary>
+        /// The phone number
+        /// </summary>
+        public PhoneNumber? PhoneNumber { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public EmbeddedDepartmentContactMessageEntity() : base()
+        {
+
+        }
 
         #endregion
     }

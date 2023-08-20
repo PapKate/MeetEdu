@@ -19,7 +19,7 @@ namespace AppointMate
         #region Private Members
 
         /// <summary>
-        /// Maps a <see cref="Type.FullName"/> that implements the <see cref="ICompanyIdentifiable"/> to information related to its <see cref="ICompanyIdentifiable"/> sub properties
+        /// Maps a <see cref="Type.FullName"/> that implements the <see cref="IDepartmentIdentifiable"/> to information related to its <see cref="IDepartmentIdentifiable"/> sub properties
         /// </summary>
         private static readonly ConcurrentDictionary<string, CompanyEntityCompanyIdentifiablePropertiesInformationDataModel> mTypeToIdentifiablePropertiesMapper = new();
 
@@ -73,11 +73,11 @@ namespace AppointMate
         /// <param name="companyId">The company id</param>
         /// <returns></returns>
         public static TEntity FromRequestModel<TEntity>(object model, ObjectId companyId)
-            where TEntity : BaseEntity, ICompanyIdentifiable, new()
+            where TEntity : BaseEntity, IDepartmentIdentifiable, new()
         {
             var entity = new TEntity()
             {
-                CompanyId = companyId
+                DepartmentId = companyId
             };
 
             DI.Mapper.Map(model, entity);
@@ -123,11 +123,11 @@ namespace AppointMate
         /// </param>
         /// <returns></returns>
         public static async Task<TEntity> FromRequestModelAsync<TEntity, TRequestModel>(TRequestModel model, ObjectId companyId, Func<TRequestModel, TEntity, ObjectId, Task> updateNonAutoMapperValues)
-            where TEntity : BaseEntity, ICompanyIdentifiable, new()
+            where TEntity : BaseEntity, IDepartmentIdentifiable, new()
         {
             var entity = new TEntity()
             {
-                CompanyId = companyId
+                DepartmentId = companyId
             };
 
             DI.Mapper.Map(model, entity);
@@ -365,17 +365,17 @@ namespace AppointMate
             #region Public Properties
 
             /// <summary>
-            /// The parent type that implements the <see cref="ICompanyIdentifiable"/>
+            /// The parent type that implements the <see cref="IDepartmentIdentifiable"/>
             /// </summary>
             public Type Type { get; }
 
             /// <summary>
-            /// The properties of the <see cref="Type"/> that implement the <see cref="ICompanyIdentifiable"/>
+            /// The properties of the <see cref="Type"/> that implement the <see cref="IDepartmentIdentifiable"/>
             /// </summary>
             public IEnumerable<PropertyInfo> CompanyIdentifiableProperties { get; }
 
             /// <summary>
-            /// The enumerable properties of the <see cref="Type"/> whose generic type implement the <see cref="ICompanyIdentifiable"/>
+            /// The enumerable properties of the <see cref="Type"/> whose generic type implement the <see cref="IDepartmentIdentifiable"/>
             /// </summary>
             public IEnumerable<PropertyInfo> EnumerableCompanyIdentifiableProperties { get; }
 
@@ -386,9 +386,9 @@ namespace AppointMate
             /// <summary>
             /// Default constructor
             /// </summary>
-            /// <param name="type">The parent type that implements the <see cref="ICompanyIdentifiable"/></param>
-            /// <param name="companyIdentifiableProperties">The properties of the <see cref="Type"/> that implement the <see cref="ICompanyIdentifiable"/></param>
-            /// <param name="enumerableCompanyIdentifiableProperties">The enumerable properties of the <see cref="Type"/> whose generic type implement the <see cref="ICompanyIdentifiable"/></param>
+            /// <param name="type">The parent type that implements the <see cref="IDepartmentIdentifiable"/></param>
+            /// <param name="companyIdentifiableProperties">The properties of the <see cref="Type"/> that implement the <see cref="IDepartmentIdentifiable"/></param>
+            /// <param name="enumerableCompanyIdentifiableProperties">The enumerable properties of the <see cref="Type"/> whose generic type implement the <see cref="IDepartmentIdentifiable"/></param>
             public CompanyEntityCompanyIdentifiablePropertiesInformationDataModel(Type type, IEnumerable<PropertyInfo> companyIdentifiableProperties, IEnumerable<PropertyInfo> enumerableCompanyIdentifiableProperties) : base()
             {
                 Type = type ?? throw new ArgumentNullException(nameof(type));

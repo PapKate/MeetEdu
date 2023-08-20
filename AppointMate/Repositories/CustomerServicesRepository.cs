@@ -47,7 +47,7 @@ namespace AppointMate
                 return AppointMateWebServerConstants.NoSessionWasCreatedErrorMessage;
 
             // Create the customer service
-            var result = await CustomerServiceEntity.FromRequestModelAsync(model);
+            var result = await AppointmentEntity.FromRequestModelAsync(model);
 
             // If there was an error...
             if (!result.IsSuccessful || result.Result is null)
@@ -71,7 +71,7 @@ namespace AppointMate
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CustomerServiceEntity>> UpdateCustomerServiceAsync(ObjectId id, CustomerServiceRequestModel model)
+        public async Task<WebServerFailable<AppointmentEntity>> UpdateCustomerServiceAsync(ObjectId id, CustomerServiceRequestModel model)
         {
             var customerService = await AppointMateDbMapper.CustomerServices.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -107,7 +107,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<CustomerServiceEntity>> DeleteCustomerServiceAsync(ObjectId id)
+        public async Task<WebServerFailable<AppointmentEntity>> DeleteCustomerServiceAsync(ObjectId id)
         {
             var customerService = await AppointMateDbMapper.CustomerServices.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -244,7 +244,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="CustomerService"> The customer service </param>
         /// <param name="Session"> The session </param>
-        public record AddCustomerServiceResult(CustomerServiceEntity CustomerService, CustomerServiceSessionEntity Session);
+        public record AddCustomerServiceResult(AppointmentEntity CustomerService, CustomerServiceSessionEntity Session);
 
         #endregion
     }

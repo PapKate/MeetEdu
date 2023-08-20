@@ -111,6 +111,11 @@
         /// </summary>
         public Billing? Billing { get; set; }
 
+        /// <summary>
+        /// The location
+        /// </summary>
+        public Location? Location { get; set; }
+
         #endregion
 
         #region Constructors
@@ -180,6 +185,11 @@
         /// </summary>
         private string? mUsername;
 
+        /// <summary>
+        /// The member of the <see cref="Email"/> property
+        /// </summary>
+        private string? mEmail;
+
         #endregion
 
         #region Public Properties
@@ -215,6 +225,25 @@
         /// The image URL
         /// </summary>
         public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The email
+        /// </summary>
+        public string Email
+        {
+            get => mEmail ?? string.Empty;
+            set => mEmail = value;
+        }
+
+        /// <summary>
+        /// The phone number
+        /// </summary>
+        public PhoneNumber? PhoneNumber { get; set; }
+
+        /// <summary>
+        /// The location
+        /// </summary>
+        public Location? Location { get; set; }
 
         #endregion
 

@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Represents a label document in the MongoDB
     /// </summary>
-    public class LabelEntity : StandardEntity, IDescriptable, ICompanyIdentifiable<ObjectId>
+    public class LabelEntity : StandardEntity, IDescriptable, IDepartmentIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -21,7 +21,7 @@ namespace AppointMate
         /// <summary>
         /// The company id
         /// </summary>
-        public ObjectId CompanyId { get; set; }
+        public ObjectId DepartmentId { get; set; }
 
         /// <summary>
         /// The description
@@ -59,7 +59,7 @@ namespace AppointMate
             var entity = new LabelEntity();
 
             DI.Mapper.Map(model, entity);
-            entity.CompanyId = companyId;
+            entity.DepartmentId = companyId;
             return entity;
         }
 
@@ -84,14 +84,14 @@ namespace AppointMate
     /// A minimal version of the <see cref="LabelEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedLabelEntity : EmbeddedStandardEntity, ICompanyIdentifiable<ObjectId>
+    public class EmbeddedLabelEntity : EmbeddedStandardEntity, IDepartmentIdentifiable<ObjectId>
     {
         #region Public Properties
 
         /// <summary>
         /// The company id
         /// </summary>
-        public ObjectId CompanyId { get; set; }
+        public ObjectId DepartmentId { get; set; }
 
         #endregion
 

@@ -95,7 +95,7 @@ namespace AppointMate
         /// <param name="userId">The user id</param>
         /// <param name="companyId">The company id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<UserFavoriteCompanyEntity>> AddUserFavoriteCompanyAsync(ObjectId userId, ObjectId companyId)
+        public async Task<WebServerFailable<MemberSavedDepartmentEntity>> AddUserFavoriteCompanyAsync(ObjectId userId, ObjectId companyId)
         {
             // Get the user with the specified id
             var user = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id == userId);
@@ -112,9 +112,9 @@ namespace AppointMate
                 return WebServerFailable.NotFound(companyId, nameof(AppointMateDbMapper.Companies));
 
             // Create the favorite company
-            var entity = new UserFavoriteCompanyEntity()
+            var entity = new MemberSavedDepartmentEntity()
             {
-                CompanyId = companyId,
+                DepartmentId = companyId,
                 UserId = userId,
             };
 
@@ -131,7 +131,7 @@ namespace AppointMate
         /// <param name="userId">The user id</param>
         /// <param name="companyIds">The company ids</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<UserFavoriteCompanyEntity>>> AddUserFavoriteCompaniesAsync(ObjectId userId, IEnumerable<ObjectId> companyIds)
+        public async Task<WebServerFailable<IEnumerable<MemberSavedDepartmentEntity>>> AddUserFavoriteCompaniesAsync(ObjectId userId, IEnumerable<ObjectId> companyIds)
         {
             // Get the user with the specified id
             var user = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id == userId);
@@ -147,10 +147,10 @@ namespace AppointMate
             if (companies is null)
                 return AppointMateWebServerConstants.NoCompaniesWereFoundWithTheSpecifiedIdsErrorMessage;
 
-            return new WebServerFailable<IEnumerable<UserFavoriteCompanyEntity>>(await AppointMateDbMapper.UserFavoriteCompanies.AddRangeAsync(companies.Select(x =>
-                new UserFavoriteCompanyEntity()
+            return new WebServerFailable<IEnumerable<MemberSavedDepartmentEntity>>(await AppointMateDbMapper.UserFavoriteCompanies.AddRangeAsync(companies.Select(x =>
+                new MemberSavedDepartmentEntity()
                 {
-                    CompanyId = x.Id,
+                    DepartmentId = x.Id,
                     UserId = userId,
                 })
             .ToList()));
@@ -161,7 +161,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<UserFavoriteCompanyEntity>> DeleteUserFavoriteCompanyAsync(ObjectId id)
+        public async Task<WebServerFailable<MemberSavedDepartmentEntity>> DeleteUserFavoriteCompanyAsync(ObjectId id)
         {
             var entity = await AppointMateDbMapper.UserFavoriteCompanies.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -182,7 +182,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="userId">The id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<CustomerServiceEntity>>> GetUserServicesAsync(ObjectId userId)
+        public async Task<WebServerFailable<IEnumerable<AppointmentEntity>>> GetUserServicesAsync(ObjectId userId)
         {
             // Gets the customers that represent the user in companies
             var customers = await AppointMateDbMapper.Customers.SelectAsync(x => x.UserId == userId);
@@ -193,7 +193,7 @@ namespace AppointMate
 
             var services = await AppointMateDbMapper.CustomerServices.SelectAsync(x => customers.Any(y => y.Id == x.CustomerId));
             
-            return new WebServerFailable<IEnumerable<CustomerServiceEntity>>(services);
+            return new WebServerFailable<IEnumerable<AppointmentEntity>>(services);
         }
 
         #endregion

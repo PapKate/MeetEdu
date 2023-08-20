@@ -37,16 +37,16 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<ServiceEntity> AddServiceAsync(ServiceRequestModel model)
-            => await AppointMateDbMapper.Services.AddAsync(ServiceEntity.FromRequestModel(model));
+        public async Task<AppointmentTemplateEntity> AddServiceAsync(ServiceRequestModel model)
+            => await AppointMateDbMapper.Services.AddAsync(AppointmentTemplateEntity.FromRequestModel(model));
 
         /// <summary>
         /// Adds a list of services 
         /// </summary>
         /// <param name="models">The models</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<IEnumerable<ServiceEntity>>> AddServicesAsync(IEnumerable<ServiceRequestModel> models)
-            => new WebServerFailable<IEnumerable<ServiceEntity>>(await AppointMateDbMapper.Services.AddRangeAsync(models.Select(ServiceEntity.FromRequestModel).ToList()));
+        public async Task<WebServerFailable<IEnumerable<AppointmentTemplateEntity>>> AddServicesAsync(IEnumerable<ServiceRequestModel> models)
+            => new WebServerFailable<IEnumerable<AppointmentTemplateEntity>>(await AppointMateDbMapper.Services.AddRangeAsync(models.Select(AppointmentTemplateEntity.FromRequestModel).ToList()));
 
         /// <summary>
         /// Updates the service with the specified <paramref name="id"/>
@@ -54,7 +54,7 @@ namespace AppointMate
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<ServiceEntity>> UpdateServiceAsync(ObjectId id, ServiceRequestModel model)
+        public async Task<WebServerFailable<AppointmentTemplateEntity>> UpdateServiceAsync(ObjectId id, ServiceRequestModel model)
         {
             var entity = await AppointMateDbMapper.Services.UpdateAsync(id, model);
 
@@ -69,7 +69,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<ServiceEntity>> DeleteServiceAsync(ObjectId id)
+        public async Task<WebServerFailable<AppointmentTemplateEntity>> DeleteServiceAsync(ObjectId id)
         {
             var entity = await AppointMateDbMapper.Services.FirstOrDefaultAsync(x => x.Id == id);
 

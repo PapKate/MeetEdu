@@ -194,7 +194,7 @@ namespace AppointMate
             if (favorites is null)
                 return NotFound();
 
-            var companies = await AppointMateDbMapper.Companies.SelectAsync(x => favorites.Any(y => y.CompanyId == x.Id));
+            var companies = await AppointMateDbMapper.Companies.SelectAsync(x => favorites.Any(y => y.DepartmentId == x.Id));
             
             return new OkObjectResult(companies.Select(x => x.ToResponseModel()));
         }
@@ -216,7 +216,7 @@ namespace AppointMate
             if (favorite is null)
                 return NotFound();
 
-            var company = await AppointMateDbMapper.Companies.FirstOrDefaultAsync(x => x.Id == favorite.CompanyId);
+            var company = await AppointMateDbMapper.Companies.FirstOrDefaultAsync(x => x.Id == favorite.DepartmentId);
 
             return new OkObjectResult(company.ToResponseModel());
         }
@@ -236,7 +236,7 @@ namespace AppointMate
             if (!response.IsSuccessful || response.Result is null)
                 return StatusCode(response.StatusCode ?? 400, response);
 
-            var company = await GetCompanyAsync(response.Result.CompanyId.ToString());
+            var company = await GetCompanyAsync(response.Result.DepartmentId.ToString());
 
             return company;
         }
