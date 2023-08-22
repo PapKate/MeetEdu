@@ -113,7 +113,7 @@
         /// Returns the string representation of the specified <paramref name="phoneNumber"/>
         /// </summary>
         /// <param name="phoneNumber">The phone number</param>
-        public static implicit operator string(PhoneNumber? phoneNumber) => phoneNumber.ToString();
+        public static implicit operator string(PhoneNumber? phoneNumber) => phoneNumber?.ToString() ?? string.Empty;
 
         #endregion
     }

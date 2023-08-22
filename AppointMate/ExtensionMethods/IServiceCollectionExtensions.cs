@@ -18,7 +18,7 @@ namespace AppointMate
         public static readonly IEnumerable<EntityToDTONamespaceMap> EntityToDTONamespaceMaps = new List<EntityToDTONamespaceMap>()
         {
             // Atom.Web.Server.Argon -> Argon.Web
-            new(typeof(MemberEntity).Namespace!, typeof(CustomerResponseModel).Namespace!)
+            new(typeof(MemberEntity).Namespace!, typeof(MemberResponseModel).Namespace!)
         };
 
         #endregion

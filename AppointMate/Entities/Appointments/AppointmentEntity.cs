@@ -17,9 +17,9 @@ namespace AppointMate
         public ObjectId ProfessorId { get; set; }
 
         /// <summary>
-        /// The appointment template id
+        /// The appointment rule id
         /// </summary>
-        public ObjectId SubjectId { get; set; }
+        public ObjectId RuleId { get; set; }
 
         /// <summary>
         /// The date
@@ -52,9 +52,14 @@ namespace AppointMate
         public bool IsRemote { get; set; }
 
         /// <summary>
-        /// The subject
+        /// The rule
         /// </summary>
-        public EmbeddedAppointmentTemplateEntity? Subject { get; set; }
+        public EmbeddedAppointmentRuleEntity? Rule { get; set; }
+
+        /// <summary>
+        /// The professor
+        /// </summary>
+        public EmbeddedProfessorEntity? Professor { get; set; }
 
         #endregion
 
@@ -77,24 +82,26 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static async Task<WebServerFailable<AppointmentEntity>> FromRequestModelAsync(AppointmentRequestModel model)
+        public static async Task<AppointmentEntity?> FromRequestModelAsync(AppointmentRequestModel model)
         {
-            // If no subject id was specified...
-            if(model.SubjectId is null)
-                return AppointMateWebServerConstants.NoAppointmentTemplateIdSpecifiedInTheRequestErrorMessage;
+            // If no rule or professor id is specified...
+            if (model.RuleId is null || model.ProfessorId is null)
+                return null;
 
-            // Gets the appointment template with the specified id
-            var template = await AppointMateDbMapper.AppointmentTemplates.FirstOrDefaultAsync(x => x.Id == model.SubjectId.ToObjectId());
+            // Gets the appointment rule with the specified id
+            var rule = await AppointMateDbMapper.AppointmentRules.FirstOrDefaultAsync(x => x.Id == model.RuleId.ToObjectId());
+            var professor = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == model.ProfessorId.ToObjectId());
 
-            // If no template is found...
-            if (template is null)
+            // If no rule or professor is found...
+            if (rule is null || professor is null)
                 // Return
-                return WebServerFailable.NotFound(model.SubjectId, nameof(AppointMateDbMapper.AppointmentTemplates));
+                return null;
 
             var entity = new AppointmentEntity();
 
             DI.Mapper.Map(model, entity);
-            entity.Subject = template.ToEmbeddedEntity();
+            entity.Rule = rule.ToEmbeddedEntity();
+            entity.Professor = professor.ToEmbeddedEntity();
             entity.DateModified = DateTime.UtcNow;
 
             return entity;
@@ -131,9 +138,9 @@ namespace AppointMate
         public ObjectId ProfessorId { get; set; }
 
         /// <summary>
-        /// The appointment template id
+        /// The appointment rule id
         /// </summary>
-        public ObjectId SubjectId { get; set; }
+        public ObjectId RuleId { get; set; }
 
         /// <summary>
         /// The date
@@ -161,9 +168,9 @@ namespace AppointMate
         public bool IsRemote { get; set; }
 
         /// <summary>
-        /// The subject
+        /// The rule
         /// </summary>
-        public EmbeddedAppointmentTemplateEntity? Subject { get; set; }
+        public EmbeddedAppointmentRuleEntity? Rule { get; set; }
 
         #endregion
 

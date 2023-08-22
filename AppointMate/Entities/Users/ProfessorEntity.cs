@@ -77,11 +77,13 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static ProfessorEntity FromRequestModelAsync(ProfessorRequestModel model)
+        public static async Task<ProfessorEntity> FromRequestModelAsync(ProfessorRequestModel model)
         {
             var entity = new ProfessorEntity();
 
             DI.Mapper.Map(model, entity);
+
+            entity.User = !model.UserId.IsNullOrEmpty() ? await EntityHelpers.GetUserAsync(model.UserId) : null;
 
             return entity;
         }
@@ -107,7 +109,7 @@ namespace AppointMate
     /// A minimal version of the <see cref="ProfessorEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedProfessorEntity : EmbeddedBaseEntity
+    public class EmbeddedProfessorEntity : EmbeddedStaffMemberEntity
     {
         #region Private Members
 
@@ -128,11 +130,6 @@ namespace AppointMate
             get => mField ?? string.Empty;
             set => mField = value;
         }
-
-        /// <summary>
-        /// The staff member
-        /// </summary>
-        public EmbeddedStaffMemberEntity? StaffMember { get; set; }
 
         #endregion
 

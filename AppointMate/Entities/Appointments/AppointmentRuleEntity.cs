@@ -1,18 +1,15 @@
-﻿using MongoDB.Bson;
+﻿using AutoMapper;
+
+using MongoDB.Bson;
 
 namespace AppointMate
 {
     /// <summary>
-    /// Represents an appointment template 
+    /// Represents an appointment template document in the MongoDB
     /// </summary>
-    public class AppointmentTemplateResponseModel : StandardResponseModel, IDescriptable, INoteable, IProfessorIdentifiable<string>
+    public class AppointmentRuleEntity : StandardEntity, IDescriptable, INoteable, IProfessorIdentifiable<ObjectId>
     {
         #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="ProfessorId"/> property
-        /// </summary>
-        private string? mProfessorId;
 
         /// <summary>
         /// The member of the <see cref="Description"/> property
@@ -31,11 +28,7 @@ namespace AppointMate
         /// <summary>
         /// The professor id
         /// </summary>
-        public string ProfessorId
-        {
-            get => mProfessorId ?? string.Empty;
-            set => mProfessorId = value;
-        }
+        public ObjectId ProfessorId { get; set; }
 
         /// <summary>
         /// A flag indicating whether it has a remote option or not
@@ -72,39 +65,58 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public AppointmentTemplateResponseModel() : base()
+        public AppointmentRuleEntity() : base()
         {
 
         }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="AppointmentRuleEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static AppointmentRuleEntity FromRequestModel(AppointmentRuleRequestModel model)
+        {
+            var entity = new AppointmentRuleEntity();
+
+            DI.Mapper.Map(model, entity);
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="AppointmentRuleResponseModel"/> from the current <see cref="AppointmentRuleEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public AppointmentRuleResponseModel ToResponseModel() 
+            => EntityHelpers.ToResponseModel<AppointmentRuleResponseModel>(this);
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedAppointmentRuleEntity"/> from the current <see cref="AppointmentRuleEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public EmbeddedAppointmentRuleEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedAppointmentRuleEntity>(this);
 
         #endregion
     }
 
     /// <summary>
-    /// A minimal version of the <see cref="AppointmentTemplateResponseModel"/> that contains the fields that are 
+    /// A minimal version of the <see cref="AppointmentRuleEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedAppointmentTemplateResponseModel : EmbeddedStandardResponseModel, IProfessorIdentifiable<string>
+    public class EmbeddedAppointmentRuleEntity : EmbeddedStandardEntity, IProfessorIdentifiable<ObjectId>
     {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="ProfessorId"/> property
-        /// </summary>
-        private string? mProfessorId;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
         /// The professor id
         /// </summary>
-        public string ProfessorId
-        {
-            get => mProfessorId ?? string.Empty;
-            set => mProfessorId = value;
-        }
+        public ObjectId ProfessorId { get; set; }
 
         /// <summary>
         /// A flag indicating whether it has a remote option or not
@@ -123,7 +135,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedAppointmentTemplateResponseModel() : base()
+        public EmbeddedAppointmentRuleEntity() : base()
         {
 
         }

@@ -15,9 +15,9 @@ namespace AppointMate
         public string? ProfessorId { get; set; }
 
         /// <summary>
-        /// The appointment template id
+        /// The appointment rule id
         /// </summary>
-        public string? SubjectId { get; set; }
+        public string? RuleId { get; set; }
 
         /// <summary>
         /// The date

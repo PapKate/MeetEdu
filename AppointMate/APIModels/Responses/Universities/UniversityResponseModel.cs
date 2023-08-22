@@ -1,16 +1,37 @@
-﻿namespace AppointMate
+﻿using static MudBlazor.CategoryTypes;
+using System.Reflection.Emit;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a university 
     /// </summary>
     public class UniversityResponseModel : StandardResponseModel, IImageable
     {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="Labels"/> property
+        /// </summary>
+        private IEnumerable<EmbeddedLabelResponseModel>? mLabels;
+
+        #endregion
+
         #region Public Properties
 
         /// <summary>
         /// The image
         /// </summary>
         public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The labels
+        /// </summary>
+        public IEnumerable<EmbeddedLabelResponseModel> Labels
+        {
+            get => mLabels ?? Enumerable.Empty<EmbeddedLabelResponseModel>();
+            set => mLabels = value;
+        }
 
         #endregion
 

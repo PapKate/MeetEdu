@@ -5,6 +5,8 @@ using MongoDB.Driver;
 using MongoDB.Driver.Core.Servers;
 using MongoDB.Driver.Linq;
 
+using SharpCompress.Common;
+
 using System.Collections.Concurrent;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -26,6 +28,17 @@ namespace AppointMate
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Gets the user that has the specified <paramref name="userId"/> and return the <see cref="EmbeddedUserEntity"/>
+        /// </summary>
+        /// <param name="userId">The user id</param>
+        /// <returns></returns>
+        public static async Task<EmbeddedUserEntity> GetUserAsync(string userId)
+        {
+            var user = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id == userId.ToObjectId());
+            return user.ToEmbeddedEntity();
+        }
 
         /// <summary>
         /// Creates and returns an entity of the specified type using the specified

@@ -25,6 +25,40 @@
         }
 
         #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="SecretaryEntity"/> from the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public static async Task<SecretaryEntity> FromRequestModelAsync(SecretaryRequestModel model)
+        {
+            var entity = new SecretaryEntity();
+
+            DI.Mapper.Map(model, entity);
+
+            entity.User = !model.UserId.IsNullOrEmpty() ? await EntityHelpers.GetUserAsync(model.UserId) : null;
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates and returns a <see cref="SecretaryResponseModel"/> from the current <see cref="SecretaryEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public SecretaryResponseModel ToResponseModel()
+            => EntityHelpers.ToResponseModel<SecretaryResponseModel>(this);
+
+        /// <summary>
+        /// Creates and returns a <see cref="EmbeddedSecretaryEntity"/> from the current <see cref="SecretaryEntity"/>
+        /// </summary>
+        /// <returns></returns>
+        public EmbeddedSecretaryEntity ToEmbeddedEntity()
+            => EntityHelpers.ToEmbeddedEntity<EmbeddedSecretaryEntity>(this);
+
+        #endregion
     }
 
     /// <summary>

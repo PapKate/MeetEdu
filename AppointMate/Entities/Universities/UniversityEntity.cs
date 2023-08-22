@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 
+using static MudBlazor.CategoryTypes;
+using System.Reflection.Emit;
+
 namespace AppointMate
 {
     /// <summary>
@@ -7,12 +10,30 @@ namespace AppointMate
     /// </summary>
     public class UniversityEntity : StandardEntity, IImageable
     {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="Labels"/> property
+        /// </summary>
+        private IEnumerable<EmbeddedLabelEntity>? mLabels;
+
+        #endregion
+
         #region Public Properties
 
         /// <summary>
         /// The image
         /// </summary>
         public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The labels
+        /// </summary>
+        public IEnumerable<EmbeddedLabelEntity> Labels
+        {
+            get => mLabels ?? Enumerable.Empty<EmbeddedLabelEntity>();
+            set => mLabels = value;
+        }
 
         #endregion
 

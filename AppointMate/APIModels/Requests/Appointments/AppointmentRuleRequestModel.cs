@@ -5,7 +5,7 @@ namespace AppointMate
     /// <summary>
     /// Request model for an appointment template
     /// </summary>
-    public class AppointmentTemplateRequestModel
+    public class AppointmentRuleRequestModel
     {
         #region Public Properties
 
@@ -41,7 +41,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public AppointmentTemplateRequestModel() : base()
+        public AppointmentRuleRequestModel() : base()
         {
 
         }

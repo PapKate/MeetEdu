@@ -167,8 +167,9 @@ namespace AppointMate
         /// <param name="collection">The collection</param>
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public static async Task<TEntity?> UpdateAsync<TEntity, TRequestModel>(this IMongoCollection<TEntity> collection, ObjectId id, TRequestModel model)
+        public static async Task<TEntity?> UpdateAsync<TEntity, TRequestModel>(this IMongoCollection<TEntity> collection, ObjectId id, TRequestModel model, CancellationToken cancellationToken = default)
             where TEntity : BaseEntity
             where TRequestModel : BaseRequestModel
         {
@@ -178,27 +179,7 @@ namespace AppointMate
                 return null;
 
             DI.Mapper.Map(model, entity);
-            return await collection.UpdateAsync(entity);
-        }
-
-        /// <summary>
-        /// Updates the specified <paramref name="entities"/> while keeping their id the same
-        /// </summary>
-        /// <typeparam name="TEntity">The type of the entities</typeparam>
-        /// <param name="collection">The collection</param>
-        /// <param name="entities">The entities</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        public static async Task<IEnumerable<TEntity>> UpdateRangeAsync<TEntity>(this IMongoCollection<TEntity> collection, IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
-            where TEntity : BaseEntity
-        {
-            var updates = new List<WriteModel<TEntity>>();
-            foreach (var entity in entities)
-                updates.Add(new ReplaceOneModel<TEntity>(Builders<TEntity>.Filter.Eq(x => x.Id, entity.Id), entity) { IsUpsert = true });
-
-            await collection.BulkWriteAsync(updates, null, cancellationToken);
-
-            return entities;
+            return await collection.UpdateAsync(entity, cancellationToken);
         }
 
         /// <summary>
@@ -212,30 +193,6 @@ namespace AppointMate
         public static async Task<TEntity> DeleteAsync<TEntity>(this IMongoCollection<TEntity> collection, ObjectId id, CancellationToken cancellationToken = default)
             where TEntity : BaseEntity
             => await collection.FindOneAndDeleteAsync(x => x.Id == id, cancellationToken: cancellationToken);
-
-        /// <summary>
-        /// Deletes the specified <paramref name="entity"/> from the collection.
-        /// </summary>
-        /// <typeparam name="TEntity">The type of the entity</typeparam>
-        /// <param name="collection">The collection</param>
-        /// <param name="entity">The new updated document</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        public static async Task<TEntity> DeleteAsync<TEntity>(this IMongoCollection<TEntity> collection, TEntity entity, CancellationToken cancellationToken = default)
-            where TEntity : BaseEntity
-            => await collection.DeleteAsync(entity, cancellationToken);
-
-        /// <summary>
-        /// Deletes the specified <paramref name="entities"/> from the collection.
-        /// </summary>
-        /// <typeparam name="TEntity">The type of the entity</typeparam>
-        /// <param name="collection">The collection</param>
-        /// <param name="entities">The new updated document</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        public static async Task<DeleteResult> DeleteRangeAsync<TEntity>(this IMongoCollection<TEntity> collection, IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
-            where TEntity : BaseEntity
-            => await collection.DeleteManyAsync(x => entities.Contains(x), cancellationToken);
 
         #endregion
     }

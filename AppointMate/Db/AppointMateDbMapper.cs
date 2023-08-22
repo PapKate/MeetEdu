@@ -20,6 +20,11 @@ namespace AppointMate
         public const string UniversitiesCollectionName = Signature + "Universities";
 
         /// <summary>
+        /// The university labels collection name
+        /// </summary>
+        public const string UniversityLabelsCollectionName = Signature + "UniversityLabels";
+
+        /// <summary>
         /// The departments collection name
         /// </summary>
         public const string DepartmentsCollectionName = Signature + "Departments";
@@ -42,7 +47,7 @@ namespace AppointMate
         /// <summary>
         /// The appointment templates collection name
         /// </summary>
-        public const string AppointmentTemplatesCollectionName = Signature + "AppointmentTemplates";
+        public const string AppointmentRulesCollectionName = Signature + "AppointmentTemplates";
 
         /// <summary>
         /// The appointments collection name
@@ -88,6 +93,11 @@ namespace AppointMate
         /// </summary>
         public static IMongoCollection<UniversityEntity> Universities => DI.Database.GetCollection<UniversityEntity>(UniversitiesCollectionName);
 
+        /// <summary>
+        /// The university labels collection
+        /// </summary>
+        public static IMongoCollection<LabelEntity> UniversityLabels => DI.Database.GetCollection<LabelEntity>(UniversityLabelsCollectionName);
+
         #endregion
 
         #region Departments
@@ -119,7 +129,7 @@ namespace AppointMate
         /// <summary>
         /// The appointment templates collection
         /// </summary>
-        public static IMongoCollection<AppointmentTemplateEntity> AppointmentTemplates => DI.Database.GetCollection<AppointmentTemplateEntity>(AppointmentTemplatesCollectionName);
+        public static IMongoCollection<AppointmentRuleEntity> AppointmentRules => DI.Database.GetCollection<AppointmentRuleEntity>(AppointmentRulesCollectionName);
 
         /// <summary>
         /// The appointments collection
@@ -140,9 +150,9 @@ namespace AppointMate
         #region Members
 
         /// <summary>
-        /// The customers collection
+        /// The members collection
         /// </summary>
-        public static IMongoCollection<MemberEntity> Customers => DI.Database.GetCollection<MemberEntity>(MembersCollectionName);
+        public static IMongoCollection<MemberEntity> Members => DI.Database.GetCollection<MemberEntity>(MembersCollectionName);
 
         /// <summary>
         /// The member saved departments collection
@@ -165,7 +175,7 @@ namespace AppointMate
 
         #endregion
 
-        #region Professors
+        #region Secretaries
 
         /// <summary>
         /// The secretaries collection

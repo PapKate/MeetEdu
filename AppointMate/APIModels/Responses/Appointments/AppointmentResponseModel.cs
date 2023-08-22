@@ -30,9 +30,9 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// The appointment template id
+        /// The appointment rule id
         /// </summary>
-        public ObjectId SubjectId { get; set; }
+        public ObjectId RuleId { get; set; }
 
         /// <summary>
         /// The date
@@ -65,9 +65,9 @@ namespace AppointMate
         public bool IsRemote { get; set; }
 
         /// <summary>
-        /// The subject
+        /// The rule
         /// </summary>
-        public EmbeddedAppointmentTemplateResponseModel? Subject { get; set; }
+        public EmbeddedAppointmentRuleResponseModel? Rule { get; set; }
 
         #endregion
 
@@ -112,9 +112,9 @@ namespace AppointMate
         }
 
         /// <summary>
-        /// The appointment template id
+        /// The appointment rule id
         /// </summary>
-        public ObjectId SubjectId { get; set; }
+        public ObjectId RuleId { get; set; }
 
         /// <summary>
         /// The date
@@ -144,7 +144,7 @@ namespace AppointMate
         /// <summary>
         /// The subject
         /// </summary>
-        public EmbeddedAppointmentTemplateResponseModel? Subject { get; set; }
+        public EmbeddedAppointmentRuleResponseModel? Rule { get; set; }
 
         #endregion
 

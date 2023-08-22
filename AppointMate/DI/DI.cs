@@ -55,24 +55,24 @@ namespace AppointMate
         public static UsersRepository UsersRepository => (UsersRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(UsersRepository))!;
 
         /// <summary>
-        /// The companies manager
+        /// The members manager
         /// </summary>
-        public static CompaniesRepository CompaniesRepository=> (CompaniesRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(CompaniesRepository))!;
+        public static MembersRepository MembersRepository => (MembersRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(MembersRepository))!;
 
         /// <summary>
-        /// The staff members manager
+        /// The universities manager
         /// </summary>
-        public static StaffMembersRepository StaffMembersRepository => (StaffMembersRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(StaffMembersRepository))!;
+        public static UniversitiesRepository UniversitiesRepository => (UniversitiesRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(UniversitiesRepository))!;
 
         /// <summary>
-        /// The customers manager
+        /// The departments manager
         /// </summary>
-        public static CustomersRepository CustomersRepository => (CustomersRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(CustomersRepository))!;
+        public static DepartmentsRepository DepartmentsRepository => (DepartmentsRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(DepartmentsRepository))!;
 
         /// <summary>
-        /// The services manager
+        /// The appointments manager
         /// </summary>
-        public static ServicesRepository ServicesRepository => (ServicesRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(ServicesRepository))!;    
+        public static AppointmentsRepository AppointmentsRepository => (AppointmentsRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(AppointmentsRepository))!;
 
         #endregion
 

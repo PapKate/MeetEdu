@@ -53,69 +53,30 @@ namespace AppointMate
 
         #endregion
 
-        #region Services
-
-        ///// <summary>
-        ///// Gets the services
-        ///// </summary>
-        ///// <param name="args">The arguments</param>
-        ///// <param name="cancellationToken">The cancellation token</param>
-        ///// <returns></returns>
-        //[HttpGet]
-        //[Route(AppointMateAPIRoutes.ServicesRoute)]
-        //public async Task<ActionResult<IEnumerable<ServiceCompaniesResult>>> GetServicesAsync([FromQuery]CompanyRelatedAPIArgs args, CancellationToken cancellationToken = default)
-        //{
-        //    var filters = new List<FilterDefinition<ServiceEntity>>();
-
-        //    if(!args.IncludeCompanies.IsNullOrEmpty())
-        //    {
-        //        var ids = args.IncludeCompanies.Select(x => x.ToObjectId()).ToList();
-        //        filters.Add(Builders<ServiceEntity>.Filter.In(x => x.Company!.Source, ids));
-        //    }
-            
-        //    if(!args.ExcludeCompanies.IsNullOrEmpty())
-        //    {
-        //        var ids = args.ExcludeCompanies.Select(x => x.ToObjectId()).ToList();
-        //        filters.Add(Builders<ServiceEntity>.Filter.Nin(x => x.Company!.Source, ids));
-        //    }
-
-        //    var filter = Builders<ServiceEntity>.Filter.And(filters);
-
-        //    var services = await ControllerHelpers.GetManyAsync(AppointMateDbMapper.AppointmentTemplates, filter, x => x.Name, true, args, x => x.ToResponseModel(), cancellationToken);
-        //}
-
-        ///// <summary>
-        ///// Gets the services with the specified <paramref name="name"/>
-        ///// </summary>
-        ///// <param name="name">The id</param>
-        ///// <param name="args">The arguments</param>
-        ///// <param name="cancellationToken">The cancellation token</param>
-        ///// <returns></returns>
-        //[HttpGet]
-        //[Route(AppointMateAPIRoutes.ServiceRoute)]
-        //public async Task<ActionResult<ServiceCompaniesResult>> GetServiceAsync([FromRoute] string name, APIArgs args, CancellationToken cancellationToken = default)
-        //{
-        //    var documents = await AppointMateDbMapper.AppointmentTemplates.SelectAsync(x => x.Name == name, cancellationToken);
-        //    var services = documents.OrderBy(x => x.Price)
-        //                                 .Skip((args.Page * args.PerPage) + args.Offset).Take(args.PerPage)
-        //                                 .ToList();
-
-        //    return new ServiceCompaniesResult(name, services.Select(x => x.ToResponseModel()));
-        //}
-
-        #endregion
-
-        #region Companies
+        #region Universities
 
         /// <summary>
-        /// Gets the company with the specified <paramref name="id"/>
+        /// Gets the university with the specified <paramref name="id"/>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The memberId</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
-        [Route(AppointMateAPIRoutes.CompanyRoute)]
-        public async Task<ActionResult<CompanyResponseModel>?> GetCompanyAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<UniversityResponseModel>?> GetUniversityAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Universities, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
+
+        #endregion
+
+        #region Departments
+
+        /// <summary>
+        /// Gets the department with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The memberId</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<DepartmentResponseModel>?> GetDepartmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetAsync(AppointMateDbMapper.Departments, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
 
         #endregion
@@ -125,7 +86,7 @@ namespace AppointMate
         /// <summary>
         /// Gets the user with the specified <paramref name="id"/>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The memberId</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
@@ -133,112 +94,192 @@ namespace AppointMate
         public async Task<ActionResult<UserResponseModel>?> GetUserAsync([FromRoute] string id, CancellationToken cancellationToken = default) 
             => await ControllerHelpers.GetAsync(AppointMateDbMapper.Users, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
 
-        #region User Services
+        #endregion
+
+        #region Professors
 
         /// <summary>
-        /// Gets the services of the user with the specified <paramref name="userId"/>
+        /// Gets the professor with the specified <paramref name="id"/>
         /// </summary>
-        /// <param name="userId">The id</param>
+        /// <param name="id">The memberId</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
-        [Route(AppointMateAPIRoutes.UserServicesRoute)]
-        public async Task<ActionResult<IEnumerable<CustomerServiceResponseModel>>> GetUserServicesAsync([FromRoute] string userId, CancellationToken cancellationToken = default) 
-            => (await DI.UsersRepository.GetUserServicesAsync(userId.ToObjectId())).ToActionResult(x => x.Select(y => y.ToResponseModel()));
-
-        /// <summary>
-        /// Gets the user service with the specified <paramref name="id"/>
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route(AppointMateAPIRoutes.UserServiceRoute)]
-        public async Task<ActionResult<CustomerServiceResponseModel>?> GetUserServiceAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Appointments, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
+        [Route(AppointMateAPIRoutes.UserRoute)]
+        public async Task<ActionResult<ProfessorResponseModel>?> GetProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Professors, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
 
         #endregion
 
-        #region Favorite Companies
+        #region Members
 
         /// <summary>
-        /// Adds as favorite the company with the specified <paramref name="companyId"/> to the user with the specified <paramref name="id"/>
+        /// Gets the member with the specified <paramref name="id"/>
         /// </summary>
-        /// <param name="id">The id</param>
-        /// <param name="companyId">The company id</param>
+        /// <param name="id">The memberId</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(AppointMateAPIRoutes.UserRoute)]
+        public async Task<ActionResult<MemberResponseModel>?> GetMemberAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Members, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
+
+        #region Saved Departments
+
+        /// <summary>
+        /// Adds a saved the department with the specified <paramref name="departmentId"/> to the member with the specified <paramref name="memberId"/>
+        /// </summary>
+        /// <param name="memberId">The memberId</param>
+        /// <param name="departmentId">The department id</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpPost]
-        [Route(AppointMateAPIRoutes.UserFavoriteCompaniesRoute)]
-        public async Task<ActionResult<bool>> AddFavoriteCompanyAsync([FromRoute] string id, [FromBody] string companyId, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<bool>> AddMemberSavedDepartmentAsync([FromRoute] string memberId, [FromBody] string departmentId, CancellationToken cancellationToken = default)
         {
-            var entity = await DI.UsersRepository.AddUserFavoriteCompanyAsync(id.ToObjectId(), companyId.ToObjectId());
+            var entity = await DI.MembersRepository.AddMemberSavedDpartmentAsync(memberId.ToObjectId(), departmentId.ToObjectId());
 
             return entity.ToActionResult(x => true);
         }
 
         /// <summary>
-        /// Gets the favorite companies of the user with the specified <paramref name="id"/>
+        /// Gets the saved departments of the user with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The user id</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
-        [Route(AppointMateAPIRoutes.UserFavoriteCompaniesRoute)]
-        public async Task<ActionResult<IEnumerable<CompanyResponseModel>>?> GetUserFavoriteCompaniesAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<DepartmentResponseModel>>> GetMemberSavedDepartmentsAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
-            // Get the user favorite company with the specified user id
-            var favorites = await AppointMateDbMapper.MemberSavedDepartments.SelectAsync(x => x.UserId.ToString() == id);
+            // Get the user savedProfessors department with the specified user memberId
+            var savedDepartments = await AppointMateDbMapper.MemberSavedDepartments.SelectAsync(x => x.MemberId.ToString() == id);
 
-            // If no favorite company is found...
-            if (favorites is null)
+            // If no savedProfessors department is found...
+            if (savedDepartments is null)
                 return NotFound();
 
-            var companies = await AppointMateDbMapper.Departments.SelectAsync(x => favorites.Any(y => y.DepartmentId == x.Id));
-            
-            return new OkObjectResult(companies.Select(x => x.ToResponseModel()));
+            var departments = await AppointMateDbMapper.Departments.SelectAsync(x => savedDepartments.Any(y => y.DepartmentId == x.Id), cancellationToken);
+
+            return new OkObjectResult(departments.Select(x => x.ToResponseModel()));
         }
 
         /// <summary>
-        /// Gets the favorite company with the specified <paramref name="id"/>
+        /// Gets the saved department with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
-        [Route(AppointMateAPIRoutes.UserFavoriteCompanyRoute)]
-        public async Task<ActionResult<CompanyResponseModel>?> GetUserFavoriteCompanyAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<DepartmentResponseModel>> GetMemberSavedDepartmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
-            // Get the user favorite company with the specified id
-            var favorite = await AppointMateDbMapper.MemberSavedDepartments.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+            // Get the user saved department with the specified id
+            var savedDepartment = await AppointMateDbMapper.MemberSavedDepartments.FirstOrDefaultAsync(x => x.Id.ToString() == id);
 
-            // If the favorite company is not found...
-            if (favorite is null)
+            // If the saved department is not found...
+            if (savedDepartment is null)
                 return NotFound();
 
-            var company = await AppointMateDbMapper.Departments.FirstOrDefaultAsync(x => x.Id == favorite.DepartmentId);
+            var department = await AppointMateDbMapper.Departments.FirstOrDefaultAsync(x => x.Id == savedDepartment.DepartmentId, cancellationToken);
 
-            return new OkObjectResult(company.ToResponseModel());
+            return department.ToResponseModel();
         }
 
         /// <summary>
-        /// Deletes the favorite company with the specified <paramref name="id"/>
+        /// Deletes the saved department with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpDelete]
-        [Route(AppointMateAPIRoutes.UserFavoriteCompanyRoute)]
-        public async Task<ActionResult<CompanyResponseModel>?> DeleteUserFavoriteCompanyAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<DepartmentResponseModel>> DeleteSavedDeparmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
-            var response = await DI.UsersRepository.DeleteUserFavoriteCompanyAsync(id.ToObjectId());
+            var response = await DI.MembersRepository.DeleteMemberSavedDepartmentAsync(id.ToObjectId());
 
             if (!response.IsSuccessful || response.Result is null)
                 return StatusCode(response.StatusCode ?? 400, response);
 
-            var company = await GetCompanyAsync(response.Result.DepartmentId.ToString());
+            var department = await GetDepartmentAsync(response.Result.DepartmentId.ToString(), cancellationToken);
 
-            return company;
+            return department!;
+        }
+
+        #endregion
+
+        #region Saved Professors
+
+        /// <summary>
+        /// Adds a saved the professor with the specified <paramref name="professorId"/> to the member with the specified <paramref name="memberId"/>
+        /// </summary>
+        /// <param name="memberId">The memberId</param>
+        /// <param name="professorId">The professor </param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult<bool>> AddMemberSavedProfessorAsync([FromRoute] string memberId, [FromBody] string professorId, CancellationToken cancellationToken = default)
+        {
+            var entity = await DI.MembersRepository.AddMemberSavedProfessorAsync(memberId.ToObjectId(), professorId.ToObjectId());
+
+            return entity.ToActionResult(x => true);
+        }
+
+        /// <summary>
+        /// Gets the saved professors of the user with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The user memberId</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ProfessorResponseModel>>> GetMemberSavedProfessorsAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+        {
+            // Get the user saved professor with the specified user memberId
+            var savedProfessors = await AppointMateDbMapper.MemberSavedProfessors.SelectAsync(x => x.MemberId.ToString() == id);
+
+            // If no saved professor is found...
+            if (savedProfessors is null)
+                return NotFound();
+
+            var departments = await AppointMateDbMapper.Departments.SelectAsync(x => savedProfessors.Any(y => y.ProfessorId == x.Id), cancellationToken);
+
+            return new OkObjectResult(departments.Select(x => x.ToResponseModel()));
+        }
+
+        /// <summary>
+        /// Gets the saved professor with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The memberId</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<ProfessorResponseModel>> GetMemberSavedProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+        {
+            // Get the user saved professor with the specified memberId
+            var savedProfessor = await AppointMateDbMapper.MemberSavedProfessors.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+
+            // If the saved professor is not found...
+            if (savedProfessor is null)
+                return NotFound();
+
+            var professor = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == savedProfessor.ProfessorId, cancellationToken);
+
+            return professor.ToResponseModel();
+        }
+
+        /// <summary>
+        /// Deletes the saved professor with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The memberId</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task<ActionResult<ProfessorResponseModel>> DeleteSavedProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+        {
+            var response = await DI.MembersRepository.DeleteUserFavoriteProfessorAsync(id.ToObjectId());
+
+            if (!response.IsSuccessful || response.Result is null)
+                return StatusCode(response.StatusCode ?? 400, response);
+
+            var professor = await GetProfessorAsync(response.Result.ProfessorId.ToString(), cancellationToken);
+
+            return professor!;
         }
 
         #endregion

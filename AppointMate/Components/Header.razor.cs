@@ -9,15 +9,6 @@ namespace AppointMate
     /// </summary>
     public partial class Header 
     {
-        #region Private Members
-
-        /// <summary>
-        /// The drop down menu for the account
-        /// </summary>
-        private DropDownMenu<RouteModel>? mAccountMenu;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
@@ -59,71 +50,6 @@ namespace AppointMate
         /// </summary>
         public Header() : base()
         {
-
-        }
-
-        #endregion
-
-        #region Protected Methods
-
-        /// <summary>
-        /// Method invoked after each time the component has been rendered
-        /// </summary>
-        /// <param name="firstRender">Set to true if this is the first time the method has been invoked on this component instance; otherwise false</param>
-        protected override void OnAfterRender(bool firstRender)
-        {
-            base.OnAfterRender(firstRender);
-
-            // If the drop down menu has no items...
-            if (mAccountMenu is not null && mAccountMenu.ItemsCount == 0)   
-            {
-                var routes = new List<RouteModel>();
-                // If it is not a connected user...
-                if (Username.IsNullOrEmpty())
-                {
-                    routes.Add(new()
-                    {
-                        Name = AppointMateConstants.LogIn,
-                        Route = "log in route"
-                    });
-                }
-                // Else...
-                else
-                {
-                    routes.AddRange(new List<RouteModel>()
-                    {
-                        new()
-                        {
-                            Name = AppointMateConstants.MyAccount,
-                            Route = "MyAccount route"
-                        },
-                        new()
-                        {
-                            Name = AppointMateConstants.Appointments,
-                            Route = "Appointments route"
-                        },
-                        new()
-                        {
-                            Name = AppointMateConstants.Favorites,
-                            Route = "Favorites route"
-                        },
-                        new()
-                        {
-                            Name = AppointMateConstants.Settings,
-                            Route = "Settings route"
-                        },
-                        new()
-                        {
-                            Name = AppointMateConstants.LogOut,
-                            Route = "log out route"
-                        }
-                    });
-                }
-
-                mAccountMenu.AddRange(routes);
-                mAccountMenu.MenuButton.HasAnimation = false;
-                mAccountMenu.MenuButton.InvokeStateHasChanged();
-            }
 
         }
 

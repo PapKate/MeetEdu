@@ -57,11 +57,13 @@ namespace AppointMate
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static MemberEntity FromRequestModel(MemberRequestModel model)
+        public static async Task<MemberEntity> FromRequestModelAsync(MemberRequestModel model)
         {
             var entity = new MemberEntity();
 
             DI.Mapper.Map(model, entity);
+
+            entity.User = !model.UserId.IsNullOrEmpty() ? await EntityHelpers.GetUserAsync(model.UserId) : null; 
 
             UpdateNonAutoMapperValues(model, entity);
             
@@ -84,8 +86,8 @@ namespace AppointMate
         /// <returns></returns>
         public static async void UpdateNonAutoMapperValues(MemberRequestModel model, MemberEntity entity)
         {
-            var customerSessions = await AppointMateDbMapper.Appointments.SelectAsync(x => x.MemberId == entity.Id);
-            entity.TotalAppointments = (uint)customerSessions.Count();
+            var appointments = await AppointMateDbMapper.Appointments.SelectAsync(x => x.MemberId == entity.Id);
+            entity.TotalAppointments = (uint)appointments.Count();
 
             var savedDepartments = await AppointMateDbMapper.MemberSavedDepartments.SelectAsync(x => x.MemberId == entity.Id);
             entity.TotalSavedDepartments = (uint)savedDepartments.Count();

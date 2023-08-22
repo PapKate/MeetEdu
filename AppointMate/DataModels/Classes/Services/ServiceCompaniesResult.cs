@@ -15,7 +15,7 @@
         /// <summary>
         /// The member of the <see cref="Services"/> property
         /// </summary>
-        private IEnumerable<AppointmentTemplateEntity>? mServices;
+        private IEnumerable<AppointmentRuleEntity>? mServices;
 
         #endregion
 
@@ -33,9 +33,9 @@
         /// <summary>
         /// The services
         /// </summary>
-        public IEnumerable<AppointmentTemplateEntity> Services
+        public IEnumerable<AppointmentRuleEntity> Services
         {
-            get => mServices ?? Enumerable.Empty<AppointmentTemplateEntity>();
+            get => mServices ?? Enumerable.Empty<AppointmentRuleEntity>();
             set => mServices = value;
         }
 
@@ -46,7 +46,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public ServiceCompaniesResult(string name, IEnumerable<AppointmentTemplateEntity> models) : base()
+        public ServiceCompaniesResult(string name, IEnumerable<AppointmentRuleEntity> models) : base()
         {
             Name = name ?? throw new ArgumentNullException(nameof(Name));
             Services = models ?? throw new ArgumentNullException(nameof(Services));

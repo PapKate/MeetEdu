@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model for a department layout
     /// </summary>
-    public class DepartmentLayoutRequestModel
+    public class DepartmentLayoutRequestModel : BaseRequestModel
     {
         #region Public Properties
 
