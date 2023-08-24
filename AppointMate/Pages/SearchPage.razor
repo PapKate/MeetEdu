@@ -1,4 +1,4 @@
-﻿@page "/search"
+﻿@page "/"
 
 @using static AppointMate.Personalization
 @using static Atom.Blazor.Personalization
@@ -24,9 +24,15 @@
         <SearchBar @bind-Text="@SearchText" />
     </div>
 
-    <DepartmentPreview />
-    <DepartmentPreview />
+    @*<DepartmentPreview />*@
+
+    <div class="searchPageProfessorsContainer">
+        <ProfessorPreview />
+        <ProfessorPreview />
+        <ProfessorPreview />
+    </div>
     
+    @*<DepartmentPreview />*@
 </div>
 
 <style>
@@ -46,5 +52,31 @@
         justify-content: center;
         align-items: center;
     }
+
+    .searchPageProfessorsContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: @VeryVeryLargeGap;
+    }
+
+    @@media screen and (max-width: 1400px) {
+        .searchPageSearchBarContainer {
+            width: 100%;
+        }
+
+        .searchPageProfessorsContainer {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media screen and (max-width: 960px) {
+
+        .searchPageProfessorsContainer {
+            grid-template-columns: 1fr;
+        }
+    }
+
+
 
 </style>

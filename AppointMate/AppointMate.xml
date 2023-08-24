@@ -1793,16 +1793,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:AppointMate.DepartmentPreview">
-            <summary>
-            Represents the preview of a department 
-            </summary>
-        </member>
-        <member name="M:AppointMate.DepartmentPreview.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
         <member name="T:AppointMate.Header">
             <summary>
             The header component

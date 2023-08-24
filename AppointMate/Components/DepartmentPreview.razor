@@ -13,9 +13,9 @@
             <div class="modelRibbonInfoContainer">
                 <h1 class="modelRibbonInfo">Computer Engineering & Informatics Department</h1>
                 <div class="modelRibbonInfoDetails">
-                    <h3 class="modelRibbonUniName">University of Patras</h3>
-                    <div class="modelStaffMembersContainer">
-                        <span class="modelStaffMembers">- 32</span>
+                    <h3 class="departmentPreviewRibbonUniName">University of Patras</h3>
+                    <div class="departmentPreviewStaffMembersContainer">
+                        <span class="departmentPreviewStaffMembers">- 32</span>
                         <MudIcon Icon="@Icons.Material.Filled.Groups3" Size="@Size.Medium" />
                     </div>
                 </div>
@@ -24,7 +24,8 @@
             <IconButton BackColor="transparent" 
                         ForeColor="@Orange.DarkOrWhite()" 
                         VectorSource="@IconPaths.HeartOutlinePath" 
-                        CssClasses="modelRibbonHeartContainer" />
+                        HasAnimation="false"
+                        CssClasses="departmentPreviewRibbonHeartContainer" />
         </div>
     </div>
 
@@ -69,197 +70,50 @@
         </div>
     </div>
 
-    <div class="modelMapContainer">
-        <img class="modelMap" src="./icons/mapCeid.png" alt="map"/>
+    <div class="departmentPreviewMapContainer">
+        <img class="departmentPreviewMap" src="./icons/mapCeid.png" alt="map" />
     </div>
 
 </div>
 
 <style>
-    .modelContainer {
-        position: relative;
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 3fr 2fr;
-        border-radius: @VeryLargeBorderRadius;
-        border: solid 1px @BorderColorVariable.GetCssVariable();
-    }
-
-    .modelRibbonContainer {
-        position: absolute;
-        width: 100%;
-        height: 80px;
-        top: 24px;
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        gap: @VeryLargeGap;
-        padding: @LargePadding;
-        background: @BackColorVariable.GetCssVariable();
-        color: @ForeColorVariable.GetCssVariable();
-    }
-
-    .modelRibbon {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .modelRibbonInfoContainer {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .modelRibbonInfo {
-        font-size: 140%;
-        font-weight: 700;
-    }
-
-    .modelRibbonInfoDetails {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: @VeryLargeGap;
-    }
-
-    .modelRibbonUniName {
+    .departmentPreviewRibbonUniName {
         font-size: 120%;
         font-weight: 500;
     }
 
-    .modelRibbonHeartContainer {
+    .departmentPreviewRibbonHeartContainer {
         position: relative;
         width: 44px;
         height: 44px;
     }
 
-    .modelStaffMembersContainer {
+    .departmentPreviewStaffMembersContainer {
         position: relative;
         display: flex;
         align-items: center;
         gap: @LargeGap;
     }
 
-    .modelStaffMembers {
+    .departmentPreviewStaffMembers {
         font-weight: 700;
     }
-    
-    .modelInfoContainer {
+
+    .departmentPreviewMapContainer {
         position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: @VeryVeryLargeGap;
-        padding: @LargePadding;
-    }
-
-    .modelImageAndContactContainer {
-        position: relative;
-        display: flex;
-        align-items: flex-end;
-        justify-content:flex-start;
-        gap: @LargeGap;
-    }
-
-    .modelImageContainer {
-        position: relative;
-        width: 200px;
-        height: 200px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: @LargePadding;
-        background: @White.NormalizedColor();
-        border-radius: @LargeBorderRadius;
-        filter: @LightFilterDropShadow;
-        border: solid 1px @BorderColorVariable.GetCssVariable();
-    }
-
-    .modelImage {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        filter: @LightFilterDropShadow;
-    }
-
-    .modelContactContainer {
-        position: relative;
-        display: grid;
-        grid-template-columns: 28px 1fr;
-        grid-auto-rows: 28px;
-        align-items: center;
-        gap: @MediumGap;
-    }
-
-    .modelContactImage {
-        position: relative;
-        width: 28px;
-        height: 28px;
-        filter: @LightFilterDropShadow;
-    }
-
-    .modelWeeklyScheduleContainer {
-        position:relative;
-        display: grid;
-        grid-template-columns: 3fr 2fr;
-        gap: @MediumGap @VeryLargeGap;
-    }
-
-    .modelWeeklySchedule {
-        grid-row-start: 1;
-        grid-row-end: 3;
-        grid-column-start: 1;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: @LargeGap;
-    }
-
-    .modelWeeklyScheduleTitle {
-        font-size: 112%;
-        font-weight: 700;
-        color: @ForeColorVariable.GetCssVariable();
-    }
-
-    .modelWeeklyScheduleNote {
-        font-size: 92%;
-    }
-
-    .modelWeeklyScheduleDayContainer {
-        position: relative;
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        justify-items: right;
-        gap: @MediumGap;
-    }
-
-    .modelWeeklyScheduleDay {
-        font-weight: 600;
-    }
-
-    .modelWeeklyScheduleTime {
-        grid-column-start: 2;
-    }
-
-    .modelMapContainer {
-        position:relative;
         top: 104px;
         width: 100%;
         height: fit-content;
         padding: @LargePadding;
     }
 
-    .modelMap {
+    .departmentPreviewMap {
         position: relative;
         width: 100%;
         height: auto;
         border-radius: @LargeBorderRadius;
         border: solid 1px @Gray.NormalizedColor();
     }
+
 
 </style>

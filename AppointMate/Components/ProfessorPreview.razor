@@ -1,0 +1,198 @@
+﻿@using static AppointMate.Personalization
+@using static AppointMate.CssConstants
+
+@using static Atom.Blazor.Personalization
+
+@namespace AppointMate
+@using Atom.Blazor;
+
+<div class="professorContainer" style="@BorderColorVariable.SetCssColor(Orange)">
+    
+    <div class="professorRibbonContainer" style="@BackColorVariable.SetCssColor(Orange) @ForeColorVariable.SetCssColor(Orange.DarkOrWhite())">
+        <div></div>
+        <div class="modelRibbon">
+            <div class="modelRibbonInfoContainer">Papadopoulou Aikaterini</div>
+        </div>
+    </div>
+
+    <div class="professorInfoContainer">
+        <div class="professorHeaderContainer">
+            <span>Professor</span>
+            <IconButton BackColor="transparent"
+                        ForeColor="@Orange"
+                        VectorSource="@IconPaths.HeartOutlinePath"
+                        HasAnimation="false"
+                        CssClasses="professorRibbonHeartContainer" />
+        </div>
+        <div class="modelImageAndContactContainer">
+            <div class="professorImageContainer">
+                <img class="modelImage" src="./icons/lady.png" alt="name" />
+            </div>
+            <div class="modelContactContainer">
+                <img class="modelContactImage" src="./icons/call.png" alt="phone" />
+                <span class="modelContactValue">2610 623555</span>
+
+                <img class="modelContactImage" src="./icons/telephone.png" alt="phone" />
+                <span class="modelContactValue">6944 511393</span>
+            </div>
+        </div>
+        <div class="professorPositionContainer">
+            <span class="modelWeeklyScheduleTitle" style="@ForeColorVariable.SetCssColor(Orange)">Department</span>
+            <span class="professorPosition">Computer Engineering & Informatics</span>
+            <span class="modelWeeklyScheduleTitle" style="@ForeColorVariable.SetCssColor(Orange)">Field</span>
+            <span class="professorPosition">Applications and Foundations of Computer Science</span>
+        </div>
+        <div class="professorWeeklyScheduleContainer">
+            <div class="modelWeeklySchedule">
+                <span class="modelWeeklyScheduleTitle" style="@ForeColorVariable.SetCssColor(Orange)">Schedule</span>
+            </div>
+            <div class="modelWeeklyScheduleDayContainer">
+                <span class="modelWeeklyScheduleDay">Monday</span>
+                <span class="modelWeeklyScheduleTime">09:30 - 13:00</span>
+                <span class="modelWeeklyScheduleTime">19:00 - 20:00</span>
+            </div>
+            <div class="modelWeeklyScheduleDayContainer">
+                <span class="modelWeeklyScheduleDay">Wednesday</span>
+                <span class="modelWeeklyScheduleTime">19:00 - 20:00</span>
+            </div>
+            <span class="professorWeeklyScheduleNote">Any other time outside of the working schedule of the secretary office needs prior notice.</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .professorContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-width: 420px;
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: @NormalPadding;
+        border-radius: @VeryLargeBorderRadius;
+        border: solid 1px @BorderColorVariable.GetCssVariable();
+    }
+
+    .professorHeaderContainer {
+        position: absolute;
+        width: 100%;
+        height: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+        gap: @LargeGap;
+        padding-left: 184px;
+        background: @BackColorVariable.GetCssVariable();
+        color: @ForeColorVariable.GetCssVariable();
+    }
+
+    .professorRibbonContainer {
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        top: 36px;
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: @VeryLargeGap;
+        padding: @NormalPadding;
+        background: @BackColorVariable.GetCssVariable();
+        color: @ForeColorVariable.GetCssVariable();
+        font-size: 120%;
+        font-weight: 600;
+    }
+
+    .professorImageContainer {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        background: @White.NormalizedColor();
+        filter: @LightFilterDropShadow;
+        border-radius: @LargeBorderRadius;
+        border: solid 1px @BorderColorVariable.GetCssVariable();
+        overflow: hidden;
+    }
+
+    .professorInfoContainer {
+        position: relative;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .button.professorRibbonHeartContainer {
+        position: absolute;
+        top: 0;
+        right: 0; 
+        width: 24px;
+        height: 24px;
+    }
+
+    .professorPositionContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: start;
+        gap: @MediumGap;
+        padding: @VeryLargePadding @VeryLargePadding 0 @VeryLargePadding;
+    }
+
+    .professorPosition {
+        text-align: right;
+    }
+
+    .professorWeeklyScheduleContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: @MediumGap @VeryLargeGap;
+        padding: @VeryLargePadding;
+    }
+
+    .professorWeeklyScheduleNote {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        font-size: 92%;
+    }
+
+    @@media screen and (max-width: 440px) {
+
+        .modelImageAndContactContainer {
+            height: 160px;
+        }
+
+        .professorContainer {
+            min-width: 360px;
+            width: 360px;
+            font-size: 90%;
+        }
+
+        .professorHeaderContainer {
+            gap: @LargeGap;
+            padding-left: 140px;
+        }
+
+        .professorRibbonContainer {
+            grid-template-columns: 132px 1fr;
+        }
+
+        .professorImageContainer {
+            width: 120px;
+            height: 120px;
+        }
+
+        .professorPositionContainer {
+            padding: @LargePadding @LargePadding 0 @LargePadding;
+        }
+
+        .professorWeeklyScheduleContainer {
+            gap: @MediumGap @LargeGap;
+            padding: @LargePadding;
+        }
+    }
+
+</style>
