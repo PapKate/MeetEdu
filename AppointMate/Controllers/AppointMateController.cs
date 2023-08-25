@@ -53,6 +53,21 @@ namespace AppointMate
 
         #endregion
 
+        #region Users
+
+        /// <summary>
+        /// Gets the user with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The memberId</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(AppointMateAPIRoutes.UserRoute)]
+        public async Task<ActionResult<UserResponseModel>?> GetUserAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Users, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
+
+        #endregion
+
         #region Universities
 
         /// <summary>
@@ -62,6 +77,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
+        [Route(AppointMateAPIRoutes.UniversitiesRoute)]
         public async Task<ActionResult<UniversityResponseModel>?> GetUniversityAsync([FromRoute] string id, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetAsync(AppointMateDbMapper.Universities, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
 
@@ -76,23 +92,9 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
+        [Route(AppointMateAPIRoutes.DepartmentRoute)]
         public async Task<ActionResult<DepartmentResponseModel>?> GetDepartmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetAsync(AppointMateDbMapper.Departments, x => x.Id == id.ToObjectId(), x => x.ToResponseModel(), cancellationToken);
-
-        #endregion
-
-        #region Users
-
-        /// <summary>
-        /// Gets the user with the specified <paramref name="id"/>
-        /// </summary>
-        /// <param name="id">The memberId</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route(AppointMateAPIRoutes.UserRoute)]
-        public async Task<ActionResult<UserResponseModel>?> GetUserAsync([FromRoute] string id, CancellationToken cancellationToken = default) 
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Users, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
 
         #endregion
 
@@ -105,7 +107,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
-        [Route(AppointMateAPIRoutes.UserRoute)]
+        [Route(AppointMateAPIRoutes.ProfessorRoute)]
         public async Task<ActionResult<ProfessorResponseModel>?> GetProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetAsync(AppointMateDbMapper.Professors, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
 
@@ -120,7 +122,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
-        [Route(AppointMateAPIRoutes.UserRoute)]
+        [Route(AppointMateAPIRoutes.MemberRoute)]
         public async Task<ActionResult<MemberResponseModel>?> GetMemberAsync([FromRoute] string id, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetAsync(AppointMateDbMapper.Members, x => x.Id.ToString() == id, x => x.ToResponseModel(), cancellationToken);
 
@@ -134,7 +136,8 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<bool>> AddMemberSavedDepartmentAsync([FromRoute] string memberId, [FromBody] string departmentId, CancellationToken cancellationToken = default)
+        [Route(AppointMateAPIRoutes.SavedDepartmentsRoute)]
+        public async Task<ActionResult<bool>> AddMemberSavedDepartmentAsync([FromBody] string memberId, [FromBody] string departmentId, CancellationToken cancellationToken = default)
         {
             var entity = await DI.MembersRepository.AddMemberSavedDpartmentAsync(memberId.ToObjectId(), departmentId.ToObjectId());
 
@@ -148,6 +151,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
+        [Route(AppointMateAPIRoutes.SavedProfessorsRoute)]
         public async Task<ActionResult<IEnumerable<DepartmentResponseModel>>> GetMemberSavedDepartmentsAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user savedProfessors department with the specified user memberId

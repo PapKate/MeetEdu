@@ -43,6 +43,30 @@
 
         #endregion
 
+        #region Users
+
+        /// <summary>
+        /// The users route
+        /// <code>/appointMate/api/v1/meetEdu/users</code>
+        /// </summary>
+        public const string UsersRoute = BaseRoute + "/users";
+
+        /// <summary>
+        /// The user route
+        /// <code>/appointMate/api/v1/meetEdu/users/3</code>
+        /// </summary>
+        public const string UserRoute = UsersRoute + "/{userId}";
+
+        /// <summary>
+        /// Gets the route for the user with the specified <paramref name="id"/>
+        /// <code>/appointMate/api/v1/meetEdu/users/4</code>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public static string GetUserRoute(string id) => UsersRoute + $"/{id}";
+
+        #endregion
+
         #region Universities
 
         /// <summary>
@@ -125,27 +149,26 @@
 
         #endregion
 
-        #region Staff Members
-
+        #region Professors
         /// <summary>
-        /// The staff members route
-        /// <code>/appointMate/api/v1/meetEdu/staffMembers</code>
+        /// The professors route
+        /// <code>/appointMate/api/v1/meetEdu/professors</code>
         /// </summary>
-        public const string StaffMembersRoute = BaseRoute + "/staffMembers";
+        public const string ProfessorsRoute = BaseRoute + "/professors";
 
         /// <summary>
-        /// The staff member route
-        /// <code>/appointMate/api/v1/meetEdu/staffMembers/3</code>
+        /// The professor route
+        /// <code>/appointMate/api/v1/meetEdu/professors/3</code>
         /// </summary>
-        public const string StaffMemberRoute = StaffMembersRoute + "/{staffMemberId}";
+        public const string ProfessorRoute = ProfessorsRoute + "/{professorId}";
 
         /// <summary>
-        /// Gets the staff member route for the one with the specified <paramref name="id"/>
-        /// <code>/appointMate/api/v1/meetEdu/staffMembers/3</code>
+        /// Gets the professor route for the one with the specified <paramref name="id"/>
+        /// <code>/appointMate/api/v1/meetEdu/professors/3</code>
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns></returns>
-        public static string GetStaffMemberRoute(string id) => StaffMembersRoute + $"/{id}";
+        public static string GetProfessorRoute(string id) => ProfessorsRoute + $"/{id}";
 
         #endregion
 
@@ -194,6 +217,26 @@
         /// <param name="id">The id</param>
         /// <returns></returns>
         public static string GetMemberRoute(string id) => MembersRoute + $"/{id}";
+
+        #endregion
+
+        #region Saved Departments
+
+        /// <summary>
+        /// The saved departments route
+        /// <code>/appointMate/api/v1/meetEdu/savedDepartments</code>
+        /// </summary>
+        public const string SavedDepartmentsRoute = BaseRoute + "/savedDepartments";
+
+        #endregion
+
+        #region Saved Professors
+
+        /// <summary>
+        /// The saved departments route
+        /// <code>/appointMate/api/v1/meetEdu/savedProfessors</code>
+        /// </summary>
+        public const string SavedProfessorsRoute = BaseRoute + "/savedProfessors";
 
         #endregion
 
