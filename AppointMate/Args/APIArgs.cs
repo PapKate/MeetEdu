@@ -58,21 +58,31 @@
     }
 
     /// <summary>
-    /// Arguments used for retrieving data that belong to a company
+    /// Arguments used for retrieving data that belong to a department
     /// </summary>
-    public class CompanyRelatedAPIArgs : APIArgs
+    public class DepartmentRelatedAPIArgs : APIArgs
     {
         #region Public Properties
 
         /// <summary>
-        /// Limit the result to entries with specific company ids
+        /// Limit the result to entries with specific university ids
         /// </summary>
-        public IEnumerable<string>? IncludeCompanies { get; set; }
+        public IEnumerable<string>? IncludeUniversities { get; set; }
 
         /// <summary>
-        /// Limit the result to entries without specific company ids
+        /// Limit the result to entries without specific university ids
         /// </summary>
-        public IEnumerable<string>? ExcludeCompanies { get; set; }
+        public IEnumerable<string>? ExcludeUniversities { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries with specific department ids
+        /// </summary>
+        public IEnumerable<string>? IncludeDepartments { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific department ids
+        /// </summary>
+        public IEnumerable<string>? ExcludeDepartments { get; set; }
 
         #endregion
 
@@ -81,7 +91,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CompanyRelatedAPIArgs() : base()
+        public DepartmentRelatedAPIArgs() : base()
         {
 
         }
@@ -90,46 +100,21 @@
     }
 
     /// <summary>
-    /// Arguments used for retrieving grouped services
+    /// Arguments used for retrieving members
     /// </summary>
-    public class GroupedServiceAPIArgs : CompanyRelatedAPIArgs
+    public class MemberRelatedAPIArgs : DepartmentRelatedAPIArgs
     {
-        #region Private Methods
-
-        /// <summary>
-        /// The member of the <see cref="InnerOffset"/> property
-        /// </summary>
-        private int mInnerOffset = 0;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
-        /// The index of the page starting from 0.
+        /// Limit the result to entries with specific staff member ids
         /// </summary>
-        public virtual int InnerPage { get; set; } = 0;
+        public IEnumerable<string>? IncludeStaffMembers { get; set; }
 
         /// <summary>
-        /// Maximum number of entries to be returned in result set.
+        /// Limit the result to entries without specific staff member ids
         /// </summary>
-        public virtual int InnerPerPage { get; set; } = 3;
-
-        /// <summary>
-        /// Offset the result set by a specific number of items.
-        /// </summary>
-        public virtual int InnerOffset
-        {
-            get => mInnerOffset;
-
-            set
-            {
-                if (value < 0)
-                    mInnerOffset = value;
-
-                mInnerOffset = value;
-            }
-        }
+        public IEnumerable<string>? ExcludeStaffMembers { get; set; }
 
         #endregion
 
@@ -138,7 +123,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public GroupedServiceAPIArgs() : base()
+        public MemberRelatedAPIArgs() : base()
         {
 
         }
@@ -146,105 +131,4 @@
         #endregion
     }
 
-    /// <summary>
-    /// Arguments used for retrieving services
-    /// </summary>
-    public class CustomerRelatedAPIArgs : CompanyRelatedAPIArgs
-    {
-        #region Public Properties
-
-        /// <summary>
-        /// Limit the result to entries with specific customer ids
-        /// </summary>
-        public IEnumerable<string>? IncludeCustomers { get; set; }
-
-        /// <summary>
-        /// Limit the result to entries without specific customer ids
-        /// </summary>
-        public IEnumerable<string>? ExcludeCustomers { get; set; }
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public CustomerRelatedAPIArgs() : base()
-        {
-
-        }
-
-        #endregion
-    }
-
-    /// <summary>
-    /// Arguments used for retrieving sessions
-    /// </summary>
-    public class SessionAPIArgs : CustomerRelatedAPIArgs
-    {
-        #region Public Properties
-
-        /// <summary>
-        /// Limit the result to entries with specific service ids
-        /// </summary>
-        public IEnumerable<string>? IncludeServices { get; set; }
-
-        /// <summary>
-        /// Limit the result to entries without specific service ids
-        /// </summary>
-        public IEnumerable<string>? ExcludeServices { get; set; }
-
-        /// <summary>
-        /// Limit the result to entries without specific <see cref="SessionStatus"/>
-        /// </summary>
-        public SessionStatus? SessionStatus { get; set; }
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public SessionAPIArgs() : base()
-        {
-
-        }
-
-        #endregion
-    }
-
-
-    /// <summary>
-    /// Arguments used for retrieving payments
-    /// </summary>
-    public class PaymentAPIArgs : CustomerRelatedAPIArgs
-    {
-        #region Public Properties
-
-        /// <summary>
-        /// Limit the result to entries with specific payment method ids
-        /// </summary>
-        public IEnumerable<string>? IncludePaymentMethods { get; set; }
-
-        /// <summary>
-        /// Limit the result to entries without specific payment method ids
-        /// </summary>
-        public IEnumerable<string>? ExcludePaymentMethods { get; set; }
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public PaymentAPIArgs() : base()
-        {
-
-        }
-
-        #endregion
-    }
 }

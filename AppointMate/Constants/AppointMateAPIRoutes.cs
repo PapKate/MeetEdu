@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace AppointMate
+﻿namespace AppointMate
 {
     /// <summary>
     /// The AppontMate related API routes
@@ -9,23 +7,29 @@ namespace AppointMate
     {
         /// <summary>
         /// The app route
+        /// <code>/appointMate/api</code>
+        /// </summary>
+        private const string APIRoute = "/appointMate/api";
+
+        /// <summary>
+        /// The app route
         /// <code>/appointMate/api/v1</code>
         /// </summary>
-        private const string AppRoute = "/appointMate";
+        private const string VersionRoute = APIRoute + "/v1";
 
         /// <summary>
         /// The base route
-        /// <code>/appointMate/api/v1</code>
+        /// <code>/appointMate/api/v1/meetEdu</code>
         /// </summary>
-        private const string BaseAPIRoute = AppRoute + "api/v1";
+        private const string BaseRoute = VersionRoute + "/meetEdu";
 
         #region Login
 
         /// <summary>
         /// The login route
-        /// <code>/appointMate/api/v1/login</code>
+        /// <code>/appointMate/api/v1/meetEdu/login</code>
         /// </summary>
-        public const string LogInRoute = AppRoute + "/logIn";
+        public const string LogInRoute = BaseRoute + "/logIn";
 
         #endregion
 
@@ -33,295 +37,187 @@ namespace AppointMate
 
         /// <summary>
         /// The register route
-        /// <code>/appointMate/api/v1/register</code>
+        /// <code>/appointMate/api/v1/meetEdu/register</code>
         /// </summary>
-        public const string RegisterRoute = AppRoute + "/register";
+        public const string RegisterRoute = BaseRoute + "/register";
 
         #endregion
 
-        #region Companies
+        #region Universities
 
         /// <summary>
-        /// The companies route
-        /// <code>/appointMate/api/v1/companies</code>
+        /// The universities route
+        /// <code>/appointMate/api/v1/meetEdu/universities</code>
         /// </summary>
-        public const string CompaniesRoute = AppRoute + "/companies";
-
-        /// <summary>
-        /// The company route
-        /// <code>/appointMate/api/v1/companies/1</code>
-        /// </summary>
-        public const string CompanyRoute = CompaniesRoute + "/{companyId}";
-
-        /// <summary>
-        /// The route for the company with the specified <paramref name="companyId"/>
-        /// <code>/appointMate/api/v1/companies/<paramref name="companyId"/></code>
-        /// </summary>
-        public static string GetCompanyRoute(string companyId) => CompaniesRoute + $"/{companyId}";
-
-        #region Services
-
-        /// <summary>
-        /// The company services route
-        /// <code>/appointMate/api/v1/companies/1/services</code>
-        /// </summary>
-        public const string CompanyServicesRoute = CompanyRoute + "/services";
-
-        /// <summary>
-        /// The company service route
-        /// <code>/appointMate/api/v1/companies/1/services/3</code>
-        /// </summary>
-        public const string CompanyServiceRoute = CompanyServicesRoute + "/{serviceId}";
-
-        /// <summary>
-        /// The route for the company service with the specified <paramref name="serviceId"/>
-        /// <code>/appointMate/api/v1/companies/1/services/<paramref name="serviceId"/></code>
-        /// </summary>
-        public static string GetCompanyServiceRoute(string serviceId) => CompanyServicesRoute + $"/{serviceId}";
-
-        #region Sessions
-
-        /// <summary>
-        /// The company services route
-        /// <code>/appointMate/api/v1/companies/1/services/1/sessions</code>
-        /// </summary>
-        public const string CompanyServiceSessionsRoute = CompanyServiceRoute + "/services";
-
-        /// <summary>
-        /// The company service route
-        /// <code>/appointMate/api/v1/companies/1/services/3/sessions/1</code>
-        /// </summary>
-        public const string CompanyServiceSessionRoute = CompanyServiceRoute + "/{sessionId}";
-
-        /// <summary>
-        /// The route for the company service with the specified <paramref name="sessionId"/>
-        /// <code>/appointMate/api/v1/companies/1/services/1/sessions/<paramref name="sessionId"/></code>
-        /// </summary>
-        public static string GetCompanyServiceSessionRoute(string sessionId) => CompanyServicesRoute + $"/{sessionId}";
+        public const string UniversitiesRoute = BaseRoute + "/universities";
 
         #endregion
+
+        #region Departments
+
+        /// <summary>
+        /// The departments route
+        /// <code>/appointMate/api/v1/meetEdu/departments</code>
+        /// </summary>
+        public const string DepartmentsRoute = BaseRoute + "/departments";
+
+        /// <summary>
+        /// The department route
+        /// <code>/appointMate/api/v1/meetEdu/departments/3</code>
+        /// </summary>
+        public const string DepartmentRoute = DepartmentsRoute + "/{departmentId}";
+
+        /// <summary>
+        /// Gets the department route for the one with the specified <paramref name="id"/>
+        /// <code>/appointMate/api/v1/meetEdu/departments/3</code>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public static string GetDepartmentRoute(string id) => DepartmentsRoute + $"/{id}";
+
+        #endregion
+
+        #region Department Contact Messages
+
+        /// <summary>
+        /// The department contact messages route
+        /// <code>/appointMate/api/v1/meetEdu/departments/3/departmentContactMessages</code>
+        /// </summary>
+        public const string DepartmentContactMessagesRoute = BaseRoute + "/departmentContactMessages";
+
+        /// <summary>
+        /// The department contact message route
+        /// <code>/appointMate/api/v1/meetEdu/departmentContactMessages/3</code>
+        /// </summary>
+        public const string DepartmentContactMessageRoute = DepartmentsRoute + "/{departmentContactMessageId}";
+
+        /// <summary>
+        /// Gets the route for the department contact message with the specified <paramref name="id"/>
+        /// <code>/appointMate/api/v1/meetEdu/departmentContactMessages/2</code>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public static string GetDepartmentContactMessageRoute(string id) => DepartmentContactMessagesRoute + $"/{id}";
+
+        #endregion
+
+        #region Secretaries
+
+        /// <summary>
+        /// The secretaries route
+        /// <code>/appointMate/api/v1/meetEdu/secretaries</code>
+        /// </summary>
+        public const string SecretariesRoute = BaseRoute + "/secretaries";
+
+        /// <summary>
+        /// The secretary route
+        /// <code>/appointMate/api/v1/meetEdu/secretaries/3</code>
+        /// </summary>
+        public const string SecretaryRoute = SecretariesRoute + "/{secretaryId}";
+
+        /// <summary>
+        /// Gets the route for the secretary with the specified <paramref name="id"/>
+        /// <code>/appointMate/api/v1/meetEdu/secretaries/4</code>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public static string GetSecretaryRoute(string id) => SecretariesRoute + $"/{id}";
 
         #endregion
 
         #region Staff Members
 
         /// <summary>
-        /// The company staff member route
-        /// <code>/appointMate/api/v1/companies/1/staffMembers</code>
+        /// The staff members route
+        /// <code>/appointMate/api/v1/meetEdu/staffMembers</code>
         /// </summary>
-        public const string CompanyStaffMembersRoute = CompanyRoute + "/staffMembers";
+        public const string StaffMembersRoute = BaseRoute + "/staffMembers";
 
         /// <summary>
-        /// The company staff member route
-        /// <code>/appointMate/api/v1/companies/1/staffMembers/3</code>
+        /// The staff member route
+        /// <code>/appointMate/api/v1/meetEdu/staffMembers/3</code>
         /// </summary>
-        public const string CompanyStaffMemberRoute = CompanyStaffMembersRoute + "/{staffMemberId}";
+        public const string StaffMemberRoute = StaffMembersRoute + "/{staffMemberId}";
 
         /// <summary>
-        /// The route for the company staff member with the specified <paramref name="staffMemberId"/>
-        /// <code>/appointMate/api/v1/companies/1/staffMembers/<paramref name="staffMemberId"/></code>
+        /// Gets the staff member route for the one with the specified <paramref name="id"/>
+        /// <code>/appointMate/api/v1/meetEdu/staffMembers/3</code>
         /// </summary>
-        public static string GetCompanyStaffMemberRoute(string staffMemberId) => CompanyStaffMembersRoute + $"/{staffMemberId}";
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public static string GetStaffMemberRoute(string id) => StaffMembersRoute + $"/{id}";
 
         #endregion
 
-        #region Contact
+        #region Appointment Rules
 
         /// <summary>
-        /// The company contact messages route
-        /// <code>/appointMate/api/v1/companies/1/contactMessages</code>
+        /// The appointment rules route
+        /// <code>/appointMate/api/v1/meetEdu/appointmentRules</code>
         /// </summary>
-        public const string CompanyContactMessagesRoute = CompanyRoute + "/contactMessages";
+        public const string AppointmentRulesRoute = BaseRoute + "/appointmentRules";
 
         /// <summary>
-        /// The company contact message route
-        /// <code>/appointMate/api/v1/companies/1/contactMessages/3</code>
+        /// The appointment rule route
+        /// <code>/appointMate/api/v1/meetEdu/appointmentRules/3</code>
         /// </summary>
-        public const string CompanyyContactMessageRoute = CompanyContactMessagesRoute + "/{contactMessageId}";
+        public const string AppointmentRuleRoute = AppointmentRulesRoute + "/{appointmentRuleId}";
 
         /// <summary>
-        /// The route for the company contact message with the specified <paramref name="contactMessageId"/>
-        /// <code>/appointMate/api/v1/companies/1/contactMessages/<paramref name="contactMessageId"/></code>
+        /// Gets the route for the appointment with the specified <paramref name="id"/>
+        /// <code>/appointMate/api/v1/meetEdu/appointmentRules/4</code>
         /// </summary>
-        public static string GetCompanyyContactMessageRoute(string contactMessageId) => CompanyStaffMembersRoute + $"/{contactMessageId}";
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public static string GetAppointmentRuleRoute(string id) => AppointmentRulesRoute + $"/{id}";
 
         #endregion
 
-        #endregion
-
-        #region Services
+        #region Members
 
         /// <summary>
-        /// The services route
-        /// <code>/appointMate/api/v1/services</code>
+        /// The members route
+        /// <code>/appointMate/api/v1/meetEdu/members</code>
         /// </summary>
-        public const string ServicesRoute = AppRoute + "/services";
+        public const string MembersRoute = BaseRoute + "/members";
 
         /// <summary>
-        /// The service route
-        /// <code>/appointMate/api/v1/services/name</code>
+        /// The member route
+        /// <code>/appointMate/api/v1/meetEdu/members/3</code>
         /// </summary>
-        public const string ServiceRoute = ServicesRoute + "/{serviceName}";
+        public const string MemberRoute = MembersRoute + "/{memberId}";
 
         /// <summary>
-        /// The route for the service with the specified <paramref name="serviceName"/>
-        /// <code>/appointMate/api/v1/services/<paramref name="serviceName"/></code>
+        /// Gets the member route for the one with the specified <paramref name="id"/>
+        /// <code>/appointMate/api/v1/meetEdu/members/3</code>
         /// </summary>
-        public static string GetServiceRoute(string serviceName) => ServicesRoute + $"/{serviceName}";
-
-        #endregion
-
-        #region Users
-
-        /// <summary>
-        /// The users route
-        /// <code>/appointMate/api/v1/users</code>
-        /// </summary>
-        public const string UsersRoute = AppRoute + "/users";
-
-        /// <summary>
-        /// The customer route
-        /// <code>/appointMate/api/v1/users/1</code>
-        /// </summary>
-        public const string UserRoute = UsersRoute + "/{userId}";
-
-        /// <summary>
-        /// The route for the customer with the specified <paramref name="userId"/>
-        /// <code>/appointMate/api/v1/users/<paramref name="userId"/></code>
-        /// </summary>
-        public static string GetUserRoute(string userId) => UsersRoute + $"/{userId}";
-
-        #region Notes
-
-        /// <summary>
-        /// The user notes route
-        /// <code>/appointMate/api/v1/users/1/notes</code>
-        /// </summary>
-        public const string UserNotesRoute = UserRoute + "/notes";
-
-        /// <summary>
-        /// The user note route
-        /// <code>/appointMate/api/v1/users/1/notes/3</code>
-        /// </summary>
-        public const string UserNoteRoute = UserNotesRoute + "/{noteId}";
-
-        /// <summary>
-        /// The route for the user note with the specified <paramref name="noteId"/>
-        /// <code>/appointMate/api/v1/users/1/notes/<paramref name="noteId"/></code>
-        /// </summary>
-        public static string GetUserNoteRoute(string noteId) => UserNotesRoute + $"/{noteId}";
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public static string GetMemberRoute(string id) => MembersRoute + $"/{id}";
 
         #endregion
 
-        #region Favorite Companies
+        #region Appointments
 
         /// <summary>
-        /// The user favorite company route
-        /// <code>/appointMate/api/v1/users/1/favoriteCompanies</code>
+        /// The appointments route
+        /// <code>/appointMate/api/v1/meetEdu/appointments</code>
         /// </summary>
-        public const string UserFavoriteCompaniesRoute = UserRoute + "/favoriteCompanies";
+        public const string AppointmentsRoute = BaseRoute + "/appointments";
 
         /// <summary>
-        /// The user favorite company route
-        /// <code>/appointMate/api/v1/users/1/favoriteCompanies/3</code>
+        /// The appointment route
+        /// <code>/appointMate/api/v1/meetEdu/appointments/3</code>
         /// </summary>
-        public const string UserFavoriteCompanyRoute = UserFavoriteCompaniesRoute + "/{companyId}";
+        public const string AppointmentRoute = AppointmentsRoute + "/{appointmentId}";
 
         /// <summary>
-        /// The route for the user favorite company with the specified <paramref name="companyId"/>
-        /// <code>/appointMate/api/v1/users/1/favoriteCompanies/<paramref name="companyId"/></code>
+        /// Gets the route for the appointment with the specified <paramref name="id"/>
+        /// <code>/appointMate/api/v1/meetEdu/appointments/4</code>
         /// </summary>
-        public static string GetUserFavoriteCompanyRoute(string companyId) => UserFavoriteCompaniesRoute + $"/{companyId}";
-
-        #endregion
-
-        #region Reviews
-
-        /// <summary>
-        /// The user reviews route
-        /// <code>/appointMate/api/v1/users/1/reviews</code>
-        /// </summary>
-        public const string UserReviewsRoute = UserRoute + "/reviews";
-
-        /// <summary>
-        /// The user review route
-        /// <code>/appointMate/api/v1/users/1/reviews/3</code>
-        /// </summary>
-        public const string UserReviewRoute = UserReviewsRoute + "/{reviewsId}";
-
-        /// <summary>
-        /// The route for the user review with the specified <paramref name="reviewId"/>
-        /// <code>/appointMate/api/v1/users/1/reviews/<paramref name="reviewId"/></code>
-        /// </summary>
-        public static string GetUserReviewRoute(string reviewId) => UserReviewsRoute + $"/{reviewId}";
-
-        #endregion
-
-        #region Point Offset Logs
-
-        /// <summary>
-        /// The user point offset log route
-        /// <code>/appointMate/api/v1/users/1/reviews</code>
-        /// </summary>
-        public const string UserPointOffsetLogsRoute = UserRoute + "/pointOffsetLogs";
-
-        /// <summary>
-        /// The user point offset log route
-        /// <code>/appointMate/api/v1/users/1/pointOffsetLogs/3</code>
-        /// </summary>
-        public const string UserPointOffsetLogRoute = UserPointOffsetLogsRoute + "/{pointOffsetLogId}";
-
-        /// <summary>
-        /// The route for the user point offset log with the specified <paramref name="pointOffsetLogId"/>
-        /// <code>/appointMate/api/v1/users/1/reviews/<paramref name="pointOffsetLogId"/></code>
-        /// </summary>
-        public static string GetUserPointOffsetLogRoute(string pointOffsetLogId) => UserPointOffsetLogsRoute + $"/{pointOffsetLogId}";
-
-        #endregion
-
-        #region User Services
-
-        /// <summary>
-        /// The services route
-        /// <code>/appointMate/api/v1/users/1/services</code>
-        /// </summary>
-        public const string UserServicesRoute = UserRoute + "/services";
-
-        /// <summary>
-        /// The service route
-        /// <code>/appointMate/api/v1/users/1/services/2</code>
-        /// </summary>
-        public const string UserServiceRoute = UserServicesRoute + "/{serviceId}";
-
-        /// <summary>
-        /// The route for the service with the specified <paramref name="serviceId"/>
-        /// <code>/appointMate/api/v1/users/<paramref name="customerId"/>/services/<paramref name="serviceId"/></code>
-        /// </summary>
-        public static string GetUserServiceRoute(string customerId, string serviceId) => GetUserRoute(customerId) + $"/services/{serviceId}";
-
-        #endregion
-
-        #region User Sessions
-
-        /// <summary>
-        /// The user sessions route
-        /// <code>/appointMate/api/v1/users/1/sessions</code>
-        /// </summary>
-        public const string UserSessionsRoute = UserRoute + "/sessions";
-
-        /// <summary>
-        /// The user session route
-        /// <code>/appointMate/api/v1/users/1/sessions/2</code>
-        /// </summary>
-        public const string UserSessionRoute = UserSessionsRoute + "/{sessionId}";
-
-        /// <summary>
-        /// The route for the user session with the specified <paramref name="sessionId"/>
-        /// <code>/appointMate/api/v1/users/<paramref name="userId"/>/services/<paramref name="sessionId"/></code>
-        /// </summary>
-        public static string GetUserSessionRoute(string userId, string sessionId) => GetUserRoute(userId) + $"/services/{sessionId}";
-
-        #endregion
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public static string GetAppointmentRoute(string id) => AppointmentsRoute + $"/{id}";
 
         #endregion
     }
@@ -332,66 +228,40 @@ namespace AppointMate
     public static class CoreMateAPIRoutes
     {
         /// <summary>
+        /// The app route
+        /// <code>/appointMate/api</code>
+        /// </summary>
+        private const string APIRoute = "/appointMate/api";
+
+        /// <summary>
+        /// The app route
+        /// <code>/appointMate/api/v1</code>
+        /// </summary>
+        private const string VersionRoute = APIRoute + "/v1";
+
+        /// <summary>
         /// The base route
-        /// <code>api/v1</code>
+        /// <code>/appointMate/api/v1/coreEdu</code>
         /// </summary>
-        private const string BaseRoute = "api/v1";
+        private const string BaseRoute = VersionRoute + "/coreEdu";
+
+        #region Login
 
         /// <summary>
-        /// The management app route
-        /// <code>api/v1/coreMate</code>
+        /// The login route
+        /// <code>/appointMate/api/v1/coreEdu/login</code>
         /// </summary>
-        private const string ManagementRoute = BaseRoute + "/coreMate";
-
-        #region Staff Member
-
-        /// <summary>
-        /// The staff member route
-        /// <code>api/v1/coreMate/staffMembers</code>
-        /// </summary>
-        public const string StaffMembersRoute = ManagementRoute + "/staffMembers";
-
-        /// <summary>
-        /// The staff member route
-        /// <code>api/v1/coreMate/staffMembers/3</code>
-        /// </summary>
-        public const string StaffMemberRoute = StaffMembersRoute + "/{staffMemberId}";
-
-        /// <summary>
-        /// The route for the staff member with the specified <paramref name="staffMemberId"/>
-        /// <code>api/v1/coreMate/companies/1/staffMembers/<paramref name="staffMemberId"/></code>
-        /// </summary>
-        public static string GetStaffMemberRoute(string staffMemberId) => StaffMembersRoute + $"/{staffMemberId}";
-
-        #region Companies
-
-        /// <summary>
-        /// The staff member companies route
-        /// <code>api/v1/coreMate/staffMembers/1/companies</code>
-        /// </summary>
-        public const string StaffMemberCompaniesRoute = StaffMemberRoute + "/companies";
-
-        /// <summary>
-        /// The staff member company route
-        /// <code>api/v1/coreMate/staffMembers/3/companies/2</code>
-        /// </summary>
-        public const string StaffMemberCompanyRoute = StaffMemberCompaniesRoute + "/{companyId}";
-
-        /// <summary>
-        /// The route for the staff member company with the specified <paramref name="companyId"/>
-        /// <code>api/v1/coreMate/staffMembers/1/companies/<paramref name="companyId"/></code>
-        /// </summary>
-        public static string GetStaffMemberCompanyRoute(string companyId) => StaffMemberCompaniesRoute + $"/{companyId}";
-
-        #region Contact
+        public const string LogInRoute = BaseRoute + "/logIn";
 
         #endregion
 
-        #region Services
+        #region Register
 
-        #endregion
-
-        #endregion
+        /// <summary>
+        /// The register route
+        /// <code>/appointMate/api/v1/coreEdu/register</code>
+        /// </summary>
+        public const string RegisterRoute = BaseRoute + "/register";
 
         #endregion
     }

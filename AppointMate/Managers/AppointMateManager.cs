@@ -73,7 +73,7 @@ namespace AppointMate
         /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<IEnumerable<ProfessorEntity>> GetStaffMembersAsync(CompanyRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<ProfessorEntity>> GetStaffMembersAsync(DepartmentRelatedAPIArgs? args, CancellationToken cancellationToken = default)
         {
             var filters = new List<FilterDefinition<ProfessorEntity>>();
 
@@ -105,7 +105,7 @@ namespace AppointMate
         /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<IEnumerable<MemberSavedDepartmentEntity>> GetMemberSavedDepartmentsAsync(string memberId, CompanyRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<MemberSavedDepartmentEntity>> GetMemberSavedDepartmentsAsync(string memberId, DepartmentRelatedAPIArgs? args, CancellationToken cancellationToken = default)
             => await ManagerHelpers.GetManyAsync(AppointMateDbMapper.MemberSavedDepartments, Builders<MemberSavedDepartmentEntity>.Filter.Eq(x => x.MemberId, memberId.ToObjectId()), args, cancellationToken);
 
         /// <summary>
@@ -129,22 +129,22 @@ namespace AppointMate
         /// <typeparam name="T">The document type</typeparam>
         /// <param name="args">The arguments</param>
         /// <returns></returns>
-        private List<FilterDefinition<T>> CreateFilters<T>(CompanyRelatedAPIArgs args)
+        private List<FilterDefinition<T>> CreateFilters<T>(DepartmentRelatedAPIArgs args)
             where T : BaseEntity, IDepartmentIdentifiable<ObjectId>
         {
             var filters = new List<FilterDefinition<T>>();
 
             // If there is a limit to the companies to include...
-            if (!args.IncludeCompanies.IsNullOrEmpty())
+            if (!args.IncludeDepartments.IsNullOrEmpty())
             {
-                var ids = args.IncludeCompanies.Select(x => x.ToObjectId()).ToList();
+                var ids = args.IncludeDepartments.Select(x => x.ToObjectId()).ToList();
                 filters.Add(Builders<T>.Filter.In(x => x.DepartmentId, ids));
             }
 
             // If there is a limit to the companies to exclude...
-            if (!args.ExcludeCompanies.IsNullOrEmpty())
+            if (!args.ExcludeDepartments.IsNullOrEmpty())
             {
-                var ids = args.ExcludeCompanies.Select(x => x.ToObjectId()).ToList();
+                var ids = args.ExcludeDepartments.Select(x => x.ToObjectId()).ToList();
                 filters.Add(Builders<T>.Filter.Nin(x => x.DepartmentId, ids));
             }
 
@@ -157,12 +157,12 @@ namespace AppointMate
         /// <typeparam name="T">The document type</typeparam>
         /// <param name="args">The arguments</param>
         /// <returns></returns>
-        private List<FilterDefinition<T>> CreateFilters<T>(CustomerRelatedAPIArgs args)
+        private List<FilterDefinition<T>> CreateFilters<T>(MemberRelatedAPIArgs args)
             where T : BaseEntity, IDepartmentIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
         {
             var filters = new List<FilterDefinition<T>>();
 
-            filters.AddRange(CreateFilters<T>((CompanyRelatedAPIArgs)args));
+            filters.AddRange(CreateFilters<T>((DepartmentRelatedAPIArgs)args));
 
             // If there is a limit to the customers to include...
             if (!args.IncludeCustomers.IsNullOrEmpty())
