@@ -165,16 +165,16 @@ namespace AppointMate
             filters.AddRange(CreateFilters<T>((DepartmentRelatedAPIArgs)args));
 
             // If there is a limit to the customers to include...
-            if (!args.IncludeCustomers.IsNullOrEmpty())
+            if (!args.IncludeStaffMembers.IsNullOrEmpty())
             {
-                var ids = args.IncludeCustomers.Select(x => x.ToObjectId()).ToList();
+                var ids = args.IncludeStaffMembers.Select(x => x.ToObjectId()).ToList();
                 filters.Add(Builders<T>.Filter.In(x => x.CustomerId, ids));
             }
 
             // If there is a limit to the customers to exclude...
-            if (!args.ExcludeCustomers.IsNullOrEmpty())
+            if (!args.ExcludeStaffMembers.IsNullOrEmpty())
             {
-                var ids = args.ExcludeCustomers.Select(x => x.ToObjectId()).ToList();
+                var ids = args.ExcludeStaffMembers.Select(x => x.ToObjectId()).ToList();
                 filters.Add(Builders<T>.Filter.Nin(x => x.CustomerId, ids));
             }
 

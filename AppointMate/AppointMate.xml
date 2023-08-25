@@ -1587,117 +1587,52 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:AppointMate.CompanyRelatedAPIArgs">
+        <member name="T:AppointMate.DepartmentRelatedAPIArgs">
             <summary>
-            Arguments used for retrieving data that belong to a company
+            Arguments used for retrieving data that belong to a department
             </summary>
         </member>
-        <member name="P:AppointMate.CompanyRelatedAPIArgs.IncludeCompanies">
+        <member name="P:AppointMate.DepartmentRelatedAPIArgs.IncludeUniversities">
             <summary>
-            Limit the result to entries with specific company ids
+            Limit the result to entries with specific university ids
             </summary>
         </member>
-        <member name="P:AppointMate.CompanyRelatedAPIArgs.ExcludeCompanies">
+        <member name="P:AppointMate.DepartmentRelatedAPIArgs.ExcludeUniversities">
             <summary>
-            Limit the result to entries without specific company ids
+            Limit the result to entries without specific university ids
             </summary>
         </member>
-        <member name="M:AppointMate.CompanyRelatedAPIArgs.#ctor">
+        <member name="P:AppointMate.DepartmentRelatedAPIArgs.IncludeDepartments">
             <summary>
-            Default constructor
+            Limit the result to entries with specific department ids
             </summary>
         </member>
-        <member name="T:AppointMate.GroupedServiceAPIArgs">
+        <member name="P:AppointMate.DepartmentRelatedAPIArgs.ExcludeDepartments">
             <summary>
-            Arguments used for retrieving grouped services
+            Limit the result to entries without specific department ids
             </summary>
         </member>
-        <member name="F:AppointMate.GroupedServiceAPIArgs.mInnerOffset">
-            <summary>
-            The member of the <see cref="P:AppointMate.GroupedServiceAPIArgs.InnerOffset"/> property
-            </summary>
-        </member>
-        <member name="P:AppointMate.GroupedServiceAPIArgs.InnerPage">
-            <summary>
-            The index of the page starting from 0.
-            </summary>
-        </member>
-        <member name="P:AppointMate.GroupedServiceAPIArgs.InnerPerPage">
-            <summary>
-            Maximum number of entries to be returned in result set.
-            </summary>
-        </member>
-        <member name="P:AppointMate.GroupedServiceAPIArgs.InnerOffset">
-            <summary>
-            Offset the result set by a specific number of items.
-            </summary>
-        </member>
-        <member name="M:AppointMate.GroupedServiceAPIArgs.#ctor">
+        <member name="M:AppointMate.DepartmentRelatedAPIArgs.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="T:AppointMate.CustomerRelatedAPIArgs">
+        <member name="T:AppointMate.MemberRelatedAPIArgs">
             <summary>
-            Arguments used for retrieving services
+            Arguments used for retrieving members
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerRelatedAPIArgs.IncludeCustomers">
+        <member name="P:AppointMate.MemberRelatedAPIArgs.IncludeStaffMembers">
             <summary>
-            Limit the result to entries with specific customer ids
+            Limit the result to entries with specific staff member ids
             </summary>
         </member>
-        <member name="P:AppointMate.CustomerRelatedAPIArgs.ExcludeCustomers">
+        <member name="P:AppointMate.MemberRelatedAPIArgs.ExcludeStaffMembers">
             <summary>
-            Limit the result to entries without specific customer ids
+            Limit the result to entries without specific staff member ids
             </summary>
         </member>
-        <member name="M:AppointMate.CustomerRelatedAPIArgs.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="T:AppointMate.SessionAPIArgs">
-            <summary>
-            Arguments used for retrieving sessions
-            </summary>
-        </member>
-        <member name="P:AppointMate.SessionAPIArgs.IncludeServices">
-            <summary>
-            Limit the result to entries with specific service ids
-            </summary>
-        </member>
-        <member name="P:AppointMate.SessionAPIArgs.ExcludeServices">
-            <summary>
-            Limit the result to entries without specific service ids
-            </summary>
-        </member>
-        <member name="P:AppointMate.SessionAPIArgs.SessionStatus">
-            <summary>
-            Limit the result to entries without specific <see cref="P:AppointMate.SessionAPIArgs.SessionStatus"/>
-            </summary>
-        </member>
-        <member name="M:AppointMate.SessionAPIArgs.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="T:AppointMate.PaymentAPIArgs">
-            <summary>
-            Arguments used for retrieving payments
-            </summary>
-        </member>
-        <member name="P:AppointMate.PaymentAPIArgs.IncludePaymentMethods">
-            <summary>
-            Limit the result to entries with specific payment method ids
-            </summary>
-        </member>
-        <member name="P:AppointMate.PaymentAPIArgs.ExcludePaymentMethods">
-            <summary>
-            Limit the result to entries without specific payment method ids
-            </summary>
-        </member>
-        <member name="M:AppointMate.PaymentAPIArgs.#ctor">
+        <member name="M:AppointMate.MemberRelatedAPIArgs.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -1940,315 +1875,247 @@
             The AppontMate related API routes
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.AppRoute">
+        <member name="F:AppointMate.AppointMateAPIRoutes.APIRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.AppointMateAPIRoutes.VersionRoute">
             <summary>
             The app route
             <code>/appointMate/api/v1</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.BaseAPIRoute">
+        <member name="F:AppointMate.AppointMateAPIRoutes.BaseRoute">
             <summary>
             The base route
-            <code>/appointMate/api/v1</code>
+            <code>/appointMate/api/v1/meetEdu</code>
             </summary>
         </member>
         <member name="F:AppointMate.AppointMateAPIRoutes.LogInRoute">
             <summary>
             The login route
-            <code>/appointMate/api/v1/login</code>
+            <code>/appointMate/api/v1/meetEdu/login</code>
             </summary>
         </member>
         <member name="F:AppointMate.AppointMateAPIRoutes.RegisterRoute">
             <summary>
             The register route
-            <code>/appointMate/api/v1/register</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.CompaniesRoute">
-            <summary>
-            The companies route
-            <code>/appointMate/api/v1/companies</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.CompanyRoute">
-            <summary>
-            The company route
-            <code>/appointMate/api/v1/companies/1</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetCompanyRoute(System.String)">
-            <summary>
-            The route for the company with the specified <paramref name="companyId"/>
-            <code>/appointMate/api/v1/companies/<paramref name="companyId"/></code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.CompanyServicesRoute">
-            <summary>
-            The company services route
-            <code>/appointMate/api/v1/companies/1/services</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.CompanyServiceRoute">
-            <summary>
-            The company service route
-            <code>/appointMate/api/v1/companies/1/services/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetCompanyServiceRoute(System.String)">
-            <summary>
-            The route for the company service with the specified <paramref name="serviceId"/>
-            <code>/appointMate/api/v1/companies/1/services/<paramref name="serviceId"/></code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.CompanyServiceSessionsRoute">
-            <summary>
-            The company services route
-            <code>/appointMate/api/v1/companies/1/services/1/sessions</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.CompanyServiceSessionRoute">
-            <summary>
-            The company service route
-            <code>/appointMate/api/v1/companies/1/services/3/sessions/1</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetCompanyServiceSessionRoute(System.String)">
-            <summary>
-            The route for the company service with the specified <paramref name="sessionId"/>
-            <code>/appointMate/api/v1/companies/1/services/1/sessions/<paramref name="sessionId"/></code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.CompanyStaffMembersRoute">
-            <summary>
-            The company staff member route
-            <code>/appointMate/api/v1/companies/1/staffMembers</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.CompanyStaffMemberRoute">
-            <summary>
-            The company staff member route
-            <code>/appointMate/api/v1/companies/1/staffMembers/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetCompanyStaffMemberRoute(System.String)">
-            <summary>
-            The route for the company staff member with the specified <paramref name="staffMemberId"/>
-            <code>/appointMate/api/v1/companies/1/staffMembers/<paramref name="staffMemberId"/></code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.CompanyContactMessagesRoute">
-            <summary>
-            The company contact messages route
-            <code>/appointMate/api/v1/companies/1/contactMessages</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.CompanyyContactMessageRoute">
-            <summary>
-            The company contact message route
-            <code>/appointMate/api/v1/companies/1/contactMessages/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetCompanyyContactMessageRoute(System.String)">
-            <summary>
-            The route for the company contact message with the specified <paramref name="contactMessageId"/>
-            <code>/appointMate/api/v1/companies/1/contactMessages/<paramref name="contactMessageId"/></code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.ServicesRoute">
-            <summary>
-            The services route
-            <code>/appointMate/api/v1/services</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.ServiceRoute">
-            <summary>
-            The service route
-            <code>/appointMate/api/v1/services/name</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetServiceRoute(System.String)">
-            <summary>
-            The route for the service with the specified <paramref name="serviceName"/>
-            <code>/appointMate/api/v1/services/<paramref name="serviceName"/></code>
+            <code>/appointMate/api/v1/meetEdu/register</code>
             </summary>
         </member>
         <member name="F:AppointMate.AppointMateAPIRoutes.UsersRoute">
             <summary>
             The users route
-            <code>/appointMate/api/v1/users</code>
+            <code>/appointMate/api/v1/meetEdu/users</code>
             </summary>
         </member>
         <member name="F:AppointMate.AppointMateAPIRoutes.UserRoute">
             <summary>
-            The customer route
-            <code>/appointMate/api/v1/users/1</code>
+            The user route
+            <code>/appointMate/api/v1/meetEdu/users/3</code>
             </summary>
         </member>
         <member name="M:AppointMate.AppointMateAPIRoutes.GetUserRoute(System.String)">
             <summary>
-            The route for the customer with the specified <paramref name="userId"/>
-            <code>/appointMate/api/v1/users/<paramref name="userId"/></code>
+            Gets the route for the user with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/users/4</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.AppointMateAPIRoutes.UniversitiesRoute">
+            <summary>
+            The universities route
+            <code>/appointMate/api/v1/meetEdu/universities</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserNotesRoute">
+        <member name="F:AppointMate.AppointMateAPIRoutes.DepartmentsRoute">
             <summary>
-            The user notes route
-            <code>/appointMate/api/v1/users/1/notes</code>
+            The departments route
+            <code>/appointMate/api/v1/meetEdu/departments</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserNoteRoute">
+        <member name="F:AppointMate.AppointMateAPIRoutes.DepartmentRoute">
             <summary>
-            The user note route
-            <code>/appointMate/api/v1/users/1/notes/3</code>
+            The department route
+            <code>/appointMate/api/v1/meetEdu/departments/3</code>
             </summary>
         </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetUserNoteRoute(System.String)">
+        <member name="M:AppointMate.AppointMateAPIRoutes.GetDepartmentRoute(System.String)">
             <summary>
-            The route for the user note with the specified <paramref name="noteId"/>
-            <code>/appointMate/api/v1/users/1/notes/<paramref name="noteId"/></code>
+            Gets the department route for the one with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/departments/3</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.AppointMateAPIRoutes.DepartmentContactMessagesRoute">
+            <summary>
+            The department contact messages route
+            <code>/appointMate/api/v1/meetEdu/departments/3/departmentContactMessages</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserFavoriteCompaniesRoute">
+        <member name="F:AppointMate.AppointMateAPIRoutes.DepartmentContactMessageRoute">
             <summary>
-            The user favorite company route
-            <code>/appointMate/api/v1/users/1/favoriteCompanies</code>
+            The department contact message route
+            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/3</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserFavoriteCompanyRoute">
+        <member name="M:AppointMate.AppointMateAPIRoutes.GetDepartmentContactMessageRoute(System.String)">
             <summary>
-            The user favorite company route
-            <code>/appointMate/api/v1/users/1/favoriteCompanies/3</code>
+            Gets the route for the department contact message with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/2</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.AppointMateAPIRoutes.SecretariesRoute">
+            <summary>
+            The secretaries route
+            <code>/appointMate/api/v1/meetEdu/secretaries</code>
             </summary>
         </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetUserFavoriteCompanyRoute(System.String)">
+        <member name="F:AppointMate.AppointMateAPIRoutes.SecretaryRoute">
             <summary>
-            The route for the user favorite company with the specified <paramref name="companyId"/>
-            <code>/appointMate/api/v1/users/1/favoriteCompanies/<paramref name="companyId"/></code>
+            The secretary route
+            <code>/appointMate/api/v1/meetEdu/secretaries/3</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserReviewsRoute">
+        <member name="M:AppointMate.AppointMateAPIRoutes.GetSecretaryRoute(System.String)">
             <summary>
-            The user reviews route
-            <code>/appointMate/api/v1/users/1/reviews</code>
+            Gets the route for the secretary with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/secretaries/4</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.AppointMateAPIRoutes.ProfessorsRoute">
+            <summary>
+            The professors route
+            <code>/appointMate/api/v1/meetEdu/professors</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserReviewRoute">
+        <member name="F:AppointMate.AppointMateAPIRoutes.ProfessorRoute">
             <summary>
-            The user review route
-            <code>/appointMate/api/v1/users/1/reviews/3</code>
+            The professor route
+            <code>/appointMate/api/v1/meetEdu/professors/3</code>
             </summary>
         </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetUserReviewRoute(System.String)">
+        <member name="M:AppointMate.AppointMateAPIRoutes.GetProfessorRoute(System.String)">
             <summary>
-            The route for the user review with the specified <paramref name="reviewId"/>
-            <code>/appointMate/api/v1/users/1/reviews/<paramref name="reviewId"/></code>
+            Gets the professor route for the one with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/professors/3</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.AppointMateAPIRoutes.AppointmentRulesRoute">
+            <summary>
+            The appointment rules route
+            <code>/appointMate/api/v1/meetEdu/appointmentRules</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserPointOffsetLogsRoute">
+        <member name="F:AppointMate.AppointMateAPIRoutes.AppointmentRuleRoute">
             <summary>
-            The user point offset log route
-            <code>/appointMate/api/v1/users/1/reviews</code>
+            The appointment rule route
+            <code>/appointMate/api/v1/meetEdu/appointmentRules/3</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserPointOffsetLogRoute">
+        <member name="M:AppointMate.AppointMateAPIRoutes.GetAppointmentRuleRoute(System.String)">
             <summary>
-            The user point offset log route
-            <code>/appointMate/api/v1/users/1/pointOffsetLogs/3</code>
+            Gets the route for the appointment with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/appointmentRules/4</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.AppointMateAPIRoutes.MembersRoute">
+            <summary>
+            The members route
+            <code>/appointMate/api/v1/meetEdu/members</code>
             </summary>
         </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetUserPointOffsetLogRoute(System.String)">
+        <member name="F:AppointMate.AppointMateAPIRoutes.MemberRoute">
             <summary>
-            The route for the user point offset log with the specified <paramref name="pointOffsetLogId"/>
-            <code>/appointMate/api/v1/users/1/reviews/<paramref name="pointOffsetLogId"/></code>
+            The member route
+            <code>/appointMate/api/v1/meetEdu/members/3</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserServicesRoute">
+        <member name="M:AppointMate.AppointMateAPIRoutes.GetMemberRoute(System.String)">
             <summary>
-            The services route
-            <code>/appointMate/api/v1/users/1/services</code>
+            Gets the member route for the one with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/members/3</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.AppointMateAPIRoutes.SavedDepartmentsRoute">
+            <summary>
+            The saved departments route
+            <code>/appointMate/api/v1/meetEdu/savedDepartments</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserServiceRoute">
+        <member name="F:AppointMate.AppointMateAPIRoutes.SavedProfessorsRoute">
             <summary>
-            The service route
-            <code>/appointMate/api/v1/users/1/services/2</code>
+            The saved departments route
+            <code>/appointMate/api/v1/meetEdu/savedProfessors</code>
             </summary>
         </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetUserServiceRoute(System.String,System.String)">
+        <member name="F:AppointMate.AppointMateAPIRoutes.AppointmentsRoute">
             <summary>
-            The route for the service with the specified <paramref name="serviceId"/>
-            <code>/appointMate/api/v1/users/<paramref name="customerId"/>/services/<paramref name="serviceId"/></code>
+            The appointments route
+            <code>/appointMate/api/v1/meetEdu/appointments</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserSessionsRoute">
+        <member name="F:AppointMate.AppointMateAPIRoutes.AppointmentRoute">
             <summary>
-            The user sessions route
-            <code>/appointMate/api/v1/users/1/sessions</code>
+            The appointment route
+            <code>/appointMate/api/v1/meetEdu/appointments/3</code>
             </summary>
         </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserSessionRoute">
+        <member name="M:AppointMate.AppointMateAPIRoutes.GetAppointmentRoute(System.String)">
             <summary>
-            The user session route
-            <code>/appointMate/api/v1/users/1/sessions/2</code>
+            Gets the route for the appointment with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/appointments/4</code>
             </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetUserSessionRoute(System.String,System.String)">
-            <summary>
-            The route for the user session with the specified <paramref name="sessionId"/>
-            <code>/appointMate/api/v1/users/<paramref name="userId"/>/services/<paramref name="sessionId"/></code>
-            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
         </member>
         <member name="T:AppointMate.CoreMateAPIRoutes">
             <summary>
             The AppontMate related API routes
             </summary>
         </member>
+        <member name="F:AppointMate.CoreMateAPIRoutes.APIRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.CoreMateAPIRoutes.VersionRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api/v1</code>
+            </summary>
+        </member>
         <member name="F:AppointMate.CoreMateAPIRoutes.BaseRoute">
             <summary>
             The base route
-            <code>api/v1</code>
+            <code>/appointMate/api/v1/coreEdu</code>
             </summary>
         </member>
-        <member name="F:AppointMate.CoreMateAPIRoutes.ManagementRoute">
+        <member name="F:AppointMate.CoreMateAPIRoutes.LogInRoute">
             <summary>
-            The management app route
-            <code>api/v1/coreMate</code>
+            The login route
+            <code>/appointMate/api/v1/coreEdu/login</code>
             </summary>
         </member>
-        <member name="F:AppointMate.CoreMateAPIRoutes.StaffMembersRoute">
+        <member name="F:AppointMate.CoreMateAPIRoutes.RegisterRoute">
             <summary>
-            The staff member route
-            <code>api/v1/coreMate/staffMembers</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.CoreMateAPIRoutes.StaffMemberRoute">
-            <summary>
-            The staff member route
-            <code>api/v1/coreMate/staffMembers/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.CoreMateAPIRoutes.GetStaffMemberRoute(System.String)">
-            <summary>
-            The route for the staff member with the specified <paramref name="staffMemberId"/>
-            <code>api/v1/coreMate/companies/1/staffMembers/<paramref name="staffMemberId"/></code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.CoreMateAPIRoutes.StaffMemberCompaniesRoute">
-            <summary>
-            The staff member companies route
-            <code>api/v1/coreMate/staffMembers/1/companies</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.CoreMateAPIRoutes.StaffMemberCompanyRoute">
-            <summary>
-            The staff member company route
-            <code>api/v1/coreMate/staffMembers/3/companies/2</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.CoreMateAPIRoutes.GetStaffMemberCompanyRoute(System.String)">
-            <summary>
-            The route for the staff member company with the specified <paramref name="companyId"/>
-            <code>api/v1/coreMate/staffMembers/1/companies/<paramref name="companyId"/></code>
+            The register route
+            <code>/appointMate/api/v1/coreEdu/register</code>
             </summary>
         </member>
         <member name="T:AppointMate.AppointMateConstants">
@@ -2643,6 +2510,14 @@
             <param name="model">The model</param>
             <returns></returns>
         </member>
+        <member name="M:AppointMate.AppointMateController.GetUserAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the user with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
         <member name="M:AppointMate.AppointMateController.GetUniversityAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Gets the university with the specified <paramref name="id"/>
@@ -2654,14 +2529,6 @@
         <member name="M:AppointMate.AppointMateController.GetDepartmentAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Gets the department with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The memberId</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.GetUserAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the user with the specified <paramref name="id"/>
             </summary>
             <param name="id">The memberId</param>
             <param name="cancellationToken">The cancellation token</param>
@@ -8627,7 +8494,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.AppointMateManager.GetStaffMembersAsync(AppointMate.CompanyRelatedAPIArgs,System.Threading.CancellationToken)">
+        <member name="M:AppointMate.AppointMateManager.GetStaffMembersAsync(AppointMate.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
             <summary>
             Gets the professor
             </summary>
@@ -8643,7 +8510,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.AppointMateManager.GetMemberSavedDepartmentsAsync(System.String,AppointMate.CompanyRelatedAPIArgs,System.Threading.CancellationToken)">
+        <member name="M:AppointMate.AppointMateManager.GetMemberSavedDepartmentsAsync(System.String,AppointMate.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
             <summary>
             Gets the saved departments for the member with the specified <paramref name="memberId"/> 
             </summary>
@@ -8660,7 +8527,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.AppointMateManager.CreateFilters``1(AppointMate.CompanyRelatedAPIArgs)">
+        <member name="M:AppointMate.AppointMateManager.CreateFilters``1(AppointMate.DepartmentRelatedAPIArgs)">
             <summary>
             Creates the filters for the specified <paramref name="args"/>
             </summary>
@@ -8668,7 +8535,7 @@
             <param name="args">The arguments</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.AppointMateManager.CreateFilters``1(AppointMate.CustomerRelatedAPIArgs)">
+        <member name="M:AppointMate.AppointMateManager.CreateFilters``1(AppointMate.MemberRelatedAPIArgs)">
             <summary>
             Creates the filters for the specified <paramref name="args"/>
             </summary>
