@@ -13,14 +13,14 @@ namespace AppointMate
     /// <summary>
     /// Controller used for handing the requests related to an AppointMate related application
     /// </summary>
-    public class AppointMateController : Controller
+    public class MeetEduController : Controller
     {
         #region Constructors
 
         /// <summary>
         /// Default constructor
         /// </summary>
-        public AppointMateController() : base()
+        public MeetEduController() : base()
         {
 
         }
@@ -276,7 +276,7 @@ namespace AppointMate
         [HttpDelete]
         public async Task<ActionResult<ProfessorResponseModel>> DeleteSavedProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
-            var response = await DI.MembersRepository.DeleteUserFavoriteProfessorAsync(id.ToObjectId());
+            var response = await DI.MembersRepository.DeleteMemberFavoriteProfessorAsync(id.ToObjectId());
 
             if (!response.IsSuccessful || response.Result is null)
                 return StatusCode(response.StatusCode ?? 400, response);

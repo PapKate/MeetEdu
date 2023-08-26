@@ -151,36 +151,6 @@ namespace AppointMate
             return filters;
         }
 
-        /// <summary>
-        /// Creates the filters for the specified <paramref name="args"/>
-        /// </summary>
-        /// <typeparam name="T">The document type</typeparam>
-        /// <param name="args">The arguments</param>
-        /// <returns></returns>
-        private List<FilterDefinition<T>> CreateFilters<T>(MemberRelatedAPIArgs args)
-            where T : BaseEntity, IDepartmentIdentifiable<ObjectId>, ICustomerIdentifiable<ObjectId>
-        {
-            var filters = new List<FilterDefinition<T>>();
-
-            filters.AddRange(CreateFilters<T>((DepartmentRelatedAPIArgs)args));
-
-            // If there is a limit to the customers to include...
-            if (!args.IncludeStaffMembers.IsNullOrEmpty())
-            {
-                var ids = args.IncludeStaffMembers.Select(x => x.ToObjectId()).ToList();
-                filters.Add(Builders<T>.Filter.In(x => x.CustomerId, ids));
-            }
-
-            // If there is a limit to the customers to exclude...
-            if (!args.ExcludeStaffMembers.IsNullOrEmpty())
-            {
-                var ids = args.ExcludeStaffMembers.Select(x => x.ToObjectId()).ToList();
-                filters.Add(Builders<T>.Filter.Nin(x => x.CustomerId, ids));
-            }
-
-            return filters;
-        }
-
         #endregion
     }
 }

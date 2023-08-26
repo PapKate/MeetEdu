@@ -187,7 +187,7 @@ namespace AppointMate
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<MemberSavedProfessorEntity>> DeleteUserFavoriteProfessorAsync(ObjectId id)
+        public async Task<WebServerFailable<MemberSavedProfessorEntity>> DeleteMemberFavoriteProfessorAsync(ObjectId id)
         {
             var entity = await AppointMateDbMapper.MemberSavedProfessors.FirstOrDefaultAsync(x => x.Id == id);
 
