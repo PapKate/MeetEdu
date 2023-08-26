@@ -6,9 +6,9 @@
 @namespace AppointMate
 @using Atom.Blazor;
 
-<div class="modelContainer" style="@BorderColorVariable.SetCssColor(Orange)">
+<div class="modelContainer departmentPreviewContainer" style="@BorderColorVariable.SetCssColor(Orange)">
     <div class="modelRibbonContainer" style="@BackColorVariable.SetCssColor(Orange) @ForeColorVariable.SetCssColor(Orange.DarkOrWhite())">
-        <div></div>
+        <div class="modelEmptySpace"></div>
         <div class="modelRibbon">
             <div class="modelRibbonInfoContainer">
                 <h1 class="modelRibbonInfo">Computer Engineering & Informatics Department</h1>
@@ -35,13 +35,13 @@
                 <img class="modelImage" src="./icons/science.png" alt="name" />
             </div>
             <div class="modelContactContainer">
-                <img class="modelContactImage" src="./icons/call.png" alt="phone" />
+                <img class="modelContactImage modelContactCallImage" src="./icons/call.png" alt="phone" />
                 <span class="modelContactValue">2610 623555</span>
 
-                <img class="modelContactImage" src="./icons/telephone.png" alt="phone" />
+                <img class="modelContactImage modelContactTelephoneImage" src="./icons/telephone.png" alt="phone" />
                 <span class="modelContactValue">6944 511393</span>
 
-                <img class="modelContactImage" src="./icons/map-mark.png" alt="phone" />
+                <img class="modelContactImage modelContactLocationImage" src="./icons/map-mark.png" alt="phone" />
                 <span class="modelContactValue">Πανεπιστημιούπολη Πατρών, 26504</span>
             </div>
         </div>
@@ -62,12 +62,12 @@
             </div>
         </div>
 
-        <div>
-            Το ΤΜΗΥ&Π ιδρύθηκε το 1979 και λειτουργεί από το 1980. Είναι το πρωτοπόρο τμήμα στον χώρο της Τεχνολογίας Υπολογιστών,
-            Πληροφορικής και Επικοινωνιών στην Ελλάδα. Βρίσκεται ανάμεσα στα καλύτερα Πανεπιστημιακά Τμήματα στην Ελλάδα και με μεγάλες
-            διακρίσεις διεθνώς. Ο σκοπός του είναι η διδασκαλία στην επιστήμη και τεχνολογία των υπολογιστών και η
-            μελέτη των εφαρμογών τους. 
-        </div>
+    </div>
+    <div class="departmentPreviewDescription">
+        Το ΤΜΗΥ&Π ιδρύθηκε το 1979 και λειτουργεί από το 1980. Είναι το πρωτοπόρο τμήμα στον χώρο της Τεχνολογίας Υπολογιστών,
+        Πληροφορικής και Επικοινωνιών στην Ελλάδα. Βρίσκεται ανάμεσα στα καλύτερα Πανεπιστημιακά Τμήματα στην Ελλάδα και με μεγάλες
+        διακρίσεις διεθνώς. Ο σκοπός του είναι η διδασκαλία στην επιστήμη και τεχνολογία των υπολογιστών και η
+        μελέτη των εφαρμογών τους. 
     </div>
 
     <div class="departmentPreviewMapContainer">
@@ -99,11 +99,23 @@
         font-weight: 700;
     }
 
+    .departmentPreviewDescription {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        position: relative;
+        display: flex;
+        padding: @LargePadding;
+    }
+
     .departmentPreviewMapContainer {
+        grid-row-start: 1;
+        grid-column-start: 2;
+        grid-column-end: 3;
         position: relative;
         top: 104px;
         width: 100%;
         height: fit-content;
+        display: flex;
         padding: @LargePadding;
     }
 
@@ -115,5 +127,106 @@
         border: solid 1px @Gray.NormalizedColor();
     }
 
+
+    @@media screen and (max-width: 1060px) {
+
+        .departmentPreviewDescription {
+            grid-column-end: 3;
+        }
+
+        .departmentPreviewContainer .modelContainer {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+
+    @@media screen and (max-width: 800px) {
+        .modelContainer.departmentPreviewContainer {
+            grid-template-columns: 100%;
+        }
+
+        .departmentPreviewContainer .modelRibbonInfo {
+            font-size: 112%;
+        }
+
+        .departmentPreviewRibbonUniName {
+            font-size: 100%;
+        }
+
+        .departmentPreviewMapContainer {
+            grid-row-start: 3;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            top:0px;
+        }
+
+        .departmentPreviewRibbonHeartContainer {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .departmentPreviewContainer .modelRibbonContainer {
+            grid-template-columns: 160px 1fr;
+        }
+
+        .departmentPreviewContainer .modelImageContainer {
+            width: 160px;
+            height: 160px;
+        }
+    }
+
+    @@media screen and (max-width: 550px) {
+        .departmentPreviewContainer .modelImageContainer {
+            bottom: 32px;
+            width: 132px;
+            height: 132px;
+        }
+
+        .departmentPreviewContainer .modelRibbonContainer {
+            grid-template-columns: 132px 1fr;
+        }
+
+        .departmentPreviewContainer .modelWeeklyScheduleContainer {
+            grid-template-columns: 1fr 1fr ;
+        }
+
+        .departmentPreviewContainer .modelRibbonInfo {
+            font-size: 100%;
+        }
+
+        .departmentPreviewRibbonUniName {
+            font-size: 92%;
+        }
+
+        .departmentPreviewStaffMembers {
+            font-size: 92%;
+        }
+
+        .departmentPreviewContainer .modelWeeklyScheduleContainer {
+            font-size: 92%;
+        }
+
+        .departmentPreviewDescription {
+            font-size: 88%;
+        }
+    }
+
+    @@media screen and (max-width: 450px) {
+
+        .modelEmptySpace {
+            display: none;
+        }
+
+        .departmentPreviewContainer .modelImageContainer {
+            bottom: 0px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .departmentPreviewContainer .modelRibbonContainer {
+            grid-template-columns: 100%;
+        }
+    }
+    
 
 </style>

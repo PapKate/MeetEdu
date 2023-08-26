@@ -75,7 +75,7 @@
         display: grid;
         grid-template-columns: 200px 1fr;
         gap: @VeryLargeGap;
-        padding: @LargePadding;
+        padding: 0 @LargePadding;
         background: @BackColorVariable.GetCssVariable();
         color: @ForeColorVariable.GetCssVariable();
     }
@@ -119,6 +119,7 @@
 
     .modelImageAndContactContainer {
         position: relative;
+        height: 200px;
         display: flex;
         align-items: flex-end;
         justify-content: flex-start;

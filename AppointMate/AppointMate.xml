@@ -2486,136 +2486,6 @@
             The regular expression used for validating a hex value
             </summary>
         </member>
-        <member name="T:AppointMate.AppointMateController">
-            <summary>
-            Controller used for handing the requests related to an AppointMate related application
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateController.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateController.RegisterUserAsync(AppointMate.UserRequestModel)">
-            <summary>
-            Registers a user
-            </summary>
-            <param name="model">The model</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.LoginAsync(AppointMate.LogInRequestModel)">
-            <summary>
-            Validates the user credentials sent by the user and returns the user
-            </summary>
-            <param name="model">The model</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.GetUserAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the user with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The memberId</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.GetUniversityAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the university with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The memberId</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.GetDepartmentAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the department with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The memberId</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.GetProfessorAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the professor with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The memberId</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.GetMemberAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the member with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The memberId</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.AddMemberSavedDepartmentAsync(System.String,System.String,System.Threading.CancellationToken)">
-            <summary>
-            Adds a saved the department with the specified <paramref name="departmentId"/> to the member with the specified <paramref name="memberId"/>
-            </summary>
-            <param name="memberId">The memberId</param>
-            <param name="departmentId">The department id</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.GetMemberSavedDepartmentsAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the saved departments of the user with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The user id</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.GetMemberSavedDepartmentAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the saved department with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The id</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.DeleteSavedDeparmentAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Deletes the saved department with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The id</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.AddMemberSavedProfessorAsync(System.String,System.String,System.Threading.CancellationToken)">
-            <summary>
-            Adds a saved the professor with the specified <paramref name="professorId"/> to the member with the specified <paramref name="memberId"/>
-            </summary>
-            <param name="memberId">The memberId</param>
-            <param name="professorId">The professor </param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.GetMemberSavedProfessorsAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the saved professors of the user with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The user memberId</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.GetMemberSavedProfessorAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the saved professor with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The memberId</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateController.DeleteSavedProfessorAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Deletes the saved professor with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The memberId</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
         <member name="T:AppointMate.CoreMateController">
             <summary>
             Controller used for handing the requests related to a CoreMate related application
@@ -2625,6 +2495,136 @@
             <summary>
             Default constructor
             </summary>
+        </member>
+        <member name="T:AppointMate.MeetEduController">
+            <summary>
+            Controller used for handing the requests related to an AppointMate related application
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetEduController.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetEduController.RegisterUserAsync(AppointMate.UserRequestModel)">
+            <summary>
+            Registers a user
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.LoginAsync(AppointMate.LogInRequestModel)">
+            <summary>
+            Validates the user credentials sent by the user and returns the user
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.GetUserAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the user with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.GetUniversityAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the university with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.GetDepartmentAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.GetProfessorAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the professor with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.GetMemberAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the member with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.AddMemberSavedDepartmentAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Adds a saved the department with the specified <paramref name="departmentId"/> to the member with the specified <paramref name="memberId"/>
+            </summary>
+            <param name="memberId">The memberId</param>
+            <param name="departmentId">The department id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.GetMemberSavedDepartmentsAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the saved departments of the user with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The user id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.GetMemberSavedDepartmentAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the saved department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.DeleteSavedDeparmentAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the saved department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.AddMemberSavedProfessorAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Adds a saved the professor with the specified <paramref name="professorId"/> to the member with the specified <paramref name="memberId"/>
+            </summary>
+            <param name="memberId">The memberId</param>
+            <param name="professorId">The professor </param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.GetMemberSavedProfessorsAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the saved professors of the user with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The user memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.GetMemberSavedProfessorAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the saved professor with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetEduController.DeleteSavedProfessorAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the saved professor with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
         </member>
         <member name="T:AppointMate.DepartmentLayoutDataModel">
             <summary>
@@ -8535,14 +8535,6 @@
             <param name="args">The arguments</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.AppointMateManager.CreateFilters``1(AppointMate.MemberRelatedAPIArgs)">
-            <summary>
-            Creates the filters for the specified <paramref name="args"/>
-            </summary>
-            <typeparam name="T">The document type</typeparam>
-            <param name="args">The arguments</param>
-            <returns></returns>
-        </member>
         <member name="T:AppointMate.Pages.ErrorModel">
             <summary>
             The error model
@@ -9015,9 +9007,46 @@
             <param name="professorId">The professor id</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.MembersRepository.DeleteUserFavoriteProfessorAsync(MongoDB.Bson.ObjectId)">
+        <member name="M:AppointMate.MembersRepository.DeleteMemberFavoriteProfessorAsync(MongoDB.Bson.ObjectId)">
             <summary>
             Deletes the member saved professor with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="T:AppointMate.ProfessorsRepository">
+            <summary>
+            Provides methods for managing professors
+            </summary>
+        </member>
+        <member name="P:AppointMate.ProfessorsRepository.Instance">
+            <summary>
+            The single instance of the <see cref="T:AppointMate.ProfessorsRepository"/>
+            </summary>
+        </member>
+        <member name="M:AppointMate.ProfessorsRepository.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:AppointMate.ProfessorsRepository.AddProfessorAsync(AppointMate.ProfessorRequestModel)">
+            <summary>
+            Adds a professor
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.ProfessorsRepository.UpdateProfessorAsync(MongoDB.Bson.ObjectId,AppointMate.UserRequestModel)">
+            <summary>
+            Updates the professor with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.ProfessorsRepository.DeleteProfessorAsync(MongoDB.Bson.ObjectId)">
+            <summary>
+            Deletes the professor with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
             <returns></returns>
