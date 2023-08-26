@@ -9093,7 +9093,7 @@
             The main layout
             </summary>
         </member>
-        <member name="F:AppointMate.Shared.MainLayout.mMyTheme">
+        <member name="F:AppointMate.Shared.MainLayout.mMeetEduTheme">
             <summary>
             The theme provider
             </summary>

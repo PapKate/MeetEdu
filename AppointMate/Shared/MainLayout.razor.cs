@@ -14,7 +14,7 @@ namespace AppointMate.Shared
         /// <summary>
         /// The theme provider
         /// </summary>
-        private MudTheme? mMyTheme;
+        private MudTheme? mMeetEduTheme;
 
         #endregion
 
@@ -25,7 +25,7 @@ namespace AppointMate.Shared
         /// </summary>
         public MainLayout() : base()
         {
-            mMyTheme = new MudTheme()
+            mMeetEduTheme = new MudTheme()
             {
                 Typography = new Typography()
                 {
