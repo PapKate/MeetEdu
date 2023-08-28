@@ -1587,32 +1587,62 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:AppointMate.DepartmentRelatedAPIArgs">
+        <member name="T:AppointMate.StafMemberAPIArgs">
             <summary>
-            Arguments used for retrieving data that belong to a department
+            Arguments used for retrieving data that belong to a staff member
             </summary>
         </member>
-        <member name="P:AppointMate.DepartmentRelatedAPIArgs.IncludeUniversities">
-            <summary>
-            Limit the result to entries with specific university ids
-            </summary>
-        </member>
-        <member name="P:AppointMate.DepartmentRelatedAPIArgs.ExcludeUniversities">
-            <summary>
-            Limit the result to entries without specific university ids
-            </summary>
-        </member>
-        <member name="P:AppointMate.DepartmentRelatedAPIArgs.IncludeDepartments">
+        <member name="P:AppointMate.StafMemberAPIArgs.IncludeDepartments">
             <summary>
             Limit the result to entries with specific department ids
             </summary>
         </member>
-        <member name="P:AppointMate.DepartmentRelatedAPIArgs.ExcludeDepartments">
+        <member name="P:AppointMate.StafMemberAPIArgs.ExcludeDepartments">
             <summary>
             Limit the result to entries without specific department ids
             </summary>
         </member>
-        <member name="M:AppointMate.DepartmentRelatedAPIArgs.#ctor">
+        <member name="M:AppointMate.StafMemberAPIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:AppointMate.DepartmentAPIArgs">
+            <summary>
+            Arguments used for retrieving data that belong to a department
+            </summary>
+        </member>
+        <member name="P:AppointMate.DepartmentAPIArgs.IncludeUniversities">
+            <summary>
+            Limit the result to entries with specific university ids
+            </summary>
+        </member>
+        <member name="P:AppointMate.DepartmentAPIArgs.ExcludeUniversities">
+            <summary>
+            Limit the result to entries without specific university ids
+            </summary>
+        </member>
+        <member name="P:AppointMate.DepartmentAPIArgs.IncludeSecretaries">
+            <summary>
+            Limit the result to entries with specific secretary ids
+            </summary>
+        </member>
+        <member name="P:AppointMate.DepartmentAPIArgs.ExcludeSecretaries">
+            <summary>
+            Limit the result to entries without specific secretary ids
+            </summary>
+        </member>
+        <member name="P:AppointMate.DepartmentAPIArgs.IncludeProfessors">
+            <summary>
+            Limit the result to entries with specific professor ids
+            </summary>
+        </member>
+        <member name="P:AppointMate.DepartmentAPIArgs.ExcludeProfessors">
+            <summary>
+            Limit the result to entries without specific professor ids
+            </summary>
+        </member>
+        <member name="M:AppointMate.DepartmentAPIArgs.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -1620,16 +1650,6 @@
         <member name="T:AppointMate.MemberRelatedAPIArgs">
             <summary>
             Arguments used for retrieving members
-            </summary>
-        </member>
-        <member name="P:AppointMate.MemberRelatedAPIArgs.IncludeStaffMembers">
-            <summary>
-            Limit the result to entries with specific staff member ids
-            </summary>
-        </member>
-        <member name="P:AppointMate.MemberRelatedAPIArgs.ExcludeStaffMembers">
-            <summary>
-            Limit the result to entries without specific staff member ids
             </summary>
         </member>
         <member name="M:AppointMate.MemberRelatedAPIArgs.#ctor">
@@ -1870,254 +1890,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:AppointMate.AppointMateAPIRoutes">
-            <summary>
-            The AppontMate related API routes
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.APIRoute">
-            <summary>
-            The app route
-            <code>/appointMate/api</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.VersionRoute">
-            <summary>
-            The app route
-            <code>/appointMate/api/v1</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.BaseRoute">
-            <summary>
-            The base route
-            <code>/appointMate/api/v1/meetEdu</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.LogInRoute">
-            <summary>
-            The login route
-            <code>/appointMate/api/v1/meetEdu/login</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.RegisterRoute">
-            <summary>
-            The register route
-            <code>/appointMate/api/v1/meetEdu/register</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UsersRoute">
-            <summary>
-            The users route
-            <code>/appointMate/api/v1/meetEdu/users</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UserRoute">
-            <summary>
-            The user route
-            <code>/appointMate/api/v1/meetEdu/users/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetUserRoute(System.String)">
-            <summary>
-            Gets the route for the user with the specified <paramref name="id"/>
-            <code>/appointMate/api/v1/meetEdu/users/4</code>
-            </summary>
-            <param name="id">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.UniversitiesRoute">
-            <summary>
-            The universities route
-            <code>/appointMate/api/v1/meetEdu/universities</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.DepartmentsRoute">
-            <summary>
-            The departments route
-            <code>/appointMate/api/v1/meetEdu/departments</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.DepartmentRoute">
-            <summary>
-            The department route
-            <code>/appointMate/api/v1/meetEdu/departments/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetDepartmentRoute(System.String)">
-            <summary>
-            Gets the department route for the one with the specified <paramref name="id"/>
-            <code>/appointMate/api/v1/meetEdu/departments/3</code>
-            </summary>
-            <param name="id">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.DepartmentContactMessagesRoute">
-            <summary>
-            The department contact messages route
-            <code>/appointMate/api/v1/meetEdu/departments/3/departmentContactMessages</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.DepartmentContactMessageRoute">
-            <summary>
-            The department contact message route
-            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetDepartmentContactMessageRoute(System.String)">
-            <summary>
-            Gets the route for the department contact message with the specified <paramref name="id"/>
-            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/2</code>
-            </summary>
-            <param name="id">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.SecretariesRoute">
-            <summary>
-            The secretaries route
-            <code>/appointMate/api/v1/meetEdu/secretaries</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.SecretaryRoute">
-            <summary>
-            The secretary route
-            <code>/appointMate/api/v1/meetEdu/secretaries/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetSecretaryRoute(System.String)">
-            <summary>
-            Gets the route for the secretary with the specified <paramref name="id"/>
-            <code>/appointMate/api/v1/meetEdu/secretaries/4</code>
-            </summary>
-            <param name="id">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.ProfessorsRoute">
-            <summary>
-            The professors route
-            <code>/appointMate/api/v1/meetEdu/professors</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.ProfessorRoute">
-            <summary>
-            The professor route
-            <code>/appointMate/api/v1/meetEdu/professors/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetProfessorRoute(System.String)">
-            <summary>
-            Gets the professor route for the one with the specified <paramref name="id"/>
-            <code>/appointMate/api/v1/meetEdu/professors/3</code>
-            </summary>
-            <param name="id">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.AppointmentRulesRoute">
-            <summary>
-            The appointment rules route
-            <code>/appointMate/api/v1/meetEdu/appointmentRules</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.AppointmentRuleRoute">
-            <summary>
-            The appointment rule route
-            <code>/appointMate/api/v1/meetEdu/appointmentRules/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetAppointmentRuleRoute(System.String)">
-            <summary>
-            Gets the route for the appointment with the specified <paramref name="id"/>
-            <code>/appointMate/api/v1/meetEdu/appointmentRules/4</code>
-            </summary>
-            <param name="id">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.MembersRoute">
-            <summary>
-            The members route
-            <code>/appointMate/api/v1/meetEdu/members</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.MemberRoute">
-            <summary>
-            The member route
-            <code>/appointMate/api/v1/meetEdu/members/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetMemberRoute(System.String)">
-            <summary>
-            Gets the member route for the one with the specified <paramref name="id"/>
-            <code>/appointMate/api/v1/meetEdu/members/3</code>
-            </summary>
-            <param name="id">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.SavedDepartmentsRoute">
-            <summary>
-            The saved departments route
-            <code>/appointMate/api/v1/meetEdu/savedDepartments</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.SavedProfessorsRoute">
-            <summary>
-            The saved departments route
-            <code>/appointMate/api/v1/meetEdu/savedProfessors</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.AppointmentsRoute">
-            <summary>
-            The appointments route
-            <code>/appointMate/api/v1/meetEdu/appointments</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.AppointMateAPIRoutes.AppointmentRoute">
-            <summary>
-            The appointment route
-            <code>/appointMate/api/v1/meetEdu/appointments/3</code>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateAPIRoutes.GetAppointmentRoute(System.String)">
-            <summary>
-            Gets the route for the appointment with the specified <paramref name="id"/>
-            <code>/appointMate/api/v1/meetEdu/appointments/4</code>
-            </summary>
-            <param name="id">The id</param>
-            <returns></returns>
-        </member>
-        <member name="T:AppointMate.CoreMateAPIRoutes">
-            <summary>
-            The AppontMate related API routes
-            </summary>
-        </member>
-        <member name="F:AppointMate.CoreMateAPIRoutes.APIRoute">
-            <summary>
-            The app route
-            <code>/appointMate/api</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.CoreMateAPIRoutes.VersionRoute">
-            <summary>
-            The app route
-            <code>/appointMate/api/v1</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.CoreMateAPIRoutes.BaseRoute">
-            <summary>
-            The base route
-            <code>/appointMate/api/v1/coreEdu</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.CoreMateAPIRoutes.LogInRoute">
-            <summary>
-            The login route
-            <code>/appointMate/api/v1/coreEdu/login</code>
-            </summary>
-        </member>
-        <member name="F:AppointMate.CoreMateAPIRoutes.RegisterRoute">
-            <summary>
-            The register route
-            <code>/appointMate/api/v1/coreEdu/register</code>
-            </summary>
-        </member>
         <member name="T:AppointMate.AppointMateConstants">
             <summary>
             The constants for the AppointMate app
@@ -2341,6 +2113,394 @@
             The heart outline icon path
             </summary>
         </member>
+        <member name="T:AppointMate.MeetEduAPIRoutes">
+            <summary>
+            The AppontMate related API routes
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.APIRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.VersionRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api/v1</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.BaseRoute">
+            <summary>
+            The base route
+            <code>/appointMate/api/v1/meetEdu</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.LogInRoute">
+            <summary>
+            The login route
+            <code>/appointMate/api/v1/meetEdu/login</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.RegisterRoute">
+            <summary>
+            The register route
+            <code>/appointMate/api/v1/meetEdu/register</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.UsersRoute">
+            <summary>
+            The users route
+            <code>/appointMate/api/v1/meetEdu/users</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.UserRoute">
+            <summary>
+            The user route
+            <code>/appointMate/api/v1/meetEdu/users/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetEduAPIRoutes.GetUserRoute(System.String)">
+            <summary>
+            Gets the route for the user with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/users/4</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.UniversitiesRoute">
+            <summary>
+            The universities route
+            <code>/appointMate/api/v1/meetEdu/universities</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.DepartmentsRoute">
+            <summary>
+            The departments route
+            <code>/appointMate/api/v1/meetEdu/departments</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.DepartmentRoute">
+            <summary>
+            The department route
+            <code>/appointMate/api/v1/meetEdu/departments/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetEduAPIRoutes.GetDepartmentRoute(System.String)">
+            <summary>
+            Gets the department route for the one with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/departments/3</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.DepartmentContactMessagesRoute">
+            <summary>
+            The department contact messages route
+            <code>/appointMate/api/v1/meetEdu/departments/3/departmentContactMessages</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.DepartmentContactMessageRoute">
+            <summary>
+            The department contact message route
+            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetEduAPIRoutes.GetDepartmentContactMessageRoute(System.String)">
+            <summary>
+            Gets the route for the department contact message with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/2</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.SecretariesRoute">
+            <summary>
+            The secretaries route
+            <code>/appointMate/api/v1/meetEdu/secretaries</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.SecretaryRoute">
+            <summary>
+            The secretary route
+            <code>/appointMate/api/v1/meetEdu/secretaries/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetEduAPIRoutes.GetSecretaryRoute(System.String)">
+            <summary>
+            Gets the route for the secretary with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/secretaries/4</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.ProfessorsRoute">
+            <summary>
+            The professors route
+            <code>/appointMate/api/v1/meetEdu/professors</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.ProfessorRoute">
+            <summary>
+            The professor route
+            <code>/appointMate/api/v1/meetEdu/professors/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetEduAPIRoutes.GetProfessorRoute(System.String)">
+            <summary>
+            Gets the professor route for the one with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/professors/3</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.AppointmentRulesRoute">
+            <summary>
+            The appointment rules route
+            <code>/appointMate/api/v1/meetEdu/appointmentRules</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.AppointmentRuleRoute">
+            <summary>
+            The appointment rule route
+            <code>/appointMate/api/v1/meetEdu/appointmentRules/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetEduAPIRoutes.GetAppointmentRuleRoute(System.String)">
+            <summary>
+            Gets the route for the appointment with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/appointmentRules/4</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.MembersRoute">
+            <summary>
+            The members route
+            <code>/appointMate/api/v1/meetEdu/members</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.MemberRoute">
+            <summary>
+            The member route
+            <code>/appointMate/api/v1/meetEdu/members/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetEduAPIRoutes.GetMemberRoute(System.String)">
+            <summary>
+            Gets the member route for the one with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/members/3</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.SavedDepartmentsRoute">
+            <summary>
+            The saved departments route
+            <code>/appointMate/api/v1/meetEdu/savedDepartments</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.SavedProfessorsRoute">
+            <summary>
+            The saved departments route
+            <code>/appointMate/api/v1/meetEdu/savedProfessors</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.AppointmentsRoute">
+            <summary>
+            The appointments route
+            <code>/appointMate/api/v1/meetEdu/appointments</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetEduAPIRoutes.AppointmentRoute">
+            <summary>
+            The appointment route
+            <code>/appointMate/api/v1/meetEdu/appointments/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetEduAPIRoutes.GetAppointmentRoute(System.String)">
+            <summary>
+            Gets the route for the appointment with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetEdu/appointments/4</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="T:AppointMate.MeetCoreAPIRoutes">
+            <summary>
+            The MeetCore related API routes
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.APIRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.VersionRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api/v1</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.BaseRoute">
+            <summary>
+            The base route
+            <code>/appointMate/api/v1/meetCore</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.LogInRoute">
+            <summary>
+            The login route
+            <code>/appointMate/api/v1/meetCore/login</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.RegisterRoute">
+            <summary>
+            The register route
+            <code>/appointMate/api/v1/meetCore/register</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.UsersRoute">
+            <summary>
+            The users route
+            <code>/appointMate/api/v1/meetCore/users</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.UserRoute">
+            <summary>
+            The user route
+            <code>/appointMate/api/v1/meetCore/users/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetCoreAPIRoutes.GetUserRoute(System.String)">
+            <summary>
+            Gets the route for the user with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetCore/users/4</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.UniversitiesRoute">
+            <summary>
+            The universities route
+            <code>/appointMate/api/v1/meetCore/universities</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.UniversityRoute">
+            <summary>
+            The university route
+            <code>/appointMate/api/v1/meetCore/universities/5</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetCoreAPIRoutes.GetUniversityRoute(System.String)">
+            <summary>
+            Gets the route for the university with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetCore/universities/5</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.DepartmentsRoute">
+            <summary>
+            The departments route
+            <code>/appointMate/api/v1/meetCore/departments</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.DepartmentRoute">
+            <summary>
+            The department route
+            <code>/appointMate/api/v1/meetCore/departments/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetCoreAPIRoutes.GetDepartmentRoute(System.String)">
+            <summary>
+            Gets the department route for the one with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetCore/departments/3</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.DepartmentContactMessagesRoute">
+            <summary>
+            The department contact messages route
+            <code>/appointMate/api/v1/meetCore/departmentContactMessages</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.DepartmentContactMessageRoute">
+            <summary>
+            The department contact message route
+            <code>/appointMate/api/v1/meetCore/departmentContactMessages/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetCoreAPIRoutes.GetDepartmentContactMessageRoute(System.String)">
+            <summary>
+            Gets the route for the department contact message with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetCore/departmentContactMessages/2</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.SecretariesRoute">
+            <summary>
+            The secretaries route
+            <code>/appointMate/api/v1/meetCore/secretaries</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.SecretaryRoute">
+            <summary>
+            The secretary route
+            <code>/appointMate/api/v1/meetCore/secretaries/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetCoreAPIRoutes.GetSecretaryRoute(System.String)">
+            <summary>
+            Gets the route for the secretary with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetCore/secretaries/4</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.ProfessorsRoute">
+            <summary>
+            The professors route
+            <code>/appointMate/api/v1/meetCore/professors</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.ProfessorRoute">
+            <summary>
+            The professor route
+            <code>/appointMate/api/v1/meetCore/professors/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetCoreAPIRoutes.GetProfessorRoute(System.String)">
+            <summary>
+            Gets the professor route for the one with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetCore/professors/3</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.AppointmentRulesRoute">
+            <summary>
+            The appointment rules route
+            <code>/appointMate/api/v1/meetCore/appointmentRules</code>
+            </summary>
+        </member>
+        <member name="F:AppointMate.MeetCoreAPIRoutes.AppointmentRuleRoute">
+            <summary>
+            The appointment rule route
+            <code>/appointMate/api/v1/meetCore/appointmentRules/3</code>
+            </summary>
+        </member>
+        <member name="M:AppointMate.MeetCoreAPIRoutes.GetAppointmentRuleRoute(System.String)">
+            <summary>
+            Gets the route for the appointment with the specified <paramref name="id"/>
+            <code>/appointMate/api/v1/meetCore/appointmentRules/4</code>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
         <member name="T:AppointMate.Personalization">
             <summary>
             The personalization constants for the AppointMate app
@@ -2486,15 +2646,195 @@
             The regular expression used for validating a hex value
             </summary>
         </member>
-        <member name="T:AppointMate.CoreMateController">
+        <member name="T:AppointMate.MeetCoreController">
             <summary>
-            Controller used for handing the requests related to a CoreMate related application
+            Controller used for handing the requests related to a MeetCore related application
             </summary>
         </member>
-        <member name="M:AppointMate.CoreMateController.#ctor">
+        <member name="M:AppointMate.MeetCoreController.#ctor">
             <summary>
             Default constructor
             </summary>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.RegisterUserAsync(AppointMate.UserRequestModel)">
+            <summary>
+            Registers a user
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.LoginAsync(AppointMate.LogInRequestModel)">
+            <summary>
+            Validates the user credentials sent by the user and returns the user
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.GetUniversitiesAsync(AppointMate.APIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the universities
+            </summary>
+            <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.AddUniversityAsync(AppointMate.UniversityRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Creates a university
+            </summary>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.GetUniversityAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the university with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.UpdateUniversityAsync(System.String,AppointMate.UniversityRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Updates the university with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.DeleteUniversityAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the university with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.GetDepartmentsAsync(AppointMate.DepartmentAPIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the departments
+            </summary>
+            <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.AddDepartmentAsync(AppointMate.DepartmentRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Creates a department
+            </summary>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.GetDepartmentAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.UpdateDepartmentAsync(System.String,AppointMate.DepartmentRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Updates the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.DeleteDepartmentAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.GetSecretariesAsync(AppointMate.StafMemberAPIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the secretaries
+            </summary>
+            <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.AddSecretaryAsync(AppointMate.SecretaryRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Creates a secretary
+            </summary>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.GetSecretaryAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the secretary
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.UpdateSecretaryAsync(System.String,AppointMate.SecretaryRequestModel,AppointMate.UserRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Updates the secretary with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <param name="user">The user</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.DeleteSecretaryAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the secretary with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.GetProfessorsAsync(AppointMate.StafMemberAPIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the professors
+            </summary>
+            <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.AddProfessorAsync(AppointMate.ProfessorRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Creates a professor
+            </summary>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.GetProfessorAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the secretary
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.UpdateProfessorAsync(System.String,AppointMate.ProfessorRequestModel,AppointMate.UserRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Updates the secretary with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <param name="user">The user</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.MeetCoreController.DeleteProfessorAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the secretary with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
         </member>
         <member name="T:AppointMate.MeetEduController">
             <summary>
@@ -5360,6 +5700,16 @@
             The users manager
             </summary>
         </member>
+        <member name="P:AppointMate.DI.SecretariesRepository">
+            <summary>
+            The secretaries manager
+            </summary>
+        </member>
+        <member name="P:AppointMate.DI.ProfessorsRepository">
+            <summary>
+            The professors manager
+            </summary>
+        </member>
         <member name="P:AppointMate.DI.MembersRepository">
             <summary>
             The members manager
@@ -6930,84 +7280,46 @@
             Helper methods for <see cref="T:Microsoft.AspNetCore.Mvc.Controller"/>s
             </summary>
         </member>
-        <member name="M:AppointMate.Helpers.ControllerHelpers.GetManyAsync``3(MongoDB.Driver.IMongoCollection{``1},MongoDB.Driver.FilterDefinition{``1},System.Linq.Expressions.Expression{System.Func{``1,``2}},System.Boolean,AppointMate.APIArgs,System.Func{``1,``0},System.Threading.CancellationToken)">
+        <member name="M:AppointMate.Helpers.ControllerHelpers.GetManyAsync``2(MongoDB.Driver.IMongoCollection{``1},System.Func{``1,``0},MongoDB.Driver.FilterDefinition{``1},AppointMate.APIArgs,System.Threading.CancellationToken,System.Linq.Expressions.Expression{System.Func{``1,System.Object}},AppointMate.OrderCondition)">
             <summary>
             Get many 
-            </summary>
-            <typeparam name="TResponse">The type of the response model</typeparam>
-            <typeparam name="TEntity">The type of the entity</typeparam>
-            <typeparam name="TKey">The key type</typeparam>
-            <param name="collection">The collection</param>
-            <param name="projector">The projector</param>
-            <param name="filter">The filter</param>
-            <param name="isAscending">A flag indicating whether the order is ascending or descending</param>
-            <param name="orderSelector">The order selector</param>
-            <param name="args">The args</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.Helpers.ControllerHelpers.GetAsync``2(MongoDB.Driver.IMongoCollection{``1},System.Linq.Expressions.Expression{System.Func{``1,System.Boolean}},System.Func{``1,``0},System.Threading.CancellationToken)">
-            <summary>
-            Get one 
             </summary>
             <typeparam name="TResponse">The type of the response model</typeparam>
             <typeparam name="TEntity">The type of the entity</typeparam>
             <param name="collection">The collection</param>
             <param name="projector">The projector</param>
             <param name="filter">The filter</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="T:AppointMate.Helpers.ManagerHelpers">
-            <summary>
-            Helper methods for <see cref="T:AppointMate.AppointMateManager"/>s
-            </summary>
-        </member>
-        <member name="M:AppointMate.Helpers.ManagerHelpers.GetManyAsync``2(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.FilterDefinition{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Boolean,AppointMate.APIArgs,System.Threading.CancellationToken)">
-            <summary>
-            Get many 
-            </summary>
-            <typeparam name="TEntity">The type of the entity</typeparam>
-            <typeparam name="TKey">The key type</typeparam>
-            <param name="collection">The collection</param>
-            <param name="filter">The filter</param>
-            <param name="isAscending">A flag indicating whether the order is ascending or descending</param>
+            <param name="orderCondition">Indicates whether the order is ascending or descending</param>
             <param name="orderSelector">The order selector</param>
             <param name="args">The args</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.Helpers.ManagerHelpers.GetManyAsync``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.FilterDefinition{``0},AppointMate.APIArgs,System.Threading.CancellationToken)">
-            <summary>
-            Get many 
-            </summary>
-            <typeparam name="TEntity">The type of the entity</typeparam>
-            <param name="collection">The collection</param>
-            <param name="filter">The filter</param>
-            <param name="args">The args</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.Helpers.ManagerHelpers.GetAsync``2(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.FilterDefinition{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Boolean,System.Threading.CancellationToken)">
+        <member name="M:AppointMate.Helpers.ControllerHelpers.GetAsync``2(MongoDB.Driver.IMongoCollection{``1},System.Func{``1,``0},MongoDB.Driver.FilterDefinition{``1},System.Threading.CancellationToken,System.Linq.Expressions.Expression{System.Func{``1,System.Object}},AppointMate.OrderCondition)">
             <summary>
             Get one 
             </summary>
+            <typeparam name="TResponse">The type of the response model</typeparam>
             <typeparam name="TEntity">The type of the entity</typeparam>
-            <typeparam name="TKey">The key type</typeparam>
             <param name="collection">The collection</param>
+            <param name="projector">The projector</param>
             <param name="filter">The filter</param>
-            <param name="isAscending">A flag indicating whether the order is ascending or descending</param>
-            <param name="orderSelector">The order selector</param>
+            <param name="orderSelector"></param>
+            <param name="orderCondition">Indicates whether the order is ascending or descending</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.Helpers.ManagerHelpers.GetAsync``1(MongoDB.Driver.IMongoCollection{``0},MongoDB.Driver.FilterDefinition{``0},System.Threading.CancellationToken)">
+        <member name="M:AppointMate.Helpers.ControllerHelpers.GetAsync``2(MongoDB.Driver.IMongoCollection{``1},System.Func{``1,``0},System.Linq.Expressions.Expression{System.Func{``1,System.Boolean}},System.Threading.CancellationToken,System.Linq.Expressions.Expression{System.Func{``1,System.Object}},AppointMate.OrderCondition)">
             <summary>
             Get one 
             </summary>
+            <typeparam name="TResponse">The type of the response model</typeparam>
             <typeparam name="TEntity">The type of the entity</typeparam>
             <param name="collection">The collection</param>
+            <param name="projector">The projector</param>
             <param name="filter">The filter</param>
+            <param name="orderSelector"></param>
+            <param name="orderCondition">Indicates whether the order is ascending or descending</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -8463,76 +8775,25 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:AppointMate.AppointMateManager">
+        <member name="T:AppointMate.APIArgsExtensions">
             <summary>
-            Provides methods for managing the app data
+            Extension methods for <see cref="T:AppointMate.APIArgs"/>
             </summary>
         </member>
-        <member name="P:AppointMate.AppointMateManager.Instance">
-            <summary>
-            The single instance of the <see cref="T:AppointMate.AppointMateManager"/>
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateManager.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="M:AppointMate.AppointMateManager.GetUserAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the user with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The id</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateManager.GetDepartmentAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the department with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The id</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateManager.GetStaffMembersAsync(AppointMate.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
-            <summary>
-            Gets the professor
-            </summary>
-            <param name="args">The arguments</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateManager.GetStaffMemberAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the professor with the specified <paramref name="id"/>
-            </summary>
-            <param name="id">The id</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateManager.GetMemberSavedDepartmentsAsync(System.String,AppointMate.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
-            <summary>
-            Gets the saved departments for the member with the specified <paramref name="memberId"/> 
-            </summary>
-            <param name="memberId">The member id</param>
-            <param name="args">The arguments</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateManager.GetMemberSavedDepartmentsCountAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Gets the saved departments count for the member with the specified <paramref name="memberId"/> 
-            </summary>
-            <param name="memberId">The user id</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:AppointMate.AppointMateManager.CreateFilters``1(AppointMate.DepartmentRelatedAPIArgs)">
+        <member name="M:AppointMate.APIArgsExtensions.CreateFilters``1(AppointMate.StafMemberAPIArgs)">
             <summary>
             Creates the filters for the specified <paramref name="args"/>
             </summary>
             <typeparam name="T">The document type</typeparam>
             <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.APIArgsExtensions.AggregateFilters``1(System.Collections.Generic.List{MongoDB.Driver.FilterDefinition{``0}})">
+            <summary>
+            Combines the specified <paramref name="filters"/>
+            </summary>
+            <typeparam name="T">The document type</typeparam>
+            <param name="filters">The filters</param>
             <returns></returns>
         </member>
         <member name="T:AppointMate.Pages.ErrorModel">
@@ -8699,80 +8960,90 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentAsync(AppointMate.DepartmentRequestModel)">
+        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentAsync(AppointMate.DepartmentRequestModel,System.Threading.CancellationToken)">
             <summary>
             Adds a department
             </summary>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.UpdateDepartmentAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentRequestModel)">
+        <member name="M:AppointMate.DepartmentsRepository.UpdateDepartmentAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentRequestModel,System.Threading.CancellationToken)">
             <summary>
             Updates the department with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.DeleteDepartmentAsync(MongoDB.Bson.ObjectId)">
+        <member name="M:AppointMate.DepartmentsRepository.DeleteDepartmentAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
             <summary>
             Deletes the department with the specified <paramref name="id"/>
             </summary>
             <param name="id">The department id</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentLabelAsync(MongoDB.Bson.ObjectId,AppointMate.LabelRequestModel)">
+        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentLabelAsync(MongoDB.Bson.ObjectId,AppointMate.LabelRequestModel,System.Threading.CancellationToken)">
             <summary>
             Add a department label
             </summary>
             <param name="departmentId">The department id</param>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.UpdateDepartmentLabelAsync(MongoDB.Bson.ObjectId,AppointMate.LabelRequestModel)">
+        <member name="M:AppointMate.DepartmentsRepository.UpdateDepartmentLabelAsync(MongoDB.Bson.ObjectId,AppointMate.LabelRequestModel,System.Threading.CancellationToken)">
             <summary>
             Updates the department with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.DeleteDepartmentLabelAsync(MongoDB.Bson.ObjectId)">
+        <member name="M:AppointMate.DepartmentsRepository.DeleteDepartmentLabelAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
             <summary>
             Deletes the department label with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentContactMessageAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentContactMessageRequestModel)">
+        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentContactMessageAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentContactMessageRequestModel,System.Threading.CancellationToken)">
             <summary>
             Add a department contact message 
             </summary>
             <param name="departmentId">The department id</param>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.UpdateDepartmentContactMessageAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentContactMessageRequestModel)">
+        <member name="M:AppointMate.DepartmentsRepository.UpdateDepartmentContactMessageAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentContactMessageRequestModel,System.Threading.CancellationToken)">
             <summary>
             Updates the contact message with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.DeleteDepartmentContactMessageAsync(MongoDB.Bson.ObjectId)">
+        <member name="M:AppointMate.DepartmentsRepository.DeleteDepartmentContactMessageAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
             <summary>
             Deletes the department contact message with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentLayoutAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentLayoutRequestModel)">
+        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentLayoutAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentLayoutRequestModel,System.Threading.CancellationToken)">
             <summary>
             Add a department layout
             </summary>
             <param name="departmentId">The department id</param>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:AppointMate.DepartmentsRepository.UpdateDepartmentLayoutAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentLayoutRequestModel,System.Threading.CancellationToken)">
@@ -8784,52 +9055,58 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.DeleteDepartmentLayoutAsync(MongoDB.Bson.ObjectId)">
+        <member name="M:AppointMate.DepartmentsRepository.DeleteDepartmentLayoutAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
             <summary>
             Deletes the department layout with the specified <paramref name="layoutId"/>
             </summary>
             <param name="layoutId">The layout id</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentLayoutRoomAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentLayoutDataModel)">
+        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentLayoutRoomAsync(MongoDB.Bson.ObjectId,AppointMate.DepartmentLayoutDataModel,System.Threading.CancellationToken)">
             <summary>
             Add a department layout room
             </summary>
             <param name="layoutId">The layout id</param>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{AppointMate.DepartmentLayoutDataModel})">
+        <member name="M:AppointMate.DepartmentsRepository.AddDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{AppointMate.DepartmentLayoutDataModel},System.Threading.CancellationToken)">
             <summary>
             Add a list of rooms to the department layout 
             </summary>
             <param name="layoutId">The layout id</param>
             <param name="models">The models</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.UpdateDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{AppointMate.DepartmentLayoutDataModel})">
+        <member name="M:AppointMate.DepartmentsRepository.UpdateDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{AppointMate.DepartmentLayoutDataModel},System.Threading.CancellationToken)">
             <summary>
             Replaces the layout rooms with the specified <paramref name="models"/>
             of the department layout with the specified <paramref name="layoutId"/>
             </summary>
             <param name="layoutId">The layout id</param>
             <param name="models">The models</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.DeleteDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId)">
+        <member name="M:AppointMate.DepartmentsRepository.DeleteDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
             <summary>
             Deletes the department layout rooms 
             from the department layout with the specified <paramref name="layoutId"/>
             </summary>
             <param name="layoutId">The layout id</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.DepartmentsRepository.ExecuteAgainstDepartmentLayoutAsync(MongoDB.Bson.ObjectId,System.Func{AppointMate.DepartmentLayoutEntity,System.Threading.Tasks.Task})">
+        <member name="M:AppointMate.DepartmentsRepository.ExecuteAgainstDepartmentLayoutAsync(MongoDB.Bson.ObjectId,System.Func{AppointMate.DepartmentLayoutEntity,System.Threading.Tasks.Task},System.Threading.CancellationToken)">
             <summary>
             Executes the specified <paramref name="action"/> against the layout with the specified <paramref name="layoutId"/>
             </summary>
             <param name="layoutId">The layout id</param>
             <param name="action">The action</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="T:AppointMate.UniversitiesRepository">
@@ -9029,26 +9306,71 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:AppointMate.ProfessorsRepository.AddProfessorAsync(AppointMate.ProfessorRequestModel)">
+        <member name="M:AppointMate.ProfessorsRepository.AddProfessorAsync(AppointMate.ProfessorRequestModel,System.Threading.CancellationToken)">
             <summary>
             Adds a professor
             </summary>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.ProfessorsRepository.UpdateProfessorAsync(MongoDB.Bson.ObjectId,AppointMate.UserRequestModel)">
+        <member name="M:AppointMate.ProfessorsRepository.UpdateProfessorAsync(MongoDB.Bson.ObjectId,AppointMate.ProfessorRequestModel,AppointMate.UserRequestModel,System.Threading.CancellationToken)">
             <summary>
             Updates the professor with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
-            <param name="model">The model</param>
+            <param name="professor">The professor</param>
+            <param name="user">The user</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:AppointMate.ProfessorsRepository.DeleteProfessorAsync(MongoDB.Bson.ObjectId)">
+        <member name="M:AppointMate.ProfessorsRepository.DeleteProfessorAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
             <summary>
             Deletes the professor with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="T:AppointMate.SecretariesRepository">
+            <summary>
+            Provides methods for managing secretaries
+            </summary>
+        </member>
+        <member name="P:AppointMate.SecretariesRepository.Instance">
+            <summary>
+            The single instance of the <see cref="T:AppointMate.SecretariesRepository"/>
+            </summary>
+        </member>
+        <member name="M:AppointMate.SecretariesRepository.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:AppointMate.SecretariesRepository.AddSecretaryAsync(AppointMate.SecretaryRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Adds a secretary
+            </summary>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.SecretariesRepository.UpdateSecretaryAsync(MongoDB.Bson.ObjectId,AppointMate.SecretaryRequestModel,AppointMate.UserRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Updates the secretary with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="secretary">The secretary</param>
+            <param name="user">The user</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppointMate.SecretariesRepository.DeleteSecretaryAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the secretary with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="T:AppointMate.UsersRepository">

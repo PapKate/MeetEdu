@@ -2,6 +2,8 @@
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
+using System.Threading;
+
 namespace AppointMate
 {
     /// <summary>
@@ -36,19 +38,21 @@ namespace AppointMate
         /// Adds a department
         /// </summary>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<DepartmentEntity> AddDepartmentAsync(DepartmentRequestModel model) 
-            => await AppointMateDbMapper.Departments.AddAsync(DepartmentEntity.FromRequestModel(model));
+        public async Task<WebServerFailable<DepartmentEntity>> AddDepartmentAsync(DepartmentRequestModel model, CancellationToken cancellationToken = default) 
+            => await AppointMateDbMapper.Departments.AddAsync(DepartmentEntity.FromRequestModel(model), cancellationToken);
 
         /// <summary>
         /// Updates the department with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentEntity>> UpdateDepartmentAsync(ObjectId id, DepartmentRequestModel model)
+        public async Task<WebServerFailable<DepartmentEntity>> UpdateDepartmentAsync(ObjectId id, DepartmentRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointMateDbMapper.Departments.UpdateAsync(id, model);
+            var entity = await AppointMateDbMapper.Departments.UpdateAsync(id, model, cancellationToken);
 
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Departments));
@@ -60,15 +64,16 @@ namespace AppointMate
         /// Deletes the department with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The department id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentEntity>> DeleteDepartmentAsync(ObjectId id)
+        public async Task<WebServerFailable<DepartmentEntity>> DeleteDepartmentAsync(ObjectId id, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointMateDbMapper.Departments.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await AppointMateDbMapper.Departments.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Departments));
 
-            await AppointMateDbMapper.Departments.DeleteAsync(id);
+            await AppointMateDbMapper.Departments.DeleteAsync(id, cancellationToken);
 
             return entity;
         }
@@ -80,19 +85,21 @@ namespace AppointMate
         /// </summary>
         /// <param name="departmentId">The department id</param>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<LabelEntity>> AddDepartmentLabelAsync(ObjectId departmentId, LabelRequestModel model)
-            => await AppointMateDbMapper.DepartmentLabels.AddAsync(LabelEntity.FromRequestModel(model, departmentId));
+        public async Task<WebServerFailable<LabelEntity>> AddDepartmentLabelAsync(ObjectId departmentId, LabelRequestModel model, CancellationToken cancellationToken = default)
+            => await AppointMateDbMapper.DepartmentLabels.AddAsync(LabelEntity.FromRequestModel(model, departmentId), cancellationToken);
 
         /// <summary>
         /// Updates the department with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<LabelEntity>> UpdateDepartmentLabelAsync(ObjectId id, LabelRequestModel model)
+        public async Task<WebServerFailable<LabelEntity>> UpdateDepartmentLabelAsync(ObjectId id, LabelRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointMateDbMapper.DepartmentLabels.UpdateAsync(id, model);
+            var entity = await AppointMateDbMapper.DepartmentLabels.UpdateAsync(id, model, cancellationToken);
 
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.DepartmentLabels));
@@ -104,9 +111,10 @@ namespace AppointMate
         /// Deletes the department label with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<LabelEntity>> DeleteDepartmentLabelAsync(ObjectId id)
-                => await AppointMateDbMapper.DepartmentLabels.DeleteAsync(id);
+        public async Task<WebServerFailable<LabelEntity>> DeleteDepartmentLabelAsync(ObjectId id, CancellationToken cancellationToken = default)
+                => await AppointMateDbMapper.DepartmentLabels.DeleteAsync(id, cancellationToken);
 
         #endregion
 
@@ -117,19 +125,21 @@ namespace AppointMate
         /// </summary>
         /// <param name="departmentId">The department id</param>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentContactMessageEntity>> AddDepartmentContactMessageAsync(ObjectId departmentId, DepartmentContactMessageRequestModel model)
-            => await AppointMateDbMapper.DepartmentContactMessages.AddAsync(DepartmentContactMessageEntity.FromRequestModel(model, departmentId));
+        public async Task<WebServerFailable<DepartmentContactMessageEntity>> AddDepartmentContactMessageAsync(ObjectId departmentId, DepartmentContactMessageRequestModel model, CancellationToken cancellationToken = default)
+            => await AppointMateDbMapper.DepartmentContactMessages.AddAsync(DepartmentContactMessageEntity.FromRequestModel(model, departmentId), cancellationToken);
 
         /// <summary>
         /// Updates the contact message with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentContactMessageEntity>> UpdateDepartmentContactMessageAsync(ObjectId id, DepartmentContactMessageRequestModel model)
+        public async Task<WebServerFailable<DepartmentContactMessageEntity>> UpdateDepartmentContactMessageAsync(ObjectId id, DepartmentContactMessageRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointMateDbMapper.DepartmentContactMessages.UpdateAsync(id, model);
+            var entity = await AppointMateDbMapper.DepartmentContactMessages.UpdateAsync(id, model, cancellationToken);
 
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.DepartmentContactMessages));
@@ -141,9 +151,10 @@ namespace AppointMate
         /// Deletes the department contact message with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentContactMessageEntity>> DeleteDepartmentContactMessageAsync(ObjectId id)
-                => await AppointMateDbMapper.DepartmentContactMessages.DeleteAsync(id);
+        public async Task<WebServerFailable<DepartmentContactMessageEntity>> DeleteDepartmentContactMessageAsync(ObjectId id, CancellationToken cancellationToken = default)
+                => await AppointMateDbMapper.DepartmentContactMessages.DeleteAsync(id, cancellationToken);
 
         #endregion
 
@@ -154,9 +165,10 @@ namespace AppointMate
         /// </summary>
         /// <param name="departmentId">The department id</param>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutAsync(ObjectId departmentId, DepartmentLayoutRequestModel model)
-            => await AppointMateDbMapper.DepartmentLayouts.AddAsync(DepartmentLayoutEntity.FromRequestModel(model, departmentId));
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutAsync(ObjectId departmentId, DepartmentLayoutRequestModel model, CancellationToken cancellationToken = default)
+            => await AppointMateDbMapper.DepartmentLayouts.AddAsync(DepartmentLayoutEntity.FromRequestModel(model, departmentId), cancellationToken);
 
         /// <summary>
         /// Updates the layout with the specified <paramref name="layoutId"/>
@@ -179,9 +191,10 @@ namespace AppointMate
         /// Deletes the department layout with the specified <paramref name="layoutId"/>
         /// </summary>
         /// <param name="layoutId">The layout id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> DeleteDepartmentLayoutAsync(ObjectId layoutId)
-            => await AppointMateDbMapper.DepartmentLayouts.DeleteAsync(layoutId);
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> DeleteDepartmentLayoutAsync(ObjectId layoutId, CancellationToken cancellationToken = default)
+            => await AppointMateDbMapper.DepartmentLayouts.DeleteAsync(layoutId, cancellationToken);
 
         #region Rooms
 
@@ -190,11 +203,12 @@ namespace AppointMate
         /// </summary>
         /// <param name="layoutId">The layout id</param>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutRoomAsync(ObjectId layoutId, DepartmentLayoutDataModel model)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutRoomAsync(ObjectId layoutId, DepartmentLayoutDataModel model, CancellationToken cancellationToken = default)
         {
             // Get the layout with the specified id
-            var layout = await AppointMateDbMapper.DepartmentLayouts.FirstOrDefaultAsync(layoutId);
+            var layout = await AppointMateDbMapper.DepartmentLayouts.FirstOrDefaultAsync(layoutId, cancellationToken);
             
             // If the layout does not exist...
             if (layout is null)
@@ -205,7 +219,7 @@ namespace AppointMate
             layout.Rooms.Add(model);
             
             // Update the layout
-            await AppointMateDbMapper.DepartmentLayouts.UpdateAsync(layout);
+            await AppointMateDbMapper.DepartmentLayouts.UpdateAsync(layout, cancellationToken);
 
             // Return the layout
             return layout;
@@ -216,11 +230,12 @@ namespace AppointMate
         /// </summary>
         /// <param name="layoutId">The layout id</param>
         /// <param name="models">The models</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutRoomsAsync(ObjectId layoutId, IEnumerable<DepartmentLayoutDataModel> models)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutRoomsAsync(ObjectId layoutId, IEnumerable<DepartmentLayoutDataModel> models, CancellationToken cancellationToken = default)
         {
             // Get the layout with the specified id
-            var layout = await AppointMateDbMapper.DepartmentLayouts.FirstOrDefaultAsync(layoutId);
+            var layout = await AppointMateDbMapper.DepartmentLayouts.FirstOrDefaultAsync(layoutId, cancellationToken);
 
             // If the layout does not exist...
             if (layout is null)
@@ -237,7 +252,7 @@ namespace AppointMate
             layout.Rooms = rooms;
 
             // Update the layout
-            await AppointMateDbMapper.DepartmentLayouts.UpdateAsync(layout);
+            await AppointMateDbMapper.DepartmentLayouts.UpdateAsync(layout, cancellationToken);
 
             // Return the layout
             return layout;
@@ -249,8 +264,9 @@ namespace AppointMate
         /// </summary>
         /// <param name="layoutId">The layout id</param>
         /// <param name="models">The models</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> UpdateDepartmentLayoutRoomsAsync(ObjectId layoutId, IEnumerable<DepartmentLayoutDataModel> models)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> UpdateDepartmentLayoutRoomsAsync(ObjectId layoutId, IEnumerable<DepartmentLayoutDataModel> models, CancellationToken cancellationToken = default)
         {
             return await ExecuteAgainstDepartmentLayoutAsync(
                 layoutId,
@@ -263,7 +279,7 @@ namespace AppointMate
                     layout.Rooms = rooms;
 
                     // Update the layout 
-                    await AppointMateDbMapper.DepartmentLayouts.UpdateAsync(layout);
+                    await AppointMateDbMapper.DepartmentLayouts.UpdateAsync(layout, cancellationToken);
                 });
         }
 
@@ -272,8 +288,9 @@ namespace AppointMate
         /// from the department layout with the specified <paramref name="layoutId"/>
         /// </summary>
         /// <param name="layoutId">The layout id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> DeleteDepartmentLayoutRoomsAsync(ObjectId layoutId)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> DeleteDepartmentLayoutRoomsAsync(ObjectId layoutId, CancellationToken cancellationToken = default)
         {
             return await ExecuteAgainstDepartmentLayoutAsync(
                 layoutId,
@@ -282,7 +299,7 @@ namespace AppointMate
                     layout.Rooms.Clear();
 
                     // Update the layout 
-                    await AppointMateDbMapper.DepartmentLayouts.UpdateAsync(layout);
+                    await AppointMateDbMapper.DepartmentLayouts.UpdateAsync(layout, cancellationToken);
                 });
         }
 
@@ -299,11 +316,12 @@ namespace AppointMate
         /// </summary>
         /// <param name="layoutId">The layout id</param>
         /// <param name="action">The action</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        private static async Task<WebServerFailable<DepartmentLayoutEntity>> ExecuteAgainstDepartmentLayoutAsync(ObjectId layoutId, Func<DepartmentLayoutEntity, Task> action)
+        private static async Task<WebServerFailable<DepartmentLayoutEntity>> ExecuteAgainstDepartmentLayoutAsync(ObjectId layoutId, Func<DepartmentLayoutEntity, Task> action, CancellationToken cancellationToken = default)
         {
             // Get the layout with the specified id
-            var layout = await AppointMateDbMapper.DepartmentLayouts.FirstOrDefaultAsync(layoutId);
+            var layout = await AppointMateDbMapper.DepartmentLayouts.FirstOrDefaultAsync(layoutId, cancellationToken);
 
             // If the layout does not exist...
             if (layout is null)

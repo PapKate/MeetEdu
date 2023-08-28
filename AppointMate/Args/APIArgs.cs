@@ -58,21 +58,11 @@
     }
 
     /// <summary>
-    /// Arguments used for retrieving data that belong to a department
+    /// Arguments used for retrieving data that belong to a staff member
     /// </summary>
-    public class DepartmentRelatedAPIArgs : APIArgs
+    public class StafMemberAPIArgs : APIArgs
     {
         #region Public Properties
-
-        /// <summary>
-        /// Limit the result to entries with specific university ids
-        /// </summary>
-        public IEnumerable<string>? IncludeUniversities { get; set; }
-
-        /// <summary>
-        /// Limit the result to entries without specific university ids
-        /// </summary>
-        public IEnumerable<string>? ExcludeUniversities { get; set; }
 
         /// <summary>
         /// Limit the result to entries with specific department ids
@@ -91,7 +81,60 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public DepartmentRelatedAPIArgs() : base()
+        public StafMemberAPIArgs() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
+
+    /// <summary>
+    /// Arguments used for retrieving data that belong to a department
+    /// </summary>
+    public class DepartmentAPIArgs : APIArgs
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// Limit the result to entries with specific university ids
+        /// </summary>
+        public IEnumerable<string>? IncludeUniversities { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific university ids
+        /// </summary>
+        public IEnumerable<string>? ExcludeUniversities { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries with specific secretary ids
+        /// </summary>
+        public IEnumerable<string>? IncludeSecretaries { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific secretary ids
+        /// </summary>
+        public IEnumerable<string>? ExcludeSecretaries { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries with specific professor ids
+        /// </summary>
+        public IEnumerable<string>? IncludeProfessors { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific professor ids
+        /// </summary>
+        public IEnumerable<string>? ExcludeProfessors { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public DepartmentAPIArgs() : base()
         {
 
         }
@@ -102,19 +145,9 @@
     /// <summary>
     /// Arguments used for retrieving members
     /// </summary>
-    public class MemberRelatedAPIArgs : DepartmentRelatedAPIArgs
+    public class MemberRelatedAPIArgs : APIArgs
     {
         #region Public Properties
-
-        /// <summary>
-        /// Limit the result to entries with specific staff member ids
-        /// </summary>
-        public IEnumerable<string>? IncludeStaffMembers { get; set; }
-
-        /// <summary>
-        /// Limit the result to entries without specific staff member ids
-        /// </summary>
-        public IEnumerable<string>? ExcludeStaffMembers { get; set; }
 
         #endregion
 

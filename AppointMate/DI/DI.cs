@@ -55,6 +55,16 @@ namespace AppointMate
         public static UsersRepository UsersRepository => (UsersRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(UsersRepository))!;
 
         /// <summary>
+        /// The secretaries manager
+        /// </summary>
+        public static SecretariesRepository SecretariesRepository => (SecretariesRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(SecretariesRepository))!;
+
+        /// <summary>
+        /// The professors manager
+        /// </summary>
+        public static ProfessorsRepository ProfessorsRepository => (ProfessorsRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(ProfessorsRepository))!;
+
+        /// <summary>
         /// The members manager
         /// </summary>
         public static MembersRepository MembersRepository => (MembersRepository)Provider!.CreateScope().ServiceProvider.GetService(typeof(MembersRepository))!;

@@ -30,61 +30,68 @@ namespace AppointMate
 
         #region Public Methods
 
-        #region Professors
-
         /// <summary>
         /// Adds a professor
         /// </summary>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<ProfessorEntity>> AddProfessorAsync(ProfessorRequestModel model)
+        public async Task<WebServerFailable<ProfessorEntity>> AddProfessorAsync(ProfessorRequestModel model, CancellationToken cancellationToken = default)
         {
-            return await AppointMateDbMapper.Professors.AddAsync(await ProfessorEntity.FromRequestModelAsync(model));
+            return await AppointMateDbMapper.Professors.AddAsync(await ProfessorEntity.FromRequestModelAsync(model), cancellationToken);
         }
 
         /// <summary>
         /// Updates the professor with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
-        /// <param name="model">The model</param>
+        /// <param name="professor">The professor</param>
+        /// <param name="user">The user</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<ProfessorEntity>> UpdateProfessorAsync(ObjectId id, UserRequestModel model)
+        public async Task<WebServerFailable<ProfessorEntity>> UpdateProfessorAsync(ObjectId id, ProfessorRequestModel professor, UserRequestModel user, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == id);
+            var professorEntity = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             // If the professor does not exist...
-            if (entity is null)
+            if (professorEntity is null)
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Professors));
 
-            var user = await AppointMateDbMapper.Users.UpdateAsync(id, model);
+            professorEntity = await AppointMateDbMapper.Professors.UpdateAsync(id, professor, cancellationToken);
+
+            var userEntity = await AppointMateDbMapper.Users.FirstAsync(professorEntity!.UserId, cancellationToken);
+
+            userEntity = await AppointMateDbMapper.Users.UpdateAsync(userEntity.Id, user, cancellationToken);
 
             // If the user exists...
             if (user is not null)
-                entity.User = user.ToEmbeddedEntity();
+                professorEntity.User = userEntity!.ToEmbeddedEntity();
 
-            return entity;
+            return professorEntity;
         }
 
         /// <summary>
         /// Deletes the professor with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<ProfessorEntity>> DeleteProfessorAsync(ObjectId id)
+        public async Task<WebServerFailable<ProfessorEntity>> DeleteProfessorAsync(ObjectId id, CancellationToken cancellationToken = default)
         {
             // Gets the professor
-            var entity = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             // If the professor does not exist...
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Professors));
 
-            await AppointMateDbMapper.Professors.DeleteAsync(id);
+            // Removes the professor from the database
+            await AppointMateDbMapper.Professors.DeleteAsync(id, cancellationToken);
+            // Removes the user from the database
+            await AppointMateDbMapper.Users.DeleteAsync(entity.UserId, cancellationToken);
 
             return entity;
         }
-
-        #endregion
 
         #endregion
     }

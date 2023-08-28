@@ -36,7 +36,7 @@ namespace AppointMate
         /// <param name="model">The model</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        public async Task<UniversityEntity> AddUniversityAsync(UniversityRequestModel model, CancellationToken cancellationToken = default)
+        public async Task<WebServerFailable<UniversityEntity>> AddUniversityAsync(UniversityRequestModel model, CancellationToken cancellationToken = default)
             => await AppointMateDbMapper.Universities.AddAsync(UniversityEntity.FromRequestModel(model), cancellationToken);
 
         /// <summary>
