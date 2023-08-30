@@ -1,8 +1,29 @@
 ﻿@page "/"
 
+@namespace MeetCore
+
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<div class="appContainer">
+    <div class="loginContainer">
+        <img class="loginLogoImage" src="./icons/mortarboard.png" alt="logo"/>
 
+        <MudTextField @bind-Value="@Username"
+                      Placeholder="Username"
+                      DisableUnderLine="false"
+                      FullWidth="true"
+                      Variant="Variant.Text"/>
+
+    </div>
+</div>
+
+
+
+<style>
+   
+    .loginContainer{
+
+    }
+
+</style>
