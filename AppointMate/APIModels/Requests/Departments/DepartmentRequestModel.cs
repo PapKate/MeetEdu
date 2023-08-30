@@ -8,6 +8,11 @@
         #region Public Properties
 
         /// <summary>
+        /// The university id
+        /// </summary>
+        public string? UniversityId { get; set; }
+
+        /// <summary>
         /// The category
         /// </summary>
         public DepartmentType? Category { get; set; }

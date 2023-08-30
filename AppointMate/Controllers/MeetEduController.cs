@@ -112,9 +112,23 @@ namespace AppointMate
         public async Task<ActionResult<ProfessorResponseModel>?> GetProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetAsync(AppointMateDbMapper.Professors, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
+        #endregion
+
         #region Appointment Rules
 
-        #endregion
+        /// <summary>
+        /// Gets the appointment rules
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.AppointmentRulesRoute)]
+        public async Task<ActionResult<IEnumerable<AppointmentRuleResponseModel>>> GetAppointmentRulesAsync([FromQuery] AppointmentRuleAPIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.AppointmentRules,
+                                                    x => x.ToResponseModel(),
+                                                    Builders<AppointmentRuleEntity>.Filter.Empty, args,
+                                                    cancellationToken, x => x.DateCreated);
 
         #endregion
 

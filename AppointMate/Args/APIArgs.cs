@@ -108,24 +108,24 @@
         public IEnumerable<string>? ExcludeUniversities { get; set; }
 
         /// <summary>
-        /// Limit the result to entries with specific secretary ids
+        /// Limit the result to entries with specific field ids
         /// </summary>
-        public IEnumerable<string>? IncludeSecretaries { get; set; }
+        public IEnumerable<string>? IncludeFields { get; set; }
 
         /// <summary>
-        /// Limit the result to entries without specific secretary ids
+        /// Limit the result to entries without specific field ids
         /// </summary>
-        public IEnumerable<string>? ExcludeSecretaries { get; set; }
+        public IEnumerable<string>? ExcludeFields { get; set; }
 
         /// <summary>
-        /// Limit the result to entries with specific professor ids
+        /// Limit the result to entries with specific label ids
         /// </summary>
-        public IEnumerable<string>? IncludeProfessors { get; set; }
+        public IEnumerable<string>? IncludeLabels { get; set; }
 
         /// <summary>
-        /// Limit the result to entries without specific professor ids
+        /// Limit the result to entries without specific label ids
         /// </summary>
-        public IEnumerable<string>? ExcludeProfessors { get; set; }
+        public IEnumerable<string>? ExcludeLabels { get; set; }
 
         #endregion
 
@@ -141,12 +141,11 @@
 
         #endregion
     }
-
-
+    
     /// <summary>
-    /// Arguments used for retrieving data that belong to a department
+    /// Arguments used for retrieving data that belong to a department layout
     /// </summary>
-    public class DepartmentLayoutAPIArgs : APIArgs
+    public class DepartmentRelatedAPIArgs : APIArgs
     {
         #region Public Properties
 
@@ -167,7 +166,39 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public DepartmentLayoutAPIArgs() : base()
+        public DepartmentRelatedAPIArgs() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Arguments used for retrieving data that belong to a professor
+    /// </summary>
+    public class AppointmentRuleAPIArgs : APIArgs
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// Limit the result to entries with specific professor ids
+        /// </summary>
+        public IEnumerable<string>? IncludeProfessors { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific professor ids
+        /// </summary>
+        public IEnumerable<string>? ExcludeProfessors { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public AppointmentRuleAPIArgs() : base()
         {
 
         }

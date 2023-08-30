@@ -1,12 +1,14 @@
 ﻿
 using AutoMapper;
 
+using MongoDB.Bson;
+
 namespace AppointMate
 {
     /// <summary>
     /// Represents a department document in the MongoDB
     /// </summary>
-    public class DepartmentEntity : StandardEntity, IImageable, INoteable
+    public class DepartmentEntity : StandardEntity, IImageable, INoteable, IUniversityIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -33,6 +35,11 @@ namespace AppointMate
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The university id
+        /// </summary>
+        public ObjectId UniversityId { get; set; }
 
         /// <summary>
         /// The category
@@ -176,9 +183,14 @@ namespace AppointMate
     /// A minimal version of the <see cref="DepartmentEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedDepartmentEntity : EmbeddedStandardEntity, IImageable
+    public class EmbeddedDepartmentEntity : EmbeddedStandardEntity, IImageable, IUniversityIdentifiable<ObjectId>
     {
         #region Public Properties
+
+        /// <summary>
+        /// The university id
+        /// </summary>
+        public ObjectId UniversityId { get; set; }
 
         /// <summary>
         /// The number of staff members

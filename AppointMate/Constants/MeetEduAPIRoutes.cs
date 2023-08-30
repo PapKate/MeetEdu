@@ -428,6 +428,30 @@
 
         #endregion
 
+        #region Department Labels
+
+        /// <summary>
+        /// The department labels route
+        /// <code>/appointMate/api/v1/meetCore/departmentLabels</code>
+        /// </summary>
+        public const string DepartmentLabelsRoute = BaseRoute + "/departmentLabels";
+
+        /// <summary>
+        /// The department label route
+        /// <code>/appointMate/api/v1/meetCore/departmentLabels/5</code>
+        /// </summary>
+        public const string DepartmentLabelRoute = DepartmentLabelsRoute + "/{departmentLabelId}";
+
+        /// <summary>
+        /// Gets the route for the department label with the specified <paramref name="departmentLabelId"/>
+        /// <code>/appointMate/api/v1/meetCore/departmentLabels/5</code>
+        /// </summary>
+        /// <param name="departmentLabelId">The id</param>
+        /// <returns></returns>
+        public static string GetDepartmentLabelRoute(string departmentLabelId) => DepartmentLabelsRoute + $"/{departmentLabelId}";
+
+        #endregion
+
         #region Department Contact Messages
 
         /// <summary>

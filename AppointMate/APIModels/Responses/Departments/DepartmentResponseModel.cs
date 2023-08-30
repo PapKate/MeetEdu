@@ -1,11 +1,18 @@
-﻿namespace AppointMate
+﻿using MongoDB.Bson;
+
+namespace AppointMate
 {
     /// <summary>
     /// Represents a department 
     /// </summary>
-    public class DepartmentResponseModel : StandardResponseModel, IImageable, INoteable
+    public class DepartmentResponseModel : StandardResponseModel, IImageable, INoteable, IUniversityIdentifiable<string>
     {
         #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="UniversityId"/> property
+        /// </summary>
+        private string? mUniversityId;
 
         /// <summary>
         /// The member of the <see cref="Note"/> property
@@ -30,6 +37,15 @@
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// The university id
+        /// </summary>
+        public string UniversityId
+        {
+            get => mUniversityId ?? string.Empty;
+            set => mUniversityId = value;
+        }
 
         /// <summary>
         /// The category
@@ -122,9 +138,27 @@
     /// A minimal version of the <see cref="DepartmentResponseModel "/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedDepartmentResponseModel : EmbeddedStandardResponseModel, IImageable
+    public class EmbeddedDepartmentResponseModel : EmbeddedStandardResponseModel, IImageable, IUniversityIdentifiable<string>
     {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="UniversityId"/> property
+        /// </summary>
+        private string? mUniversityId;
+
+        #endregion
+
         #region Public Properties
+
+        /// <summary>
+        /// The university id
+        /// </summary>
+        public string UniversityId
+        {
+            get => mUniversityId ?? string.Empty;
+            set => mUniversityId = value;
+        }
 
         /// <summary>
         /// The number of staff members
