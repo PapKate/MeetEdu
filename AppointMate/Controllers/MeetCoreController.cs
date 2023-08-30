@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AppointMate
@@ -11,6 +12,20 @@ namespace AppointMate
     /// </summary>
     public class MeetCoreController : Controller
     {
+        #region Public Properties
+
+        /// <summary>
+        /// The university id
+        /// </summary>
+        public ObjectId UniversityId { get; set; }
+
+        /// <summary>
+        /// The department id
+        /// </summary>
+        public ObjectId DepartmentId { get; set; }
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -112,6 +127,65 @@ namespace AppointMate
 
         #region Labels
 
+        /// <summary>
+        /// Gets the university labels
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetCoreAPIRoutes.UniversityLabelsRoute)]
+        public async Task<ActionResult<IEnumerable<LabelResponseModel>>> GetUniversityLabelsAsync([FromQuery] APIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.UniversityLabels,
+                                                    x => x.ToResponseModel(),
+                                                    Builders<LabelEntity>.Filter.Empty, args,
+                                                    cancellationToken, x => x.Name);
+
+        /// <summary>
+        /// Creates a university label
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(MeetCoreAPIRoutes.UniversityLabelsRoute)]
+        public async Task<ActionResult<LabelResponseModel>> AddUniversityLabelAsync([FromBody] LabelRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.UniversitiesRepository.AddUniversityLabelAsync(UniversityId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Gets the university label with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetCoreAPIRoutes.UniversityLabelRoute)]
+        public async Task<ActionResult<LabelResponseModel>?> GetUniversityLabelAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.UniversityLabels, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+
+        /// <summary>
+        /// Updates the university label with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetCoreAPIRoutes.UniversityLabelRoute)]
+        public async Task<ActionResult<LabelResponseModel>> UpdateUniversityLabelAsync([FromRoute] string id, [FromBody] LabelRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.UniversitiesRepository.UpdateUniversityLabelAsync(id.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Deletes the university label with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route(MeetCoreAPIRoutes.UniversityLabelRoute)]
+        public async Task<ActionResult<LabelResponseModel>> DeleteUniversityLabelAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => (await DI.UniversitiesRepository.DeleteUniversityLabelAsync(id.ToObjectId(), cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
         #endregion
 
         #endregion
@@ -178,6 +252,65 @@ namespace AppointMate
             => (await DI.DepartmentsRepository.DeleteDepartmentAsync(id.ToObjectId(), cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         #region Layout 
+
+        /// <summary>
+        /// Gets the departments
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetCoreAPIRoutes.DepartmentLayoutsRoute)]
+        public async Task<ActionResult<IEnumerable<DepartmentLayoutResponseModel>>> GetDepartmentLayoutsAsync([FromQuery] DepartmentLayoutAPIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.DepartmentLayouts,
+                                                    x => x.ToResponseModel(),
+                                                    Builders<DepartmentLayoutEntity>.Filter.Empty, args,
+                                                    cancellationToken, x => x.DepartmentId);
+
+        /// <summary>
+        /// Creates a department
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(MeetCoreAPIRoutes.DepartmentLayoutsRoute)]
+        public async Task<ActionResult<DepartmentLayoutResponseModel>> AddDepartmentLayoutAsync([FromBody] DepartmentLayoutRequestModel model, CancellationToken cancellationToken = default) 
+            => (await DI.DepartmentsRepository.AddDepartmentLayoutAsync(DepartmentId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Gets the department with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetCoreAPIRoutes.DepartmentLayoutRoute)]
+        public async Task<ActionResult<DepartmentLayoutResponseModel>?> GetDepartmentLayoutAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.DepartmentLayouts, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+
+        /// <summary>
+        /// Updates the department with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetCoreAPIRoutes.DepartmentLayoutRoute)]
+        public async Task<ActionResult<DepartmentLayoutResponseModel>> UpdateDepartmentLayoutAsync([FromRoute] string id, [FromBody] DepartmentLayoutRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.DepartmentsRepository.UpdateDepartmentLayoutAsync(id.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Deletes the department with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route(MeetCoreAPIRoutes.DepartmentLayoutRoute)]
+        public async Task<ActionResult<DepartmentLayoutResponseModel>> DeleteDepartmentLayoutAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => (await DI.DepartmentsRepository.DeleteDepartmentLayoutAsync(id.ToObjectId(), cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         #endregion
 
@@ -313,6 +446,65 @@ namespace AppointMate
 
         #region Appointment Rules
 
+        /// <summary>
+        /// Gets the appointment rules
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetCoreAPIRoutes.AppointmentsRoute)]
+        public async Task<ActionResult<IEnumerable<AppointmentRuleResponseModel>>> GetAppointmentRulesAsync([FromQuery] APIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.AppointmentRules,
+                                                    x => x.ToResponseModel(),
+                                                    Builders<AppointmentRuleEntity>.Filter.Empty, args,
+                                                    cancellationToken, x => x.DateCreated);
+
+        /// <summary>
+        /// Creates a appointment
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(MeetCoreAPIRoutes.AppointmentRulesRoute)]
+        public async Task<ActionResult<AppointmentRuleResponseModel>> AddAppointmentRuleAsync([FromBody] AppointmentRuleRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.AppointmentsRepository.AddAppointmentRuleAsync(model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Gets the appointment with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetCoreAPIRoutes.AppointmentRuleRoute)]
+        public async Task<ActionResult<AppointmentRuleResponseModel>?> GetAppointmentRuleAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(AppointMateDbMapper.AppointmentRules, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+
+        /// <summary>
+        /// Updates the appointment with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetCoreAPIRoutes.AppointmentRuleRoute)]
+        public async Task<ActionResult<AppointmentRuleResponseModel>> UpdateAppointmentRuleAsync([FromRoute] string id, [FromBody] AppointmentRuleRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.AppointmentsRepository.UpdateAppointmentRuleAsync(id.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Deletes the appointment with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route(MeetCoreAPIRoutes.AppointmentRuleRoute)]
+        public async Task<ActionResult<AppointmentRuleResponseModel>> DeleteAppointmentRuleAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => (await DI.AppointmentsRepository.DeleteAppointmentRuleAsync(id.ToObjectId(), cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
         #endregion
 
         #region Appointments
@@ -361,7 +553,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpPut]
-        [Route(MeetCoreAPIRoutes.UniversityRoute)]
+        [Route(MeetCoreAPIRoutes.AppointmentRoute)]
         public async Task<ActionResult<AppointmentResponseModel>> UpdateAppointmentAsync([FromRoute] string id, [FromBody] AppointmentRequestModel model, CancellationToken cancellationToken = default)
             => (await DI.AppointmentsRepository.UpdateAppointmentAsync(id.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 

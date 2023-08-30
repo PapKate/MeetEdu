@@ -58,12 +58,12 @@
         public const string UserRoute = UsersRoute + "/{userId}";
 
         /// <summary>
-        /// Gets the route for the user with the specified <paramref name="id"/>
+        /// Gets the route for the user with the specified <paramref name="userId"/>
         /// <code>/appointMate/api/v1/meetEdu/users/4</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="userId">The id</param>
         /// <returns></returns>
-        public static string GetUserRoute(string id) => UsersRoute + $"/{id}";
+        public static string GetUserRoute(string userId) => UsersRoute + $"/{userId}";
 
         #endregion
 
@@ -92,12 +92,12 @@
         public const string DepartmentRoute = DepartmentsRoute + "/{departmentId}";
 
         /// <summary>
-        /// Gets the department route for the one with the specified <paramref name="id"/>
+        /// Gets the department route for the one with the specified <paramref name="departmentId"/>
         /// <code>/appointMate/api/v1/meetEdu/departments/3</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="departmentId">The id</param>
         /// <returns></returns>
-        public static string GetDepartmentRoute(string id) => DepartmentsRoute + $"/{id}";
+        public static string GetDepartmentRoute(string departmentId) => DepartmentsRoute + $"/{departmentId}";
 
         #endregion
 
@@ -116,12 +116,12 @@
         public const string DepartmentContactMessageRoute = DepartmentsRoute + "/{departmentContactMessageId}";
 
         /// <summary>
-        /// Gets the route for the department contact message with the specified <paramref name="id"/>
+        /// Gets the route for the department contact message with the specified <paramref name="departmentContactMessageId"/>
         /// <code>/appointMate/api/v1/meetEdu/departmentContactMessages/2</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="departmentContactMessageId">The id</param>
         /// <returns></returns>
-        public static string GetDepartmentContactMessageRoute(string id) => DepartmentContactMessagesRoute + $"/{id}";
+        public static string GetDepartmentContactMessageRoute(string departmentContactMessageId) => DepartmentContactMessagesRoute + $"/{departmentContactMessageId}";
 
         #endregion
 
@@ -140,12 +140,12 @@
         public const string SecretaryRoute = SecretariesRoute + "/{secretaryId}";
 
         /// <summary>
-        /// Gets the route for the secretary with the specified <paramref name="id"/>
+        /// Gets the route for the secretary with the specified <paramref name="secretaryId"/>
         /// <code>/appointMate/api/v1/meetEdu/secretaries/4</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="secretaryId">The id</param>
         /// <returns></returns>
-        public static string GetSecretaryRoute(string id) => SecretariesRoute + $"/{id}";
+        public static string GetSecretaryRoute(string secretaryId) => SecretariesRoute + $"/{secretaryId}";
 
         #endregion
 
@@ -163,12 +163,12 @@
         public const string ProfessorRoute = ProfessorsRoute + "/{professorId}";
 
         /// <summary>
-        /// Gets the professor route for the one with the specified <paramref name="id"/>
+        /// Gets the professor route for the one with the specified <paramref name="professorId"/>
         /// <code>/appointMate/api/v1/meetEdu/professors/3</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="professorId">The id</param>
         /// <returns></returns>
-        public static string GetProfessorRoute(string id) => ProfessorsRoute + $"/{id}";
+        public static string GetProfessorRoute(string professorId) => ProfessorsRoute + $"/{professorId}";
 
         #endregion
 
@@ -187,12 +187,12 @@
         public const string AppointmentRuleRoute = AppointmentRulesRoute + "/{appointmentRuleId}";
 
         /// <summary>
-        /// Gets the route for the appointment with the specified <paramref name="id"/>
+        /// Gets the route for the appointment with the specified <paramref name="appointmentRuleId"/>
         /// <code>/appointMate/api/v1/meetEdu/appointmentRules/4</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="appointmentRuleId">The id</param>
         /// <returns></returns>
-        public static string GetAppointmentRuleRoute(string id) => AppointmentRulesRoute + $"/{id}";
+        public static string GetAppointmentRuleRoute(string appointmentRuleId) => AppointmentRulesRoute + $"/{appointmentRuleId}";
 
         #endregion
 
@@ -211,12 +211,12 @@
         public const string MemberRoute = MembersRoute + "/{memberId}";
 
         /// <summary>
-        /// Gets the member route for the one with the specified <paramref name="id"/>
+        /// Gets the member route for the one with the specified <paramref name="memberId"/>
         /// <code>/appointMate/api/v1/meetEdu/members/3</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="memberId">The id</param>
         /// <returns></returns>
-        public static string GetMemberRoute(string id) => MembersRoute + $"/{id}";
+        public static string GetMemberRoute(string memberId) => MembersRoute + $"/{memberId}";
 
         #endregion
 
@@ -255,12 +255,12 @@
         public const string AppointmentRoute = AppointmentsRoute + "/{appointmentId}";
 
         /// <summary>
-        /// Gets the route for the appointment with the specified <paramref name="id"/>
+        /// Gets the route for the appointment with the specified <paramref name="appointmentId"/>
         /// <code>/appointMate/api/v1/meetEdu/appointments/4</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="appointmentId">The id</param>
         /// <returns></returns>
-        public static string GetAppointmentRoute(string id) => AppointmentsRoute + $"/{id}";
+        public static string GetAppointmentRoute(string appointmentId) => AppointmentsRoute + $"/{appointmentId}";
 
         #endregion
     }
@@ -323,12 +323,12 @@
         public const string UserRoute = UsersRoute + "/{userId}";
 
         /// <summary>
-        /// Gets the route for the user with the specified <paramref name="id"/>
+        /// Gets the route for the user with the specified <paramref name="userId"/>
         /// <code>/appointMate/api/v1/meetCore/users/4</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="userId">The id</param>
         /// <returns></returns>
-        public static string GetUserRoute(string id) => UsersRoute + $"/{id}";
+        public static string GetUserRoute(string userId) => UsersRoute + $"/{userId}";
 
         #endregion
 
@@ -347,12 +347,36 @@
         public const string UniversityRoute = UniversitiesRoute + "/{universityId}";
 
         /// <summary>
-        /// Gets the route for the university with the specified <paramref name="id"/>
+        /// Gets the route for the university with the specified <paramref name="universityId"/>
         /// <code>/appointMate/api/v1/meetCore/universities/5</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="universityId">The id</param>
         /// <returns></returns>
-        public static string GetUniversityRoute(string id) => UniversitiesRoute + $"/{id}";
+        public static string GetUniversityRoute(string universityId) => UniversitiesRoute + $"/{universityId}";
+
+        #endregion
+
+        #region University Labels
+
+        /// <summary>
+        /// The university labels route
+        /// <code>/appointMate/api/v1/meetCore/universityLabels</code>
+        /// </summary>
+        public const string UniversityLabelsRoute = BaseRoute + "/universityLabels";
+
+        /// <summary>
+        /// The university label route
+        /// <code>/appointMate/api/v1/meetCore/universityLabels/5</code>
+        /// </summary>
+        public const string UniversityLabelRoute = UniversityLabelsRoute + "/{universityLabelId}";
+
+        /// <summary>
+        /// Gets the route for the university label with the specified <paramref name="universityLabelId"/>
+        /// <code>/appointMate/api/v1/meetCore/universityLabels/5</code>
+        /// </summary>
+        /// <param name="universityLabelId">The id</param>
+        /// <returns></returns>
+        public static string GetUniversityLabelRoute(string universityLabelId) => UniversityLabelsRoute + $"/{universityLabelId}";
 
         #endregion
 
@@ -371,12 +395,36 @@
         public const string DepartmentRoute = DepartmentsRoute + "/{departmentId}";
 
         /// <summary>
-        /// Gets the department route for the one with the specified <paramref name="id"/>
+        /// Gets the department route for the one with the specified <paramref name="departmentId"/>
         /// <code>/appointMate/api/v1/meetCore/departments/3</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="departmentId">The id</param>
         /// <returns></returns>
-        public static string GetDepartmentRoute(string id) => DepartmentsRoute + $"/{id}";
+        public static string GetDepartmentRoute(string departmentId) => DepartmentsRoute + $"/{departmentId}";
+
+        #endregion
+
+        #region Department Layouts
+
+        /// <summary>
+        /// The department layouts route
+        /// <code>/appointMate/api/v1/meetCore/departmentLayouts</code>
+        /// </summary>
+        public const string DepartmentLayoutsRoute = BaseRoute + "/departmentLayouts";
+
+        /// <summary>
+        /// The department layout route
+        /// <code>/appointMate/api/v1/meetCore/departmentLayouts/3</code>
+        /// </summary>
+        public const string DepartmentLayoutRoute = DepartmentLayoutsRoute + "/{departmentLayoutId}";
+
+        /// <summary>
+        /// Gets the department layout route for the one with the specified <paramref name="departmentLayoutId"/>
+        /// <code>/appointMate/api/v1/meetCore/departmentLayouts/3</code>
+        /// </summary>
+        /// <param name="departmentLayoutId">The id</param>
+        /// <returns></returns>
+        public static string GetDepartmentLayoutRoute(string departmentLayoutId) => DepartmentLayoutsRoute + $"/{departmentLayoutId}";
 
         #endregion
 
@@ -392,15 +440,15 @@
         /// The department contact message route
         /// <code>/appointMate/api/v1/meetCore/departmentContactMessages/3</code>
         /// </summary>
-        public const string DepartmentContactMessageRoute = DepartmentsRoute + "/{departmentContactMessageId}";
+        public const string DepartmentContactMessageRoute = DepartmentContactMessagesRoute + "/{departmentContactMessageId}";
 
         /// <summary>
-        /// Gets the route for the department contact message with the specified <paramref name="id"/>
+        /// Gets the route for the department contact message with the specified <paramref name="departmentContactMessageId"/>
         /// <code>/appointMate/api/v1/meetCore/departmentContactMessages/2</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="departmentContactMessageId">The id</param>
         /// <returns></returns>
-        public static string GetDepartmentContactMessageRoute(string id) => DepartmentContactMessagesRoute + $"/{id}";
+        public static string GetDepartmentContactMessageRoute(string departmentContactMessageId) => DepartmentContactMessagesRoute + $"/{departmentContactMessageId}";
 
         #endregion
 
@@ -419,12 +467,12 @@
         public const string SecretaryRoute = SecretariesRoute + "/{secretaryId}";
 
         /// <summary>
-        /// Gets the route for the secretary with the specified <paramref name="id"/>
+        /// Gets the route for the secretary with the specified <paramref name="secretaryId"/>
         /// <code>/appointMate/api/v1/meetCore/secretaries/4</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="secretaryId">The id</param>
         /// <returns></returns>
-        public static string GetSecretaryRoute(string id) => SecretariesRoute + $"/{id}";
+        public static string GetSecretaryRoute(string secretaryId) => SecretariesRoute + $"/{secretaryId}";
 
         #endregion
 
@@ -442,12 +490,12 @@
         public const string ProfessorRoute = ProfessorsRoute + "/{professorId}";
 
         /// <summary>
-        /// Gets the professor route for the one with the specified <paramref name="id"/>
+        /// Gets the professor route for the one with the specified <paramref name="professorId"/>
         /// <code>/appointMate/api/v1/meetCore/professors/3</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="professorId">The id</param>
         /// <returns></returns>
-        public static string GetProfessorRoute(string id) => ProfessorsRoute + $"/{id}";
+        public static string GetProfessorRoute(string professorId) => ProfessorsRoute + $"/{professorId}";
 
         #endregion
 
@@ -466,12 +514,12 @@
         public const string AppointmentRuleRoute = AppointmentRulesRoute + "/{appointmentRuleId}";
 
         /// <summary>
-        /// Gets the route for the appointment with the specified <paramref name="id"/>
+        /// Gets the route for the appointment with the specified <paramref name="appointmentRuleId"/>
         /// <code>/appointMate/api/v1/meetCore/appointmentRules/4</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="appointmentRuleId">The id</param>
         /// <returns></returns>
-        public static string GetAppointmentRuleRoute(string id) => AppointmentRulesRoute + $"/{id}";
+        public static string GetAppointmentRuleRoute(string appointmentRuleId) => AppointmentRulesRoute + $"/{appointmentRuleId}";
 
         #endregion
 
@@ -490,12 +538,12 @@
         public const string AppointmentRoute = AppointmentsRoute + "/{appointmentId}";
 
         /// <summary>
-        /// Gets the route for the appointment with the specified <paramref name="id"/>
+        /// Gets the route for the appointment with the specified <paramref name="appointmentId"/>
         /// <code>/appointMate/api/v1/meetCore/appointments/4</code>
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="appointmentId">The id</param>
         /// <returns></returns>
-        public static string GetAppointmentRoute(string id) => AppointmentsRoute + $"/{id}";
+        public static string GetAppointmentRoute(string appointmentId) => AppointmentsRoute + $"/{appointmentId}";
 
         #endregion
     }

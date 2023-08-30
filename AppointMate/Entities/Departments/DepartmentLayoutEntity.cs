@@ -17,7 +17,7 @@ namespace AppointMate
         /// <summary>
         /// The member of the <see cref="Rooms"/> property
         /// </summary>
-        private IList<DepartmentLayoutDataModel>? mRooms;
+        private IList<DepartmentLayoutRoomDataModel>? mRooms;
 
         #endregion
 
@@ -40,12 +40,12 @@ namespace AppointMate
         /// <summary>
         /// The rooms
         /// </summary>
-        public IList<DepartmentLayoutDataModel> Rooms
+        public IList<DepartmentLayoutRoomDataModel> Rooms
         {
             get
             {
                 if (mRooms is null)
-                    mRooms = new List<DepartmentLayoutDataModel>();
+                    mRooms = new List<DepartmentLayoutRoomDataModel>();
 
                 return mRooms;
             }
