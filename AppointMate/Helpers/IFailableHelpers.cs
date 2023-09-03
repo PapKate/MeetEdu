@@ -1,9 +1,11 @@
-﻿using AppointMate;
+﻿using MeetBase;
+
+using MeetEdu;
 
 using System.Collections;
 using System.Linq;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Helper methods for <see cref="IFailable"/>

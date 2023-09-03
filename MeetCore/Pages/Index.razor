@@ -4,10 +4,19 @@
 
 <PageTitle>Index</PageTitle>
 
+<div class="backgroundContainer">
+    <img class="backgroundImage" src="./icons/coreBack.png" alt="background">
+</div>
 
 <div class="appContainer">
     <div class="loginContainer">
-        <img class="loginLogoImage" src="./icons/mortarboard.png" alt="logo"/>
+        <div class="searchSectionLogoAndNameContainer">
+        <img class="loginLogoImage" src="./icons/academic.png" alt="logo"/>
+            <h1 class="loginAppName">
+              @*   <span class="loginAppNameFirst">@AppointMateHelpers.SplitCamelCase(AppointMateConstants.AppName)[0]</span>
+                <span class="loginAppNameSecond">@AppointMateHelpers.SplitCamelCase(AppointMateConstants.AppName)[1]</span> *@
+            </h1>
+        </div>
 
         <MudTextField @bind-Value="@Username"
                       Placeholder="Username"

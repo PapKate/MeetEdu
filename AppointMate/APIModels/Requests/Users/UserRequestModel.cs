@@ -1,7 +1,7 @@
 ﻿
-using AppointMate;
+using MeetEdu;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Request model used for a user

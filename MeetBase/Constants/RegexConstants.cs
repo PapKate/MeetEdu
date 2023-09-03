@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace AppointMate
+namespace MeetBase
 {
     /// <summary>
     /// Constants related to <see cref="Regex"/>

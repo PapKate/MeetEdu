@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// The search bar component
@@ -18,7 +18,7 @@ namespace AppointMate
         /// <summary>
         /// The search category
         /// </summary>
-        private string mSearchCategory = AppointMateConstants.Departments;
+        private string mSearchCategory = MeetEduConstants.Departments;
 
         /// <summary>
         /// The search icon
@@ -52,13 +52,13 @@ namespace AppointMate
 
                 if (mIsSearchForDepartments == true)
                 {
-                    mSearchCategory = AppointMateConstants.Departments;
+                    mSearchCategory = MeetEduConstants.Departments;
                     mSearchBackColor = Color.Primary;
                     mSearchIcon = Icons.Material.Filled.Pages;
                 }
                 else
                 {
-                    mSearchCategory = AppointMateConstants.Faculty;
+                    mSearchCategory = MeetEduConstants.Faculty;
                     mSearchBackColor = Color.Secondary;
                     mSearchIcon = Icons.Material.Filled.Groups3;
                 }

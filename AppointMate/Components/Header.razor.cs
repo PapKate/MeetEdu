@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Components;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// The header component

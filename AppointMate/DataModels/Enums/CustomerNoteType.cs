@@ -1,5 +1,5 @@
 ﻿
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Provides enumeration over the customer note types

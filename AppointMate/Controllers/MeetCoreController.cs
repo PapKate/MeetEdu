@@ -1,11 +1,11 @@
-﻿using AppointMate.Helpers;
+﻿using MeetEdu.Helpers;
 
 using Microsoft.AspNetCore.Mvc;
 
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Controller used for handing the requests related to a MeetCore related application
@@ -75,7 +75,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.UniversitiesRoute)]
         public async Task<ActionResult<IEnumerable<UniversityResponseModel>>> GetUniversitiesAsync([FromQuery] APIArgs args, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Universities,
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Universities,
                                                     x => x.ToResponseModel(),
                                                     Builders<UniversityEntity>.Filter.Empty, args,
                                                     cancellationToken, x => x.Name);
@@ -100,7 +100,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.UniversityRoute)]
         public async Task<ActionResult<UniversityResponseModel>?> GetUniversityAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Universities, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Universities, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
         /// Updates the university with the specified <paramref name="id"/>
@@ -136,7 +136,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.UniversityLabelsRoute)]
         public async Task<ActionResult<IEnumerable<LabelResponseModel>>> GetUniversityLabelsAsync([FromQuery] APIArgs args, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.UniversityLabels,
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.UniversityLabels,
                                                     x => x.ToResponseModel(),
                                                     Builders<LabelEntity>.Filter.Empty, args,
                                                     cancellationToken, x => x.Name);
@@ -161,7 +161,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.UniversityLabelRoute)]
         public async Task<ActionResult<LabelResponseModel>?> GetUniversityLabelAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.UniversityLabels, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.UniversityLabels, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
         /// Updates the university label with the specified <paramref name="id"/>
@@ -201,7 +201,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.DepartmentsRoute)]
         public async Task<ActionResult<IEnumerable<DepartmentResponseModel>>> GetDepartmentsAsync([FromQuery] DepartmentAPIArgs args, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Departments,
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Departments,
                                                     x => x.ToResponseModel(),
                                                     args.CreateFilters().AggregateFilters(), args,
                                                     cancellationToken, x => x.Name);
@@ -226,7 +226,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.DepartmentRoute)]
         public async Task<ActionResult<DepartmentResponseModel>?> GetDepartmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Departments, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Departments, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
         /// Updates the department with the specified <paramref name="id"/>
@@ -262,7 +262,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.DepartmentLayoutsRoute)]
         public async Task<ActionResult<IEnumerable<DepartmentLayoutResponseModel>>> GetDepartmentLayoutsAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.DepartmentLayouts,
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.DepartmentLayouts,
                                                     x => x.ToResponseModel(),
                                                     Builders<DepartmentLayoutEntity>.Filter.Empty, args,
                                                     cancellationToken, x => x.DepartmentId);
@@ -287,7 +287,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.DepartmentLayoutRoute)]
         public async Task<ActionResult<DepartmentLayoutResponseModel>?> GetDepartmentLayoutAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.DepartmentLayouts, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.DepartmentLayouts, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
         /// Updates the department with the specified <paramref name="id"/>
@@ -325,7 +325,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.UniversityLabelsRoute)]
         public async Task<ActionResult<IEnumerable<LabelResponseModel>>> GetDepartmentLabelsAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.DepartmentLabels,
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.DepartmentLabels,
                                                     x => x.ToResponseModel(),
                                                     Builders<LabelEntity>.Filter.Empty, args,
                                                     cancellationToken, x => x.Name);
@@ -350,7 +350,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.DepartmentLabelRoute)]
         public async Task<ActionResult<LabelResponseModel>?> GetDepartmentLabelAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.DepartmentLabels, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.DepartmentLabels, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
         /// Updates the department label with the specified <paramref name="id"/>
@@ -388,7 +388,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.DepartmentContactMessagesRoute)]
         public async Task<ActionResult<IEnumerable<DepartmentContactMessageResponseModel>>> GetDepartmentContactMessagesAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.DepartmentContactMessages,
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.DepartmentContactMessages,
                                                     x => x.ToResponseModel(),
                                                     Builders<DepartmentContactMessageEntity>.Filter.Empty, args,
                                                     cancellationToken, x => x.DepartmentId);
@@ -413,7 +413,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.DepartmentContactMessageRoute)]
         public async Task<ActionResult<DepartmentContactMessageResponseModel>?> GetDepartmentContactMessageAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.DepartmentContactMessages, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.DepartmentContactMessages, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
         /// Updates the department contact message with the specified <paramref name="id"/>
@@ -453,7 +453,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.SecretariesRoute)]
         public async Task<ActionResult<IEnumerable<SecretaryResponseModel>>> GetSecretariesAsync([FromQuery] StafMemberAPIArgs args, CancellationToken cancellationToken = default) 
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Secretaries, 
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Secretaries, 
                                                     x => x.ToResponseModel(), 
                                                     args.CreateFilters<SecretaryEntity>().AggregateFilters(), args, 
                                                     cancellationToken, x => x.Role);
@@ -478,7 +478,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.SecretaryRoute)]
         public async Task<ActionResult<SecretaryResponseModel>?> GetSecretaryAsync([FromRoute] string id, CancellationToken cancellationToken = default) 
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Secretaries, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Secretaries, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
         /// Updates the secretary with the specified <paramref name="id"/>
@@ -517,7 +517,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.ProfessorsRoute)]
         public async Task<ActionResult<IEnumerable<ProfessorResponseModel>>> GetProfessorsAsync([FromQuery] StafMemberAPIArgs args, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Professors,
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Professors,
                                                     x => x.ToResponseModel(),
                                                     args.CreateFilters<ProfessorEntity>().AggregateFilters(), args,
                                                     cancellationToken, x => x.Field);
@@ -542,7 +542,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.ProfessorRoute)]
         public async Task<ActionResult<ProfessorResponseModel>?> GetProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Professors, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Professors, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
         /// Updates the secretary with the specified <paramref name="id"/>
@@ -581,7 +581,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.AppointmentRulesRoute)]
         public async Task<ActionResult<IEnumerable<AppointmentRuleResponseModel>>> GetAppointmentRulesAsync([FromQuery] AppointmentRuleAPIArgs args, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.AppointmentRules,
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.AppointmentRules,
                                                     x => x.ToResponseModel(),
                                                     Builders<AppointmentRuleEntity>.Filter.Empty, args,
                                                     cancellationToken, x => x.DateCreated);
@@ -606,7 +606,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.AppointmentRuleRoute)]
         public async Task<ActionResult<AppointmentRuleResponseModel>?> GetAppointmentRuleAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.AppointmentRules, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.AppointmentRules, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
         /// Updates the appointment with the specified <paramref name="id"/>
@@ -644,7 +644,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.AppointmentsRoute)]
         public async Task<ActionResult<IEnumerable<AppointmentResponseModel>>> GetAppointmentsAsync([FromQuery] APIArgs args, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.Appointments,
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Appointments,
                                                     x => x.ToResponseModel(),
                                                     Builders<AppointmentEntity>.Filter.Empty, args,
                                                     cancellationToken, x => x.DateCreated);
@@ -669,7 +669,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetCoreAPIRoutes.AppointmentRoute)]
         public async Task<ActionResult<AppointmentResponseModel>?> GetAppointmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Appointments, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Appointments, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
         /// Updates the appointment with the specified <paramref name="id"/>

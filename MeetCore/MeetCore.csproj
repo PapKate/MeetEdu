@@ -17,14 +17,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MeetBase\MeetBase.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Atom">
-      <HintPath>..\AppointMate\bin\Debug\net7.0\Atom.dll</HintPath>
+      <HintPath>..\Atom.dll</HintPath>
     </Reference>
     <Reference Include="Atom.Blazor">
-      <HintPath>..\AppointMate\bin\Debug\net7.0\Atom.Blazor.dll</HintPath>
+      <HintPath>..\Atom.Blazor.dll</HintPath>
     </Reference>
     <Reference Include="Atom.Blazor.Controls">
-      <HintPath>..\AppointMate\bin\Debug\net7.0\Atom.Blazor.Controls.dll</HintPath>
+      <HintPath>..\Atom.Blazor.Controls.dll</HintPath>
     </Reference>
   </ItemGroup>
 

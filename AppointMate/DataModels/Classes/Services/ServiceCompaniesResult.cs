@@ -1,4 +1,4 @@
-﻿namespace AppointMate
+﻿namespace MeetEdu
 {
     /// <summary>
     /// A service with the related companies

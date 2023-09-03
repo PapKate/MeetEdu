@@ -1,16 +1,16 @@
 ﻿using MongoDB.Driver;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Global access points for the MeetEdu application database 
     /// </summary>
-    public static class AppointMateDbMapper
+    public static class MeetEduDbMapper
     {
         #region Constants
 
         /// <summary>
-        /// The AppointMate signature used for identifying the AppointMate entities
+        /// The MeetEdu signature used for identifying the MeetEdu entities
         /// </summary>
         public const string Signature = "MeetEdu_";
 

@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Provides methods for managing professors
@@ -38,7 +38,7 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<ProfessorEntity>> AddProfessorAsync(ProfessorRequestModel model, CancellationToken cancellationToken = default)
         {
-            return await AppointMateDbMapper.Professors.AddAsync(await ProfessorEntity.FromRequestModelAsync(model), cancellationToken);
+            return await MeetEduDbMapper.Professors.AddAsync(await ProfessorEntity.FromRequestModelAsync(model), cancellationToken);
         }
 
         /// <summary>
@@ -51,17 +51,17 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<ProfessorEntity>> UpdateProfessorAsync(ObjectId id, ProfessorRequestModel professor, UserRequestModel user, CancellationToken cancellationToken = default)
         {
-            var professorEntity = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            var professorEntity = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             // If the professor does not exist...
             if (professorEntity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Professors));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Professors));
 
-            professorEntity = await AppointMateDbMapper.Professors.UpdateAsync(id, professor, cancellationToken);
+            professorEntity = await MeetEduDbMapper.Professors.UpdateAsync(id, professor, cancellationToken);
 
-            var userEntity = await AppointMateDbMapper.Users.FirstAsync(professorEntity!.UserId, cancellationToken);
+            var userEntity = await MeetEduDbMapper.Users.FirstAsync(professorEntity!.UserId, cancellationToken);
 
-            userEntity = await AppointMateDbMapper.Users.UpdateAsync(userEntity.Id, user, cancellationToken);
+            userEntity = await MeetEduDbMapper.Users.UpdateAsync(userEntity.Id, user, cancellationToken);
 
             // If the user exists...
             if (user is not null)
@@ -79,16 +79,16 @@ namespace AppointMate
         public async Task<WebServerFailable<ProfessorEntity>> DeleteProfessorAsync(ObjectId id, CancellationToken cancellationToken = default)
         {
             // Gets the professor
-            var entity = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            var entity = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             // If the professor does not exist...
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Professors));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Professors));
 
             // Removes the professor from the database
-            await AppointMateDbMapper.Professors.DeleteAsync(id, cancellationToken);
+            await MeetEduDbMapper.Professors.DeleteAsync(id, cancellationToken);
             // Removes the user from the database
-            await AppointMateDbMapper.Users.DeleteAsync(entity.UserId, cancellationToken);
+            await MeetEduDbMapper.Users.DeleteAsync(entity.UserId, cancellationToken);
 
             return entity;
         }

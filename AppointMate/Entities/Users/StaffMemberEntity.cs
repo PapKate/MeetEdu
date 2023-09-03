@@ -3,7 +3,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Represents a staff member document in the MongoDB

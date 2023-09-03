@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Extension methods associated with <see cref="IEnumerable"/> and <see cref="IEnumerable{T}"/>

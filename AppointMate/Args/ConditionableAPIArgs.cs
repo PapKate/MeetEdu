@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Query arguments that provide conditional based filtering options.

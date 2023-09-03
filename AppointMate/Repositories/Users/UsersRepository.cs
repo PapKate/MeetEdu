@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Provides methods for managing users
@@ -47,9 +47,9 @@ namespace AppointMate
             || model.PhoneNumber is null
             || model.Billing is null
             || model.DateOfBirth is null)
-                return AppointMateWebServerConstants.InvalidRegistrationCredentialsErrorMessage;
+                return MeetEduWebServerConstants.InvalidRegistrationCredentialsErrorMessage;
 
-            return await AppointMateDbMapper.Users.AddAsync(UserEntity.FromRequestModel(model));
+            return await MeetEduDbMapper.Users.AddAsync(UserEntity.FromRequestModel(model));
         }
 
         /// <summary>
@@ -60,10 +60,10 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<UserEntity>> UpdateUserAsync(ObjectId id, UserRequestModel model)
         {
-            var entity = await AppointMateDbMapper.Users.UpdateAsync(id, model);
+            var entity = await MeetEduDbMapper.Users.UpdateAsync(id, model);
 
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Users));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Users));
 
             return entity;
         }
@@ -76,13 +76,13 @@ namespace AppointMate
         public async Task<WebServerFailable<UserEntity>> DeleteUserAsync(ObjectId id)
         {
             // Gets the member
-            var entity = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await MeetEduDbMapper.Users.FirstOrDefaultAsync(x => x.Id == id);
 
             // If the member does not exist...
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Users));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Users));
 
-            await AppointMateDbMapper.Users.DeleteOneAsync(x => x.Id == id);
+            await MeetEduDbMapper.Users.DeleteOneAsync(x => x.Id == id);
 
             return entity;
         }

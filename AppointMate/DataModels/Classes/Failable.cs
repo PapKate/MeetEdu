@@ -1,10 +1,13 @@
 ﻿using Amazon.Runtime;
-using AppointMate;
+
+using MeetBase;
+
+using MeetEdu;
 
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// The default implementation of the <see cref="IFailable"/> interface

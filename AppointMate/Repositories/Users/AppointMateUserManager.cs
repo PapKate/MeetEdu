@@ -3,12 +3,12 @@ using Microsoft.Extensions.Options;
 
 using MongoDB.Driver;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// The <see cref="UserManager{TUser}"/> implementation that is used by the Atom framework
     /// </summary>
-    public class AppointMateUserManager : UserManager<UserEntity>
+    public class MeetEduUserManager : UserManager<UserEntity>
     {
         #region Public Properties
 
@@ -24,7 +24,7 @@ namespace AppointMate
         /// <summary>
         /// Default constructor
         /// </summary>
-        public AppointMateUserManager(IUserStore<UserEntity> store, IOptions<IdentityOptions> optionsAccessor, IPasswordHasher<UserEntity> passwordHasher, IEnumerable<IUserValidator<UserEntity>> userValidators, IEnumerable<IPasswordValidator<UserEntity>> passwordValidators, ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors, IServiceProvider services, ILogger<UserManager<UserEntity>> logger) :
+        public MeetEduUserManager(IUserStore<UserEntity> store, IOptions<IdentityOptions> optionsAccessor, IPasswordHasher<UserEntity> passwordHasher, IEnumerable<IUserValidator<UserEntity>> userValidators, IEnumerable<IPasswordValidator<UserEntity>> passwordValidators, ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors, IServiceProvider services, ILogger<UserManager<UserEntity>> logger) :
             base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         {
         }
@@ -86,7 +86,7 @@ namespace AppointMate
 
             user.PasswordHash = newPassword;
 
-            await AppointMateDbMapper.Users.UpdateOneAsync(
+            await MeetEduDbMapper.Users.UpdateOneAsync(
                 x => x.Id == user.Id,
                 Builders<UserEntity>.Update.Set(x => x.PasswordHash, newPasswordHash));
 

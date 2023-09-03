@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Provides methods for managing appointments
@@ -46,7 +46,7 @@ namespace AppointMate
             if (entity is null)
                 return "Cannot create a new appointment";
 
-            return await AppointMateDbMapper.Appointments.AddAsync(entity, cancellationToken);
+            return await MeetEduDbMapper.Appointments.AddAsync(entity, cancellationToken);
         }
 
         /// <summary>
@@ -58,15 +58,15 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<AppointmentEntity>> UpdateAppointmentAsync(ObjectId id, AppointmentRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointMateDbMapper.Appointments.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            var entity = await MeetEduDbMapper.Appointments.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             // If the appointment does not exist...
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Appointments));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Appointments));
 
             entity = await AppointmentEntity.FromRequestModelAsync(model);
             
-            await AppointMateDbMapper.Appointments.UpdateAsync(entity!, cancellationToken);
+            await MeetEduDbMapper.Appointments.UpdateAsync(entity!, cancellationToken);
 
             return entity!;
         }
@@ -80,13 +80,13 @@ namespace AppointMate
         public async Task<WebServerFailable<AppointmentEntity>> DeleteAppointmentAsync(ObjectId id, CancellationToken cancellationToken = default)
         {
             // Gets the appointment
-            var entity = await AppointMateDbMapper.Appointments.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            var entity = await MeetEduDbMapper.Appointments.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             // If the appointment does not exist...
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Appointments));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Appointments));
 
-            await AppointMateDbMapper.Appointments.DeleteAsync(id, cancellationToken);
+            await MeetEduDbMapper.Appointments.DeleteAsync(id, cancellationToken);
 
             return entity;
         }
@@ -109,7 +109,7 @@ namespace AppointMate
             if (entity is null)
                 return "Cannot create a new appointment";
 
-            return await AppointMateDbMapper.AppointmentRules.AddAsync(entity, cancellationToken);
+            return await MeetEduDbMapper.AppointmentRules.AddAsync(entity, cancellationToken);
         }
 
         /// <summary>
@@ -121,15 +121,15 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<AppointmentRuleEntity>> UpdateAppointmentRuleAsync(ObjectId id, AppointmentRuleRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointMateDbMapper.AppointmentRules.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            var entity = await MeetEduDbMapper.AppointmentRules.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             // If the appointment does not exist...
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.AppointmentRules));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.AppointmentRules));
 
             entity = AppointmentRuleEntity.FromRequestModel(model);
 
-            await AppointMateDbMapper.AppointmentRules.UpdateAsync(entity!, cancellationToken);
+            await MeetEduDbMapper.AppointmentRules.UpdateAsync(entity!, cancellationToken);
 
             return entity!;
         }
@@ -143,13 +143,13 @@ namespace AppointMate
         public async Task<WebServerFailable<AppointmentRuleEntity>> DeleteAppointmentRuleAsync(ObjectId id, CancellationToken cancellationToken = default)
         {
             // Gets the appointment
-            var entity = await AppointMateDbMapper.AppointmentRules.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            var entity = await MeetEduDbMapper.AppointmentRules.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             // If the appointment does not exist...
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.AppointmentRules));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.AppointmentRules));
 
-            await AppointMateDbMapper.AppointmentRules.DeleteAsync(id, cancellationToken);
+            await MeetEduDbMapper.AppointmentRules.DeleteAsync(id, cancellationToken);
 
             return entity;
         }

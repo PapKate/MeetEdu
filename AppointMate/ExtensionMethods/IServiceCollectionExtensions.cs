@@ -1,9 +1,11 @@
-﻿using AutoMapper;
+﻿using MeetBase;
+
+using AutoMapper;
 using AutoMapper.Internal;
 
 using System.Reflection;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Extension methods for <see cref="IServiceCollection"/>

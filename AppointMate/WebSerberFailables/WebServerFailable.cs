@@ -1,5 +1,5 @@
 ﻿using Amazon.Runtime;
-using AppointMate;
+using MeetEdu;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ using MongoDB.Bson;
 
 using System;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// An implementation of the <see cref="IFailable"/> used by the services of the web server

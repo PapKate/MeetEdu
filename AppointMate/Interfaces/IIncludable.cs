@@ -1,4 +1,4 @@
-﻿namespace AppointMate
+﻿namespace MeetEdu
 {
     /// <summary>
     /// Provides abstractions for an object that can include or exclude other objects based on identifiers

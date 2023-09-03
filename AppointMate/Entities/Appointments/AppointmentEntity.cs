@@ -2,7 +2,7 @@
 
 using MongoDB.Bson;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Represents an appointment document in the MongoDB
@@ -89,8 +89,8 @@ namespace AppointMate
                 return null;
 
             // Gets the appointment rule with the specified id
-            var rule = await AppointMateDbMapper.AppointmentRules.FirstOrDefaultAsync(x => x.Id == model.RuleId.ToObjectId());
-            var professor = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == model.ProfessorId.ToObjectId());
+            var rule = await MeetEduDbMapper.AppointmentRules.FirstOrDefaultAsync(x => x.Id == model.RuleId.ToObjectId());
+            var professor = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == model.ProfessorId.ToObjectId());
 
             // If no rule or professor is found...
             if (rule is null || professor is null)

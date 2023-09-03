@@ -1,4 +1,4 @@
-﻿namespace AppointMate
+﻿namespace MeetEdu
 {
     /// <summary>
     /// The Alpha-2 country codes

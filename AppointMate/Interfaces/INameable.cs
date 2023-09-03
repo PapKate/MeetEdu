@@ -1,4 +1,4 @@
-﻿namespace AppointMate
+﻿namespace MeetEdu
 {
     /// <summary>
     /// Provides abstractions for a model that provides a name

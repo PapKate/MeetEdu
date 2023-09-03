@@ -1,4 +1,4 @@
-﻿namespace AppointMate
+﻿namespace MeetEdu
 {
     /// <summary>
     /// Provides enumeration for the order conditions

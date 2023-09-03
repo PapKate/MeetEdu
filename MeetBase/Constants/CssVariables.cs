@@ -1,16 +1,12 @@
-﻿using Atom.Blazor;
+﻿
 using Atom.Blazor.Controls;
-using static Atom.Personalization;
 
-using Microsoft.AspNetCore.Components;
-using System.ComponentModel;
-
-namespace AppointMate
+namespace MeetBase
 {
     /// <summary>
     /// Constants for CSS
     /// </summary>
-    public static class CssConstants
+    public static class CssVariables
     {
         #region Public Properties
 
@@ -38,9 +34,9 @@ namespace AppointMate
     }
 
     /// <summary>
-    /// Extension methods for <see cref="CssConstants"/>
+    /// Extension methods for <see cref="CssVariables"/>
     /// </summary>
-    public static class CssConstantExtensions
+    public static class CssVariableExtensions
     {
         #region Public Methods
 

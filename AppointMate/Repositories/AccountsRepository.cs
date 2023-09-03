@@ -1,7 +1,9 @@
 ﻿
+using MeetBase;
+
 using Microsoft.AspNetCore.Mvc;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// The manager for the accounts
@@ -58,7 +60,7 @@ namespace AppointMate
             // Make sure we have a user name
             if (credentials is null || credentials.Username.IsNullOrEmpty() || credentials.Password.IsNullOrEmpty())
                 // Return error message to user
-                return AppointMateWebServerConstants.InvalidLogInCredentialsErrorMessage;
+                return MeetEduWebServerConstants.InvalidLogInCredentialsErrorMessage;
 
             // Validate if the user credentials are correct...
 
@@ -71,14 +73,14 @@ namespace AppointMate
             // Get the user details
             var user = isEmail 
                 // Find by email
-                ? await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Email == credentials.Username) 
+                ? await MeetEduDbMapper.Users.FirstOrDefaultAsync(x => x.Email == credentials.Username) 
                 // Find by username
-                : await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Username == credentials.Username);
+                : await MeetEduDbMapper.Users.FirstOrDefaultAsync(x => x.Username == credentials.Username);
 
             // If we failed to find a user...
             if (user is null)
                 // Return error message to user
-                return AppointMateWebServerConstants.InvalidLogInCredentialsErrorMessage;
+                return MeetEduWebServerConstants.InvalidLogInCredentialsErrorMessage;
 
             // If we got here we have a user...
             // Let's validate the password
@@ -89,7 +91,7 @@ namespace AppointMate
             // If the password was wrong
             if (!isValidPassword)
                 // Return error message to user
-                return AppointMateWebServerConstants.InvalidLogInCredentialsErrorMessage;
+                return MeetEduWebServerConstants.InvalidLogInCredentialsErrorMessage;
 
             // Return the successful result
             return new WebServerFailable<UserEntity>(user);

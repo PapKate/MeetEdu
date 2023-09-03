@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MongoDB.Bson;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Represents a professor document in the MongoDB

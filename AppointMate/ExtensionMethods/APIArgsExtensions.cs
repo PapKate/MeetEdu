@@ -1,7 +1,7 @@
 ﻿
 using Amazon.SecurityToken.Model;
 
-using AppointMate.Helpers;
+using MeetEdu.Helpers;
 
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -9,7 +9,7 @@ using MongoDB.Driver.Linq;
 
 using System.Linq;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Extension methods for <see cref="APIArgs"/>

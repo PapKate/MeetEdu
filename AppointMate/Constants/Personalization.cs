@@ -1,7 +1,7 @@
-﻿namespace AppointMate
+﻿namespace MeetEdu
 {
     /// <summary>
-    /// The personalization constants for the AppointMate app
+    /// The personalization constants for the MeetEdu app
     /// </summary>
     public static class Personalization
     {

@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using MongoDB.Driver;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// The default application services that should be available everywhere in the application
@@ -17,7 +17,7 @@ namespace AppointMate
         /// </summary>
         private static readonly Lazy<IMongoDatabase> mDatabase = new(() =>
         {
-            return new MongoClient(new MongoClientSettings()).GetDatabase("AppointMate");
+            return new MongoClient(new MongoClientSettings()).GetDatabase("MeetEdu");
         });
 
         /// <summary>

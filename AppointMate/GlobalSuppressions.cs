@@ -5,4 +5,4 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.", Justification = "<Pending>", Scope = "member", Target = "~M:AppointMate.Header.OnAfterRender(System.Boolean)")]
+[assembly: SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.", Justification = "<Pending>", Scope = "member", Target = "~M:MeetEdu.Header.OnAfterRender(System.Boolean)")]

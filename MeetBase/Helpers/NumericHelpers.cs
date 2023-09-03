@@ -1,4 +1,4 @@
-﻿namespace AppointMate
+﻿namespace MeetBase
 {
     /// <summary>
     /// Helper methods for numbers

@@ -1,8 +1,8 @@
 ﻿using MudBlazor;
 
-using static AppointMate.Personalization;
+using static MeetEdu.Personalization;
 
-namespace AppointMate.Shared
+namespace MeetEdu.Shared
 {
     /// <summary>
     /// The main layout

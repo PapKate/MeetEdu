@@ -1,6 +1,6 @@
 ﻿using System.Security.Principal;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// The standard response model

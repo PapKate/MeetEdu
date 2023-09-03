@@ -2,7 +2,7 @@
 
 using System.Linq.Expressions;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Extension methods for <see cref="IMongoQueryable{T}"/>

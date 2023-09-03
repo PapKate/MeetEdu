@@ -1,14 +1,14 @@
-﻿using AppointMate.Helpers;
+﻿using MeetEdu.Helpers;
 
 using Microsoft.AspNetCore.Mvc;
 
 using MongoDB.Driver;
 
-namespace AppointMate
+namespace MeetEdu
 {
 
     /// <summary>
-    /// Controller used for handing the requests related to an AppointMate related application
+    /// Controller used for handing the requests related to an MeetEdu related application
     /// </summary>
     public class MeetEduController : Controller
     {
@@ -61,7 +61,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetEduAPIRoutes.UserRoute)]
         public async Task<ActionResult<UserResponseModel>?> GetUserAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Users, x => x.ToResponseModel(), x => x.Id.ToString() == id, cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Users, x => x.ToResponseModel(), x => x.Id.ToString() == id, cancellationToken);
 
         #endregion
 
@@ -76,7 +76,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetEduAPIRoutes.UniversitiesRoute)]
         public async Task<ActionResult<UniversityResponseModel>?> GetUniversityAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Universities, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Universities, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         #endregion
 
@@ -91,7 +91,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetEduAPIRoutes.DepartmentRoute)]
         public async Task<ActionResult<DepartmentResponseModel>?> GetDepartmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Departments, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Departments, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         #region Contact
 
@@ -110,7 +110,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetEduAPIRoutes.ProfessorRoute)]
         public async Task<ActionResult<ProfessorResponseModel>?> GetProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Professors, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Professors, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         #endregion
 
@@ -125,7 +125,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetEduAPIRoutes.AppointmentRulesRoute)]
         public async Task<ActionResult<IEnumerable<AppointmentRuleResponseModel>>> GetAppointmentRulesAsync([FromQuery] AppointmentRuleAPIArgs args, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetManyAsync(AppointMateDbMapper.AppointmentRules,
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.AppointmentRules,
                                                     x => x.ToResponseModel(),
                                                     Builders<AppointmentRuleEntity>.Filter.Empty, args,
                                                     cancellationToken, x => x.DateCreated);
@@ -143,7 +143,7 @@ namespace AppointMate
         [HttpGet]
         [Route(MeetEduAPIRoutes.MemberRoute)]
         public async Task<ActionResult<MemberResponseModel>?> GetMemberAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(AppointMateDbMapper.Members, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Members, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         #region Saved Departments
 
@@ -174,13 +174,13 @@ namespace AppointMate
         public async Task<ActionResult<IEnumerable<DepartmentResponseModel>>> GetMemberSavedDepartmentsAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user savedProfessors department with the specified user memberId
-            var savedDepartments = await AppointMateDbMapper.MemberSavedDepartments.SelectAsync(x => x.MemberId.ToString() == id);
+            var savedDepartments = await MeetEduDbMapper.MemberSavedDepartments.SelectAsync(x => x.MemberId.ToString() == id);
 
             // If no savedProfessors department is found...
             if (savedDepartments is null)
                 return NotFound();
 
-            var departments = await AppointMateDbMapper.Departments.SelectAsync(x => savedDepartments.Any(y => y.DepartmentId == x.Id), cancellationToken);
+            var departments = await MeetEduDbMapper.Departments.SelectAsync(x => savedDepartments.Any(y => y.DepartmentId == x.Id), cancellationToken);
 
             return new OkObjectResult(departments.Select(x => x.ToResponseModel()));
         }
@@ -195,13 +195,13 @@ namespace AppointMate
         public async Task<ActionResult<DepartmentResponseModel>> GetMemberSavedDepartmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user saved department with the specified id
-            var savedDepartment = await AppointMateDbMapper.MemberSavedDepartments.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+            var savedDepartment = await MeetEduDbMapper.MemberSavedDepartments.FirstOrDefaultAsync(x => x.Id.ToString() == id);
 
             // If the saved department is not found...
             if (savedDepartment is null)
                 return NotFound();
 
-            var department = await AppointMateDbMapper.Departments.FirstOrDefaultAsync(x => x.Id == savedDepartment.DepartmentId, cancellationToken);
+            var department = await MeetEduDbMapper.Departments.FirstOrDefaultAsync(x => x.Id == savedDepartment.DepartmentId, cancellationToken);
 
             return department.ToResponseModel();
         }
@@ -254,13 +254,13 @@ namespace AppointMate
         public async Task<ActionResult<IEnumerable<ProfessorResponseModel>>> GetMemberSavedProfessorsAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user saved professor with the specified user memberId
-            var savedProfessors = await AppointMateDbMapper.MemberSavedProfessors.SelectAsync(x => x.MemberId.ToString() == id);
+            var savedProfessors = await MeetEduDbMapper.MemberSavedProfessors.SelectAsync(x => x.MemberId.ToString() == id);
 
             // If no saved professor is found...
             if (savedProfessors is null)
                 return NotFound();
 
-            var departments = await AppointMateDbMapper.Departments.SelectAsync(x => savedProfessors.Any(y => y.ProfessorId == x.Id), cancellationToken);
+            var departments = await MeetEduDbMapper.Departments.SelectAsync(x => savedProfessors.Any(y => y.ProfessorId == x.Id), cancellationToken);
 
             return new OkObjectResult(departments.Select(x => x.ToResponseModel()));
         }
@@ -275,13 +275,13 @@ namespace AppointMate
         public async Task<ActionResult<ProfessorResponseModel>> GetMemberSavedProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user saved professor with the specified memberId
-            var savedProfessor = await AppointMateDbMapper.MemberSavedProfessors.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+            var savedProfessor = await MeetEduDbMapper.MemberSavedProfessors.FirstOrDefaultAsync(x => x.Id.ToString() == id);
 
             // If the saved professor is not found...
             if (savedProfessor is null)
                 return NotFound();
 
-            var professor = await AppointMateDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == savedProfessor.ProfessorId, cancellationToken);
+            var professor = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == savedProfessor.ProfessorId, cancellationToken);
 
             return professor.ToResponseModel();
         }

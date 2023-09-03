@@ -1,5 +1,5 @@
 ﻿
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Provides abstractions for an object that has an assignable phone number

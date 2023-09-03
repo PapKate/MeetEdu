@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// A collection that provides type safety 

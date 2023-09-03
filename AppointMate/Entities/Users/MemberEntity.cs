@@ -2,7 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Represents a member document in the MongoDB
@@ -86,13 +86,13 @@ namespace AppointMate
         /// <returns></returns>
         public static async void UpdateNonAutoMapperValues(MemberRequestModel model, MemberEntity entity)
         {
-            var appointments = await AppointMateDbMapper.Appointments.SelectAsync(x => x.MemberId == entity.Id);
+            var appointments = await MeetEduDbMapper.Appointments.SelectAsync(x => x.MemberId == entity.Id);
             entity.TotalAppointments = (uint)appointments.Count();
 
-            var savedDepartments = await AppointMateDbMapper.MemberSavedDepartments.SelectAsync(x => x.MemberId == entity.Id);
+            var savedDepartments = await MeetEduDbMapper.MemberSavedDepartments.SelectAsync(x => x.MemberId == entity.Id);
             entity.TotalSavedDepartments = (uint)savedDepartments.Count();
             
-            var savedProfs = await AppointMateDbMapper.MemberSavedProfessors.SelectAsync(x => x.MemberId == entity.Id);
+            var savedProfs = await MeetEduDbMapper.MemberSavedProfessors.SelectAsync(x => x.MemberId == entity.Id);
             entity.TotalSavedProfessors = (uint)savedProfs.Count();
         }
 

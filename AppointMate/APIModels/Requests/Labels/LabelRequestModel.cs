@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Request model used for a label

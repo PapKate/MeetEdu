@@ -2,7 +2,7 @@
 
 using MongoDB.Bson;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Represents a department contact message document in the MongoDB

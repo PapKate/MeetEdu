@@ -11,7 +11,7 @@ using System.Collections.Concurrent;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Helper methods for entities
@@ -36,7 +36,7 @@ namespace AppointMate
         /// <returns></returns>
         public static async Task<EmbeddedUserEntity> GetUserAsync(string userId)
         {
-            var user = await AppointMateDbMapper.Users.FirstOrDefaultAsync(x => x.Id == userId.ToObjectId());
+            var user = await MeetEduDbMapper.Users.FirstOrDefaultAsync(x => x.Id == userId.ToObjectId());
             return user.ToEmbeddedEntity();
         }
 

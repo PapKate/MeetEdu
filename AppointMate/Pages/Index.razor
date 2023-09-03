@@ -1,13 +1,13 @@
 ﻿@page "/index"
 
-@using static AppointMate.Personalization
+@using static MeetEdu.Personalization
 @using static Atom.Blazor.Personalization
 
-@namespace AppointMate
+@namespace MeetEdu
 
-<PageTitle>@AppointMateConstants.AppName</PageTitle>
+<PageTitle>@MeetEduConstants.AppName</PageTitle>
 
-<Header AppName="@AppointMateConstants.AppName" 
+<Header AppName="@MeetEduConstants.AppName" 
         Username="Lime" 
         BackColor="@Blue" 
         ForeColor="@White"/>
@@ -25,8 +25,8 @@
         <div class="searchSectionLogoAndNameContainer">
             <img class="searchSectionLogo" src="icons/academic.png" alt="logo"/>
             <h1 class="searchSectionName">
-                <span class="searchSectionNameFirst">@AppointMateHelpers.SplitCamelCase(AppointMateConstants.AppName)[0]</span>
-                <span class="searchSectionNameSecond">@AppointMateHelpers.SplitCamelCase(AppointMateConstants.AppName)[1]</span>
+                <span class="searchSectionNameFirst">@MeetEduHelpers.SplitCamelCase(MeetEduConstants.AppName)[0]</span>
+                <span class="searchSectionNameSecond">@MeetEduHelpers.SplitCamelCase(MeetEduConstants.AppName)[1]</span>
             </h1>
         </div>
 
@@ -38,7 +38,7 @@
                     <img class="searchSectionPopularSearchesImage" src="icons/trending.png" alt="image fire"/>
                 </div>
 
-                <h3 class="searchSectionPopularSearchesText">@AppointMateConstants.PopularSearches</h3>
+                <h3 class="searchSectionPopularSearchesText">@MeetEduConstants.PopularSearches</h3>
             </div>
             <div class="searchSectionPopularSearchesWrapper">
                 <span class="searchSectionPopularSearch">University</span>

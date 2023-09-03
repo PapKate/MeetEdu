@@ -1,0 +1,759 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MeetBase</name>
+    </assembly>
+    <members>
+        <member name="T:MeetBase.CssVariables">
+            <summary>
+            Constants for CSS
+            </summary>
+        </member>
+        <member name="F:MeetBase.CssVariables.FontFamilyVariable">
+            <summary>
+            The font family
+            </summary>
+        </member>
+        <member name="F:MeetBase.CssVariables.ForeColorVariable">
+            <summary>
+            The fore color
+            </summary>
+        </member>
+        <member name="F:MeetBase.CssVariables.BackColorVariable">
+            <summary>
+            The back color
+            </summary>
+        </member>
+        <member name="F:MeetBase.CssVariables.BorderColorVariable">
+            <summary>
+            The border color
+            </summary>
+        </member>
+        <member name="T:MeetBase.CssVariableExtensions">
+            <summary>
+            Extension methods for <see cref="T:MeetBase.CssVariables"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.CssVariableExtensions.SetCssVariable(System.String,System.Object)">
+            <summary>
+            Sets the <paramref name="value"/> to the CSS variable with the specified <paramref name="name"/>
+            <code>--name: value;</code>
+            </summary>
+            <param name="name">The name</param>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.CssVariableExtensions.SetCssColor(System.String,System.String)">
+            <summary>
+            Sets the <paramref name="value"/> to the CSS variable with the specified <paramref name="name"/>
+            <code>--name: value;</code>
+            </summary>
+            <param name="name">The name</param>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.CssVariableExtensions.GetCssVariable(System.String)">
+            <summary>
+            Gets the CSS variable with the specified <paramref name="name"/>
+            <code>var(--name)</code>
+            </summary>
+            <param name="name">The name</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.IconPaths">
+            <summary>
+            Icon paths
+            </summary>
+        </member>
+        <member name="F:MeetBase.IconPaths.HeartPath">
+            <summary>
+            The heart icon path
+            </summary>
+        </member>
+        <member name="F:MeetBase.IconPaths.HeartOutlinePath">
+            <summary>
+            The heart outline icon path
+            </summary>
+        </member>
+        <member name="T:MeetBase.RegexConstants">
+            <summary>
+            Constants related to <see cref="T:System.Text.RegularExpressions.Regex"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.EmptyOrNumericOnlyStringRegexPattern">
+            <summary>
+            The pattern that is used by the <see cref="F:MeetBase.RegexConstants.EmptyOrNumericOnlyStringRegex"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.EmptyOrNumericOnlyStringRegex">
+            <summary>
+            Regex used for validating an empty string or a string that contains only numbers
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.EmailRegexPattern">
+            <summary>
+            The pattern that is used by the <see cref="F:MeetBase.RegexConstants.EmailRegex"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.EmailRegex">
+            <summary>
+            The regular expression for validating an email
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.E164PhoneNumberRegexPattern">
+            <summary>
+            The pattern that is used by the <see cref="F:MeetBase.RegexConstants.E164PhoneNumberRegex"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.E164PhoneNumberRegex">
+            <summary>
+            The regular expression for validating a E164 phone number
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.PhoneNumberRegexPattern">
+            <summary>
+            The pattern that is used by the <see cref="F:MeetBase.RegexConstants.PhoneNumberRegex"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.PhoneNumberRegex">
+            <summary>
+            The regular expression for validating a phone number
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.NonFloatingNumberRegexPattern">
+            <summary>
+            The pattern that is used by the <see cref="F:MeetBase.RegexConstants.NonFloatingNumberRegex"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.NonFloatingNumberRegex">
+            <summary>
+            The regular expression for identifying a non floating point number
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.LatinRegexPattern">
+            <summary>
+            The pattern that is used by the <see cref="F:MeetBase.RegexConstants.LatinRegex"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.LatinRegex">
+            <summary>
+            The regular expression for identifying words with latin characters only
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.HexRegexPattern">
+            <summary>
+            The pattern that is used by the <see cref="F:MeetBase.RegexConstants.HexRegex"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.RegexConstants.HexRegex">
+            <summary>
+            The regular expression used for validating a hex value
+            </summary>
+        </member>
+        <member name="T:MeetBase.IEnumerableExtensions">
+            <summary>
+            Extension methods associated with <see cref="T:System.Collections.IEnumerable"/> and <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.IEnumerableExtensions.IsNullOrEmpty(System.Collections.IEnumerable)">
+            <summary>
+            Checks if the specified <paramref name="enumerable"/> is null or 
+            if it doesn't have any items.
+            </summary>
+            <param name="enumerable">The enumerable</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.IEnumerableExtensions.AggregateString``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.Func{System.String,System.String,System.String})">
+            <summary>
+            Aggregates the specified <paramref name="source"/> into a <see cref="T:System.String"/>
+            </summary>
+            <typeparam name="T">The type of the items</typeparam>
+            <param name="source">The source</param>
+            <param name="extractor">The string extractor that is used to convert an item to a string</param>
+            <param name="func">Delegate that places the extracted strings in order</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.IEnumerableExtensions.AggregateString``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.String)">
+            <summary>
+            Aggregates the specified <paramref name="source"/> into a <see cref="T:System.String"/>
+            </summary>
+            <typeparam name="T">The type of the items</typeparam>
+            <param name="source">The source</param>
+            <param name="extractor">The string extractor that is used to convert an item to a string</param>
+            <param name="separator">The separator</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.IEnumerableExtensions.AggregateString``1(System.Collections.Generic.IEnumerable{``0},System.Func{System.String,System.String,System.String})">
+            <summary>
+            Aggregates the specified <paramref name="source"/> into a <see cref="T:System.String"/>.
+            NOTE: This method converts the items of the <paramref name="source"/> to <see cref="T:System.String"/>
+                  using the <see cref="M:System.Object.ToString"/> method!
+            </summary>
+            <typeparam name="T">The type of the items</typeparam>
+            <param name="source">The source</param>
+            <param name="func">Delegate that places the extracted strings in order</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.IEnumerableExtensions.AggregateString``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Aggregates the specified <paramref name="source"/> into a <see cref="T:System.String"/>.
+            NOTE: This method converts the items of the <paramref name="source"/> to <see cref="T:System.String"/>
+                  using the <see cref="M:System.Object.ToString"/> method!
+            NOTE: This method uses ", " as the items separator!
+            </summary>
+            <typeparam name="T">The type of the items</typeparam>
+            <param name="source">The source</param>
+            <param name="separator">The separator</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.StringExtensions">
+            <summary>
+            Extension methods for strings
+            </summary>
+        </member>
+        <member name="M:MeetBase.StringExtensions.IsNullOrEmpty(System.String)">
+            <summary>
+            Checks whether the string is null or empty
+            </summary>
+            <param name="value">The value</param>
+            <returns>Returns true if the string is null or empty, false otherwise</returns>
+        </member>
+        <member name="M:MeetBase.StringExtensions.NotNullOrEmpty(System.String)">
+            <summary>
+            Returns the specified <paramref name="value"/> if it's not null or empty,
+            otherwise it throws an <see cref="T:System.ArgumentNullException"/>
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringExtensions.ToInt(System.String)">
+            <summary>
+            Converts the given <paramref name="value"/> to an <see cref="T:System.Int32"/>
+            </summary>
+            <remarks>
+                An Int32 can only be up to 9 digits long!
+            </remarks>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringExtensions.IsEmail(System.String)">
+            <summary>
+            Checks if the inserted string is a valid email
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringExtensions.EncryptPassword(System.String)">
+            <summary>
+            Encrypts the specified <paramref name="value"/> with the <see cref="T:System.Security.Cryptography.SHA256"/> hash method
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.TypeExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Type"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.TypeExtensions.IsEnumerable(System.Type)">
+            <summary>
+            Checks whether the specified <paramref name="type"/> implements the <see cref="T:System.Collections.IEnumerable"/>
+            or it's it self the <see cref="T:System.Collections.IEnumerable"/>
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeExtensions.IsGenericIEnumerable(System.Type)">
+            <summary>
+            Checks whether the specified <paramref name="type"/> implements the <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            or it's it self the <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            </summary>
+            <param name="type">The type</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.MeetEduHelpers">
+            <summary>
+            Helper methods
+            </summary>
+        </member>
+        <member name="M:MeetBase.MeetEduHelpers.GetFirstDayOfWeekDate(System.DateTimeOffset)">
+            <summary>
+            Gets the first day of the week date from the specified <paramref name="date"/>
+            </summary>
+            <param name="date">The date</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.MeetEduHelpers.SplitCamelCase(System.String)">
+            <summary>
+            Splits the specified <paramref name="value"/> by uppercase 
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.NumericHelpers">
+            <summary>
+            Helper methods for numbers
+            </summary>
+        </member>
+        <member name="F:MeetBase.NumericHelpers.DefaultDecimalPrecision">
+            <summary>
+            The default decimal precision
+            </summary>
+        </member>
+        <member name="F:MeetBase.NumericHelpers.DefaultMode">
+            <summary>
+            The default mode of <see cref="T:System.MidpointRounding"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.NumericHelpers.Round(System.Decimal,System.UInt32,System.MidpointRounding)">
+            <summary>
+            Rounds the specified <paramref name="amount"/> using the specified options
+            </summary>
+            <param name="amount">The amount</param>
+            <param name="decimalsPrecision">The decimals precision</param>
+            <param name="mode">The midpoint rounding mode</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.NumericHelpers.Round(System.Decimal)">
+            <summary>
+            Rounds the specified <paramref name="amount"/> using the specified options
+            </summary>
+            <param name="amount">The amount</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.TypeHelpers">
+            <summary>
+            Helper methods for <see cref="T:System.Type"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.GetNonEnumerableType(System.Type)">
+            <summary>
+            Gets the T from the <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the specified <paramref name="type"/>
+            when it implements the <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface
+            </summary>
+            <param name="type">The type that implements the <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface</param>
+            <returns></returns>3
+        </member>
+        <member name="T:MeetBase.EnglishLocalization">
+            <summary>
+            The English localization
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.OperationAborted">
+            <summary>
+            Operation aborted error message
+            </summary>
+        </member>
+        <member name="T:MeetBase.LocalizationConstants">
+            <summary>
+            Constants related to localization
+            </summary>
+        </member>
+        <member name="F:MeetBase.LocalizationConstants.Culture">
+            <summary>
+            The culture info that is used by the ToString methods
+            </summary>
+        </member>
+        <member name="F:MeetBase.LocalizationConstants.ISO8601Format">
+            <summary>
+            The format that is used when represent values using the ISO8601 standard
+            </summary>
+        </member>
+        <member name="T:MeetBase.LocalizationExtensions">
+            <summary>
+            Extension methods associated with localization
+            </summary>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Byte)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.Byte})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.SByte)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.SByte})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Int32)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.Int32})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.UInt32)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.UInt32})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Double)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.Double})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Single)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.Single})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Decimal)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.Decimal})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Int64)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.Int64})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.UInt64)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.UInt64})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Int16)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.Int16})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.UInt16)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToLocalizedCurrency(System.Nullable{System.UInt16})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a localized currency value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Byte)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.Byte})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.SByte)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.SByte})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Int32)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.Int32})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.UInt32)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.UInt32})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Single)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.Single})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Double)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.Double})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Decimal)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.Decimal})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Int64)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.Int64})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.UInt64)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.UInt64})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Int16)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.Int16})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.UInt16)">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationExtensions.ToPercentage(System.Nullable{System.UInt16})">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the specified <paramref name="value"/>
+            as a percentage value.
+            NOTE: null is returned if the <paramref name="value"/> is also null!
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.LocalizationHelpers">
+            <summary>
+            Helpers related to localization
+            </summary>
+        </member>
+        <member name="M:MeetBase.LocalizationHelpers.GetCurrencySymbol">
+            <summary>
+            Gets the currency symbol of the local machine
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.LocalizationHelpers.GetIsoCurrencySymbol">
+            <summary>
+            Gets the ISO currency symbol of the local machine
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

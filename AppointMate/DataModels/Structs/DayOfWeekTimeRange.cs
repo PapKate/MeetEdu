@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Represents a time range of a specific week day

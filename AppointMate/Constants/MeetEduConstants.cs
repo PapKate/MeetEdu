@@ -1,9 +1,9 @@
-﻿namespace AppointMate
+﻿namespace MeetEdu
 {
     /// <summary>
-    /// The constants for the AppointMate app
+    /// The constants for the MeetEdu app
     /// </summary>
-    public static class AppointMateConstants
+    public static class MeetEduConstants
     {
         #region Public Properties
 

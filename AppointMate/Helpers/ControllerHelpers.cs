@@ -6,7 +6,7 @@ using MongoDB.Driver.Linq;
 
 using System.Linq.Expressions;
 
-namespace AppointMate.Helpers
+namespace MeetEdu.Helpers
 {
     /// <summary>
     /// Helper methods for <see cref="Controller"/>s

@@ -1,11 +1,11 @@
 ﻿using MongoDB.Bson;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
-    /// Web server constants related to the AppointMate application
+    /// Web server constants related to the MeetEdu application
     /// </summary>
-    public static class AppointMateWebServerConstants
+    public static class MeetEduWebServerConstants
     {
         #region Public Properties
 

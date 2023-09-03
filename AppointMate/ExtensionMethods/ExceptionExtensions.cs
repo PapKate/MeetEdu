@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Extension methods for <see cref="Exception"/>

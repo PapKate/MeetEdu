@@ -2,7 +2,7 @@
 
 using MudBlazor;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// The main page

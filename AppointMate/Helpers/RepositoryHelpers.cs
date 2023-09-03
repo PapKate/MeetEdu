@@ -5,7 +5,7 @@ using MongoDB.Driver.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Helper Methods for the repositories

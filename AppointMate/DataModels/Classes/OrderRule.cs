@@ -1,6 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using MeetBase;
 
-namespace AppointMate
+using System.Diagnostics.CodeAnalysis;
+
+namespace MeetEdu
 {
     /// <summary>
     /// Provides information related to an order rule

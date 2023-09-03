@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using Atom;
+
+using System.Collections;
 using System.Reflection;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// The base for all the classes that are used as arguments

@@ -3,7 +3,7 @@ using AutoMapper;
 
 using MongoDB.Bson;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Represents a department document in the MongoDB
@@ -163,7 +163,7 @@ namespace AppointMate
             // If there are labels...
             if (model.Labels is not null)
             {
-                var labels = await AppointMateDbMapper.DepartmentLabels.SelectAsync(x => model.Labels.Any(y => y.ToObjectId() == x.Id));
+                var labels = await MeetEduDbMapper.DepartmentLabels.SelectAsync(x => model.Labels.Any(y => y.ToObjectId() == x.Id));
 
                 entity.Labels = labels.Select(x => x.ToEmbeddedEntity());
             }

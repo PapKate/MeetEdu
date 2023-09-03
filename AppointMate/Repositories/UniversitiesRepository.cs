@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Provides methods for managing universities
@@ -37,7 +37,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
         public async Task<WebServerFailable<UniversityEntity>> AddUniversityAsync(UniversityRequestModel model, CancellationToken cancellationToken = default)
-            => await AppointMateDbMapper.Universities.AddAsync(UniversityEntity.FromRequestModel(model), cancellationToken);
+            => await MeetEduDbMapper.Universities.AddAsync(UniversityEntity.FromRequestModel(model), cancellationToken);
 
         /// <summary>
         /// Updates the university with the specified <paramref name="id"/>
@@ -48,10 +48,10 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<UniversityEntity>> UpdateUniversityAsync(ObjectId id, UniversityRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointMateDbMapper.Universities.UpdateAsync(id, model, cancellationToken);
+            var entity = await MeetEduDbMapper.Universities.UpdateAsync(id, model, cancellationToken);
 
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Universities));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Universities));
 
             return entity;
         }
@@ -64,12 +64,12 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<UniversityEntity>> DeleteUniversityAsync(ObjectId id, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointMateDbMapper.Universities.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            var entity = await MeetEduDbMapper.Universities.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.Universities));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Universities));
 
-            await AppointMateDbMapper.Universities.DeleteAsync(id, cancellationToken);
+            await MeetEduDbMapper.Universities.DeleteAsync(id, cancellationToken);
 
             return entity;
         }
@@ -84,7 +84,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
         public async Task<WebServerFailable<LabelEntity>> AddUniversityLabelAsync(ObjectId universitiesId, LabelRequestModel model, CancellationToken cancellationToken = default)
-            => await AppointMateDbMapper.UniversityLabels.AddAsync(LabelEntity.FromRequestModel(model, universitiesId), cancellationToken);
+            => await MeetEduDbMapper.UniversityLabels.AddAsync(LabelEntity.FromRequestModel(model, universitiesId), cancellationToken);
 
         /// <summary>
         /// Updates the university with the specified <paramref name="id"/>
@@ -95,10 +95,10 @@ namespace AppointMate
         /// <returns></returns>
         public async Task<WebServerFailable<LabelEntity>> UpdateUniversityLabelAsync(ObjectId id, LabelRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointMateDbMapper.UniversityLabels.UpdateAsync(id, model, cancellationToken);
+            var entity = await MeetEduDbMapper.UniversityLabels.UpdateAsync(id, model, cancellationToken);
 
             if (entity is null)
-                return WebServerFailable.NotFound(id, nameof(AppointMateDbMapper.UniversityLabels));
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.UniversityLabels));
 
             return entity;
         }
@@ -110,7 +110,7 @@ namespace AppointMate
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
         public async Task<WebServerFailable<LabelEntity>> DeleteUniversityLabelAsync(ObjectId id, CancellationToken cancellationToken = default)
-                => await AppointMateDbMapper.UniversityLabels.DeleteAsync(id, cancellationToken);
+                => await MeetEduDbMapper.UniversityLabels.DeleteAsync(id, cancellationToken);
 
         #endregion
 

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 using System.Diagnostics;
 
-namespace AppointMate.Pages
+namespace MeetEdu.Pages
 {
     /// <summary>
     /// The error model

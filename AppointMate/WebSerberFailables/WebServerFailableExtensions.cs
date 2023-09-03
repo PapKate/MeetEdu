@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 using System;
 
-using static AppointMate.WebServerFailable;
+using static MeetEdu.WebServerFailable;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Extension methods for <see cref="WebServerFailable{TResult}"/>

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace AppointMate
+namespace MeetBase
 {
     /// <summary>
     /// Extension methods for <see cref="Type"/>

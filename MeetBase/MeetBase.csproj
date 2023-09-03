@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>.\MeetBase.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Atom">
+      <HintPath>..\Atom.dll</HintPath>
+    </Reference>
+    <Reference Include="Atom.Blazor">
+      <HintPath>..\Atom.Blazor.dll</HintPath>
+    </Reference>
+    <Reference Include="Atom.Blazor.Controls">
+      <HintPath>..\Atom.Blazor.Controls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+</Project>

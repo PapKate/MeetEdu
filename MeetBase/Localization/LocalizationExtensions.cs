@@ -1,4 +1,4 @@
-﻿namespace AppointMate
+﻿namespace MeetBase
 {
     /// <summary>
     /// Extension methods associated with localization

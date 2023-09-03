@@ -1,4 +1,4 @@
-﻿namespace AppointMate
+﻿namespace MeetBase
 {
     /// <summary>
     /// The English localization

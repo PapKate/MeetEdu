@@ -3,7 +3,7 @@
 using static MudBlazor.CategoryTypes;
 using System.Reflection.Emit;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Represents a university document in the MongoDB

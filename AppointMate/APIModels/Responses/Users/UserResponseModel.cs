@@ -1,5 +1,5 @@
 ﻿
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Represents a user

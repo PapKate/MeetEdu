@@ -1,6 +1,6 @@
 ﻿using Amazon.Auth.AccessControlPolicy;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Provides abstractions for an object with an assignable logical condition state

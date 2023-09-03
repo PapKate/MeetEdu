@@ -1,7 +1,7 @@
 ﻿using Amazon.Runtime;
 using System.Diagnostics.CodeAnalysis;
 
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Provides abstractions for an object that can fail its task

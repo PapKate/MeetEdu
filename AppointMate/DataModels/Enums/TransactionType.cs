@@ -1,5 +1,5 @@
 ﻿
-namespace AppointMate
+namespace MeetEdu
 {
     /// <summary>
     /// Provides enumerations over the <see cref="TransactionType"/>

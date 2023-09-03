@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace AppointMate
+namespace MeetBase
 {
     /// <summary>
     /// Helpers related to localization
