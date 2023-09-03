@@ -5,7 +5,7 @@ namespace MeetBase
     /// <summary>
     /// Helper methods
     /// </summary>
-    public static class MeetEduHelpers
+    public static class MeetBaseHelpers
     {
         /// <summary>
         /// Gets the first day of the week date from the specified <paramref name="date"/>

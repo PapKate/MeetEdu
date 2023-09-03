@@ -1,6 +1,6 @@
 ﻿using MudBlazor;
 
-using static MeetEdu.Personalization;
+using static MeetBase.PaletteColors;
 
 namespace MeetEdu.Shared
 {

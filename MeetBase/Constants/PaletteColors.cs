@@ -1,9 +1,9 @@
-﻿namespace MeetEdu
+﻿namespace MeetBase
 {
     /// <summary>
-    /// The personalization constants for the MeetEdu app
+    /// The palette color constants 
     /// </summary>
-    public static class Personalization
+    public static class PaletteColors
     {
         #region Public Properties
 
@@ -23,9 +23,19 @@
         public const string Red = "FF495C";
 
         /// <summary>
+        /// Persimmon
+        /// </summary>
+        public const string Persimmon = "E55812";
+
+        /// <summary>
         /// Orange (web)
         /// </summary>
         public const string Orange = "FAA916";
+
+        /// <summary>
+        /// Amber
+        /// </summary>
+        public const string Amber = "F2BB05";
 
         /// <summary>
         /// Mustard
@@ -67,14 +77,20 @@
         /// </summary>
         public const string Black = "000000";
 
-        #region Images
+        #endregion
+    }
+
+    /// <summary>
+    /// The personalization constants 
+    /// </summary>
+    public static class SourceConstants
+    {
+        #region Public Properties
 
         /// <summary>
         /// The explorer profile image
         /// </summary>
         public const string ExplorerProfileImage = "icons/explorer.png";
-
-        #endregion
 
         #endregion
     }

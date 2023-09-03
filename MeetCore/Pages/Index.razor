@@ -1,37 +1,81 @@
 ﻿@page "/"
 
+@using static MeetBase.PaletteColors
+@using static Atom.Blazor.Personalization
+
 @namespace MeetCore
 
 <PageTitle>Index</PageTitle>
 
 <div class="backgroundContainer">
-    <img class="backgroundImage" src="./icons/coreBack.png" alt="background">
+    <img class="backgroundImageThirdBottomRight" src="./icons/Group 276.png" alt="background">
+    <img class="backgroundImageSecondBottomRight" src="./icons/Group 273.png" alt="background">
+    <img class="backgroundImageFirstBottomRight" src="./icons/Group 81.png" alt="background">
+    <img class="backgroundImageSecondBottomLeft" src="./icons/Group 274.png" alt="background">
+    <img class="backgroundImageFirstBottomLeft" src="./icons/Group 80.png" alt="background">
+    <img class="backgroundImageThirdTopLeft" src="./icons/Group 275.png" alt="background">
+    <img class="backgroundImageSecondTopLeft" src="./icons/Group 271.png" alt="background">
+    <img class="backgroundImageFirstTopLeft" src="./icons/Group 25.png" alt="background">
+    <img class="backgroundImageSecondTopRight" src="./icons/Group 272.png" alt="background">
+    <img class="backgroundImageFirstTopRight" src="./icons/Group 24.png" alt="background">
 </div>
 
-<div class="appContainer">
+<Header AppName="@MeetCoreContants.AppName" ForeColor="@White" BackColor="@Amber" />
+
+<div class="loginPageContainer">
     <div class="loginContainer">
-        <div class="searchSectionLogoAndNameContainer">
+        <div class="loginLogoAndNameContainer">
         <img class="loginLogoImage" src="./icons/academic.png" alt="logo"/>
             <h1 class="loginAppName">
-              @*   <span class="loginAppNameFirst">@AppointMateHelpers.SplitCamelCase(AppointMateConstants.AppName)[0]</span>
-                <span class="loginAppNameSecond">@AppointMateHelpers.SplitCamelCase(AppointMateConstants.AppName)[1]</span> *@
+                <span class="loginAppNameFirst">@MeetBaseHelpers.SplitCamelCase(MeetCoreContants.AppName)[0]</span>
+                <span class="loginAppNameSecond">@MeetBaseHelpers.SplitCamelCase(MeetCoreContants.AppName)[1]</span>
             </h1>
         </div>
 
         <MudTextField @bind-Value="@Username"
-                      Placeholder="Username"
-                      DisableUnderLine="false"
-                      FullWidth="true"
-                      Variant="Variant.Text"/>
+                        Placeholder="Username"
+                        DisableUnderLine="false"
+                        FullWidth="true"
+                        Variant="Variant.Text"/>
 
     </div>
 </div>
 
 
-
 <style>
    
-    .loginContainer{
+    .backgroundContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+    }
+
+    
+
+
+    .loginPageContainer {
+         position : relative;
+         width: 100%;
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+    }
+
+    .loginContainer {
+        position: relative;
+        width: 60%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: @VeryLargePadding;
+        background: white;
 
     }
 

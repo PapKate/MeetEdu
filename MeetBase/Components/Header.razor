@@ -1,17 +1,17 @@
-﻿
-@using static MeetEdu.Personalization
+﻿@using static MeetBase.CssVariables
+@using static MeetBase.PaletteColors
+
 @using static Atom.Blazor.Personalization
 
-@namespace MeetEdu
+@namespace MeetBase
 
-
-<div class="headerContainer" style="@CssVariables.BackColorVariable.SetCssColor(BackColor!) @CssVariables.ForeColorVariable.SetCssColor(ForeColor!)">
+<div class="headerContainer" style="@BackColorVariable.SetCssColor(BackColor!) @ForeColorVariable.SetCssColor(ForeColor!)">
     <h1 class="headerAppName">@AppName</h1>
        
     <div class="headerUserContainer">
-        <span class="headerUserUsername">@(Username.IsNullOrEmpty() ? MeetEduConstants.Explorer : Username)</span>
+        <span class="headerUserUsername">@(Username.IsNullOrEmpty() ? MeetBaseConstants.Explorer : Username)</span>
         <div class="headerUserProfileImageContainer headerExplorerProfileImageContainer">
-            <img class="headerUserProfileImage" src="@(UserImageUrl is null ? Personalization.ExplorerProfileImage : UserImageUrl)" alt="userProfileImage" />
+            <img class="headerUserProfileImage" src="@(UserImageUrl is null ? SourceConstants.ExplorerProfileImage : UserImageUrl)" alt="userProfileImage" />
         </div>
     </div>
 
@@ -28,8 +28,8 @@
         align-items: center;
         gap: @VeryVeryLargeGap;
         padding: @LargePadding @VeryLargePadding;
-        background: @Orange.NormalizedColor();
-        color: @White.NormalizedColor();
+        background: @BackColorVariable.GetCssVariable();
+        color: @ForeColorVariable.GetCssVariable();
         box-shadow: @BoxShadow;
         z-index: 99;
     }

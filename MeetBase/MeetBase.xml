@@ -75,6 +75,76 @@
             The heart outline icon path
             </summary>
         </member>
+        <member name="T:MeetBase.PaletteColors">
+            <summary>
+            The personalization constants 
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.Blue">
+            <summary>
+            Brandeis Blue 
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.Green">
+            <summary>
+            Emerald
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.Red">
+            <summary>
+            Folly
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.Orange">
+            <summary>
+            Orange (web)
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.Yellow">
+            <summary>
+            Mustard
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.Pink">
+            <summary>
+            Dogwood rose
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.Purple">
+            <summary>
+            Dark Magenta
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.DarkGray">
+            <summary>
+            Jet
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.Gray">
+            <summary>
+            Silver
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.LightGray">
+            <summary>
+            Timberwolf
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.White">
+            <summary>
+            White
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.Black">
+            <summary>
+            Black
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.ExplorerProfileImage">
+            <summary>
+            The explorer profile image
+            </summary>
+        </member>
         <member name="T:MeetBase.RegexConstants">
             <summary>
             Constants related to <see cref="T:System.Text.RegularExpressions.Regex"/>
@@ -271,19 +341,19 @@
             <param name="type">The type</param>
             <returns></returns>
         </member>
-        <member name="T:MeetBase.MeetEduHelpers">
+        <member name="T:MeetBase.MeetBaseHelpers">
             <summary>
             Helper methods
             </summary>
         </member>
-        <member name="M:MeetBase.MeetEduHelpers.GetFirstDayOfWeekDate(System.DateTimeOffset)">
+        <member name="M:MeetBase.MeetBaseHelpers.GetFirstDayOfWeekDate(System.DateTimeOffset)">
             <summary>
             Gets the first day of the week date from the specified <paramref name="date"/>
             </summary>
             <param name="date">The date</param>
             <returns></returns>
         </member>
-        <member name="M:MeetBase.MeetEduHelpers.SplitCamelCase(System.String)">
+        <member name="M:MeetBase.MeetBaseHelpers.SplitCamelCase(System.String)">
             <summary>
             Splits the specified <paramref name="value"/> by uppercase 
             </summary>

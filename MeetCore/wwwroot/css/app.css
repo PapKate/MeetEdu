@@ -3,13 +3,84 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.appContainer {
-    position: relative;
-    width: 72%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.backgroundContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.backgroundImageThirdBottomRight {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -3;
+}
+
+.backgroundImageSecondBottomRight {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -2;
+}
+
+.backgroundImageFirstBottomRight {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.backgroundImageSecondBottomLeft {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -2;
+}
+
+.backgroundImageFirstBottomLeft {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.backgroundImageThirdTopLeft {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -3;
+}
+
+.backgroundImageSecondTopLeft {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+.backgroundImageFirstTopLeft {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.backgroundImageSecondTopRight {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -2;
+}
+
+.backgroundImageFirstTopRight {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
 }
 
 .valid.modified:not([type=checkbox]) {
