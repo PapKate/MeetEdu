@@ -4,6 +4,41 @@
         <name>MeetBase</name>
     </assembly>
     <members>
+        <member name="T:MeetBase.Header">
+            <summary>
+            The header component
+            </summary>
+        </member>
+        <member name="P:MeetBase.Header.AppName">
+            <summary>
+            The app name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Header.BackColor">
+            <summary>
+            The back color
+            </summary>
+        </member>
+        <member name="P:MeetBase.Header.ForeColor">
+            <summary>
+            The fore color
+            </summary>
+        </member>
+        <member name="P:MeetBase.Header.Username">
+            <summary>
+            The username
+            </summary>
+        </member>
+        <member name="P:MeetBase.Header.UserImageUrl">
+            <summary>
+            The user image URL
+            </summary>
+        </member>
+        <member name="M:MeetBase.Header.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetBase.CssVariables">
             <summary>
             Constants for CSS
@@ -75,9 +110,69 @@
             The heart outline icon path
             </summary>
         </member>
+        <member name="T:MeetBase.MeetBaseConstants">
+            <summary>
+            The constants for the MeetEdu app
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.AppName">
+            <summary>
+            The app name
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.PopularSearches">
+            <summary>
+            Popular searches
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.Explorer">
+            <summary>
+            Explorer
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.MyAccount">
+            <summary>
+            My account
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.Appointments">
+            <summary>
+            Appointments
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.Favorites">
+            <summary>
+            Favorites
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.Settings">
+            <summary>
+            Settings
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.LogIn">
+            <summary>
+            Log in
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.LogOut">
+            <summary>
+            Log out
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.Departments">
+            <summary>
+            Departments
+            </summary>
+        </member>
+        <member name="F:MeetBase.MeetBaseConstants.Faculty">
+            <summary>
+            Faculty
+            </summary>
+        </member>
         <member name="T:MeetBase.PaletteColors">
             <summary>
-            The personalization constants 
+            The palette color constants 
             </summary>
         </member>
         <member name="F:MeetBase.PaletteColors.Blue">
@@ -95,9 +190,19 @@
             Folly
             </summary>
         </member>
+        <member name="F:MeetBase.PaletteColors.Persimmon">
+            <summary>
+            Persimmon
+            </summary>
+        </member>
         <member name="F:MeetBase.PaletteColors.Orange">
             <summary>
             Orange (web)
+            </summary>
+        </member>
+        <member name="F:MeetBase.PaletteColors.Amber">
+            <summary>
+            Amber
             </summary>
         </member>
         <member name="F:MeetBase.PaletteColors.Yellow">
@@ -140,7 +245,12 @@
             Black
             </summary>
         </member>
-        <member name="F:MeetBase.PaletteColors.ExplorerProfileImage">
+        <member name="T:MeetBase.SourceConstants">
+            <summary>
+            The personalization constants 
+            </summary>
+        </member>
+        <member name="F:MeetBase.SourceConstants.ExplorerProfileImage">
             <summary>
             The explorer profile image
             </summary>
@@ -275,6 +385,38 @@
             <param name="source">The source</param>
             <param name="separator">The separator</param>
             <returns></returns>
+        </member>
+        <member name="T:MeetBase.NavigationManagerExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Microsoft.AspNetCore.Components.NavigationManager"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.NavigationManagerExtensions.NavigateTo(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String)">
+            <summary>
+            Navigates to the specified <paramref name="route"/>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="route">The route</param>
+            <param name="value">The route value</param>
+        </member>
+        <member name="M:MeetBase.NavigationManagerExtensions.NavigateTo(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates to the specified <paramref name="route"/>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="route">The member route</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetBase.NavigationManagerExtensions.NavigateTo(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.String,System.String)">
+            <summary>
+            Navigates to the specified <paramref name="route"/>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="route">The member route</param>
+            <param name="value">The route value</param>
+            <param name="queryKey">The query parameter key</param>
+            <param name="queryValue">The query parameter value</param>
         </member>
         <member name="T:MeetBase.StringExtensions">
             <summary>

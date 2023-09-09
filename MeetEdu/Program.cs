@@ -33,6 +33,8 @@ builder.Services.AddServerSideBlazor().AddCircuitOptions(o =>
     o.DetailedErrors = true;
 });
 
+
+
 builder.Services.AddMudServices();
 
 var app = builder.Build();

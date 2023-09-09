@@ -1,1 +1,30 @@
-﻿
+﻿@page "/profile/{Id:int?}"
+
+
+@inject NavigationManager Navigation
+
+@using static MeetBase.PaletteColors
+@using static Atom.Blazor.Personalization
+
+@namespace MeetEdu
+
+<h1>User Id: @Id</h1>
+
+<MudIconButton OnClick="@Navigate" Icon="@MudBlazor.Icons.Material.Filled.Tag"/>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    public void Navigate()
+    {
+        try
+        {
+            Navigation.NavigateTo("/profile", "1", new Dictionary<string, string>() { { "department", "papa" }, { "university", "papa" } });
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}
