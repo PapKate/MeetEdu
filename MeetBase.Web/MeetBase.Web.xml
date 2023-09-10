@@ -2537,8 +2537,8 @@
             <summary>
             Attaches the parameters that are specified as properties in the <paramref name="args"/>
             to the specified <paramref name="url"/>.
-            NOTE: A property can be marked as ignorable using the <see cref="T:Atom.IgnoreAttribute"/>!
-            NOTE: A custom property name can be set using the <see cref="T:Atom.NameAttribute"/>!
+            NOTE: A property can be marked as ignorable using the <see cref="T:MeetBase.IgnoreAttribute"/>!
+            NOTE: A custom property name can be set using the <see cref="T:MeetBase.NameAttribute"/>!
             </summary>
             <param name="url">The URL</param>
             <param name="args">The arguments</param>
@@ -2548,8 +2548,8 @@
             <summary>
             Attaches the parameters that are specified as properties in the <paramref name="args"/>
             to the specified <paramref name="url"/>.
-            NOTE: A property can be marked as ignorable using the <see cref="T:Atom.IgnoreAttribute"/>!
-            NOTE: A custom property name can be set using the <see cref="T:Atom.NameAttribute"/>!
+            NOTE: A property can be marked as ignorable using the <see cref="T:MeetBase.IgnoreAttribute"/>!
+            NOTE: A custom property name can be set using the <see cref="T:MeetBase.NameAttribute"/>!
             </summary>
             <param name="url">The URL</param>
             <param name="args">The arguments</param>

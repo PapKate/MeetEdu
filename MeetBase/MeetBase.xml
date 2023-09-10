@@ -4,6 +4,32 @@
         <name>MeetBase</name>
     </assembly>
     <members>
+        <member name="T:MeetBase.IgnoreAttribute">
+            <summary>
+            Marks an item as ignorable
+            </summary>
+        </member>
+        <member name="M:MeetBase.IgnoreAttribute.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.NameAttribute">
+            <summary>
+            Provides name meta data to an item
+            </summary>
+        </member>
+        <member name="P:MeetBase.NameAttribute.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="M:MeetBase.NameAttribute.#ctor(System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="name">The name</param>
+        </member>
         <member name="T:MeetBase.MeetBaseConstants">
             <summary>
             The constants for the MeetEdu app
@@ -2453,6 +2479,36 @@
             Canceled
             </summary>
         </member>
+        <member name="T:MeetBase.StringEqualityOperator">
+            <summary>
+            Provides enumeration over the string equality operator
+            </summary>
+        </member>
+        <member name="F:MeetBase.StringEqualityOperator.Contains">
+            <summary>
+            String contains a sub string value
+            </summary>
+        </member>
+        <member name="F:MeetBase.StringEqualityOperator.Equals">
+            <summary>
+            String is equal to a value
+            </summary>
+        </member>
+        <member name="F:MeetBase.StringEqualityOperator.StartsWith">
+            <summary>
+            String that starts with a value
+            </summary>
+        </member>
+        <member name="F:MeetBase.StringEqualityOperator.EndsWith">
+            <summary>
+            String that ends with a value
+            </summary>
+        </member>
+        <member name="F:MeetBase.StringEqualityOperator.Regex">
+            <summary>
+            String that satisfies a regex
+            </summary>
+        </member>
         <member name="T:MeetBase.TransactionType">
             <summary>
             Provides enumerations over the <see cref="T:MeetBase.TransactionType"/>
@@ -2647,6 +2703,45 @@
             <param name="value1">The first value</param>
             <param name="value2">The second value</param>
         </member>
+        <member name="T:MeetBase.DateOnlyExtensions">
+            <summary>
+            The extension for the <see cref="T:System.DateOnly"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.DateOnlyExtensions.ToDateTime(System.DateOnly)">
+            <summary>
+            Create and return the <see cref="T:System.DateTime"/> from the specified <paramref name="value"/>
+            using the 00:00:00:00 as the time value
+            </summary>
+            <param name="value">The date value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.DateOnlyExtensions.ToISO8601String(System.DateOnly)">
+            <summary>
+            Returns a string that represents the specified <paramref name="value"/> using the ISO8601 format
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.DateTimeExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.DateTime"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.DateTimeExtensions.ToISO8601String(System.DateTime)">
+            <summary>
+            Returns a string that represents the specified <paramref name="dt"/> using the ISO8601 format
+            </summary>
+            <param name="dt">The date time</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.DateTimeExtensions.ToISO8601String(System.DateTimeOffset)">
+            <summary>
+            Returns a string that represents the specified <paramref name="dto"/> using the ISO8601 format
+            </summary>
+            <param name="dto">The date time offset</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.ExceptionExtensions">
             <summary>
             Extension methods for <see cref="T:System.Exception"/>
@@ -2688,6 +2783,45 @@
             Returns the <see cref="T:System.Linq.Expressions.MemberExpression"/> from the specified <paramref name="expression"/>
             </summary>
             <param name="expression">The expression</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.GuidExtensions">
+            <summary>
+            Extensions methods for <see cref="T:System.Guid"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.GuidExtensions.ToNormalizedString(System.Guid)">
+            <summary>
+            Returns a string that represents the specified <paramref name="guid"/>
+            that contains only alphanumeric characters
+            </summary>
+            <param name="guid">The guid</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.GuidExtensions.ToNormalizedString(System.Guid,System.Int32)">
+            <summary>
+            Returns a string that represents the specified <paramref name="guid"/>
+            that contains only alphanumeric characters and has a specific length
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="length">The length</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.GuidExtensions.ToLatinOnlyString(System.Guid)">
+            <summary>
+            Returns a string that represents the specified <paramref name="guid"/>
+            that contains only Latin characters
+            </summary>
+            <param name="guid">The guid</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.GuidExtensions.ToLatinOnlyString(System.Guid,System.Int32)">
+            <summary>
+            Returns a string that represents the specified <paramref name="guid"/>
+            that contains only Latin characters and has a specific length
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="length">The length</param>
             <returns></returns>
         </member>
         <member name="T:MeetBase.IEnumerableExtensions">
@@ -2746,6 +2880,37 @@
             <param name="separator">The separator</param>
             <returns></returns>
         </member>
+        <member name="T:MeetBase.ObjectExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Object"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.ObjectExtensions.CastTo``1(System.Object)">
+            <summary>
+            Casts and returns the given object to the given type
+            </summary>
+            <typeparam name="T">The given type</typeparam>
+            <param name="obj">The given object</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ObjectExtensions.ToNonNullString(System.Object,System.String)">
+            <summary>
+            Returns a string that represents the specified <paramref name="obj"/> and a <see cref="F:System.String.Empty"/> if the <paramref name="obj"/> is null
+            </summary>
+            <param name="obj">The object</param>
+            <param name="fallBackValue">The value that is returned when the <paramref name="obj"/> is null</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ObjectExtensions.ToNonNullString``1(System.Nullable{``0},System.String)">
+            <summary>
+            Returns the string that represents the specified <paramref name="value"/>
+            and null if there isn't a value
+            </summary>
+            <typeparam name="T">The type of the nullable struct</typeparam>
+            <param name="value">The value</param>
+            <param name="fallBackValue">The value that is returned when the <paramref name="value"/> is null</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.StringExtensions">
             <summary>
             Extension methods for strings
@@ -2776,6 +2941,20 @@
             <param name="value">The value</param>
             <returns></returns>
         </member>
+        <member name="M:MeetBase.StringExtensions.ToDouble(System.String)">
+            <summary>
+            Converts the given <paramref name="value"/> to a <see cref="T:System.Double"/>
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringExtensions.ToNullableDouble(System.String)">
+            <summary>
+            Converts the given <paramref name="value"/> to a double
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetBase.StringExtensions.IsEmail(System.String)">
             <summary>
             Checks if the inserted string is a valid email
@@ -2790,10 +2969,91 @@
             <param name="value">The value</param>
             <returns></returns>
         </member>
+        <member name="M:MeetBase.StringExtensions.NormalizeFloatingPointNumber(System.String)">
+            <summary>
+            Normalizes a floating point number text representation
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.TimeOnlyExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.TimeOnly"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.TimeOnlyExtensions.ToISO8601String(System.TimeOnly)">
+            <summary>
+            Returns a string that represents the specified <paramref name="value"/> using the ISO8601 format
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.TypeExtensions">
             <summary>
             Extension methods for <see cref="T:System.Type"/>
             </summary>
+        </member>
+        <member name="F:MeetBase.TypeExtensions.mSimpleTypes">
+            <summary>
+            The member of the <see cref="P:MeetBase.TypeExtensions.NumericTypes"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.TypeExtensions.mNumericTypes">
+            <summary>
+            The member of the <see cref="P:MeetBase.TypeExtensions.NumericTypes"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.TypeExtensions.mIntegralNumericTypes">
+            <summary>
+            The member of the <see cref="P:MeetBase.TypeExtensions.IntegralNumericTypes"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.TypeExtensions.mFloatingPointNumericTypes">
+            <summary>
+            The member of the <see cref="P:MeetBase.TypeExtensions.FloatingPointNumericTypes"/>
+            </summary>
+        </member>
+        <member name="P:MeetBase.TypeExtensions.NumericTypes">
+            <summary>
+            The numeric types
+            </summary>
+        </member>
+        <member name="P:MeetBase.TypeExtensions.IntegralNumericTypes">
+            <summary>
+            The integral numeric types
+            </summary>
+        </member>
+        <member name="P:MeetBase.TypeExtensions.FloatingPointNumericTypes">
+            <summary>
+            The floating point numeric types
+            </summary>
+        </member>
+        <member name="P:MeetBase.TypeExtensions.SimpleTypes">
+            <summary>
+            The simple class/struct types
+            </summary>
+        </member>
+        <member name="P:MeetBase.TypeExtensions.FuncTypes">
+            <summary>
+            The available types of the <see cref="T:System.Func`1"/>
+            </summary>
+        </member>
+        <member name="P:MeetBase.TypeExtensions.ActionTypes">
+            <summary>
+            The available types of the <see cref="T:System.Action"/>
+            </summary>
+        </member>
+        <member name="P:MeetBase.TypeExtensions.TypeNameToCSharpKeywordMapper">
+            <summary>
+            Maps the type names to their related CSharp keywords
+            </summary>
+        </member>
+        <member name="M:MeetBase.TypeExtensions.IsComplexType(System.Type)">
+            <summary>
+            Checks whether the <paramref name="type"/> is a complex type
+            </summary>
+            <param name="type">The type</param>
+            <returns></returns>
         </member>
         <member name="M:MeetBase.TypeExtensions.IsEnumerable(System.Type)">
             <summary>
@@ -2807,6 +3067,20 @@
             <summary>
             Checks whether the specified <paramref name="type"/> implements the <see cref="T:System.Collections.Generic.IEnumerable`1"/>
             or it's it self the <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            </summary>
+            <param name="type">The type</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeExtensions.IsNumber(System.Type)">
+            <summary>
+            Checks if the specified <paramref name="type"/> is a type that represents a number
+            </summary>
+            <param name="type">The type</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeExtensions.IsDate(System.Type)">
+            <summary>
+            Checks if the specified <paramref name="type"/> is a type that represents a date
             </summary>
             <param name="type">The type</param>
             <returns></returns>
@@ -2879,6 +3153,134 @@
             </summary>
             <param name="amount">The amount</param>
             <returns></returns>
+        </member>
+        <member name="T:MeetBase.StringHelpers">
+            <summary>
+            Helper methods for <see cref="T:System.String"/>s
+            </summary>
+        </member>
+        <member name="F:MeetBase.StringHelpers.mXMLTagsRegex">
+            <summary>
+            The regular expression used for search for XML tags
+            </summary>
+        </member>
+        <member name="M:MeetBase.StringHelpers.RemoveDiacritics(System.String)">
+            <summary>
+            Removes the diacritics from the specified <paramref name="s"/>.
+            Ex.: Λογικά -> Λογικα
+            </summary>
+            <param name="s">The string value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.GenerateUniqueName(System.String)">
+            <summary>
+            Generates a unique name that starts with the specified <paramref name="prefix"/>
+            </summary>
+            <param name="prefix">The prefix</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.FirstCharToUpper(System.String)">
+            <summary>
+            Returns the specified <paramref name="s"/> with the first char converted to upper case
+            </summary>
+            <param name="s">The string</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.FirstCharToLower(System.String)">
+            <summary>
+            Returns the specified <paramref name="s"/> with the first char converted to lower case
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.SplitCamelCase(System.String)">
+            <summary>
+            Splits the specified <paramref name="s"/> to words based on the upper case letter.
+            Acronyms are also taken into consideration.
+            Ex.: ThisIsATestAPI => This, Is, A, Test, API
+            </summary>
+            <param name="s">The string</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.AggregateToSentence(System.String[],System.Boolean)">
+            <summary>
+            Aggregates the specified words to a sentence meaning that
+            the first letter of the first word is capital. Acronyms
+            are also kept using capital letters.
+            </summary>
+            <param name="words">The words</param>
+            <param name="shouldFirstCharBeCapital">A flag indicating whether the first character of the first word should be a capital letter</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.AggregateNonNullOrEmptyString(System.String,System.String[])">
+            <summary>
+            Aggregates the specified <paramref name="values"/> into a <see cref="T:System.String"/>.
+            NOTE: This method converts the <paramref name="values"/> to <see cref="T:System.String"/>
+                  using the <see cref="M:System.Object.ToString"/> method!
+            NOTE: This method uses ", " as the items separator!
+            </summary>
+            <param name="values">The values</param>
+            <param name="separator">The separator</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.AggregateNonNullOrEmptyString(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Aggregates the specified <paramref name="values"/> into a <see cref="T:System.String"/>.
+            NOTE: This method converts the <paramref name="values"/> to <see cref="T:System.String"/>
+                  using the <see cref="M:System.Object.ToString"/> method!
+            NOTE: This method uses ", " as the items separator!
+            </summary>
+            <param name="values">The values</param>
+            <param name="separator">The separator</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.StringCompare(System.String,MeetBase.StringEqualityOperator,System.String)">
+            <summary>
+            Compares the <paramref name="value"/> against the <paramref name="s"/> using the specified <paramref name="stringEqualityOperator"/>.
+            Ex.: Operator = <see cref="F:MeetBase.StringEqualityOperator.Contains"/> -> <paramref name="s"/>.Contains(<paramref name="value"/>).
+            </summary>
+            <param name="stringEqualityOperator">The operator</param>
+            <param name="s">The string value</param>
+            <param name="value">The string value that will be used by the filter</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.RemoveXMLTags(System.String)">
+            <summary>
+            Removes the HTML tags from the specified <paramref name="s"/>
+            </summary>
+            <param name="s">The string value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.RemoveInvalidFileNameCharacters(System.String)">
+            <summary>
+            Removes the invalid file name characters from the specified <paramref name="s"/>
+            </summary>
+            <param name="s">The string value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.Singularize(System.String,System.Int32)">
+            <summary>
+            Attempts to singularize the specified <paramref name="text"/> according to the rules of the English language.
+            </summary>
+            <param name="text">The text to singularize.</param>
+            <param name="number">If the number is greater than 1 or less than 1, the text is not singularized, otherwise, the text is singularized</param>
+            <returns>A string that consists of the text in its singularized form.</returns>
+        </member>
+        <member name="M:MeetBase.StringHelpers.Pluralize(System.String,System.Int32)">
+            <summary>
+            Attempts to pluralize the specified <paramref name="text"/> according to the rules of the English language.
+            </summary>
+            <remarks>
+            This function attempts to pluralize as many words as practical by following these rules:
+            <list type="bullet">
+            	<item><description>Words that end with "y" (but not with a vowel preceding the y) are pluralized by replacing the "y" with "ies".</description></item>
+            	<item><description>Words that end with "us", "ss", "x", "ch" or "sh" are pluralized by adding "es" to the end of the text.</description></item>
+            	<item><description>Words that end with "f" or "fe" are pluralized by replacing the "f(e)" with "ves".</description></item>
+            </list>
+            </remarks>
+            <param name="text">The text to pluralize.</param>
+            <param name="number">If number is 1, the text is not pluralized, otherwise, the text is pluralized.</param>
+            <returns>A string that consists of the text in its pluralized form.</returns>
         </member>
         <member name="T:MeetBase.TypeHelpers">
             <summary>

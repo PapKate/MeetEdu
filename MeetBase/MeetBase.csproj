@@ -11,9 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Atom">
-      <HintPath>..\Atom.dll</HintPath>
-    </Reference>
+    <Folder Include="HelperMethods\" />
   </ItemGroup>
 
 </Project>

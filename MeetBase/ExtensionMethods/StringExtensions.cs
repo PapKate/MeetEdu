@@ -50,6 +50,34 @@ namespace MeetBase
         }
 
         /// <summary>
+        /// Converts the given <paramref name="value"/> to a <see cref="double"/>
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns></returns>
+        public static double ToDouble(this string? value)
+        {
+            if (value.IsNullOrEmpty() || value == "-" || value == "+")
+                return 0;
+
+            value = NormalizeFloatingPointNumber(value);
+
+            return double.Parse(value, LocalizationConstants.Culture);
+        }
+
+        /// <summary>
+        /// Converts the given <paramref name="value"/> to a double
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns></returns>
+        public static double? ToNullableDouble(this string? value)
+        {
+            if (value.IsNullOrEmpty())
+                return null;
+
+            return value.ToDouble();
+        }
+
+        /// <summary>
         /// Checks if the inserted string is a valid email
         /// </summary>
         /// <param name="value">The value</param>
@@ -81,6 +109,21 @@ namespace MeetBase
             }
 
             return builder.ToString();
+        }
+
+        #endregion
+
+
+        #region Private Methods
+
+        /// <summary>
+        /// Normalizes a floating point number text representation
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns></returns>
+        private static string NormalizeFloatingPointNumber(string value)
+        {
+            return value.Replace(",", ".");
         }
 
         #endregion
