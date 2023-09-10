@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MeetBase.Blazor\MeetBase.Blazor.csproj" />
+    <ProjectReference Include="..\MeetBase.Web\MeetBase.Web.csproj" />
     <ProjectReference Include="..\MeetBase\MeetBase.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace MeetBase.Web
+﻿namespace MeetBase.Web
 {
     /// <summary>
     /// 
@@ -44,7 +42,7 @@ namespace MeetBase.Web
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public Task<WebRequestResult<IEnumerable<AppointmentRuleResponseModel>>> GetAppointmentRulesAsync([FromQuery] AppointmentRuleAPIArgs? args = null) 
+        public Task<WebRequestResult<IEnumerable<AppointmentRuleResponseModel>>> GetAppointmentRulesAsync(AppointmentRuleAPIArgs? args = null) 
             => WebRequestsClient.Instance.GetAsync<IEnumerable<AppointmentRuleResponseModel>>(RouteHelpers.AttachParameters(GetAbsoluteUrl(MeetEduAPIRoutes.AppointmentRulesRoute), args), null);
 
         private static string GetAbsoluteUrl(string url)
