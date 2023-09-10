@@ -1,7 +1,9 @@
 ﻿@page "/"
 
-@using static MeetBase.PaletteColors
-@using static Atom.Blazor.Personalization
+@using MeetBase.Blazor
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.Personalization
 
 @namespace MeetEdu
 
@@ -139,7 +141,7 @@
         justify-content: center;
         align-items: center;
         padding: @NormalPadding;
-        background: @ControlHelpers.HexToRGBA(Green, 0.4);
+        background: @Green.HexToRGBA(0.4);
         border-radius: @CircleBorderRadius;
         filter: @LightFilterDropShadow;
     }

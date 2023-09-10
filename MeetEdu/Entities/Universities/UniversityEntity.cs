@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-
-using static MudBlazor.CategoryTypes;
-using System.Reflection.Emit;
-
-namespace MeetEdu
+﻿namespace MeetEdu
 {
     /// <summary>
     /// Represents a university document in the MongoDB

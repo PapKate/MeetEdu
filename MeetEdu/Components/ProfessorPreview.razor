@@ -1,7 +1,7 @@
-﻿@using static MeetBase.PaletteColors
-@using static MeetBase.CssVariables
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
 
-@using static Atom.Blazor.Personalization
+@using static MeetBase.Blazor.Personalization
 
 @namespace MeetEdu
 
@@ -17,11 +17,11 @@
     <div class="professorInfoContainer">
         <div class="professorHeaderContainer">
             <span>Professor</span>
-            <IconButton BackColor="transparent"
+            @* <IconButton BackColor="transparent"
                         ForeColor="@Orange"
                         VectorSource="@IconPaths.HeartOutlinePath"
                         HasAnimation="false"
-                        CssClasses="professorRibbonHeartContainer" />
+                        CssClasses="professorRibbonHeartContainer" /> *@
         </div>
         <div class="modelImageAndContactContainer">
             <div class="professorImageContainer">

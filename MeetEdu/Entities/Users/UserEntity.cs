@@ -1,4 +1,7 @@
-﻿namespace MeetEdu
+﻿using MeetBase;
+using MeetBase.Web;
+
+namespace MeetEdu
 {
     /// <summary>
     /// Represents a user document in the MongoDB

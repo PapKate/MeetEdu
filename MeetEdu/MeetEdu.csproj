@@ -32,6 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MeetBase.Blazor\MeetBase.Blazor.csproj" />
+    <ProjectReference Include="..\MeetBase.Web\MeetBase.Web.csproj" />
     <ProjectReference Include="..\MeetBase\MeetBase.csproj" />
   </ItemGroup>
 
@@ -39,12 +41,7 @@
     <Reference Include="Atom">
       <HintPath>..\Atom.dll</HintPath>
     </Reference>
-    <Reference Include="Atom.Blazor">
-      <HintPath>..\Atom.Blazor.dll</HintPath>
-    </Reference>
-    <Reference Include="Atom.Blazor.Controls">
-      <HintPath>..\Atom.Blazor.Controls.dll</HintPath>
-    </Reference>
   </ItemGroup>
+
 
 </Project>

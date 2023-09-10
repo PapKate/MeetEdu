@@ -1,9 +1,9 @@
-﻿@using static MeetBase.PaletteColors
-@using static MeetBase.CssVariables
-
-@using static Atom.Blazor.Personalization
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
 
 @namespace MeetEdu
+@using MeetBase.Blazor;
 
 <div class="modelContainer departmentPreviewContainer" style="@BorderColorVariable.SetCssColor(Orange)">
     <div class="modelRibbonContainer" style="@BackColorVariable.SetCssColor(Orange) @ForeColorVariable.SetCssColor(Orange.DarkOrWhite())">
@@ -20,11 +20,11 @@
                 </div>
             </div>
 
-            <IconButton BackColor="transparent" 
+      @*       <IconButton BackColor="transparent" 
                         ForeColor="@Orange.DarkOrWhite()" 
                         VectorSource="@IconPaths.HeartOutlinePath" 
                         HasAnimation="false"
-                        CssClasses="departmentPreviewRibbonHeartContainer" />
+                        CssClasses="departmentPreviewRibbonHeartContainer" /> *@
         </div>
     </div>
 

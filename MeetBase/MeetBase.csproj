@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -11,23 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.10" />
-    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Atom">
       <HintPath>..\Atom.dll</HintPath>
-    </Reference>
-    <Reference Include="Atom.Blazor">
-      <HintPath>..\Atom.Blazor.dll</HintPath>
-    </Reference>
-    <Reference Include="Atom.Blazor.Controls">
-      <HintPath>..\Atom.Blazor.Controls.dll</HintPath>
     </Reference>
   </ItemGroup>
 

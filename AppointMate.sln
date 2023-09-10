@@ -10,9 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeetCore", "MeetCore\MeetCore.csproj", "{88192847-83EB-4B99-8BF6-6D624D930164}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeetBase", "MeetBase\MeetBase.csproj", "{A803159F-7E01-48B2-A6BE-A2EF6C95324C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetBase", "MeetBase\MeetBase.csproj", "{A803159F-7E01-48B2-A6BE-A2EF6C95324C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeetBase.Web", "MeetBase.Web\MeetBase.Web.csproj", "{FD530576-568D-47AB-9A3E-7A3BAF9B964D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeetCore", "MeetCore\MeetCore.csproj", "{64F25435-356E-4C62-916A-04FBA8F00B69}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeetBase.Blazor", "MeetBase.Blazor\MeetBase.Blazor.csproj", "{2A772591-2B6C-43BA-B880-D1A402682BE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,14 +28,22 @@ Global
 		{BD28D857-C1DD-45E6-A8DE-5E4ABACB95E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD28D857-C1DD-45E6-A8DE-5E4ABACB95E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD28D857-C1DD-45E6-A8DE-5E4ABACB95E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{88192847-83EB-4B99-8BF6-6D624D930164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88192847-83EB-4B99-8BF6-6D624D930164}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88192847-83EB-4B99-8BF6-6D624D930164}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88192847-83EB-4B99-8BF6-6D624D930164}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A803159F-7E01-48B2-A6BE-A2EF6C95324C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A803159F-7E01-48B2-A6BE-A2EF6C95324C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A803159F-7E01-48B2-A6BE-A2EF6C95324C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A803159F-7E01-48B2-A6BE-A2EF6C95324C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD530576-568D-47AB-9A3E-7A3BAF9B964D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD530576-568D-47AB-9A3E-7A3BAF9B964D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD530576-568D-47AB-9A3E-7A3BAF9B964D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD530576-568D-47AB-9A3E-7A3BAF9B964D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F25435-356E-4C62-916A-04FBA8F00B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F25435-356E-4C62-916A-04FBA8F00B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F25435-356E-4C62-916A-04FBA8F00B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F25435-356E-4C62-916A-04FBA8F00B69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A772591-2B6C-43BA-B880-D1A402682BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A772591-2B6C-43BA-B880-D1A402682BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A772591-2B6C-43BA-B880-D1A402682BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A772591-2B6C-43BA-B880-D1A402682BE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

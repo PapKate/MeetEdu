@@ -1,0 +1,75 @@
+﻿@using static MeetBase.CssVariables
+@using static MeetBase.PaletteColors
+
+@using static Personalization
+
+@namespace MeetBase.Blazor
+
+<div class="headerContainer" style="@BackColorVariable.SetCssColor(BackColor!) @ForeColorVariable.SetCssColor(ForeColor!)">
+    <h1 class="headerAppName">@AppName</h1>
+       
+    <div class="headerUserContainer">
+        <span class="headerUserUsername">@(Username.IsNullOrEmpty() ? MeetBaseConstants.Explorer : Username)</span>
+        <div class="headerUserProfileImageContainer headerExplorerProfileImageContainer">
+            <img class="headerUserProfileImage" src="@(UserImageUrl is null ? SourceConstants.ExplorerProfileImage : UserImageUrl)" alt="userProfileImage" />
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .headerContainer {
+        position: sticky;
+        top:0;
+        width: 100%;
+        height: 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: @VeryVeryLargeGap;
+        padding: @LargePadding @VeryLargePadding;
+        background: @BackColorVariable.GetCssVariable();
+        color: @ForeColorVariable.GetCssVariable();
+        box-shadow: @BoxShadow;
+        z-index: 99;
+    }
+
+    .headerAppName {
+        font-size: 200%;
+        font-weight: 800;
+        filter: @LightFilterDropShadow;
+    }
+
+    .headerUserContainer {
+        position: relative;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        gap:  @LargeGap;
+    }
+
+    .headerUserUsername {
+        font-size: 140%;
+        font-weight: 600;
+    }
+
+    .headerUserProfileImageContainer {
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+        border-radius: @CircleBorderRadius;
+        box-shadow: @BoxShadow;
+    }
+
+    .headerUserProfileImage {
+        position: sticky;
+        width: 100%;
+        height: auto;
+    }
+
+    .headerExplorerProfileImageContainer {
+        padding: 3px;
+        background: @White.NormalizedColor();
+    }
+    
+</style>

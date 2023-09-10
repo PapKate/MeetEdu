@@ -1,0 +1,3088 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MeetBase.Web</name>
+    </assembly>
+    <members>
+        <member name="T:MeetBase.Web.AppointmentRequestModel">
+            <summary>
+            Request model for an appointment 
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.RuleId">
+            <summary>
+            The appointment rule id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.Date">
+            <summary>
+            The date
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.TimeStart">
+            <summary>
+            The time that the appointment begins
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.TimeEnd">
+            <summary>
+            The time that the appointment ends
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.IsCanceled">
+            <summary>
+            A flag indicating whether the subscription was canceled or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.DateCanceled">
+            <summary>
+            The date the customer subscription was canceled
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.IsRemote">
+            <summary>
+            A flag indicating whether it is remote or not
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.AppointmentRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.AppointmentRuleRequestModel">
+            <summary>
+            Request model for an appointment template
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleRequestModel.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleRequestModel.HasRemoteOption">
+            <summary>
+            A flag indicating whether it has a remote option or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleRequestModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleRequestModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleRequestModel.Duration">
+            <summary>
+            The duration
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.AppointmentRuleRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.BaseRequestModel">
+            <summary>
+            The base response model
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.BaseRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DepartmentContactMessageRequestModel">
+            <summary>
+            Request model for a department contact message
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.MemberId">
+            <summary>
+            The member id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.FirstName">
+            <summary>
+            The first name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.LastName">
+            <summary>
+            The last name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.Message">
+            <summary>
+            The message
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DepartmentContactMessageRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DepartmentLayoutRequestModel">
+            <summary>
+            Request model for a department layout
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.Rooms">
+            <summary>
+            The layout
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DepartmentLayoutRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DepartmentRequestModel">
+            <summary>
+            Request model for a department
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.UniversityId">
+            <summary>
+            The university id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Category">
+            <summary>
+            The category
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Fields">
+            <summary>
+            The fields of study
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.TotalStaffMembers">
+            <summary>
+            The number of staff members
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.WorkHours">
+            <summary>
+            The work hours
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Location">
+            <summary>
+            The location
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Billing">
+            <summary>
+            The billing information
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Shipping">
+            <summary>
+            The shipping information
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Labels">
+            <summary>
+            The labels
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DepartmentRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.LabelRequestModel">
+            <summary>
+            Request model used for a label
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LabelRequestModel.CompanyId">
+            <summary>
+            The company id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LabelRequestModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.LabelRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.LogInRequestModel">
+            <summary>
+            Request model used for logging a user in
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LogInRequestModel.Username">
+            <summary>
+            The user's username or email
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LogInRequestModel.Password">
+            <summary>
+            The user's password
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.LogInRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.LogInRequestModel.#ctor(System.String,System.String)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="userNameOrEmail">The user's username or email</param>
+            <param name="password">The user's password</param>
+        </member>
+        <member name="T:MeetBase.Web.StandardRequestModel">
+            <summary>
+            The standard request model
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StandardRequestModel.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StandardRequestModel.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.StandardRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.StandardRequestModel.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.UniversityRequestModel">
+            <summary>
+            Request model used for a university
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UniversityRequestModel.ImageUrl">
+            <summary>
+            The image
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UniversityRequestModel.Labels">
+            <summary>
+            The labels
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.UniversityRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.MemberRequestModel">
+            <summary>
+            Request model used for a member
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.MemberRequestModel.UserId">
+            <summary>
+            The id of the user
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MemberRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.ProfessorRequestModel">
+            <summary>
+            Request model used for a professor 
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorRequestModel.Websites">
+            <summary>
+            The personal websites 
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorRequestModel.Field">
+            <summary>
+            The field of study
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorRequestModel.ResearchInterests">
+            <summary>
+            The research interests
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.ProfessorRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.SecretaryRequestModel">
+            <summary>
+            Request model used for a secretary 
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.SecretaryRequestModel.Role">
+            <summary>
+            The role
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.SecretaryRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.StaffMemberRequestModel">
+            <summary>
+            Request model used for a staff member
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StaffMemberRequestModel.UserId">
+            <summary>
+            The user id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StaffMemberRequestModel.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StaffMemberRequestModel.WeeklySchedule">
+            <summary>
+            The weekly schedule
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.StaffMemberRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.UserRequestModel">
+            <summary>
+            Request model used for a user
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.Username">
+            <summary>
+            The username
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.FirstName">
+            <summary>
+            The first name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.LastName">
+            <summary>
+            The last name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.PasswordHash">
+            <summary>
+            Gets or sets a salted and hashed representation of the password for this user.
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.IsEmailConfirmed">
+            <summary>
+            A flag indicating whether the email is confirmed or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.DateOfBirth">
+            <summary>
+            The birthday
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.Shipping">
+            <summary>
+            The shipping information
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.Billing">
+            <summary>
+            The billing information
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.UserRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.WeeklyScheduleRequestModel">
+            <summary>
+            Request model used for a weekly schedule
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WeeklyScheduleRequestModel.WorkHours">
+            <summary>
+            The work hours
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WeeklyScheduleRequestModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WeeklyScheduleRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.AppointmentResponseModel">
+            <summary>
+            Represents an appointment 
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.AppointmentResponseModel.mProfessorId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.AppointmentResponseModel.ProfessorId"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.AppointmentResponseModel.mRuleId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.AppointmentResponseModel.RuleId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.RuleId">
+            <summary>
+            The appointment rule id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.Date">
+            <summary>
+            The date
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.TimeStart">
+            <summary>
+            The time that the appointment begins
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.TimeEnd">
+            <summary>
+            The time that the appointment ends
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.IsCanceled">
+            <summary>
+            A flag indicating whether the subscription was canceled or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.DateCanceled">
+            <summary>
+            The date the customer subscription was canceled
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.IsRemote">
+            <summary>
+            A flag indicating whether it is remote or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.Rule">
+            <summary>
+            The rule
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.AppointmentResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedAppointmentResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.AppointmentResponseModel"/> that contains the fields that are 
+            more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedAppointmentResponseModel.mProfessorId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedAppointmentResponseModel.ProfessorId"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedAppointmentResponseModel.mRuleId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedAppointmentResponseModel.RuleId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentResponseModel.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentResponseModel.RuleId">
+            <summary>
+            The appointment rule id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentResponseModel.Date">
+            <summary>
+            The date
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentResponseModel.TimeStart">
+            <summary>
+            The time that the appointment begins
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentResponseModel.TimeEnd">
+            <summary>
+            The time that the appointment ends
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentResponseModel.IsCanceled">
+            <summary>
+            A flag indicating whether the subscription was canceled or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentResponseModel.IsRemote">
+            <summary>
+            A flag indicating whether it is remote or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentResponseModel.Rule">
+            <summary>
+            The subject
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedAppointmentResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.AppointmentRuleResponseModel">
+            <summary>
+            Represents an appointment template 
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.AppointmentRuleResponseModel.mProfessorId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.AppointmentRuleResponseModel.ProfessorId"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.AppointmentRuleResponseModel.mDescription">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.AppointmentRuleResponseModel.Description"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.AppointmentRuleResponseModel.mNote">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.AppointmentRuleResponseModel.Note"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleResponseModel.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleResponseModel.HasRemoteOption">
+            <summary>
+            A flag indicating whether it has a remote option or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleResponseModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleResponseModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleResponseModel.Duration">
+            <summary>
+            The duration
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.AppointmentRuleResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedAppointmentRuleResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.AppointmentRuleResponseModel"/> that contains the fields that are 
+            more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedAppointmentRuleResponseModel.mProfessorId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedAppointmentRuleResponseModel.ProfessorId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentRuleResponseModel.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentRuleResponseModel.HasRemoteOption">
+            <summary>
+            A flag indicating whether it has a remote option or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentRuleResponseModel.Duration">
+            <summary>
+            The duration
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedAppointmentRuleResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.BaseResponseModel">
+            <summary>
+            The base response model
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.BaseResponseModel.mId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.BaseResponseModel.Id"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.BaseResponseModel.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.BaseResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedBaseResponseModel">
+            <summary>
+            The base for all the embedded response models
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedBaseResponseModel.mSource">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedBaseResponseModel.Source"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedBaseResponseModel.Source">
+            <summary>
+            The id of the entity that was used for creating the current 
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedBaseResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DateResponseModel">
+            <summary>
+            The date response model
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DateResponseModel.DateCreated">
+            <summary>
+            The creation date
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DateResponseModel.DateModified">
+            <summary>
+            The last modification date
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DateResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DepartmentContactMessageResponseModel">
+            <summary>
+            Represents a department contact message 
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentContactMessageResponseModel.mDepartmentId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentContactMessageResponseModel.DepartmentId"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentContactMessageResponseModel.mFirstName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentContactMessageResponseModel.FirstName"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentContactMessageResponseModel.mLastName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentContactMessageResponseModel.LastName"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentContactMessageResponseModel.mMessage">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentContactMessageResponseModel.Message"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentContactMessageResponseModel.mEmail">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentContactMessageResponseModel.Email"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.MemberId">
+            <summary>
+            The member id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.FirstName">
+            <summary>
+            The first name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.LastName">
+            <summary>
+            The last name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.Message">
+            <summary>
+            The message
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DepartmentContactMessageResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedDepartmentContactMessageResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.DepartmentContactMessageResponseModel"/> that contains the fields that are 
+            more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedDepartmentContactMessageResponseModel.mDepartmentId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedDepartmentContactMessageResponseModel.DepartmentId"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedDepartmentContactMessageResponseModel.mEmail">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedDepartmentContactMessageResponseModel.Email"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedDepartmentContactMessageResponseModel.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedDepartmentContactMessageResponseModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedDepartmentContactMessageResponseModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedDepartmentContactMessageResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DepartmentLayoutResponseModel">
+            <summary>
+            Represents a company layout document in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentLayoutResponseModel.mDepartmentId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentLayoutResponseModel.DepartmentId"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentLayoutResponseModel.mDescription">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentLayoutResponseModel.Description"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentLayoutResponseModel.mRooms">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentLayoutResponseModel.Rooms"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.Rooms">
+            <summary>
+            The layout
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DepartmentLayoutResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DepartmentResponseModel">
+            <summary>
+            Represents a department 
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mUniversityId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.UniversityId"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mNote">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Note"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mDescription">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Description"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mFields">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Fields"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mLabels">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Labels"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.UniversityId">
+            <summary>
+            The university id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Category">
+            <summary>
+            The category
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Fields">
+            <summary>
+            The fields of study
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.TotalStaffMembers">
+            <summary>
+            The number of staff members
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.WorkHours">
+            <summary>
+            The work hours
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Location">
+            <summary>
+            The location
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Billing">
+            <summary>
+            The billing information
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Shipping">
+            <summary>
+            The shipping information
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Labels">
+            <summary>
+            The labels
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DepartmentResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedDepartmentResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.DepartmentResponseModel"/> that contains the fields that are 
+            more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedDepartmentResponseModel.mUniversityId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedDepartmentResponseModel.UniversityId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedDepartmentResponseModel.UniversityId">
+            <summary>
+            The university id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedDepartmentResponseModel.TotalStaffMembers">
+            <summary>
+            The number of staff members
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedDepartmentResponseModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedDepartmentResponseModel.Location">
+            <summary>
+            The location
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedDepartmentResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.LabelResponseModel">
+            <summary>
+            Represents a label
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.LabelResponseModel.mDescription">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.LabelResponseModel.Description"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.LabelResponseModel.mCompanyId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.LabelResponseModel.DepartmentId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LabelResponseModel.DepartmentId">
+            <summary>
+            The company id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LabelResponseModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.LabelResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedLabelResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.LabelResponseModel"/> used when embedding
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedLabelResponseModel.mCompanyId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedLabelResponseModel.DepartmentId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedLabelResponseModel.DepartmentId">
+            <summary>
+            The company id
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedLabelResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.StandardResponseModel">
+            <summary>
+            The standard response model
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.StandardResponseModel.mName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.StandardResponseModel.Name"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.StandardResponseModel.mColor">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.StandardResponseModel.Color"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StandardResponseModel.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StandardResponseModel.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.StandardResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.StandardResponseModel.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedStandardResponseModel">
+            <summary>
+            The embedded standard response model
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedStandardResponseModel.mName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedStandardResponseModel.Name"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedStandardResponseModel.mColor">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedStandardResponseModel.Color"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedStandardResponseModel.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedStandardResponseModel.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedStandardResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedStandardResponseModel.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.UniversityResponseModel">
+            <summary>
+            Represents a university 
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.UniversityResponseModel.mLabels">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.UniversityResponseModel.Labels"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UniversityResponseModel.ImageUrl">
+            <summary>
+            The image
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UniversityResponseModel.Labels">
+            <summary>
+            The labels
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.UniversityResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedUniversityResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.UniversityResponseModel"/> that contains the fields that are 
+            more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedUniversityResponseModel.ImageUrl">
+            <summary>
+            The image
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedUniversityResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.MemberResponseModel">
+            <summary>
+            Represents a member
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MemberResponseModel.mUserId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.MemberResponseModel.UserId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.MemberResponseModel.UserId">
+            <summary>
+            The user id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.MemberResponseModel.TotalAppointments">
+            <summary>
+            The total number of appointments
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.MemberResponseModel.TotalSavedCompanies">
+            <summary>
+            The total number of saved companies
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.MemberResponseModel.TotalSavedProfessors">
+            <summary>
+            The total number of saved professors
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.MemberResponseModel.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MemberResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedMemberResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.MemberResponseModel"/> that contains the fields that are 
+            more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedMemberResponseModel.mUserId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedMemberResponseModel.UserId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedMemberResponseModel.UserId">
+            <summary>
+            The user id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedMemberResponseModel.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedMemberResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.ProfessorResponseModel">
+            <summary>
+            Represents a professor 
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.ProfessorResponseModel.mField">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.ProfessorResponseModel.Field"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.ProfessorResponseModel.mResearchInterests">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.ProfessorResponseModel.ResearchInterests"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.ProfessorResponseModel.mWebsites">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.ProfessorResponseModel.Websites"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorResponseModel.Websites">
+            <summary>
+            The personal websites 
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorResponseModel.Field">
+            <summary>
+            The field of study
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorResponseModel.ResearchInterests">
+            <summary>
+            The research interests
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.ProfessorResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedProfessorResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.ProfessorResponseModel"/> that contains the fields that are 
+            more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedProfessorResponseModel.mField">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedProfessorResponseModel.Field"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedProfessorResponseModel.Field">
+            <summary>
+            The field of study
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedProfessorResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.SecretaryResponseModel">
+            <summary>
+            Request model used for a secretary 
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.SecretaryResponseModel.Role">
+            <summary>
+            The role
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.SecretaryResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.StaffMemberResponseModel">
+            <summary>
+            Represents a staff member
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.StaffMemberResponseModel.mUserId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.StaffMemberResponseModel.UserId"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.StaffMemberResponseModel.mDepartmentId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.StaffMemberResponseModel.DepartmentId"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.StaffMemberResponseModel.mQuote">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.StaffMemberResponseModel.Quote"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StaffMemberResponseModel.UserId">
+            <summary>
+            The user id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StaffMemberResponseModel.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StaffMemberResponseModel.Quote">
+            <summary>
+            The quote
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StaffMemberResponseModel.WeeklySchedule">
+            <summary>
+            The weekly schedule
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StaffMemberResponseModel.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.StaffMemberResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedStaffMemberResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.StaffMemberResponseModel"/> that contains the fields that are 
+            more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedStaffMemberResponseModel.mUserId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedStaffMemberResponseModel.UserId"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedStaffMemberResponseModel.mDepartmentId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedStaffMemberResponseModel.DepartmentId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedStaffMemberResponseModel.UserId">
+            <summary>
+            The user id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedStaffMemberResponseModel.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedStaffMemberResponseModel.WeeklySchedule">
+            <summary>
+            The weekly schedule
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedStaffMemberResponseModel.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedStaffMemberResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.UserResponseModel">
+            <summary>
+            Represents a user
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.UserResponseModel.mFirstName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.UserResponseModel.FirstName"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.UserResponseModel.mLastName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.UserResponseModel.LastName"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.UserResponseModel.mUsername">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.UserResponseModel.Username"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.UserResponseModel.mEmail">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.UserResponseModel.Email"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.Username">
+            <summary>
+            The username
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.FirstName">
+            <summary>
+            The first name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.LastName">
+            <summary>
+            The last name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.IsEmailConfirmed">
+            <summary>
+            A flag indicating whether the email is confirmed or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.DateOfBirth">
+            <summary>
+            The birthday
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.Shipping">
+            <summary>
+            The shipping information
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.Billing">
+            <summary>
+            The billing information
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.UserResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedUserResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.UserResponseModel"/> used when embedding
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedUserResponseModel.mFirstName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedUserResponseModel.FirstName"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedUserResponseModel.mLastName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedUserResponseModel.LastName"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.EmbeddedUserResponseModel.mUsername">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedUserResponseModel.Username"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedUserResponseModel.Username">
+            <summary>
+            The username
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedUserResponseModel.FirstName">
+            <summary>
+            The first name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedUserResponseModel.LastName">
+            <summary>
+            The last name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedUserResponseModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedUserResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.WeeklyScheduleResponseModel">
+            <summary>
+            Represents a weekly schedule
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.WeeklyScheduleResponseModel.mWorkHours">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.WeeklyScheduleResponseModel.WorkHours"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.WeeklyScheduleResponseModel.mNote">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.WeeklyScheduleResponseModel.Note"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WeeklyScheduleResponseModel.WorkHours">
+            <summary>
+            The work hours
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WeeklyScheduleResponseModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WeeklyScheduleResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.APIArgs">
+            <summary>
+            Query arguments that provide pagination
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.APIArgs.mOffset">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.APIArgs.Offset"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.APIArgs.Page">
+            <summary>
+            The index of the page starting from 0.
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.APIArgs.PerPage">
+            <summary>
+            Maximum number of entries to be returned in result set.
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.APIArgs.Offset">
+            <summary>
+            Offset the result set by a specific number of items.
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.APIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.StafMemberAPIArgs">
+            <summary>
+            Arguments used for retrieving data that belong to a staff member
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StafMemberAPIArgs.IncludeDepartments">
+            <summary>
+            Limit the result to entries with specific department ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StafMemberAPIArgs.ExcludeDepartments">
+            <summary>
+            Limit the result to entries without specific department ids
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.StafMemberAPIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DepartmentAPIArgs">
+            <summary>
+            Arguments used for retrieving data that belong to a department
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentAPIArgs.IncludeUniversities">
+            <summary>
+            Limit the result to entries with specific university ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentAPIArgs.ExcludeUniversities">
+            <summary>
+            Limit the result to entries without specific university ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentAPIArgs.IncludeFields">
+            <summary>
+            Limit the result to entries with specific field ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentAPIArgs.ExcludeFields">
+            <summary>
+            Limit the result to entries without specific field ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentAPIArgs.IncludeLabels">
+            <summary>
+            Limit the result to entries with specific label ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentAPIArgs.ExcludeLabels">
+            <summary>
+            Limit the result to entries without specific label ids
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DepartmentAPIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DepartmentRelatedAPIArgs">
+            <summary>
+            Arguments used for retrieving data that belong to a department layout
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRelatedAPIArgs.IncludeDepartments">
+            <summary>
+            Limit the result to entries with specific department ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRelatedAPIArgs.ExcludeDepartments">
+            <summary>
+            Limit the result to entries without specific department ids
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DepartmentRelatedAPIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.AppointmentRuleAPIArgs">
+            <summary>
+            Arguments used for retrieving data that belong to a professor
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleAPIArgs.IncludeProfessors">
+            <summary>
+            Limit the result to entries with specific professor ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleAPIArgs.ExcludeProfessors">
+            <summary>
+            Limit the result to entries without specific professor ids
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.AppointmentRuleAPIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.MemberRelatedAPIArgs">
+            <summary>
+            Arguments used for retrieving members
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MemberRelatedAPIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.BaseArgs">
+            <summary>
+            The base for all the classes that are used as arguments
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.BaseArgs.mMaps">
+            <summary>
+            The maps
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.BaseArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.BaseArgs.ToArgs``1">
+            <summary>
+            Creates and returns an instance of <typeparamref name="TArgs"/> from the current arguments
+            by copying the values of the properties with the same name and the same property type of
+            the arguments
+            </summary>
+            <typeparam name="TArgs">The type of the arguments</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.BaseArgs.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:MeetBase.Web.BaseArgs.ArgsToArgsMap.SourceArgsType">
+            <summary>
+            The type of the source arguments
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.BaseArgs.ArgsToArgsMap.DestinationArgsType">
+            <summary>
+            The type of the destination arguments
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.BaseArgs.ArgsToArgsMap.SourcePropertyToDestinationPropertyPairs">
+            <summary>
+            Pairs between the source and the destination properties that can have their values copied
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.BaseArgs.ArgsToArgsMap.#ctor(System.Type,System.Type)">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.ConditionableAPIArgs">
+            <summary>
+            Query arguments that provide conditional based filtering options.
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ConditionableAPIArgs.Condition">
+            <summary>
+            The condition.
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.ConditionableAPIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.OrderableAPIArgs">
+            <summary>
+            Query arguments that provide ordering options
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.OrderableAPIArgs.Order">
+            <summary>
+            The order condition.
+            NOTE: The default is <see cref="F:MeetBase.OrderCondition.Descending"/>!
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.OrderableAPIArgs.OrderBy">
+            <summary>
+            The fields in order that should be used for ordering the results.
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.OrderableAPIArgs.MeetBase#IOrderable#Rules">
+            <summary>
+            The rules
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.OrderableAPIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.MeetEduClient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduClient.client">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduClient.GetUserAsync(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduClient.RegisterUserAsync(MeetBase.Web.UserRequestModel)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduClient.DeleteSavedDeparmentAsync(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduClient.GetAppointmentRulesAsync(MeetBase.Web.AppointmentRuleAPIArgs)">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.ErrorMessageResponseModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ErrorMessageResponseModel.Title">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ErrorMessageResponseModel.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ErrorMessageResponseModel.Code">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.ErrorMessageResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.WebRequestsClient`1">
+            <summary>
+            Client that provides HTTP calls for sending and receiving information from a HTTP server
+            </summary>
+            <typeparam name="TAuthenticationArgs">
+            The type of the authentication args.
+            NOTE: The authentication args determine the authentication scheme that will be used against the server!
+            </typeparam>
+        </member>
+        <member name="F:MeetBase.Web.WebRequestsClient`1.PATCH">
+            <summary>
+            The name of the PATCH HTTP method
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.WebRequestsClient`1.MediaTypeJson">
+            <summary>
+            The json request and response preferred media type
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestsClient`1.DeserializationErrorMessage">
+            <summary>
+            The standard deserialization error message
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.WebRequestsClient`1.mClient">
+            <summary>
+            THe member of the <see cref="P:MeetBase.Web.WebRequestsClient`1.Client"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestsClient`1.Client">
+            <summary>
+            The HTTP client that is used for sending the HTTP requests
+            NOTE: HTTP client is recommended to be injected as a Singleton in DI
+                  https://stackoverflow.com/questions/4015324/how-to-make-http-post-web-request
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestsClient`1.RequestBodyType">
+            <summary>
+            The type for the request body
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PostAsync(System.String,System.Object,`0)">
+            <summary>
+            POSTs a web request to an URL that contains the specified <paramref name="content"/> and returns a <see cref="T:System.Net.Http.HttpResponseMessage"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="content">The content to post</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PostBytesAsync(System.String,System.Object,`0)">
+            <summary>
+            POSTs a web request to an URL that contains the specified <paramref name="content"/> and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="content">The content to post</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.GetAsync(System.String,`0)">
+            <summary>
+            GETs a web request to a URL and returns a <see cref="T:System.Net.Http.HttpResponseMessage"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.GetBytesAsync(System.String,`0)">
+            <summary>
+            GETs the bytes that are returned in the <see cref="T:System.Net.Http.HttpResponseMessage"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.DownloadFileAsync(System.String,System.String,`0)">
+            <summary>
+            Downloads the file from the specified <paramref name="url"/> and saves it at the specified <paramref name="fileName"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="fileName">The file path combined with the file name</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PutAsync(System.String,System.Object,`0)">
+            <summary>
+            PUTs the specified <paramref name="content"/> at the specified <paramref name="url"/> and returns a <see cref="T:System.Net.Http.HttpResponseMessage"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="content">The content to put</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PutBytesAsync(System.String,System.Object,`0)">
+            <summary>
+            PUTs the specified <paramref name="content"/> at the specified <paramref name="url"/> and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="content">The content to put</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PatchAsync(System.String,System.Object,`0)">
+            <summary>
+            PATCHes the specified <paramref name="content"/> at the specified <paramref name="url"/> and returns a <see cref="T:System.Net.Http.HttpResponseMessage"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="content">The content to patch</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PatchBytesAsync(System.String,System.Object,`0)">
+            <summary>
+            Patches the specified <paramref name="content"/> at the specified <paramref name="url"/> and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="content">The content to patch</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.DeleteAsync(System.String,`0)">
+            <summary>
+            Sends a DELETE request and returns a <see cref="T:System.Net.Http.HttpResponseMessage"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.DeleteBytesAsync(System.String,`0)">
+            <summary>
+            Sends a DELETE request and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.HeadAsync``1(System.String,`0)">
+            <summary>
+            Sends a head request to the specified <paramref name="url"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.OptionsAsync(System.String,`0)">
+            <summary>
+            Sends an options request to the specified <paramref name="url"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PostAsync``1(System.String,System.Object,`0)">
+            <summary>
+            POSTs a web request to an URL that contains the specified <paramref name="content"/> and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <typeparam name="TResponse">The type of the response</typeparam>
+            <param name="url">The URL</param>
+            <param name="content">The content to post</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.GetAsync``1(System.String,`0)">
+            <summary>
+            GETs a web request to a URL and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PutAsync``1(System.String,System.Object,`0)">
+            <summary>
+            PUTs the specified <paramref name="content"/> at the specified <paramref name="url"/> and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="content">The content to put</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PatchAsync``1(System.String,System.Object,`0)">
+            <summary>
+            Patches the specified <paramref name="content"/> at the specified <paramref name="url"/> and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="content">The content to patch</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.DeleteAsync``1(System.String,`0)">
+            <summary>
+            Sends a DELETE request and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.OptionsAsync``1(System.String,`0)">
+            <summary>
+            Sends an OPTIONS request and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <typeparam name="TResponse">The type of the response</typeparam>
+            <param name="url">The URL</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.ShouldLogRequests">
+            <summary>
+            Gets a flag indicating whether the requests should be logged or not
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.CreateClient">
+            <summary>
+            Creates and returns an <see cref="T:System.Net.Http.HttpClient"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.ConfigureClient(System.Net.Http.HttpClient)">
+            <summary>
+            Configures the specified <paramref name="client"/>
+            </summary>
+            <param name="client">The client</param>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.ConfigureStringContent(System.Net.Http.StringContent)">
+            <summary>
+            Configures the specified <paramref name="stringContent"/>
+            </summary>
+            <param name="stringContent">The content</param>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.Serialize(System.Object)">
+            <summary>
+            Serializes the specified <paramref name="obj"/> to a string
+            before sending the request
+            </summary>
+            <param name="obj">The object</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.Deserialize``1(System.String)">
+            <summary>
+            Deserializes the specified <paramref name="rawServerResponse"/> to the requested type
+            </summary>
+            <typeparam name="TResponse">The type to deserialize to</typeparam>
+            <param name="rawServerResponse">The raw server response</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.GetMediaType">
+            <summary>
+            Gets the media type header that is attached to the request before sending it
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.GetEncoding">
+            <summary>
+            Gets the encoding that is attached to the request before sending it
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.CreateAuthenticationHeader(`0)">
+            <summary>
+            Creates and returns a <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue"/> using the
+            specified <paramref name="authenticationArgs"/>
+            </summary>
+            <param name="authenticationArgs">The authentication arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.ParseErrorMessage(MeetBase.Web.WebRequestResult)">
+            <summary>
+            Attempts to parse the error message contained in the <paramref name="result"/>
+            </summary>
+            <param name="result">The result</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.ParseDeserializationErrorMessage(MeetBase.Web.WebRequestResult,System.Type,System.Exception)">
+            <summary>
+            Attempts to parse the error message contained in the specified <paramref name="deserializationException"/>
+            that was thrown when attempting to deserialize the <paramref name="result"/> to the specified <paramref name="deserializationType"/>
+            </summary>
+            <param name="deserializationType">The type that response should have been deserialized to</param>
+            <param name="deserializationException">The deserialization exception that was thrown</param>
+            <param name="result">The result</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.HandleNullAuthenticationArgs">
+            <summary>
+            Handles the null arguments
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.CreateStringContent(System.Object)">
+            <summary>
+            Creates and returns the <see cref="T:System.Net.Http.StringContent"/> that represents
+            the specified <paramref name="content"/>
+            </summary>
+            <param name="content">The content</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.CreateFormDataContent(System.Object)">
+            <summary>
+            Creates the form-data, using the non null value in the <paramref name="content"/>
+            </summary>
+            <param name="content">The form-data content</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.ParseErrorMessageCore(MeetBase.Web.WebRequestResult)">
+            <summary>
+            Attempts to parse the error message contained in the <paramref name="response"/>
+            </summary>
+            <param name="response">The Web request result</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.ParseErrorMessageCore(MeetBase.Web.WebRequestResult,System.Type,System.Exception)">
+            <summary>
+            Attempts to parse the error message contained in the specified <paramref name="deserializationException"/>
+            that was thrown when attempting to deserialize the <paramref name="response"/> to the specified <paramref name="deserializationType"/>
+            </summary>
+            <param name="deserializationType">The type that response should have been deserialized to</param>
+            <param name="deserializationException">The deserialization exception that was thrown</param>
+            <param name="response">The Web request result</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.CreateHttpContent(System.Object)">
+            <summary>
+            Creates the <paramref name="content"/> for 
+            </summary>
+            <param name="content">The request body content</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.SetAuthorizationHeader(`0)">
+            <summary>
+            Sets the specified <paramref name="authentication"/> if any to the <see cref="P:MeetBase.Web.WebRequestsClient`1.Client"/>
+            </summary>
+            <param name="authentication">The token</param>
+        </member>
+        <member name="T:MeetBase.Web.WebRequestsClient">
+            <summary>
+            The JWT token based implementation of the <see cref="T:MeetBase.Web.WebRequestsClient`1"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.WebRequestsClient.mInstance">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.WebRequestsClient.Instance"/>
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestsClient.Instance">
+            <summary>
+            A single instance of the <see cref="T:MeetBase.Web.WebRequestsClient"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient.CreateAuthenticationHeader(System.String)">
+            <summary>
+            Creates and returns a <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue"/> using the
+            specified <paramref name="authenticationArgs"/>
+            </summary>
+            <param name="authenticationArgs">The authentication arguments</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.WebRequestResult">
+            <summary>
+            A web response from a call to get generic object data from a HTTP server
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.WebRequestResult.DefaultHeaders">
+            <summary>
+            The default headers
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.WebRequestResult.ExceptionMessage">
+            <summary>
+            The error message for the exception
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.WebRequestResult.mException">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.WebRequestResult.Exception"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.WebRequestResult.mResult">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.WebRequestResult.Result"/>
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult.Exception">
+            <summary>
+            The exception that was thrown
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult.ErrorType">
+            <summary>
+            The error type
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult.ErrorMessage">
+            <summary>
+            If something failed, this is the error message.
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult.IsSuccessful">
+            <summary>
+            A flag indicating whether the request was successful 
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult.StatusCode">
+            <summary>
+            The status code
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult.StatusDescription">
+            <summary>
+            The status description
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult.ContentType">
+            <summary>
+            The type of content returned by the server
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult.Headers">
+            <summary>
+            All the response headers
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult.RawServerResponse">
+            <summary>
+            The raw server response body
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult.Result">
+            <summary>
+            The actual server response as an object
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult.#ctor(System.Exception)">
+            <summary>
+            Exception based constructor
+            </summary>
+            <param name="ex">The exception</param>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult.ToString">
+            <summary>
+            Returns a string that represents the current object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult.op_Implicit(System.String)~MeetBase.Web.WebRequestResult">
+            <summary>
+            Creates a <see cref="T:MeetBase.Web.WebRequestResult"/> using the specified string as its error message
+            </summary>
+            <param name="s">The string</param>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult.op_Implicit(System.Exception)~MeetBase.Web.WebRequestResult">
+            <summary>
+            Creates a <see cref="T:MeetBase.Failable"/> using the message of the specified ex and its inner exceptions
+            as its error message
+            </summary>
+            <param name="ex">The exception</param>
+        </member>
+        <member name="T:MeetBase.Web.WebRequestResult`1">
+            <summary>
+            A web response from a call to get specific data from a HTTP server
+            </summary>
+            <typeparam name="TResult">The type of data to deserialize the raw body into</typeparam>
+        </member>
+        <member name="P:MeetBase.Web.WebRequestResult`1.Result">
+            <summary>
+            Casts the underlying object to the specified type
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult`1.#ctor(`0)">
+            <summary>
+            Result based constructor
+            </summary>
+            <param name="result">The result</param>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult`1.#ctor(System.Exception)">
+            <summary>
+            Exception based constructor
+            </summary>
+            <param name="ex">The exception</param>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult`1.ToUnsuccessfulWebRequestResult``1(System.String)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/> from the current object
+            </summary>
+            <typeparam name="T">The type of the failable</typeparam>
+            <param name="customErrorMessage">The custom error message</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult`1.ToSuccessfulWebRequestResult``1(System.Func{`0,``0})">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/> from the current object
+            </summary>
+            <typeparam name="T">The type of the failable</typeparam>
+            <param name="valueConverter">The method that converts an instance of type <typeparamref name="TResult"/> to <typeparamref name="T"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult`1.ToString">
+            <summary>
+            Returns a string that represents the current object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult`1.op_Implicit(System.String)~MeetBase.Web.WebRequestResult{`0}">
+            <summary>
+            Creates a <see cref="T:MeetBase.Web.WebRequestResult`1"/> using the specified string as its error message
+            </summary>
+            <param name="s">The string</param>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult`1.op_Implicit(System.Exception)~MeetBase.Web.WebRequestResult{`0}">
+            <summary>
+            Creates a <see cref="T:MeetBase.Web.WebRequestResult`1"/> using the message of the specified ex and its inner exceptions
+            as its error message
+            </summary>
+            <param name="ex">The exception</param>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult`1.op_Implicit(`0)~MeetBase.Web.WebRequestResult{`0}">
+            <summary>
+            Creates a <see cref="T:MeetBase.Failable`1"/> using the specified result as its result
+            </summary>
+            <param name="result">The result</param>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestResult`1.op_Implicit(MeetBase.Web.WebRequestResult{`0})~MeetBase.Failable{`0}">
+            <summary>
+            Converts a <see cref="T:MeetBase.Web.WebRequestResult`1"/> to a <see cref="T:MeetBase.Failable`1"/>
+            </summary>
+            <param name="result">The data storage result</param>
+        </member>
+        <member name="T:MeetBase.Web.HttpResponceMessageExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Net.HttpWebResponse"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.HttpResponceMessageExtensions.CreateWebRequestResultAsync(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Returns a <see cref="T:MeetBase.Web.WebRequestResult"/> pre-populated with the <see cref="T:System.Net.HttpWebResponse"/> information
+            </summary>
+            <param name="serverResponse">The server response</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.HttpResponceMessageExtensions.CreateWebRequestResultFromStreamAsync(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/> pre-populated with the <see cref="T:System.Net.HttpWebResponse"/> information
+            read as stream
+            </summary>
+            <param name="serverResponse">The server response</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.HttpResponceMessageExtensions.CreateWebRequestResultAsync``1(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/> pre-populated with the <see cref="T:System.Net.HttpWebResponse"/> information
+            </summary>
+            <typeparam name="TResponse">The type of response to create</typeparam>
+            <param name="serverResponse">The server response</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.HttpResponceMessageExtensions.CreateWebRequestResultFromHeadersAsync``1(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/> using the headers of the specified <paramref name="serverResponse"/>
+            </summary>
+            <typeparam name="THeadersResult">The type of the header result</typeparam>
+            <param name="serverResponse">The server response</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.HeaderConstants">
+            <summary>
+            Constants related to headers
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.HeaderConstants.Count">
+            <summary>
+            The count
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.HeaderConstants.MinDate">
+            <summary>
+            The minimum date
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.HeaderConstants.MaxDate">
+            <summary>
+            The maximum date
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.HeaderConstants.DateTimeOffsetToString(System.DateTimeOffset)">
+            <summary>
+            Parses the specified <paramref name="dateTimeOffset"/> to a string
+            </summary>
+            <param name="dateTimeOffset">The date time</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.HeaderConstants.StringToDateTimeOffset(System.String)">
+            <summary>
+            Parses the specified <paramref name="s"/> to a date time 
+            </summary>
+            <param name="s">The string</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.HttpContentType">
+            <summary>
+            Provides enumeration for the HTTP request content type
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.HttpContentType.JsonBody">
+            <summary>
+            The raw Json body option
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.HttpContentType.FormData">
+            <summary>
+            The form-data body option
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.RouteHelpers">
+            <summary>
+            Helper methods related to web routes
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.RouteHelpers.mTypeToQueryArgumentsMapper">
+            <summary>
+            Maps a type to its query arguments
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.RouteHelpers.AttachStringParameters(System.String,MeetBase.Web.QueryArgument[])">
+            <summary>
+            Attaches the specified <paramref name="parameters"/> to the specified <paramref name="url"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="parameters">The parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.RouteHelpers.AttachParameters``1(System.String,``0)">
+            <summary>
+            Attaches the parameters that are specified as properties in the <paramref name="args"/>
+            to the specified <paramref name="url"/>.
+            NOTE: A property can be marked as ignorable using the <see cref="T:Atom.IgnoreAttribute"/>!
+            NOTE: A custom property name can be set using the <see cref="T:Atom.NameAttribute"/>!
+            </summary>
+            <param name="url">The URL</param>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.RouteHelpers.AttachParametersCore(System.String,System.Object,System.Type)">
+            <summary>
+            Attaches the parameters that are specified as properties in the <paramref name="args"/>
+            to the specified <paramref name="url"/>.
+            NOTE: A property can be marked as ignorable using the <see cref="T:Atom.IgnoreAttribute"/>!
+            NOTE: A custom property name can be set using the <see cref="T:Atom.NameAttribute"/>!
+            </summary>
+            <param name="url">The URL</param>
+            <param name="args">The arguments</param>
+            <param name="argumentType">The type of the argument</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.RouteHelpers.PropertyQueryArgumentInfo">
+            <summary>
+            The information for the query argument that is related to a property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.RouteHelpers.PropertyQueryArgumentInfo.PropertyInfo">
+            <summary>
+            The property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.RouteHelpers.PropertyQueryArgumentInfo.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.RouteHelpers.PropertyQueryArgumentInfo.IsDate">
+            <summary>
+            A flag indicating whether the <see cref="P:MeetBase.Web.RouteHelpers.PropertyQueryArgumentInfo.PropertyInfo"/> is a date property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.RouteHelpers.PropertyQueryArgumentInfo.IsEnumerable">
+            <summary>
+            A flag indicating whether the <see cref="P:MeetBase.Web.RouteHelpers.PropertyQueryArgumentInfo.PropertyInfo"/> is an enumerable property
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.RouteHelpers.PropertyQueryArgumentInfo.#ctor(System.Reflection.PropertyInfo,System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="name">The name</param>
+            <param name="propertyInfo">A flag indicating whether the <see cref="P:MeetBase.Web.RouteHelpers.PropertyQueryArgumentInfo.PropertyInfo"/> is an enumerable property</param>
+        </member>
+        <member name="M:MeetBase.Web.RouteHelpers.PropertyQueryArgumentInfo.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.QueryArgument">
+            <summary>
+            Represents a query parameter
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.QueryArgument.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.QueryArgument.Value">
+            <summary>
+            The value
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.QueryArgument.#ctor(System.String,System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="name">The name</param>
+            <param name="value">The value</param>
+        </member>
+        <member name="T:MeetBase.Web.MeetEduAPIRoutes">
+            <summary>
+            The AppontMate related API routes
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.APIRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.VersionRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api/v1</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.BaseRoute">
+            <summary>
+            The base route
+            <code>/appointMate/api/v1/meetEdu</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.LogInRoute">
+            <summary>
+            The login route
+            <code>/appointMate/api/v1/meetEdu/login</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.RegisterRoute">
+            <summary>
+            The register route
+            <code>/appointMate/api/v1/meetEdu/register</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.UsersRoute">
+            <summary>
+            The users route
+            <code>/appointMate/api/v1/meetEdu/users</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.UserRoute">
+            <summary>
+            The user route
+            <code>/appointMate/api/v1/meetEdu/users/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetUserRoute(System.String)">
+            <summary>
+            Gets the route for the user with the specified <paramref name="userId"/>
+            <code>/appointMate/api/v1/meetEdu/users/4</code>
+            </summary>
+            <param name="userId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.UniversitiesRoute">
+            <summary>
+            The universities route
+            <code>/appointMate/api/v1/meetEdu/universities</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentsRoute">
+            <summary>
+            The departments route
+            <code>/appointMate/api/v1/meetEdu/departments</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentRoute">
+            <summary>
+            The department route
+            <code>/appointMate/api/v1/meetEdu/departments/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetDepartmentRoute(System.String)">
+            <summary>
+            Gets the department route for the one with the specified <paramref name="departmentId"/>
+            <code>/appointMate/api/v1/meetEdu/departments/3</code>
+            </summary>
+            <param name="departmentId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentContactMessagesRoute">
+            <summary>
+            The department contact messages route
+            <code>/appointMate/api/v1/meetEdu/departments/3/departmentContactMessages</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentContactMessageRoute">
+            <summary>
+            The department contact message route
+            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetDepartmentContactMessageRoute(System.String)">
+            <summary>
+            Gets the route for the department contact message with the specified <paramref name="departmentContactMessageId"/>
+            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/2</code>
+            </summary>
+            <param name="departmentContactMessageId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SecretariesRoute">
+            <summary>
+            The secretaries route
+            <code>/appointMate/api/v1/meetEdu/secretaries</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SecretaryRoute">
+            <summary>
+            The secretary route
+            <code>/appointMate/api/v1/meetEdu/secretaries/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetSecretaryRoute(System.String)">
+            <summary>
+            Gets the route for the secretary with the specified <paramref name="secretaryId"/>
+            <code>/appointMate/api/v1/meetEdu/secretaries/4</code>
+            </summary>
+            <param name="secretaryId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.ProfessorsRoute">
+            <summary>
+            The professors route
+            <code>/appointMate/api/v1/meetEdu/professors</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.ProfessorRoute">
+            <summary>
+            The professor route
+            <code>/appointMate/api/v1/meetEdu/professors/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetProfessorRoute(System.String)">
+            <summary>
+            Gets the professor route for the one with the specified <paramref name="professorId"/>
+            <code>/appointMate/api/v1/meetEdu/professors/3</code>
+            </summary>
+            <param name="professorId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentRulesRoute">
+            <summary>
+            The appointment rules route
+            <code>/appointMate/api/v1/meetEdu/appointmentRules</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentRuleRoute">
+            <summary>
+            The appointment rule route
+            <code>/appointMate/api/v1/meetEdu/appointmentRules/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetAppointmentRuleRoute(System.String)">
+            <summary>
+            Gets the route for the appointment with the specified <paramref name="appointmentRuleId"/>
+            <code>/appointMate/api/v1/meetEdu/appointmentRules/4</code>
+            </summary>
+            <param name="appointmentRuleId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.MembersRoute">
+            <summary>
+            The members route
+            <code>/appointMate/api/v1/meetEdu/members</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.MemberRoute">
+            <summary>
+            The member route
+            <code>/appointMate/api/v1/meetEdu/members/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetMemberRoute(System.String)">
+            <summary>
+            Gets the member route for the one with the specified <paramref name="memberId"/>
+            <code>/appointMate/api/v1/meetEdu/members/3</code>
+            </summary>
+            <param name="memberId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SavedDepartmentsRoute">
+            <summary>
+            The saved departments route
+            <code>/appointMate/api/v1/meetEdu/savedDepartments</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SavedProfessorsRoute">
+            <summary>
+            The saved departments route
+            <code>/appointMate/api/v1/meetEdu/savedProfessors</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentsRoute">
+            <summary>
+            The appointments route
+            <code>/appointMate/api/v1/meetEdu/appointments</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentRoute">
+            <summary>
+            The appointment route
+            <code>/appointMate/api/v1/meetEdu/appointments/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetAppointmentRoute(System.String)">
+            <summary>
+            Gets the route for the appointment with the specified <paramref name="appointmentId"/>
+            <code>/appointMate/api/v1/meetEdu/appointments/4</code>
+            </summary>
+            <param name="appointmentId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.MeetCoreAPIRoutes">
+            <summary>
+            The MeetCore related API routes
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.APIRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.VersionRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api/v1</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.BaseRoute">
+            <summary>
+            The base route
+            <code>/appointMate/api/v1/meetCore</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.LogInRoute">
+            <summary>
+            The login route
+            <code>/appointMate/api/v1/meetCore/login</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.RegisterRoute">
+            <summary>
+            The register route
+            <code>/appointMate/api/v1/meetCore/register</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.UsersRoute">
+            <summary>
+            The users route
+            <code>/appointMate/api/v1/meetCore/users</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.UserRoute">
+            <summary>
+            The user route
+            <code>/appointMate/api/v1/meetCore/users/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetUserRoute(System.String)">
+            <summary>
+            Gets the route for the user with the specified <paramref name="userId"/>
+            <code>/appointMate/api/v1/meetCore/users/4</code>
+            </summary>
+            <param name="userId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.UniversitiesRoute">
+            <summary>
+            The universities route
+            <code>/appointMate/api/v1/meetCore/universities</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.UniversityRoute">
+            <summary>
+            The university route
+            <code>/appointMate/api/v1/meetCore/universities/5</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetUniversityRoute(System.String)">
+            <summary>
+            Gets the route for the university with the specified <paramref name="universityId"/>
+            <code>/appointMate/api/v1/meetCore/universities/5</code>
+            </summary>
+            <param name="universityId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.UniversityLabelsRoute">
+            <summary>
+            The university labels route
+            <code>/appointMate/api/v1/meetCore/universityLabels</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.UniversityLabelRoute">
+            <summary>
+            The university label route
+            <code>/appointMate/api/v1/meetCore/universityLabels/5</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetUniversityLabelRoute(System.String)">
+            <summary>
+            Gets the route for the university label with the specified <paramref name="universityLabelId"/>
+            <code>/appointMate/api/v1/meetCore/universityLabels/5</code>
+            </summary>
+            <param name="universityLabelId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.DepartmentsRoute">
+            <summary>
+            The departments route
+            <code>/appointMate/api/v1/meetCore/departments</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.DepartmentRoute">
+            <summary>
+            The department route
+            <code>/appointMate/api/v1/meetCore/departments/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetDepartmentRoute(System.String)">
+            <summary>
+            Gets the department route for the one with the specified <paramref name="departmentId"/>
+            <code>/appointMate/api/v1/meetCore/departments/3</code>
+            </summary>
+            <param name="departmentId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.DepartmentLayoutsRoute">
+            <summary>
+            The department layouts route
+            <code>/appointMate/api/v1/meetCore/departmentLayouts</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.DepartmentLayoutRoute">
+            <summary>
+            The department layout route
+            <code>/appointMate/api/v1/meetCore/departmentLayouts/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetDepartmentLayoutRoute(System.String)">
+            <summary>
+            Gets the department layout route for the one with the specified <paramref name="departmentLayoutId"/>
+            <code>/appointMate/api/v1/meetCore/departmentLayouts/3</code>
+            </summary>
+            <param name="departmentLayoutId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.DepartmentLabelsRoute">
+            <summary>
+            The department labels route
+            <code>/appointMate/api/v1/meetCore/departmentLabels</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.DepartmentLabelRoute">
+            <summary>
+            The department label route
+            <code>/appointMate/api/v1/meetCore/departmentLabels/5</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetDepartmentLabelRoute(System.String)">
+            <summary>
+            Gets the route for the department label with the specified <paramref name="departmentLabelId"/>
+            <code>/appointMate/api/v1/meetCore/departmentLabels/5</code>
+            </summary>
+            <param name="departmentLabelId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.DepartmentContactMessagesRoute">
+            <summary>
+            The department contact messages route
+            <code>/appointMate/api/v1/meetCore/departmentContactMessages</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.DepartmentContactMessageRoute">
+            <summary>
+            The department contact message route
+            <code>/appointMate/api/v1/meetCore/departmentContactMessages/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetDepartmentContactMessageRoute(System.String)">
+            <summary>
+            Gets the route for the department contact message with the specified <paramref name="departmentContactMessageId"/>
+            <code>/appointMate/api/v1/meetCore/departmentContactMessages/2</code>
+            </summary>
+            <param name="departmentContactMessageId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.SecretariesRoute">
+            <summary>
+            The secretaries route
+            <code>/appointMate/api/v1/meetCore/secretaries</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.SecretaryRoute">
+            <summary>
+            The secretary route
+            <code>/appointMate/api/v1/meetCore/secretaries/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetSecretaryRoute(System.String)">
+            <summary>
+            Gets the route for the secretary with the specified <paramref name="secretaryId"/>
+            <code>/appointMate/api/v1/meetCore/secretaries/4</code>
+            </summary>
+            <param name="secretaryId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.ProfessorsRoute">
+            <summary>
+            The professors route
+            <code>/appointMate/api/v1/meetCore/professors</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.ProfessorRoute">
+            <summary>
+            The professor route
+            <code>/appointMate/api/v1/meetCore/professors/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetProfessorRoute(System.String)">
+            <summary>
+            Gets the professor route for the one with the specified <paramref name="professorId"/>
+            <code>/appointMate/api/v1/meetCore/professors/3</code>
+            </summary>
+            <param name="professorId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.AppointmentRulesRoute">
+            <summary>
+            The appointment rules route
+            <code>/appointMate/api/v1/meetCore/appointmentRules</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.AppointmentRuleRoute">
+            <summary>
+            The appointment rule route
+            <code>/appointMate/api/v1/meetCore/appointmentRules/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetAppointmentRuleRoute(System.String)">
+            <summary>
+            Gets the route for the appointment with the specified <paramref name="appointmentRuleId"/>
+            <code>/appointMate/api/v1/meetCore/appointmentRules/4</code>
+            </summary>
+            <param name="appointmentRuleId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.AppointmentsRoute">
+            <summary>
+            The appointments route
+            <code>/appointMate/api/v1/meetCore/appointments</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.AppointmentRoute">
+            <summary>
+            The appointment route
+            <code>/appointMate/api/v1/meetCore/appointments/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetAppointmentRoute(System.String)">
+            <summary>
+            Gets the route for the appointment with the specified <paramref name="appointmentId"/>
+            <code>/appointMate/api/v1/meetCore/appointments/4</code>
+            </summary>
+            <param name="appointmentId">The id</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -4,112 +4,6 @@
         <name>MeetBase</name>
     </assembly>
     <members>
-        <member name="T:MeetBase.Header">
-            <summary>
-            The header component
-            </summary>
-        </member>
-        <member name="P:MeetBase.Header.AppName">
-            <summary>
-            The app name
-            </summary>
-        </member>
-        <member name="P:MeetBase.Header.BackColor">
-            <summary>
-            The back color
-            </summary>
-        </member>
-        <member name="P:MeetBase.Header.ForeColor">
-            <summary>
-            The fore color
-            </summary>
-        </member>
-        <member name="P:MeetBase.Header.Username">
-            <summary>
-            The username
-            </summary>
-        </member>
-        <member name="P:MeetBase.Header.UserImageUrl">
-            <summary>
-            The user image URL
-            </summary>
-        </member>
-        <member name="M:MeetBase.Header.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="T:MeetBase.CssVariables">
-            <summary>
-            Constants for CSS
-            </summary>
-        </member>
-        <member name="F:MeetBase.CssVariables.FontFamilyVariable">
-            <summary>
-            The font family
-            </summary>
-        </member>
-        <member name="F:MeetBase.CssVariables.ForeColorVariable">
-            <summary>
-            The fore color
-            </summary>
-        </member>
-        <member name="F:MeetBase.CssVariables.BackColorVariable">
-            <summary>
-            The back color
-            </summary>
-        </member>
-        <member name="F:MeetBase.CssVariables.BorderColorVariable">
-            <summary>
-            The border color
-            </summary>
-        </member>
-        <member name="T:MeetBase.CssVariableExtensions">
-            <summary>
-            Extension methods for <see cref="T:MeetBase.CssVariables"/>
-            </summary>
-        </member>
-        <member name="M:MeetBase.CssVariableExtensions.SetCssVariable(System.String,System.Object)">
-            <summary>
-            Sets the <paramref name="value"/> to the CSS variable with the specified <paramref name="name"/>
-            <code>--name: value;</code>
-            </summary>
-            <param name="name">The name</param>
-            <param name="value">The value</param>
-            <returns></returns>
-        </member>
-        <member name="M:MeetBase.CssVariableExtensions.SetCssColor(System.String,System.String)">
-            <summary>
-            Sets the <paramref name="value"/> to the CSS variable with the specified <paramref name="name"/>
-            <code>--name: value;</code>
-            </summary>
-            <param name="name">The name</param>
-            <param name="value">The value</param>
-            <returns></returns>
-        </member>
-        <member name="M:MeetBase.CssVariableExtensions.GetCssVariable(System.String)">
-            <summary>
-            Gets the CSS variable with the specified <paramref name="name"/>
-            <code>var(--name)</code>
-            </summary>
-            <param name="name">The name</param>
-            <returns></returns>
-        </member>
-        <member name="T:MeetBase.IconPaths">
-            <summary>
-            Icon paths
-            </summary>
-        </member>
-        <member name="F:MeetBase.IconPaths.HeartPath">
-            <summary>
-            The heart icon path
-            </summary>
-        </member>
-        <member name="F:MeetBase.IconPaths.HeartOutlinePath">
-            <summary>
-            The heart outline icon path
-            </summary>
-        </member>
         <member name="T:MeetBase.MeetBaseConstants">
             <summary>
             The constants for the MeetEdu app
@@ -168,91 +62,6 @@
         <member name="F:MeetBase.MeetBaseConstants.Faculty">
             <summary>
             Faculty
-            </summary>
-        </member>
-        <member name="T:MeetBase.PaletteColors">
-            <summary>
-            The palette color constants 
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Blue">
-            <summary>
-            Brandeis Blue 
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Green">
-            <summary>
-            Emerald
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Red">
-            <summary>
-            Folly
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Persimmon">
-            <summary>
-            Persimmon
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Orange">
-            <summary>
-            Orange (web)
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Amber">
-            <summary>
-            Amber
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Yellow">
-            <summary>
-            Mustard
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Pink">
-            <summary>
-            Dogwood rose
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Purple">
-            <summary>
-            Dark Magenta
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.DarkGray">
-            <summary>
-            Jet
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Gray">
-            <summary>
-            Silver
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.LightGray">
-            <summary>
-            Timberwolf
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.White">
-            <summary>
-            White
-            </summary>
-        </member>
-        <member name="F:MeetBase.PaletteColors.Black">
-            <summary>
-            Black
-            </summary>
-        </member>
-        <member name="T:MeetBase.SourceConstants">
-            <summary>
-            The personalization constants 
-            </summary>
-        </member>
-        <member name="F:MeetBase.SourceConstants.ExplorerProfileImage">
-            <summary>
-            The explorer profile image
             </summary>
         </member>
         <member name="T:MeetBase.RegexConstants">
@@ -330,6 +139,2557 @@
             The regular expression used for validating a hex value
             </summary>
         </member>
+        <member name="T:MeetBase.DepartmentLayoutRoomDataModel">
+            <summary>
+            Represents a company room document in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetBase.DepartmentLayoutRoomDataModel.mName">
+            <summary>
+            The member of the <see cref="P:MeetBase.DepartmentLayoutRoomDataModel.Name"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.DepartmentLayoutRoomDataModel.mColor">
+            <summary>
+            The member of the <see cref="P:MeetBase.DepartmentLayoutRoomDataModel.Color"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.DepartmentLayoutRoomDataModel.mNote">
+            <summary>
+            The member of the <see cref="P:MeetBase.DepartmentLayoutRoomDataModel.Note"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.DepartmentLayoutRoomDataModel.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetBase.DepartmentLayoutRoomDataModel.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="P:MeetBase.DepartmentLayoutRoomDataModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.DepartmentLayoutRoomDataModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.DepartmentLayoutRoomDataModel.DisplayTheme">
+            <summary>
+            The display theme
+            </summary>
+        </member>
+        <member name="M:MeetBase.DepartmentLayoutRoomDataModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.ConcurrentCollection`1">
+            <summary>
+            A collection that provides type safety 
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:MeetBase.ConcurrentCollection`1.mLock">
+            <summary>
+            A lock used for providing safe access to the <see cref="F:MeetBase.ConcurrentCollection`1.mList"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.ConcurrentCollection`1.mList">
+            <summary>
+            The list
+            </summary>
+        </member>
+        <member name="P:MeetBase.ConcurrentCollection`1.Item(System.Int32)">
+            <summary>
+            Gets or sets the element at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the element to get or set.</param>
+            <returns></returns>
+        </member>
+        <member name="P:MeetBase.ConcurrentCollection`1.Count">
+            <summary>
+            Gets the number of elements contained in the collection
+            </summary>
+        </member>
+        <member name="P:MeetBase.ConcurrentCollection`1.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the collection is read-only
+            </summary>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.ToString">
+            <summary>
+            Returns a string that represents the current object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.Add(`0)">
+            <summary>
+            Adds an item to the collection
+            </summary>
+            <param name="item">The item</param>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds multiple item to the collection
+            </summary>
+            <param name="items">The items</param>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.Clear">
+            <summary>
+            Clears the collection
+            </summary>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.Contains(`0)">
+            <summary>
+            Determines whether the collection contains the specific item
+            </summary>
+            <param name="item">The item</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the elements of the collection to an array
+            </summary>
+            <param name="array">
+            The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements copied
+            from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see cref="T:System.Array"/> must have zero-based
+            indexing.
+            </param>
+            <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            NOTE: The enumerator from a shallow copy of the list is returned!
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.IndexOf(`0)">
+            <summary>
+            Determines the index of a specific item
+            </summary>
+            <param name="item">The item</param>
+            <returns>The index of item if found in the list; otherwise, -1.</returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.Insert(System.Int32,`0)">
+            <summary>
+            Inserts an item at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which item should be inserted.</param>
+            <param name="item">The object to insert</param>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inserts the elements of a collection into the collection
+            at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which the new elements should be inserted.</param>
+            <param name="collection">The collection whose elements should be inserted into the collection</param>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.Remove(`0)">
+            <summary>
+            Removes the first occurrence of a specific object from the.
+            </summary>
+            <param name="item">The object to remove from the collection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the item to remove.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.RemoveRange(System.Int32,System.Int32)">
+            <summary>
+            Removes a range of elements from the collection
+            </summary>
+            <param name="index">The zero-based starting index of the range of elements to remove.</param>
+            <param name="count">The number of elements to remove.</param>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            NOTE: The enumerator from a shallow copy of the list is returned!
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.Reverse">
+            <summary>
+            Reverses the order of the elements in the entire collection
+            </summary>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.Sort">
+            <summary>
+            Sorts the elements in the entire list using the default comparer
+            </summary>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.Sort(System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sorts the elements in the entire collection using the specified
+            comparer
+            </summary>
+            <param name="comparer">
+            The <see cref="T:System.Collections.Generic.IComparer`1"/> implementation to use when comparing
+            elements, or null to use the default comparer
+            </param>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.ToArray">
+            <summary>
+            Copies the elements of the collection to a new array
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.Exists(System.Predicate{`0})">
+            <summary>
+            Determines whether the collection contains elements that
+            match the conditions defined by the specified predicate.
+            </summary>
+            <param name="match">The delegate that defines the conditions of the elements to search for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.RemoveAll(System.Func{`0,System.Boolean})">
+            <summary>
+            Removes all the elements that match the conditions defined by the specified predicate.
+            </summary>
+            <param name="match">The delegate that defines the conditions of the elements to remove.</param>
+            <returns>The number of elements removed from the collection</returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.Find(System.Func{`0,System.Boolean})">
+            <summary>
+            Searches for an element that matches the conditions defined by the specified
+            predicate, and returns the first occurrence within the entire collection
+            </summary>
+            <param name="match">The delegate that defines the conditions of the element to search for</param>
+            <returns>
+            The first element that matches the conditions defined by the specified predicate,
+            if found; otherwise, the default value for type <typeparamref name="T"/>.
+            </returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.FindLast(System.Func{`0,System.Boolean})">
+            <summary>
+            Searches for an element that matches the conditions defined by the specified
+            predicate, and returns the last occurrence within the entire collection
+            </summary>
+            <param name="match">The delegate that defines the conditions of the element to search for</param>
+            <returns>
+            The last element that matches the conditions defined by the specified predicate,
+            if found; otherwise, the default value for type <typeparamref name="T"/>.
+            </returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.FindAll(System.Func{`0,System.Boolean})">
+            <summary>
+            Retrieves all the elements that match the conditions defined by the specified
+            predicate.
+            </summary>
+            <param name="match">The delegate that defines the conditions of the elements to search for.</param>
+            <returns>
+            A <see cref="T:System.Collections.Generic.List`1"/> containing all the elements that match the
+            conditions defined by the specified predicate, if found; otherwise, an empty
+            <see cref="T:System.Collections.Generic.List`1"/>
+            </returns>
+        </member>
+        <member name="M:MeetBase.ConcurrentCollection`1.ConvertAll``1(System.Func{`0,``0})">
+            <summary>
+            Converts the elements in the current collection to another type,
+            and returns a list containing the converted elements
+            </summary>
+            <typeparam name="TOutput">The type of the elements of the target array.</typeparam>
+            <param name="converter">A delegate that converts each element from one type to another type.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Failable">
+            <summary>
+            The default implementation of the <see cref="T:MeetBase.IFailable"/> interface
+            </summary>
+        </member>
+        <member name="F:MeetBase.Failable.mException">
+            <summary>
+            The member of the <see cref="P:MeetBase.Failable.Exception"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Failable.Exception">
+            <summary>
+            The exception that was thrown
+            </summary>
+        </member>
+        <member name="P:MeetBase.Failable.ErrorType">
+            <summary>
+            The error type
+            </summary>
+        </member>
+        <member name="P:MeetBase.Failable.ErrorMessage">
+            <summary>
+            The error message
+            </summary>
+        </member>
+        <member name="P:MeetBase.Failable.IsSuccessful">
+            <summary>
+            A flag indicating whether the task was successful or not
+            </summary>
+        </member>
+        <member name="P:MeetBase.Failable.Success">
+            <summary>
+            The instance of the <see cref="T:MeetBase.Failable"/> that indicates a successful operation
+            </summary>
+        </member>
+        <member name="P:MeetBase.Failable.OperationAbortedErrorMessage">
+            <summary>
+            Error message indicating that the operation was aborted
+            </summary>
+        </member>
+        <member name="P:MeetBase.Failable.OperationAborted">
+            <summary>
+            The instance of the <see cref="T:MeetBase.Failable"/> that is used for indicating an operation
+            that was aborted with a hidden error
+            </summary>
+        </member>
+        <member name="M:MeetBase.Failable.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Failable.#ctor(System.Exception)">
+            <summary>
+            Exception based constructor
+            </summary>
+            <param name="ex">The exception</param>
+        </member>
+        <member name="M:MeetBase.Failable.FromException(System.Exception)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Failable"/> from the specified <paramref name="ex"/>
+            </summary>
+            <param name="ex">The exception</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Failable.FromErrorMessage(System.String)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Failable"/> from the specified <paramref name="errorMessage"/>
+            </summary>
+            <param name="errorMessage">The error message</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Failable.FromResult``1(``0)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Failable`1"/> that represents the specified <paramref name="result"/>
+            </summary>
+            <typeparam name="T">The type of the result</typeparam>
+            <param name="result">The result</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Failable.FromException``1(System.Exception)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Failable`1"/> that represents the specified <paramref name="ex"/>
+            </summary>
+            <typeparam name="T">The type of the result</typeparam>
+            <param name="ex">The exception</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Failable.FromErrorMessage``1(System.String)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Failable`1"/> that represents the specified <paramref name="errorMessage"/>
+            </summary>
+            <typeparam name="T">The type of the result</typeparam>
+            <param name="errorMessage">The error message</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Failable.FromAbortedOperation``1">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Failable`1"/> that represents an aborted operation
+            </summary>
+            <typeparam name="T">The type of the result</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Failable.ToString">
+            <summary>
+            Returns a string that represents the current object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Failable.op_Implicit(System.String)~MeetBase.Failable">
+            <summary>
+            Creates a <see cref="T:MeetBase.Failable"/> using the specified string as its error message
+            </summary>
+            <param name="s">The string</param>
+        </member>
+        <member name="M:MeetBase.Failable.op_Implicit(System.Exception)~MeetBase.Failable">
+            <summary>
+            Creates a <see cref="T:MeetBase.Failable"/> using the message of the specified ex and its inner exceptions
+            as its error message
+            </summary>
+            <param name="ex">The exception</param>
+        </member>
+        <member name="T:MeetBase.SuccessOnlyFailable">
+            <summary>
+            An internal implementation of the <see cref="T:MeetBase.Failable"/> that always has
+            a successful state
+            </summary>
+        </member>
+        <member name="P:MeetBase.SuccessOnlyFailable.ErrorMessage">
+            <summary>
+            The error message
+            </summary>
+        </member>
+        <member name="M:MeetBase.SuccessOnlyFailable.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.OperationAbortedOnlyFailable">
+            <summary>
+            An internal implementation of the <see cref="T:MeetBase.Failable"/> that is used for 
+            indicating an aborted operation
+            </summary>
+        </member>
+        <member name="P:MeetBase.OperationAbortedOnlyFailable.ErrorMessage">
+            <summary>
+            The error message
+            </summary>
+        </member>
+        <member name="P:MeetBase.OperationAbortedOnlyFailable.ErrorType">
+            <summary>
+            The error type
+            </summary>
+        </member>
+        <member name="M:MeetBase.OperationAbortedOnlyFailable.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Failable`1">
+            <summary>
+            The default implementation of the <see cref="T:MeetBase.IFailable`1"/> interface
+            </summary>
+            <typeparam name="TResult">The type of the result</typeparam>
+        </member>
+        <member name="F:MeetBase.Failable`1.ExceptionMessage">
+            <summary>
+            The error message for the exception
+            </summary>
+        </member>
+        <member name="F:MeetBase.Failable`1.mResult">
+            <summary>
+            The member of the <see cref="P:MeetBase.Failable`1.Result"/>
+            </summary>
+        </member>
+        <member name="P:MeetBase.Failable`1.Result">
+            <summary>
+            The result
+            </summary>
+        </member>
+        <member name="P:MeetBase.Failable`1.OperationAborted">
+            <summary>
+            The instance of the <see cref="T:MeetBase.Failable`1"/> that is used for indicating an operation
+            that was aborted with a hidden error
+            </summary>
+        </member>
+        <member name="M:MeetBase.Failable`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Failable`1.#ctor(`0)">
+            <summary>
+            Result based constructor
+            </summary>
+            <param name="result">The result</param>
+        </member>
+        <member name="M:MeetBase.Failable`1.#ctor(System.Exception)">
+            <summary>
+            Exception based constructor
+            </summary>
+            <param name="ex">The exception</param>
+        </member>
+        <member name="M:MeetBase.Failable`1.ToString">
+            <summary>
+            Returns a string that represents the current object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Failable`1.op_Implicit(System.String)~MeetBase.Failable{`0}">
+            <summary>
+            Creates a <see cref="T:MeetBase.Failable`1"/> using the specified string as its error message
+            </summary>
+            <param name="s">The string</param>
+        </member>
+        <member name="M:MeetBase.Failable`1.op_Implicit(System.Exception)~MeetBase.Failable{`0}">
+            <summary>
+            Creates a <see cref="T:MeetBase.Failable`1"/> using the message of the specified ex and its inner exceptions
+            as its error message
+            </summary>
+            <param name="ex">The exception</param>
+        </member>
+        <member name="M:MeetBase.Failable`1.op_Implicit(`0)~MeetBase.Failable{`0}">
+            <summary>
+            Creates a <see cref="T:MeetBase.Failable`1"/> using the specified result as its result
+            </summary>
+            <param name="result">The result</param>
+        </member>
+        <member name="T:MeetBase.OperationAbortedOnlyFailable`1">
+            <summary>
+            An internal implementation of the <see cref="T:MeetBase.Failable`1"/> that is used for 
+            indicating an aborted operation
+            </summary>
+        </member>
+        <member name="P:MeetBase.OperationAbortedOnlyFailable`1.ErrorMessage">
+            <summary>
+            The error message
+            </summary>
+        </member>
+        <member name="P:MeetBase.OperationAbortedOnlyFailable`1.ErrorType">
+            <summary>
+            The error type
+            </summary>
+        </member>
+        <member name="M:MeetBase.OperationAbortedOnlyFailable`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Billing">
+            <summary>
+            Represents a billing
+            </summary>
+        </member>
+        <member name="F:MeetBase.Billing.mEmail">
+            <summary>
+            The member of the <see cref="P:MeetBase.Billing.Email"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Billing.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetBase.Billing.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="M:MeetBase.Billing.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Location">
+            <summary>
+            Represents a location
+            </summary>
+        </member>
+        <member name="F:MeetBase.Location.mState">
+            <summary>
+            The member of the <see cref="P:MeetBase.Location.State"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Location.mCity">
+            <summary>
+            The member of the <see cref="P:MeetBase.Location.City"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Location.mPostcode">
+            <summary>
+            The member of the <see cref="P:MeetBase.Location.Postcode"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Location.mAddress">
+            <summary>
+            The member of the <see cref="P:MeetBase.Location.Address"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Location.mAddress2">
+            <summary>
+            The member of the <see cref="P:MeetBase.Location.Address2"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Location.Country">
+            <summary>
+            The country
+            </summary>
+        </member>
+        <member name="P:MeetBase.Location.State">
+            <summary>
+            The address street
+            </summary>
+        </member>
+        <member name="P:MeetBase.Location.City">
+            <summary>
+            The city
+            </summary>
+        </member>
+        <member name="P:MeetBase.Location.Postcode">
+            <summary>
+            The postal code
+            </summary>
+        </member>
+        <member name="P:MeetBase.Location.Address">
+            <summary>
+            The first address
+            </summary>
+        </member>
+        <member name="P:MeetBase.Location.Address2">
+            <summary>
+            The second address
+            </summary>
+        </member>
+        <member name="P:MeetBase.Location.Longitude">
+            <summary>
+            The longitude for the first address
+            </summary>
+        </member>
+        <member name="P:MeetBase.Location.Latitude">
+            <summary>
+            The latitude for the first address
+            </summary>
+        </member>
+        <member name="M:MeetBase.Location.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Location.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Shipping">
+            <summary>
+            Represents a shipping
+            </summary>
+        </member>
+        <member name="F:MeetBase.Shipping.mFirstName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Shipping.FirstName"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Shipping.mLastName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Shipping.LastName"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Shipping.FirstName">
+            <summary>
+            The first name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Shipping.LastName">
+            <summary>
+            The last name
+            </summary>
+        </member>
+        <member name="M:MeetBase.Shipping.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Shipping.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.OrderRule">
+            <summary>
+            Provides information related to an order rule
+            </summary>
+        </member>
+        <member name="P:MeetBase.OrderRule.OrderCondition">
+            <summary>
+            The order condition
+            </summary>
+        </member>
+        <member name="P:MeetBase.OrderRule.OrderBy">
+            <summary>
+            The order by target
+            </summary>
+        </member>
+        <member name="M:MeetBase.OrderRule.#ctor(MeetBase.OrderCondition,System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="orderCondition">The order condition</param>
+            <param name="orderBy">The order by target</param>
+        </member>
+        <member name="M:MeetBase.OrderRule.ToString">
+            <summary>
+            Returns a string that represents the current object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.OrderRule.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            Formats the value of the current instance using the specified format.
+            </summary>
+            <param name="format">
+            The format to use. -or- A null reference (Nothing in Visual Basic) to use the
+            default format defined for the type of the <see cref="T:System.IFormattable"/> implementation.
+            </param>
+            <param name="formatProvider">
+            The provider to use to format the value. -or- A null reference (Nothing in Visual
+            Basic) to obtain the numeric format information from the current locale setting
+            of the operating system.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.OrderRule.Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Parses a string into a value.
+            </summary>
+            <param name="s">The string to parse.</param>
+            <param name="provider">An object that provides culture-specific formatting information about s.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.OrderRule.TryParse(System.String,System.IFormatProvider,MeetBase.OrderRule@)">
+            <summary>
+            Tries to parse a string into a value.
+            </summary>
+            <param name="s">The string to parse.</param>
+            <param name="provider">An object that provides culture-specific formatting information about <paramref name="s"/>.</param>
+            <param name="result">
+            When this method returns, contains the result of successfully parsing <paramref name="s"/> or an
+            undefined value on failure.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.PhoneNumber">
+            <summary>
+            Represents a phone number
+            </summary>
+        </member>
+        <member name="P:MeetBase.PhoneNumber.CountryCode">
+            <summary>
+            The country code
+            </summary>
+        </member>
+        <member name="P:MeetBase.PhoneNumber.Phone">
+            <summary>
+            The phone
+            </summary>
+        </member>
+        <member name="M:MeetBase.PhoneNumber.#ctor(System.Int32,System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="countryCode">The country code</param>
+            <param name="phone">The phone number</param>
+        </member>
+        <member name="M:MeetBase.PhoneNumber.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <paramref name="obj"/> is equal to the current object
+            </summary>
+            <param name="obj">The object to check</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.PhoneNumber.Equals(MeetBase.PhoneNumber)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type
+            </summary>
+            <param name="other">The other object</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.PhoneNumber.ToPhoneNumberString">
+            <summary>
+            Returns a string that contains both the country code and phone number.
+            Ex.: 30 6969696969, 1 6969696969
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.PhoneNumber.ToE164PhoneNumberString">
+            <summary>
+            Returns a string that represents the E.164 phone number.
+            Ex.: +30 6969696969, +16 969696969
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.PhoneNumber.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.PhoneNumber.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.PhoneNumber.op_Equality(MeetBase.PhoneNumber,MeetBase.PhoneNumber)">
+            <summary>
+            Determines whether two specified <see cref="T:MeetBase.PhoneNumber"/>s have the same value
+            </summary>
+            <param name="obj1">The first phone number</param>
+            <param name="obj2">The second phone number</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.PhoneNumber.op_Inequality(MeetBase.PhoneNumber,MeetBase.PhoneNumber)">
+            <summary>
+            Determines whether tow specified <see cref="T:MeetBase.PhoneNumber"/>s have different values
+            </summary>
+            <param name="obj1">The first phone number</param>
+            <param name="obj2">The second phone number</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.PhoneNumber.op_Implicit(MeetBase.PhoneNumber)~System.String">
+            <summary>
+            Returns the string representation of the specified <paramref name="phoneNumber"/>
+            </summary>
+            <param name="phoneNumber">The phone number</param>
+        </member>
+        <member name="T:MeetBase.VectorSource">
+            <summary>
+            Represents the source of a vector drawable
+            </summary>
+        </member>
+        <member name="F:MeetBase.VectorSource.mPathData">
+            <summary>
+            The member of the <see cref="P:MeetBase.VectorSource.PathData"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.VectorSource.PathData">
+            <summary>
+            The path data of the icon
+            </summary>
+        </member>
+        <member name="P:MeetBase.VectorSource.UriSource">
+            <summary>
+            The Uri source
+            </summary>
+        </member>
+        <member name="M:MeetBase.VectorSource.#ctor">
+            <summary>
+            Internal constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.VectorSource.FromPathData(System.String)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.VectorSource"/> from the specified <paramref name="pathData"/>
+            </summary>
+            <param name="pathData">The path data</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.VectorSource.FromUriSource(System.Uri)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.VectorSource"/> from the specified <paramref name="uriSource"/>
+            </summary>
+            <param name="uriSource">The Uri source</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.VectorSource.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.VectorSource.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.VectorSource.Equals(MeetBase.VectorSource)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.VectorSource.GetHashCode">
+            <summary>
+            Serves as the default hash function.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.VectorSource.op_Implicit(System.String)~MeetBase.VectorSource">
+            <summary>
+            Create a vector source from the specified <paramref name="pathData"/>
+            </summary>
+            <param name="pathData">The path data</param>
+        </member>
+        <member name="M:MeetBase.VectorSource.op_Implicit(System.Uri)~MeetBase.VectorSource">
+            <summary>
+            Create a vector source from the specified <paramref name="uriSource"/>
+            </summary>
+            <param name="uriSource">The URI source</param>
+        </member>
+        <member name="T:MeetBase.WeeklySchedule">
+            <summary>
+            The weekly schedule
+            </summary>
+        </member>
+        <member name="F:MeetBase.WeeklySchedule.mWorkHours">
+            <summary>
+            The member of the <see cref="P:MeetBase.WeeklySchedule.WorkHours"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.WeeklySchedule.mNote">
+            <summary>
+            The member of the <see cref="P:MeetBase.WeeklySchedule.Note"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.WeeklySchedule.WorkHours">
+            <summary>
+            The work hours
+            </summary>
+        </member>
+        <member name="P:MeetBase.WeeklySchedule.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="M:MeetBase.WeeklySchedule.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Condition">
+            <summary>
+            Provides enumeration over the conditions
+            </summary>
+        </member>
+        <member name="F:MeetBase.Condition.AND">
+            <summary>
+            All the conditions must be satisfied
+            </summary>
+        </member>
+        <member name="F:MeetBase.Condition.OR">
+            <summary>
+            At least one condition must be satisfied
+            </summary>
+        </member>
+        <member name="T:MeetBase.CountryCode">
+            <summary>
+            The Alpha-2 country codes
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AD">
+            <summary>
+            Andorra
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AE">
+            <summary>
+            United Arab Emirates
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AF">
+            <summary>
+            Afghanistan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AG">
+            <summary>
+            Antigua And Barbuda
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AI">
+            <summary>
+            Anguilla
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AL">
+            <summary>
+            Albania
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AM">
+            <summary>
+            Armenia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AN">
+            <summary>
+            Netherlands Antilles
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AO">
+            <summary>
+            Angola
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AQ">
+            <summary>
+            Antarctica
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AR">
+            <summary>
+            Argentina
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AS">
+            <summary>
+            American Samoa
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AT">
+            <summary>
+            Austria
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AU">
+            <summary>
+            Australia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AW">
+            <summary>
+            Aruba
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AX">
+            <summary>
+            Aland Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.AZ">
+            <summary>
+            Azerbaijan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BA">
+            <summary>
+            Bosnia And Herzegovina
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BB">
+            <summary>
+            Barbados
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BD">
+            <summary>
+            Bangladesh
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BE">
+            <summary>
+            Belgium
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BF">
+            <summary>
+            Burkina Faso
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BG">
+            <summary>
+            Bulgaria
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BH">
+            <summary>
+            Bahrain
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BI">
+            <summary>
+            Burundi
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BJ">
+            <summary>
+            Benin
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BL">
+            <summary>
+            Saint Barthelemy
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BM">
+            <summary>
+            Bermuda
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BN">
+            <summary>
+            Brunei
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BO">
+            <summary>
+            Bolivia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BR">
+            <summary>
+            Brazil
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BS">
+            <summary>
+            Bahamas
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BT">
+            <summary>
+            Bhutan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BV">
+            <summary>
+            Bouvet Island
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BW">
+            <summary>
+            Botswana
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BY">
+            <summary>
+            Belarus
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.BZ">
+            <summary>
+            Belize
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CA">
+            <summary>
+            Canada
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CC">
+            <summary>
+            Cocos Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CD">
+            <summary>
+            Democratic Republicofthe Congo
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CF">
+            <summary>
+            Central African Republic
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CG">
+            <summary>
+            Republicofthe Congo
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CH">
+            <summary>
+            Switzerland
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CI">
+            <summary>
+            Ivory Coast
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CK">
+            <summary>
+            Cook Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CL">
+            <summary>
+            Chile
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CM">
+            <summary>
+            Cameroon
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CN">
+            <summary>
+            China
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CO">
+            <summary>
+            Colombia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CR">
+            <summary>
+            Costa Rica
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CU">
+            <summary>
+            Cuba
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CV">
+            <summary>
+            Cape Verde
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CX">
+            <summary>
+            Christmas Island
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CY">
+            <summary>
+            Cyprus
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.CZ">
+            <summary>
+            Czech Republic
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.DE">
+            <summary>
+            Germany
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.DJ">
+            <summary>
+            Djibouti
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.DK">
+            <summary>
+            Denmark
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.DM">
+            <summary>
+            Dominica
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.DO">
+            <summary>
+            Dominican Republic
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.DZ">
+            <summary>
+            Algeria
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.EC">
+            <summary>
+            Ecuador
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.EE">
+            <summary>
+            Estonia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.EG">
+            <summary>
+            Egypt
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.EH">
+            <summary>
+            Western Sahara
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.ER">
+            <summary>
+            Eritrea
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.ES">
+            <summary>
+            Spain
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.ET">
+            <summary>
+            Ethiopia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.FI">
+            <summary>
+            Finland
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.FJ">
+            <summary>
+            Fiji
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.FK">
+            <summary>
+            Falkland Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.FM">
+            <summary>
+            Micronesia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.FO">
+            <summary>
+            Faroe Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.FR">
+            <summary>
+            France
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GA">
+            <summary>
+            Gabon
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GB">
+            <summary>
+            United Kingdom
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GD">
+            <summary>
+            Grenada
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GE">
+            <summary>
+            Georgia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GF">
+            <summary>
+            French Guiana
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GG">
+            <summary>
+            Guernsey
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GH">
+            <summary>
+            Ghana
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GI">
+            <summary>
+            Gibraltar
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GL">
+            <summary>
+            Greenland
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GM">
+            <summary>
+            Gambia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GN">
+            <summary>
+            Guinea
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GP">
+            <summary>
+            Guadeloupe
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GQ">
+            <summary>
+            Equatorial Guinea
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GR">
+            <summary>
+            Greece
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GS">
+            <summary>
+            South GeorgiaΑndthe South Sandwich Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GT">
+            <summary>
+            Guatemala
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GU">
+            <summary>
+            Guam
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GW">
+            <summary>
+            Guinea Bissau
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.GY">
+            <summary>
+            Guyana
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.HK">
+            <summary>
+            Hong Kong
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.HM">
+            <summary>
+            Heard IslandΑnd Mc Donald Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.HN">
+            <summary>
+            Honduras
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.HR">
+            <summary>
+            Croatia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.HT">
+            <summary>
+            Haiti
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.HU">
+            <summary>
+            Hungary
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.ID">
+            <summary>
+            Indonesia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.IE">
+            <summary>
+            Ireland
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.IL">
+            <summary>
+            Israel
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.IM">
+            <summary>
+            Isleof Man
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.IN">
+            <summary>
+            India
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.IO">
+            <summary>
+            British Indian Ocean Territory
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.IQ">
+            <summary>
+            Iraq
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.IR">
+            <summary>
+            Iran
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.IS">
+            <summary>
+            Iceland
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.IT">
+            <summary>
+            Italy
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.JE">
+            <summary>
+            Jersey
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.JM">
+            <summary>
+            Jamaica
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.JO">
+            <summary>
+            Jordan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.JP">
+            <summary>
+            Japan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KE">
+            <summary>
+            Kenya
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KG">
+            <summary>
+            Kyrgyzstan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KH">
+            <summary>
+            Cambodia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KI">
+            <summary>
+            Kiribati
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KM">
+            <summary>
+            Comoros
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KN">
+            <summary>
+            Saint KittsΑnd Nevis
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KP">
+            <summary>
+            North Korea
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KR">
+            <summary>
+            South Korea
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KW">
+            <summary>
+            Kuwait
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KY">
+            <summary>
+            Cayman Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.KZ">
+            <summary>
+            Kazakhstan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LA">
+            <summary>
+            Laos
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LB">
+            <summary>
+            Lebanon
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LC">
+            <summary>
+            Saint Lucia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LI">
+            <summary>
+            Liechtenstein
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LK">
+            <summary>
+            Sri Lanka
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LR">
+            <summary>
+            Liberia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LS">
+            <summary>
+            Lesotho
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LT">
+            <summary>
+            Lithuania
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LU">
+            <summary>
+            Luxembourg
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LV">
+            <summary>
+            Latvia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.LY">
+            <summary>
+            Libya
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MA">
+            <summary>
+            Morocco
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MC">
+            <summary>
+            Monaco
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MD">
+            <summary>
+            Moldova
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.ME">
+            <summary>
+            Montenegro
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MF">
+            <summary>
+            Saint Martin
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MG">
+            <summary>
+            Madagascar
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MH">
+            <summary>
+            Marshall Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MK">
+            <summary>
+            Macedonia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.ML">
+            <summary>
+            Mali
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MM">
+            <summary>
+            Myanmar
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MN">
+            <summary>
+            Mongolia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MO">
+            <summary>
+            Macau
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MP">
+            <summary>
+            Northern Mariana Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MQ">
+            <summary>
+            Martinique
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MR">
+            <summary>
+            Mauritania
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MS">
+            <summary>
+            Montserrat
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MT">
+            <summary>
+            Malta
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MU">
+            <summary>
+            Mauritius
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MV">
+            <summary>
+            Maldives
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MW">
+            <summary>
+            Malawi
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MX">
+            <summary>
+            Mexico
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MY">
+            <summary>
+            Malaysia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.MZ">
+            <summary>
+            Mozambique
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NA">
+            <summary>
+            Namibia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NC">
+            <summary>
+            New Caledonia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NE">
+            <summary>
+            Niger
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NF">
+            <summary>
+            Norfolk Island
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NG">
+            <summary>
+            Nigeria
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NI">
+            <summary>
+            Nicaragua
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NL">
+            <summary>
+            Netherlands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NO">
+            <summary>
+            Norway
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NP">
+            <summary>
+            Nepal
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NR">
+            <summary>
+            Nauru
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NU">
+            <summary>
+            Niue
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.NZ">
+            <summary>
+            New Zealand
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.OM">
+            <summary>
+            Oman
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PA">
+            <summary>
+            Panama
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PE">
+            <summary>
+            Peru
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PF">
+            <summary>
+            French Polynesia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PG">
+            <summary>
+            Papua New Guinea
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PH">
+            <summary>
+            Philippines
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PK">
+            <summary>
+            Pakistan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PL">
+            <summary>
+            Poland
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PM">
+            <summary>
+            Saint Pierre And Miquelon
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PN">
+            <summary>
+            Pitcairn
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PR">
+            <summary>
+            Puerto Rico
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PS">
+            <summary>
+            Palestine
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PT">
+            <summary>
+            Portugal
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PW">
+            <summary>
+            Palau
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.PY">
+            <summary>
+            Paraguay
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.QA">
+            <summary>
+            Qatar
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.RE">
+            <summary>
+            Reunion
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.RO">
+            <summary>
+            Romania
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.RS">
+            <summary>
+            Serbia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.RU">
+            <summary>
+            Russia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.RW">
+            <summary>
+            Rwanda
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SA">
+            <summary>
+            Saudi Arabia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SB">
+            <summary>
+            Solomon Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SC">
+            <summary>
+            Seychelles
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SD">
+            <summary>
+            Sudan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SE">
+            <summary>
+            Sweden
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SG">
+            <summary>
+            Singapore
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SH">
+            <summary>
+            Saint Helena
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SI">
+            <summary>
+            Slovenia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SJ">
+            <summary>
+            Svalbard And Jan Mayen
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SK">
+            <summary>
+            Slovakia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SL">
+            <summary>
+            Sierra Leone
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SM">
+            <summary>
+            San Marino
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SN">
+            <summary>
+            Senegal
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SO">
+            <summary>
+            Somalia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SR">
+            <summary>
+            Suriname
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.ST">
+            <summary>
+            Sao Tome And Principe
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SV">
+            <summary>
+            El Salvador
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SY">
+            <summary>
+            Syria
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.SZ">
+            <summary>
+            Swaziland
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TC">
+            <summary>
+            Turks And Caicos Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TD">
+            <summary>
+            Chad
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TF">
+            <summary>
+            French Southern Territories
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TG">
+            <summary>
+            Togo
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TH">
+            <summary>
+            Thailand
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TJ">
+            <summary>
+            Tajikistan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TK">
+            <summary>
+            Tokelau
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TL">
+            <summary>
+            East Timor
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TM">
+            <summary>
+            Turkmenistan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TN">
+            <summary>
+            Tunisia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TO">
+            <summary>
+            Tonga
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TR">
+            <summary>
+            Turkey
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TT">
+            <summary>
+            Trinidad And Tobago
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TV">
+            <summary>
+            Tuvalu
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TW">
+            <summary>
+            Taiwan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.TZ">
+            <summary>
+            Tanzania
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.UA">
+            <summary>
+            Ukraine
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.UG">
+            <summary>
+            Uganda
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.UM">
+            <summary>
+            United States Minor Outlying Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.US">
+            <summary>
+            United States
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.UY">
+            <summary>
+            Uruguay
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.UZ">
+            <summary>
+            Uzbekistan
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.VA">
+            <summary>
+            Vatican
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.VC">
+            <summary>
+            Saint Vincent and the Grenadines
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.VE">
+            <summary>
+            Venezuela
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.VG">
+            <summary>
+            British Virgin Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.VI">
+            <summary>
+            US Virgin Islands
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.VN">
+            <summary>
+            Vietnam
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.VU">
+            <summary>
+            Vanuatu
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.WF">
+            <summary>
+            WallisΑnd Futuna
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.WS">
+            <summary>
+            Samoa
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.YE">
+            <summary>
+            Yemen
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.YT">
+            <summary>
+            Mayotte
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.ZA">
+            <summary>
+            South Africa
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.ZM">
+            <summary>
+            Zambia
+            </summary>
+        </member>
+        <member name="F:MeetBase.CountryCode.ZW">
+            <summary>
+            Zimbabwe
+            </summary>
+        </member>
+        <member name="T:MeetBase.CustomerNoteType">
+            <summary>
+            Provides enumeration over the customer note types
+            </summary>
+        </member>
+        <member name="F:MeetBase.CustomerNoteType.Information">
+            <summary>
+            Informative note
+            </summary>
+        </member>
+        <member name="F:MeetBase.CustomerNoteType.Warning">
+            <summary>
+            Warning note
+            </summary>
+        </member>
+        <member name="F:MeetBase.CustomerNoteType.Issue">
+            <summary>
+            Issue note
+            </summary>
+        </member>
+        <member name="T:MeetBase.DepartmentType">
+            <summary>
+            Provides enumeration over the company types
+            </summary>
+        </member>
+        <member name="F:MeetBase.DepartmentType.Medicine">
+            <summary>
+            Medicine
+            </summary>
+        </member>
+        <member name="F:MeetBase.DepartmentType.Polytechnic">
+            <summary>
+            Polytechnic
+            </summary>
+        </member>
+        <member name="F:MeetBase.DepartmentType.Science">
+            <summary>
+            Science
+            </summary>
+        </member>
+        <member name="F:MeetBase.DepartmentType.Economics">
+            <summary>
+            Economics
+            </summary>
+        </member>
+        <member name="F:MeetBase.DepartmentType.Agriculture">
+            <summary>
+            Agriculture
+            </summary>
+        </member>
+        <member name="T:MeetBase.ErrorType">
+            <summary>
+            Provides enumeration over the error types
+            </summary>
+        </member>
+        <member name="F:MeetBase.ErrorType.Error">
+            <summary>
+            A standard error
+            </summary>
+        </member>
+        <member name="F:MeetBase.ErrorType.Warning">
+            <summary>
+            A warning
+            </summary>
+        </member>
+        <member name="F:MeetBase.ErrorType.Information">
+            <summary>
+            An informative message
+            </summary>
+        </member>
+        <member name="F:MeetBase.ErrorType.Hidden">
+            <summary>
+            An error that should get hidden
+            </summary>
+        </member>
+        <member name="T:MeetBase.OrderCondition">
+            <summary>
+            Provides enumeration for the order conditions
+            </summary>
+        </member>
+        <member name="F:MeetBase.OrderCondition.Ascending">
+            <summary>
+            Ascending sort order
+            </summary>
+        </member>
+        <member name="F:MeetBase.OrderCondition.Descending">
+            <summary>
+            Descending sort order
+            </summary>
+        </member>
+        <member name="T:MeetBase.RoomDisplayTheme">
+            <summary>
+            Provides enumeration over the room display theme
+            </summary>
+        </member>
+        <member name="F:MeetBase.RoomDisplayTheme.Left">
+            <summary>
+            Left
+            </summary>
+        </member>
+        <member name="F:MeetBase.RoomDisplayTheme.Right">
+            <summary>
+            Right
+            </summary>
+        </member>
+        <member name="F:MeetBase.RoomDisplayTheme.Center">
+            <summary>
+            Center
+            </summary>
+        </member>
+        <member name="T:MeetBase.SecretaryRole">
+            <summary>
+            Provides enumeration over the secretary roles
+            </summary>
+        </member>
+        <member name="F:MeetBase.SecretaryRole.Secretary">
+            <summary>
+            Secretary
+            </summary>
+        </member>
+        <member name="F:MeetBase.SecretaryRole.PostGraduateSecretary">
+            <summary>
+            Post graduate secretary
+            </summary>
+        </member>
+        <member name="F:MeetBase.SecretaryRole.UnderGraduateSecretary">
+            <summary>
+            Under graduate secretary
+            </summary>
+        </member>
+        <member name="T:MeetBase.SessionStatus">
+            <summary>
+            Provides enumerations over the <see cref="T:MeetBase.SessionStatus"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.SessionStatus.Pending">
+            <summary>
+            Pending
+            </summary>
+        </member>
+        <member name="F:MeetBase.SessionStatus.Completed">
+            <summary>
+            Completed
+            </summary>
+        </member>
+        <member name="F:MeetBase.SessionStatus.Canceled">
+            <summary>
+            Canceled
+            </summary>
+        </member>
+        <member name="T:MeetBase.TransactionType">
+            <summary>
+            Provides enumerations over the <see cref="T:MeetBase.TransactionType"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.TransactionType.Cash">
+            <summary>
+            Cash
+            </summary>
+        </member>
+        <member name="F:MeetBase.TransactionType.Card">
+            <summary>
+            Card
+            </summary>
+        </member>
+        <member name="F:MeetBase.TransactionType.PayPal">
+            <summary>
+            PayPal
+            </summary>
+        </member>
+        <member name="T:MeetBase.DayOfWeekTimeRange">
+            <summary>
+            Represents a time range of a specific week day
+            </summary>
+        </member>
+        <member name="P:MeetBase.DayOfWeekTimeRange.DayOfWeek">
+            <summary>
+            The day of week
+            </summary>
+        </member>
+        <member name="P:MeetBase.DayOfWeekTimeRange.Start">
+            <summary>
+            The start
+            </summary>
+        </member>
+        <member name="P:MeetBase.DayOfWeekTimeRange.End">
+            <summary>
+            The end
+            </summary>
+        </member>
+        <member name="P:MeetBase.DayOfWeekTimeRange.MeetBase#IReadOnlyRangeable{System#TimeOnly}#Minimum">
+            <summary>
+            The minimum value
+            </summary>
+        </member>
+        <member name="P:MeetBase.DayOfWeekTimeRange.MeetBase#IReadOnlyRangeable{System#TimeOnly}#Maximum">
+            <summary>
+            The maximum value
+            </summary>
+        </member>
+        <member name="M:MeetBase.DayOfWeekTimeRange.#ctor(System.DayOfWeek,System.TimeOnly,System.TimeOnly)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="dayOfWeek">The day of week</param>
+            <param name="start">The first value</param>
+            <param name="end">The second value</param>
+        </member>
+        <member name="M:MeetBase.DayOfWeekTimeRange.Convert(System.Collections.Generic.IEnumerable{MeetBase.DayOfWeekTimeRange})">
+            <summary>
+            Converts the specified <paramref name="values"/> to a <see cref="T:System.Collections.Generic.Dictionary`2"/>
+            that maps the <see cref="T:System.DayOfWeek"/> values with the related <see cref="T:MeetBase.TimeRange"/>s
+            </summary>
+            <param name="values">The values</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.DayOfWeekTimeRange.Convert(System.Collections.Generic.IReadOnlyDictionary{System.DayOfWeek,System.Collections.Generic.IEnumerable{MeetBase.TimeRange}})">
+            <summary>
+            Converts a dictionary that maps the <see cref="T:System.DayOfWeek"/> values with the related <see cref="T:MeetBase.TimeRange"/>s
+            to a collection of <see cref="T:MeetBase.DayOfWeekTimeRange"/>s
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.DaysBetweenSessionsRange">
+            <summary>
+            Represents a number of days between sessions range
+            </summary>
+        </member>
+        <member name="P:MeetBase.DaysBetweenSessionsRange.Minimum">
+            <summary>
+            The minimum value
+            </summary>
+        </member>
+        <member name="P:MeetBase.DaysBetweenSessionsRange.Maximum">
+            <summary>
+            The maximum value
+            </summary>
+        </member>
+        <member name="M:MeetBase.DaysBetweenSessionsRange.#ctor(System.UInt32,System.UInt32)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="value1">The first value</param>
+            <param name="value2">The second value</param>
+        </member>
+        <member name="T:MeetBase.DurationRange">
+            <summary>
+            Represents a duration range
+            </summary>
+        </member>
+        <member name="P:MeetBase.DurationRange.Minimum">
+            <summary>
+            The minimum value
+            </summary>
+        </member>
+        <member name="P:MeetBase.DurationRange.Maximum">
+            <summary>
+            The maximum value
+            </summary>
+        </member>
+        <member name="M:MeetBase.DurationRange.#ctor(System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="value1">The first value</param>
+            <param name="value2">The second value</param>
+        </member>
+        <member name="T:MeetBase.PriceRange">
+            <summary>
+            Represents a price range
+            </summary>
+        </member>
+        <member name="P:MeetBase.PriceRange.Minimum">
+            <summary>
+            The minimum value
+            </summary>
+        </member>
+        <member name="P:MeetBase.PriceRange.Maximum">
+            <summary>
+            The maximum value
+            </summary>
+        </member>
+        <member name="M:MeetBase.PriceRange.#ctor(System.Double,System.Double)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="value1">The first value</param>
+            <param name="value2">The second value</param>
+        </member>
+        <member name="T:MeetBase.SessionsRange">
+            <summary>
+            Represents a number of sessions range
+            </summary>
+        </member>
+        <member name="P:MeetBase.SessionsRange.Minimum">
+            <summary>
+            The minimum value
+            </summary>
+        </member>
+        <member name="P:MeetBase.SessionsRange.Maximum">
+            <summary>
+            The maximum value
+            </summary>
+        </member>
+        <member name="M:MeetBase.SessionsRange.#ctor(System.UInt32,System.UInt32)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="value1">The first value</param>
+            <param name="value2">The second value</param>
+        </member>
+        <member name="T:MeetBase.TimeRange">
+            <summary>
+            Represents a time range
+            </summary>
+        </member>
+        <member name="P:MeetBase.TimeRange.Start">
+            <summary>
+            The start
+            </summary>
+        </member>
+        <member name="P:MeetBase.TimeRange.End">
+            <summary>
+            The end
+            </summary>
+        </member>
+        <member name="P:MeetBase.TimeRange.MeetBase#IReadOnlyRangeable{System#TimeOnly}#Minimum">
+            <summary>
+            The minimum value
+            </summary>
+        </member>
+        <member name="P:MeetBase.TimeRange.MeetBase#IReadOnlyRangeable{System#TimeOnly}#Maximum">
+            <summary>
+            The maximum value
+            </summary>
+        </member>
+        <member name="M:MeetBase.TimeRange.#ctor(System.TimeOnly,System.TimeOnly)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="value1">The first value</param>
+            <param name="value2">The second value</param>
+        </member>
+        <member name="T:MeetBase.ExceptionExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Exception"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.ExceptionExtensions.AggregateExceptionMessages(System.Exception)">
+            <summary>
+            Aggregates the <see cref="P:System.Exception.Message"/> in the <paramref name="exception"/> exception stack trace
+            </summary>
+            <param name="exception">The exception</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.ExpressionExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Linq.Expressions.Expression"/>s
+            </summary>
+        </member>
+        <member name="M:MeetBase.ExpressionExtensions.GetPropertyInfo``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Used for analyzing an expression like x => x.Property and returning the
+            <see cref="T:System.Reflection.PropertyInfo"/> of the accessed property.
+            </summary>
+            <typeparam name="TSource">The type of the container of the property</typeparam>
+            <typeparam name="TProperty">The type of the target property</typeparam>
+            <param name="propertyExpression">The expression targeting the property</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ExpressionExtensions.GetPropertyInfo``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Used for analyzing an expression like () => SomeInstance.Property and returning the
+            <see cref="T:System.Reflection.PropertyInfo"/> of the accessed property.
+            </summary>
+            <typeparam name="TProperty">The type of the target property</typeparam>
+            <param name="propertyExpression">The expression targeting the property</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.ExpressionExtensions.GetMemberExpression(System.Linq.Expressions.Expression)">
+            <summary>
+            Returns the <see cref="T:System.Linq.Expressions.MemberExpression"/> from the specified <paramref name="expression"/>
+            </summary>
+            <param name="expression">The expression</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.IEnumerableExtensions">
             <summary>
             Extension methods associated with <see cref="T:System.Collections.IEnumerable"/> and <see cref="T:System.Collections.Generic.IEnumerable`1"/>
@@ -385,38 +2745,6 @@
             <param name="source">The source</param>
             <param name="separator">The separator</param>
             <returns></returns>
-        </member>
-        <member name="T:MeetBase.NavigationManagerExtensions">
-            <summary>
-            Extension methods for the <see cref="T:Microsoft.AspNetCore.Components.NavigationManager"/>
-            </summary>
-        </member>
-        <member name="M:MeetBase.NavigationManagerExtensions.NavigateTo(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String)">
-            <summary>
-            Navigates to the specified <paramref name="route"/>
-            </summary>
-            <param name="navigationManager">The navigation manager</param>
-            <param name="route">The route</param>
-            <param name="value">The route value</param>
-        </member>
-        <member name="M:MeetBase.NavigationManagerExtensions.NavigateTo(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
-            <summary>
-            Navigates to the specified <paramref name="route"/>
-            </summary>
-            <param name="navigationManager">The navigation manager</param>
-            <param name="route">The member route</param>
-            <param name="value">The route value</param>
-            <param name="queryParams">The optional query parameter values</param>
-        </member>
-        <member name="M:MeetBase.NavigationManagerExtensions.NavigateTo(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.String,System.String)">
-            <summary>
-            Navigates to the specified <paramref name="route"/>
-            </summary>
-            <param name="navigationManager">The navigation manager</param>
-            <param name="route">The member route</param>
-            <param name="value">The route value</param>
-            <param name="queryKey">The query parameter key</param>
-            <param name="queryValue">The query parameter value</param>
         </member>
         <member name="T:MeetBase.StringExtensions">
             <summary>
@@ -483,6 +2811,25 @@
             <param name="type">The type</param>
             <returns></returns>
         </member>
+        <member name="T:MeetBase.IFailableHelpers">
+            <summary>
+            Helper methods for <see cref="T:MeetBase.IFailable"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.IFailableHelpers.GetStringRepresentation(MeetBase.IFailable)">
+            <summary>
+            Gets the string representation of the specified <paramref name="failable"/>
+            </summary>
+            <param name="failable">The failable</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.IFailableHelpers.GetStringRepresentation``1(MeetBase.IFailable{``0})">
+            <summary>
+            Gets the string representation of the specified <paramref name="failable"/>
+            </summary>
+            <param name="failable">The failable</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.MeetBaseHelpers">
             <summary>
             Helper methods
@@ -545,6 +2892,811 @@
             </summary>
             <param name="type">The type that implements the <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface</param>
             <returns></returns>3
+        </member>
+        <member name="M:MeetBase.TypeHelpers.GetNonNullableType(System.Type)">
+            <summary>
+            Gets the T from the <see cref="T:System.Nullable`1"/> of the specified <paramref name="type"/>
+            when the <paramref name="type"/> is nullable, otherwise it returns the type
+            </summary>
+            <param name="type">The type</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.GetNullableType(System.Type)">
+            <summary>
+            Uses the specified <paramref name="type"/> to create the <see cref="T:System.Nullable`1"/>
+            when the <paramref name="type"/> is a value type, otherwise it returns the <paramref name="type"/>
+            </summary>
+            <param name="type">The type whose nullable equivalent to get</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.GetDefaultValue(System.Type)">
+            <summary>
+            Gets the default value of the specified <paramref name="type"/>
+            </summary>
+            <param name="type">The type</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.ConvertNumber(System.Object,System.Type)">
+            <summary>
+            Converts the specified <paramref name="number"/> from its current type to
+            the specified <paramref name="type"/>
+            </summary>
+            <param name="number">The number</param>
+            <param name="type">The numeric type to convert the number</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.AddNumbers(System.Type,System.Object,System.Object)">
+            <summary>
+            Adds the specified <paramref name="number1"/> to the specified <paramref name="number2"/>
+            and returns a number of type <paramref name="type"/>
+            </summary>
+            <param name="type">The type of the numbers</param>
+            <param name="number1">The first number</param>
+            <param name="number2">The second number</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.AddNumbers(System.Type,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Sums the specified <paramref name="numbers"/> and returns a number of type <paramref name="type"/>
+            </summary>
+            <param name="type">The type of the numbers</param>
+            <param name="numbers">The numbers</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.SubtractNumbers(System.Type,System.Object,System.Object)">
+            <summary>
+            Subtracts the specified <paramref name="subtracter"/> from the specified <paramref name="subtrahend"/>
+            and returns a number of type <paramref name="type"/>
+            </summary>
+            <param name="type">The type of the numbers</param>
+            <param name="subtrahend">The subtrahend</param>
+            <param name="subtracter">The subtracter</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.MultiplyNumbers(System.Type,System.Object,System.Object)">
+            <summary>
+            Multiplies the specified <paramref name="number1"/> with the specified <paramref name="number2"/>
+            and returns a number of type <paramref name="type"/>
+            </summary>
+            <param name="type">The type of the numbers</param>
+            <param name="number1">The first number</param>
+            <param name="number2">The second number</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.DivideNumbers(System.Type,System.Object,System.Object)">
+            <summary>
+            Divides the specified <paramref name="numerator"/> with the specified <paramref name="denominator"/>
+            and returns a number of type <paramref name="type"/>
+            </summary>
+            <param name="type">The type of the numbers</param>
+            <param name="numerator">The numerator</param>
+            <param name="denominator">The denominator</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.AbsoluteNumber(System.Type,System.Object)">
+            <summary>
+            Gets the absolute representation of the specified <paramref name="number"/>
+            and returns a number of type <paramref name="type"/>
+            </summary>
+            <param name="type">The type of the numbers</param>
+            <param name="number">The number</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.MinNumber(System.Type,System.Object,System.Object)">
+            <summary>
+            Gets the minimum value of the specified numbers and returns a number 
+            of type <paramref name="type"/>.
+            NOTE: When both numbers are null then null is returned, otherwise the
+                  null number is casted to a 0!
+            </summary>
+            <param name="type">The type of the numbers</param>
+            <param name="number1">The first number</param>
+            <param name="number2">The second number</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TypeHelpers.MaxNumber(System.Type,System.Object,System.Object)">
+            <summary>
+            Gets the maximum value of the specified numbers and returns a number 
+            of type <paramref name="type"/>.
+            NOTE: When both numbers are null then null is returned, otherwise the
+                  null number is casted to a 0!
+            </summary>
+            <param name="type">The type of the numbers</param>
+            <param name="number1">The first number</param>
+            <param name="number2">The second number</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.IAddressable">
+            <summary>
+            Provides abstractions for an object that has an address
+            </summary>
+        </member>
+        <member name="P:MeetBase.IAddressable.Address">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetBase.IAddressable.Longitude">
+            <summary>
+            The longitude
+            </summary>
+        </member>
+        <member name="P:MeetBase.IAddressable.Latitude">
+            <summary>
+            The latitude
+            </summary>
+        </member>
+        <member name="T:MeetBase.IColorable">
+            <summary>
+            Provides abstractions for a model that provides a color
+            </summary>
+        </member>
+        <member name="P:MeetBase.IColorable.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="T:MeetBase.IConditionable">
+            <summary>
+            Provides abstractions for an object with an assignable logical condition state
+            </summary>
+        </member>
+        <member name="P:MeetBase.IConditionable.Condition">
+            <summary>
+            The condition.
+            </summary>
+        </member>
+        <member name="P:MeetBase.IConditionable.MeetBase#IReadOnlyConditionable#Condition">
+            <summary>
+            The condition.
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyConditionable">
+            <summary>
+            Provides abstractions for an object with a logical condition state
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyConditionable.Condition">
+            <summary>
+            The condition.
+            </summary>
+        </member>
+        <member name="T:MeetBase.ICustomerIdentifiable">
+            <summary>
+            Provides abstractions for an object that has a customer id
+            </summary>
+        </member>
+        <member name="P:MeetBase.ICustomerIdentifiable.CustomerId">
+            <summary>
+            The customer id
+            </summary>
+        </member>
+        <member name="T:MeetBase.ICustomerIdentifiable`1">
+            <summary>
+            Provides abstractions for an object that has a customer id
+            </summary>
+        </member>
+        <member name="P:MeetBase.ICustomerIdentifiable`1.CustomerId">
+            <summary>
+            The customer id
+            </summary>
+        </member>
+        <member name="P:MeetBase.ICustomerIdentifiable`1.MeetBase#ICustomerIdentifiable#CustomerId">
+            <summary>
+            The customer id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IDateCreatable">
+            <summary>
+            Provides abstractions for an object that has can be marked as created at a specific date
+            </summary>
+        </member>
+        <member name="P:MeetBase.IDateCreatable.DateCreated">
+            <summary>
+            The creation date
+            </summary>
+        </member>
+        <member name="P:MeetBase.IDateCreatable.MeetBase#IReadOnlyDateCreatable#DateCreated">
+            <summary>
+            The creation date
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyDateCreatable">
+            <summary>
+            Provides abstractions for an object that has a creation date
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyDateCreatable.DateCreated">
+            <summary>
+            The creation date
+            </summary>
+        </member>
+        <member name="T:MeetBase.IDepartmentIdentifiable">
+            <summary>
+            Provides abstractions for an object that has a department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IDepartmentIdentifiable.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IDepartmentIdentifiable`1">
+            <summary>
+            Provides abstractions for an object that has a department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IDepartmentIdentifiable`1.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IDepartmentIdentifiable`1.MeetBase#IDepartmentIdentifiable#DepartmentId">
+            <summary>
+            The company id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IDescriptable">
+            <summary>
+            Provides abstractions for an object that has a description
+            </summary>
+        </member>
+        <member name="P:MeetBase.IDescriptable.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="T:MeetBase.IEmailable">
+            <summary>
+            Provides abstractions for an object that has an assignable email
+            </summary>
+        </member>
+        <member name="P:MeetBase.IEmailable.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="T:MeetBase.IFailable">
+            <summary>
+            Provides abstractions for an object that can fail its task
+            </summary>
+        </member>
+        <member name="P:MeetBase.IFailable.Success">
+            <summary>
+            The instance of the <see cref="T:MeetBase.IFailable"/> that indicates a successful operation
+            </summary>
+        </member>
+        <member name="P:MeetBase.IFailable.OperationAborted">
+            <summary>
+            The instance of the <see cref="T:MeetBase.IFailable"/> that is used for indicating an operation
+            that was aborted with a hidden error
+            </summary>
+        </member>
+        <member name="P:MeetBase.IFailable.Exception">
+            <summary>
+            The exception that was thrown
+            </summary>
+        </member>
+        <member name="P:MeetBase.IFailable.ErrorType">
+            <summary>
+            The error type
+            </summary>
+        </member>
+        <member name="P:MeetBase.IFailable.ErrorMessage">
+            <summary>
+            The error message
+            </summary>
+        </member>
+        <member name="P:MeetBase.IFailable.IsSuccessful">
+            <summary>
+            A flag indicating whether the task was successful or not
+            </summary>
+        </member>
+        <member name="M:MeetBase.IFailable.FromException(System.Exception)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.IFailable"/> from the specified <paramref name="ex"/>
+            </summary>
+            <param name="ex">The exception</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.IFailable.FromErrorMessage(System.String)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.IFailable"/> from the specified <paramref name="errorMessage"/>
+            </summary>
+            <param name="errorMessage">The error message</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.IFailable.FromResult``1(``0)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.IFailable`1"/> that represents the specified <paramref name="result"/>
+            </summary>
+            <typeparam name="T">The type of the result</typeparam>
+            <param name="result">The result</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.IFailable.FromException``1(System.Exception)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.IFailable`1"/> that represents the specified <paramref name="ex"/>
+            </summary>
+            <typeparam name="T">The type of the result</typeparam>
+            <param name="ex">The exception</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.IFailable.FromErrorMessage``1(System.String)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Failable`1"/> that represents the specified <paramref name="errorMessage"/>
+            </summary>
+            <typeparam name="T">The type of the result</typeparam>
+            <param name="errorMessage">The error message</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.IFailable.FromAbortedOperation``1">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.IFailable`1"/> that represents an aborted operation
+            </summary>
+            <typeparam name="T">The type of the result</typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.IFailable`1">
+            <summary>
+            A <see cref="T:MeetBase.IFailable"/> that contains a result
+            </summary>
+            <typeparam name="TResult">The type of the result</typeparam>
+        </member>
+        <member name="P:MeetBase.IFailable`1.OperationAborted">
+            <summary>
+            The instance of the <see cref="T:MeetBase.IFailable`1"/> that is used for indicating an operation
+            that was aborted with a hidden error
+            </summary>
+        </member>
+        <member name="P:MeetBase.IFailable`1.Result">
+            <summary>
+            The result
+            </summary>
+        </member>
+        <member name="T:MeetBase.IIdentifiable">
+            <summary>
+            Provides abstractions for an object that can be identified
+            </summary>
+        </member>
+        <member name="P:MeetBase.IIdentifiable.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IIdentifiable`1">
+            <summary>
+            Provides abstractions for an object that can be identified
+            </summary>
+            <typeparam name="T">The type of the key</typeparam>
+        </member>
+        <member name="P:MeetBase.IIdentifiable`1.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IIdentifiable`1.MeetBase#IIdentifiable#Id">
+            <summary>
+            The id
+            </summary>
+        </member>
+        <member name="T:MeetBase.ISourceIdentifiable">
+            <summary>
+            Provides abstractions for an object that has a source and an id
+            </summary>
+        </member>
+        <member name="P:MeetBase.ISourceIdentifiable.Source">
+            <summary>
+            The <see cref="P:MeetBase.IIdentifiable.Id"/> of the object that was used for creating the embedded object
+            </summary>
+        </member>
+        <member name="T:MeetBase.ISourceIdentifiable`1">
+            <summary>
+            Provides abstractions for an object that has a source and an id
+            </summary>
+        </member>
+        <member name="P:MeetBase.ISourceIdentifiable`1.Source">
+            <summary>
+            The <see cref="P:MeetBase.IIdentifiable.Id"/> of the object that was used for creating the embedded object
+            </summary>
+        </member>
+        <member name="P:MeetBase.ISourceIdentifiable`1.MeetBase#ISourceIdentifiable#Source">
+            <summary>
+            The <see cref="P:MeetBase.IIdentifiable.Id"/> of the object that was used for creating the embedded object
+            </summary>
+        </member>
+        <member name="T:MeetBase.IEmbeddableIdentifiable">
+            <summary>
+            Provides abstractions for an object that has a source and an id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IEmbeddableIdentifiable`1">
+            <summary>
+            Provides abstractions for an object that has a source and an id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IImageable">
+            <summary>
+            Provides abstractions for a model that provides URL for accessing an image
+            </summary>
+        </member>
+        <member name="P:MeetBase.IImageable.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="T:MeetBase.IIncludable`1">
+            <summary>
+            Provides abstractions for an object that can include or exclude other objects based on identifiers
+            </summary>
+        </member>
+        <member name="P:MeetBase.IIncludable`1.Include">
+            <summary>
+            Limit the result set by including only resource with specific ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.IIncludable`1.Exclude">
+            <summary>
+            Limit the result set by excluding resource with specific ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.IIncludable`1.MeetBase#IReadOnlyIncludable{T}#Include">
+            <summary>
+            Limit the result set by including only resource with specific ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.IIncludable`1.MeetBase#IReadOnlyIncludable{T}#Exclude">
+            <summary>
+            Limit the result set by excluding resource with specific ids
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyIncludable`1">
+            <summary>
+            Provides abstractions for an object that can include or exclude other objects based on identifiers
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyIncludable`1.Include">
+            <summary>
+            Limit the result set by including only resource with specific ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyIncludable`1.Exclude">
+            <summary>
+            Limit the result set by excluding resource with specific ids
+            </summary>
+        </member>
+        <member name="T:MeetBase.IMemberIdentifiable">
+            <summary>
+            Provides abstractions for an object that has a member id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IMemberIdentifiable.MemberId">
+            <summary>
+            The member id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IMemberIdentifiable`1">
+            <summary>
+            Provides abstractions for an object that has a member id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IMemberIdentifiable`1.MemberId">
+            <summary>
+            The member id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IMemberIdentifiable`1.MeetBase#IMemberIdentifiable#MemberId">
+            <summary>
+            The member id
+            </summary>
+        </member>
+        <member name="T:MeetBase.INameable">
+            <summary>
+            Provides abstractions for a model that provides a name
+            </summary>
+        </member>
+        <member name="P:MeetBase.INameable.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="T:MeetBase.INoteable">
+            <summary>
+            Provides abstractions for an object that can be noted
+            </summary>
+        </member>
+        <member name="P:MeetBase.INoteable.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.INoteable.MeetBase#IReadOnlyNoteable#Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyNoteable">
+            <summary>
+            Provides abstractions for an object with a note
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyNoteable.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="T:MeetBase.IOffsetable">
+            <summary>
+            Provides abstractions for an object that can set its offset
+            </summary>
+        </member>
+        <member name="P:MeetBase.IOffsetable.Offset">
+            <summary>
+            The offset
+            </summary>
+        </member>
+        <member name="P:MeetBase.IOffsetable.MeetBase#IReadOnlyOffsetable#Offset">
+            <summary>
+            The offset
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyOffsetable">
+            <summary>
+            Provides abstractions for an object with an offset
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyOffsetable.Offset">
+            <summary>
+            The offset
+            </summary>
+        </member>
+        <member name="T:MeetBase.IOrderable">
+            <summary>
+            Provides abstractions for an object that has assignable ordering rules
+            </summary>
+        </member>
+        <member name="P:MeetBase.IOrderable.Rules">
+            <summary>
+            The ordering rules
+            </summary>
+        </member>
+        <member name="P:MeetBase.IOrderable.MeetBase#IReadOnlyOrderable#Rules">
+            <summary>
+            The ordering rules
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyOrderable">
+            <summary>
+            Provides abstractions for an object with ordering rules
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyOrderable.Rules">
+            <summary>
+            The order rules
+            </summary>
+        </member>
+        <member name="T:MeetBase.IPaginatable">
+            <summary>
+            Provides abstractions for an object that provides assignable pagination information
+            </summary>
+        </member>
+        <member name="P:MeetBase.IPaginatable.Page">
+            <summary>
+            The index of the page starting from 0.
+            </summary>
+        </member>
+        <member name="P:MeetBase.IPaginatable.PerPage">
+            <summary>
+            Maximum number of items to be returned in result set.
+            </summary>
+        </member>
+        <member name="P:MeetBase.IPaginatable.MeetBase#IReadOnlyPaginatable#Page">
+            <summary>
+            The index of the page starting from 0.
+            </summary>
+        </member>
+        <member name="P:MeetBase.IPaginatable.MeetBase#IReadOnlyPaginatable#PerPage">
+            <summary>
+            Maximum number of items to be returned in result set.
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyPaginatable">
+            <summary>
+            Provides abstractions for an object that contains pagination information
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyPaginatable.Page">
+            <summary>
+            The index of the page starting from 0.
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyPaginatable.PerPage">
+            <summary>
+            Maximum number of items to be returned in result set.
+            </summary>
+        </member>
+        <member name="T:MeetBase.IParentable`1">
+            <summary>
+            Provides abstractions for an object that has an assignable parent
+            </summary>
+        </member>
+        <member name="P:MeetBase.IParentable`1.Parent">
+            <summary>
+            The parent
+            </summary>
+        </member>
+        <member name="P:MeetBase.IParentable`1.MeetBase#IReadOnlyParentable{T}#Parent">
+            <summary>
+            The parent
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyParentable`1">
+            <summary>
+            Provides abstractions for an object with a parent
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyParentable`1.Parent">
+            <summary>
+            The parent
+            </summary>
+        </member>
+        <member name="T:MeetBase.IPayable">
+            <summary>
+            Provides abstractions for an object that has assignable values that
+            represent a payment
+            </summary>
+        </member>
+        <member name="P:MeetBase.IPayable.Amount">
+            <summary>
+            The amount
+            </summary>
+        </member>
+        <member name="P:MeetBase.IPayable.MeetBase#IReadOnlyPayable#Amount">
+            <summary>
+            The amount
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyPayable">
+            <summary>
+            Provides abstractions for an object that has values that
+            represent a payment
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyPayable.Amount">
+            <summary>
+            The amount
+            </summary>
+        </member>
+        <member name="T:MeetBase.IPhoneable">
+            <summary>
+            Provides abstractions for an object that has an assignable phone number
+            </summary>
+        </member>
+        <member name="P:MeetBase.IPhoneable.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="T:MeetBase.IProfessorIdentifiable">
+            <summary>
+            Provides abstractions for an object that has a professor id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IProfessorIdentifiable.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IProfessorIdentifiable`1">
+            <summary>
+            Provides abstractions for an object that has a professor id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IProfessorIdentifiable`1.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IProfessorIdentifiable`1.MeetBase#IProfessorIdentifiable#ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyRangeable`1">
+            <summary>
+            Provides abstractions for an object that has values that define a range
+            </summary>
+            <typeparam name="T">The type of the values</typeparam>
+        </member>
+        <member name="P:MeetBase.IReadOnlyRangeable`1.Minimum">
+            <summary>
+            The minimum value
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyRangeable`1.Maximum">
+            <summary>
+            The maximum value
+            </summary>
+        </member>
+        <member name="T:MeetBase.ITotalDescriptable">
+            <summary>
+            Provides abstractions for an object that has a description and a small description
+            </summary>
+        </member>
+        <member name="P:MeetBase.ITotalDescriptable.SmallDescription">
+            <summary>
+            The small description
+            </summary>
+        </member>
+        <member name="T:MeetBase.IUniversityIdentifiable">
+            <summary>
+            Provides abstractions for an object that has a university id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IUniversityIdentifiable.UniversityId">
+            <summary>
+            The university id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IUniversityIdentifiable`1">
+            <summary>
+            Provides abstractions for an object that has a university id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IUniversityIdentifiable`1.UniversityId">
+            <summary>
+            The university id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IUniversityIdentifiable`1.MeetBase#IUniversityIdentifiable#UniversityId">
+            <summary>
+            The company id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IUserIdentifiable">
+            <summary>
+            Provides abstractions for an object that has a user id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IUserIdentifiable.UserId">
+            <summary>
+            The user id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IUserIdentifiable`1">
+            <summary>
+            Provides abstractions for an object that has a user id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IUserIdentifiable`1.UserId">
+            <summary>
+            The user id
+            </summary>
+        </member>
+        <member name="P:MeetBase.IUserIdentifiable`1.MeetBase#IUserIdentifiable#UserId">
+            <summary>
+            The user id
+            </summary>
+        </member>
+        <member name="T:MeetBase.IVectorImageable">
+            <summary>
+            Provides abstractions for an object that presents a vector image
+            </summary>
+        </member>
+        <member name="P:MeetBase.IVectorImageable.VectorSource">
+            <summary>
+            The source of the image
+            </summary>
+        </member>
+        <member name="T:MeetBase.IIconPathDatable">
+            <summary>
+            Provides abstractions for an object that presents an icon path
+            </summary>
+        </member>
+        <member name="P:MeetBase.IIconPathDatable.IconPathData">
+            <summary>
+            The icon path data
+            </summary>
         </member>
         <member name="T:MeetBase.EnglishLocalization">
             <summary>
