@@ -1,22 +1,28 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace MeetCore
+namespace MeetBase.Blazor
 {
-    public partial class Index
+    public partial class ImageButton
     {
         #region Public Properties
 
         /// <summary>
-        /// The username
+        /// The image's URI
         /// </summary>
         [Parameter]
-        public string? Username { get; set; }
+        public Uri? ImageUri { get; set; }
 
         /// <summary>
-        /// The password
+        /// The image's label
         /// </summary>
         [Parameter]
-        public string? Password { get; set; }
+        public string? ImageLabel { get; set; }
+
+        /// <summary>
+        /// The image's style
+        /// </summary>
+        [Parameter]
+        public string? ImageStyle { get; set; }
 
         #endregion
 
@@ -25,12 +31,11 @@ namespace MeetCore
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Index() : base()
+        public ImageButton() : base()
         {
 
         }
 
         #endregion
-
     }
 }

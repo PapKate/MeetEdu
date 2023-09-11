@@ -7,66 +7,91 @@
     {
         #region Public Properties
 
+        #region Typography
+
         /// <summary>
         /// The font family
         /// </summary>
         public const string FontFamilyVariable = "--fontFamily";
 
         /// <summary>
-        /// The fore color
+        /// The font weight
         /// </summary>
-        public const string ForeColorVariable = "--foreColor";
+        public const string FontWeightVariable = "--fontWeight";
 
         /// <summary>
-        /// The back color
+        /// The font size
         /// </summary>
-        public const string BackColorVariable = "--backColor";
+        public const string FontSizeVariable = "--fontSize";
+
+        #endregion
+
+        #region Dimensions
 
         /// <summary>
-        /// The border color
+        /// The width
         /// </summary>
-        public const string BorderColorVariable = "--borderColor";
+        public const string WidthVariable = "--width";
+
+        /// <summary>
+        /// The height
+        /// </summary>
+        public const string HeightVariable = "--height";
+
+        #endregion
+
+        #region Background
+
+        /// <summary>
+        /// The background
+        /// </summary>
+        public const string BackgroundVariable = "--background";
+
+        #endregion
+
+        #region Foreground
+
+        /// <summary>
+        /// The foreground
+        /// </summary>
+        public const string ForegroundVariable = "--foreground";
+
+        #endregion
+
+        #region Border
+
+        /// <summary>
+        /// The border radius
+        /// </summary>
+        public const string BorderRadiusVariable = "--borderRadius";
+
+        /// <summary>
+        /// The border thickness/width
+        /// </summary>
+        public const string BorderThicknessVariable = "--borderThickness";
+
+        /// <summary>
+        /// The border brush/color
+        /// </summary>
+        public const string BorderBrushVariable = "--borderBrush";
+
+        /// <summary>
+        /// The border style
+        /// </summary>
+        public const string BorderStyleVariable = "--borderStyle";
+
+        /// <summary>
+        /// The box shadow
+        /// </summary>
+        public const string BoxShadowVariable = "--boxShadow";
+
+        #endregion
+
+        /// <summary>
+        /// The flex direction
+        /// </summary>
+        public const string FlexDirectionVariable = "--flexDirection";
 
         #endregion
     }
-
-    /// <summary>
-    /// Extension methods for <see cref="CssVariables"/>
-    /// </summary>
-    public static class CssVariableExtensions
-    {
-        #region Public Methods
-
-        /// <summary>
-        /// Sets the <paramref name="value"/> to the CSS variable with the specified <paramref name="name"/>
-        /// <code>--name: value;</code>
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="value">The value</param>
-        /// <returns></returns>
-        public static string SetCssVariable(this string name, object value)
-            => $"{name}: {value};";
-
-        /// <summary>
-        /// Sets the <paramref name="value"/> to the CSS variable with the specified <paramref name="name"/>
-        /// <code>--name: value;</code>
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="value">The value</param>
-        /// <returns></returns>
-        public static string SetCssColor(this string name, string value)
-            => $"{name}: {(value.IsHexValue() ? value.NormalizedColor() : value)};";
-
-        /// <summary>
-        /// Gets the CSS variable with the specified <paramref name="name"/>
-        /// <code>var(--name)</code>
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <returns></returns>
-        public static string GetCssVariable(this string name)
-            => $"var({name})";
-
-        #endregion
-    }
-
 }

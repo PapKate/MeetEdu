@@ -1,22 +1,25 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace MeetCore
+namespace MeetBase.Blazor
 {
-    public partial class Index
+    /// <summary>
+    /// A button that contains only a vector image
+    /// </summary>
+    public partial class IconButton : IVectorImagable
     {
         #region Public Properties
 
         /// <summary>
-        /// The username
+        /// The vector source
         /// </summary>
         [Parameter]
-        public string? Username { get; set; }
+        public VectorSource? VectorSource { get; set; }
 
         /// <summary>
-        /// The password
+        /// The icon's CSS style
         /// </summary>
         [Parameter]
-        public string? Password { get; set; }
+        public string? IconStyle { get; set; }
 
         #endregion
 
@@ -25,12 +28,11 @@ namespace MeetCore
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Index() : base()
+        public IconButton() : base()
         {
 
         }
 
         #endregion
-
     }
 }

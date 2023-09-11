@@ -1,5 +1,7 @@
 ﻿using MudBlazor;
 
+using static MeetBase.Blazor.PaletteColors;
+
 namespace MeetCore.Shared
 {
     public partial class MainLayout
@@ -31,7 +33,26 @@ namespace MeetCore.Shared
                 },
                 Palette = new()
                 {
-                    
+                    Primary = Amber,
+                    PrimaryContrastText = DarkGray,
+                    Secondary = Persimmon,
+                    SecondaryContrastText = White,
+                    Tertiary = Pink,
+                    TertiaryContrastText = White,
+                    Info = Blue,
+                    InfoContrastText = White,
+                    Success = Green,
+                    SuccessContrastText = White,
+                    Warning = Yellow,
+                    WarningContrastText = DarkGray,
+                    Error = Red,
+                    ErrorContrastText = White,
+                    Dark = DarkGray,
+                    DarkContrastText = White,
+                    TextPrimary = DarkGray,
+                    TextSecondary = Gray,
+                    TextDisabled = LightGray,
+                    ActionDisabledBackground = LightGray
                 }
             };
         }

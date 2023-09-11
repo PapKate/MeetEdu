@@ -5,8 +5,8 @@
 @namespace MeetEdu
 @using MeetBase.Blazor;
 
-<div class="modelContainer departmentPreviewContainer" style="@BorderColorVariable.SetCssColor(Orange)">
-    <div class="modelRibbonContainer" style="@BackColorVariable.SetCssColor(Orange) @ForeColorVariable.SetCssColor(Orange.DarkOrWhite())">
+<div class="modelContainer departmentPreviewContainer" style="@BorderBrushVariable.SetCssColor(Orange)">
+    <div class="modelRibbonContainer" style="@BackgroundVariable.SetCssColor(Orange) @ForegroundVariable.SetCssColor(Orange.DarkOrWhite())">
         <div class="modelEmptySpace"></div>
         <div class="modelRibbon">
             <div class="modelRibbonInfoContainer">
@@ -20,11 +20,11 @@
                 </div>
             </div>
 
-      @*       <IconButton BackColor="transparent" 
+            <IconButton BackColor="transparent" 
                         ForeColor="@Orange.DarkOrWhite()" 
                         VectorSource="@IconPaths.HeartOutlinePath" 
                         HasAnimation="false"
-                        CssClasses="departmentPreviewRibbonHeartContainer" /> *@
+                        CssClasses="departmentPreviewRibbonHeartContainer" />
         </div>
     </div>
 
@@ -47,7 +47,7 @@
 
         <div class="modelWeeklyScheduleContainer">
             <div class="modelWeeklySchedule">
-                <span class="modelWeeklyScheduleTitle" style="@ForeColorVariable.SetCssColor(Orange)">Operating days & hours</span>
+                <span class="modelWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(Orange)">Operating days & hours</span>
                 <span class="modelWeeklyScheduleNote">Any other time outside of the working schedule of the secretary office needs prior notice.</span>
             </div>
             <div class="modelWeeklyScheduleDayContainer">

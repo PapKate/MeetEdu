@@ -11,6 +11,18 @@ namespace MeetBase
         #region Public Methods
 
         /// <summary>
+        /// One-line for each
+        /// </summary>
+        /// <typeparam name="T">The type of the items</typeparam>
+        /// <param name="source">The source</param>
+        /// <param name="action">The action to run</param>
+        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+        {
+            foreach (var item in source)
+                action(item);
+        }
+
+        /// <summary>
         /// Checks if the specified <paramref name="enumerable"/> is null or 
         /// if it doesn't have any items.
         /// </summary>

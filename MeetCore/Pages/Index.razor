@@ -7,9 +7,9 @@
 
 <PageTitle>Index</PageTitle>
 
-@* <div class="backgroundContainer">
-    <img class="backgroundImageThirdBottomRight" src="./icons/Group.png" alt="background">
-    <img class="backgroundImageSecondBottomRight" src="./icons/Group.png" alt="background">
+<div class="backgroundContainer">
+    <img class="backImage" src="./icons/backFull.png" alt="background">
+  @*   <img class="backgroundImageSecondBottomRight" src="./icons/Group.png" alt="background">
     <img class="backgroundImageFirstBottomRight" src="./icons/Group.png" alt="background">
     <img class="backgroundImageSecondBottomLeft" src="./icons/Group.png" alt="background">
     <img class="backgroundImageFirstBottomLeft" src="./icons/Group.png" alt="background">
@@ -17,10 +17,12 @@
     <img class="backgroundImageSecondTopLeft" src="./icons/Group.png" alt="background">
     <img class="backgroundImageFirstTopLeft" src="./icons/Group.png" alt="background">
     <img class="backgroundImageSecondTopRight" src="./icons/Group.png" alt="background">
-    <img class="backgroundImageFirstTopRight" src="./icons/Group.png" alt="background">
-</div> *@
+    <img class="backgroundImageFirstTopRight" src="./icons/Group.png" alt="background"> *@
+</div>
 
-<Header AppName="@MeetCoreContants.AppName" ForeColor="@White" BackColor="@Amber" />
+<Header AppName="@MeetCoreContants.AppName" 
+        ForeColor="@White" 
+        BackColor="@Amber" />
 
 <div class="loginPageContainer">
     <div class="loginContainer">
@@ -32,13 +34,30 @@
             </h1>
         </div>
 
-        <MudTextField @bind-Value="@Username"
-                        Placeholder="Username"
-                        DisableUnderLine="false"
-                        FullWidth="true"
-                        Variant="Variant.Text"/>
+        <div class="loginInputsContainer">
+            <MudTextField @bind-Value="@Username"
+                            Placeholder="Username"
+                            Class="loginInput"
+                            DisableUnderLine="true"
+                            FullWidth="true"
+                            Variant="Variant.Text"
+                            Adornment="Adornment.Start" 
+                            AdornmentColor="@Color.Primary"
+                            AdornmentIcon="@MudIconPaths.Account" />
+            <MudTextField @bind-Value="@Password"
+                          Placeholder="Password"
+                          InputType="@InputType.Password"
+                          Class="loginInput"
+                          DisableUnderLine="true"
+                          FullWidth="true"
+                          Variant="Variant.Text"
+                          Adornment="Adornment.Start"
+                          AdornmentColor="@Color.Primary"
+                          AdornmentIcon="@MudIconPaths.KeyVariant" />
 
+        </div>
     </div>
+    <span class="alternativeActionText">Don't have an account? Sign up</span>
 </div>
 
 
@@ -46,20 +65,24 @@
    
     .backgroundContainer {
         position: absolute;
-        top: 0;
+        top: 0px;
         left: 0;
         width: 100%;
         height: 100vh;
+        overflow: hidden;
         z-index: -1;
     }
 
-    
-
+    .backImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
     .loginPageContainer {
          position : relative;
          width: 100%;
-         height: 100%;
+         min-height: 92vh;
          display: flex;
          flex-direction: column;
          justify-content: center;
@@ -69,14 +92,76 @@
     .loginContainer {
         position: relative;
         width: 60%;
+        max-width: 620px;
         height: fit-content;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: @VeryLargePadding;
-        background: white;
+        padding: @XXLargePadding;
+        background: @White.NormalizedColor();
+        border-radius: @LargeBorderRadius;
+        box-shadow: @BoxShadow;
+    }
 
+    .loginLogoAndNameContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loginLogoImage {
+        position: relative;
+        width: 32%;
+        height: auto;
+        filter: @LightFilterDropShadow;
+    }
+
+    .loginAppName {
+        position: relative;
+        display: flex;
+        font-weight: 900;
+        font-size: 400%;
+    }
+
+    .loginAppNameFirst {
+        color: @Persimmon.NormalizedColor();
+    }
+
+    .loginAppNameSecond {
+        color: @Amber.NormalizedColor();
+    }
+
+    .loginInputsContainer {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: @XXLargePadding @VeryVeryLargePadding @VeryVeryLargePadding @VeryVeryLargePadding;
+        gap: @VeryVeryLargeGap;
+    }
+
+    .loginInput {
+        margin: 0;
+        padding: @NormalPadding;
+        border: 2px solid @Amber.NormalizedColor();
+        border-radius: @VeryLargeBorderRadius;
+    }
+
+        .loginInput .mud-input-control-input-container > div.mud-input.mud-input-text {
+            margin: 0;
+        }
+
+    .alternativeActionText {
+        position: relative;
+        top: 1rem;
+        font-size: @MediumFontSize;
     }
 
 </style>

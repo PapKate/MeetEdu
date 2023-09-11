@@ -2829,6 +2829,14 @@
             Extension methods associated with <see cref="T:System.Collections.IEnumerable"/> and <see cref="T:System.Collections.Generic.IEnumerable`1"/>
             </summary>
         </member>
+        <member name="M:MeetBase.IEnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            One-line for each
+            </summary>
+            <typeparam name="T">The type of the items</typeparam>
+            <param name="source">The source</param>
+            <param name="action">The action to run</param>
+        </member>
         <member name="M:MeetBase.IEnumerableExtensions.IsNullOrEmpty(System.Collections.IEnumerable)">
             <summary>
             Checks if the specified <paramref name="enumerable"/> is null or 

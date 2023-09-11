@@ -16,9 +16,9 @@ namespace MeetBase.Blazor
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
-        public static string NormalizedColor(this string value)
+        public static string NormalizedColor(this string? value)
         {
-            return value.IsHexValue() ? $"#{value}" : value;
+            return value.IsHexValue() ? $"#{value}" : value ?? string.Empty;
         }
 
         /// <summary>

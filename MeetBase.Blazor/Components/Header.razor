@@ -5,7 +5,7 @@
 
 @namespace MeetBase.Blazor
 
-<div class="headerContainer" style="@BackColorVariable.SetCssColor(BackColor!) @ForeColorVariable.SetCssColor(ForeColor!)">
+<div class="headerContainer" style="@BackgroundVariable.SetCssColor(BackColor!) @ForegroundVariable.SetCssColor(ForeColor!)">
     <h1 class="headerAppName">@AppName</h1>
        
     <div class="headerUserContainer">
@@ -28,8 +28,8 @@
         align-items: center;
         gap: @VeryVeryLargeGap;
         padding: @LargePadding @VeryLargePadding;
-        background: @BackColorVariable.GetCssVariable();
-        color: @ForeColorVariable.GetCssVariable();
+        background: @BackgroundVariable.GetCssVariable();
+        color: @ForegroundVariable.GetCssVariable();
         box-shadow: @BoxShadow;
         z-index: 99;
     }

@@ -64,7 +64,7 @@
         display: grid;
         grid-template-columns: 3fr 2fr;
         border-radius: @VeryLargeBorderRadius;
-        border: solid 1px @BorderColorVariable.GetCssVariable();
+        border: solid 1px @BorderBrushVariable.GetCssVariable();
     }
 
     .modelRibbonContainer {
@@ -76,8 +76,8 @@
         grid-template-columns: 200px 1fr;
         gap: @VeryLargeGap;
         padding: 0 @LargePadding;
-        background: @BackColorVariable.GetCssVariable();
-        color: @ForeColorVariable.GetCssVariable();
+        background: @BackgroundVariable.GetCssVariable();
+        color: @ForegroundVariable.GetCssVariable();
     }
 
     .modelRibbon {
@@ -137,7 +137,7 @@
         background: @White.NormalizedColor();
         border-radius: @LargeBorderRadius;
         filter: @LightFilterDropShadow;
-        border: solid 1px @BorderColorVariable.GetCssVariable();
+        border: solid 1px @BorderBrushVariable.GetCssVariable();
     }
 
     .modelImage {
@@ -183,7 +183,7 @@
     .modelWeeklyScheduleTitle {
         font-size: 112%;
         font-weight: 700;
-        color: @ForeColorVariable.GetCssVariable();
+        color: @ForegroundVariable.GetCssVariable();
     }
 
     .modelWeeklyScheduleNote {

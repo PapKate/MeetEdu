@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Components\Header.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Components\Header.razor" />
+    <None Include="Controls\Buttons\Button.razor" />
+    <None Include="Controls\Buttons\IconAndTextButton.razor" />
+    <None Include="Controls\Buttons\IconButton.razor" />
+    <None Include="Controls\Buttons\ImageButton.razor" />
+    <None Include="Controls\Buttons\MenuButton.razor" />
+    <None Include="Controls\Buttons\TextButton.razor" />
+    <None Include="Controls\Icons\VectorIcon.razor" />
   </ItemGroup>
 
 

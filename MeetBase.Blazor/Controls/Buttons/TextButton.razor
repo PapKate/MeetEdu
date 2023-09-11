@@ -1,0 +1,46 @@
+﻿@inherits BaseButton
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.Personalization
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.CssVariableHelpers
+
+
+@namespace MeetBase.Blazor
+
+<button disabled="@(!IsEnabled)" class="baseButton @CssClasses" id="@Id"
+        @onmouseover="@OnMouseOver"
+        @onmouseout="@OnMouseOut"
+        @onmousedown="OnMouseDown"
+        @onmouseup="OnMouseUp"
+        @onclick="@(async (e) => { await OnBaseButtonClick(e); })"
+        style="@SetBorderControlCssVariables(Width, Height, Background, Foreground, BoxShadow, BorderRadius, BorderStyle, BorderBrush, BorderThickness)
+               @Style">
+    <div class="buttonAnimationContainer">
+        <div class="@mButtonAnimation"
+             style="background-color:@(!Foreground.IsHexValue() ? White.HexToRGBA(0.4) : Foreground?.HexToRGBA(0.4) ?? string.Empty);
+                    animation-duration: @($"{RippleAnimationDuration.TotalSeconds}s");
+                    top: @mTop; left: @mLeft;">
+        </div>
+    </div>
+    <div class="textButtonContent" style="justify-content: @TextAlign;">
+        <span class="buttonText">
+            @Text
+        </span>
+    </div>
+
+    @ChildContent
+
+</button>
+
+<style>
+    .textButtonContent {
+        width: 100%;
+        height: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: @SmallGap;
+    }
+
+</style>

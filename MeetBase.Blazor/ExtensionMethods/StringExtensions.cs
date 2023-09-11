@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 using static MeetBase.Blazor.PaletteColors;
 
@@ -25,8 +26,8 @@ namespace MeetBase.Blazor
         /// </summary>
         /// <param name="s">The color to find the more fitting contrast</param>
         /// <returns></returns>
-        public static string DarkOrWhite(this string s)
-            => s == null ? DarkGray : s.ToColor().DarkOrWhite().ToHex();
+        public static string DarkOrWhite(this string? s)
+            => s.IsNullOrEmpty() ? DarkGray : s.ToColor().DarkOrWhite().ToHex();
 
         public static string ToLighterColor(this string s, uint level) => s.ToColor().ToLighterColor(level).ToHex();
         public static string ToDarkerColor(this string s, uint level) => s.ToColor().ToDarkerColor(level).ToHex();
@@ -36,12 +37,12 @@ namespace MeetBase.Blazor
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns></returns>
-        public static bool IsHexValue(this string value)
+        public static bool IsHexValue(this string? value)
         {
             if (value.IsNullOrEmpty())
                 return false;
             // For C-style hex notation (0xFF) you can use @"\A\b(0[xX])?[0-9a-fA-F]+\b\Z"
-            return System.Text.RegularExpressions.Regex.IsMatch(value, @"\A\b[0-9a-fA-F]+\b\Z");
+            return Regex.IsMatch(value, @"\A\b[0-9a-fA-F]+\b\Z");
         }
 
         #endregion
