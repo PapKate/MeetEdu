@@ -4168,6 +4168,76 @@
             Forgot password reset instructions message
             </summary>
         </member>
+        <member name="F:MeetBase.EnglishLocalization.Profile">
+            <summary>
+            The profile
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Form">
+            <summary>
+            The form
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Appointments">
+            <summary>
+            The appointments
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Contact">
+            <summary>
+            The contact
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Department">
+            <summary>
+            The department
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Inbox">
+            <summary>
+            The inbox
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Schedule">
+            <summary>
+            The schedule
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Office">
+            <summary>
+            The office
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Active">
+            <summary>
+            The active
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.History">
+            <summary>
+            The history
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Secretary">
+            <summary>
+            The secretary
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Information">
+            <summary>
+            The information
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Faculty">
+            <summary>
+            The faculty
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Layout">
+            <summary>
+            The layout
+            </summary>
+        </member>
         <member name="T:MeetBase.LocalizationConstants">
             <summary>
             Constants related to localization

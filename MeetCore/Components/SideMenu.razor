@@ -1,0 +1,156 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.Personalization
+@using static MeetBase.Blazor.CssVariables
+
+@namespace MeetCore
+
+<div class="sideMenuContainer">
+    <div class="sideMenuItemContainer">
+        <MenuButton Text="@EnglishLocalization.Profile" 
+                    VectorSource="@IconPaths.AccountPath" 
+                    BackColor="@White" 
+                    ForeColor="@DarkGray" 
+                    BorderRadius="0"
+                    BoxShadow="none"
+                    Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+    </div>
+    @if(IsSecretary)
+    {
+        <div class="sideMenuItemContainer">
+            <MenuButton Text="@EnglishLocalization.Secretary"
+                        VectorSource="@IconPaths.AccountSupervisorPath"
+                        BackColor="@White"
+                        ForeColor="@DarkGray"
+                        BorderRadius="0"
+                        BoxShadow="none"
+                        Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+        </div>
+
+        <span class="sideMenuItemContainer sideMenuItemText">@EnglishLocalization.Department</span>
+        
+        <div class="sideMenuItemContainer">
+            <MenuButton Text="@EnglishLocalization.Information"
+                        VectorSource="@IconPaths.HeartOutlinePath"
+                        BackColor="@White"
+                        ForeColor="@DarkGray"
+                        BorderRadius="0"
+                        BoxShadow="none"
+                        Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+        </div>
+        <div class="sideMenuItemContainer">
+            <MenuButton Text="@EnglishLocalization.Faculty"
+                        VectorSource="@IconPaths.AccountSupervisorPath"
+                        BackColor="@White"
+                        ForeColor="@DarkGray"
+                        BorderRadius="0"
+                        BoxShadow="none"
+                        Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+        </div>
+        <div class="sideMenuItemContainer">
+            <MenuButton Text="@EnglishLocalization.Layout" 
+                        VectorSource="@IconPaths.LandPlotsIconPath" 
+                        BackColor="@White" 
+                        ForeColor="@DarkGray" 
+                        BorderRadius="0"
+                        BoxShadow="none"
+                        Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+        </div>
+    }
+    else
+    {
+        <div class="sideMenuItemContainer">
+            <MenuButton Text="@EnglishLocalization.Schedule"
+                        VectorSource="@IconPaths.CalendarAccountPath"
+                        BackColor="@White"
+                        ForeColor="@DarkGray"
+                        BorderRadius="0"
+                        BoxShadow="none"
+                        Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+        </div>
+        <div class="sideMenuItemContainer">
+            <MenuButton Text="@EnglishLocalization.Office"
+                        VectorSource="@IconPaths.OfficeBuildingMarkerPath"
+                        BackColor="@White"
+                        ForeColor="@DarkGray"
+                        BorderRadius="0"
+                        BoxShadow="none"
+                        Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+        </div>
+
+        <span class="sideMenuItemContainer sideMenuItemText">@EnglishLocalization.Appointments</span>
+
+        <div class="sideMenuItemContainer">
+            <MenuButton Text="@EnglishLocalization.Active"
+                        VectorSource="@IconPaths.CalendarMultiSelectPath"
+                        BackColor="@White"
+                        ForeColor="@DarkGray"
+                        BorderRadius="0"
+                        BoxShadow="none"
+                        Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+        </div>
+        <div class="sideMenuItemContainer">
+            <MenuButton Text="@EnglishLocalization.History"
+                        VectorSource="@IconPaths.CalendarClockPath"
+                        BackColor="@White"
+                        ForeColor="@DarkGray"
+                        BorderRadius="0"
+                        BoxShadow="none"
+                        Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+        </div>
+    }
+
+    <span class="sideMenuItemContainer sideMenuItemText">@EnglishLocalization.Contact</span>
+
+    <div class="sideMenuItemContainer">
+        <MenuButton Text="@EnglishLocalization.Form"
+                    VectorSource="@IconPaths.FormatFloatLeftPath"
+                    BackColor="@White"
+                    ForeColor="@DarkGray"
+                    BorderRadius="0"
+                    BoxShadow="none"
+                    Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+    </div>
+    <div class="sideMenuItemContainer">
+        <MenuButton Text="@EnglishLocalization.Inbox"
+                    VectorSource="@IconPaths.MailNewsletterIconPath"
+                    BackColor="@White"
+                    ForeColor="@DarkGray"
+                    BorderRadius="0"
+                    BoxShadow="none"
+                    Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+    </div>
+</div>
+
+<style>
+
+    .sideMenuContainer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 10rem;
+        height: 100%;
+        min-height: 93.3vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        background: @White.NormalizedColor();
+        filter: @LightFilterDropShadow;
+    }
+
+    .sideMenuItemContainer {
+        position: relative;
+        width: 100%;
+        height: @NormalButtonSize;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .sideMenuItemText {
+        font-weight: 600;
+        padding-left: 12px;
+    }
+
+</style>
