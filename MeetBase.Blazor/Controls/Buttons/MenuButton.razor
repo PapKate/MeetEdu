@@ -7,13 +7,14 @@
 
 @namespace MeetBase.Blazor
 
-<button disabled="@(!IsEnabled)" class="menuButton @CssClasses" id="@Id"
+<button disabled="@(!IsEnabled)" class="menuButton borderControl typography @CssClasses" id="@Id"
         @onmouseover="@OnMouseOver"
         @onmouseout="@OnMouseOut"
         @onmousedown="OnMouseDown"
         @onmouseup="OnMouseUp"
         @onclick="@(async (e) => { await OnBaseButtonClick(e); })"
         style="@SetBorderControlCssVariables(Width, Height, Background, Foreground, BoxShadow, BorderRadius, BorderStyle, BorderBrush, BorderThickness)
+               @SetTypographyCssVariables(FontFamily, FontSize, FontWeight)
                @Style">
     <div class="buttonAnimationContainer">
         <div class="@mButtonAnimation"

@@ -4113,9 +4113,59 @@
             The English localization
             </summary>
         </member>
+        <member name="F:MeetBase.EnglishLocalization.Login">
+            <summary>
+            Login
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Continue">
+            <summary>
+            Continue
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Reset">
+            <summary>
+            Reset
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Username">
+            <summary>
+            Username
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.ConfirmPassword">
+            <summary>
+            Confirm password
+            </summary>
+        </member>
         <member name="F:MeetBase.EnglishLocalization.OperationAborted">
             <summary>
             Operation aborted error message
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.BackToLogin">
+            <summary>
+            Back to login message
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.ForgotPassword">
+            <summary>
+            Forgot password message
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.ForgotPasswordResetInstructions">
+            <summary>
+            Forgot password reset instructions message
             </summary>
         </member>
         <member name="T:MeetBase.LocalizationConstants">

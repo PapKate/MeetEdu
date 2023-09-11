@@ -2,6 +2,7 @@
 
 @using static MeetBase.Blazor.PaletteColors
 @using static MeetBase.Blazor.Personalization
+@using static MeetBase.Blazor.CssVariables
 
 @namespace MeetCore
 
@@ -9,15 +10,6 @@
 
 <div class="backgroundContainer">
     <img class="backImage" src="./icons/backFull.png" alt="background">
-  @*   <img class="backgroundImageSecondBottomRight" src="./icons/Group.png" alt="background">
-    <img class="backgroundImageFirstBottomRight" src="./icons/Group.png" alt="background">
-    <img class="backgroundImageSecondBottomLeft" src="./icons/Group.png" alt="background">
-    <img class="backgroundImageFirstBottomLeft" src="./icons/Group.png" alt="background">
-    <img class="backgroundImageThirdTopLeft" src="./icons/Group.png" alt="background">
-    <img class="backgroundImageSecondTopLeft" src="./icons/Group.png" alt="background">
-    <img class="backgroundImageFirstTopLeft" src="./icons/Group.png" alt="background">
-    <img class="backgroundImageSecondTopRight" src="./icons/Group.png" alt="background">
-    <img class="backgroundImageFirstTopRight" src="./icons/Group.png" alt="background"> *@
 </div>
 
 <Header AppName="@MeetCoreContants.AppName" 
@@ -35,29 +27,86 @@
         </div>
 
         <div class="loginInputsContainer">
-            <MudTextField @bind-Value="@Username"
-                            Placeholder="Username"
-                            Class="loginInput"
-                            DisableUnderLine="true"
-                            FullWidth="true"
-                            Variant="Variant.Text"
-                            Adornment="Adornment.Start" 
-                            AdornmentColor="@Color.Primary"
-                            AdornmentIcon="@MudIconPaths.Account" />
-            <MudTextField @bind-Value="@Password"
-                          Placeholder="Password"
-                          InputType="@InputType.Password"
-                          Class="loginInput"
-                          DisableUnderLine="true"
-                          FullWidth="true"
-                          Variant="Variant.Text"
-                          Adornment="Adornment.Start"
-                          AdornmentColor="@Color.Primary"
-                          AdornmentIcon="@MudIconPaths.KeyVariant" />
+            @if(mIsLoginActive)
+            {
+                <MudTextField @bind-Value="@Username"
+                              Placeholder="Username"
+                              Class="loginInput"
+                              DisableUnderLine="true"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Adornment="Adornment.Start"
+                              AdornmentColor="@Color.Primary"
+                              AdornmentIcon="@MudIconPaths.Account" />
+            }
+            @if(mIsForgotPasswordActive)
+            {
+                <MudTextField @bind-Value="@Email"
+                              Placeholder="Email"
+                              Class="loginInput"
+                              DisableUnderLine="true"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Adornment="Adornment.Start"
+                              AdornmentColor="@Color.Primary"
+                              AdornmentIcon="@MudIconPaths.Account" />
 
+                <span class="resetPasswordInstructionsText">@EnglishLocalization.ForgotPasswordResetInstructions</span>
+            }
+            @if (mIsResetPasswordActive)
+            {
+                <MudTextField @bind-Value="@TemporaryPassword"
+                              Placeholder="Temporary password"
+                              InputType="@InputType.Password"
+                              Class="loginInput"
+                              DisableUnderLine="true"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Adornment="Adornment.Start"
+                              AdornmentColor="@Color.Primary"
+                              AdornmentIcon="@MudIconPaths.KeyVariant" />
+            }
+
+            @if(!mIsForgotPasswordActive)
+            {
+                <MudTextField @bind-Value="@Password"
+                              Placeholder="Password"
+                              InputType="@InputType.Password"
+                              Class="loginInput"
+                              DisableUnderLine="true"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Adornment="Adornment.Start"
+                              AdornmentColor="@Color.Primary"
+                              AdornmentIcon="@MudIconPaths.KeyVariant" />
+            }
+            @if(mIsResetPasswordActive)
+            {
+                <MudTextField @bind-Value="@ConfirmPassword"
+                              Placeholder="Confirm password"
+                              InputType="@InputType.Password"
+                              Class="loginInput"
+                              DisableUnderLine="true"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Adornment="Adornment.Start"
+                              AdornmentColor="@Color.Primary"
+                              AdornmentIcon="@MudIconPaths.KeyVariant" />
+            }
+
+            <TextButton Text="@mButtonText" 
+                        BackColor="@Amber" 
+                        ForeColor="@Amber.DarkOrWhite()" 
+                        OnClick="@FormButton_OnClick"
+                        Style="@($"{WidthVariable.SetCssVariable("160px")} {HeightVariable.SetCssVariable(SmallButtonSize)} {FontSizeVariable.SetCssVariable(MediumFontSize)}")"/>
         </div>
     </div>
-    <span class="alternativeActionText">Don't have an account? Sign up</span>
+    <div class="alternativeActionText" @onclick="@AlternativeText_OnClick">
+        @mAlternativeText 
+        <div class="alternativeActionIcon">
+            <VectorIcon VectorSource="@(IsLoginActive ? IconPaths.ChevronRightPath : IconPaths.ChevronLeftPath)" Color="@DarkGray"/>
+        </div>
+    </div>
 </div>
 
 
@@ -161,7 +210,21 @@
     .alternativeActionText {
         position: relative;
         top: 1rem;
+        display: flex;
+        flex-direction: @(IsLoginActive ? "row" : "row-reverse");
         font-size: @MediumFontSize;
+        cursor: pointer;
+    }
+
+    .alternativeActionIcon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .resetPasswordInstructionsText {
+        position: relative;
+        font-size: @MediumFontSize;
+        cursor: pointer;
     }
 
 </style>
