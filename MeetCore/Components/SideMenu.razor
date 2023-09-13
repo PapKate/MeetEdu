@@ -8,6 +8,7 @@
     <div class="sideMenuItemContainer">
         <MenuButton Text="@EnglishLocalization.Profile" 
                     VectorSource="@IconPaths.AccountPath" 
+                    OnClick="@NavigateToProfilePage"
                     BackColor="@White" 
                     ForeColor="@DarkGray" 
                     BorderRadius="0"
@@ -19,6 +20,7 @@
         <div class="sideMenuItemContainer">
             <MenuButton Text="@EnglishLocalization.Secretary"
                         VectorSource="@IconPaths.AccountSupervisorPath"
+                        OnClick="@(() => NavigationManager?.Secretary_NavigateToSecretaryPage("id"))"
                         BackColor="@White"
                         ForeColor="@DarkGray"
                         BorderRadius="0"
@@ -31,6 +33,7 @@
         <div class="sideMenuItemContainer">
             <MenuButton Text="@EnglishLocalization.Information"
                         VectorSource="@IconPaths.HeartOutlinePath"
+                        OnClick="@(() => NavigationManager?.Secretary_NavigateToInformationPage("id"))"
                         BackColor="@White"
                         ForeColor="@DarkGray"
                         BorderRadius="0"
@@ -40,6 +43,7 @@
         <div class="sideMenuItemContainer">
             <MenuButton Text="@EnglishLocalization.Faculty"
                         VectorSource="@IconPaths.AccountSupervisorPath"
+                        OnClick="@(() => NavigationManager?.Secretary_NavigateToFacultyPage("id"))"
                         BackColor="@White"
                         ForeColor="@DarkGray"
                         BorderRadius="0"
@@ -47,8 +51,9 @@
                         Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
         </div>
         <div class="sideMenuItemContainer">
-            <MenuButton Text="@EnglishLocalization.Layout" 
-                        VectorSource="@IconPaths.LandPlotsIconPath" 
+            <MenuButton Text="@EnglishLocalization.Layout"
+                        VectorSource="@IconPaths.LandPlotsIconPath"
+                        OnClick="@(() => NavigationManager?.Secretary_NavigateToLayoutPage("id"))"
                         BackColor="@White" 
                         ForeColor="@DarkGray" 
                         BorderRadius="0"
@@ -61,6 +66,7 @@
         <div class="sideMenuItemContainer">
             <MenuButton Text="@EnglishLocalization.Schedule"
                         VectorSource="@IconPaths.CalendarAccountPath"
+                        OnClick="@(() => NavigationManager?.Professor_NavigateToSchedulePage("id"))"
                         BackColor="@White"
                         ForeColor="@DarkGray"
                         BorderRadius="0"
@@ -70,6 +76,7 @@
         <div class="sideMenuItemContainer">
             <MenuButton Text="@EnglishLocalization.Office"
                         VectorSource="@IconPaths.OfficeBuildingMarkerPath"
+                        OnClick="@(() => NavigationManager?.Professor_NavigateToOfficePage("id"))"
                         BackColor="@White"
                         ForeColor="@DarkGray"
                         BorderRadius="0"
@@ -82,6 +89,7 @@
         <div class="sideMenuItemContainer">
             <MenuButton Text="@EnglishLocalization.Active"
                         VectorSource="@IconPaths.CalendarMultiSelectPath"
+                        OnClick="@(() => NavigationManager?.Professor_NavigateToActiveAppointmentsPage("id"))"
                         BackColor="@White"
                         ForeColor="@DarkGray"
                         BorderRadius="0"
@@ -91,6 +99,7 @@
         <div class="sideMenuItemContainer">
             <MenuButton Text="@EnglishLocalization.History"
                         VectorSource="@IconPaths.CalendarClockPath"
+                        OnClick="@(() => NavigationManager?.Professor_NavigateToAppointmentsHistoryPage("id"))"
                         BackColor="@White"
                         ForeColor="@DarkGray"
                         BorderRadius="0"
@@ -104,6 +113,7 @@
     <div class="sideMenuItemContainer">
         <MenuButton Text="@EnglishLocalization.Form"
                     VectorSource="@IconPaths.FormatFloatLeftPath"
+                    OnClick="@(() => NavigateToFormPage())"
                     BackColor="@White"
                     ForeColor="@DarkGray"
                     BorderRadius="0"
@@ -113,6 +123,7 @@
     <div class="sideMenuItemContainer">
         <MenuButton Text="@EnglishLocalization.Inbox"
                     VectorSource="@IconPaths.MailNewsletterIconPath"
+                    OnClick="@(() => NavigateToInboxPage())"
                     BackColor="@White"
                     ForeColor="@DarkGray"
                     BorderRadius="0"
