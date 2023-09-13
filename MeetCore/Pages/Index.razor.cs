@@ -4,7 +4,10 @@ using Microsoft.AspNetCore.Components;
 
 namespace MeetCore
 {
-    public partial class Index
+    /// <summary>
+    /// The home page
+    /// </summary>
+    public partial class Index : StateManagablePage
     {
         #region Private Properties
 
@@ -144,6 +147,8 @@ namespace MeetCore
                     IsLoginActive = false;
                 }
                 // Login
+                if(StateManager is not null)
+                    StateManager.SetValue(3);
             }
             // Else if the forgot password is active...
             else if (IsForgotPasswordActive)

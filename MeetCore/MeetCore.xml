@@ -4,17 +4,12 @@
         <name>MeetCore</name>
     </assembly>
     <members>
-        <member name="T:MeetCore.BasePage">
+        <member name="T:MeetCore.ApplicationContainer">
             <summary>
-            The base page template
+            The application container
             </summary>
         </member>
-        <member name="P:MeetCore.BasePage.Id">
-            <summary>
-            The id
-            </summary>
-        </member>
-        <member name="M:MeetCore.BasePage.#ctor">
+        <member name="M:MeetCore.ApplicationContainer.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -298,6 +293,56 @@
             <param name="id">The professor id</param>
             <param name="value">The route value</param>
             <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="T:MeetCore.BasePage">
+            <summary>
+            The base page template
+            </summary>
+        </member>
+        <member name="P:MeetCore.BasePage.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
+        <member name="M:MeetCore.BasePage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.StateManagablePage">
+            <summary>
+            Provides abstractions over the <see cref="P:MeetCore.StateManagablePage.StateManager"/>
+            </summary>
+        </member>
+        <member name="P:MeetCore.StateManagablePage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="M:MeetCore.StateManagablePage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.StateManagablePage.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources
+            </summary>
+        </member>
+        <member name="M:MeetCore.StateManagablePage.OnInitialized">
+            <summary>
+            Method invoked when the component is ready to start, having received its initial parameters from its parent in the render tree
+            </summary>
+        </member>
+        <member name="M:MeetCore.StateManagablePage.OnInitializedCore">
+            <summary>
+            Method invoked when the component is ready to start, having received its initial parameters from its parent in the render tree
+            </summary>
+        </member>
+        <member name="T:MeetCore.Index">
+            <summary>
+            The home page
+            </summary>
         </member>
         <member name="F:MeetCore.Index.mIsLoginActive">
             <summary>

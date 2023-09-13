@@ -1,0 +1,76 @@
+﻿using MeetBase.Blazor;
+
+using Microsoft.AspNetCore.Components;
+
+namespace MeetCore
+{
+    /// <summary>
+    /// Provides abstractions over the <see cref="StateManager"/>
+    /// </summary>
+    public class StateManagablePage : BasePage, IDisposable
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// The state management service
+        /// </summary>
+        [Inject]
+        public StateManager? StateManager { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public StateManagablePage() : base()
+        {
+
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources
+        /// </summary>
+        public void Dispose()
+        {
+            // If the manager exists...
+            if(StateManager is not null)
+                // Unsubscribes from the state has changed event
+                StateManager.OnStateChange -= StateHasChanged;
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        /// Method invoked when the component is ready to start, having received its initial parameters from its parent in the render tree
+        /// </summary>
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+            // If the manager exists...
+            if(StateManager is not null)
+                // Subscribes to the state has changed event
+                StateManager.OnStateChange += StateHasChanged;
+
+            OnInitializedCore();
+        }
+
+        /// <summary>
+        /// Method invoked when the component is ready to start, having received its initial parameters from its parent in the render tree
+        /// </summary>
+        protected virtual void OnInitializedCore()
+        {
+
+        }
+
+        #endregion
+    }
+}
