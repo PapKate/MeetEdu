@@ -3,7 +3,7 @@
     /// <summary>
     /// The department layout page
     /// </summary>
-    public partial class Secretary_DepartmentLayoutPage
+    public partial class Secretary_DepartmentLayoutPage : BasePage
     {
     }
 }

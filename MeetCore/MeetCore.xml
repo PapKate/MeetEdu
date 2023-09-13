@@ -1,0 +1,463 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MeetCore</name>
+    </assembly>
+    <members>
+        <member name="T:MeetCore.BasePage">
+            <summary>
+            The base page template
+            </summary>
+        </member>
+        <member name="P:MeetCore.BasePage.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
+        <member name="M:MeetCore.BasePage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.SideMenu">
+            <summary>
+            The side menu component
+            </summary>
+        </member>
+        <member name="P:MeetCore.SideMenu.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
+        <member name="P:MeetCore.SideMenu.IsSecretary">
+            <summary>
+            A flag indicating whether the staff member is a secretary
+            </summary>
+        </member>
+        <member name="M:MeetCore.SideMenu.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.SideMenu.NavigateToProfilePage">
+            <summary>
+            Navigates the connected staff member to their profile page
+            </summary>
+        </member>
+        <member name="M:MeetCore.SideMenu.NavigateToFormPage">
+            <summary>
+            Navigates the connected staff member to their data form page
+            </summary>
+        </member>
+        <member name="M:MeetCore.SideMenu.NavigateToInboxPage">
+            <summary>
+            Navigates the connected staff member to their inbox page
+            </summary>
+        </member>
+        <member name="T:MeetCore.MeetCoreContants">
+            <summary>
+            The constants for the <see cref="N:MeetCore"/> app
+            </summary>
+        </member>
+        <member name="F:MeetCore.MeetCoreContants.AppName">
+            <summary>
+            The app name
+            </summary>
+        </member>
+        <member name="T:MeetCore.Routes">
+            <summary>
+            The app routes
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.SecretariesRoute">
+            <summary>
+            The secretaries route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.ProfessorsRoute">
+            <summary>
+            The professors route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.SecretaryRoute">
+            <summary>
+            The secretary page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.ProfileRoute">
+            <summary>
+            The profile page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.InformationRoute">
+            <summary>
+            The information page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.FacultyRoute">
+            <summary>
+            The faculty page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.LayoutRoute">
+            <summary>
+            The layout page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.FormRoute">
+            <summary>
+            The form page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.InboxRoute">
+            <summary>
+            The inbox page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.ScheduleRoute">
+            <summary>
+            The schedule page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.OfficeRoute">
+            <summary>
+            The office page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.ActiveAppointmentsRoute">
+            <summary>
+            The active appointments page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.AppointmentsHistoryRoute">
+            <summary>
+            The appointments history page route
+            </summary>
+        </member>
+        <member name="T:MeetCore.CoreNavigationManagerExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Microsoft.AspNetCore.Components.NavigationManager"/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Secretary_NavigateTo(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the secretary with the specified <paramref name="id"/> to the specified <paramref name="route"/>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The secretary id</param>
+            <param name="route">The member route</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Secretary_NavigateToProfilePage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the secretary with the specified <paramref name="id"/> to their profile page
+            <code>/secretaries/1/profile</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The secretary id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Secretary_NavigateToSecretaryPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the secretary with the specified <paramref name="id"/> to the secretary page
+            <code>/secretaries/1/secretary</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The secretary id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Secretary_NavigateToInformationPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the secretary with the specified <paramref name="id"/> to the information page
+            <code>/secretaries/1/information</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The secretary id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Secretary_NavigateToFacultyPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the secretary with the specified <paramref name="id"/> to the faculty page
+            <code>/secretaries/1/faculty</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The secretary id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Secretary_NavigateToLayoutPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the secretary with the specified <paramref name="id"/> to the faculty page
+            <code>/secretaries/1/layout</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The secretary id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Secretary_NavigateToFormPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the secretary with the specified <paramref name="id"/> to the faculty page
+            <code>/secretaries/1/form</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The secretary id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Secretary_NavigateToInboxPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the secretary with the specified <paramref name="id"/> to the faculty page
+            <code>/secretaries/1/inbox</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The secretary id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateTo(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the professor with the specified <paramref name="id"/> to the specified <paramref name="route"/>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The secretary id</param>
+            <param name="route">The member route</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToProfilePage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the professor with the specified <paramref name="id"/> to their profile page
+            <code>/professors/1/profile</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The professor id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToSchedulePage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the professor with the specified <paramref name="id"/> to their schedule page
+            <code>/professors/1/schedule</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The professor id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToOfficePage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the professor with the specified <paramref name="id"/> to their office page
+            <code>/professors/1/office</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The professor id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToActiveAppointmentsPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the professor with the specified <paramref name="id"/> to their active appointments page
+            <code>/professors/1/active_appointments</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The professor id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToAppointmentsHistoryPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the professor with the specified <paramref name="id"/> to their appointments history page
+            <code>/professors/1/appointments_history</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The professor id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToFormPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the professor with the specified <paramref name="id"/> to their form page
+            <code>/professors/1/form</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The professor id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToInboxPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the professor with the specified <paramref name="id"/> to their inbox page
+            <code>/professors/1/inbox</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The professor id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="F:MeetCore.Index.mIsLoginActive">
+            <summary>
+            The member of the <see cref="P:MeetCore.Index.IsLoginActive"/>
+            </summary>
+        </member>
+        <member name="F:MeetCore.Index.mIsForgotPasswordActive">
+            <summary>
+            The member of the <see cref="P:MeetCore.Index.IsForgotPasswordActive"/>
+            </summary>
+        </member>
+        <member name="F:MeetCore.Index.mIsResetPasswordActive">
+            <summary>
+            The member of the <see cref="P:MeetCore.Index.IsResetPasswordActive"/>
+            </summary>
+        </member>
+        <member name="F:MeetCore.Index.mButtonText">
+            <summary>
+            The button text
+            </summary>
+        </member>
+        <member name="F:MeetCore.Index.mAlternativeText">
+            <summary>
+            The alternative text
+            </summary>
+        </member>
+        <member name="P:MeetCore.Index.Username">
+            <summary>
+            The username
+            </summary>
+        </member>
+        <member name="P:MeetCore.Index.Password">
+            <summary>
+            The password
+            </summary>
+        </member>
+        <member name="P:MeetCore.Index.ConfirmPassword">
+            <summary>
+            The confirmed password
+            </summary>
+        </member>
+        <member name="P:MeetCore.Index.TemporaryPassword">
+            <summary>
+            The temporary password
+            </summary>
+        </member>
+        <member name="P:MeetCore.Index.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetCore.Index.IsLoginActive">
+            <summary>
+            A flag indicating whether the login container is visible
+            </summary>
+        </member>
+        <member name="P:MeetCore.Index.IsForgotPasswordActive">
+            <summary>
+            A flag indicating whether the forgot password container is visible
+            </summary>
+        </member>
+        <member name="P:MeetCore.Index.IsResetPasswordActive">
+            <summary>
+            A flag indicating whether the reset password container is visible
+            </summary>
+        </member>
+        <member name="M:MeetCore.Index.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Index.FormButton_OnClick">
+            <summary>
+            Handles the click of the form
+            </summary>
+        </member>
+        <member name="M:MeetCore.Index.AlternativeText_OnClick">
+            <summary>
+            Navigates throw the login flow
+            </summary>
+        </member>
+        <member name="T:MeetCore.Professor_AciveAppointmentsPage">
+            <summary>
+            The active appointments page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Professor_AppointmentsHistoryPage">
+            <summary>
+            The appointments history page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Professor_ContactFormPage">
+            <summary>
+            The contact form page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Professor_InboxPage">
+            <summary>
+            The inbox page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Professor_OfficePage">
+            <summary>
+            The office page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Professor_ProfilePage">
+            <summary>
+            The profile page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Professor_SchedulePage">
+            <summary>
+            The schedule page
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ContactFormPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.Secretary_DepartmentFacultyPage">
+            <summary>
+            The faculty page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Secretary_DepartmentInformationPage">
+            <summary>
+            The department information page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Secretary_DepartmentLayoutPage">
+            <summary>
+            The department layout page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Secretary_DepartmentSecretaryPage">
+            <summary>
+            The department secretary page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Secretary_InboxPage">
+            <summary>
+            The inbox page
+            </summary>
+        </member>
+        <member name="T:MeetCore.Secretary_ProfilePage">
+            <summary>
+            The profile page
+            </summary>
+        </member>
+        <member name="F:MeetCore.Shared.MainLayout.mMeetCoreTheme">
+            <summary>
+            The theme provider
+            </summary>
+        </member>
+        <member name="M:MeetCore.Shared.MainLayout.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+    </members>
+</doc>

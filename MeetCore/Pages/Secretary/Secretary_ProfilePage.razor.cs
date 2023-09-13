@@ -3,7 +3,7 @@
     /// <summary>
     /// The profile page
     /// </summary>
-    public partial class Secretary_ProfilePage
+    public partial class Secretary_ProfilePage : BasePage
     {
     }
 }

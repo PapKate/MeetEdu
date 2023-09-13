@@ -1,6 +1,9 @@
 ﻿namespace MeetCore
 {
-    public partial class Secretary_ContactFormPage : BasePage
+    /// <summary>
+    /// The application container
+    /// </summary>
+    public partial class ApplicationContainer
     {
         #region Public Properties
 
@@ -11,7 +14,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Secretary_ContactFormPage() : base()
+        public ApplicationContainer() : base()
         {
 
         }

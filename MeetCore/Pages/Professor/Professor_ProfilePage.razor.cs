@@ -3,7 +3,7 @@
     /// <summary>
     /// The profile page
     /// </summary>
-    public partial class Professor_ProfilePage
+    public partial class Professor_ProfilePage : BasePage
     {
     }
 }
