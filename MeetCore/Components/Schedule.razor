@@ -1,0 +1,81 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.Personalization
+@using static MeetBase.Blazor.CssVariables
+
+@namespace MeetCore
+
+<div class="scheduleContainer">
+    @if(mWeekDays is not null)
+    {   
+        <div class="timeContainer">
+            <span></span>
+            @for (var hour = TimeStart.Hour; hour <= TimeEnd.Hour; hour++)
+            {
+                <span class="timeTableData">@hour.ToString().PadLeft(2, '0') : 00</span>
+            }
+        </div>
+        <table class="schedule">
+            <thead>
+                <tr>
+                    @foreach (var day in mWeekDays)
+                    {
+                        <th>@day</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (var hour = TimeStart.Hour; hour <= TimeEnd.Hour; hour++)
+                {
+                    <tr>
+                        @foreach (var day in mWeekDays)
+                        {
+                            <td></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<style>
+
+    .scheduleContainer {
+        position: relative;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        padding: 1rem;
+    }
+
+    .timeContainer {
+        position: relative;
+        width: 3rem;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 8px;
+        gap: 32px;
+    }
+
+    .schedule {
+        position: relative;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .schedule th, .schedule tr, .schedule td {
+        padding: @NormalPadding;
+        border: solid 1px @LightGray.NormalizedColor();
+        text-align: center;
+    }
+
+    .schedule td {
+    }
+
+    .timeTableHead {
+        width: 5rem;
+    }
+
+    </style>

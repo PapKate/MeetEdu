@@ -3,24 +3,39 @@
 
 @namespace MeetCore
 
-
 <Header AppName="@MeetCoreContants.AppName"
         ForeColor="@White"
         BackColor="@Amber" />
 
 <div class="appContainer">
-    <SideMenu/>
+    <div class="pageContainer">
+        @ChildContent
+    </div>
 </div>
+
+<SideMenu IsSecretary="@StateManager.IsSecretary" />
 
 <style>
 
     .appContainer {
         position: relative;
-        width: 72%;
-        height: 100%;
+        width: calc(100% - 160px);
+        height: calc(100vh - 4rem);
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-left: 160px;
+        overflow-y : auto;
+    }
+
+    .pageContainer {
+        width: 80%;
+        min-height: calc(100vh - 4rem);
+        background-color: white;
+    }
+
+    .page {
+        background-color: wheat;
     }
 
 </style>

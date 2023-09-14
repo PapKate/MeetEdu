@@ -118,6 +118,16 @@ namespace MeetCore
 
         #endregion
 
+        #region Protected Properties
+
+        /// <summary>
+        /// The navigation manager service
+        /// </summary>
+        [Inject]
+        public NavigationManager? NavigationManager { get; set; }
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -147,8 +157,24 @@ namespace MeetCore
                     IsLoginActive = false;
                 }
                 // Login
+                // Get user
+                // Get user type - secretary or professor
+                var isSecretary = true;
+
+                // If the state manager is set...
                 if(StateManager is not null)
-                    StateManager.SetValue(3);
+                    StateManager.SetIsSecretary(isSecretary);
+
+                // If the navigation manager is not null...
+                if(NavigationManager is not null)
+                {
+                    // If the connected user is a secretary...
+                    if (isSecretary)
+                        NavigationManager.Secretary_NavigateToProfilePage("id");
+                    else
+                        NavigationManager.Professor_NavigateToProfilePage("id");
+                }
+
             }
             // Else if the forgot password is active...
             else if (IsForgotPasswordActive)

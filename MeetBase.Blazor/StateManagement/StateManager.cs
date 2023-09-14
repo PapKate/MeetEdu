@@ -17,7 +17,7 @@ namespace MeetBase.Blazor
         /// The State property with an initial value
         /// </summary>
         public int Value { get; set; } = 0;
-        
+
         #endregion
 
         #region Constructors
@@ -45,12 +45,12 @@ namespace MeetBase.Blazor
 
         #endregion
 
-        #region Private Methods
+        #region Protected Methods
 
         /// <summary>
         /// Notifies that the state has changed
         /// </summary>
-        private void NotifyStateChanged() => OnStateChange?.Invoke();
+        protected void NotifyStateChanged() => OnStateChange?.Invoke();
 
         #endregion
 

@@ -9,9 +9,49 @@
             The application container
             </summary>
         </member>
+        <member name="P:MeetCore.ApplicationContainer.ChildContent">
+            <summary>
+            The child content
+            </summary>
+        </member>
+        <member name="P:MeetCore.ApplicationContainer.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
         <member name="M:MeetCore.ApplicationContainer.#ctor">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.Schedule">
+            <summary>
+            The schedule component
+            </summary>
+        </member>
+        <member name="F:MeetCore.Schedule.mWeekDays">
+            <summary>
+            The days of the week
+            </summary>
+        </member>
+        <member name="P:MeetCore.Schedule.TimeStart">
+            <summary>
+            The starting time
+            </summary>
+        </member>
+        <member name="P:MeetCore.Schedule.TimeEnd">
+            <summary>
+            The ending time
+            </summary>
+        </member>
+        <member name="M:MeetCore.Schedule.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Schedule.OnInitialized">
+            <summary>
+            <inheritdoc/>
             </summary>
         </member>
         <member name="T:MeetCore.SideMenu">
@@ -339,6 +379,26 @@
             Method invoked when the component is ready to start, having received its initial parameters from its parent in the render tree
             </summary>
         </member>
+        <member name="T:MeetCore.StateManagerCore">
+            <summary>
+            The state manager for the <see cref="N:MeetCore"/> app
+            </summary>
+        </member>
+        <member name="P:MeetCore.StateManagerCore.IsSecretary">
+            <summary>
+            A flag indicating whether the staff member is a secretary
+            </summary>
+        </member>
+        <member name="M:MeetCore.StateManagerCore.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.StateManagerCore.SetIsSecretary(System.Boolean)">
+            <summary>
+            The method that will be accessed by the sender component to update the state
+            </summary>
+        </member>
         <member name="T:MeetCore.Index">
             <summary>
             The home page
@@ -409,6 +469,11 @@
             A flag indicating whether the reset password container is visible
             </summary>
         </member>
+        <member name="P:MeetCore.Index.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
         <member name="M:MeetCore.Index.#ctor">
             <summary>
             Default constructor
@@ -453,6 +518,12 @@
             <summary>
             The profile page
             </summary>
+        </member>
+        <member name="M:MeetCore.Professor_ProfilePage.OnAfterRender(System.Boolean)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="firstRender"><inheritdoc/></param>
         </member>
         <member name="T:MeetCore.Professor_SchedulePage">
             <summary>

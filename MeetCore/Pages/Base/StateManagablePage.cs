@@ -15,7 +15,7 @@ namespace MeetCore
         /// The state management service
         /// </summary>
         [Inject]
-        public StateManager? StateManager { get; set; }
+        public StateManagerCore? StateManager { get; set; }
 
         #endregion
 
@@ -69,6 +69,46 @@ namespace MeetCore
         protected virtual void OnInitializedCore()
         {
 
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// The state manager for the <see cref="MeetCore"/> app
+    /// </summary>
+    public class StateManagerCore : StateManager
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// A flag indicating whether the staff member is a secretary
+        /// </summary>
+        public bool IsSecretary { get; set; } = false;
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public StateManagerCore() : base()
+        {
+
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// The method that will be accessed by the sender component to update the state
+        /// </summary>
+        public void SetIsSecretary(bool isSecretary)
+        {
+            IsSecretary = isSecretary;
+            NotifyStateChanged();
         }
 
         #endregion
