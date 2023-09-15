@@ -38,6 +38,16 @@
         /// </summary>
         public const string HeightVariable = "--height";
 
+        /// <summary>
+        /// The top
+        /// </summary>
+        public const string TopVariable = "--top";
+
+        /// <summary>
+        /// The left
+        /// </summary>
+        public const string LeftVariable = "--left";
+
         #endregion
 
         #region Background

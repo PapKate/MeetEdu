@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace MeetBase
+﻿namespace MeetBase
 {
     /// <summary>
     /// Represents a time range of a specific week day
@@ -8,6 +6,11 @@ namespace MeetBase
     public record struct DayOfWeekTimeRange : IReadOnlyRangeable<TimeOnly>
     {
         #region Public Properties
+
+        /// <summary>
+        /// The text
+        /// </summary>
+        public string? Text { get; set; }
 
         /// <summary>
         /// The day of week

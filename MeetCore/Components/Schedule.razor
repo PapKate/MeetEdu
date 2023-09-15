@@ -9,6 +9,7 @@
     {   
         <div class="timeContainer">
             <span></span>
+            <span></span>
             @for (var hour = TimeStart.Hour; hour <= TimeEnd.Hour; hour++)
             {
                 <span class="timeTableData">@hour.ToString().PadLeft(2, '0') : 00</span>
@@ -17,24 +18,78 @@
         <table class="schedule">
             <thead>
                 <tr>
+                    @{
+                        mFirstDayOfWeek = mFirstDateOfWeek.GetFirstDayOfWeek().Day;
+                    }
                     @foreach (var day in mWeekDays)
                     {
-                        <th>@day</th>
+                        <th>
+                            <div class="scheduleHeaderDay">
+                                <span class="scheduleHeaderDayText ">@day.ToShortDayOfWeekName()</span>
+                                <span class="scheduleHeaderDayCircle @GetCssClassForDate(mFirstDayOfWeek)">@mFirstDayOfWeek</span>
+                            </div>
+                        </th>
+                        mFirstDayOfWeek++;
                     }
                 </tr>
             </thead>
             <tbody>
-                @for (var hour = TimeStart.Hour; hour <= TimeEnd.Hour; hour++)
+                @for (var hour = TimeStart.Hour; hour <= TimeEnd.Hour - 1; hour++)
                 {
                     <tr>
                         @foreach (var day in mWeekDays)
                         {
-                            <td></td>
+                            <td>
+                            </td>
                         }
                     </tr>
                 }
             </tbody>
         </table>
+
+        <div class="workHoursContainer">
+            @if (!WorkHours.IsNullOrEmpty())
+            {
+                @foreach (var workHour in WorkHours)
+                {
+                    <div class="workHourContainer"
+                         style="@TopVariable.SetCssVariable($"calc(43.5px * ({workHour.Start.Hour}.{workHour.Start.Minute} - 7))")
+                                @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(int)workHour.DayOfWeek} - 1))")
+                                @HeightVariable?.SetCssVariable($"calc(44px * ({workHour.End.Hour}.{workHour.End.Minute} - {workHour.Start.Hour}.{workHour.Start.Minute}))")
+                                @BackgroundVariable.SetCssColor($"{Gray.HexToRGBA(0.2)}")
+                                @BorderBrushVariable.SetCssColor($"{Gray}")"
+                        id="@($"{workHour.DayOfWeek}.{workHour.Start.ToString("hh:mm")}-{workHour.End.ToString("hh:mm")}")">
+                        @if (!workHour.Text.IsNullOrEmpty())
+                        {
+                            <span class="workHourName">@workHour.Text</span>
+                        }
+                    </div>
+                }
+            }
+            @if (!Lectures.IsNullOrEmpty())
+            {
+                @foreach (var lecture in Lectures)
+                {
+                    @foreach(var hourRange in lecture.LectureHours)
+                    {
+                        <div class="workHourContainer"
+                             style="@TopVariable.SetCssVariable($"calc(43.5px * ({hourRange.Start.Hour}.{hourRange.Start.Minute} - 7))")
+                                    @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(int)hourRange.DayOfWeek} - 1))")
+                                    @HeightVariable.SetCssVariable($"calc(44px * ({hourRange.End.Hour}.{hourRange.End.Minute} - {hourRange.Start.Hour}.{hourRange.Start.Minute}))")
+                                    @BackgroundVariable.SetCssColor($"{lecture.Color.HexToRGBA(0.2)}")
+                                    @BorderBrushVariable.SetCssColor($"{lecture.Color}")
+                                    "
+                             id="@($"{hourRange.DayOfWeek}.{hourRange.Start.ToString("hh:mm")}-{hourRange.End.ToString("hh:mm")}")">
+                            @if (!hourRange.Text.IsNullOrEmpty())
+                            {
+                                <span class="workHourName">@lecture.Name</span>
+                                <span class="workHourLocation">@hourRange.Text</span>
+                            }
+                        </div>
+                    }
+                }
+            }
+        </div>
     }
 </div>
 
@@ -50,6 +105,7 @@
 
     .timeContainer {
         position: relative;
+        top: 4px;
         width: 3rem;
         height: auto;
         display: flex;
@@ -65,17 +121,89 @@
         border-collapse: collapse;
     }
 
-    .schedule th, .schedule tr, .schedule td {
+    .schedule td {
         padding: @NormalPadding;
         border: solid 1px @LightGray.NormalizedColor();
         text-align: center;
     }
 
-    .schedule td {
+    .schedule th {
+        text-align: center;
+        padding: @NormalPadding;
     }
 
     .timeTableHead {
         width: 5rem;
+    }
+
+    .scheduleHeaderDay {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: @SmallGap;
+    }
+
+    .scheduleHeaderDayText {
+        position: relative;
+        font-size: 60%;
+        font-weight: 400;
+        color: @Gray.NormalizedColor();
+        text-transform: uppercase;
+    }
+
+    .scheduleHeaderDayCircle {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 140%;
+        border-radius: @CircleBorderRadius;
+    }
+
+    .scheduleToday {
+        background-color: @Blue.NormalizedColor();
+        color: @White.NormalizedColor();
+    }
+
+    .scheduleBeforeToday {
+        color: @Gray.NormalizedColor();
+    }
+
+    .scheduleAfterToday {
+        color: @DarkGray.NormalizedColor();
+    }
+
+    .workHoursContainer {
+        position: absolute;
+        top: 88px;
+        left: calc(4rem - 1px);
+        width: calc(100% - 5rem + 1px);
+    }
+
+    .workHourContainer {
+        position: absolute;
+        top: @TopVariable.GetCssVariable();
+        left: @LeftVariable.GetCssVariable();
+        width: calc(100% / 7);
+        height: @HeightVariable.GetCssVariable();
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: @MediumGap;
+        text-align: center;
+        background-color: @BackgroundVariable?.GetCssVariable();
+        border: solid 1px;
+        border-color: @BorderBrushVariable?.GetCssVariable();
+    }
+
+    .workHourLocation {
+        font-size: 92%;
     }
 
     </style>

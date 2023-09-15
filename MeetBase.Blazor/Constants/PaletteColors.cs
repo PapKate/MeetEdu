@@ -60,7 +60,7 @@
         /// <summary>
         /// Silver
         /// </summary>
-        public const string Gray = "C5C5C5";
+        public const string Gray = "8d8d8d";
 
         /// <summary>
         /// Timberwolf

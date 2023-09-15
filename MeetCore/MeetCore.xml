@@ -34,6 +34,21 @@
             The days of the week
             </summary>
         </member>
+        <member name="F:MeetCore.Schedule.mFirstDateOfWeek">
+            <summary>
+            The first day of the week
+            </summary>
+        </member>
+        <member name="F:MeetCore.Schedule.mFirstDayOfWeek">
+            <summary>
+            The day of the first date of the week
+            </summary>
+        </member>
+        <member name="F:MeetCore.Schedule.mCurrentDate">
+            <summary>
+            The current date
+            </summary>
+        </member>
         <member name="P:MeetCore.Schedule.TimeStart">
             <summary>
             The starting time
@@ -42,6 +57,16 @@
         <member name="P:MeetCore.Schedule.TimeEnd">
             <summary>
             The ending time
+            </summary>
+        </member>
+        <member name="P:MeetCore.Schedule.WorkHours">
+            <summary>
+            The work hours
+            </summary>
+        </member>
+        <member name="P:MeetCore.Schedule.Lectures">
+            <summary>
+            The work hours
             </summary>
         </member>
         <member name="M:MeetCore.Schedule.#ctor">
@@ -53,6 +78,13 @@
             <summary>
             <inheritdoc/>
             </summary>
+        </member>
+        <member name="M:MeetCore.Schedule.GetCssClassForDate(System.Int32)">
+            <summary>
+            Gets the css class name according to where the specified <paramref name="day"/> is placed as to the <see cref="F:MeetCore.Schedule.mCurrentDate"/>
+            </summary>
+            <param name="day">The day</param>
+            <returns></returns>
         </member>
         <member name="T:MeetCore.SideMenu">
             <summary>

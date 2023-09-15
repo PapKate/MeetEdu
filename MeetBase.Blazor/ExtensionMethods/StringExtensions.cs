@@ -59,6 +59,9 @@ namespace MeetBase.Blazor
             return dayOfWeek.ToString().Substring(0, 3);
         }
 
+
+
+
         #endregion
     }
 }

@@ -21,6 +21,15 @@
         /// <returns></returns>
         public static string ToISO8601String(this DateTimeOffset dto) => dto.LocalDateTime.ToString(LocalizationConstants.ISO8601Format, LocalizationConstants.Culture);
 
+        /// <summary>
+        /// Returns the first day of the week of the specified <paramref name="date"/>
+        /// </summary>
+        /// <param name="date">The date</param>
+        /// <returns></returns>
+        /// <remarks>As first date: <c><see cref="DayOfWeek.Monday"/></c></remarks>
+        public static DateTime GetFirstDayOfWeek(this DateTime date)
+            => date.AddDays(-(int)date.DayOfWeek + 1);
+
         #endregion
     }
 }

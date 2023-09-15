@@ -1,4 +1,6 @@
-﻿namespace MeetBase
+﻿using System.Xml.Linq;
+
+namespace MeetBase
 {
     /// <summary>
     /// The weekly schedule
@@ -47,6 +49,74 @@
         /// Default constructor
         /// </summary>
         public WeeklySchedule() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// The lecture schedule
+    /// </summary>
+    public class Lecture : INameable
+    {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="LectureHours"/> property
+        /// </summary>
+        private IEnumerable<DayOfWeekTimeRange>? mLectureHours;
+
+        /// <summary>
+        /// The member of the <see cref="Name"/> property
+        /// </summary>
+        private string? mName;
+
+        /// <summary>
+        /// The member of the <see cref="Color"/> property
+        /// </summary>
+        private string? mColor;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The name
+        /// </summary>
+        public string Name
+        {
+            get => mName ?? string.Empty;
+            set => mName = value;
+        }
+
+        /// <summary>
+        /// The color
+        /// </summary>
+        public string Color
+        {
+            get => mColor ?? string.Empty;
+            set => mColor = value;
+        }
+
+        /// <summary>
+        /// The lecture hours
+        /// </summary>
+        public IEnumerable<DayOfWeekTimeRange> LectureHours
+        {
+            get => mLectureHours ?? Enumerable.Empty<DayOfWeekTimeRange>();
+            set => mLectureHours = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Lecture() : base()
         {
 
         }

@@ -1079,6 +1079,46 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetBase.Lecture">
+            <summary>
+            The lecture schedule
+            </summary>
+        </member>
+        <member name="F:MeetBase.Lecture.mLectureHours">
+            <summary>
+            The member of the <see cref="P:MeetBase.Lecture.LectureHours"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Lecture.mName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Lecture.Name"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Lecture.mColor">
+            <summary>
+            The member of the <see cref="P:MeetBase.Lecture.Color"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Lecture.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Lecture.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="P:MeetBase.Lecture.LectureHours">
+            <summary>
+            The lecture hours
+            </summary>
+        </member>
+        <member name="M:MeetBase.Lecture.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetBase.Condition">
             <summary>
             Provides enumeration over the conditions
@@ -2534,6 +2574,11 @@
             Represents a time range of a specific week day
             </summary>
         </member>
+        <member name="P:MeetBase.DayOfWeekTimeRange.Text">
+            <summary>
+            The text
+            </summary>
+        </member>
         <member name="P:MeetBase.DayOfWeekTimeRange.DayOfWeek">
             <summary>
             The day of week
@@ -2741,6 +2786,14 @@
             </summary>
             <param name="dto">The date time offset</param>
             <returns></returns>
+        </member>
+        <member name="M:MeetBase.DateTimeExtensions.GetFirstDayOfWeek(System.DateTime)">
+            <summary>
+            Returns the first day of the week of the specified <paramref name="date"/>
+            </summary>
+            <param name="date">The date</param>
+            <returns></returns>
+            <remarks>As first date: <c><see cref="F:System.DayOfWeek.Monday"/></c></remarks>
         </member>
         <member name="T:MeetBase.ExceptionExtensions">
             <summary>
