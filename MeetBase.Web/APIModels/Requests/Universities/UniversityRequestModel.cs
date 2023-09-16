@@ -13,9 +13,9 @@
         public Uri? ImageUrl { get; set; }
 
         /// <summary>
-        /// The labels
+        /// The label ids
         /// </summary>
-        public IEnumerable<string>? Labels { get; set; }
+        public IEnumerable<string>? LabelIds { get; set; }
 
         #endregion
 

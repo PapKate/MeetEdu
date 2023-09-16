@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model used for a user
     /// </summary>
-    public abstract class UserRequestModel : BaseRequestModel
+    public class UserRequestModel : BaseRequestModel
     {
         #region Public Properties
 

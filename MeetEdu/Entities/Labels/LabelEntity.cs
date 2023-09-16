@@ -60,6 +60,7 @@ namespace MeetEdu
 
             DI.Mapper.Map(model, entity);
             entity.DepartmentId = companyId;
+
             return entity;
         }
 
@@ -84,7 +85,7 @@ namespace MeetEdu
     /// A minimal version of the <see cref="LabelEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedLabelEntity : EmbeddedStandardEntity, IDepartmentIdentifiable<ObjectId>
+    public class EmbeddedLabelEntity : StandardEmbeddedEntity, IDepartmentIdentifiable<ObjectId>
     {
         #region Public Properties
 

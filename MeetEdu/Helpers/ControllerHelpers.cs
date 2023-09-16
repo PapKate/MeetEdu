@@ -30,14 +30,17 @@ namespace MeetEdu.Helpers
         /// <returns></returns>
         public static async Task<ActionResult<IEnumerable<TResponse>>> GetManyAsync<TResponse, TEntity>(IMongoCollection<TEntity> collection, 
                                                                                                               Func<TEntity, TResponse> projector,
-                                                                                                              FilterDefinition<TEntity> filter, APIArgs? args, 
+                                                                                                              FilterDefinition<TEntity>? filter, APIArgs? args, 
                                                                                                               CancellationToken cancellationToken = default,
                                                                                                               Expression<Func<TEntity, object>>? orderSelector = null,
                                                                                                               OrderCondition orderCondition = OrderCondition.Ascending)
             where TResponse : BaseResponseModel
             where TEntity : BaseEntity
         {
-            var query = collection.AsQueryable().Where(x => filter.Inject());
+            var query = collection.AsQueryable();
+
+            if(filter is not null)
+                query.Where(x => filter.Inject());
 
             // If there is an order selector...
             if (orderSelector is not null)

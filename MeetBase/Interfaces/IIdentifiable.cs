@@ -83,7 +83,7 @@ namespace MeetBase
     /// <summary>
     /// Provides abstractions for an object that has a source and an id
     /// </summary>
-    public interface IEmbeddableIdentifiable<T> : IIdentifiable<T>, ISourceIdentifiable<T>
+    public interface IEmbeddableIdentifiable<T> : IEmbeddableIdentifiable, IIdentifiable<T>, ISourceIdentifiable<T>
     {
 
     }

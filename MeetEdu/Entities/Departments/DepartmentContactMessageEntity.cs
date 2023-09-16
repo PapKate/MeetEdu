@@ -138,7 +138,7 @@ namespace MeetEdu
     /// A minimal version of the <see cref="DepartmentContactMessageEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedDepartmentContactMessageEntity : EmbeddedBaseEntity
+    public class EmbeddedDepartmentContactMessageEntity : BaseEmbeddedEntity
     {
         #region Private Members
 

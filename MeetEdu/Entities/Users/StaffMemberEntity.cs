@@ -69,7 +69,7 @@ namespace MeetEdu
     /// A minimal version of the <see cref="StaffMemberEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public abstract class EmbeddedStaffMemberEntity : EmbeddedBaseEntity, IUserIdentifiable<ObjectId>, IDepartmentIdentifiable<ObjectId>
+    public abstract class EmbeddedStaffMemberEntity : BaseEmbeddedEntity, IUserIdentifiable<ObjectId>, IDepartmentIdentifiable<ObjectId>
     {
         #region Public Properties
 

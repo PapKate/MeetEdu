@@ -110,7 +110,7 @@ namespace MeetEdu
     /// A minimal version of the <see cref="MemberEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedMemberEntity : EmbeddedBaseEntity, IUserIdentifiable<ObjectId>
+    public class EmbeddedMemberEntity : BaseEmbeddedEntity, IUserIdentifiable<ObjectId>
     {
         #region Public Properties
 

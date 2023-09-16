@@ -1,4 +1,7 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Driver;
+
+using System.Linq;
 
 namespace MeetEdu
 {
@@ -37,7 +40,7 @@ namespace MeetEdu
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
         public async Task<WebServerFailable<UniversityEntity>> AddUniversityAsync(UniversityRequestModel model, CancellationToken cancellationToken = default)
-            => await MeetEduDbMapper.Universities.AddAsync(UniversityEntity.FromRequestModel(model), cancellationToken);
+            => await MeetEduDbMapper.Universities.AddAsync(UniversityEntity.FromRequestModelAsync(model), cancellationToken);
 
         /// <summary>
         /// Updates the university with the specified <paramref name="id"/>
@@ -70,6 +73,8 @@ namespace MeetEdu
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Universities));
 
             await MeetEduDbMapper.Universities.DeleteAsync(id, cancellationToken);
+
+            await MeetEduDbMapper.UniversityLabels.DeleteManyAsync(Builders<LabelEntity>.Filter.Eq(x => x.DepartmentId, id), cancellationToken);
 
             return entity;
         }

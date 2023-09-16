@@ -1,6 +1,7 @@
 ﻿using MeetBase;
 
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace MeetEdu
 {
@@ -14,7 +15,9 @@ namespace MeetEdu
         /// <summary>
         /// The id
         /// </summary>
-        public ObjectId Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public ObjectId Id { get; set; } = ObjectId.GenerateNewId();
 
         #endregion
 
@@ -34,7 +37,7 @@ namespace MeetEdu
     /// <summary>
     /// The base for all the embedded entities
     /// </summary>
-    public class EmbeddedBaseEntity : BaseEntity, IEmbeddableIdentifiable<ObjectId>
+    public class BaseEmbeddedEntity : BaseEntity, IEmbeddableIdentifiable<ObjectId>
     {
         #region Public Properties
 
@@ -50,7 +53,7 @@ namespace MeetEdu
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedBaseEntity() : base()
+        public BaseEmbeddedEntity() : base()
         {
 
         }

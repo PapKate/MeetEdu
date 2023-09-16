@@ -3574,6 +3574,31 @@
             The creation date
             </summary>
         </member>
+        <member name="T:MeetBase.IDateModifiable">
+            <summary>
+            Provides abstraction for an object that can be marked as modified at a specific date
+            </summary>
+        </member>
+        <member name="P:MeetBase.IDateModifiable.DateModified">
+            <summary>
+            The modification date
+            </summary>
+        </member>
+        <member name="P:MeetBase.IDateModifiable.MeetBase#IReadOnlyDateModifiable#DateModified">
+            <summary>
+            The modification date
+            </summary>
+        </member>
+        <member name="T:MeetBase.IReadOnlyDateModifiable">
+            <summary>
+            Provides abstractions for an object that has a modification date
+            </summary>
+        </member>
+        <member name="P:MeetBase.IReadOnlyDateModifiable.DateModified">
+            <summary>
+            The modification date
+            </summary>
+        </member>
         <member name="T:MeetBase.IDepartmentIdentifiable">
             <summary>
             Provides abstractions for an object that has a department id

@@ -1,8 +1,10 @@
-﻿using MeetBase;
-
+﻿
 using AutoMapper;
 using AutoMapper.Internal;
 
+using MongoDB.Bson;
+
+using System.Diagnostics;
 using System.Reflection;
 
 namespace MeetEdu
@@ -54,7 +56,8 @@ namespace MeetEdu
                 var assemblies = new List<Assembly>
                 {
                     // For the request models
-                    Assembly.GetAssembly(typeof(UserRequestModel))!
+                    Assembly.GetAssembly(typeof(UserRequestModel))!,
+                    Assembly.GetAssembly(typeof(UserEntity))!
                 };
 
                 // For every Atom assembly...
@@ -125,8 +128,62 @@ namespace MeetEdu
                         // Create a map
                         cfg.CreateMap(entityType, embeddedEntityType);
                 }
-                
+
+                // Do not map values when the values of the properties of the request models are null
+                cfg.Internal().ForAllMaps((map, options) =>
+                {
+                    if (map.SourceType.Name.EndsWith(FrameworkConstructionExtensions.RequestModelSuffix) && map.DestinationType.Name.EndsWith(FrameworkConstructionExtensions.EntitySuffix))
+                        options.ForAllMembers(x =>
+                        {
+                            x.Condition((_, _, sourceValue) => sourceValue is not null);
+                            x.UseDestinationValue();
+                        });
+                });
+
+                cfg.Internal().ForAllMaps((map, options) =>
+                {
+                    var sourceTypeInterfaces = map.SourceType.GetInterfaces();
+                    var destinationTypeInterfaces = map.DestinationType.GetInterfaces();
+
+                    // If the destination is an embeddable entity and the source isn't of the same type...
+                    // NOTE: Such mappings are used for creating an embeddable entity from a standard entity!
+                    if (map.SourceType != map.DestinationType && sourceTypeInterfaces.Any(x => x == typeof(IIdentifiable<ObjectId>)) && destinationTypeInterfaces.Any(x => x == typeof(IEmbeddableIdentifiable<ObjectId>)))
+                    {
+                        // Never map the id property
+                        options.ForMember(nameof(IIdentifiable.Id), config => config.Ignore());
+                        options.ForMember(nameof(IEmbeddableIdentifiable.Source), config => config.MapFrom(nameof(IIdentifiable.Id)));
+                    }
+
+                    // If the destination is an entity that stores its creation date...
+                    if (map.DestinationType.Name.EndsWith(FrameworkConstructionExtensions.EntitySuffix) && sourceTypeInterfaces.Any(y => y == typeof(IDateCreatable)) && destinationTypeInterfaces.Any(y => y == typeof(IDateCreatable)))
+                        // Never map the date created property
+                        options.ForMember(nameof(IDateCreatable.DateCreated), config => config.Ignore());
+
+                    // If the destination is an entity that stores its modification date...
+                    if (map.DestinationType.Name.EndsWith(FrameworkConstructionExtensions.EntitySuffix) && sourceTypeInterfaces.Any(y => y == typeof(IDateModifiable)) && destinationTypeInterfaces.Any(y => y == typeof(IDateModifiable)))
+                        // Never map the date modified property
+                        options.ForMember(nameof(IDateModifiable.DateModified), config => config.Ignore());
+                });
+
                 // Custom Maps
+
+                // Uri
+                cfg.CreateMap<Uri?, string?>().ConstructUsing((uri) => uri == null ? string.Empty : uri.ToString());
+                cfg.CreateMap<string?, Uri?>().ConstructUsing((str) => str == null ? null : new Uri(str));
+
+                // DateOnly
+                cfg.CreateMap<DateTime, DateOnly>().ConstructUsing((date) => DateOnly.FromDateTime(date));
+                cfg.CreateMap<DateOnly, DateTime>().ConstructUsing((date) => date.ToDateTime());
+                cfg.CreateMap<DateTime?, DateOnly?>().ConstructUsing((date) => date == null ? null : DateOnly.FromDateTime(date.Value));
+                cfg.CreateMap<DateOnly?, DateTime?>().ConstructUsing((date) => date == null ? null : date.Value.ToDateTime());
+
+                // DateTime to DateTimeOffset
+                cfg.CreateMap<DateTime, DateTimeOffset>().ConstructUsing((value) => new DateTimeOffset(value));
+                cfg.CreateMap<DateTime?, DateTimeOffset?>().ConstructUsing((value) => value == null ? null : new DateTimeOffset(value.Value));
+
+                // DateTimeOffset from DateTime (NOTE: We always store date times in UTC in MongoDb)
+                cfg.CreateMap<DateTimeOffset, DateTime>().ConstructUsing((value) => value.UtcDateTime);
+                cfg.CreateMap<DateTimeOffset?, DateTime?>().ConstructUsing((value) => value == null ? null : value.Value.UtcDateTime);
             });
 
             // Create the mapper

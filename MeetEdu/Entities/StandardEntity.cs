@@ -69,7 +69,7 @@
     /// A minimal version of the <see cref="StandardEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedStandardEntity : EmbeddedBaseEntity, INameable, IColorable
+    public class StandardEmbeddedEntity : BaseEmbeddedEntity, INameable, IColorable
     {
         #region Private Properties
 
@@ -112,7 +112,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public EmbeddedStandardEntity() : base()
+        public StandardEmbeddedEntity() : base()
         {
 
         }

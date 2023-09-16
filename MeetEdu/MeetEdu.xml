@@ -285,26 +285,26 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetUniversityAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Gets the university with the specified <paramref name="id"/>
+            Gets the university with the specified <paramref name="universityId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="universityId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateUniversityAsync(System.String,MeetBase.Web.UniversityRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Updates the university with the specified <paramref name="id"/>
+            Updates the university with the specified <paramref name="universityId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="universityId">The id</param>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.DeleteUniversityAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Deletes the university with the specified <paramref name="id"/>
+            Deletes the university with the specified <paramref name="universityId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="universityId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -326,26 +326,26 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetUniversityLabelAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Gets the university label with the specified <paramref name="id"/>
+            Gets the university label with the specified <paramref name="universityLabelId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="universityLabelId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateUniversityLabelAsync(System.String,MeetBase.Web.LabelRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Updates the university label with the specified <paramref name="id"/>
+            Updates the university label with the specified <paramref name="universityLabelId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="universityLabelId">The id</param>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.DeleteUniversityLabelAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Deletes the university label with the specified <paramref name="id"/>
+            Deletes the university label with the specified <paramref name="universityLabelId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="universityLabelId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -367,32 +367,32 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetDepartmentAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Gets the department with the specified <paramref name="id"/>
+            Gets the department with the specified <paramref name="departmentId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateDepartmentAsync(System.String,MeetBase.Web.DepartmentRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Updates the department with the specified <paramref name="id"/>
+            Updates the department with the specified <paramref name="departmentId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentId">The id</param>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.DeleteDepartmentAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Deletes the department with the specified <paramref name="id"/>
+            Deletes the department with the specified <paramref name="departmentId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetDepartmentLayoutsAsync(MeetBase.Web.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
             <summary>
-            Gets the departments
+            Gets the department layouts
             </summary>
             <param name="args">The arguments</param>
             <param name="cancellationToken">The cancellation token</param>
@@ -400,7 +400,7 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.AddDepartmentLayoutAsync(MeetBase.Web.DepartmentLayoutRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Creates a department
+            Creates a department layout
             </summary>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
@@ -408,26 +408,26 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetDepartmentLayoutAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Gets the department with the specified <paramref name="id"/>
+            Gets the department layout with the specified <paramref name="departmentLayoutId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentLayoutId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateDepartmentLayoutAsync(System.String,MeetBase.Web.DepartmentLayoutRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Updates the department with the specified <paramref name="id"/>
+            Updates the department layout with the specified <paramref name="departmentLayoutId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentLayoutId">The id</param>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.DeleteDepartmentLayoutAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Deletes the department with the specified <paramref name="id"/>
+            Deletes the department layout with the specified <paramref name="departmentLayoutId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentLayoutId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -449,26 +449,26 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetDepartmentLabelAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Gets the department label with the specified <paramref name="id"/>
+            Gets the department label with the specified <paramref name="departmentLabelId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentLabelId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateDepartmentLabelAsync(System.String,MeetBase.Web.LabelRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Updates the department label with the specified <paramref name="id"/>
+            Updates the department label with the specified <paramref name="departmentLabelId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentLabelId">The id</param>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.DeleteDepartmentLabelAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Deletes the department label with the specified <paramref name="id"/>
+            Deletes the department label with the specified <paramref name="departmentLabelId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentLabelId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -490,26 +490,26 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetDepartmentContactMessageAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Gets the department contact message with the specified <paramref name="id"/>
+            Gets the department contact message with the specified <paramref name="departmentContactMessageId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentContactMessageId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateDepartmentContactMessageAsync(System.String,MeetBase.Web.DepartmentContactMessageRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Updates the department contact message with the specified <paramref name="id"/>
+            Updates the department contact message with the specified <paramref name="departmentContactMessageId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentContactMessageId">The id</param>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.DeleteDepartmentContactMessageAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Deletes the department contact message with the specified <paramref name="id"/>
+            Deletes the department contact message with the specified <paramref name="departmentContactMessageId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="departmentContactMessageId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -533,15 +533,15 @@
             <summary>
             Gets the secretary
             </summary>
-            <param name="id"></param>
+            <param name="secretaryId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateSecretaryAsync(System.String,MeetBase.Web.SecretaryRequestModel,MeetBase.Web.UserRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Updates the secretary with the specified <paramref name="id"/>
+            Updates the secretary with the specified <paramref name="secretaryId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="secretaryId">The id</param>
             <param name="model">The model</param>
             <param name="user">The user</param>
             <param name="cancellationToken">The cancellation token</param>
@@ -549,9 +549,9 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.DeleteSecretaryAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Deletes the secretary with the specified <paramref name="id"/>
+            Deletes the secretary with the specified <paramref name="secretaryId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="secretaryId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -573,17 +573,17 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetProfessorAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Gets the secretary
+            Gets the professor
             </summary>
-            <param name="id"></param>
+            <param name="professorId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateProfessorAsync(System.String,MeetBase.Web.ProfessorRequestModel,MeetBase.Web.UserRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Updates the secretary with the specified <paramref name="id"/>
+            Updates the professor with the specified <paramref name="professorId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="professorId">The id</param>
             <param name="model">The model</param>
             <param name="user">The user</param>
             <param name="cancellationToken">The cancellation token</param>
@@ -591,9 +591,9 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.DeleteProfessorAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Deletes the secretary with the specified <paramref name="id"/>
+            Deletes the professor with the specified <paramref name="professorId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="professorId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -607,7 +607,7 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.AddAppointmentRuleAsync(MeetBase.Web.AppointmentRuleRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Creates a appointment
+            Creates an appointment rule
             </summary>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
@@ -615,26 +615,26 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetAppointmentRuleAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Gets the appointment with the specified <paramref name="id"/>
+            Gets the appointment rule with the specified <paramref name="appointmentRuleId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="appointmentRuleId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateAppointmentRuleAsync(System.String,MeetBase.Web.AppointmentRuleRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Updates the appointment with the specified <paramref name="id"/>
+            Updates the appointment rule with the specified <paramref name="appointmentRuleId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="appointmentRuleId">The id</param>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.DeleteAppointmentRuleAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Deletes the appointment with the specified <paramref name="id"/>
+            Deletes the appointment rule with the specified <paramref name="appointmentRuleId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="appointmentRuleId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -656,26 +656,26 @@
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetAppointmentAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Gets the appointment with the specified <paramref name="id"/>
+            Gets the appointment with the specified <paramref name="appointmentId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="appointmentId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateAppointmentAsync(System.String,MeetBase.Web.AppointmentRequestModel,System.Threading.CancellationToken)">
             <summary>
-            Updates the appointment with the specified <paramref name="id"/>
+            Updates the appointment with the specified <paramref name="appointmentId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="appointmentId">The id</param>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.DeleteAppointmentAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Deletes the appointment with the specified <paramref name="id"/>
+            Deletes the appointment with the specified <paramref name="appointmentId"/>
             </summary>
-            <param name="id">The id</param>
+            <param name="appointmentId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -727,6 +727,40 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.MeetEduController.GetDepartmentContactMessagesAsync(MeetBase.Web.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the department contact messages
+            </summary>
+            <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.AddDepartmentContactMessageAsync(System.String,MeetBase.Web.DepartmentContactMessageRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Creates a department contact message
+            </summary>
+            <param name="departmentId">The department id</param>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.GetDepartmentContactMessageAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the department contact message with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.UpdateDepartmentContactMessageAsync(System.String,MeetBase.Web.DepartmentContactMessageRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Updates the department contact message with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.MeetEduController.GetProfessorAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Gets the professor with the specified <paramref name="id"/>
@@ -740,6 +774,39 @@
             Gets the appointment rules
             </summary>
             <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.GetAppointmentsAsync(MeetBase.Web.APIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the appointments
+            </summary>
+            <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.AddAppointmentAsync(MeetBase.Web.AppointmentRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Creates a appointment
+            </summary>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.GetAppointmentAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the appointment with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.UpdateAppointmentAsync(System.String,MeetBase.Web.AppointmentRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Updates the appointment with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -1285,17 +1352,17 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:MeetEdu.EmbeddedBaseEntity">
+        <member name="T:MeetEdu.BaseEmbeddedEntity">
             <summary>
             The base for all the embedded entities
             </summary>
         </member>
-        <member name="P:MeetEdu.EmbeddedBaseEntity.Source">
+        <member name="P:MeetEdu.BaseEmbeddedEntity.Source">
             <summary>
             The id of the entity that was used for creating the current 
             </summary>
         </member>
-        <member name="M:MeetEdu.EmbeddedBaseEntity.#ctor">
+        <member name="M:MeetEdu.BaseEmbeddedEntity.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -1771,38 +1838,38 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:MeetEdu.EmbeddedStandardEntity">
+        <member name="T:MeetEdu.StandardEmbeddedEntity">
             <summary>
             A minimal version of the <see cref="T:MeetEdu.StandardEntity"/> that contains the fields that are 
             more frequently used when embedding documents in the MongoDB
             </summary>
         </member>
-        <member name="F:MeetEdu.EmbeddedStandardEntity.mName">
+        <member name="F:MeetEdu.StandardEmbeddedEntity.mName">
             <summary>
-            The member of the <see cref="P:MeetEdu.EmbeddedStandardEntity.Name"/> property
+            The member of the <see cref="P:MeetEdu.StandardEmbeddedEntity.Name"/> property
             </summary>
         </member>
-        <member name="F:MeetEdu.EmbeddedStandardEntity.mColor">
+        <member name="F:MeetEdu.StandardEmbeddedEntity.mColor">
             <summary>
-            The member of the <see cref="P:MeetEdu.EmbeddedStandardEntity.Color"/> property
+            The member of the <see cref="P:MeetEdu.StandardEmbeddedEntity.Color"/> property
             </summary>
         </member>
-        <member name="P:MeetEdu.EmbeddedStandardEntity.Name">
+        <member name="P:MeetEdu.StandardEmbeddedEntity.Name">
             <summary>
             The name
             </summary>
         </member>
-        <member name="P:MeetEdu.EmbeddedStandardEntity.Color">
+        <member name="P:MeetEdu.StandardEmbeddedEntity.Color">
             <summary>
             The color
             </summary>
         </member>
-        <member name="M:MeetEdu.EmbeddedStandardEntity.#ctor">
+        <member name="M:MeetEdu.StandardEmbeddedEntity.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetEdu.EmbeddedStandardEntity.ToString">
+        <member name="M:MeetEdu.StandardEmbeddedEntity.ToString">
             <summary>
             Returns a string that represents the current object.
             </summary>
@@ -1833,7 +1900,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetEdu.UniversityEntity.FromRequestModel(MeetBase.Web.UniversityRequestModel)">
+        <member name="M:MeetEdu.UniversityEntity.FromRequestModelAsync(MeetBase.Web.UniversityRequestModel)">
             <summary>
             Creates and returns a <see cref="T:MeetEdu.UniversityEntity"/> from the specified <paramref name="model"/>
             </summary>
@@ -1844,6 +1911,15 @@
             <summary>
             Creates and returns a <see cref="T:MeetBase.Web.UniversityResponseModel"/> from the current <see cref="T:MeetEdu.UniversityEntity"/>
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.UniversityEntity.UpdateNonAutoMapperValues(MeetBase.Web.UniversityRequestModel,MeetEdu.UniversityEntity)">
+            <summary>
+            Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
+            NOTE: This method only affects the properties that can't be mapped by the <see cref="T:AutoMapper.Mapper"/> and are not null!
+            </summary>
+            <param name="model">The model</param>
+            <param name="entity">The entity</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.UniversityEntity.ToEmbeddedEntity">

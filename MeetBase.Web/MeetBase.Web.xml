@@ -229,7 +229,7 @@
             The shipping information
             </summary>
         </member>
-        <member name="P:MeetBase.Web.DepartmentRequestModel.Labels">
+        <member name="P:MeetBase.Web.DepartmentRequestModel.LabelIds">
             <summary>
             The labels
             </summary>
@@ -322,9 +322,9 @@
             The image
             </summary>
         </member>
-        <member name="P:MeetBase.Web.UniversityRequestModel.Labels">
+        <member name="P:MeetBase.Web.UniversityRequestModel.LabelIds">
             <summary>
-            The labels
+            The label ids
             </summary>
         </member>
         <member name="M:MeetBase.Web.UniversityRequestModel.#ctor">
@@ -1037,6 +1037,31 @@
             </summary>
         </member>
         <member name="M:MeetBase.Web.EmbeddedDepartmentResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.ErrorMessageResponseModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ErrorMessageResponseModel.Title">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ErrorMessageResponseModel.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ErrorMessageResponseModel.Code">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.ErrorMessageResponseModel.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -1823,6 +1848,424 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetBase.Web.MeetCoreClient">
+            <summary>
+            Client that provides HTTP calls for sending and receiving information from the <c>MeetCore</c> server
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreClient.mUniversityId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.MeetCoreClient.UniversityId"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreClient.mDepartmentId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.MeetCoreClient.DepartmentId"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreClient.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.MeetCoreClient.UniversityId">
+            <summary>
+            The university id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.MeetCoreClient.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.RegisterUserAsync(MeetBase.Web.UserRequestModel)">
+            <summary>
+            Registers a user
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.LoginAsync(MeetBase.Web.LogInRequestModel)">
+            <summary>
+            Validates the user credentials sent by the user and returns the user
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetUniversitiesAsync(MeetBase.Web.APIArgs)">
+            <summary>
+            Gets the universities
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddUniversityAsync(MeetBase.Web.UniversityRequestModel)">
+            <summary>
+            Creates a university
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetUniversityAsync(System.String)">
+            <summary>
+            Gets the university with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateUniversityAsync(System.String,MeetBase.Web.UniversityRequestModel)">
+            <summary>
+            Updates the university with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteUniversityAsync(System.String)">
+            <summary>
+            Deletes the university with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetUniversityLabelsAsync(MeetBase.Web.APIArgs)">
+            <summary>
+            Gets the university labels
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddUniversityLabelAsync(MeetBase.Web.LabelRequestModel)">
+            <summary>
+            Creates a university label
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetUniversityLabelAsync(System.String)">
+            <summary>
+            Gets the university label with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateUniversityLabelAsync(System.String,MeetBase.Web.LabelRequestModel)">
+            <summary>
+            Updates the university label with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteUniversityLabelAsync(System.String)">
+            <summary>
+            Deletes the university label with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetDepartmentsAsync(MeetBase.Web.DepartmentAPIArgs)">
+            <summary>
+            Gets the departments
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddDepartmentAsync(MeetBase.Web.DepartmentRequestModel)">
+            <summary>
+            Creates a department
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetDepartmentAsync(System.String)">
+            <summary>
+            Gets the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateDepartmentAsync(System.String,MeetBase.Web.DepartmentRequestModel)">
+            <summary>
+            Updates the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteDepartmentAsync(System.String)">
+            <summary>
+            Deletes the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetDepartmentLayoutsAsync(MeetBase.Web.DepartmentRelatedAPIArgs)">
+            <summary>
+            Gets the department layouts
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddDepartmentLayoutAsync(MeetBase.Web.DepartmentLayoutRequestModel)">
+            <summary>
+            Creates a department layout
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetDepartmentLayoutAsync(System.String)">
+            <summary>
+            Gets the department layout with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateDepartmentLayoutAsync(System.String,MeetBase.Web.DepartmentLayoutRequestModel)">
+            <summary>
+            Updates the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteDepartmentLayoutAsync(System.String)">
+            <summary>
+            Deletes the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetDepartmentLabelsAsync(MeetBase.Web.DepartmentRelatedAPIArgs)">
+            <summary>
+            Gets the department labels
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddDepartmentLabelAsync(MeetBase.Web.LabelRequestModel)">
+            <summary>
+            Creates a department label
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetDepartmentLabelAsync(System.String)">
+            <summary>
+            Gets the department label with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateDepartmentLabelAsync(System.String,MeetBase.Web.LabelRequestModel)">
+            <summary>
+            Updates the department label with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteDepartmentLabelAsync(System.String)">
+            <summary>
+            Deletes the department label with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetDepartmentContactMessagesAsync(MeetBase.Web.DepartmentRelatedAPIArgs)">
+            <summary>
+            Gets the department contact messages
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddDepartmentContactMessageAsync(MeetBase.Web.DepartmentContactMessageRequestModel)">
+            <summary>
+            Creates a department contact message
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetDepartmentContactMessageAsync(System.String)">
+            <summary>
+            Gets the department contact message with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateDepartmentContactMessageAsync(System.String,MeetBase.Web.DepartmentContactMessageRequestModel)">
+            <summary>
+            Updates the department contact message with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteDepartmentContactMessageAsync(System.String)">
+            <summary>
+            Deletes the department contact message with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetSecretariesAsync(MeetBase.Web.StafMemberAPIArgs)">
+            <summary>
+            Gets the secretaries
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddSecretaryAsync(MeetBase.Web.SecretaryRequestModel)">
+            <summary>
+            Creates a secretary
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetSecretaryAsync(System.String)">
+            <summary>
+            Gets the secretary
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateSecretaryAsync(System.String,MeetBase.Web.SecretaryRequestModel,MeetBase.Web.UserRequestModel)">
+            <summary>
+            Updates the secretary with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <param name="user">The user</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteSecretaryAsync(System.String)">
+            <summary>
+            Deletes the secretary with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetProfessorsAsync(MeetBase.Web.StafMemberAPIArgs)">
+            <summary>
+            Gets the professors
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddProfessorAsync(MeetBase.Web.ProfessorRequestModel)">
+            <summary>
+            Creates a professor
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetProfessorAsync(System.String)">
+            <summary>
+            Gets the professor
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateProfessorAsync(System.String,MeetBase.Web.ProfessorRequestModel,MeetBase.Web.UserRequestModel)">
+            <summary>
+            Updates the professor with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <param name="user">The user</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteProfessorAsync(System.String)">
+            <summary>
+            Deletes the professor with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetAppointmentRulesAsync(MeetBase.Web.AppointmentRuleAPIArgs)">
+            <summary>
+            Gets the appointment rules
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddAppointmentRuleAsync(MeetBase.Web.AppointmentRuleRequestModel)">
+            <summary>
+            Creates an appointment rule
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetAppointmentRuleAsync(System.String)">
+            <summary>
+            Gets the appointment rule with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateAppointmentRuleAsync(System.String,MeetBase.Web.AppointmentRuleRequestModel)">
+            <summary>
+            Updates the appointment rule with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteAppointmentRuleAsync(System.String)">
+            <summary>
+            Deletes the appointment rule with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetAppointmentsAsync(MeetBase.Web.APIArgs)">
+            <summary>
+            Gets the appointments
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddAppointmentAsync(MeetBase.Web.AppointmentRequestModel)">
+            <summary>
+            Creates a appointment
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetAppointmentAsync(System.String)">
+            <summary>
+            Gets the appointment with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateAppointmentAsync(System.String,MeetBase.Web.AppointmentRequestModel)">
+            <summary>
+            Updates the appointment with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteAppointmentAsync(System.String)">
+            <summary>
+            Deletes the appointment with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetAbsoluteUrl(System.String)">
+            <summary>
+            Gets the absolute URL of the site
+            </summary>
+            <param name="url">The url</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.Web.MeetEduClient">
             <summary>
             
@@ -1859,31 +2302,6 @@
             </summary>
             <param name="args"></param>
             <returns></returns>
-        </member>
-        <member name="T:MeetBase.Web.ErrorMessageResponseModel">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.ErrorMessageResponseModel.Title">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.ErrorMessageResponseModel.Description">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.ErrorMessageResponseModel.Code">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.ErrorMessageResponseModel.#ctor">
-            <summary>
-            Default constructor
-            </summary>
         </member>
         <member name="T:MeetBase.Web.WebRequestsClient`1">
             <summary>
@@ -2616,219 +3034,6 @@
             <param name="name">The name</param>
             <param name="value">The value</param>
         </member>
-        <member name="T:MeetBase.Web.MeetEduAPIRoutes">
-            <summary>
-            The AppontMate related API routes
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.APIRoute">
-            <summary>
-            The app route
-            <code>/appointMate/api</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.VersionRoute">
-            <summary>
-            The app route
-            <code>/appointMate/api/v1</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.BaseRoute">
-            <summary>
-            The base route
-            <code>/appointMate/api/v1/meetEdu</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.LogInRoute">
-            <summary>
-            The login route
-            <code>/appointMate/api/v1/meetEdu/login</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.RegisterRoute">
-            <summary>
-            The register route
-            <code>/appointMate/api/v1/meetEdu/register</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.UsersRoute">
-            <summary>
-            The users route
-            <code>/appointMate/api/v1/meetEdu/users</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.UserRoute">
-            <summary>
-            The user route
-            <code>/appointMate/api/v1/meetEdu/users/3</code>
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetUserRoute(System.String)">
-            <summary>
-            Gets the route for the user with the specified <paramref name="userId"/>
-            <code>/appointMate/api/v1/meetEdu/users/4</code>
-            </summary>
-            <param name="userId">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.UniversitiesRoute">
-            <summary>
-            The universities route
-            <code>/appointMate/api/v1/meetEdu/universities</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentsRoute">
-            <summary>
-            The departments route
-            <code>/appointMate/api/v1/meetEdu/departments</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentRoute">
-            <summary>
-            The department route
-            <code>/appointMate/api/v1/meetEdu/departments/3</code>
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetDepartmentRoute(System.String)">
-            <summary>
-            Gets the department route for the one with the specified <paramref name="departmentId"/>
-            <code>/appointMate/api/v1/meetEdu/departments/3</code>
-            </summary>
-            <param name="departmentId">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentContactMessagesRoute">
-            <summary>
-            The department contact messages route
-            <code>/appointMate/api/v1/meetEdu/departments/3/departmentContactMessages</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentContactMessageRoute">
-            <summary>
-            The department contact message route
-            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/3</code>
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetDepartmentContactMessageRoute(System.String)">
-            <summary>
-            Gets the route for the department contact message with the specified <paramref name="departmentContactMessageId"/>
-            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/2</code>
-            </summary>
-            <param name="departmentContactMessageId">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SecretariesRoute">
-            <summary>
-            The secretaries route
-            <code>/appointMate/api/v1/meetEdu/secretaries</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SecretaryRoute">
-            <summary>
-            The secretary route
-            <code>/appointMate/api/v1/meetEdu/secretaries/3</code>
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetSecretaryRoute(System.String)">
-            <summary>
-            Gets the route for the secretary with the specified <paramref name="secretaryId"/>
-            <code>/appointMate/api/v1/meetEdu/secretaries/4</code>
-            </summary>
-            <param name="secretaryId">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.ProfessorsRoute">
-            <summary>
-            The professors route
-            <code>/appointMate/api/v1/meetEdu/professors</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.ProfessorRoute">
-            <summary>
-            The professor route
-            <code>/appointMate/api/v1/meetEdu/professors/3</code>
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetProfessorRoute(System.String)">
-            <summary>
-            Gets the professor route for the one with the specified <paramref name="professorId"/>
-            <code>/appointMate/api/v1/meetEdu/professors/3</code>
-            </summary>
-            <param name="professorId">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentRulesRoute">
-            <summary>
-            The appointment rules route
-            <code>/appointMate/api/v1/meetEdu/appointmentRules</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentRuleRoute">
-            <summary>
-            The appointment rule route
-            <code>/appointMate/api/v1/meetEdu/appointmentRules/3</code>
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetAppointmentRuleRoute(System.String)">
-            <summary>
-            Gets the route for the appointment with the specified <paramref name="appointmentRuleId"/>
-            <code>/appointMate/api/v1/meetEdu/appointmentRules/4</code>
-            </summary>
-            <param name="appointmentRuleId">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.MembersRoute">
-            <summary>
-            The members route
-            <code>/appointMate/api/v1/meetEdu/members</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.MemberRoute">
-            <summary>
-            The member route
-            <code>/appointMate/api/v1/meetEdu/members/3</code>
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetMemberRoute(System.String)">
-            <summary>
-            Gets the member route for the one with the specified <paramref name="memberId"/>
-            <code>/appointMate/api/v1/meetEdu/members/3</code>
-            </summary>
-            <param name="memberId">The id</param>
-            <returns></returns>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SavedDepartmentsRoute">
-            <summary>
-            The saved departments route
-            <code>/appointMate/api/v1/meetEdu/savedDepartments</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SavedProfessorsRoute">
-            <summary>
-            The saved departments route
-            <code>/appointMate/api/v1/meetEdu/savedProfessors</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentsRoute">
-            <summary>
-            The appointments route
-            <code>/appointMate/api/v1/meetEdu/appointments</code>
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentRoute">
-            <summary>
-            The appointment route
-            <code>/appointMate/api/v1/meetEdu/appointments/3</code>
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetAppointmentRoute(System.String)">
-            <summary>
-            Gets the route for the appointment with the specified <paramref name="appointmentId"/>
-            <code>/appointMate/api/v1/meetEdu/appointments/4</code>
-            </summary>
-            <param name="appointmentId">The id</param>
-            <returns></returns>
-        </member>
         <member name="T:MeetBase.Web.MeetCoreAPIRoutes">
             <summary>
             The MeetCore related API routes
@@ -3080,6 +3285,247 @@
             <summary>
             Gets the route for the appointment with the specified <paramref name="appointmentId"/>
             <code>/appointMate/api/v1/meetCore/appointments/4</code>
+            </summary>
+            <param name="appointmentId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.MeetEduAPIRoutes">
+            <summary>
+            The AppontMate related API routes
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.APIRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.VersionRoute">
+            <summary>
+            The app route
+            <code>/appointMate/api/v1</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.BaseRoute">
+            <summary>
+            The base route
+            <code>/appointMate/api/v1/meetEdu</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.LogInRoute">
+            <summary>
+            The login route
+            <code>/appointMate/api/v1/meetEdu/login</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.RegisterRoute">
+            <summary>
+            The register route
+            <code>/appointMate/api/v1/meetEdu/register</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.UsersRoute">
+            <summary>
+            The users route
+            <code>/appointMate/api/v1/meetEdu/users</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.UserRoute">
+            <summary>
+            The user route
+            <code>/appointMate/api/v1/meetEdu/users/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetUserRoute(System.String)">
+            <summary>
+            Gets the route for the user with the specified <paramref name="userId"/>
+            <code>/appointMate/api/v1/meetEdu/users/4</code>
+            </summary>
+            <param name="userId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.UniversitiesRoute">
+            <summary>
+            The universities route
+            <code>/appointMate/api/v1/meetEdu/universities</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentsRoute">
+            <summary>
+            The departments route
+            <code>/appointMate/api/v1/meetEdu/departments</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentRoute">
+            <summary>
+            The department route
+            <code>/appointMate/api/v1/meetEdu/departments/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetDepartmentRoute(System.String)">
+            <summary>
+            Gets the department route for the one with the specified <paramref name="departmentId"/>
+            <code>/appointMate/api/v1/meetEdu/departments/3</code>
+            </summary>
+            <param name="departmentId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentContactMessagesRoute">
+            <summary>
+            The department contact messages route
+            <code>/appointMate/api/v1/meetEdu/departments/3/departmentContactMessages</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentContactMessageRoute">
+            <summary>
+            The department contact message route
+            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetDepartmentContactMessageRoute(System.String)">
+            <summary>
+            Gets the route for the department contact message with the specified <paramref name="departmentContactMessageId"/>
+            <code>/appointMate/api/v1/meetEdu/departmentContactMessages/2</code>
+            </summary>
+            <param name="departmentContactMessageId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SecretariesRoute">
+            <summary>
+            The secretaries route
+            <code>/appointMate/api/v1/meetEdu/secretaries</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SecretaryRoute">
+            <summary>
+            The secretary route
+            <code>/appointMate/api/v1/meetEdu/secretaries/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetSecretaryRoute(System.String)">
+            <summary>
+            Gets the route for the secretary with the specified <paramref name="secretaryId"/>
+            <code>/appointMate/api/v1/meetEdu/secretaries/4</code>
+            </summary>
+            <param name="secretaryId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.ProfessorsRoute">
+            <summary>
+            The professors route
+            <code>/appointMate/api/v1/meetEdu/professors</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.ProfessorRoute">
+            <summary>
+            The professor route
+            <code>/appointMate/api/v1/meetEdu/professors/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetProfessorRoute(System.String)">
+            <summary>
+            Gets the professor route for the one with the specified <paramref name="professorId"/>
+            <code>/appointMate/api/v1/meetEdu/professors/3</code>
+            </summary>
+            <param name="professorId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentRulesRoute">
+            <summary>
+            The appointment rules route
+            <code>/appointMate/api/v1/meetEdu/appointmentRules</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentRuleRoute">
+            <summary>
+            The appointment rule route
+            <code>/appointMate/api/v1/meetEdu/appointmentRules/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetAppointmentRuleRoute(System.String)">
+            <summary>
+            Gets the route for the appointment with the specified <paramref name="appointmentRuleId"/>
+            <code>/appointMate/api/v1/meetEdu/appointmentRules/4</code>
+            </summary>
+            <param name="appointmentRuleId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.MembersRoute">
+            <summary>
+            The members route
+            <code>/appointMate/api/v1/meetEdu/members</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.MemberRoute">
+            <summary>
+            The member route
+            <code>/appointMate/api/v1/meetEdu/members/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetMemberRoute(System.String)">
+            <summary>
+            Gets the member route for the one with the specified <paramref name="memberId"/>
+            <code>/appointMate/api/v1/meetEdu/members/3</code>
+            </summary>
+            <param name="memberId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SavedDepartmentsRoute">
+            <summary>
+            The saved departments route
+            <code>/appointMate/api/v1/meetEdu/savedDepartments</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SavedDepartmentRoute">
+            <summary>
+            The saved department route
+            <code>/appointMate/api/v1/meetEdu/savedDepartments/2</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetSavedDepartmentRoute(System.String)">
+            <summary>
+            Gets the route for the saved department with the specified <paramref name="savedDepartmentId"/>
+            <code>/appointMate/api/v1/meetEdu/savedDepartments/2</code>
+            </summary>
+            <param name="savedDepartmentId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SavedProfessorsRoute">
+            <summary>
+            The saved professors route
+            <code>/appointMate/api/v1/meetEdu/savedProfessors</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.SavedProfessorRoute">
+            <summary>
+            The saved professor route
+            <code>/appointMate/api/v1/meetEdu/savedProfessors/2</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetSavedProfessorRoute(System.String)">
+            <summary>
+            Gets the route for the saved professor with the specified <paramref name="savedProfessorId"/>
+            <code>/appointMate/api/v1/meetEdu/savedDepartments/2</code>
+            </summary>
+            <param name="savedProfessorId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentsRoute">
+            <summary>
+            The appointments route
+            <code>/appointMate/api/v1/meetEdu/appointments</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentRoute">
+            <summary>
+            The appointment route
+            <code>/appointMate/api/v1/meetEdu/appointments/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetAppointmentRoute(System.String)">
+            <summary>
+            Gets the route for the appointment with the specified <paramref name="appointmentId"/>
+            <code>/appointMate/api/v1/meetEdu/appointments/4</code>
             </summary>
             <param name="appointmentId">The id</param>
             <returns></returns>

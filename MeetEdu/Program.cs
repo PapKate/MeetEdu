@@ -5,7 +5,6 @@ using MudBlazor.Services;
 using System.Reflection;
 
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,7 +14,6 @@ builder.Services.AddControllers();
 // AutoMapper
 builder.Services.AddMapper();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -32,9 +30,16 @@ builder.Services.AddServerSideBlazor().AddCircuitOptions(o =>
     o.DetailedErrors = true;
 });
 
-
-
 builder.Services.AddMudServices();
+
+builder.Services.AddSingleton(provider => AccountsRepository.Instance);
+builder.Services.AddSingleton(provider => UsersRepository.Instance);
+builder.Services.AddSingleton(provider => SecretariesRepository.Instance);
+builder.Services.AddSingleton(provider => ProfessorsRepository.Instance);
+builder.Services.AddSingleton(provider => MembersRepository.Instance);
+builder.Services.AddSingleton(provider => UniversitiesRepository.Instance);
+builder.Services.AddSingleton(provider => DepartmentsRepository.Instance);
+builder.Services.AddSingleton(provider => AppointmentsRepository.Instance);
 
 var app = builder.Build();
 

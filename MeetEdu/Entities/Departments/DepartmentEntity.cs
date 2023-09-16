@@ -160,12 +160,12 @@ namespace MeetEdu
         /// <returns></returns>
         public static async void UpdateNonAutoMapperValues(DepartmentRequestModel model, DepartmentEntity entity)
         {
-            // If there are labels...
-            if (model.Labels is not null)
+            if (!model.LabelIds.IsNullOrEmpty())
             {
-                var labels = await MeetEduDbMapper.DepartmentLabels.SelectAsync(x => model.Labels.Any(y => y.ToObjectId() == x.Id));
+                var formattedLabelIds = model.LabelIds.Select(l => l.ToObjectId()).ToList();
+                var labels = await MeetEduDbMapper.UniversityLabels.SelectAsync(x => formattedLabelIds.Contains(x.Id));
 
-                entity.Labels = labels.Select(x => x.ToEmbeddedEntity());
+                entity.Labels = labels.Select(l => l.ToEmbeddedEntity()).ToList();
             }
         }
 
@@ -183,7 +183,7 @@ namespace MeetEdu
     /// A minimal version of the <see cref="DepartmentEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedDepartmentEntity : EmbeddedStandardEntity, IImageable, IUniversityIdentifiable<ObjectId>
+    public class EmbeddedDepartmentEntity : StandardEmbeddedEntity, IImageable, IUniversityIdentifiable<ObjectId>
     {
         #region Public Properties
 

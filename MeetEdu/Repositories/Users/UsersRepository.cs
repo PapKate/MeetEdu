@@ -42,13 +42,12 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<UserEntity>> AddUserAsync(UserRequestModel model)
         {
-            if (model.Username.IsNullOrEmpty()
+            if(model.Username.IsNullOrEmpty()
             || model.FirstName.IsNullOrEmpty()
             || model.LastName.IsNullOrEmpty()
             || model.Email.IsNullOrEmpty()
             || model.PasswordHash.IsNullOrEmpty()
             || model.PhoneNumber is null
-            || model.Billing is null
             || model.DateOfBirth is null)
                 return MeetEduWebServerConstants.InvalidRegistrationCredentialsErrorMessage;
 

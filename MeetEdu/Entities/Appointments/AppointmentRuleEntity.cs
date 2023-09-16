@@ -109,7 +109,7 @@ namespace MeetEdu
     /// A minimal version of the <see cref="AppointmentRuleEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedAppointmentRuleEntity : EmbeddedStandardEntity, IProfessorIdentifiable<ObjectId>
+    public class EmbeddedAppointmentRuleEntity : StandardEmbeddedEntity, IProfessorIdentifiable<ObjectId>
     {
         #region Public Properties
 

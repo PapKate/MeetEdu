@@ -65,7 +65,7 @@
         /// <summary>
         /// The labels
         /// </summary>
-        public IEnumerable<string>? Labels { get; set; }
+        public IEnumerable<string>? LabelIds { get; set; }
 
         #endregion
 

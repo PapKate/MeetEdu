@@ -169,7 +169,7 @@ namespace MeetEdu
     /// A minimal version of the <see cref="UserEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedUserEntity : EmbeddedBaseEntity, IImageable
+    public class EmbeddedUserEntity : BaseEmbeddedEntity, IImageable
     {
         #region Private Members
 
