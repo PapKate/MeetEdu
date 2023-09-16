@@ -95,6 +95,55 @@ namespace MeetEdu
 
         #region Contact
 
+        /// <summary>
+        /// Gets the department contact messages
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.DepartmentContactMessagesRoute)]
+        public async Task<ActionResult<IEnumerable<DepartmentContactMessageResponseModel>>> GetDepartmentContactMessagesAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.DepartmentContactMessages,
+                                                    x => x.ToResponseModel(),
+                                                    Builders<DepartmentContactMessageEntity>.Filter.Empty, args,
+                                                    cancellationToken, x => x.DepartmentId);
+
+        /// <summary>
+        /// Creates a department contact message
+        /// </summary>
+        /// <param name="departmentId">The department id</param>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(MeetEduAPIRoutes.DepartmentContactMessagesRoute)]
+        public async Task<ActionResult<DepartmentContactMessageResponseModel>> AddDepartmentContactMessageAsync([FromRoute] string departmentId, [FromBody] DepartmentContactMessageRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.DepartmentsRepository.AddDepartmentContactMessageAsync(departmentId.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Gets the department contact message with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.DepartmentContactMessageRoute)]
+        public async Task<ActionResult<DepartmentContactMessageResponseModel>?> GetDepartmentContactMessageAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.DepartmentContactMessages, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+
+        /// <summary>
+        /// Updates the department contact message with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetEduAPIRoutes.DepartmentContactMessageRoute)]
+        public async Task<ActionResult<DepartmentContactMessageResponseModel>> UpdateDepartmentContactMessageAsync([FromRoute] string id, [FromBody] DepartmentContactMessageRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.DepartmentsRepository.UpdateDepartmentContactMessageAsync(id.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
         #endregion
 
         #endregion
@@ -129,6 +178,58 @@ namespace MeetEdu
                                                     x => x.ToResponseModel(),
                                                     Builders<AppointmentRuleEntity>.Filter.Empty, args,
                                                     cancellationToken, x => x.DateCreated);
+
+        #endregion
+
+        #region Appointments
+
+        /// <summary>
+        /// Gets the appointments
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.AppointmentsRoute)]
+        public async Task<ActionResult<IEnumerable<AppointmentResponseModel>>> GetAppointmentsAsync([FromQuery] APIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Appointments,
+                                                    x => x.ToResponseModel(),
+                                                    Builders<AppointmentEntity>.Filter.Empty, args,
+                                                    cancellationToken, x => x.DateCreated);
+
+        /// <summary>
+        /// Creates a appointment
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(MeetEduAPIRoutes.AppointmentsRoute)]
+        public async Task<ActionResult<AppointmentResponseModel>> AddAppointmentAsync([FromBody] AppointmentRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.AppointmentsRepository.AddAppointmentAsync(model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Gets the appointment with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.AppointmentRoute)]
+        public async Task<ActionResult<AppointmentResponseModel>?> GetAppointmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Appointments, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+
+        /// <summary>
+        /// Updates the appointment with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetEduAPIRoutes.AppointmentRoute)]
+        public async Task<ActionResult<AppointmentResponseModel>> UpdateAppointmentAsync([FromRoute] string id, [FromBody] AppointmentRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.AppointmentsRepository.UpdateAppointmentAsync(id.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         #endregion
 
@@ -192,6 +293,7 @@ namespace MeetEdu
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
+        [Route(MeetEduAPIRoutes.SavedDepartmentRoute)]
         public async Task<ActionResult<DepartmentResponseModel>> GetMemberSavedDepartmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user saved department with the specified id
@@ -213,6 +315,7 @@ namespace MeetEdu
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpDelete]
+        [Route(MeetEduAPIRoutes.SavedDepartmentRoute)]
         public async Task<ActionResult<DepartmentResponseModel>> DeleteSavedDeparmentAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             var response = await DI.MembersRepository.DeleteMemberSavedDepartmentAsync(id.ToObjectId());
@@ -237,6 +340,7 @@ namespace MeetEdu
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpPost]
+        [Route(MeetEduAPIRoutes.SavedProfessorsRoute)]
         public async Task<ActionResult<bool>> AddMemberSavedProfessorAsync([FromRoute] string memberId, [FromBody] string professorId, CancellationToken cancellationToken = default)
         {
             var entity = await DI.MembersRepository.AddMemberSavedProfessorAsync(memberId.ToObjectId(), professorId.ToObjectId());
@@ -251,6 +355,7 @@ namespace MeetEdu
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
+        [Route(MeetEduAPIRoutes.SavedProfessorsRoute)]
         public async Task<ActionResult<IEnumerable<ProfessorResponseModel>>> GetMemberSavedProfessorsAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user saved professor with the specified user memberId
@@ -272,6 +377,7 @@ namespace MeetEdu
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
+        [Route(MeetEduAPIRoutes.SavedProfessorRoute)]
         public async Task<ActionResult<ProfessorResponseModel>> GetMemberSavedProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user saved professor with the specified memberId
@@ -293,6 +399,7 @@ namespace MeetEdu
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpDelete]
+        [Route(MeetEduAPIRoutes.SavedProfessorRoute)]
         public async Task<ActionResult<ProfessorResponseModel>> DeleteSavedProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             var response = await DI.MembersRepository.DeleteMemberFavoriteProfessorAsync(id.ToObjectId());

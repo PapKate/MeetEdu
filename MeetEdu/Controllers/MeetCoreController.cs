@@ -256,7 +256,7 @@ namespace MeetEdu
         #region Layout 
 
         /// <summary>
-        /// Gets the departments
+        /// Gets the department layouts
         /// </summary>
         /// <param name="args">The arguments</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -270,7 +270,7 @@ namespace MeetEdu
                                                     cancellationToken, x => x.DepartmentId);
 
         /// <summary>
-        /// Creates a department
+        /// Creates a department layout
         /// </summary>
         /// <param name="model">The model</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -281,7 +281,7 @@ namespace MeetEdu
             => (await DI.DepartmentsRepository.AddDepartmentLayoutAsync(DepartmentId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
-        /// Gets the department with the specified <paramref name="id"/>
+        /// Gets the department layout with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -292,7 +292,7 @@ namespace MeetEdu
             => await ControllerHelpers.GetAsync(MeetEduDbMapper.DepartmentLayouts, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
-        /// Updates the department with the specified <paramref name="id"/>
+        /// Updates the department layout with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
@@ -304,7 +304,7 @@ namespace MeetEdu
             => (await DI.DepartmentsRepository.UpdateDepartmentLayoutAsync(id.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
-        /// Deletes the department with the specified <paramref name="id"/>
+        /// Deletes the department layout with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -536,7 +536,7 @@ namespace MeetEdu
             => (await DI.ProfessorsRepository.AddProfessorAsync(model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
-        /// Gets the secretary
+        /// Gets the professor
         /// </summary>
         /// <param name="id"></param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -547,7 +547,7 @@ namespace MeetEdu
             => await ControllerHelpers.GetAsync(MeetEduDbMapper.Professors, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
-        /// Updates the secretary with the specified <paramref name="id"/>
+        /// Updates the professor with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
@@ -560,7 +560,7 @@ namespace MeetEdu
             => (await DI.ProfessorsRepository.UpdateProfessorAsync(id.ToObjectId(), model, user, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
-        /// Deletes the secretary with the specified <paramref name="id"/>
+        /// Deletes the professor with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -589,7 +589,7 @@ namespace MeetEdu
                                                     cancellationToken, x => x.DateCreated);
 
         /// <summary>
-        /// Creates a appointment
+        /// Creates an appointment rule
         /// </summary>
         /// <param name="model">The model</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -600,7 +600,7 @@ namespace MeetEdu
             => (await DI.AppointmentsRepository.AddAppointmentRuleAsync(model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
-        /// Gets the appointment with the specified <paramref name="id"/>
+        /// Gets the appointment rule with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -611,7 +611,7 @@ namespace MeetEdu
             => await ControllerHelpers.GetAsync(MeetEduDbMapper.AppointmentRules, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
         /// <summary>
-        /// Updates the appointment with the specified <paramref name="id"/>
+        /// Updates the appointment rule with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
@@ -623,7 +623,7 @@ namespace MeetEdu
             => (await DI.AppointmentsRepository.UpdateAppointmentRuleAsync(id.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
-        /// Deletes the appointment with the specified <paramref name="id"/>
+        /// Deletes the appointment rule with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="cancellationToken">The cancellation token</param>
