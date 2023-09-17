@@ -4,6 +4,25 @@
 
 @namespace MeetCore
 
+<div class="scheduleHeaderContainer">
+    <span>@mFirstDateOfWeek.GetMonthName() @mFirstDateOfWeek.Year</span>
+
+    <div class="scheduleHeaderNavButtonsContainer">
+        <IconButton VectorSource="@IconPaths.ChevronLeftPath" 
+                    OnClick="@(() => mFirstDateOfWeek = mFirstDateOfWeek.AddDays(-7))"
+                    ForeColor="@Gray" 
+                    BackColor="transparent" 
+                    BoxShadow="none"/>
+        <IconButton VectorSource="@IconPaths.ChevronRightPath" 
+                    OnClick="@(() => mFirstDateOfWeek = mFirstDateOfWeek.AddDays(7))"
+                    ForeColor="@Gray"
+                    BackColor="transparent" 
+                    BoxShadow="none" />
+    </div>
+</div>
+
+<div class="separator"></div>
+
 <div class="scheduleContainer">
     @if(mWeekDays is not null)
     {   
@@ -19,17 +38,17 @@
             <thead>
                 <tr>
                     @{
-                        mFirstDayOfWeek = mFirstDateOfWeek.GetFirstDayOfWeek().Day;
+                        mDisplayedFirstDateOfWeek = mFirstDateOfWeek;
                     }
                     @foreach (var day in mWeekDays)
                     {
                         <th>
                             <div class="scheduleHeaderDay">
                                 <span class="scheduleHeaderDayText ">@day.ToShortDayOfWeekName()</span>
-                                <span class="scheduleHeaderDayCircle @GetCssClassForDate(mFirstDayOfWeek)">@mFirstDayOfWeek</span>
+                                <span class="scheduleHeaderDayCircle @GetCssClassForDate(mDisplayedFirstDateOfWeek)">@mDisplayedFirstDateOfWeek.Day</span>
                             </div>
                         </th>
-                        mFirstDayOfWeek++;
+                        mDisplayedFirstDateOfWeek = mDisplayedFirstDateOfWeek.AddDays(1);
                     }
                 </tr>
             </thead>
@@ -48,6 +67,16 @@
         </table>
 
         <div class="workHoursContainer">
+            @if(mCurrentDate.ToDateOnly() == mFirstDateOfWeek.ToDateOnly())
+            {
+                <span class="workHourContainer scheduleCurrentDateTimePointer" style="@TopVariable.SetCssVariable($"calc(43.5px * (12.{mCurrentDate.Minute} - 7))")
+                                    @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(int)mCurrentDate.DayOfWeek} - 1))")
+                                    @HeightVariable?.SetCssVariable("2px")
+                                    @BackgroundVariable.SetCssColor($"{Green.HexToRGBA(1)}")
+                                    @BorderBrushVariable.SetCssColor($"none")">
+                </span>
+            }
+
             @if (!WorkHours.IsNullOrEmpty())
             {
                 @foreach (var workHour in WorkHours)
@@ -94,6 +123,33 @@
 </div>
 
 <style>
+
+    .scheduleHeaderContainer {
+        position: relative;
+        width: 100%;
+        padding: @NormalPadding @XXLargePadding;
+        display: flex;
+        justify-content: space-between;
+        font-size: 112%;
+    }
+
+    .scheduleHeaderNavButtonsContainer {
+        position: relative;
+        display:flex;
+        height: 32px;
+    }
+
+        .scheduleHeaderNavButtonsContainer .baseButton {
+            padding: 0;
+        }
+
+    .separator {
+        position: relative;
+        margin: auto;
+        width: 98%;
+        height: 1px;
+        background-color: @LightGray.NormalizedColor();
+    }
 
     .scheduleContainer {
         position: relative;
@@ -166,7 +222,7 @@
     }
 
     .scheduleToday {
-        background-color: @Blue.NormalizedColor();
+        background-color: @("#006992".NormalizedColor());
         color: @White.NormalizedColor();
     }
 
@@ -204,6 +260,18 @@
 
     .workHourLocation {
         font-size: 92%;
+    }
+
+    .scheduleCurrentDateTimePointer {
+        border: none;
+    }
+
+    .scheduleCurrentDateTimePointer:before {
+        content: '🞂';
+        position: absolute;
+        left: -7px;
+        font-size: 1rem;
+        color: @Green.NormalizedColor();
     }
 
     </style>

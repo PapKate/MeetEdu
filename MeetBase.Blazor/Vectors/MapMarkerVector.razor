@@ -3,7 +3,7 @@
 @namespace MeetBase.Blazor
 
 <svg class="mapMarkerVector" viewBox="0 0 24 24" style="@MapMarkerBodyColorVariable.SetCssColor(Color)
-                                                        @MapMarkerCircleColorVariable.SetCssColor(Color.DarkOrWhite())">
+                                                        @MapMarkerCircleColorVariable.SetCssColor(mIsDark ? Color.ToDarkerColor(6) : mDarkOrWhiteColor.ToDarkerColor(2))">
     <defs>
         <clipPath id="clippath">
             <rect class="cls-4" x="3.45" width="17.09" height="24" />

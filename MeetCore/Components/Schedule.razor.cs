@@ -31,6 +31,11 @@ namespace MeetCore
         /// </summary>
         private DateTime mCurrentDate = DateTime.Now;
 
+        /// <summary>
+        /// The current date
+        /// </summary>
+        private DateTime mDisplayedFirstDateOfWeek = default;
+
         #endregion
 
         #region Public Properties
@@ -85,6 +90,9 @@ namespace MeetCore
             daysOfWeek.Remove(DayOfWeek.Sunday);
             daysOfWeek.Add(DayOfWeek.Sunday);
             mFirstDayOfWeek = mFirstDateOfWeek.Day;
+            
+            mDisplayedFirstDateOfWeek = mFirstDateOfWeek;
+
             mWeekDays = daysOfWeek;
 
             WorkHours = new List<DayOfWeekTimeRange>()
@@ -137,16 +145,18 @@ namespace MeetCore
         #region Private Methods
 
         /// <summary>
-        /// Gets the css class name according to where the specified <paramref name="day"/> is placed as to the <see cref="mCurrentDate"/>
+        /// Gets the css class name according to where the specified <paramref name="date"/> is placed as to the <see cref="mCurrentDate"/>
         /// </summary>
-        /// <param name="day">The day</param>
+        /// <param name="date">The day</param>
         /// <returns></returns>
-        private string GetCssClassForDate(int day)
+        private string GetCssClassForDate(DateTime date)
         {
-            var className = string.Empty;
-            if (mCurrentDate.Day == day)
+            string? className;
+            var currentDateOnly = mCurrentDate.ToDateOnly();
+            var dateOnly = date.ToDateOnly();
+            if (currentDateOnly == dateOnly)
                 className = "scheduleToday";
-            else if(mCurrentDate.Day > day)
+            else if(currentDateOnly > dateOnly)
                 className = "scheduleBeforeToday";
             else
                 className = "scheduleAfterToday";

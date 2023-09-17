@@ -2787,6 +2787,14 @@
             <param name="dto">The date time offset</param>
             <returns></returns>
         </member>
+        <member name="M:MeetBase.DateTimeExtensions.ToDateOnly(System.DateTime)">
+            <summary>
+            Create and return the <see cref="T:System.DateTime"/> from the specified <paramref name="value"/>
+            using the 00:00:00:00 as the time value
+            </summary>
+            <param name="value">The date value</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetBase.DateTimeExtensions.GetFirstDayOfWeek(System.DateTime)">
             <summary>
             Returns the first day of the week of the specified <paramref name="date"/>
@@ -2794,6 +2802,13 @@
             <param name="date">The date</param>
             <returns></returns>
             <remarks>As first date: <c><see cref="F:System.DayOfWeek.Monday"/></c></remarks>
+        </member>
+        <member name="M:MeetBase.DateTimeExtensions.GetMonthName(System.DateTime)">
+            <summary>
+            Returns the full name of the month of the specified <paramref name="date"/>
+            </summary>
+            <param name="date">The date</param>
+            <returns></returns>
         </member>
         <member name="T:MeetBase.ExceptionExtensions">
             <summary>
