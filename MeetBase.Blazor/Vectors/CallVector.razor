@@ -1,0 +1,74 @@
+﻿@inherits BaseVector
+
+@namespace MeetBase.Blazor
+
+<svg class="callVector" viewBox="0 0 24 24" style="@CallBodyColorVariable.SetCssColor(Color)
+                                                   @CallButtonColorVariable.SetCssColor(mIsDark ? mDarkOrWhiteColor.ToLighterColor(6) : mDarkOrWhiteColor.ToDarkerColor(6))
+                                                   @CallTopShadowColorVariable.SetCssColor(Color.ToDarkerColor(4))
+                                                   @CallTopColorVariable.SetCssColor(Color.ToDarkerColor(2))
+                                                   @CallBodyShadowColorVariable.SetCssColor(Color.ToDarkerColor(1))
+                                                   @CallCableColorVariable.SetCssColor(Color.ToDarkerColor(3))
+                                                   @CallBodyCenterColorVariable.SetCssColor(mIsDark ? mDarkOrWhiteColor.ToLighterColor(2) : mDarkOrWhiteColor.ToDarkerColor(2))
+                                                   @CallBodyCenterShadowColorVariable.SetCssColor(mIsDark ? mDarkOrWhiteColor.ToLighterColor(3) : mDarkOrWhiteColor.ToDarkerColor(3))">
+    <path class="cls-4" d="m19.85,19.98h-1.17v-.73h1.17c.73,0,1.33-.6,1.33-1.33,0-.36-.14-.69-.39-.94l-.42-.42c-.8-.8-.8-2.11,0-2.91l.56-.56.52.52-.55.56c-.52.52-.52,1.36,0,1.88l.42.42c.39.39.6.91.6,1.46,0,1.13-.92,2.06-2.06,2.06h0Zm0,0" />
+    <path class="cls-3" d="m6.94,10.92h-2.09v-2.39c0-.58.47-1.05,1.05-1.05s1.05.47,1.05,1.05v2.39Zm0,0" />
+    <path class="cls-3" d="m14.12,10.92h-2.09v-2.39c0-.58.47-1.05,1.05-1.05s1.05.47,1.05,1.05v2.39Zm0,0" />
+    <path class="cls-4" d="m6.94,10.92h-2.09v-2.39c0-.58.47-1.05,1.05-1.05s1.05.47,1.05,1.05v2.39Zm0,0" />
+    <path class="cls-4" d="m14.12,10.92h-2.09v-2.39c0-.58.47-1.05,1.05-1.05s1.05.47,1.05,1.05v2.39Zm0,0" />
+    <path class="cls-6" d="m5.89,7.48c-.15,0-.29.03-.42.09.37.16.63.53.63.96v2.39h.84v-2.39c0-.58-.47-1.05-1.05-1.05h0Zm0,0" />
+    <path class="cls-6" d="m13.07,7.48c-.15,0-.29.03-.42.09.37.16.63.53.63.96v2.39h.84v-2.39c0-.58-.47-1.05-1.05-1.05h0Zm0,0" />
+    <path class="cls-1" d="m15.66,12.9v-1.79c0-.37-.3-.68-.68-.68H3.98c-.37,0-.68.3-.68.68v1.79c0,.59-.24,1.15-.65,1.55l-2.33,2.28c-.2.2-.31.47-.31.75v4.38c0,1.19.96,2.15,2.14,2.15h14.67c1.18,0,2.14-.96,2.14-2.15v-4.38c0-.28-.11-.55-.31-.75l-2.33-2.28c-.42-.41-.65-.97-.65-1.55h0Zm0,0" />
+    <path class="cls-5" d="m18.64,16.73l-2.33-2.28c-.42-.41-.65-.97-.65-1.55v-1.79c0-.37-.3-.68-.68-.68h-2.54c.37,0,.68.3.68.68v1.79c0,.59.24,1.15.65,1.55l2.33,2.28c.2.2.31.47.31.75v4.38c0,1.19-.96,2.15-2.14,2.15h2.54c1.18,0,2.14-.96,2.14-2.15v-4.38c0-.28-.11-.55-.31-.75h0Zm0,0" />
+    <path class="cls-7" d="m13.57,18.09c0,2.26-1.83,4.09-4.09,4.09s-4.09-1.83-4.09-4.09,1.83-4.09,4.09-4.09c1.08,0,2.12.43,2.89,1.2.77.77,1.2,1.81,1.2,2.89h0Zm0,0" />
+    <path class="cls-8" d="m11.61,14.6c.38.62.6,1.35.6,2.13,0,2.26-1.83,4.09-4.09,4.09-.78,0-1.51-.22-2.13-.6.72,1.18,2.01,1.96,3.49,1.96,2.26,0,4.09-1.83,4.09-4.09,0-1.48-.78-2.77-1.96-3.49h0Zm0,0" />
+    <path class="cls-4" d="m10.74,18.09c0,.7-.57,1.26-1.26,1.26s-1.26-.57-1.26-1.26.57-1.26,1.26-1.26,1.26.57,1.26,1.26h0Zm0,0" />
+    <path class="cls-6" d="m9.88,16.89c.04.13.06.26.06.4,0,.7-.57,1.26-1.26,1.26-.14,0-.27-.02-.4-.06.17.5.64.86,1.2.86.7,0,1.26-.57,1.26-1.26,0-.56-.36-1.03-.86-1.2h0Zm0,0" />
+    <path class="cls-2" d="m9.94,15.46c0,.25-.21.46-.46.46s-.46-.21-.46-.46.21-.46.46-.46.46.21.46.46h0Zm0,0" />
+    <path class="cls-2" d="m8.51,15.88c0,.25-.21.46-.46.46s-.46-.21-.46-.46.21-.46.46-.46.46.21.46.46h0Zm0,0" />
+    <path class="cls-2" d="m11.37,15.88c0,.25-.21.46-.46.46s-.46-.21-.46-.46.21-.46.46-.46.46.21.46.46h0Zm0,0" />
+    <path class="cls-2" d="m12.35,17c0,.25-.21.46-.46.46s-.46-.21-.46-.46.21-.46.46-.46.46.21.46.46h0Zm0,0" />
+    <path class="cls-2" d="m7.53,17c0,.25-.21.46-.46.46s-.46-.21-.46-.46.21-.46.46-.46.46.21.46.46h0Zm0,0" />
+    <path class="cls-2" d="m7.94,19.84c0,.26-.21.46-.46.46s-.46-.21-.46-.46.21-.46.46-.46.46.21.46.46h0Zm0,0" />
+    <path class="cls-2" d="m9.2,20.64c0,.25-.21.46-.46.46s-.46-.21-.46-.46.21-.46.46-.46.46.21.46.46h0Zm0,0" />
+    <path class="cls-2" d="m10.69,20.64c0,.25-.21.46-.46.46s-.46-.21-.46-.46.21-.46.46-.46.46.21.46.46h0Zm0,0" />
+    <path class="cls-2" d="m7.32,18.49c0,.26-.21.46-.46.46s-.46-.21-.46-.46.21-.46.46-.46.46.21.46.46h0Zm0,0" />
+    <g>
+        <path class="cls-2" d="m12.56,18.49c0,.26-.21.46-.46.46s-.46-.21-.46-.46.21-.46.46-.46.46.21.46.46h0Zm0,0" />
+        <path class="cls-5" d="m23.71,9.81c-.6-1.75-1.76-3.69-3.4-5.49-1.64-1.79-3.47-3.13-5.16-3.88-2.01-.89-3.25-.32-4.31.65-.35.32-.38.88-.05,1.23l2.58,2.82c.32.35.87.38,1.23.06l1.13-1.03c.15-.14.39-.15.55-.02.73.56,1.44,1.22,2.1,1.95.67.73,1.25,1.5,1.75,2.27.11.18.08.41-.07.55l-1.13,1.03c-.35.32-.38.87-.06,1.23l2.58,2.82c.32.35.87.38,1.23.06,1.07-.98,1.75-2.15,1.04-4.24h0Zm0,0" />
+        <path class="cls-4" d="m23.71,9.81c-.6-1.75-1.76-3.69-3.4-5.49-1.64-1.79-3.47-3.13-5.16-3.88C14.16,0,13.36-.08,12.68.06c.36.07.76.19,1.19.38,1.69.75,3.52,2.09,5.16,3.88,1.64,1.79,2.8,3.74,3.4,5.49.69,2.04.06,3.22-.98,4.18h0c.32.35.87.38,1.23.06,1.07-.98,1.75-2.15,1.04-4.24h0Zm0,0" />
+    </g>
+</svg>
+
+<style>
+    .callVector .cls-1 {
+        fill: @CallBodyColorVariable.GetCssVariable();
+    }
+
+    .callVector .cls-2 {
+        fill: @CallButtonColorVariable.GetCssVariable();
+    }
+
+    .callVector .cls-3 {
+        fill: @CallTopShadowColorVariable.GetCssVariable();
+    }
+
+    .callVector .cls-4 {
+        fill: @CallTopColorVariable.GetCssVariable();
+    }
+
+    .callVector .cls-5 {
+        fill: @CallBodyShadowColorVariable.GetCssVariable();
+    }
+
+    .callVector .cls-6 {
+        fill: @CallCableColorVariable.GetCssVariable();
+    }
+
+    .callVector .cls-7 {
+        fill: @CallBodyCenterColorVariable.GetCssVariable();
+    }
+
+    .callVector .cls-8 {
+        fill: @CallBodyCenterShadowColorVariable.GetCssVariable();
+    }
+</style>

@@ -1,0 +1,31 @@
+﻿@inherits BaseVector
+
+@namespace MeetBase.Blazor
+
+<div class="emailMultipleVector">
+    <div class="email">
+        <EmailVector Color="@Color" />
+    </div>
+    <div class="email emailTop">
+        <EmailVector Color="@Color" />
+    </div>
+</div>
+
+<style>
+    .emailMultipleVector {
+        width:100%;
+        height: 100%;
+    }
+
+    .email {
+        position: absolute;
+        width: 90%;
+        height: auto;
+    }
+
+    .emailTop {
+        top: 4px;
+        left: 4px;
+        filter: @Personalization.LightFilterDropShadow;
+    }
+</style>

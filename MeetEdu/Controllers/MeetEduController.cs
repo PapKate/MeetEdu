@@ -45,7 +45,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpPost]
         [Route(MeetEduAPIRoutes.LogInRoute)]
-        public async Task<ActionResult<UserResponseModel>> LoginAsync([FromBody] LogInRequestModel model)
+        public async Task<ActionResult<LoginResponse>> LoginAsync([FromBody] LogInRequestModel model)
             => (await DI.AccountsRepository.LoginAsync(model)).ToActionResult(x => x.ToResponseModel());
 
         #endregion
@@ -53,15 +53,15 @@ namespace MeetEdu
         #region Users
 
         /// <summary>
-        /// Gets the user with the specified <paramref name="id"/>
+        /// Gets the user with the specified <paramref name="userId"/>
         /// </summary>
-        /// <param name="id">The memberId</param>
+        /// <param name="userId">The memberId</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
         [Route(MeetEduAPIRoutes.UserRoute)]
-        public async Task<ActionResult<UserResponseModel>?> GetUserAsync([FromRoute] string id, CancellationToken cancellationToken = default)
-            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Users, x => x.ToResponseModel(), x => x.Id.ToString() == id, cancellationToken);
+        public async Task<ActionResult<UserResponseModel>?> GetUserAsync([FromRoute] string userId, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Users, x => x.ToResponseModel(), x => x.Id.ToString() == userId, cancellationToken);
 
         #endregion
 

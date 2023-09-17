@@ -705,9 +705,9 @@
         </member>
         <member name="M:MeetEdu.MeetEduController.GetUserAsync(System.String,System.Threading.CancellationToken)">
             <summary>
-            Gets the user with the specified <paramref name="id"/>
+            Gets the user with the specified <paramref name="userId"/>
             </summary>
-            <param name="id">The memberId</param>
+            <param name="userId">The memberId</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -883,6 +883,92 @@
             <param name="id">The memberId</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
+        </member>
+        <member name="T:MeetEdu.LoginResult">
+            <summary>
+            Contains the <see cref="T:MeetEdu.UserEntity"/> and depending on the user role...
+            <list type="bullet">
+            <item>If it is a secretary, the <see cref="T:MeetEdu.SecretaryEntity"/></item>
+            <item>If it is a professor, the <see cref="T:MeetEdu.ProfessorEntity"/></item>
+            <item>If it is a member, the <see cref="T:MeetEdu.MemberEntity"/></item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LoginResult.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LoginResult.Secretary">
+            <summary>
+            The secretary
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LoginResult.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LoginResult.Member">
+            <summary>
+            The member
+            </summary>
+        </member>
+        <member name="M:MeetEdu.LoginResult.#ctor(MeetEdu.UserEntity,MeetEdu.SecretaryEntity)">
+            <summary>
+            Constructor for a secretary
+            </summary>
+        </member>
+        <member name="M:MeetEdu.LoginResult.#ctor(MeetEdu.UserEntity,MeetEdu.ProfessorEntity)">
+            <summary>
+            Constructor for a professor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.LoginResult.#ctor(MeetEdu.UserEntity,MeetEdu.MemberEntity)">
+            <summary>
+            Constructor for a member
+            </summary>
+        </member>
+        <member name="M:MeetEdu.LoginResult.ToResponseModel">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Web.UserResponseModel"/> from the current <see cref="T:MeetEdu.UserEntity"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetEdu.LoginResponse">
+            <summary>
+            Contains the <see cref="T:MeetEdu.UserEntity"/> and depending on the user role...
+            <list type="bullet">
+            <item>If it is a secretary, the <see cref="T:MeetEdu.SecretaryEntity"/></item>
+            <item>If it is a professor, the <see cref="T:MeetEdu.ProfessorEntity"/></item>
+            <item>If it is a member, the <see cref="T:MeetEdu.MemberEntity"/></item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LoginResponse.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LoginResponse.Secretary">
+            <summary>
+            The secretary
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LoginResponse.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LoginResponse.Member">
+            <summary>
+            The member
+            </summary>
+        </member>
+        <member name="M:MeetEdu.LoginResponse.#ctor">
+            <summary>
+            Default constructor
+            </summary>
         </member>
         <member name="T:MeetEdu.MeetEduDbMapper">
             <summary>

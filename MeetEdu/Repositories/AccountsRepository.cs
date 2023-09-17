@@ -1,4 +1,6 @@
 ﻿
+using Amazon.SecurityToken.Model;
+
 using MeetBase;
 using MeetBase.Web;
 
@@ -39,7 +41,7 @@ namespace MeetEdu
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<UserEntity>> LoginAsync([FromBody] LogInRequestModel model)
+        public async Task<WebServerFailable<LoginResult>> LoginAsync([FromBody] LogInRequestModel model)
         {
             var result = await ValidateUserCredentialsAsync(model);
 
@@ -47,8 +49,23 @@ namespace MeetEdu
             if (!result.IsSuccessful)
                 // Return the bad request with the respective error message
                 return result.ErrorMessage;
+            var user = result.Result!;
 
-            return result;
+            var secretary = await MeetEduDbMapper.Secretaries.FirstOrDefaultAsync(x => x.UserId == user.Id);
+
+            // If the user is a secretary...
+            if (secretary is not null)
+                return new LoginResult(user, secretary);
+
+            var professor = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.UserId == user.Id);
+
+            // If the user is a professor...
+            if (professor is not null)
+                return new LoginResult(user, professor);
+
+            var member = await MeetEduDbMapper.Members.FirstOrDefaultAsync(x => x.UserId == user.Id);
+
+            return new LoginResult(user, member);
         }
 
         /// <summary>
@@ -97,6 +114,7 @@ namespace MeetEdu
             // Return the successful result
             return new WebServerFailable<UserEntity>(user);
         }
+
         #endregion
     }
 }
