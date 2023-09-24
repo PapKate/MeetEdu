@@ -41,6 +41,19 @@ builder.Services.AddSingleton(provider => UniversitiesRepository.Instance);
 builder.Services.AddSingleton(provider => DepartmentsRepository.Instance);
 builder.Services.AddSingleton(provider => AppointmentsRepository.Instance);
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                      });
+});
+
 var app = builder.Build();
 
 DI.Provider = app.Services;
@@ -68,6 +81,8 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 

@@ -4,6 +4,9 @@ using static MeetBase.Blazor.PaletteColors;
 
 namespace MeetCore.Shared
 {
+    /// <summary>
+    /// The main layout
+    /// </summary>
     public partial class MainLayout
     {
         #region Private Members

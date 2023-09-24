@@ -23,7 +23,7 @@ namespace MeetBase.Blazor
         /// <summary>
         /// The member of the <see cref="Color"/> property
         /// </summary>
-        private string mColor = PaletteColors.Red;
+        private string? mColor = PaletteColors.Red;
 
         #endregion
 
@@ -35,10 +35,10 @@ namespace MeetBase.Blazor
         [Parameter]
         public string Color 
         {
-            get => mColor;
+            get => mColor ?? PaletteColors.Black;
             set
             {
-                mColor = value;
+                mColor = value ?? PaletteColors.Black;
                 mDarkOrWhiteColor = mColor.DarkOrWhite();
                 mIsDark = mDarkOrWhiteColor == PaletteColors.DarkGray;
             }

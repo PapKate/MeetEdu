@@ -22,11 +22,6 @@
         #region Public Properties
 
         /// <summary>
-        /// The client
-        /// </summary>
-        public HttpClient Client = new HttpClient();
-
-        /// <summary>
         /// The university id
         /// </summary>
         public string UniversityId 
@@ -75,11 +70,39 @@
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public Task<WebRequestResult<UserResponseModel>> LoginAsync(LogInRequestModel model)
-            => WebRequestsClient.Instance.PostAsync<UserResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.LogInRoute), model, null);
+        public Task<WebRequestResult<LoginResponse>> LoginAsync(LogInRequestModel model)
+            => WebRequestsClient.Instance.PostAsync<LoginResponse>(GetAbsoluteUrl(MeetCoreAPIRoutes.LogInRoute), model, null);
+
+        /// <summary>
+        /// Resets the user password
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<UserResponseModel>> ResetUserPasswordAsync(ResetPasswordRequestModel model)
+            => WebRequestsClient.Instance.PutAsync<UserResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.ResetRoute), model, null);
 
         #endregion
 
+        #region Users
+
+        /// <summary>
+        /// Updates the user with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<UserResponseModel>> UpdateUserAsync(string id, UserRequestModel model)
+            => WebRequestsClient.Instance.PutAsync<UserResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetUserRoute(id)), model, null);
+
+        /// <summary>
+        /// Deletes the user with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<UserResponseModel>> DeleteUserAsync(string id)
+            => WebRequestsClient.Instance.DeleteAsync<UserResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetUserRoute(id)), null);
+
+        #endregion
 
         #region Universities
 
@@ -548,7 +571,7 @@
         /// <param name="url">The url</param>
         /// <returns></returns>
         private static string GetAbsoluteUrl(string url) 
-            => $"http://localhost:5050/" + url;
+            => $"https://localhost:44307" + url;
 
         #endregion
     }

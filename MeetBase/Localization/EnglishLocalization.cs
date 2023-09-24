@@ -63,6 +63,31 @@
         public const string ForgotPasswordResetInstructions = "No worries, you'll find reset instructions in your email.";
 
         /// <summary>
+        /// Error message suggesting to the user to try again
+        /// </summary>
+        public const string PleaseTryAgainErrorMessage = "Please try again.";
+
+        /// <summary>
+        /// Error message indicating that the provided temporary password is invalid
+        /// </summary>
+        public const string InvalidTemporaryPasswordErrorMessage = "Incorrect temporary password.";
+
+        /// <summary>
+        /// Error message indicating that not all form inputs where filled
+        /// </summary>
+        public const string InvalidTotalFormInputsErrorMessage = "Please fill every input and try again.";
+
+        /// <summary>
+        /// Error message indicating that the password and confirm password inputs do not match
+        /// </summary>
+        public const string InvalidConfirmPasswordInputErrorMessage = "The passwords do not match.";
+
+        /// <summary>
+        /// Message indicating that the password was reset successfully
+        /// </summary>
+        public const string ResetPassordSuccessfullyMesage = "The password was reset successfully!";
+
+        /// <summary>
         /// The profile
         /// </summary>
         public const string Profile = "Profile";

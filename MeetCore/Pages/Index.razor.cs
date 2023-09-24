@@ -1,6 +1,9 @@
 ﻿using MeetBase;
+using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
+
+using MudBlazor;
 
 namespace MeetCore
 {
@@ -124,7 +127,19 @@ namespace MeetCore
         /// The navigation manager service
         /// </summary>
         [Inject]
-        public NavigationManager? NavigationManager { get; set; }
+        protected NavigationManager NavigationManager { get; set; } = default!;
+
+        /// <summary>
+        /// The client
+        /// </summary>
+        [Inject]
+        protected MeetCoreClient Client { get; set; } = default!;
+
+        /// <summary>
+        /// The <see cref="MudBlazor"/> snack bar manager
+        /// </summary>
+        [Inject]
+        protected ISnackbar Snackbar { get; set; } = default!;
 
         #endregion
 
@@ -140,51 +155,139 @@ namespace MeetCore
 
         #endregion
 
+        #region Protected Methods
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            // Resets the state manager values
+            StateManager.ResetManager();
+
+            StateManager.OnStateChange += StateHasChanged;
+        }
+
+        #endregion
+
         #region Private Methods
 
         /// <summary>
         /// Handles the click of the form
         /// </summary>
-        private void FormButton_OnClick()
+        private async void FormButton_OnClick()
         {
             // If the login is active...
             if(IsLoginActive)
             {
-                if(!Password.IsNullOrEmpty() && Password.Contains("123"))
+                // Gets the user
+                var response = await Client.LoginAsync(new LogInRequestModel() 
                 {
-                    Password = string.Empty;
-                    IsResetPasswordActive = true;
-                    IsLoginActive = false;
+                    Username = Username,
+                    Password = Password
+                });
+
+                Password = string.Empty;
+
+                // If there was an error...
+                if (!response.IsSuccessful || response.Result is null || response.Result.User is null)
+                {
+                    // Show the error
+                    Snackbar.Add(response.ErrorMessage, Severity.Error);
+                    // Return
+                    return;
                 }
-                // Login
-                // Get user
-                // Get user type - secretary or professor
-                var isSecretary = true;
 
-                // If the state manager is set...
-                if(StateManager is not null)
-                    StateManager.SetIsSecretary(isSecretary);
-
-                // If the navigation manager is not null...
-                if(NavigationManager is not null)
+                // If a member tried to login...
+                if (response.Result.Member is not null)
                 {
-                    // If the connected user is a secretary...
-                    if (isSecretary)
-                        NavigationManager.Secretary_NavigateToProfilePage("id");
-                    else
-                        NavigationManager.Professor_NavigateToProfilePage("id");
+                    // Show the error
+                    Snackbar.Add("Access denied. Members cannot access the application.", Severity.Error);
+                    // Return
+                    return;
+                }
+
+                // Get user type - secretary or professor
+                var isSecretary = response.Result.Secretary is not null;
+
+                // If the connected user is a secretary...
+                if (response.Result.Secretary is not null)
+                {
+                    var departmentResponse = await Client.GetDepartmentAsync(response.Result.Secretary.DepartmentId);
+
+                    // If there was an error...
+                    if (!departmentResponse.IsSuccessful)
+                    {
+                        // Show the error
+                        Snackbar.Add(departmentResponse.ErrorMessage, Severity.Error);
+                        // Return
+                        return;
+                    }
+
+                    Client.DepartmentId = response.Result.Secretary.DepartmentId;
+                    StateManager.SetLoginUserData(isSecretary, response.Result.User, response.Result.Secretary, departmentResponse.Result);
+                    NavigationManager.Secretary_NavigateToProfilePage(response.Result.Secretary!.Id);
+                }
+                else
+                {
+                    var departmentResponse = await Client.GetDepartmentAsync(response.Result.Professor!.DepartmentId);
+
+                    // If there was an error...
+                    if (!departmentResponse.IsSuccessful)
+                    {
+                        // Show the error
+                        Snackbar.Add(departmentResponse.ErrorMessage, Severity.Error);
+                        // Return
+                        return;
+                    }
+
+                    Client.DepartmentId = response.Result.Professor.DepartmentId;
+
+                    StateManager.SetLoginUserData(isSecretary, response.Result.User, response.Result.Professor, departmentResponse.Result);
+                    NavigationManager.Professor_NavigateToProfilePage(response.Result.Professor!.Id);
                 }
 
             }
             // Else if the forgot password is active...
             else if (IsForgotPasswordActive)
             {
+                // If the provided email is not in correct format...
+                if (!Email.IsEmail())
+                {
+                    // Show the error
+                    Snackbar.Add("Incorrect email format. Please try again.", Severity.Error);
+                    // Return
+                    return;
+                }
+
+                Console.WriteLine(Email);
+                Console.WriteLine("Temp password = TempCore123!@");
+
                 IsForgotPasswordActive = false;
-                IsLoginActive = true;
+                IsResetPasswordActive = true;
             }
             // Else if the reset password is active
             else if(IsResetPasswordActive)
             {
+                var response = await Client.ResetUserPasswordAsync(new ResetPasswordRequestModel(Email, TemporaryPassword, Password, ConfirmPassword));
+
+                // If there was an error...
+                if (!response.IsSuccessful)
+                {
+                    // Show the error
+                    Snackbar.Add(response.ErrorMessage, Severity.Error);
+                    // Return
+                    return;
+                }
+
+                Snackbar.Add("Success", Severity.Success);
+
+                Email = string.Empty; 
+                TemporaryPassword = string.Empty; 
+                Password = string.Empty; 
+                ConfirmPassword = string.Empty;
+                
                 IsLoginActive = true;
                 IsResetPasswordActive = false;
             }
@@ -195,6 +298,8 @@ namespace MeetCore
         /// </summary>
         private void AlternativeText_OnClick()
         {
+            Password = string.Empty;
+
             // If the login is active...
             if (IsLoginActive)
             {

@@ -1,6 +1,4 @@
-﻿using MongoDB.Bson;
-
-namespace MeetEdu
+﻿namespace MeetEdu
 {
     /// <summary>
     /// Web server constants related to the MeetEdu application
@@ -58,18 +56,6 @@ namespace MeetEdu
         /// Error message indicating that the purchased amount of a customer service can not be set to less than the amount of the scheduled payments
         /// </summary>
         public const string TheCustomerServicePurchasedAmountCanNotBeSetToLessThanTheAmountOfTheScheduledPaymentsErrorMessage = "The customer service purchased amount can not be set to less than the amount of the scheduled payments!";
-
-
-        #endregion
-
-        #region Public Methods
-
-        /// <summary>
-        /// Error message indicating that there are no customers with the specified user id
-        /// </summary>
-        /// <param name="id">The user id</param>
-        /// <returns></returns>
-        public static string GetCustomerWithUserIdNotFoundErrorMessage(ObjectId id) => $"There are no customers that have user id {id}";
 
         #endregion
     }

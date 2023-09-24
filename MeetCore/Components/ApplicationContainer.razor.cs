@@ -5,7 +5,7 @@ namespace MeetCore
     /// <summary>
     /// The application container
     /// </summary>
-    public partial class ApplicationContainer
+    public partial class ApplicationContainer : IDisposable
     {
         #region Public Properties
 
@@ -13,7 +13,7 @@ namespace MeetCore
         /// The child content
         /// </summary>
         [Parameter]
-        public RenderFragment ChildContent { get; set; }
+        public RenderFragment? ChildContent { get; set; }
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace MeetCore
         /// The state management service
         /// </summary>
         [Inject]
-        protected StateManagerCore StateManager { get; set; }
+        protected StateManagerCore StateManager { get; set; } = default!;
 
         #endregion
 
@@ -35,6 +35,31 @@ namespace MeetCore
         public ApplicationContainer() : base()
         {
 
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public void Dispose()
+        {
+            StateManager.OnStateChange -= StateHasChanged;
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            StateManager.OnStateChange += StateHasChanged;
         }
 
         #endregion

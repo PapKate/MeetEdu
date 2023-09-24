@@ -19,29 +19,9 @@
             The appointment rule id
             </summary>
         </member>
-        <member name="P:MeetBase.Web.AppointmentRequestModel.Date">
+        <member name="P:MeetBase.Web.AppointmentRequestModel.DateStart">
             <summary>
             The date
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.AppointmentRequestModel.TimeStart">
-            <summary>
-            The time that the appointment begins
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.AppointmentRequestModel.TimeEnd">
-            <summary>
-            The time that the appointment ends
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.AppointmentRequestModel.IsCanceled">
-            <summary>
-            A flag indicating whether the subscription was canceled or not
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.AppointmentRequestModel.DateCanceled">
-            <summary>
-            The date the customer subscription was canceled
             </summary>
         </member>
         <member name="P:MeetBase.Web.AppointmentRequestModel.IsRemote">
@@ -286,6 +266,40 @@
             <param name="userNameOrEmail">The user's username or email</param>
             <param name="password">The user's password</param>
         </member>
+        <member name="T:MeetBase.Web.ResetPasswordRequestModel">
+            <summary>
+            The reset password request model
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ResetPasswordRequestModel.Email">
+            <summary>
+            The user's email
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ResetPasswordRequestModel.TemporaryPassword">
+            <summary>
+            The user's temporary password
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ResetPasswordRequestModel.Password">
+            <summary>
+            The user's password
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ResetPasswordRequestModel.ConfirmPassword">
+            <summary>
+            The user's confirm password
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.ResetPasswordRequestModel.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="email">The user's email</param>
+            <param name="temporaryPassword">The user's temporary password</param>
+            <param name="password">The user's password</param>
+            <param name="confirmPassword">The user's confirm password</param>
+        </member>
         <member name="T:MeetBase.Web.StandardRequestModel">
             <summary>
             The standard request model
@@ -455,6 +469,11 @@
         <member name="P:MeetBase.Web.UserRequestModel.ImageUrl">
             <summary>
             The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserRequestModel.Color">
+            <summary>
+            The color
             </summary>
         </member>
         <member name="P:MeetBase.Web.UserRequestModel.DateOfBirth">
@@ -1229,6 +1248,41 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetBase.Web.LoginResponse">
+            <summary>
+            Contains the <see cref="T:MeetBase.Web.UserResponseModel"/> and depending on the user role...
+            <list type="bullet">
+            <item>If it is a secretary, the <see cref="T:MeetBase.Web.SecretaryResponseModel"/></item>
+            <item>If it is a professor, the <see cref="T:MeetBase.Web.ProfessorResponseModel"/></item>
+            <item>If it is a member, the <see cref="T:MeetBase.Web.MemberResponseModel"/></item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LoginResponse.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LoginResponse.Secretary">
+            <summary>
+            The secretary
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LoginResponse.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LoginResponse.Member">
+            <summary>
+            The member
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.LoginResponse.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetBase.Web.MemberResponseModel">
             <summary>
             Represents a member
@@ -1487,6 +1541,11 @@
             The member of the <see cref="P:MeetBase.Web.UserResponseModel.Email"/> property
             </summary>
         </member>
+        <member name="F:MeetBase.Web.UserResponseModel.mColor">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.UserResponseModel.Color"/> property
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.UserResponseModel.Username">
             <summary>
             The username
@@ -1520,6 +1579,11 @@
         <member name="P:MeetBase.Web.UserResponseModel.ImageUrl">
             <summary>
             The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.UserResponseModel.Color">
+            <summary>
+            The color
             </summary>
         </member>
         <member name="P:MeetBase.Web.UserResponseModel.DateOfBirth">
@@ -1863,11 +1927,6 @@
             The member of the <see cref="P:MeetBase.Web.MeetCoreClient.DepartmentId"/>
             </summary>
         </member>
-        <member name="F:MeetBase.Web.MeetCoreClient.Client">
-            <summary>
-            The client
-            </summary>
-        </member>
         <member name="P:MeetBase.Web.MeetCoreClient.UniversityId">
             <summary>
             The university id
@@ -1895,6 +1954,28 @@
             Validates the user credentials sent by the user and returns the user
             </summary>
             <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.ResetUserPasswordAsync(MeetBase.Web.ResetPasswordRequestModel)">
+            <summary>
+            Resets the user password
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateUserAsync(System.String,MeetBase.Web.UserRequestModel)">
+            <summary>
+            Updates the user with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteUserAsync(System.String)">
+            <summary>
+            Deletes the user with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
             <returns></returns>
         </member>
         <member name="M:MeetBase.Web.MeetCoreClient.GetUniversitiesAsync(MeetBase.Web.APIArgs)">
@@ -3067,6 +3148,12 @@
             <summary>
             The register route
             <code>/appointMate/api/v1/meetCore/register</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.ResetRoute">
+            <summary>
+            The register route
+            <code>/appointMate/api/v1/meetCore/reset</code>
             </summary>
         </member>
         <member name="F:MeetBase.Web.MeetCoreAPIRoutes.UsersRoute">

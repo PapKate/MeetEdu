@@ -1,10 +1,12 @@
 ﻿
+using System.Drawing;
+
 namespace MeetBase.Web
 {
     /// <summary>
     /// Represents a user
     /// </summary>
-    public class UserResponseModel : DateResponseModel, IImageable, IEmailable, IPhoneable
+    public class UserResponseModel : DateResponseModel, IImageable, IEmailable, IPhoneable, IColorable
     {
         #region Private Members
 
@@ -27,6 +29,11 @@ namespace MeetBase.Web
         /// The member of the <see cref="Email"/> property
         /// </summary>
         private string? mEmail;
+
+        /// <summary>
+        /// The member of the <see cref="Color"/> property
+        /// </summary>
+        private string? mColor;
 
         #endregion
 
@@ -82,6 +89,15 @@ namespace MeetBase.Web
         /// The image URL
         /// </summary>
         public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The color
+        /// </summary>
+        public string Color
+        {
+            get => mColor ?? string.Empty;
+            set => mColor = value;
+        }
 
         /// <summary>
         /// The birthday

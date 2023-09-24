@@ -24,6 +24,16 @@
             Default constructor
             </summary>
         </member>
+        <member name="M:MeetCore.ApplicationContainer.Dispose">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.ApplicationContainer.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
         <member name="T:MeetCore.Schedule">
             <summary>
             The schedule component
@@ -426,15 +436,47 @@
             A flag indicating whether the staff member is a secretary
             </summary>
         </member>
+        <member name="P:MeetCore.StateManagerCore.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="P:MeetCore.StateManagerCore.Secretary">
+            <summary>
+            The secretary
+            </summary>
+        </member>
+        <member name="P:MeetCore.StateManagerCore.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetCore.StateManagerCore.Department">
+            <summary>
+            The department
+            </summary>
+        </member>
         <member name="M:MeetCore.StateManagerCore.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.StateManagerCore.SetIsSecretary(System.Boolean)">
+        <member name="M:MeetCore.StateManagerCore.ResetManager">
             <summary>
-            The method that will be accessed by the sender component to update the state
+            Resets the sate manager values
             </summary>
+        </member>
+        <member name="M:MeetCore.StateManagerCore.SetLoginUserData(System.Boolean,MeetBase.Web.UserResponseModel,MeetBase.Web.SecretaryResponseModel,MeetBase.Web.DepartmentResponseModel)">
+            <summary>
+            Sets the values for the <see cref="P:MeetCore.StateManagerCore.User"/> and  <see cref="P:MeetCore.StateManagerCore.Secretary"/> properties
+            </summary>
+            <remarks>The method that will be accessed by the sender component to update the state</remarks>
+        </member>
+        <member name="M:MeetCore.StateManagerCore.SetLoginUserData(System.Boolean,MeetBase.Web.UserResponseModel,MeetBase.Web.ProfessorResponseModel,MeetBase.Web.DepartmentResponseModel)">
+            <summary>
+            Sets the values for the <see cref="P:MeetCore.StateManagerCore.User"/> and  <see cref="P:MeetCore.StateManagerCore.Professor"/> properties
+            </summary>
+            <remarks>The method that will be accessed by the sender component to update the state</remarks>
         </member>
         <member name="T:MeetCore.Index">
             <summary>
@@ -511,9 +553,24 @@
             The navigation manager service
             </summary>
         </member>
+        <member name="P:MeetCore.Index.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Index.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
         <member name="M:MeetCore.Index.#ctor">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Index.OnInitialized">
+            <summary>
+            <inheritdoc/>
             </summary>
         </member>
         <member name="M:MeetCore.Index.FormButton_OnClick">
@@ -567,6 +624,11 @@
             The schedule page
             </summary>
         </member>
+        <member name="T:MeetCore.Secretary_ContactFormPage">
+            <summary>
+            The contact form page
+            </summary>
+        </member>
         <member name="M:MeetCore.Secretary_ContactFormPage.#ctor">
             <summary>
             Default constructor
@@ -600,6 +662,31 @@
         <member name="T:MeetCore.Secretary_ProfilePage">
             <summary>
             The profile page
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_ProfilePage.Secretary">
+            <summary>
+            The secretary
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_ProfilePage.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_ProfilePage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ProfilePage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.Shared.MainLayout">
+            <summary>
+            The main layout
             </summary>
         </member>
         <member name="F:MeetCore.Shared.MainLayout.mMeetCoreTheme">

@@ -49,4 +49,53 @@
 
         #endregion
     }
+
+    /// <summary>
+    /// The reset password request model
+    /// </summary>
+    public class ResetPasswordRequestModel
+    {
+        #region Pubic Properties
+
+        /// <summary>
+        /// The user's email
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// The user's temporary password
+        /// </summary>
+        public string TemporaryPassword { get; set; }
+
+        /// <summary>
+        /// The user's password
+        /// </summary>
+        public string Password { get; set; }
+
+        /// <summary>
+        /// The user's confirm password
+        /// </summary>
+        public string ConfirmPassword { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="email">The user's email</param>
+        /// <param name="temporaryPassword">The user's temporary password</param>
+        /// <param name="password">The user's password</param>
+        /// <param name="confirmPassword">The user's confirm password</param>
+        public ResetPasswordRequestModel(string? email, string? temporaryPassword, string? password, string? confirmPassword)
+        {
+            Email = email ?? throw new ArgumentNullException(nameof(email));
+            TemporaryPassword = temporaryPassword ?? throw new ArgumentNullException(nameof(temporaryPassword));
+            Password = password ?? throw new ArgumentNullException(nameof(password));
+            ConfirmPassword = confirmPassword ?? throw new ArgumentNullException(nameof(confirmPassword));
+        }
+
+        #endregion
+    }
 }

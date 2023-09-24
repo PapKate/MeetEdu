@@ -226,13 +226,6 @@
             Error message indicating that the purchased amount of a customer service can not be set to less than the amount of the scheduled payments
             </summary>
         </member>
-        <member name="M:MeetEdu.MeetEduWebServerConstants.GetCustomerWithUserIdNotFoundErrorMessage(MongoDB.Bson.ObjectId)">
-            <summary>
-            Error message indicating that there are no customers with the specified user id
-            </summary>
-            <param name="id">The user id</param>
-            <returns></returns>
-        </member>
         <member name="T:MeetEdu.MeetCoreController">
             <summary>
             Controller used for handing the requests related to a MeetCore related application
@@ -265,6 +258,28 @@
             Validates the user credentials sent by the user and returns the user
             </summary>
             <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.ResetUserPasswordAsync(MeetBase.Web.ResetPasswordRequestModel)">
+            <summary>
+            Resets the user password
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.UpdateUserAsync(System.String,MeetBase.Web.UserRequestModel)">
+            <summary>
+            Updates the user with the specified <paramref name="userId"/>
+            </summary>
+            <param name="userId">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.DeleteUserAsync(System.String)">
+            <summary>
+            Deletes the user with the specified <paramref name="userId"/>
+            </summary>
+            <param name="userId">The id</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.MeetCoreController.GetUniversitiesAsync(MeetBase.Web.APIArgs,System.Threading.CancellationToken)">
@@ -537,13 +552,12 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.MeetCoreController.UpdateSecretaryAsync(System.String,MeetBase.Web.SecretaryRequestModel,MeetBase.Web.UserRequestModel,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.MeetCoreController.UpdateSecretaryAsync(System.String,System.Collections.Generic.KeyValuePair{MeetBase.Web.SecretaryRequestModel,MeetBase.Web.UserRequestModel},System.Threading.CancellationToken)">
             <summary>
             Updates the secretary with the specified <paramref name="secretaryId"/>
             </summary>
             <param name="secretaryId">The id</param>
             <param name="model">The model</param>
-            <param name="user">The user</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -579,13 +593,12 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.MeetCoreController.UpdateProfessorAsync(System.String,MeetBase.Web.ProfessorRequestModel,MeetBase.Web.UserRequestModel,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.MeetCoreController.UpdateProfessorAsync(System.String,System.Collections.Generic.KeyValuePair{MeetBase.Web.ProfessorRequestModel,MeetBase.Web.UserRequestModel},System.Threading.CancellationToken)">
             <summary>
             Updates the professor with the specified <paramref name="professorId"/>
             </summary>
             <param name="professorId">The id</param>
             <param name="model">The model</param>
-            <param name="user">The user</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -934,41 +947,6 @@
             Creates and returns a <see cref="T:MeetBase.Web.UserResponseModel"/> from the current <see cref="T:MeetEdu.UserEntity"/>
             </summary>
             <returns></returns>
-        </member>
-        <member name="T:MeetEdu.LoginResponse">
-            <summary>
-            Contains the <see cref="T:MeetEdu.UserEntity"/> and depending on the user role...
-            <list type="bullet">
-            <item>If it is a secretary, the <see cref="T:MeetEdu.SecretaryEntity"/></item>
-            <item>If it is a professor, the <see cref="T:MeetEdu.ProfessorEntity"/></item>
-            <item>If it is a member, the <see cref="T:MeetEdu.MemberEntity"/></item>
-            </list>
-            </summary>
-        </member>
-        <member name="P:MeetEdu.LoginResponse.User">
-            <summary>
-            The user
-            </summary>
-        </member>
-        <member name="P:MeetEdu.LoginResponse.Secretary">
-            <summary>
-            The secretary
-            </summary>
-        </member>
-        <member name="P:MeetEdu.LoginResponse.Professor">
-            <summary>
-            The professor
-            </summary>
-        </member>
-        <member name="P:MeetEdu.LoginResponse.Member">
-            <summary>
-            The member
-            </summary>
-        </member>
-        <member name="M:MeetEdu.LoginResponse.#ctor">
-            <summary>
-            Default constructor
-            </summary>
         </member>
         <member name="T:MeetEdu.MeetEduDbMapper">
             <summary>
@@ -2345,6 +2323,11 @@
             The member of the <see cref="P:MeetEdu.UserEntity.Email"/> property
             </summary>
         </member>
+        <member name="F:MeetEdu.UserEntity.mColor">
+            <summary>
+            The member of the <see cref="P:MeetEdu.UserEntity.Color"/> property
+            </summary>
+        </member>
         <member name="P:MeetEdu.UserEntity.Username">
             <summary>
             The username
@@ -2383,6 +2366,11 @@
         <member name="P:MeetEdu.UserEntity.ImageUrl">
             <summary>
             The image URL
+            </summary>
+        </member>
+        <member name="P:MeetEdu.UserEntity.Color">
+            <summary>
+            The color
             </summary>
         </member>
         <member name="P:MeetEdu.UserEntity.DateOfBirth">
@@ -3039,6 +3027,13 @@
         <member name="M:MeetEdu.AccountsRepository.ValidateUserCredentialsAsync(MeetBase.Web.LogInRequestModel)">
             <summary>
             Validates the user <paramref name="credentials"/>
+            </summary>
+            <param name="credentials">The credentials</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.AccountsRepository.ResetUserPasswordAsync(MeetBase.Web.ResetPasswordRequestModel)">
+            <summary>
+            Resets the user password
             </summary>
             <param name="credentials">The credentials</param>
             <returns></returns>

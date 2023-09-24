@@ -29,7 +29,7 @@
         /// The login route
         /// <code>/appointMate/api/v1/meetCore/login</code>
         /// </summary>
-        public const string LogInRoute = BaseRoute + "/logIn";
+        public const string LogInRoute = BaseRoute + "/login";
 
         #endregion
 
@@ -40,6 +40,16 @@
         /// <code>/appointMate/api/v1/meetCore/register</code>
         /// </summary>
         public const string RegisterRoute = BaseRoute + "/register";
+
+        #endregion
+
+        #region Reset
+
+        /// <summary>
+        /// The register route
+        /// <code>/appointMate/api/v1/meetCore/reset</code>
+        /// </summary>
+        public const string ResetRoute = BaseRoute + "/reset";
 
         #endregion
 

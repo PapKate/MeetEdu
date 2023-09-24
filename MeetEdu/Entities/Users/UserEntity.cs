@@ -1,12 +1,9 @@
-﻿using MeetBase;
-using MeetBase.Web;
-
-namespace MeetEdu
+﻿namespace MeetEdu
 {
     /// <summary>
     /// Represents a user document in the MongoDB
     /// </summary>
-    public class UserEntity: DateEntity, IImageable, IEmailable, IPhoneable
+    public class UserEntity: DateEntity, IImageable, IEmailable, IPhoneable, IColorable
     {
         #region Private Members
 
@@ -34,6 +31,11 @@ namespace MeetEdu
         /// The member of the <see cref="Email"/> property
         /// </summary>
         private string? mEmail;
+
+        /// <summary>
+        /// The member of the <see cref="Color"/> property
+        /// </summary>
+        private string? mColor;
 
         #endregion
 
@@ -98,6 +100,15 @@ namespace MeetEdu
         /// The image URL
         /// </summary>
         public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The color
+        /// </summary>
+        public string Color
+        {
+            get => mColor ?? string.Empty;
+            set => mColor = value;
+        }
 
         /// <summary>
         /// The birthday

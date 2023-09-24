@@ -54,7 +54,7 @@
                               Variant="Variant.Text"
                               Adornment="Adornment.Start"
                               AdornmentColor="@Color.Primary"
-                              AdornmentIcon="@MudIconPaths.Account" />
+                              AdornmentIcon="@MudIconPaths.Email" />
 
                 <span class="resetPasswordInstructionsText">@EnglishLocalization.ForgotPasswordResetInstructions</span>
             }
@@ -69,7 +69,7 @@
                               Variant="Variant.Text"
                               Adornment="Adornment.Start"
                               AdornmentColor="@Color.Primary"
-                              AdornmentIcon="@MudIconPaths.KeyVariant" />
+                              AdornmentIcon="@MudIconPaths.FormTextBoxPassword" />
             }
 
             @if(!mIsForgotPasswordActive)
@@ -83,7 +83,7 @@
                               Variant="Variant.Text"
                               Adornment="Adornment.Start"
                               AdornmentColor="@Color.Primary"
-                              AdornmentIcon="@MudIconPaths.KeyVariant" />
+                              AdornmentIcon="@MudIconPaths.Key" />
             }
             @if(mIsResetPasswordActive)
             {
@@ -96,7 +96,7 @@
                               Variant="Variant.Text"
                               Adornment="Adornment.Start"
                               AdornmentColor="@Color.Primary"
-                              AdornmentIcon="@MudIconPaths.KeyVariant" />
+                              AdornmentIcon="@MudIconPaths.KeyLink" />
             }
 
             <TextButton Text="@mButtonText" 

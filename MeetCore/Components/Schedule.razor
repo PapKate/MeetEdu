@@ -67,10 +67,10 @@
         </table>
 
         <div class="workHoursContainer">
-            @if(mCurrentDate.ToDateOnly() == mFirstDateOfWeek.ToDateOnly())
+            @if(mCurrentDate.GetFirstDayOfWeek().ToDateOnly() == mFirstDateOfWeek.ToDateOnly())
             {
-                <span class="workHourContainer scheduleCurrentDateTimePointer" style="@TopVariable.SetCssVariable($"calc(43.5px * (12.{mCurrentDate.Minute} - 7))")
-                                    @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(int)mCurrentDate.DayOfWeek} - 1))")
+                <span class="workHourContainer scheduleCurrentDateTimePointer" style="@TopVariable.SetCssVariable($"calc(43.59px * ({mCurrentDate.Hour}.{mCurrentDate.Minute * 100 / 60} - 7))")
+                                    @LeftVariable.SetCssVariable($"calc((100% / 7) * ({((int)mCurrentDate.DayOfWeek == 0 ? 7 : (int)mCurrentDate.DayOfWeek)} - 1))")
                                     @HeightVariable?.SetCssVariable("2px")
                                     @BackgroundVariable.SetCssColor($"{Green.HexToRGBA(1)}")
                                     @BorderBrushVariable.SetCssColor($"none")">
@@ -82,9 +82,9 @@
                 @foreach (var workHour in WorkHours)
                 {
                     <div class="workHourContainer"
-                         style="@TopVariable.SetCssVariable($"calc(43.5px * ({workHour.Start.Hour}.{workHour.Start.Minute} - 7))")
+                         style="@TopVariable.SetCssVariable($"calc(43.59px * ({workHour.Start.Hour}.{workHour.Start.Minute * 100 / 60} - 7))")
                                 @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(int)workHour.DayOfWeek} - 1))")
-                                @HeightVariable?.SetCssVariable($"calc(44px * ({workHour.End.Hour}.{workHour.End.Minute} - {workHour.Start.Hour}.{workHour.Start.Minute}))")
+                                @HeightVariable?.SetCssVariable($"calc(44px * ({workHour.End.Hour}.{workHour.End.Minute * 100 / 60} - {workHour.Start.Hour}.{workHour.Start.Minute * 100 / 60}))")
                                 @BackgroundVariable.SetCssColor($"{Gray.HexToRGBA(0.2)}")
                                 @BorderBrushVariable.SetCssColor($"{Gray}")"
                         id="@($"{workHour.DayOfWeek}.{workHour.Start.ToString("hh:mm")}-{workHour.End.ToString("hh:mm")}")">

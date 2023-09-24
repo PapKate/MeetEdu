@@ -12,6 +12,7 @@ namespace MeetEdu
     /// <summary>
     /// Controller used for handing the requests related to a MeetCore related application
     /// </summary>
+    [ApiController]
     public class MeetCoreController : Controller
     {
         #region Public Properties
@@ -63,6 +64,41 @@ namespace MeetEdu
         [Route(MeetCoreAPIRoutes.LogInRoute)]
         public async Task<ActionResult<LoginResponse>> LoginAsync([FromBody] LogInRequestModel model)
             => (await DI.AccountsRepository.LoginAsync(model)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Resets the user password
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetCoreAPIRoutes.ResetRoute)]
+        public async Task<ActionResult<UserResponseModel>> ResetUserPasswordAsync([FromBody] ResetPasswordRequestModel model)
+            => (await DI.AccountsRepository.ResetUserPasswordAsync(model)).ToActionResult(x => x.ToResponseModel());
+
+        #endregion
+
+        #region Users
+
+        /// <summary>
+        /// Updates the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The id</param>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetCoreAPIRoutes.UserRoute)]
+        public async Task<ActionResult<UserResponseModel>> UpdateUserAsync([FromRoute] string userId, [FromBody] UserRequestModel model)
+            => (await DI.UsersRepository.UpdateUserAsync(userId.ToObjectId(), model)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Deletes the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The id</param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route(MeetCoreAPIRoutes.DepartmentRoute)]
+        public async Task<ActionResult<UserResponseModel>> DeleteUserAsync([FromRoute] string userId)
+            => (await DI.UsersRepository.DeleteUserAsync(userId.ToObjectId())).ToActionResult(x => x.ToResponseModel());
 
         #endregion
 
@@ -487,13 +523,12 @@ namespace MeetEdu
         /// </summary>
         /// <param name="secretaryId">The id</param>
         /// <param name="model">The model</param>
-        /// <param name="user">The user</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpPut]
         [Route(MeetCoreAPIRoutes.SecretaryRoute)]
-        public async Task<ActionResult<SecretaryResponseModel>> UpdateSecretaryAsync([FromRoute] string secretaryId, [FromBody] SecretaryRequestModel model, [FromBody] UserRequestModel user, CancellationToken cancellationToken = default)
-            => (await DI.SecretariesRepository.UpdateSecretaryAsync(secretaryId.ToObjectId(), model, user, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+        public async Task<ActionResult<SecretaryResponseModel>> UpdateSecretaryAsync([FromRoute] string secretaryId, [FromBody] KeyValuePair<SecretaryRequestModel, UserRequestModel> model, CancellationToken cancellationToken = default)
+            => (await DI.SecretariesRepository.UpdateSecretaryAsync(secretaryId.ToObjectId(), model.Key, model.Value, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
         /// Deletes the secretary with the specified <paramref name="secretaryId"/>
@@ -551,13 +586,12 @@ namespace MeetEdu
         /// </summary>
         /// <param name="professorId">The id</param>
         /// <param name="model">The model</param>
-        /// <param name="user">The user</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpPut]
         [Route(MeetCoreAPIRoutes.ProfessorRoute)]
-        public async Task<ActionResult<ProfessorResponseModel>> UpdateProfessorAsync([FromRoute] string professorId, [FromBody] ProfessorRequestModel model, [FromBody] UserRequestModel user, CancellationToken cancellationToken = default)
-            => (await DI.ProfessorsRepository.UpdateProfessorAsync(professorId.ToObjectId(), model, user, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+        public async Task<ActionResult<ProfessorResponseModel>> UpdateProfessorAsync([FromRoute] string professorId, [FromBody] KeyValuePair<ProfessorRequestModel, UserRequestModel> model, CancellationToken cancellationToken = default)
+            => (await DI.ProfessorsRepository.UpdateProfessorAsync(professorId.ToObjectId(), model.Key, model.Value, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
         /// Deletes the professor with the specified <paramref name="professorId"/>

@@ -1,4 +1,5 @@
 ﻿using MeetBase.Blazor;
+using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 
@@ -15,7 +16,7 @@ namespace MeetCore
         /// The state management service
         /// </summary>
         [Inject]
-        public StateManagerCore? StateManager { get; set; }
+        public StateManagerCore StateManager { get; set; } = default!;
 
         #endregion
 
@@ -84,7 +85,27 @@ namespace MeetCore
         /// <summary>
         /// A flag indicating whether the staff member is a secretary
         /// </summary>
-        public bool IsSecretary { get; set; } = false;
+        public bool IsSecretary { get; set; }
+
+        /// <summary>
+        /// The user
+        /// </summary>
+        public UserResponseModel? User { get; set; }
+
+        /// <summary>
+        /// The secretary
+        /// </summary>
+        public SecretaryResponseModel? Secretary { get; set; }
+
+        /// <summary>
+        /// The professor
+        /// </summary>
+        public ProfessorResponseModel? Professor { get; set; }
+
+        /// <summary>
+        /// The department
+        /// </summary>
+        public DepartmentResponseModel? Department { get; set; }
 
         #endregion
 
@@ -103,11 +124,40 @@ namespace MeetCore
         #region Public Methods
 
         /// <summary>
-        /// The method that will be accessed by the sender component to update the state
+        /// Resets the sate manager values
         /// </summary>
-        public void SetIsSecretary(bool isSecretary)
+        public void ResetManager()
+        {
+            IsSecretary = false;
+            User = null;
+            Secretary = null;
+            Professor = null;
+        }
+
+        /// <summary>
+        /// Sets the values for the <see cref="User"/> and  <see cref="Secretary"/> properties
+        /// </summary>
+        /// <remarks>The method that will be accessed by the sender component to update the state</remarks>
+        public void SetLoginUserData(bool isSecretary, UserResponseModel user, SecretaryResponseModel secretary, DepartmentResponseModel department)
         {
             IsSecretary = isSecretary;
+            User = user;
+            Secretary = secretary;
+            Department = department;
+            NotifyStateChanged();
+        }
+
+        /// <summary>
+        /// Sets the values for the <see cref="User"/> and  <see cref="Professor"/> properties
+        /// </summary>
+        /// <remarks>The method that will be accessed by the sender component to update the state</remarks>
+        public void SetLoginUserData(bool isSecretary, UserResponseModel user, ProfessorResponseModel professor, DepartmentResponseModel department)
+        {
+            IsSecretary = isSecretary;
+            User = user;
+            Professor = professor;
+            Department = department;
+
             NotifyStateChanged();
         }
 

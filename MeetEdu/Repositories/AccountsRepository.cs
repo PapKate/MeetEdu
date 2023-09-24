@@ -1,10 +1,4 @@
-﻿
-using Amazon.SecurityToken.Model;
-
-using MeetBase;
-using MeetBase.Web;
-
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace MeetEdu
 {
@@ -113,6 +107,50 @@ namespace MeetEdu
 
             // Return the successful result
             return new WebServerFailable<UserEntity>(user);
+        }
+
+        /// <summary>
+        /// Resets the user password
+        /// </summary>
+        /// <param name="credentials">The credentials</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<UserEntity>> ResetUserPasswordAsync(ResetPasswordRequestModel credentials)
+        {
+            // Get the user manager
+            var userManager = DI.UsersRepository;
+
+            // Get the user details
+            var user = await MeetEduDbMapper.Users.FirstOrDefaultAsync(x => x.Email == credentials.Email);
+
+            // If we failed to find a user...
+            if (user is null)
+                // Return error message to user
+                return MeetEduWebServerConstants.InvalidLogInCredentialsErrorMessage;
+
+            // If not all inputs were filled...
+            if (credentials.TemporaryPassword.IsNullOrEmpty() || credentials.Password.IsNullOrEmpty() || credentials.ConfirmPassword.IsNullOrEmpty())
+            {
+                // Return error message to user
+                return EnglishLocalization.InvalidTotalFormInputsErrorMessage;
+            }
+
+            if (credentials.TemporaryPassword != "TempCore123!@")
+            {
+                // Return error message to user
+                return EnglishLocalization.InvalidTemporaryPasswordErrorMessage;
+            }
+
+            // If the passwords do not match
+            if (credentials.Password != credentials.ConfirmPassword)
+            {
+                // Return error message to user
+                return EnglishLocalization.InvalidConfirmPasswordInputErrorMessage;
+            }
+
+            user = await MeetEduDbMapper.Users.UpdateAsync(user.Id, new UserRequestModel() { PasswordHash = credentials.Password.EncryptPassword() });
+
+            // Return the successful result
+            return new WebServerFailable<UserEntity>(user!);
         }
 
         #endregion

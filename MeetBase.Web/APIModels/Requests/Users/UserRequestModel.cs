@@ -48,6 +48,11 @@
         public Uri? ImageUrl { get; set; }
 
         /// <summary>
+        /// The color
+        /// </summary>
+        public string? Color { get; set; }
+
+        /// <summary>
         /// The birthday
         /// </summary>
         public DateOnly? DateOfBirth { get; set; }

@@ -1119,6 +1119,26 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetBase.AppointmentAttendanceType">
+            <summary>
+            Provides enumerations over the appointment attendance type
+            </summary>
+        </member>
+        <member name="F:MeetBase.AppointmentAttendanceType.Select">
+            <summary>
+            Appointment location can be at home or at the specified location
+            </summary>
+        </member>
+        <member name="F:MeetBase.AppointmentAttendanceType.Local">
+            <summary>
+            Local
+            </summary>
+        </member>
+        <member name="F:MeetBase.AppointmentAttendanceType.Remote">
+            <summary>
+            Remote
+            </summary>
+        </member>
         <member name="T:MeetBase.Condition">
             <summary>
             Provides enumeration over the conditions
@@ -4259,6 +4279,31 @@
         <member name="F:MeetBase.EnglishLocalization.ForgotPasswordResetInstructions">
             <summary>
             Forgot password reset instructions message
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.PleaseTryAgainErrorMessage">
+            <summary>
+            Error message suggesting to the user to try again
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.InvalidTemporaryPasswordErrorMessage">
+            <summary>
+            Error message indicating that the provided temporary password is invalid
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.InvalidTotalFormInputsErrorMessage">
+            <summary>
+            Error message indicating that not all form inputs where filled
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.InvalidConfirmPasswordInputErrorMessage">
+            <summary>
+            Error message indicating that the password and confirm password inputs do not match
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.ResetPassordSuccessfullyMesage">
+            <summary>
+            Message indicating that the password was reset successfully
             </summary>
         </member>
         <member name="F:MeetBase.EnglishLocalization.Profile">
