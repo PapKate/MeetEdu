@@ -13,6 +13,11 @@
         public string? UniversityId { get; set; }
 
         /// <summary>
+        /// The email
+        /// </summary>
+        public string? Email { get; set; }
+
+        /// <summary>
         /// The category
         /// </summary>
         public DepartmentType? Category { get; set; }
@@ -51,16 +56,6 @@
         /// The location
         /// </summary>
         public Location? Location { get; set; }
-
-        /// <summary>
-        /// The billing information
-        /// </summary>
-        public Billing? Billing { get; set; }
-
-        /// <summary>
-        /// The shipping information
-        /// </summary>
-        public Shipping? Shipping { get; set; }
 
         /// <summary>
         /// The labels

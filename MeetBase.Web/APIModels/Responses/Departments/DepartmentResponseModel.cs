@@ -13,6 +13,11 @@
         private string? mUniversityId;
 
         /// <summary>
+        /// The member of the <see cref="Email"/> property
+        /// </summary>
+        private string? mEmail;
+
+        /// <summary>
         /// The member of the <see cref="Note"/> property
         /// </summary>
         private string? mNote;
@@ -43,6 +48,15 @@
         {
             get => mUniversityId ?? string.Empty;
             set => mUniversityId = value;
+        }
+
+        /// <summary>
+        /// The email
+        /// </summary>
+        public string Email
+        {
+            get => mEmail ?? string.Empty;
+            set => mEmail = value;
         }
 
         /// <summary>
@@ -96,16 +110,6 @@
         /// The location
         /// </summary>
         public Location? Location { get; set; }
-
-        /// <summary>
-        /// The billing information
-        /// </summary>
-        public Billing? Billing { get; set; }
-
-        /// <summary>
-        /// The shipping information
-        /// </summary>
-        public Shipping? Shipping { get; set; }
 
         /// <summary>
         /// The labels

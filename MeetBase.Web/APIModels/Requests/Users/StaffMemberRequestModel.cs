@@ -18,6 +18,11 @@
         public string? DepartmentId { get; set; }
 
         /// <summary>
+        /// The quote
+        /// </summary>
+        public string Quote { get; set; }
+
+        /// <summary>
         /// The weekly schedule
         /// </summary>
         public WeeklySchedule? WeeklySchedule { get; set; }

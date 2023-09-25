@@ -58,14 +58,9 @@
         public DateOnly? DateOfBirth { get; set; }
 
         /// <summary>
-        /// The shipping information
+        /// The location information
         /// </summary>
-        public Shipping? Shipping { get; set; }
-
-        /// <summary>
-        /// The billing information
-        /// </summary>
-        public Billing? Billing { get; set; }
+        public Location? Location { get; set; }
 
         #endregion
 

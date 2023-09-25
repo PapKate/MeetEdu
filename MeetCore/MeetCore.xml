@@ -644,6 +644,31 @@
             The department information page
             </summary>
         </member>
+        <member name="P:MeetCore.Secretary_DepartmentInformationPage.mDepartment">
+            <summary>
+            The department
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_DepartmentInformationPage.mRequest">
+            <summary>
+            The request
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_DepartmentInformationPage.mIsEditActive">
+            <summary>
+            A flag indicating whether the form is visible or not
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentInformationPage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentInformationPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetCore.Secretary_DepartmentLayoutPage">
             <summary>
             The department layout page
@@ -664,6 +689,61 @@
             The profile page
             </summary>
         </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mIsDialogOpen">
+            <summary>
+            A flag indicating whether the <see cref="T:MudBlazor.MudDialog"/> is open or not
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mUserRequestModel">
+            <summary>
+            The request model for updating the user details
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mSecretaryRequestModel">
+            <summary>
+            The request model for updating the secretary details
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mLocation">
+            <summary>
+            The location
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mPhotoLabel">
+            <summary>
+            The password
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mPassword">
+            <summary>
+            The password
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mConfirmPassword">
+            <summary>
+            The confirm password
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mCountryCode">
+            <summary>
+            The country code
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mPhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mBirthDate">
+            <summary>
+            The birth date
+            </summary>
+        </member>
         <member name="P:MeetCore.Secretary_ProfilePage.Secretary">
             <summary>
             The secretary
@@ -682,6 +762,16 @@
         <member name="M:MeetCore.Secretary_ProfilePage.#ctor">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ProfilePage.OpenDialog">
+            <summary>
+            Opens the dialog
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ProfilePage.CloseDialog">
+            <summary>
+            Closes the dialog
             </summary>
         </member>
         <member name="T:MeetCore.Shared.MainLayout">

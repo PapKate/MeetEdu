@@ -55,7 +55,7 @@ namespace MeetCore.Shared
                     TextPrimary = DarkGray,
                     TextSecondary = Gray,
                     TextDisabled = LightGray,
-                    ActionDisabledBackground = LightGray
+                    ActionDisabledBackground = LightGray,
                 }
             };
         }

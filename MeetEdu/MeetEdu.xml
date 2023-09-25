@@ -1572,6 +1572,11 @@
             Represents a department document in the MongoDB
             </summary>
         </member>
+        <member name="F:MeetEdu.DepartmentEntity.mEmail">
+            <summary>
+            The member of the <see cref="P:MeetEdu.DepartmentEntity.Email"/> property
+            </summary>
+        </member>
         <member name="F:MeetEdu.DepartmentEntity.mNote">
             <summary>
             The member of the <see cref="P:MeetEdu.DepartmentEntity.Note"/> property
@@ -1595,6 +1600,11 @@
         <member name="P:MeetEdu.DepartmentEntity.UniversityId">
             <summary>
             The university id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentEntity.Email">
+            <summary>
+            The email
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentEntity.Category">
@@ -1635,16 +1645,6 @@
         <member name="P:MeetEdu.DepartmentEntity.Location">
             <summary>
             The location
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentEntity.Billing">
-            <summary>
-            The billing information
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentEntity.Shipping">
-            <summary>
-            The shipping information
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentEntity.Labels">
@@ -2376,16 +2376,6 @@
         <member name="P:MeetEdu.UserEntity.DateOfBirth">
             <summary>
             The birthday
-            </summary>
-        </member>
-        <member name="P:MeetEdu.UserEntity.Shipping">
-            <summary>
-            The shipping information
-            </summary>
-        </member>
-        <member name="P:MeetEdu.UserEntity.Billing">
-            <summary>
-            The billing information
             </summary>
         </member>
         <member name="P:MeetEdu.UserEntity.Location">

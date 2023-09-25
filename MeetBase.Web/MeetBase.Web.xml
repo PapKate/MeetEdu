@@ -159,6 +159,11 @@
             The university id
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentRequestModel.Category">
             <summary>
             The category
@@ -197,16 +202,6 @@
         <member name="P:MeetBase.Web.DepartmentRequestModel.Location">
             <summary>
             The location
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentRequestModel.Billing">
-            <summary>
-            The billing information
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentRequestModel.Shipping">
-            <summary>
-            The shipping information
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentRequestModel.LabelIds">
@@ -416,6 +411,11 @@
             The department id
             </summary>
         </member>
+        <member name="P:MeetBase.Web.StaffMemberRequestModel.Quote">
+            <summary>
+            The quote
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.StaffMemberRequestModel.WeeklySchedule">
             <summary>
             The weekly schedule
@@ -481,14 +481,9 @@
             The birthday
             </summary>
         </member>
-        <member name="P:MeetBase.Web.UserRequestModel.Shipping">
+        <member name="P:MeetBase.Web.UserRequestModel.Location">
             <summary>
-            The shipping information
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.UserRequestModel.Billing">
-            <summary>
-            The billing information
+            The location information
             </summary>
         </member>
         <member name="M:MeetBase.Web.UserRequestModel.#ctor">
@@ -939,6 +934,11 @@
             The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.UniversityId"/> property
             </summary>
         </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mEmail">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Email"/> property
+            </summary>
+        </member>
         <member name="F:MeetBase.Web.DepartmentResponseModel.mNote">
             <summary>
             The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Note"/> property
@@ -962,6 +962,11 @@
         <member name="P:MeetBase.Web.DepartmentResponseModel.UniversityId">
             <summary>
             The university id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Email">
+            <summary>
+            The email
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentResponseModel.Category">
@@ -1002,16 +1007,6 @@
         <member name="P:MeetBase.Web.DepartmentResponseModel.Location">
             <summary>
             The location
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentResponseModel.Billing">
-            <summary>
-            The billing information
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentResponseModel.Shipping">
-            <summary>
-            The shipping information
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentResponseModel.Labels">
@@ -1591,14 +1586,9 @@
             The birthday
             </summary>
         </member>
-        <member name="P:MeetBase.Web.UserResponseModel.Shipping">
+        <member name="P:MeetBase.Web.UserResponseModel.Location">
             <summary>
-            The shipping information
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.UserResponseModel.Billing">
-            <summary>
-            The billing information
+            The location information
             </summary>
         </member>
         <member name="M:MeetBase.Web.UserResponseModel.#ctor">
