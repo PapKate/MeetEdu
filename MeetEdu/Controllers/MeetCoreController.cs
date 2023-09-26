@@ -527,8 +527,8 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpPut]
         [Route(MeetCoreAPIRoutes.SecretaryRoute)]
-        public async Task<ActionResult<SecretaryResponseModel>> UpdateSecretaryAsync([FromRoute] string secretaryId, [FromBody] KeyValuePair<SecretaryRequestModel, UserRequestModel> model, CancellationToken cancellationToken = default)
-            => (await DI.SecretariesRepository.UpdateSecretaryAsync(secretaryId.ToObjectId(), model.Key, model.Value, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+        public async Task<ActionResult<SecretaryResponseModel>> UpdateSecretaryAsync([FromRoute] string secretaryId, [FromBody] SecretaryRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.SecretariesRepository.UpdateSecretaryAsync(secretaryId.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
         /// Deletes the secretary with the specified <paramref name="secretaryId"/>

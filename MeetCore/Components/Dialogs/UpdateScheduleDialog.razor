@@ -1,0 +1,50 @@
+﻿
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<MudDialog @bind-IsVisible="mIsDialogOpen" Options="mDialogOptions">
+    <DialogContent>
+        <div class="dialogSection">
+            <span class="dialogSectionText">Update Schedule</span>
+        </div>
+        <div class="dialogContentContainer">
+
+            <span class="dialogContentTitle dialogContentFullRow">Note</span>
+            <MudTextField T="string" Placeholder="Write a note regarding your shifts" Class="dialogContentFullRow" Variant="Variant.Text" @bind-Text="@mWeeklySchedule.Note" Lines="3" />
+
+            <span class="dialogContentTitle dialogContentFullRow">Account info</span>
+            <MudTextField @bind-Value="@mWeeklySchedule.Note"
+                          Placeholder="Title"
+                          Class="dialogContentFullRow dialogInput"
+                          FullWidth="true"
+                          Variant="Variant.Text"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@MudIconPaths.Account" />
+            <MudSelect T="DayOfWeek" @bind-Value="@mTempValue"
+                       Placeholder="Country"
+                       Class="departmentFieldInput dialogContentFullRow"
+                       FullWidth="true"
+                       Variant="Variant.Text"
+                       Adornment="Adornment.Start"
+                       AdornmentIcon="@MudIconPaths.Account"
+                       AnchorOrigin="Origin.BottomCenter">
+                @foreach (var value in Enum.GetValues<DayOfWeek>())
+                {
+                    <MudSelectItem Value="@value">@value</MudSelectItem>
+                }
+            </MudSelect>
+            <MudTimePicker Placeholder="Start" Editable="true" />
+            <MudTimePicker Placeholder="End" Editable="true" />
+        </div>
+    </DialogContent>
+    <DialogActions>
+        <div class="dialogActionsContainer">
+            <MudButton Variant="Variant.Text" Color="Color.Error" OnClick="CancelChanges" Class="px-10">Cancel</MudButton>
+            <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="SaveChanges" Class="px-10">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>

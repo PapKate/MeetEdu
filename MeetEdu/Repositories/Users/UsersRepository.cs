@@ -67,6 +67,37 @@ namespace MeetEdu
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Users));
 
+            var secretary = await MeetEduDbMapper.Secretaries.FirstOrDefaultAsync(x => x.UserId == entity.Id);
+            
+            // If the user is a secretary...
+            if (secretary != null)
+            {
+                secretary.User = entity.ToEmbeddedEntity();
+                await MeetEduDbMapper.Secretaries.UpdateAsync(secretary);
+             
+                return entity;
+            }
+
+            var professor = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.UserId == entity.Id);
+
+            // If the user is a professor...
+            if (professor != null)
+            {
+                professor.User = entity.ToEmbeddedEntity();
+                await MeetEduDbMapper.Professors.UpdateAsync(professor);
+                
+                return entity;
+            }
+
+            var member = await MeetEduDbMapper.Members.FirstOrDefaultAsync(x => x.UserId == entity.Id);
+
+            // If the user is a member...
+            if (member != null)
+            {
+                member.User = entity.ToEmbeddedEntity();
+                await MeetEduDbMapper.Members.UpdateAsync(member);
+            }
+
             return entity;
         }
 

@@ -34,6 +34,41 @@
             <inheritdoc/>
             </summary>
         </member>
+        <member name="T:MeetCore.UpdateScheduleDialog">
+            <summary>
+            The dialog for editing the schedule
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateScheduleDialog.mIsDialogOpen">
+            <summary>
+            A flag indicating whether the <see cref="T:MudBlazor.MudDialog"/> for editing the work hours is open or not
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateScheduleDialog.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateScheduleDialog.mWeeklySchedule">
+            <summary>
+            The weekly schedule
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateScheduleDialog.mWorkHours">
+            <summary>
+            The work hours
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateScheduleDialog.CloseDialog">
+            <summary>
+            Closes the dialog
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateScheduleDialog.SaveChanges">
+            <summary>
+            Updates the secretary and user info
+            </summary>
+        </member>
         <member name="T:MeetCore.Schedule">
             <summary>
             The schedule component
@@ -84,6 +119,11 @@
             The work hours
             </summary>
         </member>
+        <member name="P:MeetCore.Schedule.IsEditable">
+            <summary>
+            A flag indicating whether the schedule can be modified or not
+            </summary>
+        </member>
         <member name="M:MeetCore.Schedule.#ctor">
             <summary>
             Default constructor
@@ -100,6 +140,11 @@
             </summary>
             <param name="date">The day</param>
             <returns></returns>
+        </member>
+        <member name="P:MeetCore.Schedule.EditButtonOnClick">
+            <summary>
+            Fires when the edit button is clicked
+            </summary>
         </member>
         <member name="T:MeetCore.SideMenu">
             <summary>
@@ -694,6 +739,11 @@
             A flag indicating whether the <see cref="T:MudBlazor.MudDialog"/> is open or not
             </summary>
         </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mIsScheduleDialogOpen">
+            <summary>
+            A flag indicating whether the <see cref="T:MudBlazor.MudDialog"/> for editing the work hours is open or not
+            </summary>
+        </member>
         <member name="F:MeetCore.Secretary_ProfilePage.mDialogOptions">
             <summary>
             The <see cref="T:MudBlazor.MudDialog"/> options
@@ -712,6 +762,11 @@
         <member name="F:MeetCore.Secretary_ProfilePage.mLocation">
             <summary>
             The location
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mWeeklySchedule">
+            <summary>
+            The weekly schedule
             </summary>
         </member>
         <member name="F:MeetCore.Secretary_ProfilePage.mPhotoLabel">
@@ -754,14 +809,29 @@
             The user
             </summary>
         </member>
+        <member name="P:MeetCore.Secretary_ProfilePage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
         <member name="P:MeetCore.Secretary_ProfilePage.StateManager">
             <summary>
             The state management service
             </summary>
         </member>
+        <member name="P:MeetCore.Secretary_ProfilePage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
         <member name="M:MeetCore.Secretary_ProfilePage.#ctor">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ProfilePage.OnInitialized">
+            <summary>
+            <inheritdoc/>
             </summary>
         </member>
         <member name="M:MeetCore.Secretary_ProfilePage.OpenDialog">
@@ -772,6 +842,11 @@
         <member name="M:MeetCore.Secretary_ProfilePage.CloseDialog">
             <summary>
             Closes the dialog
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ProfilePage.SaveChanges">
+            <summary>
+            Updates the secretary and user info
             </summary>
         </member>
         <member name="T:MeetCore.Shared.MainLayout">

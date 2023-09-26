@@ -22,6 +22,11 @@ namespace MeetCore
         private bool mIsDialogOpen;
 
         /// <summary>
+        /// A flag indicating whether the <see cref="MudDialog"/> for editing the work hours is open or not
+        /// </summary>
+        private bool mIsScheduleDialogOpen;
+
+        /// <summary>
         /// The <see cref="MudDialog"/> options
         /// </summary>
         private DialogOptions mDialogOptions = new() { FullWidth = true };
@@ -40,6 +45,11 @@ namespace MeetCore
         /// The location
         /// </summary>
         private Location mLocation = new Location();
+
+        /// <summary>
+        /// The weekly schedule
+        /// </summary>
+        private WeeklySchedule mWeeklySchedule = new WeeklySchedule();
 
         /// <summary>
         /// The password
@@ -90,10 +100,22 @@ namespace MeetCore
         #region Protected Properties
 
         /// <summary>
+        /// The client
+        /// </summary>
+        [Inject]
+        protected MeetCoreClient Client { get; set; } = default!;
+
+        /// <summary>
         /// The state management service
         /// </summary>
         [Inject]
         protected StateManagerCore StateManager { get; set; } = default!;
+
+        /// <summary>
+        /// The <see cref="MudBlazor"/> snack bar manager
+        /// </summary>
+        [Inject]
+        protected ISnackbar Snackbar { get; set; } = default!;
 
         #endregion
 
@@ -104,7 +126,22 @@ namespace MeetCore
         /// </summary>
         public Secretary_ProfilePage() : base()
         {
+            
+        }
 
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            mPhoneNumber = User.PhoneNumber?.Phone ?? string.Empty;
+            mCountryCode = User.PhoneNumber?.CountryCode ?? (int)CountryCode.GR;
+            mLocation = User.Location ?? new();
         }
 
         #endregion
@@ -141,6 +178,48 @@ namespace MeetCore
         /// Closes the dialog
         /// </summary>
         private void CloseDialog() => mIsDialogOpen = false;
+
+        /// <summary>
+        /// Updates the secretary and user info
+        /// </summary>
+        private async void SaveChanges()
+        {
+            // Updates the secretary
+            var secretaryResponse = await Client.UpdateSecretaryAsync(Secretary.Id, mSecretaryRequestModel);
+            
+            // If there was an error...
+            if(!secretaryResponse.IsSuccessful)
+            {
+                // Show the error
+                Snackbar.Add(secretaryResponse.ErrorMessage, Severity.Error);
+                // Return
+                return;
+            }
+            StateManager.Secretary = secretaryResponse.Result;
+
+            mUserRequestModel.Location = mLocation;
+            mUserRequestModel.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
+            mUserRequestModel.Color = mUserRequestModel.Color!.Replace("#", string.Empty);
+            // Updates the user
+            var userResponse = await Client.UpdateUserAsync(Secretary.UserId, mUserRequestModel);
+            
+            // If there was an error...
+            if (!userResponse.IsSuccessful)
+            {
+                // Show the error
+                Snackbar.Add(userResponse.ErrorMessage, Severity.Error);
+                // Return
+                return;
+            }
+            StateManager.User = userResponse.Result;
+            CloseDialog();
+            StateHasChanged();
+        }
+
+        private void CancelChanges()
+        {
+            CloseDialog();
+        }
 
         private async void BrowserFileUploaded(IBrowserFile file)
         {

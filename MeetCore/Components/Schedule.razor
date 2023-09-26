@@ -18,6 +18,15 @@
                     ForeColor="@Gray"
                     BackColor="transparent" 
                     BoxShadow="none" />
+        @if(IsEditable)
+        {
+            <IconButton VectorSource="@IconPaths.PencilOutlinePath"
+                        OnClick="@(async () => await EditButtonOnClick.InvokeAsync())"
+                        ForeColor="@Gray"
+                        BackColor="transparent"
+                        BorderRadius="@SmallBorderRadius"
+                        BoxShadow="none" />
+        }
     </div>
 </div>
 

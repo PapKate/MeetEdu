@@ -62,6 +62,12 @@ namespace MeetCore
         [Parameter]
         public IEnumerable<Lecture>? Lectures { get; set; }
 
+        /// <summary>
+        /// A flag indicating whether the schedule can be modified or not
+        /// </summary>
+        [Parameter]
+        public bool IsEditable { get; set; }
+
         #endregion
 
         #region Constructors
@@ -94,50 +100,6 @@ namespace MeetCore
             mDisplayedFirstDateOfWeek = mFirstDateOfWeek;
 
             mWeekDays = daysOfWeek;
-
-            WorkHours = new List<DayOfWeekTimeRange>()
-            { 
-                new DayOfWeekTimeRange(DayOfWeek.Tuesday, new TimeOnly(10, 0), new TimeOnly(13, 0))
-                {
-                    Text = "Ώρες Γραφείου",
-                }
-            };
-
-            Lectures = new List<Lecture>()
-            {
-                new Lecture()
-                {
-                    Name = "Data Structures",
-                    Color = MeetBase.Blazor.PaletteColors.Persimmon,
-                    LectureHours = new List<DayOfWeekTimeRange>()
-                    {
-                        new DayOfWeekTimeRange(DayOfWeek.Tuesday, new TimeOnly(14, 0), new TimeOnly(16, 0))
-                        {
-                           Text = "Αίθουσα: Γ",
-                        },
-                        new DayOfWeekTimeRange(DayOfWeek.Friday, new TimeOnly(14, 0), new TimeOnly(16, 0))
-                        {
-                           Text = "Αίθουσα: Β",
-                        },
-                    },
-                },
-                new Lecture()
-                {
-                    Name = "Artificial Intelligence",
-                    Color = MeetBase.Blazor.PaletteColors.Blue,
-                    LectureHours = new List<DayOfWeekTimeRange>()
-                    {
-                        new DayOfWeekTimeRange(DayOfWeek.Thursday, new TimeOnly(11, 0), new TimeOnly(13, 0))
-                        {
-                           Text = "Αίθουσα: Δ1",
-                        },
-                        new DayOfWeekTimeRange(DayOfWeek.Wednesday, new TimeOnly(17, 0), new TimeOnly(19, 0))
-                        {
-                           Text = "Αίθουσα: Δ1",
-                        },
-                    },
-                }
-            };
         }
 
         #endregion
@@ -163,6 +125,16 @@ namespace MeetCore
             
             return className;
         }
+
+        #endregion
+
+        #region Public Events
+
+        /// <summary>
+        /// Fires when the edit button is clicked
+        /// </summary>
+        [Parameter]
+        public EventCallback EditButtonOnClick { get; set; }
 
         #endregion
     }

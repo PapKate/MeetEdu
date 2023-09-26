@@ -45,11 +45,10 @@ namespace MeetEdu
         /// Updates the secretary with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
-        /// <param name="secretary">The secretary</param>
-        /// <param name="user">The user</param>
+        /// <param name="model">The secretary</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<SecretaryEntity>> UpdateSecretaryAsync(ObjectId id, SecretaryRequestModel secretary, UserRequestModel user, CancellationToken cancellationToken = default)
+        public async Task<WebServerFailable<SecretaryEntity>> UpdateSecretaryAsync(ObjectId id, SecretaryRequestModel model, CancellationToken cancellationToken = default)
         {
             var secretaryEntity = await MeetEduDbMapper.Secretaries.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
@@ -57,17 +56,9 @@ namespace MeetEdu
             if (secretaryEntity is null)
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Secretaries));
 
-            secretaryEntity = await MeetEduDbMapper.Secretaries.UpdateAsync(id, secretary, cancellationToken);
+            secretaryEntity = await MeetEduDbMapper.Secretaries.UpdateAsync(id, model, cancellationToken);
 
-            var userEntity = await MeetEduDbMapper.Users.FirstAsync(secretaryEntity!.UserId, cancellationToken);
-
-            userEntity = await MeetEduDbMapper.Users.UpdateAsync(userEntity.Id, user, cancellationToken);
-
-            // If the user exists...
-            if (user is not null)
-                secretaryEntity.User = userEntity!.ToEmbeddedEntity();
-
-            return secretaryEntity;
+            return secretaryEntity!;
         }
 
         /// <summary>

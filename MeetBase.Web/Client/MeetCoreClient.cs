@@ -195,7 +195,6 @@
 
         #endregion
 
-
         #region Departments
 
         /// <summary>
@@ -410,9 +409,8 @@
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
-        /// <param name="user">The user</param>
         /// <returns></returns>
-        public Task<WebRequestResult<SecretaryResponseModel>> UpdateSecretaryAsync(string id, SecretaryRequestModel model, UserRequestModel user)
+        public Task<WebRequestResult<SecretaryResponseModel>> UpdateSecretaryAsync(string id, SecretaryRequestModel model)
             => WebRequestsClient.Instance.PutAsync<SecretaryResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetSecretaryRoute(id)), model, null);
 
         /// <summary>
