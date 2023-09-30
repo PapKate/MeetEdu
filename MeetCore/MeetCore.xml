@@ -39,34 +39,127 @@
             The dialog for editing the schedule
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateScheduleDialog.mIsDialogOpen">
+        <member name="F:MeetCore.UpdateScheduleDialog.mName">
             <summary>
-            A flag indicating whether the <see cref="T:MudBlazor.MudDialog"/> for editing the work hours is open or not
+            The name
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateScheduleDialog.mDialogOptions">
+        <member name="F:MeetCore.UpdateScheduleDialog.mColor">
             <summary>
-            The <see cref="T:MudBlazor.MudDialog"/> options
+            The color
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateScheduleDialog.mWeeklySchedule">
+        <member name="F:MeetCore.UpdateScheduleDialog.mWeeklyHours">
             <summary>
-            The weekly schedule
+            The weekly schedule hours
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateScheduleDialog.mWorkHours">
+        <member name="F:MeetCore.UpdateScheduleDialog.mNote">
             <summary>
-            The work hours
+            The note
             </summary>
         </member>
-        <member name="M:MeetCore.UpdateScheduleDialog.CloseDialog">
+        <member name="P:MeetCore.UpdateScheduleDialog.MudDialog">
             <summary>
-            Closes the dialog
+            The dialog instance
             </summary>
         </member>
-        <member name="M:MeetCore.UpdateScheduleDialog.SaveChanges">
+        <member name="P:MeetCore.UpdateScheduleDialog.Model">
             <summary>
-            Updates the secretary and user info
+            The model
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateScheduleDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateScheduleDialog.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateScheduleDialog.SetStartingHour(MeetBase.DayOfWeekTimeRange,System.Nullable{System.TimeSpan})">
+            <summary>
+            Sets the starting hour to the specified <paramref name="shift"/>
+            </summary>
+            <param name="shift">The shift</param>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:MeetCore.UpdateScheduleDialog.SetEndingingHour(MeetBase.DayOfWeekTimeRange,System.Nullable{System.TimeSpan})">
+            <summary>
+            Sets the ending hour to the specified <paramref name="shift"/>
+            </summary>
+            <param name="shift">The shift</param>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:MeetCore.UpdateScheduleDialog.SetDayOfWeek(MeetBase.DayOfWeekTimeRange,System.DayOfWeek)">
+            <summary>
+            Sets the day of week to the specified <paramref name="shift"/>
+            </summary>
+            <param name="shift">The shift</param>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:MeetCore.UpdateScheduleDialog.SetText(MeetBase.DayOfWeekTimeRange,System.String)">
+            <summary>
+            Sets the day of week to the specified <paramref name="shift"/>
+            </summary>
+            <param name="shift">The shift</param>
+            <param name="value">The value</param>
+        </member>
+        <member name="F:MeetCore.UpdateSecretaryDialog.mPassword">
+            <summary>
+            The password
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateSecretaryDialog.mConfirmPassword">
+            <summary>
+            The confirm password
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateSecretaryDialog.mPhotoLabel">
+            <summary>
+            The password
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateSecretaryDialog.mCountryCode">
+            <summary>
+            The country code
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateSecretaryDialog.mPhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateSecretaryDialog.mBirthDate">
+            <summary>
+            The birth date
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateSecretaryDialog.mLocation">
+            <summary>
+            The location
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryDialog.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateSecretaryDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateSecretaryDialog.OnInitialized">
+            <summary>
+            <inheritdoc/>
             </summary>
         </member>
         <member name="T:MeetCore.Schedule">
@@ -259,6 +352,101 @@
         <member name="F:MeetCore.Routes.AppointmentsHistoryRoute">
             <summary>
             The appointments history page route
+            </summary>
+        </member>
+        <member name="T:MeetCore.UpdateSecretaryModel">
+            <summary>
+            The model for updating a secretary
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.Username">
+            <summary>
+            The username
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.FirstName">
+            <summary>
+            The first name
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.LastName">
+            <summary>
+            The last name
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.PasswordHash">
+            <summary>
+            Gets or sets a salted and hashed representation of the password for this user.
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.DateOfBirth">
+            <summary>
+            The birthday
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.Location">
+            <summary>
+            The location information
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.Role">
+            <summary>
+            The role
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateSecretaryModel.Quote">
+            <summary>
+            The quote
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateSecretaryModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.UpdateScheduleModel">
+            <summary>
+            The model for updating a staff member weekly schedule
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateScheduleModel.Color">
+            <summary>
+            The staff member color
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateScheduleModel.WeeklySchedule">
+            <summary>
+            The weekly schedule
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateScheduleModel.Lectures">
+            <summary>
+            The lectures
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateScheduleModel.#ctor">
+            <summary>
+            Default constructor
             </summary>
         </member>
         <member name="T:MeetCore.CoreNavigationManagerExtensions">
@@ -699,6 +887,16 @@
             The request
             </summary>
         </member>
+        <member name="F:MeetCore.Secretary_DepartmentInformationPage.mDepartmentType">
+            <summary>
+            The type of the department
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_DepartmentInformationPage.mLocation">
+            <summary>
+            The location
+            </summary>
+        </member>
         <member name="F:MeetCore.Secretary_DepartmentInformationPage.mIsEditActive">
             <summary>
             A flag indicating whether the form is visible or not
@@ -712,6 +910,11 @@
         <member name="M:MeetCore.Secretary_DepartmentInformationPage.#ctor">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentInformationPage.OnInitialized">
+            <summary>
+            <inheritdoc/>
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_DepartmentLayoutPage">
@@ -734,69 +937,9 @@
             The profile page
             </summary>
         </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mIsDialogOpen">
-            <summary>
-            A flag indicating whether the <see cref="T:MudBlazor.MudDialog"/> is open or not
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mIsScheduleDialogOpen">
-            <summary>
-            A flag indicating whether the <see cref="T:MudBlazor.MudDialog"/> for editing the work hours is open or not
-            </summary>
-        </member>
         <member name="F:MeetCore.Secretary_ProfilePage.mDialogOptions">
             <summary>
             The <see cref="T:MudBlazor.MudDialog"/> options
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mUserRequestModel">
-            <summary>
-            The request model for updating the user details
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mSecretaryRequestModel">
-            <summary>
-            The request model for updating the secretary details
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mLocation">
-            <summary>
-            The location
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mWeeklySchedule">
-            <summary>
-            The weekly schedule
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mPhotoLabel">
-            <summary>
-            The password
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mPassword">
-            <summary>
-            The password
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mConfirmPassword">
-            <summary>
-            The confirm password
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mCountryCode">
-            <summary>
-            The country code
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mPhoneNumber">
-            <summary>
-            The phone number
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_ProfilePage.mBirthDate">
-            <summary>
-            The birth date
             </summary>
         </member>
         <member name="P:MeetCore.Secretary_ProfilePage.Secretary">
@@ -819,6 +962,11 @@
             The state management service
             </summary>
         </member>
+        <member name="P:MeetCore.Secretary_ProfilePage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
         <member name="P:MeetCore.Secretary_ProfilePage.Snackbar">
             <summary>
             The <see cref="N:MudBlazor"/> snack bar manager
@@ -829,22 +977,12 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Secretary_ProfilePage.OnInitialized">
+        <member name="M:MeetCore.Secretary_ProfilePage.UpdateSchedule">
             <summary>
-            <inheritdoc/>
+            Updates the weekly schedule of the secretary
             </summary>
         </member>
-        <member name="M:MeetCore.Secretary_ProfilePage.OpenDialog">
-            <summary>
-            Opens the dialog
-            </summary>
-        </member>
-        <member name="M:MeetCore.Secretary_ProfilePage.CloseDialog">
-            <summary>
-            Closes the dialog
-            </summary>
-        </member>
-        <member name="M:MeetCore.Secretary_ProfilePage.SaveChanges">
+        <member name="M:MeetCore.Secretary_ProfilePage.UpdateSecretary">
             <summary>
             Updates the secretary and user info
             </summary>

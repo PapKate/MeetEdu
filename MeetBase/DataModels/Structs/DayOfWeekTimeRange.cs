@@ -3,14 +3,14 @@
     /// <summary>
     /// Represents a time range of a specific week day
     /// </summary>
-    public record struct DayOfWeekTimeRange : IReadOnlyRangeable<TimeOnly>
+    public readonly record struct DayOfWeekTimeRange : IReadOnlyRangeable<TimeOnly>
     {
         #region Public Properties
 
         /// <summary>
         /// The text
         /// </summary>
-        public string? Text { get; set; }
+        public string? Text { get; }
 
         /// <summary>
         /// The day of week
@@ -44,10 +44,11 @@
         /// <summary>
         /// Default constructor
         /// </summary>
+        /// <param name="text"></param>
         /// <param name="dayOfWeek">The day of week</param>
         /// <param name="start">The first value</param>
         /// <param name="end">The second value</param>
-        public DayOfWeekTimeRange(DayOfWeek dayOfWeek, TimeOnly start, TimeOnly end)
+        public DayOfWeekTimeRange(string? text, DayOfWeek dayOfWeek, TimeOnly start, TimeOnly end)
         {
             DayOfWeek = dayOfWeek;
             if (end.CompareTo(start) >= 0)
@@ -60,6 +61,18 @@
                 Start = end;
                 End = start;
             }
+            Text = text ?? string.Empty;
+        }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="dayOfWeek">The day of week</param>
+        /// <param name="start">The first value</param>
+        /// <param name="end">The second value</param>
+        public DayOfWeekTimeRange(DayOfWeek dayOfWeek, TimeOnly start, TimeOnly end) : this(null, dayOfWeek, start, end)
+        {
+           
         }
 
         #endregion

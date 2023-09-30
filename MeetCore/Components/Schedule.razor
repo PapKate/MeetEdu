@@ -109,7 +109,7 @@
             {
                 @foreach (var lecture in Lectures)
                 {
-                    @foreach(var hourRange in lecture.LectureHours)
+                    @foreach(var hourRange in lecture.WeeklyHours)
                     {
                         <div class="workHourContainer"
                              style="@TopVariable.SetCssVariable($"calc(43.5px * ({hourRange.Start.Hour}.{hourRange.Start.Minute} - 7))")

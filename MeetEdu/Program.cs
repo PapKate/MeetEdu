@@ -4,17 +4,20 @@ using MudBlazor.Services;
 
 using System.Reflection;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 
+//.AddNewtonsoftJson((options) => NewtonsoftHelpers.ConfigureSerializer(options.SerializerSettings));
+
 // AutoMapper
 builder.Services.AddMapper();
 
 builder.Services.AddEndpointsApiExplorer();
+
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo() { Title = "MeetEdu API", Version = "v1" });

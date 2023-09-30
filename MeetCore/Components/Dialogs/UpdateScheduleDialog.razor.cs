@@ -1,6 +1,6 @@
 ﻿using MeetBase;
-using MeetBase.Blazor;
-using MeetBase.Web;
+
+using Microsoft.AspNetCore.Components;
 
 using MudBlazor;
 
@@ -14,49 +14,144 @@ namespace MeetCore
         #region Public Properties
 
         /// <summary>
-        /// A flag indicating whether the <see cref="MudDialog"/> for editing the work hours is open or not
+        /// The name
         /// </summary>
-        private bool mIsDialogOpen;
+        private string? mName;
 
         /// <summary>
-        /// The <see cref="MudDialog"/> options
+        /// The color
         /// </summary>
-        private DialogOptions mDialogOptions = new() { FullWidth = true };
+        private string? mColor;
 
         /// <summary>
-        /// The weekly schedule
+        /// The weekly schedule hours
         /// </summary>
-        private WeeklySchedule mWeeklySchedule = new WeeklySchedule();
+        private List<DayOfWeekTimeRange> mWeeklyHours = new();
 
         /// <summary>
-        /// The work hours
+        /// The note
         /// </summary>
-        private List<DayOfWeekTimeRange> mWorkHours = new List<DayOfWeekTimeRange>();
+        private string? mNote;
 
-        private DayOfWeek mTempValue = DayOfWeek.Sunday;
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The dialog instance
+        /// </summary>
+        [CascadingParameter]
+        public MudDialogInstance MudDialog { get; set; } = default!;
+
+        /// <summary>
+        /// The model
+        /// </summary>
+        [Parameter]
+        public UpdateScheduleModel Model { get; set; } = new();
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public UpdateScheduleDialog() : base()
+        {
+
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            mWeeklyHours.Add(new());
+        }
 
         #endregion
 
         #region Private Methods
 
         /// <summary>
-        /// Closes the dialog
+        /// Sets the starting hour to the specified <paramref name="shift"/>
         /// </summary>
-        private void CloseDialog() => mIsDialogOpen = false;
+        /// <param name="shift">The shift</param>
+        /// <param name="value">The value</param>
+        private void SetStartingHour(DayOfWeekTimeRange shift, TimeSpan? value)
+        {
+            if (value is null)
+                return;
+            var index = mWeeklyHours.IndexOf(shift);
+            mWeeklyHours[index] = new(shift.DayOfWeek, TimeOnly.FromTimeSpan(value.Value), shift.End);
+        }
 
         /// <summary>
-        /// Updates the secretary and user info
+        /// Sets the ending hour to the specified <paramref name="shift"/>
         /// </summary>
-        private async void SaveChanges()
+        /// <param name="shift">The shift</param>
+        /// <param name="value">The value</param>
+        private void SetEndingingHour(DayOfWeekTimeRange shift, TimeSpan? value)
         {
-            CloseDialog();
+            if (value is null)
+                return;
+            var index = mWeeklyHours.IndexOf(shift);
+            mWeeklyHours[index] = new(shift.DayOfWeek, shift.Start, TimeOnly.FromTimeSpan(value.Value));
+        }
+
+        /// <summary>
+        /// Sets the day of week to the specified <paramref name="shift"/>
+        /// </summary>
+        /// <param name="shift">The shift</param>
+        /// <param name="value">The value</param>
+        private void SetDayOfWeek(DayOfWeekTimeRange shift, DayOfWeek value)
+        {
+            var index = mWeeklyHours.IndexOf(shift);
+            mWeeklyHours[index] = new(value, shift.Start, shift.End);
+        }
+
+        /// <summary>
+        /// Sets the day of week to the specified <paramref name="shift"/>
+        /// </summary>
+        /// <param name="shift">The shift</param>
+        /// <param name="value">The value</param>
+        private void SetText(DayOfWeekTimeRange shift, string value)
+        {
+            var index = mWeeklyHours.IndexOf(shift);
+            mWeeklyHours[index] = new(value, shift.DayOfWeek, shift.Start, shift.End);
+        }
+
+        private void AddNew()
+        {
+            mWeeklyHours.Insert(0, default);
             StateHasChanged();
         }
 
-        private void CancelChanges()
+        private void Save()
         {
-            CloseDialog();
+            mWeeklyHours.RemoveAll(x => x == default);
+
+            Model.WeeklySchedule = new WeeklySchedule() 
+            {
+                Name = mName ?? string.Empty,
+                Note = mNote ?? string.Empty,
+                Color = mColor ?? string.Empty,
+                WeeklyHours = mWeeklyHours
+            };
+
+            MudDialog.Close(DialogResult.Ok(Model));
         }
+
+        private void Cancel()
+        {
+            MudDialog.Cancel();
+        }
+
         #endregion
     }
 }

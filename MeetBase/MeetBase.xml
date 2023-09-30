@@ -165,6 +165,166 @@
             The regular expression used for validating a hex value
             </summary>
         </member>
+        <member name="T:MeetBase.BaseDateOnlyToStringJsonConverter`1">
+            <summary>
+            A <see cref="T:Newtonsoft.Json.JsonConverter`1"/> used for converting a <typeparamref name="TValue"/> to a <see cref="T:System.String"/>
+            </summary>
+            <typeparam name="TValue">The type of the value</typeparam>
+        </member>
+        <member name="F:MeetBase.BaseDateOnlyToStringJsonConverter`1.SerializationFormat">
+            <summary>
+            The format that is used for serializing and deserializing the date
+            </summary>
+        </member>
+        <member name="M:MeetBase.BaseDateOnlyToStringJsonConverter`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.BaseDateOnlyToStringJsonConverter`1.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Nullable{`0},System.Boolean,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Reads the JSON representation of the <paramref name="reader"/> value into <typeparamref name="TValue"/>
+            </summary>
+            <param name="reader">The reader</param>
+            <param name="objectType">The object type</param>
+            <param name="existingValue">The existing value</param>
+            <param name="hasExistingValue">True is the existing value has a value</param>
+            <param name="serializer">The serializer</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.BaseDateOnlyToStringJsonConverter`1.WriteJson(Newtonsoft.Json.JsonWriter,System.Nullable{`0},Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON representation of the <paramref name="value"/>
+            </summary>
+            <param name="writer">The writer</param>
+            <param name="value">The value to write</param>
+            <param name="serializer">The serializer</param>
+        </member>
+        <member name="M:MeetBase.BaseDateOnlyToStringJsonConverter`1.ShouldSerializeToNullWhenTheValueIsNull">
+            <summary>
+            Returns a flag indicating whether when there isn't a value,
+            a null value should be added to the Json
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.BaseDateOnlyToStringJsonConverter`1.Convert(System.String)">
+            <summary>
+            Converts the <paramref name="value"/> to the respective <typeparamref name="TValue"/>
+            </summary>
+            <param name="value">The string value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.BaseDateOnlyToStringJsonConverter`1.Convert(`0)">
+            <summary>
+            Writes the JSON representation of the <paramref name="value"/>
+            </summary>
+            <param name="value">The <typeparamref name="TValue"/></param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.BaseTimeOnlyToStringJsonConverter`1">
+            <summary>
+            A <see cref="T:Newtonsoft.Json.JsonConverter`1"/> used for converting a <typeparamref name="TValue"/> to a <see cref="T:System.String"/>
+            </summary>
+            <typeparam name="TValue">The type of the value</typeparam>
+        </member>
+        <member name="F:MeetBase.BaseTimeOnlyToStringJsonConverter`1.SerializationFormat">
+            <summary>
+            The format that is used for serializing and deserializing the Time
+            </summary>
+        </member>
+        <member name="M:MeetBase.BaseTimeOnlyToStringJsonConverter`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.BaseTimeOnlyToStringJsonConverter`1.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Nullable{`0},System.Boolean,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Reads the JSON representation of the <paramref name="reader"/> value into <typeparamref name="TValue"/>
+            </summary>
+            <param name="reader">The reader</param>
+            <param name="objectType">The object type</param>
+            <param name="existingValue">The existing value</param>
+            <param name="hasExistingValue">True is the existing value has a value</param>
+            <param name="serializer">The serializer</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.BaseTimeOnlyToStringJsonConverter`1.WriteJson(Newtonsoft.Json.JsonWriter,System.Nullable{`0},Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON representation of the <paramref name="value"/>
+            </summary>
+            <param name="writer">The writer</param>
+            <param name="value">The value to write</param>
+            <param name="serializer">The serializer</param>
+        </member>
+        <member name="M:MeetBase.BaseTimeOnlyToStringJsonConverter`1.ShouldSerializeToNullWhenTheValueIsNull">
+            <summary>
+            Returns a flag indicating whether when there isn't a value,
+            a null value should be added to the Json
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.BaseTimeOnlyToStringJsonConverter`1.Convert(System.String)">
+            <summary>
+            Converts the <paramref name="value"/> to the respective <typeparamref name="TValue"/>
+            </summary>
+            <param name="value">The string value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.BaseTimeOnlyToStringJsonConverter`1.Convert(`0)">
+            <summary>
+            Writes the JSON representation of the <paramref name="value"/>
+            </summary>
+            <param name="value">The <typeparamref name="TValue"/></param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.DateOnlyToStringJsonConverter">
+            <summary>
+            A <see cref="T:MeetBase.BaseDateOnlyToStringJsonConverter`1"/> used for converting a <see cref="T:System.DateOnly"/> to a <see cref="T:System.String"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.DateOnlyToStringJsonConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.DateOnlyToStringJsonConverter.Convert(System.String)">
+            <summary>
+            Converts the <paramref name="value"/> to the respective <see cref="T:System.DateOnly"/>
+            </summary>
+            <param name="value">The string value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.DateOnlyToStringJsonConverter.Convert(System.DateOnly)">
+            <summary>
+            Writes the JSON representation of the <paramref name="value"/>
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.TimeOnlyToStringJsonConverter">
+            <summary>
+            A <see cref="T:MeetBase.BaseTimeOnlyToStringJsonConverter`1"/> used for converting a <see cref="T:System.TimeOnly"/> to a <see cref="T:System.String"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.TimeOnlyToStringJsonConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.TimeOnlyToStringJsonConverter.Convert(System.String)">
+            <summary>
+            Converts the <paramref name="value"/> to the respective <see cref="T:System.TimeOnly"/>
+            </summary>
+            <param name="value">The string value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TimeOnlyToStringJsonConverter.Convert(System.TimeOnly)">
+            <summary>
+            Writes the JSON representation of the <paramref name="value"/>
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.DepartmentLayoutRoomDataModel">
             <summary>
             Represents a company room document in the MongoDB
@@ -1054,9 +1214,19 @@
             The weekly schedule
             </summary>
         </member>
-        <member name="F:MeetBase.WeeklySchedule.mWorkHours">
+        <member name="F:MeetBase.WeeklySchedule.mWeeklyHours">
             <summary>
-            The member of the <see cref="P:MeetBase.WeeklySchedule.WorkHours"/> property
+            The member of the <see cref="P:MeetBase.WeeklySchedule.WeeklyHours"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.WeeklySchedule.mName">
+            <summary>
+            The member of the <see cref="P:MeetBase.WeeklySchedule.Name"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.WeeklySchedule.mColor">
+            <summary>
+            The member of the <see cref="P:MeetBase.WeeklySchedule.Color"/> property
             </summary>
         </member>
         <member name="F:MeetBase.WeeklySchedule.mNote">
@@ -1064,9 +1234,19 @@
             The member of the <see cref="P:MeetBase.WeeklySchedule.Note"/> property
             </summary>
         </member>
-        <member name="P:MeetBase.WeeklySchedule.WorkHours">
+        <member name="P:MeetBase.WeeklySchedule.Name">
             <summary>
-            The work hours
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetBase.WeeklySchedule.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="P:MeetBase.WeeklySchedule.WeeklyHours">
+            <summary>
+            The weekly schedule hours
             </summary>
         </member>
         <member name="P:MeetBase.WeeklySchedule.Note">
@@ -1084,34 +1264,14 @@
             The lecture schedule
             </summary>
         </member>
-        <member name="F:MeetBase.Lecture.mLectureHours">
+        <member name="P:MeetBase.Lecture.IsRemote">
             <summary>
-            The member of the <see cref="P:MeetBase.Lecture.LectureHours"/> property
+            A flag indicating whether it is remote or not
             </summary>
         </member>
-        <member name="F:MeetBase.Lecture.mName">
+        <member name="P:MeetBase.Lecture.Link">
             <summary>
-            The member of the <see cref="P:MeetBase.Lecture.Name"/> property
-            </summary>
-        </member>
-        <member name="F:MeetBase.Lecture.mColor">
-            <summary>
-            The member of the <see cref="P:MeetBase.Lecture.Color"/> property
-            </summary>
-        </member>
-        <member name="P:MeetBase.Lecture.Name">
-            <summary>
-            The name
-            </summary>
-        </member>
-        <member name="P:MeetBase.Lecture.Color">
-            <summary>
-            The color
-            </summary>
-        </member>
-        <member name="P:MeetBase.Lecture.LectureHours">
-            <summary>
-            The lecture hours
+            The link to the remote lecture
             </summary>
         </member>
         <member name="M:MeetBase.Lecture.#ctor">
@@ -2624,6 +2784,15 @@
             The maximum value
             </summary>
         </member>
+        <member name="M:MeetBase.DayOfWeekTimeRange.#ctor(System.String,System.DayOfWeek,System.TimeOnly,System.TimeOnly)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="text"></param>
+            <param name="dayOfWeek">The day of week</param>
+            <param name="start">The first value</param>
+            <param name="end">The second value</param>
+        </member>
         <member name="M:MeetBase.DayOfWeekTimeRange.#ctor(System.DayOfWeek,System.TimeOnly,System.TimeOnly)">
             <summary>
             Default constructor
@@ -3084,6 +3253,13 @@
             <param name="value">The value</param>
             <returns></returns>
         </member>
+        <member name="M:MeetBase.TimeOnlyExtensions.ToNullableTimeSpan(System.TimeOnly)">
+            <summary>
+            Returns a string that represents the specified <paramref name="value"/> using the ISO8601 format
+            </summary>
+            <param name="value">The value</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.TypeExtensions">
             <summary>
             Extension methods for <see cref="T:System.Type"/>
@@ -3179,6 +3355,28 @@
             Checks if the specified <paramref name="type"/> is a type that represents a date
             </summary>
             <param name="type">The type</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.NewtonsoftHelpers">
+            <summary>
+            Helper methods related to Newtonsoft
+            </summary>
+        </member>
+        <member name="P:MeetBase.NewtonsoftHelpers.Settings">
+            <summary>
+            A single instance of the <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.NewtonsoftHelpers.ConfigureSerializer(Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Configures the specified <paramref name="settings"/>
+            </summary>
+            <param name="settings">The settings</param>
+        </member>
+        <member name="M:MeetBase.NewtonsoftHelpers.CreateSerializerSettings">
+            <summary>
+            Creates and returns a pre-configured <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>
+            </summary>
             <returns></returns>
         </member>
         <member name="T:MeetBase.IFailableHelpers">

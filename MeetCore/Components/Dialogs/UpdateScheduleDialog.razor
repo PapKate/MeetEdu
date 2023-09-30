@@ -6,45 +6,206 @@
 
 @namespace MeetCore
 
-<MudDialog @bind-IsVisible="mIsDialogOpen" Options="mDialogOptions">
+<MudDialog>
     <DialogContent>
         <div class="dialogSection">
             <span class="dialogSectionText">Update Schedule</span>
         </div>
         <div class="dialogContentContainer">
+            <span class="dialogContentTitle dialogContentFullRow">Schedule info</span>
 
-            <span class="dialogContentTitle dialogContentFullRow">Note</span>
-            <MudTextField T="string" Placeholder="Write a note regarding your shifts" Class="dialogContentFullRow" Variant="Variant.Text" @bind-Text="@mWeeklySchedule.Note" Lines="3" />
-
-            <span class="dialogContentTitle dialogContentFullRow">Account info</span>
-            <MudTextField @bind-Value="@mWeeklySchedule.Note"
-                          Placeholder="Title"
-                          Class="dialogContentFullRow dialogInput"
+            <MudTextField @bind-Value="@mName"
+                          Placeholder="Name"
+                          Class="dialogInput"
                           FullWidth="true"
                           Variant="Variant.Text"
                           Adornment="Adornment.Start"
                           AdornmentIcon="@MudIconPaths.Account" />
-            <MudSelect T="DayOfWeek" @bind-Value="@mTempValue"
-                       Placeholder="Country"
-                       Class="departmentFieldInput dialogContentFullRow"
-                       FullWidth="true"
-                       Variant="Variant.Text"
-                       Adornment="Adornment.Start"
-                       AdornmentIcon="@MudIconPaths.Account"
-                       AnchorOrigin="Origin.BottomCenter">
-                @foreach (var value in Enum.GetValues<DayOfWeek>())
-                {
-                    <MudSelectItem Value="@value">@value</MudSelectItem>
-                }
-            </MudSelect>
-            <MudTimePicker Placeholder="Start" Editable="true" />
-            <MudTimePicker Placeholder="End" Editable="true" />
+
+            <MudColorPicker Placeholder="Color" @bind-Text="@mColor"
+                            Style="@($"color: {mColor.NormalizedColor()};")"
+                            DisableModeSwitch="false"
+                            DisableToolbar="false"
+                            Class="dialogInput colorInput"
+                            Adornment="@Adornment.Start"
+                            AdornmentIcon="@Icons.Material.Filled.Palette"
+                            PickerVariant="PickerVariant.Inline"
+                            DisableAlpha="true" />
+
+            <span class="dialogContentTitle dialogContentFullRow">Note</span>
+            <MudTextField T="string" Placeholder="Write a note regarding your shifts" Class="dialogContentFullRow" Variant="Variant.Text" @bind-Text="@mNote" Lines="3" />
+
+            <span class="dialogContentTitle dialogContentFullRow">Shifts</span>
+            
+            @foreach(var shift in mWeeklyHours)
+            {
+                <MudSelect T="DayOfWeek" Value="@shift.DayOfWeek"
+                           ValueChanged="@((e) => SetDayOfWeek(shift, e))"
+                           Placeholder="Day of week"
+                           Class="departmentFieldInput"
+                           FullWidth="true"
+                           Variant="Variant.Text"
+                           Adornment="Adornment.Start"
+                           AdornmentIcon="@MudIconPaths.Account"
+                           AnchorOrigin="Origin.BottomCenter">
+                    @foreach (var value in Enum.GetValues<DayOfWeek>())
+                    {
+                        <MudSelectItem Value="@value">@value</MudSelectItem>
+                    }
+                </MudSelect>
+                <MudTextField T="string" Value="@shift.Text"
+                              ValueChanged="@((e) => SetText(shift, e))"
+                              Placeholder="Room"
+                              Class="dialogInput"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Adornment="Adornment.Start"
+                              AdornmentIcon="@MudIconPaths.Account" />
+                <MudTimePicker Time="@shift.Start.ToNullableTimeSpan()"
+                               TimeChanged="@((e) => SetStartingHour(shift, e))"
+                               Placeholder="Start"
+                               Editable="true" />
+                <MudTimePicker Time="@shift.End.ToNullableTimeSpan()" 
+                               TimeChanged="@((e) => SetEndingingHour(shift, e))"
+                               Placeholder="End"
+                               Editable="true" />
+            }
+            <MudFab Class="dialogContentFullRow" 
+                    StartIcon="@Icons.Material.Filled.Add" 
+                    Size="Size.Small" 
+                    DisableElevation="true" 
+                    OnClick="@AddNew"
+                    Style="@($"color: {Model.Color.DarkOrWhite().NormalizedColor()}; background-color: {Model.Color.NormalizedColor()}; margin-top: 1rem; justify-self: center;")" />
         </div>
     </DialogContent>
     <DialogActions>
         <div class="dialogActionsContainer">
-            <MudButton Variant="Variant.Text" Color="Color.Error" OnClick="CancelChanges" Class="px-10">Cancel</MudButton>
-            <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="SaveChanges" Class="px-10">Save</MudButton>
+            <MudButton Variant="Variant.Text" Color="Color.Error" OnClick="@Cancel" Class="px-10">Cancel</MudButton>
+            <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@Save" Class="px-10">Save</MudButton>
         </div>
     </DialogActions>
 </MudDialog>
+
+
+<style>
+    .dialogInput .mud-input-adornment-start {
+        color: @Gray.NormalizedColor();
+    }
+
+    .mud-dialog {
+        overflow: visible;
+    }
+
+        .mud-dialog .mud-dialog-content {
+            padding-right: 0;
+        }
+
+        .mud-dialog .mud-dialog-title {
+            padding: 0;
+        }
+
+    .dialogSection {
+        position: relative;
+        top: -0.8rem;
+        width: fit-content;
+        height: 48px;
+        margin: auto;
+        padding: 12px 1rem;
+        font-weight: 800;
+        font-size: 120%;
+        background-color: @Model.Color.NormalizedColor();
+        color: @Model.Color.DarkOrWhite().NormalizedColor();
+        border-radius: 0 0 1rem 1rem;
+        filter: @LightFilterDropShadow;
+    }
+
+    .dialogContentContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-height: 600px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 2rem;
+        justify-content: center;
+        align-items: center;
+        padding-right: 24px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .dialogContentPhotoContainer .mud-button {
+        width: 100%;
+        padding: 4px;
+        margin-top: 16px;
+    }
+
+    .dialogContentPhotoContainer .mud-icon-root.mud-svg-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .dialogContentPhotoContainer .mud-button-label {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: 300;
+        color: @Gray.NormalizedColor();
+        text-align: start;
+        text-transform: capitalize;
+    }
+
+    .dialogContentFullRow {
+        grid-column: 1 / 3;
+    }
+
+    .dialogContentTitle {
+        padding-top: 1rem;
+        font-weight: 800;
+        font-size: 108%;
+        color: @Gray.NormalizedColor();
+    }
+
+    .dialogPhoneNumberInputsContainer {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr;
+        gap: 1rem;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .dialogLocationMapContainer {
+        grid-row: 13 / 17;
+        grid-column: 1 / 2;
+        position: relative;
+    }
+
+    .locationInput {
+        grid-column: 2 / 3;
+        position: relative;
+    }
+
+    .dialogActionsContainer {
+        position: relative;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .colorInput .mud-input-adornment-start:after {
+        content: '';
+        position: absolute;
+        margin-left: 2.5rem;
+        width: calc(100% - 4.5rem);
+        height: 24px;
+        background-color: @mColor.NormalizedColor();
+        border-radius: @NormalBorderRadius;
+    }
+
+</style>

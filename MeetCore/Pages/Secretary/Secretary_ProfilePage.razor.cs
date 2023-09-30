@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Components.Forms;
 
 using MudBlazor;
 
+using System.Reflection;
+
 namespace MeetCore
 {
     /// <summary>
@@ -17,69 +19,9 @@ namespace MeetCore
         #region Private Properties
 
         /// <summary>
-        /// A flag indicating whether the <see cref="MudDialog"/> is open or not
-        /// </summary>
-        private bool mIsDialogOpen;
-
-        /// <summary>
-        /// A flag indicating whether the <see cref="MudDialog"/> for editing the work hours is open or not
-        /// </summary>
-        private bool mIsScheduleDialogOpen;
-
-        /// <summary>
         /// The <see cref="MudDialog"/> options
         /// </summary>
         private DialogOptions mDialogOptions = new() { FullWidth = true };
-
-        /// <summary>
-        /// The request model for updating the user details
-        /// </summary>
-        private UserRequestModel mUserRequestModel = new();
-
-        /// <summary>
-        /// The request model for updating the secretary details
-        /// </summary>
-        private SecretaryRequestModel mSecretaryRequestModel = new();
-
-        /// <summary>
-        /// The location
-        /// </summary>
-        private Location mLocation = new Location();
-
-        /// <summary>
-        /// The weekly schedule
-        /// </summary>
-        private WeeklySchedule mWeeklySchedule = new WeeklySchedule();
-
-        /// <summary>
-        /// The password
-        /// </summary>
-        private string mPhotoLabel = "Profile photo";
-
-        /// <summary>
-        /// The password
-        /// </summary>
-        private string mPassword = string.Empty;
-
-        /// <summary>
-        /// The confirm password
-        /// </summary>
-        private string mConfirmPassword = string.Empty;
-
-        /// <summary>
-        /// The country code
-        /// </summary>
-        private int mCountryCode = 30;
-
-        /// <summary>
-        /// The phone number
-        /// </summary>
-        private string mPhoneNumber = string.Empty;
-
-        /// <summary>
-        /// The birth date
-        /// </summary>
-        private DateTime? mBirthDate = DateTime.Now;
 
         #endregion
 
@@ -112,6 +54,12 @@ namespace MeetCore
         protected StateManagerCore StateManager { get; set; } = default!;
 
         /// <summary>
+        /// The dialog service
+        /// </summary>
+        [Inject]
+        protected IDialogService DialogService { get; set; } = default!;
+
+        /// <summary>
         /// The <see cref="MudBlazor"/> snack bar manager
         /// </summary>
         [Inject]
@@ -131,102 +79,150 @@ namespace MeetCore
 
         #endregion
 
-        #region Protected Methods
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-            mPhoneNumber = User.PhoneNumber?.Phone ?? string.Empty;
-            mCountryCode = User.PhoneNumber?.CountryCode ?? (int)CountryCode.GR;
-            mLocation = User.Location ?? new();
-        }
-
-        #endregion
-
         #region Private Methods
 
         /// <summary>
-        /// Opens the dialog
+        /// Updates the weekly schedule of the secretary
         /// </summary>
-        private void OpenDialog()
+        private async void UpdateSchedule()
         {
-            mIsDialogOpen = true;
-
-            mUserRequestModel = new()
+            var model = new UpdateScheduleModel()
             {
-                Username = User.Username,
-                Email = User.Email,
-                Color = User.Color.NormalizedColor(),
-                FirstName = User.FirstName,
-                LastName = User.LastName,
-                PhoneNumber = User.PhoneNumber,
-                DateOfBirth = User.DateOfBirth,
+                Color = User.Color
             };
-            mCountryCode = User.PhoneNumber?.CountryCode ?? 30;
-            mPhoneNumber = User.PhoneNumber?.Phone ?? string.Empty;
+            var parameters = new DialogParameters<UpdateScheduleDialog> { { x => x.Model, model } };
 
-            mSecretaryRequestModel = new()
+            // Creates and opens a dialog with the specified type
+            var dialog = await DialogService.ShowAsync<UpdateScheduleDialog>(null, parameters, mDialogOptions);
+
+            // Once the dialog is closed...
+            // Gets the result
+            var result = await dialog.Result;
+
+            // If there is no result or the dialog was closed by canceling the inner actions...
+            if (result is null || result.Canceled)
             {
-                Quote = Secretary.Quote
-            };
+                // Return
+                return;
+            }
+
+            // If the result is of the specified type...
+            if(result.Data is UpdateScheduleModel updatedModel)
+            {
+                // Creates the request for updating the secretary
+                var secretaryRequest = new SecretaryRequestModel()
+                {
+                    WeeklySchedule = updatedModel.WeeklySchedule
+                };
+
+                // Updates the secretary
+                var secretaryResponse = await Client.UpdateSecretaryAsync(Secretary.Id, secretaryRequest);
+
+                // If there was an error...
+                if (!secretaryResponse.IsSuccessful)
+                {
+                    Console.WriteLine(secretaryResponse.ErrorMessage);
+                    // Show the error
+                    Snackbar.Add(secretaryResponse.ErrorMessage, Severity.Error);
+                    // Return
+                    return;
+                }
+                StateManager.Secretary = secretaryResponse.Result;
+
+                StateHasChanged();
+            }
+
         }
-
-        /// <summary>
-        /// Closes the dialog
-        /// </summary>
-        private void CloseDialog() => mIsDialogOpen = false;
 
         /// <summary>
         /// Updates the secretary and user info
         /// </summary>
-        private async void SaveChanges()
+        private async void UpdateSecretary()
         {
-            // Updates the secretary
-            var secretaryResponse = await Client.UpdateSecretaryAsync(Secretary.Id, mSecretaryRequestModel);
-            
-            // If there was an error...
-            if(!secretaryResponse.IsSuccessful)
+            var model = new UpdateSecretaryModel()
             {
-                // Show the error
-                Snackbar.Add(secretaryResponse.ErrorMessage, Severity.Error);
+                Username = User.Username,
+                Email = User.Email,
+                Color = User.Color,
+                FirstName = User.FirstName,
+                LastName = User.LastName,
+                PhoneNumber = User.PhoneNumber,
+                DateOfBirth = User.DateOfBirth,
+                Quote = Secretary.Quote,
+                Role = Secretary.Role,
+                Location = User.Location, 
+                ImageUrl = User.ImageUrl
+            };
+
+            var parameters = new DialogParameters<UpdateSecretaryDialog> { { x => x.Model, model } };
+
+            // Creates and opens a dialog with the specified type
+            var dialog = await DialogService.ShowAsync<UpdateSecretaryDialog>(null, parameters, mDialogOptions);
+            
+            // Once the dialog is closed...
+            // Gets the result
+            var result = await dialog.Result;
+
+            // If there is no result or the dialog was closed by canceling the inner actions...
+            if(result is null || result.Canceled)
+            {
                 // Return
                 return;
             }
-            StateManager.Secretary = secretaryResponse.Result;
 
-            mUserRequestModel.Location = mLocation;
-            mUserRequestModel.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
-            mUserRequestModel.Color = mUserRequestModel.Color!.Replace("#", string.Empty);
-            // Updates the user
-            var userResponse = await Client.UpdateUserAsync(Secretary.UserId, mUserRequestModel);
-            
-            // If there was an error...
-            if (!userResponse.IsSuccessful)
+            // If the result is of the specified type...
+            if(result.Data is UpdateSecretaryModel updatedModel)
             {
-                // Show the error
-                Snackbar.Add(userResponse.ErrorMessage, Severity.Error);
-                // Return
-                return;
+                // Creates the request for updating the secretary
+                var secretaryRequest = new SecretaryRequestModel()
+                {
+                    Role = updatedModel.Role,
+                    Quote = updatedModel.Quote ?? string.Empty
+                };
+
+                // Updates the secretary
+                var secretaryResponse = await Client.UpdateSecretaryAsync(Secretary.Id, secretaryRequest);
+
+                // If there was an error...
+                if (!secretaryResponse.IsSuccessful)
+                {
+                    // Show the error
+                    Snackbar.Add(secretaryResponse.ErrorMessage, Severity.Error);
+                    // Return
+                    return;
+                }
+                StateManager.Secretary = secretaryResponse.Result;
+
+                // Creates the request for updating the user
+                var userRequest = new UserRequestModel()
+                {
+                    Username = updatedModel.Username,
+                    FirstName = updatedModel.FirstName,
+                    LastName = updatedModel.LastName,
+                    PasswordHash = updatedModel.PasswordHash,
+                    Email = updatedModel.Email,
+                    PhoneNumber = updatedModel.PhoneNumber,
+                    DateOfBirth = updatedModel.DateOfBirth,
+                    ImageUrl = updatedModel.ImageUrl,
+                    Location = updatedModel.Location,
+                    Color = updatedModel.Color!.Replace("#", string.Empty)
+                };
+
+                // Updates the user
+                var userResponse = await Client.UpdateUserAsync(Secretary.UserId, userRequest);
+
+                // If there was an error...
+                if (!userResponse.IsSuccessful)
+                {
+                    // Show the error
+                    Snackbar.Add(userResponse.ErrorMessage, Severity.Error);
+                    // Return
+                    return;
+                }
+                StateManager.User = userResponse.Result;
+
+                StateHasChanged();
             }
-            StateManager.User = userResponse.Result;
-            CloseDialog();
-            StateHasChanged();
-        }
-
-        private void CancelChanges()
-        {
-            CloseDialog();
-        }
-
-        private async void BrowserFileUploaded(IBrowserFile file)
-        {
-            var buffers = new byte[file.Size];
-            await file.OpenReadStream().ReadAsync(buffers);
-            var imageType = file.ContentType;
-            var imgUrl = $"data:{imageType};base64,{Convert.ToBase64String(buffers)}";
         }
 
         #endregion

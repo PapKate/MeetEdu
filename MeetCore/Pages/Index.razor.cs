@@ -193,6 +193,7 @@ namespace MeetCore
                 // If there was an error...
                 if (!response.IsSuccessful || response.Result is null || response.Result.User is null)
                 {
+                    Console.WriteLine(response.ErrorMessage);
                     // Show the error
                     Snackbar.Add(response.ErrorMessage, Severity.Error);
                     // Return
@@ -290,6 +291,7 @@ namespace MeetCore
                 
                 IsLoginActive = true;
                 IsResetPasswordActive = false;
+                StateHasChanged();
             }
         }
 

@@ -22,7 +22,15 @@ namespace MeetCore
         /// </summary>
         private DepartmentRequestModel mRequest = new();
 
+        /// <summary>
+        /// The type of the department
+        /// </summary>
         private DepartmentType mDepartmentType = DepartmentType.Science;
+
+        /// <summary>
+        /// The location
+        /// </summary>
+        private Location mLocation = new Location();
 
         /// <summary>
         /// A flag indicating whether the form is visible or not
@@ -49,6 +57,20 @@ namespace MeetCore
         public Secretary_DepartmentInformationPage() : base()
         {
 
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+            mLocation = mDepartment.Location ?? new();
         }
 
         #endregion

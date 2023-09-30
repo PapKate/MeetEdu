@@ -20,7 +20,7 @@
         /// <summary>
         /// The quote
         /// </summary>
-        public string Quote { get; set; }
+        public string? Quote { get; set; }
 
         /// <summary>
         /// The weekly schedule
