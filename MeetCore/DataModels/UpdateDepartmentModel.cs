@@ -1,16 +1,23 @@
-﻿namespace MeetBase.Web
+﻿using MeetBase;
+
+namespace MeetCore
 {
     /// <summary>
-    /// Request model for a department
+    /// The model for updating a department
     /// </summary>
-    public class DepartmentRequestModel : StandardRequestModel
+    public class UpdateDepartmentModel
     {
         #region Public Properties
 
         /// <summary>
-        /// The university id
+        /// The name
         /// </summary>
-        public string? UniversityId { get; set; }
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// The color
+        /// </summary>
+        public string? Color { get; set; }
 
         /// <summary>
         /// The email
@@ -20,7 +27,7 @@
         /// <summary>
         /// The category
         /// </summary>
-        public DepartmentType? Category { get; set; }
+        public DepartmentType Category { get; set; }
 
         /// <summary>
         /// The fields of study
@@ -36,11 +43,6 @@
         /// The note
         /// </summary>
         public string? Note { get; set; }
-
-        /// <summary>
-        /// The number of staff members
-        /// </summary>
-        public uint? TotalStaffMembers { get; set; }
 
         /// <summary>
         /// The work hours
@@ -74,7 +76,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public DepartmentRequestModel() : base()
+        public UpdateDepartmentModel() : base()
         {
 
         }

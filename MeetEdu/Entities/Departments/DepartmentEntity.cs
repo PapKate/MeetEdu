@@ -108,6 +108,11 @@ namespace MeetEdu
         public Location? Location { get; set; }
 
         /// <summary>
+        /// The phone number
+        /// </summary>
+        public PhoneNumber? PhoneNumber { get; set; }
+
+        /// <summary>
         /// The labels
         /// </summary>
         public IEnumerable<EmbeddedLabelEntity> Labels

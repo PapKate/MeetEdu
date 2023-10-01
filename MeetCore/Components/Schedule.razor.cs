@@ -32,7 +32,7 @@ namespace MeetCore
         private DateTime mCurrentDate = DateTime.Now;
 
         /// <summary>
-        /// The current date
+        /// The displayed date
         /// </summary>
         private DateTime mDisplayedFirstDateOfWeek = default;
 
@@ -95,6 +95,9 @@ namespace MeetCore
 
             daysOfWeek.Remove(DayOfWeek.Sunday);
             daysOfWeek.Add(DayOfWeek.Sunday);
+
+            mFirstDateOfWeek = mCurrentDate.DayOfWeek == DayOfWeek.Sunday ? mCurrentDate.AddDays(-6) : mCurrentDate.GetFirstDayOfWeek();    
+
             mFirstDayOfWeek = mFirstDateOfWeek.Day;
             
             mDisplayedFirstDateOfWeek = mFirstDateOfWeek;

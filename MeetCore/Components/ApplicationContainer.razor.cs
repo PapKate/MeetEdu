@@ -10,6 +10,18 @@ namespace MeetCore
         #region Public Properties
 
         /// <summary>
+        /// The id of the container
+        /// </summary>
+        [Parameter]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// The additional CSS classes of the page container
+        /// </summary>
+        [Parameter]
+        public string? CssClass { get; set; }
+
+        /// <summary>
         /// The child content
         /// </summary>
         [Parameter]
@@ -34,7 +46,7 @@ namespace MeetCore
         /// </summary>
         public ApplicationContainer() : base()
         {
-
+            Id = Guid.NewGuid().ToString();
         }
 
         #endregion

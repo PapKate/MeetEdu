@@ -1647,6 +1647,11 @@
             The location
             </summary>
         </member>
+        <member name="P:MeetEdu.DepartmentEntity.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
         <member name="P:MeetEdu.DepartmentEntity.Labels">
             <summary>
             The labels

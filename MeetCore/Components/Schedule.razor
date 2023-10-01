@@ -76,7 +76,7 @@
         </table>
 
         <div class="workHoursContainer">
-            @if(mCurrentDate.GetFirstDayOfWeek().ToDateOnly() == mFirstDateOfWeek.ToDateOnly()
+            @if ((mCurrentDate.DayOfWeek == DayOfWeek.Sunday ? mCurrentDate.AddDays(-6).GetFirstDayOfWeek().ToDateOnly() : mCurrentDate.GetFirstDayOfWeek().ToDateOnly()) == mFirstDateOfWeek.ToDateOnly()
            && mCurrentDate > mCurrentDate.Date.AddHours(7) && mCurrentDate < mCurrentDate.Date.AddHours(22))
             {
                 <span class="workHourContainer scheduleCurrentDateTimePointer" style="@TopVariable.SetCssVariable($"calc(43.59px * ({mCurrentDate.Hour}.{mCurrentDate.Minute * 100 / 60} - 7))")
@@ -279,7 +279,7 @@
     .scheduleCurrentDateTimePointer:before {
         content: '🞂';
         position: absolute;
-        left: -7px;
+        left: -4px;
         font-size: 1rem;
         color: @Green.NormalizedColor();
     }

@@ -9,6 +9,16 @@
             The application container
             </summary>
         </member>
+        <member name="P:MeetCore.ApplicationContainer.Id">
+            <summary>
+            The id of the container
+            </summary>
+        </member>
+        <member name="P:MeetCore.ApplicationContainer.CssClass">
+            <summary>
+            The additional CSS classes of the page container
+            </summary>
+        </member>
         <member name="P:MeetCore.ApplicationContainer.ChildContent">
             <summary>
             The child content
@@ -30,6 +40,46 @@
             </summary>
         </member>
         <member name="M:MeetCore.ApplicationContainer.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateDepartmentDialog.mPhotoLabel">
+            <summary>
+            The photo input label
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateDepartmentDialog.mCountryCode">
+            <summary>
+            The country code
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateDepartmentDialog.mPhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateDepartmentDialog.mLocation">
+            <summary>
+            The location
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentDialog.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateDepartmentDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateDepartmentDialog.OnInitialized">
             <summary>
             <inheritdoc/>
             </summary>
@@ -189,7 +239,7 @@
         </member>
         <member name="F:MeetCore.Schedule.mDisplayedFirstDateOfWeek">
             <summary>
-            The current date
+            The displayed date
             </summary>
         </member>
         <member name="P:MeetCore.Schedule.TimeStart">
@@ -354,6 +404,101 @@
             The appointments history page route
             </summary>
         </member>
+        <member name="T:MeetCore.UpdateDepartmentModel">
+            <summary>
+            The model for updating a department
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.Category">
+            <summary>
+            The category
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.Fields">
+            <summary>
+            The fields of study
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.WorkHours">
+            <summary>
+            The work hours
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.Location">
+            <summary>
+            The location
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentModel.LabelIds">
+            <summary>
+            The labels
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateDepartmentModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.UpdateScheduleModel">
+            <summary>
+            The model for updating a weekly schedule
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateScheduleModel.Color">
+            <summary>
+            The staff member color
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateScheduleModel.WeeklySchedule">
+            <summary>
+            The weekly schedule
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateScheduleModel.Lectures">
+            <summary>
+            The lectures
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateScheduleModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetCore.UpdateSecretaryModel">
             <summary>
             The model for updating a secretary
@@ -420,31 +565,6 @@
             </summary>
         </member>
         <member name="M:MeetCore.UpdateSecretaryModel.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="T:MeetCore.UpdateScheduleModel">
-            <summary>
-            The model for updating a staff member weekly schedule
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateScheduleModel.Color">
-            <summary>
-            The staff member color
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateScheduleModel.WeeklySchedule">
-            <summary>
-            The weekly schedule
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateScheduleModel.Lectures">
-            <summary>
-            The lectures
-            </summary>
-        </member>
-        <member name="M:MeetCore.UpdateScheduleModel.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -877,29 +997,19 @@
             The department information page
             </summary>
         </member>
-        <member name="P:MeetCore.Secretary_DepartmentInformationPage.mDepartment">
+        <member name="F:MeetCore.Secretary_DepartmentInformationPage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentInformationPage.Department">
             <summary>
             The department
             </summary>
         </member>
-        <member name="F:MeetCore.Secretary_DepartmentInformationPage.mRequest">
+        <member name="P:MeetCore.Secretary_DepartmentInformationPage.Client">
             <summary>
-            The request
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_DepartmentInformationPage.mDepartmentType">
-            <summary>
-            The type of the department
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_DepartmentInformationPage.mLocation">
-            <summary>
-            The location
-            </summary>
-        </member>
-        <member name="F:MeetCore.Secretary_DepartmentInformationPage.mIsEditActive">
-            <summary>
-            A flag indicating whether the form is visible or not
+            The client
             </summary>
         </member>
         <member name="P:MeetCore.Secretary_DepartmentInformationPage.StateManager">
@@ -907,14 +1017,29 @@
             The state management service
             </summary>
         </member>
+        <member name="P:MeetCore.Secretary_DepartmentInformationPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentInformationPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
         <member name="M:MeetCore.Secretary_DepartmentInformationPage.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Secretary_DepartmentInformationPage.OnInitialized">
+        <member name="M:MeetCore.Secretary_DepartmentInformationPage.UpdateSchedule">
             <summary>
-            <inheritdoc/>
+            Updates the weekly schedule of the department
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentInformationPage.UpdateDepartment">
+            <summary>
+            Updates the department information
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_DepartmentLayoutPage">

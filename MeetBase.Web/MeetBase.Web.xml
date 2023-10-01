@@ -204,6 +204,11 @@
             The location
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentRequestModel.LabelIds">
             <summary>
             The labels
@@ -1007,6 +1012,11 @@
         <member name="P:MeetBase.Web.DepartmentResponseModel.Location">
             <summary>
             The location
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.PhoneNumber">
+            <summary>
+            The phone number
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentResponseModel.Labels">
