@@ -4,7 +4,7 @@ namespace MeetBase
     /// <summary>
     /// Represents a company room document in the MongoDB
     /// </summary>
-    public class DepartmentLayoutRoomDataModel : INameable, IColorable, INoteable, IImageable
+    public class DepartmentLayoutRoom : INameable, IColorable, INoteable, IImageable
     {
         #region Private Members
 
@@ -71,7 +71,7 @@ namespace MeetBase
         /// <summary>
         /// Default constructor
         /// </summary>
-        public DepartmentLayoutRoomDataModel() : base()
+        public DepartmentLayoutRoom() : base()
         {
 
         }

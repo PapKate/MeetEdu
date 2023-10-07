@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
+using Newtonsoft.Json;
+
+using System.Text;
+
 namespace MeetEdu
 {
     /// <summary>
@@ -20,12 +24,12 @@ namespace MeetEdu
         /// <summary>
         /// The university id
         /// </summary>
-        public ObjectId UniversityId { get; set; } = "65057b282d75604f6c77ff93".ToObjectId();
+        public ObjectId UniversityId { get; set; } = "651a674479477d03820659bd".ToObjectId();
 
         /// <summary>
         /// The department id
         /// </summary>
-        public ObjectId DepartmentId { get; set; }
+        public ObjectId DepartmentId { get; set; } = "651f8827192bdfa0fc7535c2".ToObjectId();
 
         #endregion
 
@@ -96,7 +100,7 @@ namespace MeetEdu
         /// <param name="userId">The id</param>
         /// <returns></returns>
         [HttpDelete]
-        [Route(MeetCoreAPIRoutes.DepartmentRoute)]
+        [Route(MeetCoreAPIRoutes.UserRoute)]
         public async Task<ActionResult<UserResponseModel>> DeleteUserAsync([FromRoute] string userId)
             => (await DI.UsersRepository.DeleteUserAsync(userId.ToObjectId())).ToActionResult(x => x.ToResponseModel());
 
@@ -527,7 +531,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpPut]
         [Route(MeetCoreAPIRoutes.SecretaryRoute)]
-        public async Task<ActionResult<SecretaryResponseModel>> UpdateSecretaryAsync([FromRoute] string secretaryId, [FromBody] SecretaryRequestModel model, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<SecretaryResponseModel>> UpdateSecretaryAsync([FromRoute] string secretaryId, [FromBody] SecretaryRequestModel model, CancellationToken cancellationToken = default) 
             => (await DI.SecretariesRepository.UpdateSecretaryAsync(secretaryId.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>

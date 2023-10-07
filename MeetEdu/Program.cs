@@ -8,14 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
-
-//.AddNewtonsoftJson((options) => NewtonsoftHelpers.ConfigureSerializer(options.SerializerSettings));
+builder.Services.AddControllers().AddNewtonsoftJson((options) => NewtonsoftHelpers.ConfigureSerializer(options.SerializerSettings));
 
 // AutoMapper
 builder.Services.AddMapper();
 
 builder.Services.AddEndpointsApiExplorer();
+MongoDbHelpers.Configure();
 
 
 builder.Services.AddSwaggerGen(options =>

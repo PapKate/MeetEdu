@@ -17,7 +17,7 @@ namespace MeetEdu
         /// <summary>
         /// The member of the <see cref="Rooms"/> property
         /// </summary>
-        private IList<DepartmentLayoutRoomDataModel>? mRooms;
+        private IList<DepartmentLayoutRoom>? mRooms;
 
         #endregion
 
@@ -40,12 +40,12 @@ namespace MeetEdu
         /// <summary>
         /// The rooms
         /// </summary>
-        public IList<DepartmentLayoutRoomDataModel> Rooms
+        public IList<DepartmentLayoutRoom> Rooms
         {
             get
             {
                 if (mRooms is null)
-                    mRooms = new List<DepartmentLayoutRoomDataModel>();
+                    mRooms = new List<DepartmentLayoutRoom>();
 
                 return mRooms;
             }

@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Components;
 
 using MudBlazor;
 
+using static MeetBase.Blazor.PaletteColors;
+
 namespace MeetCore
 {
     /// <summary>
@@ -71,7 +73,15 @@ namespace MeetCore
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            mWeeklyHours.Add(new());
+
+            mColor = Model.WeeklySchedule?.Color ?? LightGray;
+            mName = Model.WeeklySchedule?.Name ?? string.Empty;
+            mNote = Model.WeeklySchedule?.Note ?? string.Empty;
+
+            if (Model.WeeklySchedule is not null && Model.WeeklySchedule.WeeklyHours is not null)
+                mWeeklyHours = Model.WeeklySchedule.WeeklyHours.ToList();
+            else
+                AddNew();
         }
 
         #endregion
@@ -88,7 +98,7 @@ namespace MeetCore
             if (value is null)
                 return;
             var index = mWeeklyHours.IndexOf(shift);
-            mWeeklyHours[index] = new(shift.DayOfWeek, TimeOnly.FromTimeSpan(value.Value), shift.End);
+            mWeeklyHours[index] = new(shift.Text, shift.DayOfWeek, TimeOnly.FromTimeSpan(value.Value), shift.End);
         }
 
         /// <summary>
@@ -101,7 +111,7 @@ namespace MeetCore
             if (value is null)
                 return;
             var index = mWeeklyHours.IndexOf(shift);
-            mWeeklyHours[index] = new(shift.DayOfWeek, shift.Start, TimeOnly.FromTimeSpan(value.Value));
+            mWeeklyHours[index] = new(shift.Text, shift.DayOfWeek, shift.Start, TimeOnly.FromTimeSpan(value.Value));
         }
 
         /// <summary>
@@ -112,7 +122,7 @@ namespace MeetCore
         private void SetDayOfWeek(DayOfWeekTimeRange shift, DayOfWeek value)
         {
             var index = mWeeklyHours.IndexOf(shift);
-            mWeeklyHours[index] = new(value, shift.Start, shift.End);
+            mWeeklyHours[index] = new(shift.Text, value, shift.Start, shift.End);
         }
 
         /// <summary>

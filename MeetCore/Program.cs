@@ -1,3 +1,4 @@
+using MeetBase;
 using MeetBase.Web;
 
 using MeetCore;
@@ -7,6 +8,18 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 using MudBlazor;
 using MudBlazor.Services;
+
+using Newtonsoft.Json;
+
+JsonConvert.DefaultSettings = () =>
+{
+    var settings = new JsonSerializerSettings();
+
+    settings.Converters.Add(new TimeOnlyToStringJsonConverter());
+    settings.Converters.Add(new DateOnlyToStringJsonConverter());
+
+    return settings;
+};
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 

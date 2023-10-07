@@ -212,6 +212,36 @@
             <inheritdoc/>
             </summary>
         </member>
+        <member name="F:MeetCore.LayoutPresenter.mRoomDisplayThemeClass">
+            <summary>
+            The CSS class for the display theme
+            </summary>
+        </member>
+        <member name="P:MeetCore.LayoutPresenter.LayoutRoom">
+            <summary>
+            The layout room
+            </summary>
+        </member>
+        <member name="P:MeetCore.LayoutPresenter.IsEditable">
+            <summary>
+            A flag indicating whether it is editable or not
+            </summary>
+        </member>
+        <member name="M:MeetCore.LayoutPresenter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.LayoutPresenter.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:MeetCore.LayoutPresenter.EditButtonClicked">
+            <summary>
+            Fires when the edit button is clicked
+            </summary>
+        </member>
         <member name="T:MeetCore.Schedule">
             <summary>
             The schedule component
@@ -252,7 +282,7 @@
             The ending time
             </summary>
         </member>
-        <member name="P:MeetCore.Schedule.WorkHours">
+        <member name="P:MeetCore.Schedule.WeeklySchedule">
             <summary>
             The work hours
             </summary>
@@ -1045,6 +1075,21 @@
         <member name="T:MeetCore.Secretary_DepartmentLayoutPage">
             <summary>
             The department layout page
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_DepartmentLayoutPage.mPhotoLabel">
+            <summary>
+            The photo input label
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.OnInitialized">
+            <summary>
+            <inheritdoc/>
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_DepartmentSecretaryPage">

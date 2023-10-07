@@ -51,7 +51,9 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<UniversityEntity>> UpdateUniversityAsync(ObjectId id, UniversityRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await MeetEduDbMapper.Universities.UpdateAsync(id, model, cancellationToken);
+            var entity = UniversityEntity.FromRequestModelAsync(model);
+            entity.Id = id;
+            entity = await MeetEduDbMapper.Universities.UpdateAsync(entity, cancellationToken);
 
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Universities));

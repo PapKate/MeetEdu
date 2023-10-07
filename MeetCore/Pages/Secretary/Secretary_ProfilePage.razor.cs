@@ -83,7 +83,8 @@ namespace MeetCore
         {
             var model = new UpdateScheduleModel()
             {
-                Color = User.Color
+                Color = User.Color,
+                WeeklySchedule = Secretary.WeeklySchedule,
             };
             var parameters = new DialogParameters<UpdateScheduleDialog> { { x => x.Model, model } };
 

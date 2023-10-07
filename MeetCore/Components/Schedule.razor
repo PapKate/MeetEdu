@@ -77,7 +77,7 @@
 
         <div class="workHoursContainer">
             @if ((mCurrentDate.DayOfWeek == DayOfWeek.Sunday ? mCurrentDate.AddDays(-6).GetFirstDayOfWeek().ToDateOnly() : mCurrentDate.GetFirstDayOfWeek().ToDateOnly()) == mFirstDateOfWeek.ToDateOnly()
-           && mCurrentDate > mCurrentDate.Date.AddHours(7) && mCurrentDate < mCurrentDate.Date.AddHours(22))
+            && mCurrentDate > mCurrentDate.Date.AddHours(7) && mCurrentDate < mCurrentDate.Date.AddHours(22))
             {
                 <span class="workHourContainer scheduleCurrentDateTimePointer" style="@TopVariable.SetCssVariable($"calc(43.59px * ({mCurrentDate.Hour}.{mCurrentDate.Minute * 100 / 60} - 7))")
                                     @LeftVariable.SetCssVariable($"calc((100% / 7) * ({((int)mCurrentDate.DayOfWeek == 0 ? 7 : (int)mCurrentDate.DayOfWeek)} - 1))")
@@ -87,9 +87,9 @@
                 </span>
             }
 
-            @if (!WorkHours.IsNullOrEmpty())
+            @if (WeeklySchedule is not null && !WeeklySchedule.WeeklyHours.IsNullOrEmpty())
             {
-                @foreach (var workHour in WorkHours)
+                @foreach (var workHour in WeeklySchedule.WeeklyHours)
                 {
                     <div class="workHourContainer"
                          style="@TopVariable.SetCssVariable($"calc(43.59px * ({workHour.Start.Hour}.{workHour.Start.Minute * 100 / 60} - 7))")
@@ -98,10 +98,9 @@
                                 @BackgroundVariable.SetCssColor($"{Gray.HexToRGBA(0.2)}")
                                 @BorderBrushVariable.SetCssColor($"{Gray}")"
                         id="@($"{workHour.DayOfWeek}.{workHour.Start.ToString("hh:mm")}-{workHour.End.ToString("hh:mm")}")">
-                        @if (!workHour.Text.IsNullOrEmpty())
-                        {
-                            <span class="workHourName">@workHour.Text</span>
-                        }
+                        
+                        <span class="workHourName">@WeeklySchedule.Name</span>
+                        <span class="workHourLocation">@workHour.Text</span>
                     </div>
                 }
             }
@@ -269,7 +268,7 @@
     }
 
     .workHourLocation {
-        font-size: 92%;
+        font-size: 88%;
     }
 
     .scheduleCurrentDateTimePointer {

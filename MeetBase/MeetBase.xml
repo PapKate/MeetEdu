@@ -325,52 +325,52 @@
             <param name="value">The value</param>
             <returns></returns>
         </member>
-        <member name="T:MeetBase.DepartmentLayoutRoomDataModel">
+        <member name="T:MeetBase.DepartmentLayoutRoom">
             <summary>
             Represents a company room document in the MongoDB
             </summary>
         </member>
-        <member name="F:MeetBase.DepartmentLayoutRoomDataModel.mName">
+        <member name="F:MeetBase.DepartmentLayoutRoom.mName">
             <summary>
-            The member of the <see cref="P:MeetBase.DepartmentLayoutRoomDataModel.Name"/> property
+            The member of the <see cref="P:MeetBase.DepartmentLayoutRoom.Name"/> property
             </summary>
         </member>
-        <member name="F:MeetBase.DepartmentLayoutRoomDataModel.mColor">
+        <member name="F:MeetBase.DepartmentLayoutRoom.mColor">
             <summary>
-            The member of the <see cref="P:MeetBase.DepartmentLayoutRoomDataModel.Color"/> property
+            The member of the <see cref="P:MeetBase.DepartmentLayoutRoom.Color"/> property
             </summary>
         </member>
-        <member name="F:MeetBase.DepartmentLayoutRoomDataModel.mNote">
+        <member name="F:MeetBase.DepartmentLayoutRoom.mNote">
             <summary>
-            The member of the <see cref="P:MeetBase.DepartmentLayoutRoomDataModel.Note"/> property
+            The member of the <see cref="P:MeetBase.DepartmentLayoutRoom.Note"/> property
             </summary>
         </member>
-        <member name="P:MeetBase.DepartmentLayoutRoomDataModel.Name">
+        <member name="P:MeetBase.DepartmentLayoutRoom.Name">
             <summary>
             The name
             </summary>
         </member>
-        <member name="P:MeetBase.DepartmentLayoutRoomDataModel.Color">
+        <member name="P:MeetBase.DepartmentLayoutRoom.Color">
             <summary>
             The color
             </summary>
         </member>
-        <member name="P:MeetBase.DepartmentLayoutRoomDataModel.Note">
+        <member name="P:MeetBase.DepartmentLayoutRoom.Note">
             <summary>
             The note
             </summary>
         </member>
-        <member name="P:MeetBase.DepartmentLayoutRoomDataModel.ImageUrl">
+        <member name="P:MeetBase.DepartmentLayoutRoom.ImageUrl">
             <summary>
             The image URL
             </summary>
         </member>
-        <member name="P:MeetBase.DepartmentLayoutRoomDataModel.DisplayTheme">
+        <member name="P:MeetBase.DepartmentLayoutRoom.DisplayTheme">
             <summary>
             The display theme
             </summary>
         </member>
-        <member name="M:MeetBase.DepartmentLayoutRoomDataModel.#ctor">
+        <member name="M:MeetBase.DepartmentLayoutRoom.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -2793,14 +2793,6 @@
             <param name="start">The first value</param>
             <param name="end">The second value</param>
         </member>
-        <member name="M:MeetBase.DayOfWeekTimeRange.#ctor(System.DayOfWeek,System.TimeOnly,System.TimeOnly)">
-            <summary>
-            Default constructor
-            </summary>
-            <param name="dayOfWeek">The day of week</param>
-            <param name="start">The first value</param>
-            <param name="end">The second value</param>
-        </member>
         <member name="M:MeetBase.DayOfWeekTimeRange.Convert(System.Collections.Generic.IEnumerable{MeetBase.DayOfWeekTimeRange})">
             <summary>
             Converts the specified <paramref name="values"/> to a <see cref="T:System.Collections.Generic.Dictionary`2"/>
@@ -2815,6 +2807,12 @@
             to a collection of <see cref="T:MeetBase.DayOfWeekTimeRange"/>s
             </summary>
             <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.DayOfWeekTimeRange.ToString">
+            <summary>
+            <inheritdoc/>
+            </summary>
             <returns></returns>
         </member>
         <member name="T:MeetBase.DaysBetweenSessionsRange">

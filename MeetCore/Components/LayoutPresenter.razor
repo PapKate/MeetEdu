@@ -1,0 +1,94 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.Personalization
+@using static MeetBase.Blazor.CssVariables
+
+@namespace MeetCore
+
+@if(LayoutRoom is not null)
+{
+    <div class="layoutRoomContainer @mRoomDisplayThemeClass" style="@BackgroundVariable.SetCssColor(LayoutRoom.Color.ToLighterColor(5) ?? White)">
+        <div class="@(LayoutRoom.DisplayTheme == RoomDisplayTheme.Center ? "layoutRoomImageFullContainer" : "layoutRoomImageContainer")">
+            <img class="layoutRoomImage" src="./icons/map.png" alt="@LayoutRoom.Name"/>
+        </div>
+    
+        <div class="layoutRoomTextContainer">
+            <h3>@LayoutRoom.Name</h3>
+            @((MarkupString)Markdig.Markdown.ToHtml(LayoutRoom.Note))
+        </div>
+
+        @if(IsEditable)
+        {
+            <IconButton OnClick="@EditLayoutRoom"
+                        BackColor="@White"
+                        ForeColor="@(LayoutRoom.Color ?? DarkGray)"
+                        VectorSource="@IconPaths.PencilOutlinePath"
+                        BoxShadow="@BoxShadow"
+                        BorderRadius="@NormalBorderRadius"
+                        CssClasses="editButtonContainer " />
+        }
+    </div>
+}
+
+<style>
+
+    .layoutRoomContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: @BackgroundVariable.GetCssVariable();
+    }
+
+    .layoutRoomTextContainer {
+        padding: @LargePadding @XXLargePadding;
+    }
+
+    .layoutRoomImageContainer {
+        position: relative;
+        width: 60%;
+        max-width: 600px;
+        height: auto;
+        object-fit: fill;
+        padding: @XXLargePadding;
+    }
+
+    .layoutRoomImageFullContainer {
+        position: relative;
+        width: 100%;
+        object-fit: fill;
+    }
+
+    .layoutRoomImage {
+        width: 100%;
+        height: auto;
+    }
+
+    .layoutRoomCenterContainer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .layoutRoomLeftContainer {
+        flex-direction: row;
+        text-align: right;
+    }
+
+    .layoutRoomRightContainer {
+        flex-direction: row-reverse;
+        text-align: left;
+    }
+
+
+    .editButtonContainer {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+</style>

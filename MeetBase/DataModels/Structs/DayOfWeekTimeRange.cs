@@ -1,4 +1,6 @@
-﻿namespace MeetBase
+﻿using Newtonsoft.Json;
+
+namespace MeetBase
 {
     /// <summary>
     /// Represents a time range of a specific week day
@@ -64,17 +66,6 @@
             Text = text ?? string.Empty;
         }
 
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        /// <param name="dayOfWeek">The day of week</param>
-        /// <param name="start">The first value</param>
-        /// <param name="end">The second value</param>
-        public DayOfWeekTimeRange(DayOfWeek dayOfWeek, TimeOnly start, TimeOnly end) : this(null, dayOfWeek, start, end)
-        {
-           
-        }
-
         #endregion
 
         #region Public Methods
@@ -95,7 +86,16 @@
         /// <param name="values"></param>
         /// <returns></returns>
         public static IEnumerable<DayOfWeekTimeRange> Convert(IReadOnlyDictionary<DayOfWeek, IEnumerable<TimeRange>> values)
-            => values.SelectMany(x => x.Value.Select(y => new DayOfWeekTimeRange(x.Key, y.Start, y.End))).ToList();
+            => values.SelectMany(x => x.Value.Select(y => new DayOfWeekTimeRange(null, x.Key, y.Start, y.End))).ToList();
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{DayOfWeek}: {Start.ToShortTimeString()} - {End.ToShortTimeString()}";
+        }
 
         #endregion
     }

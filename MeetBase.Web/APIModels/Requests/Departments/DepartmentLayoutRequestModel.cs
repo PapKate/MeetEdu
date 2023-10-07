@@ -20,7 +20,7 @@
         /// <summary>
         /// The layout
         /// </summary>
-        public IList<DepartmentLayoutRoomDataModel>? Rooms { get; set; }
+        public IList<DepartmentLayoutRoom>? Rooms { get; set; }
 
         #endregion
 

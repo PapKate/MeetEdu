@@ -205,7 +205,7 @@ namespace MeetEdu
         /// <param name="model">The model</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutRoomAsync(ObjectId layoutId, DepartmentLayoutRoomDataModel model, CancellationToken cancellationToken = default)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutRoomAsync(ObjectId layoutId, DepartmentLayoutRoom model, CancellationToken cancellationToken = default)
         {
             // Get the layout with the specified id
             var layout = await MeetEduDbMapper.DepartmentLayouts.FirstOrDefaultAsync(layoutId, cancellationToken);
@@ -232,7 +232,7 @@ namespace MeetEdu
         /// <param name="models">The models</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutRoomsAsync(ObjectId layoutId, IEnumerable<DepartmentLayoutRoomDataModel> models, CancellationToken cancellationToken = default)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutRoomsAsync(ObjectId layoutId, IEnumerable<DepartmentLayoutRoom> models, CancellationToken cancellationToken = default)
         {
             // Get the layout with the specified id
             var layout = await MeetEduDbMapper.DepartmentLayouts.FirstOrDefaultAsync(layoutId, cancellationToken);
@@ -266,7 +266,7 @@ namespace MeetEdu
         /// <param name="models">The models</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> UpdateDepartmentLayoutRoomsAsync(ObjectId layoutId, IEnumerable<DepartmentLayoutRoomDataModel> models, CancellationToken cancellationToken = default)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> UpdateDepartmentLayoutRoomsAsync(ObjectId layoutId, IEnumerable<DepartmentLayoutRoom> models, CancellationToken cancellationToken = default)
         {
             return await ExecuteAgainstDepartmentLayoutAsync(
                 layoutId,

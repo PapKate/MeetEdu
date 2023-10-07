@@ -54,7 +54,7 @@ namespace MeetCore
         /// The work hours
         /// </summary>
         [Parameter]
-        public IEnumerable<DayOfWeekTimeRange>? WorkHours { get; set; }
+        public WeeklySchedule? WeeklySchedule { get; set; }
 
         /// <summary>
         /// The work hours
