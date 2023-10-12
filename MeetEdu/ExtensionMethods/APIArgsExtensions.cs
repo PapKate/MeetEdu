@@ -24,7 +24,7 @@ namespace MeetEdu
         /// <typeparam name="T">The document type</typeparam>
         /// <param name="args">The arguments</param>
         /// <returns></returns>
-        public static List<FilterDefinition<T>> CreateFilters<T>(this StafMemberAPIArgs args)
+        public static List<FilterDefinition<T>> CreateFilters<T>(this DepartmentRelatedAPIArgs args)
             where T : BaseEntity, IDepartmentIdentifiable<ObjectId>
         {
             var filters = new List<FilterDefinition<T>>();

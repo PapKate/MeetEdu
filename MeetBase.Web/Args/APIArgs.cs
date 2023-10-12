@@ -58,39 +58,6 @@
     }
 
     /// <summary>
-    /// Arguments used for retrieving data that belong to a staff member
-    /// </summary>
-    public class StafMemberAPIArgs : APIArgs
-    {
-        #region Public Properties
-
-        /// <summary>
-        /// Limit the result to entries with specific department ids
-        /// </summary>
-        public IEnumerable<string>? IncludeDepartments { get; set; }
-
-        /// <summary>
-        /// Limit the result to entries without specific department ids
-        /// </summary>
-        public IEnumerable<string>? ExcludeDepartments { get; set; }
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public StafMemberAPIArgs() : base()
-        {
-
-        }
-
-        #endregion
-    }
-
-
-    /// <summary>
     /// Arguments used for retrieving data that belong to a department
     /// </summary>
     public class DepartmentAPIArgs : APIArgs

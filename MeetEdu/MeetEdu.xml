@@ -528,7 +528,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.MeetCoreController.GetSecretariesAsync(MeetBase.Web.StafMemberAPIArgs,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.MeetCoreController.GetSecretariesAsync(MeetBase.Web.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
             <summary>
             Gets the secretaries
             </summary>
@@ -569,7 +569,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.MeetCoreController.GetProfessorsAsync(MeetBase.Web.StafMemberAPIArgs,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.MeetCoreController.GetProfessorsAsync(MeetBase.Web.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
             <summary>
             Gets the professors
             </summary>
@@ -2483,7 +2483,7 @@
             Extension methods for <see cref="T:MeetBase.Web.APIArgs"/>
             </summary>
         </member>
-        <member name="M:MeetEdu.APIArgsExtensions.CreateFilters``1(MeetBase.Web.StafMemberAPIArgs)">
+        <member name="M:MeetEdu.APIArgsExtensions.CreateFilters``1(MeetBase.Web.DepartmentRelatedAPIArgs)">
             <summary>
             Creates the filters for the specified <paramref name="args"/>
             </summary>
@@ -3398,7 +3398,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.DepartmentsRepository.AddDepartmentLayoutRoomAsync(MongoDB.Bson.ObjectId,MeetBase.DepartmentLayoutRoomDataModel,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.DepartmentsRepository.AddDepartmentLayoutRoomAsync(MongoDB.Bson.ObjectId,MeetBase.DepartmentLayoutRoom,System.Threading.CancellationToken)">
             <summary>
             Add a department layout room
             </summary>
@@ -3407,7 +3407,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.DepartmentsRepository.AddDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{MeetBase.DepartmentLayoutRoomDataModel},System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.DepartmentsRepository.AddDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{MeetBase.DepartmentLayoutRoom},System.Threading.CancellationToken)">
             <summary>
             Add a list of rooms to the department layout 
             </summary>
@@ -3416,7 +3416,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.DepartmentsRepository.UpdateDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{MeetBase.DepartmentLayoutRoomDataModel},System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.DepartmentsRepository.UpdateDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{MeetBase.DepartmentLayoutRoom},System.Threading.CancellationToken)">
             <summary>
             Replaces the layout rooms with the specified <paramref name="models"/>
             of the department layout with the specified <paramref name="layoutId"/>

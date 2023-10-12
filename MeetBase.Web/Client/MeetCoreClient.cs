@@ -385,7 +385,7 @@
         /// </summary>
         /// <param name="args">The arguments</param>
         /// <returns></returns>
-        public Task<WebRequestResult<IEnumerable<SecretaryResponseModel>>> GetSecretariesAsync(StafMemberAPIArgs args)
+        public Task<WebRequestResult<IEnumerable<SecretaryResponseModel>>> GetSecretariesAsync(DepartmentRelatedAPIArgs args)
             => WebRequestsClient.Instance.GetAsync<IEnumerable<SecretaryResponseModel>>(RouteHelpers.AttachParameters(GetAbsoluteUrl(MeetCoreAPIRoutes.SecretariesRoute), args), null);
 
         /// <summary>
@@ -430,7 +430,7 @@
         /// </summary>
         /// <param name="args">The arguments</param>
         /// <returns></returns>
-        public Task<WebRequestResult<IEnumerable<ProfessorResponseModel>>> GetProfessorsAsync(StafMemberAPIArgs args)
+        public Task<WebRequestResult<IEnumerable<ProfessorResponseModel>>> GetProfessorsAsync(DepartmentRelatedAPIArgs args)
             => WebRequestsClient.Instance.GetAsync<IEnumerable<ProfessorResponseModel>>(RouteHelpers.AttachParameters(GetAbsoluteUrl(MeetCoreAPIRoutes.ProfessorsRoute), args), null);
 
         /// <summary>

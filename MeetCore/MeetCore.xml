@@ -84,6 +84,26 @@
             <inheritdoc/>
             </summary>
         </member>
+        <member name="T:MeetCore.UpdateLayoutRoomDialog">
+            <summary>
+            The dialog for editing the room
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateLayoutRoomDialog.mPhotoLabel">
+            <summary>
+            The photo input label
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateLayoutRoomDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateLayoutRoomDialog.Model">
+            <summary>
+            THe model
+            </summary>
+        </member>
         <member name="T:MeetCore.UpdateScheduleDialog">
             <summary>
             The dialog for editing the schedule
@@ -210,6 +230,11 @@
         <member name="M:MeetCore.UpdateSecretaryDialog.OnInitialized">
             <summary>
             <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:MeetCore.LayoutPresenter">
+            <summary>
+            The presenter for a layout room
             </summary>
         </member>
         <member name="F:MeetCore.LayoutPresenter.mRoomDisplayThemeClass">
@@ -1077,9 +1102,29 @@
             The department layout page
             </summary>
         </member>
-        <member name="F:MeetCore.Secretary_DepartmentLayoutPage.mPhotoLabel">
+        <member name="F:MeetCore.Secretary_DepartmentLayoutPage.mDialogOptions">
             <summary>
-            The photo input label
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentLayoutPage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentLayoutPage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentLayoutPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentLayoutPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
             </summary>
         </member>
         <member name="M:MeetCore.Secretary_DepartmentLayoutPage.#ctor">
@@ -1090,6 +1135,16 @@
         <member name="M:MeetCore.Secretary_DepartmentLayoutPage.OnInitialized">
             <summary>
             <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.AddButton_Onclick">
+            <summary>
+            Adds a layout or a room if the layout exists
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.AddLayout">
+            <summary>
+            Creates and adds a layout to the current department
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_DepartmentSecretaryPage">

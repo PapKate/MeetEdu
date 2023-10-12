@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace MeetCore
 {
+    /// <summary>
+    /// The presenter for a layout room
+    /// </summary>
     public partial class LayoutPresenter
     {
         #region Private Members

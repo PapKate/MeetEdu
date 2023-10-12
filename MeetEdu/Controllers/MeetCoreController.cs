@@ -306,7 +306,7 @@ namespace MeetEdu
         public async Task<ActionResult<IEnumerable<DepartmentLayoutResponseModel>>> GetDepartmentLayoutsAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.DepartmentLayouts,
                                                     x => x.ToResponseModel(),
-                                                    Builders<DepartmentLayoutEntity>.Filter.Empty, args,
+                                                    args?.CreateFilters<DepartmentLayoutEntity>().AggregateFilters(), args,
                                                     cancellationToken, x => x.DepartmentId);
 
         /// <summary>
@@ -494,7 +494,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpGet]
         [Route(MeetCoreAPIRoutes.SecretariesRoute)]
-        public async Task<ActionResult<IEnumerable<SecretaryResponseModel>>> GetSecretariesAsync([FromQuery] StafMemberAPIArgs? args, CancellationToken cancellationToken = default) 
+        public async Task<ActionResult<IEnumerable<SecretaryResponseModel>>> GetSecretariesAsync([FromQuery] DepartmentRelatedAPIArgs? args, CancellationToken cancellationToken = default) 
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Secretaries, 
                                                     x => x.ToResponseModel(), 
                                                     args?.CreateFilters<SecretaryEntity>().AggregateFilters(), args, 
@@ -557,7 +557,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpGet]
         [Route(MeetCoreAPIRoutes.ProfessorsRoute)]
-        public async Task<ActionResult<IEnumerable<ProfessorResponseModel>>> GetProfessorsAsync([FromQuery] StafMemberAPIArgs args, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<ProfessorResponseModel>>> GetProfessorsAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Professors,
                                                     x => x.ToResponseModel(),
                                                     args.CreateFilters<ProfessorEntity>().AggregateFilters(), args,

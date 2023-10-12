@@ -11,7 +11,7 @@ namespace MeetCore
     /// </summary>
     public partial class Secretary_ProfilePage : BasePage
     {
-        #region Private Properties
+        #region Private Members
 
         /// <summary>
         /// The <see cref="MudDialog"/> options
@@ -127,7 +127,6 @@ namespace MeetCore
 
                 StateHasChanged();
             }
-
         }
 
         /// <summary>

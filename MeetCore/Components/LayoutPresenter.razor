@@ -8,7 +8,7 @@
 {
     <div class="layoutRoomContainer @mRoomDisplayThemeClass" style="@BackgroundVariable.SetCssColor(LayoutRoom.Color.ToLighterColor(5) ?? White)">
         <div class="@(LayoutRoom.DisplayTheme == RoomDisplayTheme.Center ? "layoutRoomImageFullContainer" : "layoutRoomImageContainer")">
-            <img class="layoutRoomImage" src="./icons/map.png" alt="@LayoutRoom.Name"/>
+            <img class="layoutRoomImage" src="@LayoutRoom.ImageUrl?.ToString()" alt="@LayoutRoom.Name"/>
         </div>
     
         <div class="layoutRoomTextContainer">

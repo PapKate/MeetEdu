@@ -1711,26 +1711,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:MeetBase.Web.StafMemberAPIArgs">
-            <summary>
-            Arguments used for retrieving data that belong to a staff member
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.StafMemberAPIArgs.IncludeDepartments">
-            <summary>
-            Limit the result to entries with specific department ids
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.StafMemberAPIArgs.ExcludeDepartments">
-            <summary>
-            Limit the result to entries without specific department ids
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.StafMemberAPIArgs.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
         <member name="T:MeetBase.Web.DepartmentAPIArgs">
             <summary>
             Arguments used for retrieving data that belong to a department
@@ -2194,7 +2174,7 @@
             <param name="id">The id</param>
             <returns></returns>
         </member>
-        <member name="M:MeetBase.Web.MeetCoreClient.GetSecretariesAsync(MeetBase.Web.StafMemberAPIArgs)">
+        <member name="M:MeetBase.Web.MeetCoreClient.GetSecretariesAsync(MeetBase.Web.DepartmentRelatedAPIArgs)">
             <summary>
             Gets the secretaries
             </summary>
@@ -2230,7 +2210,7 @@
             <param name="id">The id</param>
             <returns></returns>
         </member>
-        <member name="M:MeetBase.Web.MeetCoreClient.GetProfessorsAsync(MeetBase.Web.StafMemberAPIArgs)">
+        <member name="M:MeetBase.Web.MeetCoreClient.GetProfessorsAsync(MeetBase.Web.DepartmentRelatedAPIArgs)">
             <summary>
             Gets the professors
             </summary>
