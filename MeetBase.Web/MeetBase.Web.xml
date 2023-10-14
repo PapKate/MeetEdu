@@ -366,6 +366,11 @@
             Request model used for a professor 
             </summary>
         </member>
+        <member name="P:MeetBase.Web.ProfessorRequestModel.Rank">
+            <summary>
+            The rank
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.ProfessorRequestModel.Websites">
             <summary>
             The personal websites 
@@ -1374,6 +1379,11 @@
             The member of the <see cref="P:MeetBase.Web.ProfessorResponseModel.Websites"/> property
             </summary>
         </member>
+        <member name="P:MeetBase.Web.ProfessorResponseModel.Rank">
+            <summary>
+            The rank
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.ProfessorResponseModel.Websites">
             <summary>
             The personal websites 
@@ -1403,6 +1413,11 @@
         <member name="F:MeetBase.Web.EmbeddedProfessorResponseModel.mField">
             <summary>
             The member of the <see cref="P:MeetBase.Web.EmbeddedProfessorResponseModel.Field"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedProfessorResponseModel.Rank">
+            <summary>
+            The rank
             </summary>
         </member>
         <member name="P:MeetBase.Web.EmbeddedProfessorResponseModel.Field">
@@ -1626,6 +1641,11 @@
             The member of the <see cref="P:MeetBase.Web.EmbeddedUserResponseModel.Username"/> property
             </summary>
         </member>
+        <member name="F:MeetBase.Web.EmbeddedUserResponseModel.mColor">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedUserResponseModel.Color"/> property
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.EmbeddedUserResponseModel.Username">
             <summary>
             The username
@@ -1644,6 +1664,11 @@
         <member name="P:MeetBase.Web.EmbeddedUserResponseModel.ImageUrl">
             <summary>
             The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedUserResponseModel.Color">
+            <summary>
+            The color
             </summary>
         </member>
         <member name="M:MeetBase.Web.EmbeddedUserResponseModel.#ctor">
@@ -1943,6 +1968,13 @@
             <param name="model">The model</param>
             <returns></returns>
         </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddUserAsync(MeetBase.Web.UserRequestModel)">
+            <summary>
+            Creates a user
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetBase.Web.MeetCoreClient.UpdateUserAsync(System.String,MeetBase.Web.UserRequestModel)">
             <summary>
             Updates the user with the specified <paramref name="id"/>
@@ -2231,7 +2263,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:MeetBase.Web.MeetCoreClient.UpdateProfessorAsync(System.String,MeetBase.Web.ProfessorRequestModel,MeetBase.Web.UserRequestModel)">
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateProfessorAsync(System.String,MeetBase.Web.ProfessorRequestModel)">
             <summary>
             Updates the professor with the specified <paramref name="id"/>
             </summary>

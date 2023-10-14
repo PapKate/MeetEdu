@@ -84,6 +84,17 @@ namespace MeetEdu
         #region Users
 
         /// <summary>
+        /// Creates a university
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(MeetCoreAPIRoutes.UsersRoute)]
+        public async Task<ActionResult<UserResponseModel>> AddUserAsync([FromBody] UserRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.UsersRepository.AddUserAsync(model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
         /// Updates the user with the specified <paramref name="userId"/>
         /// </summary>
         /// <param name="userId">The id</param>

@@ -129,7 +129,7 @@ namespace MeetBase.Web
     /// <summary>
     /// A minimal version of the <see cref="UserResponseModel"/> used when embedding
     /// </summary>
-    public class EmbeddedUserResponseModel : EmbeddedBaseResponseModel, IImageable
+    public class EmbeddedUserResponseModel : EmbeddedBaseResponseModel, IImageable, IColorable
     {
         #region Private Members
 
@@ -147,6 +147,11 @@ namespace MeetBase.Web
         /// The member of the <see cref="Username"/> property
         /// </summary>
         private string? mUsername;
+
+        /// <summary>
+        /// The member of the <see cref="Color"/> property
+        /// </summary>
+        private string? mColor;
 
         #endregion
 
@@ -183,6 +188,15 @@ namespace MeetBase.Web
         /// The image URL
         /// </summary>
         public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The color
+        /// </summary>
+        public string Color
+        {
+            get => mColor ?? string.Empty;
+            set => mColor = value;
+        }
 
         #endregion
 

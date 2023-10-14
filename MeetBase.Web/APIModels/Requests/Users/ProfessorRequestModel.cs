@@ -8,6 +8,11 @@
         #region Public Properties
 
         /// <summary>
+        /// The rank
+        /// </summary>
+        public ProfessorRank Rank { get; set; }
+
+        /// <summary>
         /// The personal websites 
         /// </summary>
         public IEnumerable<Uri>? Websites { get; set; }

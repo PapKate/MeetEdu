@@ -2679,6 +2679,36 @@
             Under graduate secretary
             </summary>
         </member>
+        <member name="T:MeetBase.ProfessorRank">
+            <summary>
+            Provides enumeration over the professor ranks
+            </summary>
+        </member>
+        <member name="F:MeetBase.ProfessorRank.AssistantProfessor">
+            <summary>
+            Assistant Professor
+            </summary>
+        </member>
+        <member name="F:MeetBase.ProfessorRank.AssociateProfessor">
+            <summary>
+            Associate Professor
+            </summary>
+        </member>
+        <member name="F:MeetBase.ProfessorRank.AssociateProfessorWithTenure">
+            <summary>
+            Associate Professor with Tenure
+            </summary>
+        </member>
+        <member name="F:MeetBase.ProfessorRank.AssociateProfessorWithDistinction">
+            <summary>
+            Associate Professor with Distinction
+            </summary>
+        </member>
+        <member name="F:MeetBase.ProfessorRank.ExceptionalAssociateProfessor">
+            <summary>
+             Exceptional Associate Professor
+            </summary>
+        </member>
         <member name="T:MeetBase.SessionStatus">
             <summary>
             Provides enumerations over the <see cref="T:MeetBase.SessionStatus"/>

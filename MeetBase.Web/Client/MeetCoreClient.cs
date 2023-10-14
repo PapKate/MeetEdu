@@ -86,6 +86,14 @@
         #region Users
 
         /// <summary>
+        /// Creates a user
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<UserResponseModel>> AddUserAsync(UserRequestModel model)
+            => WebRequestsClient.Instance.PostAsync<UserResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.UsersRoute), model, null);
+
+        /// <summary>
         /// Updates the user with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
@@ -456,7 +464,7 @@
         /// <param name="model">The model</param>
         /// <param name="user">The user</param>
         /// <returns></returns>
-        public Task<WebRequestResult<ProfessorResponseModel>> UpdateProfessorAsync(string id, ProfessorRequestModel model, UserRequestModel user)
+        public Task<WebRequestResult<ProfessorResponseModel>> UpdateProfessorAsync(string id, ProfessorRequestModel model)
             => WebRequestsClient.Instance.PutAsync<ProfessorResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetProfessorRoute(id)), model, null);
 
         /// <summary>

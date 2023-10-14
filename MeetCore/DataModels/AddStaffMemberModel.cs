@@ -1,12 +1,11 @@
 ﻿using MeetBase;
-using MeetBase.Web;
 
 namespace MeetCore
 {
     /// <summary>
-    /// The model for updating a secretary
+    /// The model for adding a staff member
     /// </summary>
-    public class UpdateSecretaryModel
+    public abstract class AddStaffMemberModel
     {
         #region Public Properties
 
@@ -26,11 +25,6 @@ namespace MeetCore
         public string? LastName { get; set; }
 
         /// <summary>
-        /// Gets or sets a salted and hashed representation of the password for this user.
-        /// </summary>
-        public string? PasswordHash { get; set; }
-
-        /// <summary>
         /// The email
         /// </summary>
         public string? Email { get; set; }
@@ -41,34 +35,9 @@ namespace MeetCore
         public PhoneNumber? PhoneNumber { get; set; }
 
         /// <summary>
-        /// The image URL
-        /// </summary>
-        public Uri? ImageUrl { get; set; }
-
-        /// <summary>
         /// The color
         /// </summary>
         public string? Color { get; set; }
-
-        /// <summary>
-        /// The birthday
-        /// </summary>
-        public DateOnly? DateOfBirth { get; set; }
-
-        /// <summary>
-        /// The location information
-        /// </summary>
-        public Location? Location { get; set; }
-
-        /// <summary>
-        /// The role
-        /// </summary>
-        public SecretaryRole Role { get; set; }
-
-        /// <summary>
-        /// The quote
-        /// </summary>
-        public string? Quote { get; set; }
 
         #endregion
 
@@ -77,7 +46,7 @@ namespace MeetCore
         /// <summary>
         /// Default constructor
         /// </summary>
-        public UpdateSecretaryModel() : base()
+        public AddStaffMemberModel() : base()
         {
 
         }

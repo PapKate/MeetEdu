@@ -267,6 +267,14 @@
             <param name="model">The model</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.MeetCoreController.AddUserAsync(MeetBase.Web.UserRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Creates a university
+            </summary>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.MeetCoreController.UpdateUserAsync(System.String,MeetBase.Web.UserRequestModel)">
             <summary>
             Updates the user with the specified <paramref name="userId"/>
@@ -2117,6 +2125,11 @@
             The member of the <see cref="P:MeetEdu.ProfessorEntity.Websites"/> property
             </summary>
         </member>
+        <member name="P:MeetEdu.ProfessorEntity.Rank">
+            <summary>
+            The rank
+            </summary>
+        </member>
         <member name="P:MeetEdu.ProfessorEntity.Websites">
             <summary>
             The personal websites 
@@ -2165,6 +2178,11 @@
         <member name="F:MeetEdu.EmbeddedProfessorEntity.mField">
             <summary>
             The member of the <see cref="P:MeetEdu.EmbeddedProfessorEntity.Field"/> property
+            </summary>
+        </member>
+        <member name="P:MeetEdu.EmbeddedProfessorEntity.Rank">
+            <summary>
+            The rank
             </summary>
         </member>
         <member name="P:MeetEdu.EmbeddedProfessorEntity.Field">
@@ -2438,6 +2456,11 @@
             The member of the <see cref="P:MeetEdu.EmbeddedUserEntity.Email"/> property
             </summary>
         </member>
+        <member name="F:MeetEdu.EmbeddedUserEntity.mColor">
+            <summary>
+            The member of the <see cref="P:MeetEdu.EmbeddedUserEntity.Color"/> property
+            </summary>
+        </member>
         <member name="P:MeetEdu.EmbeddedUserEntity.Username">
             <summary>
             The username
@@ -2461,6 +2484,11 @@
         <member name="P:MeetEdu.EmbeddedUserEntity.Email">
             <summary>
             The email
+            </summary>
+        </member>
+        <member name="P:MeetEdu.EmbeddedUserEntity.Color">
+            <summary>
+            The color
             </summary>
         </member>
         <member name="P:MeetEdu.EmbeddedUserEntity.PhoneNumber">
@@ -3722,26 +3750,29 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetEdu.UsersRepository.AddUserAsync(MeetBase.Web.UserRequestModel)">
+        <member name="M:MeetEdu.UsersRepository.AddUserAsync(MeetBase.Web.UserRequestModel,System.Threading.CancellationToken)">
             <summary>
             Adds a user
             </summary>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.UsersRepository.UpdateUserAsync(MongoDB.Bson.ObjectId,MeetBase.Web.UserRequestModel)">
+        <member name="M:MeetEdu.UsersRepository.UpdateUserAsync(MongoDB.Bson.ObjectId,MeetBase.Web.UserRequestModel,System.Threading.CancellationToken)">
             <summary>
             Updates the user with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.UsersRepository.DeleteUserAsync(MongoDB.Bson.ObjectId)">
+        <member name="M:MeetEdu.UsersRepository.DeleteUserAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
             <summary>
             Deletes the user with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="T:MeetEdu.Shared.MainLayout">

@@ -1,9 +1,5 @@
-﻿using MeetBase;
-using MeetBase.Web;
-
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 
 namespace MeetEdu
 {
@@ -39,19 +35,19 @@ namespace MeetEdu
         /// Adds a user
         /// </summary>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<UserEntity>> AddUserAsync(UserRequestModel model)
+        public async Task<WebServerFailable<UserEntity>> AddUserAsync(UserRequestModel model, CancellationToken cancellationToken = default)
         {
             if(model.Username.IsNullOrEmpty()
             || model.FirstName.IsNullOrEmpty()
             || model.LastName.IsNullOrEmpty()
             || model.Email.IsNullOrEmpty()
             || model.PasswordHash.IsNullOrEmpty()
-            || model.PhoneNumber is null
-            || model.DateOfBirth is null)
+            || model.PhoneNumber is null)
                 return MeetEduWebServerConstants.InvalidRegistrationCredentialsErrorMessage;
 
-            return await MeetEduDbMapper.Users.AddAsync(UserEntity.FromRequestModel(model));
+            return await MeetEduDbMapper.Users.AddAsync(UserEntity.FromRequestModel(model), cancellationToken);
         }
 
         /// <summary>
@@ -59,15 +55,16 @@ namespace MeetEdu
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<UserEntity>> UpdateUserAsync(ObjectId id, UserRequestModel model)
+        public async Task<WebServerFailable<UserEntity>> UpdateUserAsync(ObjectId id, UserRequestModel model, CancellationToken cancellationToken = default)
         {
             var entity = await MeetEduDbMapper.Users.UpdateAsync(id, model);
 
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Users));
 
-            var secretary = await MeetEduDbMapper.Secretaries.FirstOrDefaultAsync(x => x.UserId == entity.Id);
+            var secretary = await MeetEduDbMapper.Secretaries.FirstOrDefaultAsync(x => x.UserId == entity.Id, cancellationToken);
             
             // If the user is a secretary...
             if (secretary != null)
@@ -78,7 +75,7 @@ namespace MeetEdu
                 return entity;
             }
 
-            var professor = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.UserId == entity.Id);
+            var professor = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.UserId == entity.Id, cancellationToken);
 
             // If the user is a professor...
             if (professor != null)
@@ -89,7 +86,7 @@ namespace MeetEdu
                 return entity;
             }
 
-            var member = await MeetEduDbMapper.Members.FirstOrDefaultAsync(x => x.UserId == entity.Id);
+            var member = await MeetEduDbMapper.Members.FirstOrDefaultAsync(x => x.UserId == entity.Id, cancellationToken);
 
             // If the user is a member...
             if (member != null)
@@ -105,17 +102,18 @@ namespace MeetEdu
         /// Deletes the user with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<UserEntity>> DeleteUserAsync(ObjectId id)
+        public async Task<WebServerFailable<UserEntity>> DeleteUserAsync(ObjectId id, CancellationToken cancellationToken = default)
         {
             // Gets the member
-            var entity = await MeetEduDbMapper.Users.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await MeetEduDbMapper.Users.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             // If the member does not exist...
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Users));
 
-            await MeetEduDbMapper.Users.DeleteOneAsync(x => x.Id == id);
+            await MeetEduDbMapper.Users.DeleteOneAsync(x => x.Id == id, cancellationToken);
 
             return entity;
         }

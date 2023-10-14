@@ -1,0 +1,102 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<MudDialog>
+    <DialogContent>
+        <div class="dialogSection">
+            <span class="dialogSectionText">Add Staff Member</span>
+        </div>
+        <div class="dialogContentContainer">
+            <MudTextField @bind-Value="@Model.Username"
+                          Placeholder="Username"
+                          Class="dialogInput"
+                          FullWidth="true"
+                          Variant="Variant.Text"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@MudIconPaths.Account" />
+            <MudColorPicker Placeholder="Color" @bind-Text="@Model.Color"
+                            Style="@($"color: {Model.Color.NormalizedColor()};")"
+                            DisableModeSwitch="false"
+                            DisableToolbar="false"
+                            Class="dialogInput colorInput"
+                            Adornment="@Adornment.Start"
+                            AdornmentIcon="@Icons.Material.Filled.Palette"
+                            PickerVariant="PickerVariant.Inline"
+                            DisableAlpha="true" />
+            <MudTextField @bind-Value="@Model.Email"
+                          Placeholder="Email"
+                          Class="dialogContentFullRow dialogInput"
+                          FullWidth="true"
+                          Variant="Variant.Text"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@MudIconPaths.Email" />
+            <MudTextField @bind-Value="@Model.FirstName"
+                          Placeholder="First name"
+                          Class="dialogContentFullRow dialogInput"
+                          FullWidth="true"
+                          Variant="Variant.Text"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@MudIconPaths.AbjadArabic" />
+            <MudTextField @bind-Value="@Model.LastName"
+                          Placeholder="Last name"
+                          Class="dialogContentFullRow dialogInput"
+                          FullWidth="true"
+                          Variant="Variant.Text"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@MudIconPaths.AbugidadArabic" />
+            <div class="dialogPhoneNumberInputsContainer">
+                <MudTextField @bind-Value="@mCountryCode"
+                              Placeholder="CC"
+                              Class="dialogInput"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Adornment="Adornment.Start"
+                              AdornmentIcon="@MudIconPaths.Plus" />
+                <MudTextField @bind-Value="@mPhoneNumber"
+                              Placeholder="Phone number"
+                              Class="dialogInput"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Adornment="Adornment.Start"
+                              AdornmentIcon="@MudIconPaths.Phone" />
+            </div>
+            <MudSelect T="ProfessorRank" @bind-Value="@Model.Rank"
+                       Placeholder="Rank"
+                       Class="dialogInput"
+                       FullWidth="true"
+                       Variant="Variant.Text"
+                       Adornment="Adornment.Start"
+                       AdornmentIcon="@MudIconPaths.Account"
+                       AnchorOrigin="Origin.BottomCenter">
+                @foreach (var value in Enum.GetValues<ProfessorRank>())
+                {
+                    <MudSelectItem Value="@value">@value</MudSelectItem>
+                }
+            </MudSelect>
+        </div>
+    </DialogContent>
+    <DialogActions>
+        <div class="dialogActionsContainer">
+            <MudButton Variant="Variant.Text" Color="Color.Error" OnClick="@Cancel" Class="px-10">Cancel</MudButton>
+            <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@Save" Class="px-10">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>
+
+<style>
+
+    .dialogSection {
+        background-color: @Amber.NormalizedColor();
+        color: @Amber.DarkOrWhite().NormalizedColor();
+    }
+
+    .colorInput .mud-input-adornment-start:after {
+        background-color: @Model.Color.NormalizedColor();
+    }
+
+
+</style>

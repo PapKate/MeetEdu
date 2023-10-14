@@ -194,6 +194,11 @@
         /// </summary>
         private string? mEmail;
 
+        /// <summary>
+        /// The member of the <see cref="Color"/> property
+        /// </summary>
+        private string? mColor;
+
         #endregion
 
         #region Public Properties
@@ -237,6 +242,15 @@
         {
             get => mEmail ?? string.Empty;
             set => mEmail = value;
+        }
+
+        /// <summary>
+        /// The color
+        /// </summary>
+        public string Color
+        {
+            get => mColor ?? string.Empty;
+            set => mColor = value;
         }
 
         /// <summary>

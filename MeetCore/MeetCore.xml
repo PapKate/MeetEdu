@@ -44,6 +44,66 @@
             <inheritdoc/>
             </summary>
         </member>
+        <member name="T:MeetCore.AddProfessorDialog">
+            <summary>
+            The dialog for adding a professor
+            </summary>
+        </member>
+        <member name="F:MeetCore.AddProfessorDialog.mCountryCode">
+            <summary>
+            The country code
+            </summary>
+        </member>
+        <member name="F:MeetCore.AddProfessorDialog.mPhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddProfessorDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddProfessorDialog.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="M:MeetCore.AddProfessorDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.AddSecretaryDialog">
+            <summary>
+            The dialog for adding a secretary
+            </summary>
+        </member>
+        <member name="F:MeetCore.AddSecretaryDialog.mCountryCode">
+            <summary>
+            The country code
+            </summary>
+        </member>
+        <member name="F:MeetCore.AddSecretaryDialog.mPhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddSecretaryDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddSecretaryDialog.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="M:MeetCore.AddSecretaryDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="F:MeetCore.UpdateDepartmentDialog.mPhotoLabel">
             <summary>
             The photo input label
@@ -457,6 +517,76 @@
         <member name="F:MeetCore.Routes.AppointmentsHistoryRoute">
             <summary>
             The appointments history page route
+            </summary>
+        </member>
+        <member name="T:MeetCore.AddProfessorModel">
+            <summary>
+            The model for adding a professor
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddProfessorModel.Rank">
+            <summary>
+            The rank
+            </summary>
+        </member>
+        <member name="M:MeetCore.AddProfessorModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.AddSecretaryModel">
+            <summary>
+            The model for adding a secretary
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddSecretaryModel.Role">
+            <summary>
+            The role
+            </summary>
+        </member>
+        <member name="M:MeetCore.AddSecretaryModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.AddStaffMemberModel">
+            <summary>
+            The model for adding a staff member
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddStaffMemberModel.Username">
+            <summary>
+            The username
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddStaffMemberModel.FirstName">
+            <summary>
+            The first name
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddStaffMemberModel.LastName">
+            <summary>
+            The last name
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddStaffMemberModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddStaffMemberModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetCore.AddStaffMemberModel.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="M:MeetCore.AddStaffMemberModel.#ctor">
+            <summary>
+            Default constructor
             </summary>
         </member>
         <member name="T:MeetCore.UpdateDepartmentModel">
@@ -1047,6 +1177,52 @@
             The faculty page
             </summary>
         </member>
+        <member name="F:MeetCore.Secretary_DepartmentFacultyPage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentFacultyPage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentFacultyPage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentFacultyPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentFacultyPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentFacultyPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentFacultyPage.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentFacultyPage.EditProfessorRank(MeetBase.Web.ProfessorResponseModel)">
+            <summary>
+            Updates the specified <paramref name="professor"/>'s rank
+            </summary>
+            <param name="professor">The professor</param>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentFacultyPage.AddProfessor">
+            <summary>
+            Adds a professor
+            </summary>
+        </member>
         <member name="T:MeetCore.Secretary_DepartmentInformationPage">
             <summary>
             The department information page
@@ -1150,6 +1326,52 @@
         <member name="T:MeetCore.Secretary_DepartmentSecretaryPage">
             <summary>
             The department secretary page
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_DepartmentSecretaryPage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentSecretaryPage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentSecretaryPage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentSecretaryPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_DepartmentSecretaryPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentSecretaryPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentSecretaryPage.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentSecretaryPage.EditSecretaryRole(MeetBase.Web.SecretaryResponseModel)">
+            <summary>
+            Updates the specified <paramref name="secretary"/>'s rank
+            </summary>
+            <param name="secretary">The professor</param>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentSecretaryPage.AddSecretary">
+            <summary>
+            Adds a secretary
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_InboxPage">
