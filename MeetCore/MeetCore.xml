@@ -44,6 +44,36 @@
             <inheritdoc/>
             </summary>
         </member>
+        <member name="F:MeetCore.FieldCheckBox.mIsChecked">
+            <summary>
+            The member of the <see cref="P:MeetCore.FieldCheckBox.IsChecked"/> property
+            </summary>
+        </member>
+        <member name="P:MeetCore.FieldCheckBox.Text">
+            <summary>
+            The text
+            </summary>
+        </member>
+        <member name="P:MeetCore.FieldCheckBox.IsChecked">
+            <summary>
+            A flag indicating whether it is checked or not
+            </summary>
+        </member>
+        <member name="M:MeetCore.FieldCheckBox.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.FieldCheckBox.OnIsCheckedChanged">
+            <summary>
+            Changes the <see cref="P:MeetCore.FieldCheckBox.IsChecked"/> value
+            </summary>
+        </member>
+        <member name="P:MeetCore.FieldCheckBox.IsCheckedChanged">
+            <summary>
+            Fires when the <see cref="F:MeetCore.FieldCheckBox.mIsChecked"/>'s value changes
+            </summary>
+        </member>
         <member name="T:MeetCore.AddProfessorDialog">
             <summary>
             The dialog for adding a professor
@@ -164,6 +194,11 @@
             THe model
             </summary>
         </member>
+        <member name="M:MeetCore.UpdateLayoutRoomDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetCore.UpdateScheduleDialog">
             <summary>
             The dialog for editing the schedule
@@ -237,57 +272,62 @@
             <param name="shift">The shift</param>
             <param name="value">The value</param>
         </member>
-        <member name="F:MeetCore.UpdateSecretaryDialog.mPassword">
+        <member name="T:MeetCore.UpdateStaffMemberDialog`1">
+            <summary>
+            Dialog for updating a professor
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateStaffMemberDialog`1.mPassword">
             <summary>
             The password
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateSecretaryDialog.mConfirmPassword">
+        <member name="F:MeetCore.UpdateStaffMemberDialog`1.mConfirmPassword">
             <summary>
             The confirm password
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateSecretaryDialog.mPhotoLabel">
+        <member name="F:MeetCore.UpdateStaffMemberDialog`1.mPhotoLabel">
             <summary>
             The password
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateSecretaryDialog.mCountryCode">
+        <member name="F:MeetCore.UpdateStaffMemberDialog`1.mCountryCode">
             <summary>
             The country code
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateSecretaryDialog.mPhoneNumber">
+        <member name="F:MeetCore.UpdateStaffMemberDialog`1.mPhoneNumber">
             <summary>
             The phone number
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateSecretaryDialog.mBirthDate">
+        <member name="F:MeetCore.UpdateStaffMemberDialog`1.mBirthDate">
             <summary>
             The birth date
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateSecretaryDialog.mLocation">
+        <member name="F:MeetCore.UpdateStaffMemberDialog`1.mLocation">
             <summary>
             The location
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateSecretaryDialog.MudDialog">
+        <member name="P:MeetCore.UpdateStaffMemberDialog`1.MudDialog">
             <summary>
             The dialog instance
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateSecretaryDialog.Model">
+        <member name="P:MeetCore.UpdateStaffMemberDialog`1.Model">
             <summary>
             The model
             </summary>
         </member>
-        <member name="M:MeetCore.UpdateSecretaryDialog.#ctor">
+        <member name="M:MeetCore.UpdateStaffMemberDialog`1.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.UpdateSecretaryDialog.OnInitialized">
+        <member name="M:MeetCore.UpdateStaffMemberDialog`1.OnInitialized">
             <summary>
             <inheritdoc/>
             </summary>
@@ -325,6 +365,71 @@
         <member name="P:MeetCore.LayoutPresenter.EditButtonClicked">
             <summary>
             Fires when the edit button is clicked
+            </summary>
+        </member>
+        <member name="T:MeetCore.MarkdownBlock">
+            <summary>
+            The markdown text block
+            </summary>
+        </member>
+        <member name="P:MeetCore.MarkdownBlock.CssClass">
+            <summary>
+            The CSS classes
+            </summary>
+        </member>
+        <member name="P:MeetCore.MarkdownBlock.Text">
+            <summary>
+            The text
+            </summary>
+        </member>
+        <member name="M:MeetCore.MarkdownBlock.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.MarkDownInput">
+            <summary>
+            The markdown text input
+            </summary>
+        </member>
+        <member name="P:MeetCore.MarkDownInput.Placeholder">
+            <summary>
+            The placeholder
+            </summary>
+        </member>
+        <member name="P:MeetCore.MarkDownInput.Lines">
+            <summary>
+            A multi-line input will be shown if it is set to greater than one
+            </summary>
+        </member>
+        <member name="P:MeetCore.MarkDownInput.Text">
+            <summary>
+            The text
+            </summary>
+        </member>
+        <member name="M:MeetCore.MarkDownInput.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.MarkDownInput.SaveButton_Onclick">
+            <summary>
+            Saves the description
+            </summary>
+        </member>
+        <member name="M:MeetCore.MarkDownInput.CancelButton_Onclick">
+            <summary>
+            Saves the description
+            </summary>
+        </member>
+        <member name="M:MeetCore.MarkDownInput.EditButton_OnClick">
+            <summary>
+            Saves the description
+            </summary>
+        </member>
+        <member name="P:MeetCore.MarkDownInput.TextChanged">
+            <summary>
+            Fires when the text is changed
             </summary>
         </member>
         <member name="T:MeetCore.Schedule">
@@ -447,6 +552,11 @@
         <member name="F:MeetCore.MeetCoreContants.AppName">
             <summary>
             The app name
+            </summary>
+        </member>
+        <member name="F:MeetCore.MeetCoreContants.WwwRootPath">
+            <summary>
+            The WWW root folder path
             </summary>
         </member>
         <member name="T:MeetCore.Routes">
@@ -659,6 +769,21 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetCore.UpdateProfessorModel">
+            <summary>
+            The model for updating a professor
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateProfessorModel.Rank">
+            <summary>
+            The role
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateProfessorModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetCore.UpdateScheduleModel">
             <summary>
             The model for updating a weekly schedule
@@ -689,67 +814,77 @@
             The model for updating a secretary
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.Username">
-            <summary>
-            The username
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.FirstName">
-            <summary>
-            The first name
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.LastName">
-            <summary>
-            The last name
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.PasswordHash">
-            <summary>
-            Gets or sets a salted and hashed representation of the password for this user.
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.Email">
-            <summary>
-            The email
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.PhoneNumber">
-            <summary>
-            The phone number
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.ImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.Color">
-            <summary>
-            The color
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.DateOfBirth">
-            <summary>
-            The birthday
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.Location">
-            <summary>
-            The location information
-            </summary>
-        </member>
         <member name="P:MeetCore.UpdateSecretaryModel.Role">
             <summary>
             The role
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateSecretaryModel.Quote">
+        <member name="M:MeetCore.UpdateSecretaryModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.UpdateStaffMemberModel">
+            <summary>
+            The model for updating a staff member
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.Username">
+            <summary>
+            The username
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.FirstName">
+            <summary>
+            The first name
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.LastName">
+            <summary>
+            The last name
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.PasswordHash">
+            <summary>
+            Gets or sets a salted and hashed representation of the password for this user.
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.DateOfBirth">
+            <summary>
+            The birthday
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.Location">
+            <summary>
+            The location information
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberModel.Quote">
             <summary>
             The quote
             </summary>
         </member>
-        <member name="M:MeetCore.UpdateSecretaryModel.#ctor">
+        <member name="M:MeetCore.UpdateStaffMemberModel.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -1151,11 +1286,50 @@
             The profile page
             </summary>
         </member>
-        <member name="M:MeetCore.Professor_ProfilePage.OnAfterRender(System.Boolean)">
+        <member name="F:MeetCore.Professor_ProfilePage.mDialogOptions">
             <summary>
-            <inheritdoc/>
+            The <see cref="T:MudBlazor.MudDialog"/> options
             </summary>
-            <param name="firstRender"><inheritdoc/></param>
+        </member>
+        <member name="P:MeetCore.Professor_ProfilePage.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ProfilePage.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ProfilePage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ProfilePage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ProfilePage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ProfilePage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_ProfilePage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_ProfilePage.UpdateProfessor">
+            <summary>
+            Updates the secretary and user info
+            </summary>
         </member>
         <member name="T:MeetCore.Professor_SchedulePage">
             <summary>
@@ -1167,9 +1341,34 @@
             The contact form page
             </summary>
         </member>
+        <member name="P:MeetCore.Secretary_ContactFormPage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_ContactFormPage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_ContactFormPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_ContactFormPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
         <member name="M:MeetCore.Secretary_ContactFormPage.#ctor">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ContactFormPage.OnInitialized">
+            <summary>
+            <inheritdoc/>
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_DepartmentFacultyPage">

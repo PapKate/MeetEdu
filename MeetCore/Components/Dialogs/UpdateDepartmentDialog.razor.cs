@@ -92,15 +92,6 @@ namespace MeetCore
             MudDialog.Cancel();
         }
 
-        private async void BrowserFileUploaded(IBrowserFile file)
-        {
-            var buffers = new byte[file.Size];
-            await file.OpenReadStream().ReadAsync(buffers);
-            var imageType = file.ContentType;
-            var imgUrl = $"data:{imageType};base64,{Convert.ToBase64String(buffers)}";
-            Model.ImageUrl = new Uri(imgUrl);
-        }
-
         #endregion
     }
 }

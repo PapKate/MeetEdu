@@ -155,7 +155,7 @@
         cursor: pointer;
     }
 
-    .layoutButton {
+    .editButton {
         width: 3rem;
         height: 3rem;
         padding: @NormalPadding;
@@ -167,4 +167,31 @@
         bottom: @XXLargePadding;
         right: @XXLargePadding;
     }
+
+    .textContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: @XXLargePadding;
+    }
+
+    .editTextButtonsContainer {
+        position: absolute;
+        top: @XXLargePadding;
+        right: @XXLargePadding;
+        display: flex;
+    }
+
+    .divider {
+        position: absolute;
+        bottom: 0;
+        width: 92%;
+    }
+
+
 </style>

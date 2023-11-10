@@ -5,7 +5,7 @@ namespace MeetCore
     /// <summary>
     /// The model for updating a department
     /// </summary>
-    public class UpdateDepartmentModel
+    public class UpdateDepartmentModel : IImageable
     {
         #region Public Properties
 

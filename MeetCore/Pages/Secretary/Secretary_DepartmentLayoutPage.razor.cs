@@ -19,10 +19,6 @@ namespace MeetCore
 
         private bool mIsLayoutDescripitonReadOnly = true;
 
-        private string mEditDescripitonButtonIconPath = IconPaths.PencilOutlinePath;
-
-        private string mEditDescripitonButtonColor = Amber;
-
         private string mLayoutDescription = string.Empty;
         
         private string mLayoutDescriptionInput = string.Empty;
@@ -102,7 +98,8 @@ namespace MeetCore
             }
             var layout = response.Result.First();
             mLayoutId = layout.Id;
-            mLayoutDescription = layout.Description;   
+            mLayoutDescription = layout.Description;
+            mLayoutDescriptionInput = mLayoutDescription;
             mLayoutRooms = response.Result.SelectMany(x => x.Rooms).ToList();
             StateHasChanged();
         }

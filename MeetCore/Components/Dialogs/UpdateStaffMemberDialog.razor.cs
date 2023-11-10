@@ -1,13 +1,16 @@
 ﻿using MeetBase;
 
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 
 using MudBlazor;
 
 namespace MeetCore
 {
-    public partial class UpdateSecretaryDialog
+    /// <summary>
+    /// Dialog for updating a professor
+    /// </summary>
+    public partial class UpdateStaffMemberDialog<T>
+        where T : UpdateStaffMemberModel, new()
     {
         #region Private Members
 
@@ -60,7 +63,7 @@ namespace MeetCore
         /// The model
         /// </summary>
         [Parameter]
-        public UpdateSecretaryModel Model { get; set; } = new();
+        public T Model { get; set; } = new();
 
         #endregion
 
@@ -69,7 +72,7 @@ namespace MeetCore
         /// <summary>
         /// Default constructor
         /// </summary>
-        public UpdateSecretaryDialog() : base()
+        public UpdateStaffMemberDialog() : base()
         {
 
         }
@@ -101,7 +104,7 @@ namespace MeetCore
             Model.Location = mLocation;
             Model.DateOfBirth = mBirthDate?.ToDateOnly();
 
-            if(!mPassword.IsNullOrEmpty() && mPassword == mConfirmPassword)
+            if (!mPassword.IsNullOrEmpty() && mPassword == mConfirmPassword)
                 Model.PasswordHash = mPassword.EncryptPassword();
 
             MudDialog.Close(DialogResult.Ok(Model));
@@ -110,14 +113,6 @@ namespace MeetCore
         private void Cancel()
         {
             MudDialog.Cancel();
-        }
-
-        private async void BrowserFileUploaded(IBrowserFile file)
-        {
-            var buffers = new byte[file.Size];
-            await file.OpenReadStream().ReadAsync(buffers);
-            var imageType = file.ContentType;
-            var imgUrl = $"data:{imageType};base64,{Convert.ToBase64String(buffers)}";
         }
 
         #endregion

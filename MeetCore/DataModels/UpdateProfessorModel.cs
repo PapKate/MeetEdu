@@ -3,16 +3,16 @@
 namespace MeetCore
 {
     /// <summary>
-    /// The model for updating a secretary
+    /// The model for updating a professor
     /// </summary>
-    public class UpdateSecretaryModel : UpdateStaffMemberModel
+    public class UpdateProfessorModel : UpdateStaffMemberModel
     {
         #region Public Properties
 
         /// <summary>
         /// The role
         /// </summary>
-        public SecretaryRole Role { get; set; }
+        public ProfessorRank Rank { get; set; }
 
         #endregion
 
@@ -21,7 +21,7 @@ namespace MeetCore
         /// <summary>
         /// Default constructor
         /// </summary>
-        public UpdateSecretaryModel() : base()
+        public UpdateProfessorModel() : base()
         {
 
         }

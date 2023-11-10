@@ -1,7 +1,6 @@
 ﻿using MeetBase;
 
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 
 using MudBlazor;
 
@@ -37,6 +36,17 @@ namespace MeetCore
 
         #endregion
 
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public UpdateLayoutRoomDialog() : base()
+        {
+
+        }
+
+        #endregion
 
         #region Private Methods
 
@@ -48,18 +58,6 @@ namespace MeetCore
         private void Cancel()
         {
             MudDialog.Cancel();
-        }
-
-        private async void BrowserFileUploaded(IBrowserFile file)
-        {
-            if(Model is not null)
-            {
-                var buffers = new byte[file.Size];
-                await file.OpenReadStream().ReadAsync(buffers);
-                var imageType = file.ContentType;
-                var imgUrl = $"data:{imageType};base64,{Convert.ToBase64String(buffers)}";
-                Model.ImageUrl = new Uri(imgUrl);
-            }
         }
 
         #endregion

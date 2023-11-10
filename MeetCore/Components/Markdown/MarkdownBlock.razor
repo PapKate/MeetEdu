@@ -1,0 +1,8 @@
+﻿@namespace MeetCore
+
+<div class="@CssClass">
+    @if(!Text.IsNullOrEmpty())
+    {
+        @((MarkupString)Markdig.Markdown.ToHtml(Text))
+    }
+</div>

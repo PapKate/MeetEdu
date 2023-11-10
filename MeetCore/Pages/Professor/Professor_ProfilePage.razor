@@ -1,12 +1,335 @@
 ﻿@page "/professors/{Id}/profile"
 
-@inherits StateManagablePage
+@inherits BasePage
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
 
 @namespace MeetCore
 
 <PageTitle>@EnglishLocalization.Profile</PageTitle>
 
 <ApplicationContainer>
-    <h3>Profile</h3>
+
+    <div class="staffMemberContainer" style="@BorderBrushVariable.SetCssColor(User.Color)">
+
+        <div class="staffMemberRibbonContainer" style="@BackgroundVariable.SetCssColor(User.Color) @ForegroundVariable.SetCssColor(User.Color.DarkOrWhite())">
+            <div></div>
+            <div class="staffMemberRibbon">
+                <div class="staffMemberRibbonInfoContainer">
+                    <span class="staffMemberRibbonInfo">@User.LastName @User.FirstName</span>
+                    <span class="staffMemberRibbonInfoDetails">@Professor.Rank</span>
+                </div>
+                <IconButton BackColor="transparent"
+                            ForeColor="@White"
+                            VectorSource="@IconPaths.PencilOutlinePath"
+                            BoxShadow="none"
+                            OnClick="@UpdateProfessor"
+                            CssClasses="staffmemberRibbonEditContainer" />
+            </div>
+        </div>
+
+        <div class="staffMemberInfoContainer">
+            <div class="staffMemberImageAndContactContainer">
+                <div class="staffMemberImageContainer">
+                    <img class="staffMemberImage" src="@User.ImageUrl?.ToString()" alt="name" />
+                </div>
+                <div class="staffMemberContactContainer">
+                    <div class="staffMemberContactImage">
+                        <EmailMultipleVector Color="@User.Color" />
+                    </div>
+                    <span class="staffMemberContactValue">@StateManager.Department?.Email</span>
+
+                    <div class="staffMemberContactImage">
+                        <CallVector Color="@User.Color" />
+                    </div>
+                    <span class="staffMemberContactValue">+@User.PhoneNumber</span>
+
+                    <div class="staffMemberContactImage">
+                        <EmailVector Color="@User.Color" />
+                    </div>
+                    <span class="staffMemberContactValue">@User.Email</span>
+
+                </div>
+            </div>
+            <div class="staffMemberPositionContainer">
+                <span class="staffMemberWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(User.Color)">Department</span>
+                <span class="staffMemberPosition">@StateManager.Department?.Name</span>
+            </div>
+            <div class="staffMemberWeeklyScheduleContainer">
+                <div class="staffMemberWeeklySchedule">
+                    <span class="staffMemberWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(User.Color)">Schedule</span>
+                </div>
+                <div class="staffMemberWeeklyScheduleDayContainer">
+                    <span class="staffMemberWeeklyScheduleDay">Monday</span>
+                    <span class="staffMemberWeeklyScheduleTime">09:30 - 13:00</span>
+                    <span class="staffMemberWeeklyScheduleTime">19:00 - 20:00</span>
+                </div>
+                <div class="staffMemberWeeklyScheduleDayContainer">
+                    <span class="staffMemberWeeklyScheduleDay">Wednesday</span>
+                    <span class="staffMemberWeeklyScheduleTime">19:00 - 20:00</span>
+                </div>
+                <span class="staffMemberWeeklyScheduleNote">Any other time outside of the working schedule of the secretary office needs prior notice.</span>
+            </div>
+        </div>
+
+        <div class="locationContainer">
+            <img class="location" src="./icons/map.png" alt="map" />
+        </div>
+    </div>
+
+    <div class="staffMemberQuoteContainer">
+        <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+        <span>"@Professor.Quote"</span>
+        <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+    </div>
 </ApplicationContainer>
 
+
+<style>
+
+    .staffMemberContainer {
+        position: relative;
+        top: 1rem;
+        width: 100%;
+        height: auto;
+        min-width: 420px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: @VeryLargePadding;
+        align-items: flex-end;
+    }
+
+    .staffMemberRibbonContainer {
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        top: 36px;
+        display: grid;
+        grid-template-columns: 216px 1fr;
+        gap: @VeryLargeGap;
+        padding: @NormalPadding;
+        background: @BackgroundVariable.GetCssVariable();
+        color: @ForegroundVariable.GetCssVariable();
+        font-size: 120%;
+        font-weight: 600;
+    }
+
+    .staffMemberRibbon {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .staffMemberRibbonInfoContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .staffMemberRibbonInfo {
+        font-size: 100%;
+        font-weight: 700;
+    }
+
+    .staffMemberRibbonInfoDetails {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: @VeryLargeGap;
+        font-size: 92%;
+        font-weight: 400;
+    }
+
+    .staffMemberInfoContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: @SmallGap;
+        padding: @LargePadding;
+    }
+
+    .staffMemberImageAndContactContainer {
+        position: relative;
+        top: -20px;
+        height: 200px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        gap: @LargeGap;
+    }
+
+    .staffMemberImageContainer {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        background: @White.NormalizedColor();
+        filter: @LightFilterDropShadow;
+        border-radius: @LargeBorderRadius;
+        border: solid 1px @BorderBrushVariable.GetCssVariable();
+        overflow: hidden;
+    }
+
+    .staffMemberImage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        filter: @LightFilterDropShadow;
+    }
+
+    .staffMemberContactContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        grid-auto-rows: 28px;
+        align-items: center;
+        gap: @MediumGap;
+    }
+
+    .staffMemberContactImage {
+        position: relative;
+        width: 28px;
+        height: 28px;
+        filter: @LightFilterDropShadow;
+    }
+
+    .staffMemberPositionContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: start;
+        gap: @MediumGap;
+        padding: 0 @VeryLargePadding 0 @VeryLargePadding;
+    }
+
+    .staffMemberPosition {
+        text-align: right;
+    }
+
+    .staffMemberWeeklyScheduleContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: @MediumGap @VeryLargeGap;
+        padding: @VeryLargePadding;
+    }
+
+    .staffMemberWeeklySchedule {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: @LargeGap;
+    }
+
+    .staffMemberWeeklyScheduleTitle {
+        font-size: 112%;
+        font-weight: 700;
+        color: @ForegroundVariable.GetCssVariable();
+    }
+
+    .staffMemberWeeklyScheduleNote {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        font-size: 92%;
+    }
+
+    .staffMemberWeeklyScheduleDayContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        justify-items: right;
+        gap: @MediumGap;
+    }
+
+    .staffMemberWeeklyScheduleDay {
+        font-weight: 600;
+    }
+
+    .staffMemberWeeklyScheduleTime {
+        grid-column-start: 2;
+    }
+
+    .locationContainer {
+        position: relative;
+        width: 100%;
+        height: min-content;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    .location {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        border-radius: @VeryLargeBorderRadius;
+        border: 1px solid @LightGray.NormalizedColor();
+    }
+
+    .staffMemberQuoteContainer {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-style: italic;
+        font-weight: 300;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .staffmemberRibbonEditContainer {
+        width: 3rem;
+        height: 3rem;
+        padding: 8px;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+
+    @@media screen and (max-width: 440px) {
+
+        .staffMemberImageAndContactContainer {
+            height: 160px;
+        }
+
+        .staffMemberContainer {
+            min-width: 360px;
+            width: 360px;
+            font-size: 90%;
+        }
+
+        .staffMemberRibbonContainer {
+            grid-template-columns: 132px 1fr;
+        }
+
+        .staffMemberImageContainer {
+            width: 120px;
+            height: 120px;
+        }
+
+        .staffMemberPositionContainer {
+            padding: @LargePadding @LargePadding 0 @LargePadding;
+        }
+
+        .staffMemberWeeklyScheduleContainer {
+            gap: @MediumGap @LargeGap;
+            padding: @LargePadding;
+        }
+    }
+
+</style>

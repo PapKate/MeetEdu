@@ -64,7 +64,7 @@
                               Adornment="Adornment.Start"
                               AdornmentIcon="@MudIconPaths.Phone" />
             </div>
-            <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@BrowserFileUploaded" Class="dialogContentPhotoContainer">
+            <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => ControlHelpers.SetBrowserFileToModelImage(e, Model))" Class="dialogContentPhotoContainer">
                 <ButtonTemplate>
                     <MudButton HtmlTag="label"
                                Variant="Variant.Text"

@@ -1,4 +1,6 @@
-﻿@using static MeetBase.Blazor.PaletteColors
+﻿@typeparam T 
+
+@using static MeetBase.Blazor.PaletteColors
 @using static MeetBase.Blazor.CssVariables
 
 @using static MeetBase.Blazor.Personalization
@@ -40,7 +42,7 @@
                           Class="dialogInput"
                           Adornment="Adornment.Start"
                           AdornmentIcon="@MudIconPaths.KeyLink" />
-            <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@BrowserFileUploaded" Class="dialogContentPhotoContainer">
+            <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => ControlHelpers.SetBrowserFileToModelImage(e, Model))" Class="dialogContentPhotoContainer">
                 <ButtonTemplate>
                     <MudButton HtmlTag="label"
                                Variant="Variant.Text"
@@ -156,7 +158,7 @@
 </MudDialog>
 
 <style>
-    
+
     .dialogSection {
         background-color: @Model.Color.NormalizedColor();
         color: @Model.Color.DarkOrWhite().NormalizedColor();

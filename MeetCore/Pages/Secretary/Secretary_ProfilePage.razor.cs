@@ -149,10 +149,10 @@ namespace MeetCore
                 ImageUrl = User.ImageUrl
             };
 
-            var parameters = new DialogParameters<UpdateSecretaryDialog> { { x => x.Model, model } };
+            var parameters = new DialogParameters<UpdateStaffMemberDialog<UpdateSecretaryModel>> { { x => x.Model, model } };
 
             // Creates and opens a dialog with the specified type
-            var dialog = await DialogService.ShowAsync<UpdateSecretaryDialog>(null, parameters, mDialogOptions);
+            var dialog = await DialogService.ShowAsync<UpdateStaffMemberDialog<UpdateSecretaryModel>>(null, parameters, mDialogOptions);
             
             // Once the dialog is closed...
             // Gets the result

@@ -12,6 +12,11 @@
         /// </summary>
         public const string AppName = "MeetCore";
 
+        /// <summary>
+        /// The WWW root folder path
+        /// </summary>
+        public const string WwwRootPath = "C:\\Users\\kater\\Desktop\\AppointMate\\MeetCore\\wwwroot";
+
         #endregion
     }
 }

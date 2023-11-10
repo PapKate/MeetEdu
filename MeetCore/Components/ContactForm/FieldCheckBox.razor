@@ -1,0 +1,49 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<div class="fieldCheckBoxContainer">
+    <MudCheckBox @bind-Checked="@mIsChecked" Class="fieldCheckBox"></MudCheckBox>
+    <MudTextField T="string" Text="@Text" ReadOnly="true" Variant="Variant.Outlined" Class="fieldCheckBoxTextField" />
+</div>
+
+<style>
+
+    .fieldCheckBoxContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: @MediumGap;
+    }
+
+    .fieldCheckBoxTextField .mud-input.mud-input-outlined {
+        border-radius: @VeryLargeBorderRadius;
+        background: @White.NormalizedColor();
+        filter: @LightFilterDropShadow;
+    }
+
+        .fieldCheckBoxTextField .mud-input.mud-input-outlined .mud-input-outlined-border {
+            display: none;
+        }
+
+    .fieldCheckBox .mud-icon-button {
+        color: @White.NormalizedColor();
+    }
+
+    .fieldCheckBox .mud-icon-root {
+        filter: @LightFilterDropShadow;
+    }
+
+    .fieldCheckBoxContainer .mud-input > input.mud-input-root-outlined, div.mud-input-slot.mud-input-root-outlined {
+        padding: @LargePadding @VeryLargePadding;
+        font-size: 92%;
+    }
+
+</style>

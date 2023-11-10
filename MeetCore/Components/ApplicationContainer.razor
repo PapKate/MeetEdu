@@ -32,11 +32,12 @@
     .pageContainer {
         width: 80%;
         max-width: 1024px;
-        background-color: white;
+        background-color: @White.NormalizedColor();
+        border: solid 1px @LightGray.NormalizedColor();
     }
 
     .page {
-        background-color: wheat;
+        background-color: @White.ToDarkerColor(1).NormalizedColor();
     }
 
 </style>
