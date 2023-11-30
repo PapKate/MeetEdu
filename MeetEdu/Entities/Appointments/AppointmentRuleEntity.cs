@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 
 namespace MeetEdu
 {
@@ -15,6 +13,11 @@ namespace MeetEdu
         /// The member of the <see cref="Description"/> property
         /// </summary>
         private string? mDescription;
+
+        /// <summary>
+        /// The member of the <see cref="Link"/> property
+        /// </summary>
+        private string? mLink;
 
         /// <summary>
         /// The member of the <see cref="Note"/> property
@@ -42,6 +45,15 @@ namespace MeetEdu
         {
             get => mDescription ?? string.Empty;
             set => mDescription = value;
+        }
+
+        /// <summary>
+        /// The link for the online appointment
+        /// </summary>
+        public string Link
+        {
+            get => mLink ?? string.Empty;
+            set => mLink = value;
         }
 
         /// <summary>
@@ -109,7 +121,7 @@ namespace MeetEdu
     /// A minimal version of the <see cref="AppointmentRuleEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedAppointmentRuleEntity : StandardEmbeddedEntity, IProfessorIdentifiable<ObjectId>
+    public class EmbeddedAppointmentRuleEntity : EmbeddedStandardEntity, IProfessorIdentifiable<ObjectId>
     {
         #region Public Properties
 

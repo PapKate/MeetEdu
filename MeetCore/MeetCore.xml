@@ -342,7 +342,7 @@
             The CSS class for the display theme
             </summary>
         </member>
-        <member name="P:MeetCore.LayoutPresenter.LayoutRoom">
+        <member name="P:MeetCore.LayoutPresenter.Layout">
             <summary>
             The layout room
             </summary>
@@ -1512,14 +1512,25 @@
             <inheritdoc/>
             </summary>
         </member>
-        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.AddButton_Onclick">
+        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.SaveFormDescription(System.String)">
             <summary>
-            Adds a layout or a room if the layout exists
+            Saves the layout description of the current <see cref="P:MeetCore.StateManagerCore.Department"/>
             </summary>
         </member>
         <member name="M:MeetCore.Secretary_DepartmentLayoutPage.AddLayout">
             <summary>
             Creates and adds a layout to the current department
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.UpdateLayout(MeetBase.Web.DepartmentLayoutResponseModel)">
+            <summary>
+            Updates the current <paramref name="model"/>
+            </summary>
+            <param name="model">The layout</param>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.GetLayouts">
+            <summary>
+            Gets the <see cref="T:MeetBase.Web.DepartmentLayoutResponseModel"/>s of the current <see cref="P:MeetCore.StateManagerCore.Department"/>
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_DepartmentSecretaryPage">
@@ -1576,6 +1587,41 @@
         <member name="T:MeetCore.Secretary_InboxPage">
             <summary>
             The inbox page
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_InboxPage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_InboxPage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_InboxPage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_InboxPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_InboxPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_InboxPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_InboxPage.OnInitialized">
+            <summary>
+            <inheritdoc/>
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_ProfilePage">

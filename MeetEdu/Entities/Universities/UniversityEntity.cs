@@ -103,7 +103,7 @@ namespace MeetEdu
     /// A minimal version of the <see cref="UniversityEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedUniversityEntity : StandardEmbeddedEntity, IImageable
+    public class EmbeddedUniversityEntity : EmbeddedStandardEntity, IImageable
     {
         #region Public Properties
 

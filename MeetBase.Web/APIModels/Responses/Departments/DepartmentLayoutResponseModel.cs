@@ -1,9 +1,11 @@
-﻿namespace MeetBase.Web
+﻿using System.Xml.Linq;
+
+namespace MeetBase.Web
 {
     /// <summary>
     /// Represents a company layout document in the MongoDB
     /// </summary>
-    public class DepartmentLayoutResponseModel : DateResponseModel, IDescriptable, IDepartmentIdentifiable<string>
+    public class DepartmentLayoutResponseModel : StandardResponseModel, IDescriptable, INoteable, IDepartmentIdentifiable<string>
     {
         #region Private Members
 
@@ -18,9 +20,9 @@
         private string? mDescription;
 
         /// <summary>
-        /// The member of the <see cref="Rooms"/> property
+        /// The member of the <see cref="Note"/> property
         /// </summary>
-        private IList<DepartmentLayoutRoom>? mRooms;
+        private string? mNote;
 
         #endregion
 
@@ -45,19 +47,23 @@
         }
 
         /// <summary>
-        /// The layout
+        /// The note
         /// </summary>
-        public IList<DepartmentLayoutRoom> Rooms
+        public string Note
         {
-            get
-            {
-                if (mRooms is null)
-                    mRooms = new List<DepartmentLayoutRoom>();
-
-                return mRooms;
-            }
-            set => mRooms = value;
+            get => mNote ?? string.Empty;
+            set => mNote = value;
         }
+
+        /// <summary>
+        /// The image URL
+        /// </summary>
+        public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The display theme
+        /// </summary>
+        public RoomDisplayTheme DisplayTheme { get; set; }
 
         #endregion
 

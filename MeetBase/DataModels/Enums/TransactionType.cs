@@ -21,4 +21,25 @@ namespace MeetBase
         /// </summary>
         PayPal
     }
+
+    /// <summary>
+    /// Provides enumerations over the <see cref="ContactMean"/>
+    /// </summary>
+    public enum ContactMean
+    {
+        /// <summary>
+        /// All
+        /// </summary>
+        All,
+
+        /// <summary>
+        /// Phone number
+        /// </summary>
+        PhoneNumber,
+        
+        /// <summary>
+        /// Email
+        /// </summary>
+        Email
+    }
 }

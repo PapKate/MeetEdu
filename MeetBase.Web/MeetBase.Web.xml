@@ -139,9 +139,19 @@
             The description
             </summary>
         </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.Rooms">
+        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.Note">
             <summary>
-            The layout
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.ImageFile">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.DisplayTheme">
+            <summary>
+            The display theme
             </summary>
         </member>
         <member name="M:MeetBase.Web.DepartmentLayoutRequestModel.#ctor">
@@ -184,6 +194,11 @@
             The note
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.LayoutDescription">
+            <summary>
+            The layout description
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentRequestModel.TotalStaffMembers">
             <summary>
             The number of staff members
@@ -207,6 +222,11 @@
         <member name="P:MeetBase.Web.DepartmentRequestModel.PhoneNumber">
             <summary>
             The phone number
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.ContactMessageTemplate">
+            <summary>
+            The contact message template
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentRequestModel.LabelIds">
@@ -909,9 +929,9 @@
             The member of the <see cref="P:MeetBase.Web.DepartmentLayoutResponseModel.Description"/> property
             </summary>
         </member>
-        <member name="F:MeetBase.Web.DepartmentLayoutResponseModel.mRooms">
+        <member name="F:MeetBase.Web.DepartmentLayoutResponseModel.mNote">
             <summary>
-            The member of the <see cref="P:MeetBase.Web.DepartmentLayoutResponseModel.Rooms"/> property
+            The member of the <see cref="P:MeetBase.Web.DepartmentLayoutResponseModel.Note"/> property
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.DepartmentId">
@@ -924,9 +944,19 @@
             The description
             </summary>
         </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.Rooms">
+        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.Note">
             <summary>
-            The layout
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.DisplayTheme">
+            <summary>
+            The display theme
             </summary>
         </member>
         <member name="M:MeetBase.Web.DepartmentLayoutResponseModel.#ctor">
@@ -957,6 +987,11 @@
         <member name="F:MeetBase.Web.DepartmentResponseModel.mDescription">
             <summary>
             The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Description"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mLayoutDescription">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.LayoutDescription"/> property
             </summary>
         </member>
         <member name="F:MeetBase.Web.DepartmentResponseModel.mFields">
@@ -994,6 +1029,11 @@
             The description
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.LayoutDescription">
+            <summary>
+            The layout description
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentResponseModel.Note">
             <summary>
             The note
@@ -1022,6 +1062,11 @@
         <member name="P:MeetBase.Web.DepartmentResponseModel.PhoneNumber">
             <summary>
             The phone number
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.ContactMessageTemplate">
+            <summary>
+            The contact message template
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentResponseModel.Labels">

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Http;
 
 using System.Drawing;
 
@@ -30,7 +31,7 @@ namespace MeetBase.Blazor
         #endregion
 
         #region Image
-
+       
         /// <summary>
         /// Creates a Base64 image from the selected file
         /// </summary>

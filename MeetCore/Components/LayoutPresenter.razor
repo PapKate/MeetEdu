@@ -4,23 +4,23 @@
 
 @namespace MeetCore
 
-@if(LayoutRoom is not null)
+@if(Layout is not null)
 {
-    <div class="layoutRoomContainer @mRoomDisplayThemeClass" style="@BackgroundVariable.SetCssColor(LayoutRoom.Color.ToLighterColor(5) ?? White)">
-        <div class="@(LayoutRoom.DisplayTheme == RoomDisplayTheme.Center ? "layoutRoomImageFullContainer" : "layoutRoomImageContainer")">
-            <img class="@(LayoutRoom.DisplayTheme == RoomDisplayTheme.Center ? "layoutRoomImageFull" : "layoutRoomImage")" src="@LayoutRoom.ImageUrl?.ToString()" alt="@LayoutRoom.Name" />
+    <div class="layoutRoomContainer @mRoomDisplayThemeClass" style="@BackgroundVariable.SetCssColor(Layout.Color.IsNullOrEmpty() ? Amber : Layout.Color.ToLighterColor(5))">
+        <div class="@(Layout.DisplayTheme == RoomDisplayTheme.Center ? "layoutRoomImageFullContainer" : "layoutRoomImageContainer")">
+            <img class="@(Layout.DisplayTheme == RoomDisplayTheme.Center ? "layoutRoomImageFull" : "layoutRoomImage")" src="@Layout.ImageUrl?.ToString()" alt="@Layout.Name" />
         </div>
     
         <div class="layoutRoomTextContainer">
-            <h3>@LayoutRoom.Name</h3>
-            @((MarkupString)Markdig.Markdown.ToHtml(LayoutRoom.Note))
+            <h3>@Layout.Name</h3>
+            @((MarkupString)Markdig.Markdown.ToHtml(Layout.Note))
         </div>
 
         @if(IsEditable)
         {
             <IconButton OnClick="@EditLayoutRoom"
                         BackColor="@White"
-                        ForeColor="@(LayoutRoom.Color ?? DarkGray)"
+                        ForeColor="@(Layout.Color ?? DarkGray)"
                         VectorSource="@IconPaths.PencilOutlinePath"
                         BoxShadow="@BoxShadow"
                         BorderRadius="@NormalBorderRadius"

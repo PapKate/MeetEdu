@@ -12,10 +12,13 @@ namespace MeetCore
     public partial class Secretary_ContactFormPage : BasePage
     {
         #region Private Members
-
+       
         private string mText = string.Empty;
 
         private bool mIsFirstNameChecked = false;
+
+        private int mSelectedIndex = 0;
+
         #endregion
 
         #region Public Properties
@@ -95,6 +98,11 @@ namespace MeetCore
         private void SaveFormDescription(string? value)
         {
             var test = value;
+        }
+
+        private void SetSelectedIndex(int index)
+        {
+            mSelectedIndex = index;
         }
 
         #endregion

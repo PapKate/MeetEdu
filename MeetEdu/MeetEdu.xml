@@ -1329,6 +1329,11 @@
             The member of the <see cref="P:MeetEdu.AppointmentRuleEntity.Description"/> property
             </summary>
         </member>
+        <member name="F:MeetEdu.AppointmentRuleEntity.mLink">
+            <summary>
+            The member of the <see cref="P:MeetEdu.AppointmentRuleEntity.Link"/> property
+            </summary>
+        </member>
         <member name="F:MeetEdu.AppointmentRuleEntity.mNote">
             <summary>
             The member of the <see cref="P:MeetEdu.AppointmentRuleEntity.Note"/> property
@@ -1347,6 +1352,11 @@
         <member name="P:MeetEdu.AppointmentRuleEntity.Description">
             <summary>
             The description
+            </summary>
+        </member>
+        <member name="P:MeetEdu.AppointmentRuleEntity.Link">
+            <summary>
+            The link for the online appointment
             </summary>
         </member>
         <member name="P:MeetEdu.AppointmentRuleEntity.Note">
@@ -1424,17 +1434,17 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:MeetEdu.BaseEmbeddedEntity">
+        <member name="T:MeetEdu.EmbeddedBaseEntity">
             <summary>
             The base for all the embedded entities
             </summary>
         </member>
-        <member name="P:MeetEdu.BaseEmbeddedEntity.Source">
+        <member name="P:MeetEdu.EmbeddedBaseEntity.Source">
             <summary>
             The id of the entity that was used for creating the current 
             </summary>
         </member>
-        <member name="M:MeetEdu.BaseEmbeddedEntity.#ctor">
+        <member name="M:MeetEdu.EmbeddedBaseEntity.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -1595,6 +1605,11 @@
             The member of the <see cref="P:MeetEdu.DepartmentEntity.Description"/> property
             </summary>
         </member>
+        <member name="F:MeetEdu.DepartmentEntity.mLayoutDescription">
+            <summary>
+            The member of the <see cref="P:MeetEdu.DepartmentEntity.LayoutDescription"/> property
+            </summary>
+        </member>
         <member name="F:MeetEdu.DepartmentEntity.mFields">
             <summary>
             The member of the <see cref="P:MeetEdu.DepartmentEntity.Fields"/> property
@@ -1630,6 +1645,11 @@
             The description
             </summary>
         </member>
+        <member name="P:MeetEdu.DepartmentEntity.LayoutDescription">
+            <summary>
+            The layout description
+            </summary>
+        </member>
         <member name="P:MeetEdu.DepartmentEntity.Note">
             <summary>
             The note
@@ -1658,6 +1678,11 @@
         <member name="P:MeetEdu.DepartmentEntity.PhoneNumber">
             <summary>
             The phone number
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentEntity.ContactMessageTemplate">
+            <summary>
+            The contact message template
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentEntity.Labels">
@@ -1739,9 +1764,9 @@
             The member of the <see cref="P:MeetEdu.DepartmentLayoutEntity.Description"/> property
             </summary>
         </member>
-        <member name="F:MeetEdu.DepartmentLayoutEntity.mRooms">
+        <member name="F:MeetEdu.DepartmentLayoutEntity.mNote">
             <summary>
-            The member of the <see cref="P:MeetEdu.DepartmentLayoutEntity.Rooms"/> property
+            The member of the <see cref="P:MeetEdu.DepartmentLayoutEntity.Note"/> property
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentLayoutEntity.DepartmentId">
@@ -1754,9 +1779,19 @@
             The description
             </summary>
         </member>
-        <member name="P:MeetEdu.DepartmentLayoutEntity.Rooms">
+        <member name="P:MeetEdu.DepartmentLayoutEntity.Note">
             <summary>
-            The rooms
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentLayoutEntity.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentLayoutEntity.DisplayTheme">
+            <summary>
+            The display theme
             </summary>
         </member>
         <member name="M:MeetEdu.DepartmentLayoutEntity.#ctor">
@@ -1915,38 +1950,38 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:MeetEdu.StandardEmbeddedEntity">
+        <member name="T:MeetEdu.EmbeddedStandardEntity">
             <summary>
             A minimal version of the <see cref="T:MeetEdu.StandardEntity"/> that contains the fields that are 
             more frequently used when embedding documents in the MongoDB
             </summary>
         </member>
-        <member name="F:MeetEdu.StandardEmbeddedEntity.mName">
+        <member name="F:MeetEdu.EmbeddedStandardEntity.mName">
             <summary>
-            The member of the <see cref="P:MeetEdu.StandardEmbeddedEntity.Name"/> property
+            The member of the <see cref="P:MeetEdu.EmbeddedStandardEntity.Name"/> property
             </summary>
         </member>
-        <member name="F:MeetEdu.StandardEmbeddedEntity.mColor">
+        <member name="F:MeetEdu.EmbeddedStandardEntity.mColor">
             <summary>
-            The member of the <see cref="P:MeetEdu.StandardEmbeddedEntity.Color"/> property
+            The member of the <see cref="P:MeetEdu.EmbeddedStandardEntity.Color"/> property
             </summary>
         </member>
-        <member name="P:MeetEdu.StandardEmbeddedEntity.Name">
+        <member name="P:MeetEdu.EmbeddedStandardEntity.Name">
             <summary>
             The name
             </summary>
         </member>
-        <member name="P:MeetEdu.StandardEmbeddedEntity.Color">
+        <member name="P:MeetEdu.EmbeddedStandardEntity.Color">
             <summary>
             The color
             </summary>
         </member>
-        <member name="M:MeetEdu.StandardEmbeddedEntity.#ctor">
+        <member name="M:MeetEdu.EmbeddedStandardEntity.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetEdu.StandardEmbeddedEntity.ToString">
+        <member name="M:MeetEdu.EmbeddedStandardEntity.ToString">
             <summary>
             Returns a string that represents the current object.
             </summary>
@@ -3421,43 +3456,6 @@
         <member name="M:MeetEdu.DepartmentsRepository.DeleteDepartmentLayoutAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
             <summary>
             Deletes the department layout with the specified <paramref name="layoutId"/>
-            </summary>
-            <param name="layoutId">The layout id</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:MeetEdu.DepartmentsRepository.AddDepartmentLayoutRoomAsync(MongoDB.Bson.ObjectId,MeetBase.DepartmentLayoutRoom,System.Threading.CancellationToken)">
-            <summary>
-            Add a department layout room
-            </summary>
-            <param name="layoutId">The layout id</param>
-            <param name="model">The model</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:MeetEdu.DepartmentsRepository.AddDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{MeetBase.DepartmentLayoutRoom},System.Threading.CancellationToken)">
-            <summary>
-            Add a list of rooms to the department layout 
-            </summary>
-            <param name="layoutId">The layout id</param>
-            <param name="models">The models</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:MeetEdu.DepartmentsRepository.UpdateDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Collections.Generic.IEnumerable{MeetBase.DepartmentLayoutRoom},System.Threading.CancellationToken)">
-            <summary>
-            Replaces the layout rooms with the specified <paramref name="models"/>
-            of the department layout with the specified <paramref name="layoutId"/>
-            </summary>
-            <param name="layoutId">The layout id</param>
-            <param name="models">The models</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:MeetEdu.DepartmentsRepository.DeleteDepartmentLayoutRoomsAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
-            <summary>
-            Deletes the department layout rooms 
-            from the department layout with the specified <paramref name="layoutId"/>
             </summary>
             <param name="layoutId">The layout id</param>
             <param name="cancellationToken">The cancellation token</param>

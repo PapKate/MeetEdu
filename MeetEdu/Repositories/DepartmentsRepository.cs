@@ -1,7 +1,10 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.AspNetCore.Components.Forms;
+
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
+using System.IO;
 using System.Threading;
 
 namespace MeetEdu
@@ -163,11 +166,46 @@ namespace MeetEdu
         /// <summary>
         /// Add a department layout
         /// </summary>
+        /// <param name="layoutId">The layout id</param>
+        /// <param name="file">The file</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutImageAsync(ObjectId layoutId, IFormFile file, CancellationToken cancellationToken = default)
+        {
+            //if (!model.Rooms.IsNullOrEmpty())
+            //    foreach(var room in model.Rooms)
+            //    {
+            //        var relativePath = Path.Combine(departmentId.ToString(), Path.GetRandomFileName() + ".png");
+            //        var filePath = Path.Combine(DI.GetRequiredService<IWebHostEnvironment>().WebRootPath, relativePath);
+
+            //        var image = Convert.FromBase64String(room.ImageUrl);
+
+            //        await File.WriteAllBytesAsync(filePath, image);
+
+            //        var url = new Uri(Path.Combine("http://appointment.com/", relativePath));
+
+            //    }
+
+            var relativePath = Path.Combine(layoutId.ToString(), Path.GetRandomFileName() + ".png");
+            var filePath = Path.Combine(DI.GetRequiredService<IWebHostEnvironment>().WebRootPath, relativePath);
+
+            await using FileStream fs = new(filePath, FileMode.Create);
+            await file.OpenReadStream().CopyToAsync(fs);
+
+            var url = new Uri(Path.Combine("http://appointment.com/", relativePath));
+            var model = new DepartmentLayoutRequestModel() { ImageFile = url };
+
+            return await UpdateDepartmentLayoutAsync(layoutId, model, cancellationToken);
+        }
+
+        /// <summary>
+        /// Add a department layout
+        /// </summary>
         /// <param name="departmentId">The department id</param>
         /// <param name="model">The model</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutAsync(ObjectId departmentId, DepartmentLayoutRequestModel model, CancellationToken cancellationToken = default)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutAsync(ObjectId departmentId, DepartmentLayoutRequestModel model, CancellationToken cancellationToken = default) 
             => await MeetEduDbMapper.DepartmentLayouts.AddAsync(DepartmentLayoutEntity.FromRequestModel(model, departmentId), cancellationToken);
 
         /// <summary>
@@ -195,115 +233,6 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<DepartmentLayoutEntity>> DeleteDepartmentLayoutAsync(ObjectId layoutId, CancellationToken cancellationToken = default)
             => await MeetEduDbMapper.DepartmentLayouts.DeleteAsync(layoutId, cancellationToken);
-
-        #region Rooms
-
-        /// <summary>
-        /// Add a department layout room
-        /// </summary>
-        /// <param name="layoutId">The layout id</param>
-        /// <param name="model">The model</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutRoomAsync(ObjectId layoutId, DepartmentLayoutRoom model, CancellationToken cancellationToken = default)
-        {
-            // Get the layout with the specified id
-            var layout = await MeetEduDbMapper.DepartmentLayouts.FirstOrDefaultAsync(layoutId, cancellationToken);
-            
-            // If the layout does not exist...
-            if (layout is null)
-                // Return not found
-                return WebServerFailable.NotFound(layoutId, nameof(MeetEduDbMapper.DepartmentLayouts));
-          
-            // Add the room to the layout
-            layout.Rooms.Add(model);
-            
-            // Update the layout
-            await MeetEduDbMapper.DepartmentLayouts.UpdateAsync(layout, cancellationToken);
-
-            // Return the layout
-            return layout;
-        }
-
-        /// <summary>
-        /// Add a list of rooms to the department layout 
-        /// </summary>
-        /// <param name="layoutId">The layout id</param>
-        /// <param name="models">The models</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutRoomsAsync(ObjectId layoutId, IEnumerable<DepartmentLayoutRoom> models, CancellationToken cancellationToken = default)
-        {
-            // Get the layout with the specified id
-            var layout = await MeetEduDbMapper.DepartmentLayouts.FirstOrDefaultAsync(layoutId, cancellationToken);
-
-            // If the layout does not exist...
-            if (layout is null)
-                // Return not found
-                return WebServerFailable.NotFound(layoutId, nameof(MeetEduDbMapper.DepartmentLayouts));
-
-            // A list for the rooms
-            var rooms = layout.Rooms.ToList();
-
-            // Add the rooms to the list
-            rooms.AddRange(models);
-
-            // Set as layout rooms the list
-            layout.Rooms = rooms;
-
-            // Update the layout
-            await MeetEduDbMapper.DepartmentLayouts.UpdateAsync(layout, cancellationToken);
-
-            // Return the layout
-            return layout;
-        }
-
-        /// <summary>
-        /// Replaces the layout rooms with the specified <paramref name="models"/>
-        /// of the department layout with the specified <paramref name="layoutId"/>
-        /// </summary>
-        /// <param name="layoutId">The layout id</param>
-        /// <param name="models">The models</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> UpdateDepartmentLayoutRoomsAsync(ObjectId layoutId, IEnumerable<DepartmentLayoutRoom> models, CancellationToken cancellationToken = default)
-        {
-            return await ExecuteAgainstDepartmentLayoutAsync(
-                layoutId,
-                async (layout) =>
-                {
-                    // A list for the rooms
-                    var rooms = models.ToList();
-
-                    // Set as layout rooms the list
-                    layout.Rooms = rooms;
-
-                    // Update the layout 
-                    await MeetEduDbMapper.DepartmentLayouts.UpdateAsync(layout, cancellationToken);
-                });
-        }
-
-        /// <summary>
-        /// Deletes the department layout rooms 
-        /// from the department layout with the specified <paramref name="layoutId"/>
-        /// </summary>
-        /// <param name="layoutId">The layout id</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> DeleteDepartmentLayoutRoomsAsync(ObjectId layoutId, CancellationToken cancellationToken = default)
-        {
-            return await ExecuteAgainstDepartmentLayoutAsync(
-                layoutId,
-                async (layout) =>
-                {
-                    layout.Rooms.Clear();
-
-                    // Update the layout 
-                    await MeetEduDbMapper.DepartmentLayouts.UpdateAsync(layout, cancellationToken);
-                });
-        }
-
-        #endregion
 
         #endregion
 

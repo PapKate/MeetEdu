@@ -38,6 +38,11 @@
         public string? Note { get; set; }
 
         /// <summary>
+        /// The layout description
+        /// </summary>
+        public string? LayoutDescription { get; set; }
+
+        /// <summary>
         /// The number of staff members
         /// </summary>
         public uint? TotalStaffMembers { get; set; }
@@ -61,6 +66,11 @@
         /// The phone number
         /// </summary>
         public PhoneNumber? PhoneNumber { get; set; }
+
+        /// <summary>
+        /// The contact message template
+        /// </summary>
+        public DepartmentContactMessageTemplate? ContactMessageTemplate { get; set; }
 
         /// <summary>
         /// The labels

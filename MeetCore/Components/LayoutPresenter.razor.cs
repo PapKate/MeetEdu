@@ -1,4 +1,5 @@
 ﻿using MeetBase;
+using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 
@@ -24,7 +25,7 @@ namespace MeetCore
         /// The layout room
         /// </summary>
         [Parameter]
-        public DepartmentLayoutRoom? LayoutRoom { get; set; }
+        public DepartmentLayoutResponseModel? Layout { get; set; }
 
         /// <summary>
         /// A flag indicating whether it is editable or not
@@ -55,11 +56,11 @@ namespace MeetCore
         {
             base.OnInitialized();
 
-            if (LayoutRoom is not null) 
+            if (Layout is not null) 
             {
-                if (LayoutRoom.DisplayTheme == RoomDisplayTheme.Left)
+                if (Layout.DisplayTheme == RoomDisplayTheme.Left)
                     mRoomDisplayThemeClass = "layoutRoomLeftContainer";
-                else if (LayoutRoom.DisplayTheme == RoomDisplayTheme.Right)
+                else if (Layout.DisplayTheme == RoomDisplayTheme.Right)
                     mRoomDisplayThemeClass = "layoutRoomRightContainer";
                 else
                     mRoomDisplayThemeClass = "layoutRoomCenterContainer";
@@ -72,7 +73,7 @@ namespace MeetCore
 
         private async void EditLayoutRoom()
         {
-            await EditButtonClicked.InvokeAsync(LayoutRoom);
+            await EditButtonClicked.InvokeAsync(Layout);
         }
 
         #endregion
@@ -83,7 +84,7 @@ namespace MeetCore
         /// Fires when the edit button is clicked
         /// </summary>
         [Parameter]
-        public EventCallback<DepartmentLayoutRoom> EditButtonClicked { get; set; }
+        public EventCallback<DepartmentLayoutResponseModel> EditButtonClicked { get; set; }
 
         #endregion
     }

@@ -4,6 +4,7 @@
 @using static MeetBase.Blazor.Personalization
 
 @namespace MeetCore
+@using Microsoft.AspNetCore.Http;
 
 <MudDialog>
     <DialogContent>
@@ -43,7 +44,7 @@
                         <MudSelectItem Value="@value">@value</MudSelectItem>
                     }
                 </MudSelect>
-                <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => ControlHelpers.SetBrowserFileToModelImage(e, Model))" Class="dialogContentPhotoContainer">
+                <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => mFile = e)" Class="dialogContentPhotoContainer">
                     <ButtonTemplate>
                         <MudButton HtmlTag="label"
                                    Variant="Variant.Text"

@@ -170,7 +170,7 @@
     /// A minimal version of the <see cref="UserEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedUserEntity : BaseEmbeddedEntity, IImageable
+    public class EmbeddedUserEntity : EmbeddedBaseEntity, IImageable
     {
         #region Private Members
 

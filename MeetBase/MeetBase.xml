@@ -325,56 +325,6 @@
             <param name="value">The value</param>
             <returns></returns>
         </member>
-        <member name="T:MeetBase.DepartmentLayoutRoom">
-            <summary>
-            Represents a company room document in the MongoDB
-            </summary>
-        </member>
-        <member name="F:MeetBase.DepartmentLayoutRoom.mName">
-            <summary>
-            The member of the <see cref="P:MeetBase.DepartmentLayoutRoom.Name"/> property
-            </summary>
-        </member>
-        <member name="F:MeetBase.DepartmentLayoutRoom.mColor">
-            <summary>
-            The member of the <see cref="P:MeetBase.DepartmentLayoutRoom.Color"/> property
-            </summary>
-        </member>
-        <member name="F:MeetBase.DepartmentLayoutRoom.mNote">
-            <summary>
-            The member of the <see cref="P:MeetBase.DepartmentLayoutRoom.Note"/> property
-            </summary>
-        </member>
-        <member name="P:MeetBase.DepartmentLayoutRoom.Name">
-            <summary>
-            The name
-            </summary>
-        </member>
-        <member name="P:MeetBase.DepartmentLayoutRoom.Color">
-            <summary>
-            The color
-            </summary>
-        </member>
-        <member name="P:MeetBase.DepartmentLayoutRoom.Note">
-            <summary>
-            The note
-            </summary>
-        </member>
-        <member name="P:MeetBase.DepartmentLayoutRoom.ImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:MeetBase.DepartmentLayoutRoom.DisplayTheme">
-            <summary>
-            The display theme
-            </summary>
-        </member>
-        <member name="M:MeetBase.DepartmentLayoutRoom.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
         <member name="T:MeetBase.ConcurrentCollection`1">
             <summary>
             A collection that provides type safety 
@@ -594,6 +544,31 @@
             <typeparam name="TOutput">The type of the elements of the target array.</typeparam>
             <param name="converter">A delegate that converts each element from one type to another type.</param>
             <returns></returns>
+        </member>
+        <member name="T:MeetBase.DepartmentContactMessageTemplate">
+            <summary>
+            Represents a department contact message template
+            </summary>
+        </member>
+        <member name="F:MeetBase.DepartmentContactMessageTemplate.mNote">
+            <summary>
+            The member of the <see cref="P:MeetBase.DepartmentContactMessageTemplate.Note"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.DepartmentContactMessageTemplate.Image">
+            <summary>
+            The image
+            </summary>
+        </member>
+        <member name="P:MeetBase.DepartmentContactMessageTemplate.ContactMean">
+            <summary>
+            The mean of contact
+            </summary>
+        </member>
+        <member name="P:MeetBase.DepartmentContactMessageTemplate.Note">
+            <summary>
+            The note
+            </summary>
         </member>
         <member name="T:MeetBase.Failable">
             <summary>
@@ -2777,6 +2752,26 @@
         <member name="F:MeetBase.TransactionType.PayPal">
             <summary>
             PayPal
+            </summary>
+        </member>
+        <member name="T:MeetBase.ContactMean">
+            <summary>
+            Provides enumerations over the <see cref="T:MeetBase.ContactMean"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.ContactMean.All">
+            <summary>
+            All
+            </summary>
+        </member>
+        <member name="F:MeetBase.ContactMean.PhoneNumber">
+            <summary>
+            Phone number
+            </summary>
+        </member>
+        <member name="F:MeetBase.ContactMean.Email">
+            <summary>
+            Email
             </summary>
         </member>
         <member name="T:MeetBase.DayOfWeekTimeRange">

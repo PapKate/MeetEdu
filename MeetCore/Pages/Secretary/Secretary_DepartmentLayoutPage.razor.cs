@@ -1,12 +1,8 @@
-﻿using MeetBase;
-using MeetBase.Blazor;
-using MeetBase.Web;
+﻿using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 
 using MudBlazor;
-
-using static MeetBase.Blazor.PaletteColors;
 
 namespace MeetCore
 {
@@ -17,15 +13,9 @@ namespace MeetCore
     {
         #region Private Members
 
-        private bool mIsLayoutDescripitonReadOnly = true;
+        private string mText = string.Empty;
 
-        private string mLayoutDescription = string.Empty;
-        
-        private string mLayoutDescriptionInput = string.Empty;
-
-        private string mLayoutId = string.Empty;
-
-        private IEnumerable<DepartmentLayoutRoom> mLayoutRooms = new List<DepartmentLayoutRoom>();
+        private IEnumerable<DepartmentLayoutResponseModel>? mLayouts;
 
         /// <summary>
         /// The <see cref="MudDialog"/> options
@@ -79,28 +69,10 @@ namespace MeetCore
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        protected override async void OnInitialized()
+        protected override void OnInitialized()
         {
-            var response = await Client.GetDepartmentLayoutsAsync(new() { IncludeDepartments = new List<string>() { StateManager.Department!.Id } });
-
-            if(!response.IsSuccessful)
-            {
-                Console.WriteLine(response.ErrorMessage);
-                // Show the error
-                Snackbar.Add(response.ErrorMessage, Severity.Info);
-                return;
-            }
-
-            if (!response.Result.Any())
-            {
-                Snackbar.Add("No layouts", Severity.Error);
-                return;
-            }
-            var layout = response.Result.First();
-            mLayoutId = layout.Id;
-            mLayoutDescription = layout.Description;
-            mLayoutDescriptionInput = mLayoutDescription;
-            mLayoutRooms = response.Result.SelectMany(x => x.Rooms).ToList();
+            GetLayouts();
+            mText = StateManager.Department!.LayoutDescription;
             StateHasChanged();
         }
 
@@ -108,19 +80,15 @@ namespace MeetCore
 
         #region Private Methods
 
-        private async void SaveButton_Onclick()
+        /// <summary>
+        /// Saves the layout description of the current <see cref="StateManagerCore.Department"/>
+        /// </summary>
+        private async void SaveFormDescription(string? value)
         {
-            mIsLayoutDescripitonReadOnly = true;
-            mLayoutDescription = mLayoutDescriptionInput;
+            mText = value ?? string.Empty;
 
-            // Creates the request for updating the layout
-            var request = new DepartmentLayoutRequestModel()
-            {
-                Description = mLayoutDescription
-            };
-
-            // Updates the layout
-            var response = await Client.UpdateDepartmentLayoutAsync(mLayoutId, request);
+            // Updates the department
+            var response = await Client.UpdateDepartmentAsync(StateManager.Department!.Id, new DepartmentRequestModel() { LayoutDescription = mText });
 
             // If there was an error...
             if (!response.IsSuccessful)
@@ -131,22 +99,6 @@ namespace MeetCore
                 // Return
                 return;
             }
-        }
-
-        /// <summary>
-        /// Adds a layout or a room if the layout exists
-        /// </summary>
-        private void AddButton_Onclick()
-        {
-            // If the department has no layout...
-            if (mLayoutId.IsNullOrEmpty())
-            {
-                // Creates and adds a layout
-                AddLayout();
-                return;
-            }
-
-            UpdateLayout(new());
         }
 
         /// <summary>
@@ -158,33 +110,10 @@ namespace MeetCore
             var request = new DepartmentLayoutRequestModel()
             {
                 DepartmentId = StateManager.Department!.Id,
+                Color = MeetBase.Blazor.PaletteColors.White
             };
 
-            // Adds the layout
-            var response = await Client.AddDepartmentLayoutAsync(request);
-
-            // If there was an error...
-            if (!response.IsSuccessful)
-            {
-                Console.WriteLine(response.ErrorMessage);
-                // Show the error
-                Snackbar.Add(response.ErrorMessage, Severity.Error);
-                // Return
-                return;
-            }
-
-            mLayoutId = response.Result.Id;
-
-            StateHasChanged();
-        }
-
-        private async void UpdateLayout(DepartmentLayoutRoom room)
-        {
-            var list = mLayoutRooms.ToList();
-
-            var index = list.IndexOf(room);
-
-            var parameters = new DialogParameters<UpdateLayoutRoomDialog> { { x => x.Model, room } };
+            var parameters = new DialogParameters<UpdateLayoutRoomDialog> { { x => x.Model, request } };
 
             // Creates and opens a dialog with the specified type
             var dialog = await DialogService.ShowAsync<UpdateLayoutRoomDialog>(null, parameters, mDialogOptions);
@@ -199,22 +128,63 @@ namespace MeetCore
                 // Return
                 return;
             }
+
             // If the result is of the specified type...
-            if (result.Data is DepartmentLayoutRoom updatedModel)
+            if (result.Data is DepartmentLayoutRequestModel updatedModel)
             {
-                if(index < 0)
-                    list.Add(room);
-                else
-                    list[index] = room;
+                // Adds the layout
+                var response = await Client.AddDepartmentLayoutAsync(request);
 
-                // Creates the request for updating the layout
-                var layoutRequest = new DepartmentLayoutRequestModel()
+                // If there was an error...
+                if (!response.IsSuccessful)
                 {
-                    Rooms = list
-                };
+                    Console.WriteLine(response.ErrorMessage);
+                    // Show the error
+                    Snackbar.Add(response.ErrorMessage, Severity.Error);
+                    // Return
+                    return;
+                }
+            }
+            GetLayouts();
+        }
 
+        /// <summary>
+        /// Updates the current <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The layout</param>
+        private async void UpdateLayout(DepartmentLayoutResponseModel model)
+        {
+            var request = new DepartmentLayoutRequestModel()
+            {
+                DepartmentId = model.DepartmentId,
+                Name = model.Name,
+                Color = model.Color,
+                Description = model.Description,
+                Note = model.Note,
+                DisplayTheme = model.DisplayTheme,
+            };
+
+            var parameters = new DialogParameters<UpdateLayoutRoomDialog> { { x => x.Model, request } };
+
+            // Creates and opens a dialog with the specified type
+            var dialog = await DialogService.ShowAsync<UpdateLayoutRoomDialog>(null, parameters, mDialogOptions);
+
+            // Once the dialog is closed...
+            // Gets the result
+            var result = await dialog.Result;
+
+            // If there is no result or the dialog was closed by canceling the inner actions...
+            if (result is null || result.Canceled)
+            {
+                // Return
+                return;
+            }
+
+            // If the result is of the specified type...
+            if (result.Data is DepartmentLayoutRequestModel updatedModel)
+            {
                 // Updates the layout
-                var layoutResponse = await Client.UpdateDepartmentLayoutAsync(mLayoutId, layoutRequest);
+                var layoutResponse = await Client.UpdateDepartmentLayoutAsync(model.Id, updatedModel);
 
                 // If there was an error...
                 if (!layoutResponse.IsSuccessful)
@@ -225,12 +195,32 @@ namespace MeetCore
                     // Return
                     return;
                 }
-
-                mLayoutRooms = new List<DepartmentLayoutRoom>();
-                StateHasChanged();
-                mLayoutRooms = layoutResponse.Result.Rooms;
-                StateHasChanged();
+                GetLayouts();
             }
+        }
+
+        /// <summary>
+        /// Gets the <see cref="DepartmentLayoutResponseModel"/>s of the current <see cref="StateManagerCore.Department"/>
+        /// </summary>
+        private async void GetLayouts() 
+        {
+            var response = await Client.GetDepartmentLayoutsAsync(new() { IncludeDepartments = new List<string>() { StateManager.Department!.Id } });
+
+            if (!response.IsSuccessful)
+            {
+                Console.WriteLine(response.ErrorMessage);
+                // Show the error
+                Snackbar.Add(response.ErrorMessage, Severity.Info);
+                return;
+            }
+
+            if (!response.Result.Any())
+            {
+                Snackbar.Add("No layouts", Severity.Error);
+                return;
+            }
+            mLayouts = response.Result;
+            StateHasChanged();
         }
 
         #endregion

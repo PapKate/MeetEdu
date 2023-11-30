@@ -28,6 +28,11 @@ namespace MeetEdu
         private string? mDescription;
 
         /// <summary>
+        /// The member of the <see cref="LayoutDescription"/> property
+        /// </summary>
+        private string? mLayoutDescription;
+
+        /// <summary>
         /// The member of the <see cref="Fields"/> property
         /// </summary>
         private IEnumerable<string>? mFields;
@@ -79,6 +84,15 @@ namespace MeetEdu
         }
 
         /// <summary>
+        /// The layout description
+        /// </summary>
+        public string LayoutDescription
+        {
+            get => mLayoutDescription ?? string.Empty;
+            set => mLayoutDescription = value;
+        }
+
+        /// <summary>
         /// The note
         /// </summary>
         public string Note
@@ -111,6 +125,11 @@ namespace MeetEdu
         /// The phone number
         /// </summary>
         public PhoneNumber? PhoneNumber { get; set; }
+
+        /// <summary>
+        /// The contact message template
+        /// </summary>
+        public DepartmentContactMessageTemplate? ContactMessageTemplate { get; set; }
 
         /// <summary>
         /// The labels
@@ -192,7 +211,7 @@ namespace MeetEdu
     /// A minimal version of the <see cref="DepartmentEntity"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedDepartmentEntity : StandardEmbeddedEntity, IImageable, IUniversityIdentifiable<ObjectId>
+    public class EmbeddedDepartmentEntity : EmbeddedStandardEntity, IImageable, IUniversityIdentifiable<ObjectId>
     {
         #region Public Properties
 

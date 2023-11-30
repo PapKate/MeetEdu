@@ -1,6 +1,7 @@
-﻿using MeetBase;
+﻿using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 
 using MudBlazor;
 
@@ -18,6 +19,8 @@ namespace MeetCore
         /// </summary>
         private string mPhotoLabel = "Layout image";
 
+        private IBrowserFile mFile;
+
         #endregion
 
         #region Public Properties
@@ -32,7 +35,7 @@ namespace MeetCore
         /// THe model
         /// </summary>
         [Parameter]
-        public DepartmentLayoutRoom? Model { get; set; }
+        public DepartmentLayoutRequestModel? Model { get; set; }
 
         #endregion
 

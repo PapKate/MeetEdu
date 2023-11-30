@@ -28,6 +28,11 @@
         private string? mDescription;
 
         /// <summary>
+        /// The member of the <see cref="LayoutDescription"/> property
+        /// </summary>
+        private string? mLayoutDescription;
+
+        /// <summary>
         /// The member of the <see cref="Fields"/> property
         /// </summary>
         private IEnumerable<string>? mFields;
@@ -83,6 +88,15 @@
         }
 
         /// <summary>
+        /// The layout description
+        /// </summary>
+        public string LayoutDescription
+        {
+            get => mLayoutDescription ?? string.Empty;
+            set => mLayoutDescription = value;
+        }
+
+        /// <summary>
         /// The note
         /// </summary>
         public string Note
@@ -115,6 +129,11 @@
         /// The phone number
         /// </summary>
         public PhoneNumber? PhoneNumber { get; set; }
+
+        /// <summary>
+        /// The contact message template
+        /// </summary>
+        public DepartmentContactMessageTemplate? ContactMessageTemplate { get; set; }
 
         /// <summary>
         /// The labels

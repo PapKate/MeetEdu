@@ -5,7 +5,7 @@ namespace MeetEdu
     /// <summary>
     /// Represents a company layout document in the MongoDB
     /// </summary>
-    public class DepartmentLayoutEntity : DateEntity, IDescriptable, IDepartmentIdentifiable<ObjectId>
+    public class DepartmentLayoutEntity : StandardEntity, IDescriptable, INoteable, IDepartmentIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -15,9 +15,9 @@ namespace MeetEdu
         private string? mDescription;
 
         /// <summary>
-        /// The member of the <see cref="Rooms"/> property
+        /// The member of the <see cref="Note"/> property
         /// </summary>
-        private IList<DepartmentLayoutRoom>? mRooms;
+        private string? mNote;
 
         #endregion
 
@@ -38,19 +38,23 @@ namespace MeetEdu
         }
 
         /// <summary>
-        /// The rooms
+        /// The note
         /// </summary>
-        public IList<DepartmentLayoutRoom> Rooms
+        public string Note
         {
-            get
-            {
-                if (mRooms is null)
-                    mRooms = new List<DepartmentLayoutRoom>();
-
-                return mRooms;
-            }
-            set => mRooms = value;
+            get => mNote ?? string.Empty;
+            set => mNote = value;
         }
+
+        /// <summary>
+        /// The image URL
+        /// </summary>
+        public Uri? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The display theme
+        /// </summary>
+        public RoomDisplayTheme DisplayTheme { get; set; }
 
         #endregion
 
