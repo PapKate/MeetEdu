@@ -199,6 +199,26 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetCore.UpdateLayoutRoomDialog.UpdateLayoutModel">
+            <summary>
+            The dialog's model
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateLayoutRoomDialog.UpdateLayoutModel.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateLayoutRoomDialog.UpdateLayoutModel.File">
+            <summary>
+            The image
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateLayoutRoomDialog.UpdateLayoutModel.#ctor(MeetBase.Web.DepartmentLayoutRequestModel)">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetCore.UpdateScheduleDialog">
             <summary>
             The dialog for editing the schedule

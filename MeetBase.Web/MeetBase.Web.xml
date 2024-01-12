@@ -2179,6 +2179,14 @@
             <param name="id">The id</param>
             <returns></returns>
         </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddDepartmentLayoutImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Creates a department layout
+            </summary>
+            <param name="id">The id</param>
+            <param name="file">The file</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetBase.Web.MeetCoreClient.GetDepartmentLabelsAsync(MeetBase.Web.DepartmentRelatedAPIArgs)">
             <summary>
             Gets the department labels
@@ -3308,6 +3316,20 @@
             <summary>
             Gets the department layout route for the one with the specified <paramref name="departmentLayoutId"/>
             <code>/appointMate/api/v1/meetCore/departmentLayouts/3</code>
+            </summary>
+            <param name="departmentLayoutId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.DepartmentLayoutImagesRoute">
+            <summary>
+            The department layout images route
+            <code>/appointMate/api/v1/meetCore/departmentLayouts/2/images</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetDepartmentLayoutImagesRoute(System.String)">
+            <summary>
+            Gets the department layout images route for the one with the specified <paramref name="departmentLayoutId"/>
+            <code>/appointMate/api/v1/meetCore/departmentLayouts/3/images</code>
             </summary>
             <param name="departmentLayoutId">The id</param>
             <returns></returns>

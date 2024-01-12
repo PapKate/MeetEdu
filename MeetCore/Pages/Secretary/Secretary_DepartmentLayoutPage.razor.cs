@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Components;
 
 using MudBlazor;
 
+using static MeetCore.UpdateLayoutRoomDialog;
+
 namespace MeetCore
 {
     /// <summary>
@@ -89,7 +91,6 @@ namespace MeetCore
 
             // Updates the department
             var response = await Client.UpdateDepartmentAsync(StateManager.Department!.Id, new DepartmentRequestModel() { LayoutDescription = mText });
-
             // If there was an error...
             if (!response.IsSuccessful)
             {
@@ -99,6 +100,7 @@ namespace MeetCore
                 // Return
                 return;
             }
+            StateManager.Department = response.Result;
         }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace MeetCore
                 Color = MeetBase.Blazor.PaletteColors.White
             };
 
-            var parameters = new DialogParameters<UpdateLayoutRoomDialog> { { x => x.Model, request } };
+            var parameters = new DialogParameters<UpdateLayoutRoomDialog> { { x => x.Model, new UpdateLayoutModel(request) } };
 
             // Creates and opens a dialog with the specified type
             var dialog = await DialogService.ShowAsync<UpdateLayoutRoomDialog>(null, parameters, mDialogOptions);
@@ -130,11 +132,11 @@ namespace MeetCore
             }
 
             // If the result is of the specified type...
-            if (result.Data is DepartmentLayoutRequestModel updatedModel)
+            if (result.Data is UpdateLayoutModel updatedModel)
             {
-                // Adds the layout
-                var response = await Client.AddDepartmentLayoutAsync(request);
-
+                // Adds the model
+                var response = await Client.AddDepartmentLayoutAsync(updatedModel.Model);
+                
                 // If there was an error...
                 if (!response.IsSuccessful)
                 {
@@ -143,6 +145,23 @@ namespace MeetCore
                     Snackbar.Add(response.ErrorMessage, Severity.Error);
                     // Return
                     return;
+                }
+                
+                // If an image was set..
+                if(updatedModel.File is not null)
+                {
+                    // Adds the model
+                    var imageResponse = await Client.AddDepartmentLayoutImageAsync(response.Result.Id, updatedModel.File);
+
+                    // If there was an error...
+                    if (!imageResponse.IsSuccessful)
+                    {
+                        Console.WriteLine(imageResponse.ErrorMessage);
+                        // Show the error
+                        Snackbar.Add(imageResponse.ErrorMessage, Severity.Error);
+                        // Return
+                        return;
+                    }
                 }
             }
             GetLayouts();
@@ -164,7 +183,7 @@ namespace MeetCore
                 DisplayTheme = model.DisplayTheme,
             };
 
-            var parameters = new DialogParameters<UpdateLayoutRoomDialog> { { x => x.Model, request } };
+            var parameters = new DialogParameters<UpdateLayoutRoomDialog> { { x => x.Model, new UpdateLayoutModel(request) } };
 
             // Creates and opens a dialog with the specified type
             var dialog = await DialogService.ShowAsync<UpdateLayoutRoomDialog>(null, parameters, mDialogOptions);
@@ -181,22 +200,40 @@ namespace MeetCore
             }
 
             // If the result is of the specified type...
-            if (result.Data is DepartmentLayoutRequestModel updatedModel)
+            if (result.Data is UpdateLayoutModel updatedModel)
             {
                 // Updates the layout
-                var layoutResponse = await Client.UpdateDepartmentLayoutAsync(model.Id, updatedModel);
+                var response = await Client.UpdateDepartmentLayoutAsync(model.Id, updatedModel.Model);
 
                 // If there was an error...
-                if (!layoutResponse.IsSuccessful)
+                if (!response.IsSuccessful)
                 {
-                    Console.WriteLine(layoutResponse.ErrorMessage);
+                    Console.WriteLine(response.ErrorMessage);
                     // Show the error
-                    Snackbar.Add(layoutResponse.ErrorMessage, Severity.Error);
+                    Snackbar.Add(response.ErrorMessage, Severity.Error);
                     // Return
                     return;
                 }
-                GetLayouts();
+
+                // If an image was set..
+                if (updatedModel.File is not null)
+                {
+                    // Adds the model
+                    var imageResponse = await Client.AddDepartmentLayoutImageAsync(response.Result.Id, updatedModel.File);
+
+                    // If there was an error...
+                    if (!imageResponse.IsSuccessful)
+                    {
+                        Console.WriteLine(imageResponse.ErrorMessage);
+                        // Show the error
+                        Snackbar.Add(imageResponse.ErrorMessage, Severity.Error);
+                        // Return
+                        return;
+                    }
+                }
             }
+            
+            GetLayouts();
         }
 
         /// <summary>

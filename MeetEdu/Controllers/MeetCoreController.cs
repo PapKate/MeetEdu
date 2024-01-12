@@ -332,17 +332,6 @@ namespace MeetEdu
             => (await DI.DepartmentsRepository.AddDepartmentLayoutAsync(DepartmentId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
-        /// Creates a department layout
-        /// </summary>
-        /// <param name="file">The model</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route(MeetCoreAPIRoutes.DepartmentLayoutsRoute)]
-        public async Task<ActionResult<DepartmentLayoutResponseModel>> AddDepartmentLayoutImageAsync([FromForm] IFormFile file, CancellationToken cancellationToken = default)
-            => (await DI.DepartmentsRepository.AddDepartmentLayoutImageAsync(DepartmentId, file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
-
-        /// <summary>
         /// Gets the department layout with the specified <paramref name="departmentLayoutId"/>
         /// </summary>
         /// <param name="departmentLayoutId">The id</param>
@@ -375,6 +364,17 @@ namespace MeetEdu
         [Route(MeetCoreAPIRoutes.DepartmentLayoutRoute)]
         public async Task<ActionResult<DepartmentLayoutResponseModel>> DeleteDepartmentLayoutAsync([FromRoute] string departmentLayoutId, CancellationToken cancellationToken = default)
             => (await DI.DepartmentsRepository.DeleteDepartmentLayoutAsync(departmentLayoutId.ToObjectId(), cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Creates a department layout
+        /// </summary>
+        /// <param name="file">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(MeetCoreAPIRoutes.DepartmentLayoutImagesRoute)]
+        public async Task<ActionResult<DepartmentLayoutResponseModel>> AddDepartmentLayoutImageAsync([FromForm] IFormFile file, CancellationToken cancellationToken = default)
+            => (await DI.DepartmentsRepository.AddDepartmentLayoutImageAsync(DepartmentId, file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         #endregion
 

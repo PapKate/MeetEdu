@@ -1,4 +1,6 @@
-﻿namespace MeetBase.Web
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace MeetBase.Web
 {
     /// <summary>
     /// The MeetCore related API routes
@@ -170,6 +172,20 @@
         /// <param name="departmentLayoutId">The id</param>
         /// <returns></returns>
         public static string GetDepartmentLayoutRoute(string departmentLayoutId) => DepartmentLayoutsRoute + $"/{departmentLayoutId}";
+
+        /// <summary>
+        /// The department layout images route
+        /// <code>/appointMate/api/v1/meetCore/departmentLayouts/2/images</code>
+        /// </summary>
+        public const string DepartmentLayoutImagesRoute = DepartmentLayoutRoute + "/images";
+
+        /// <summary>
+        /// Gets the department layout images route for the one with the specified <paramref name="departmentLayoutId"/>
+        /// <code>/appointMate/api/v1/meetCore/departmentLayouts/3/images</code>
+        /// </summary>
+        /// <param name="departmentLayoutId">The id</param>
+        /// <returns></returns>
+        public static string GetDepartmentLayoutImagesRoute(string departmentLayoutId) => GetDepartmentLayoutRoute(departmentLayoutId) + $"/images";
 
         #endregion
 

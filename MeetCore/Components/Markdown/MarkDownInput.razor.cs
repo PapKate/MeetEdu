@@ -18,7 +18,6 @@ namespace MeetCore
         private bool mIsTextReadOnly = true;
 
         private string mInputText = string.Empty;
-        private string mText = string.Empty;
 
         #endregion
 
@@ -64,8 +63,8 @@ namespace MeetCore
         private async void SaveButton_Onclick()
         {
             mIsTextReadOnly = true;
-            mText = mInputText;
-            await TextChanged.InvokeAsync(mText);
+            Text = mInputText;
+            await TextChanged.InvokeAsync(Text);
         }
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace MeetCore
         private void CancelButton_Onclick()
         {
             mIsTextReadOnly = true;
-            mInputText = mText ?? string.Empty;
+            mInputText = Text ?? string.Empty;
         }
 
         /// <summary>
@@ -83,7 +82,7 @@ namespace MeetCore
         private void EditButton_OnClick()
         {
             mIsTextReadOnly = false;
-            mInputText = mText ?? string.Empty;
+            mInputText = Text ?? string.Empty;
         }
 
         #endregion

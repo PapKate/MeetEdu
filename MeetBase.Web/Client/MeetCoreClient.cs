@@ -1,4 +1,6 @@
-﻿namespace MeetBase.Web
+﻿using Microsoft.AspNetCore.Http;
+
+namespace MeetBase.Web
 {
     /// <summary>
     /// Client that provides HTTP calls for sending and receiving information from the <c>MeetCore</c> server
@@ -258,7 +260,6 @@
         public Task<WebRequestResult<IEnumerable<DepartmentLayoutResponseModel>>> GetDepartmentLayoutsAsync(DepartmentRelatedAPIArgs args)
             => WebRequestsClient.Instance.GetAsync<IEnumerable<DepartmentLayoutResponseModel>>(RouteHelpers.AttachParameters(GetAbsoluteUrl(MeetCoreAPIRoutes.DepartmentLayoutsRoute), args), null);
 
-
         /// <summary>
         /// Creates a department layout
         /// </summary>
@@ -291,6 +292,15 @@
         /// <returns></returns>
         public Task<WebRequestResult<DepartmentLayoutResponseModel>> DeleteDepartmentLayoutAsync(string id)
             => WebRequestsClient.Instance.DeleteAsync<DepartmentLayoutResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetDepartmentLayoutRoute(id)), null);
+
+        /// <summary>
+        /// Creates a department layout
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="file">The file</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<DepartmentLayoutResponseModel>> AddDepartmentLayoutImageAsync(string id, IFormFile file)
+            => WebRequestsClient.Instance.PostAsync<DepartmentLayoutResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetDepartmentLayoutImagesRoute(id)), file, null);
 
         #endregion
 
