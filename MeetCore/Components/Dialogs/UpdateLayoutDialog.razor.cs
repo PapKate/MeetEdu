@@ -12,7 +12,7 @@ namespace MeetCore
     /// <summary>
     /// The dialog for editing the room
     /// </summary>
-    public partial class UpdateLayoutRoomDialog
+    public partial class UpdateLayoutDialog
     {
         #region Private Members
 
@@ -46,7 +46,7 @@ namespace MeetCore
         /// <summary>
         /// Default constructor
         /// </summary>
-        public UpdateLayoutRoomDialog() : base()
+        public UpdateLayoutDialog() : base()
         {
 
         }
@@ -55,22 +55,25 @@ namespace MeetCore
 
         #region Private Methods
 
-        private void Save()
+        /// <summary>
+        /// Saves the changes
+        /// </summary>
+        private async void Save()
         {
             if(Model is not null)
             {
-                if(mFile is not null)
+                Model.Model.Color = Model.Model?.Color?.Replace("#", string.Empty);
+                if (mFile is not null)
                 {
                     using var stream = mFile.OpenReadStream();
+                    var memoryStream = new MemoryStream();
+                    await stream.CopyToAsync(memoryStream);
 
-                    if(stream != null)
+                    Model.File = new FormFile(memoryStream, 0, stream.Length, null, mPhotoLabel)
                     {
-                        Model.File = new FormFile(stream, 0, stream.Length, null, mPhotoLabel) 
-                        {
-                            Headers = new HeaderDictionary(),
-                            ContentType = "image/jpeg"
-                        };
-                    }
+                        Headers = new HeaderDictionary(),
+                        ContentType = "image/jpeg"
+                    };
                 }
             }
             MudDialog.Close(DialogResult.Ok(Model));

@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
 
 using Newtonsoft.Json;
@@ -183,6 +184,69 @@ namespace MeetBase.Web
 
             // Return result
             return result;
+        }
+
+        /// <summary>
+        /// POSTs a web request to an URL that contains the specified <paramref name="fileGroups"/> and returns a <see cref="HttpResponseMessage"/>
+        /// </summary>
+        /// <param name="url">The URL</param>
+        /// <param name="fileGroups">Groups of files that contains all the required information to perform the binding to ASP.NET controller action</param>
+        /// <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+        /// <returns></returns>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public async Task<HttpResponseMessage> PostFilesAsync(string url, IEnumerable<FileUploadGroupDataModel> fileGroups, TAuthenticationArgs? authenticationArgs)
+        {
+            // Set the authorization scheme
+            SetAuthorizationHeader(authenticationArgs);
+
+            HttpResponseMessage responseMessage;
+
+#if DEBUG
+            Debug.WriteLine($"POST files request made to: {url}");
+#endif
+
+            #region Send Request
+
+            try
+            {
+                // Create the multi part content form
+                var form = new MultipartFormDataContent();
+
+                // For every file group...
+                foreach (var group in fileGroups)
+                {
+                    // For every file...
+                    foreach (var file in group.Files)
+                    {
+                        using var memoryStream = new MemoryStream();
+                        await file.CopyToAsync(memoryStream);
+                        var bytes = memoryStream.ToArray();
+
+                        // Create the content that will be send
+                        var byteArrayContent = new ByteArrayContent(bytes);
+
+                        // For every header of the form file...
+                        foreach (var header in file.Headers)
+                            // Add it to the headers of the content
+                            byteArrayContent.Headers.Add(header.Key.ToString(), header.Value.ToString());
+
+                        // Add the content to the form
+                        form.Add(byteArrayContent, group.Name, file.FileName);
+                    }
+                }
+
+                // Send it with the request
+                responseMessage = await Client.PostAsync(url, form);
+            }
+            catch
+            {
+                // Re-throw
+                throw;
+            }
+
+            #endregion
+
+            return responseMessage;
         }
 
         #endregion
@@ -383,6 +447,71 @@ namespace MeetBase.Web
 
             // Return result
             return result;
+        }
+
+        /// <summary>
+        /// PUTs the specified <paramref name="fileGroups"/> at the specified <paramref name="url"/> and returns a <see cref="HttpResponseMessage"/>
+        /// </summary>
+        /// <param name="url">The URL</param>
+        /// <param name="fileGroups">Groups of files that contains all the required information to perform the binding to ASP.NET controller action</param>
+        /// <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+        /// <returns></returns>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public async Task<HttpResponseMessage> PutFilesAsync(string url, IEnumerable<FileUploadGroupDataModel> fileGroups, TAuthenticationArgs? authenticationArgs)
+        {
+            // Set the authorization scheme
+            SetAuthorizationHeader(authenticationArgs);
+
+            HttpResponseMessage responseMessage;
+
+            #region Send Request
+
+#if DEBUG
+            if (ShouldLogRequests())
+                Debug.WriteLine($"PUT files request made to: {url}");
+#endif
+
+            try
+            {
+                // Create the multi part content form
+                var form = new MultipartFormDataContent();
+
+                // For every file group...
+                foreach (var group in fileGroups)
+                {
+                    // For every file...
+                    foreach (var file in group.Files)
+                    {
+                        // Get the bytes
+                        var bytes = File.ReadAllBytes(file.FileName);
+
+                        // Create the content that will be send
+                        var byteArrayContent = new ByteArrayContent(bytes);
+
+                        // If the form file has headers...
+                        if (!file.Headers.IsNullOrEmpty())
+                            // For every header of the form file...
+                            foreach (var header in file.Headers)
+                                // Add it to the headers of the content
+                                byteArrayContent.Headers.Add(header.Key.ToString(), header.Value.ToString());
+
+                        // Add the content to the form
+                        form.Add(byteArrayContent, group.Name, file.FileName);
+                    }
+                }
+
+                // Send it with the request
+                responseMessage = await Client.PutAsync(url, form);
+            }
+            catch
+            {
+                // Re-throw
+                throw;
+            }
+
+            #endregion
+
+            return responseMessage;
         }
 
         #endregion
@@ -704,6 +833,69 @@ namespace MeetBase.Web
             return result;
         }
 
+        /// <summary>
+        /// POSTs a web request to an URL that contains the specified <paramref name="fileGroups"/> and returns a <see cref="WebRequestResult{T}"/>
+        /// </summary>
+        /// <typeparam name="TResponse">The type of the response</typeparam>
+        /// <param name="url">The URL</param>
+        /// <param name="fileGroups">Groups of files that contains all the required information to perform the binding to ASP.NET controller action</param>
+        /// <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+        /// <returns></returns>
+        public async Task<WebRequestResult<TResponse>> PostFilesAsync<TResponse>(string url, IEnumerable<FileUploadGroupDataModel> fileGroups, TAuthenticationArgs? authenticationArgs)
+        {
+            // Create server response holder
+            HttpResponseMessage serverResponse;
+            try
+            {
+                // Make the standard Post call first
+                serverResponse = await PostFilesAsync(url, fileGroups, authenticationArgs);
+            }
+            catch (Exception ex)
+            {
+                // If we got unexpected error, return that
+                return new WebRequestResult<TResponse>(ex);
+            }
+
+            // Create the result
+            var result = await serverResponse.CreateWebRequestResultAsync<TResponse>();
+
+            // If the response status code is not 200...
+            if (!serverResponse.IsSuccessStatusCode)
+            {
+                // Call failed
+                result.ErrorMessage = ParseErrorMessageCore(result);
+
+                // Done
+                return result;
+            }
+
+            // If we have no content to deserialize...
+            if (result.RawServerResponse.IsNullOrEmpty())
+                // Done
+                return result;
+
+            // Deserialize raw response
+            try
+            {
+                // Deserialize Json string
+                result.Result = Deserialize<TResponse>(result.RawServerResponse);
+            }
+            catch (Exception ex)
+            {
+                // Break
+                Debugger.Break();
+
+                // If deserialize failed then set error message
+                result.ErrorMessage = ParseErrorMessageCore(result, typeof(TResponse), ex);
+
+                // Done
+                return result;
+            }
+
+            // Return result
+            return result;
+        }
+
         #endregion
 
         #region GET
@@ -788,6 +980,69 @@ namespace MeetBase.Web
             {
                 // Make the standard PUT call first
                 serverResponse = await PutAsync(url, content, authenticationArgs);
+            }
+            catch (Exception ex)
+            {
+                // If we got unexpected error, return that
+                return new WebRequestResult<TResponse>(ex);
+            }
+
+            // Create the result
+            var result = await serverResponse.CreateWebRequestResultAsync<TResponse>();
+
+            // If the response status code is not 200...
+            if (!serverResponse.IsSuccessStatusCode)
+            {
+                // Call failed
+                result.ErrorMessage = ParseErrorMessageCore(result);
+
+                // Done
+                return result;
+            }
+
+            // If we have no content to deserialize...
+            if (result.RawServerResponse.IsNullOrEmpty())
+                // Done
+                return result;
+
+            // Deserialize raw response
+            try
+            {
+                // Deserialize Json string
+                result.Result = Deserialize<TResponse>(result.RawServerResponse);
+            }
+            catch (Exception ex)
+            {
+                // Break
+                Debugger.Break();
+
+                // If deserialize failed then set error message
+                result.ErrorMessage = ParseErrorMessageCore(result, typeof(TResponse), ex);
+
+                // Done
+                return result;
+            }
+
+            // Return result
+            return result;
+        }
+
+        /// <summary>
+        /// PUTs the specified <paramref name="fileGroups"/> and returns a <see cref="WebRequestResult{T}"/>
+        /// </summary>
+        /// <typeparam name="TResponse">The type of the response</typeparam>
+        /// <param name="url">The URL</param>
+        /// <param name="fileGroups">Groups of files that contains all the required information to perform the binding to ASP.NET controller action</param>
+        /// <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+        /// <returns></returns>
+        public async Task<WebRequestResult<TResponse>> PutFilesAsync<TResponse>(string url, IEnumerable<FileUploadGroupDataModel> fileGroups, TAuthenticationArgs? authenticationArgs)
+        {
+            // Create server response holder
+            HttpResponseMessage serverResponse;
+            try
+            {
+                // Make the standard PUT call first
+                serverResponse = await PutFilesAsync(url, fileGroups, authenticationArgs);
             }
             catch (Exception ex)
             {
@@ -2132,6 +2387,55 @@ namespace MeetBase.Web
         {
             Name = name.NotNullOrEmpty();
             Value = value;
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Represents a group of files that are sent to the ASP.NET API
+    /// </summary>
+    public class FileUploadGroupDataModel
+    {
+        #region Public Properties
+
+        /// <inheritdoc/>
+        public string Name { get; }
+
+        /// <summary>
+        /// The files
+        /// </summary>
+        public IEnumerable<IFormFile> Files { get; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="name">
+        /// The name of the parameter of the Action of the ASP.NET controller that the file/s
+        /// should be assigned to.
+        /// </param>
+        /// <param name="files">The files</param>
+        public FileUploadGroupDataModel(string name, IEnumerable<IFormFile> files)
+        {
+            Name = name.NotNullOrEmpty();
+            Files = files ?? new List<IFormFile>();
+        }
+
+        /// <summary>
+        /// Single file constructor
+        /// </summary>
+        /// <param name="name">
+        /// The name of the parameter of the Action of the ASP.NET controller that the file/s
+        /// should be assigned to.
+        /// </param>
+        /// <param name="file">The file</param>
+        public FileUploadGroupDataModel(string name, IFormFile file) : this(name, new List<IFormFile>() { file })
+        {
+
         }
 
         #endregion

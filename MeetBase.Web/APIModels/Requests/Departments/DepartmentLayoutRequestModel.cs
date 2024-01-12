@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Http;
-
-namespace MeetBase.Web
+﻿namespace MeetBase.Web
 {
     /// <summary>
     /// Request model for a department layout
@@ -28,12 +25,12 @@ namespace MeetBase.Web
         /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? ImageFile { get; set; }
+        public Uri? ImageFileSource { get; set; }
 
         /// <summary>
         /// The display theme
         /// </summary>
-        public RoomDisplayTheme DisplayTheme { get; set; }
+        public ImageDisplayTheme DisplayTheme { get; set; }
 
         #endregion
 

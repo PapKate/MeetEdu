@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 using MudBlazor;
 
-using static MeetCore.UpdateLayoutRoomDialog;
+using static MeetCore.UpdateLayoutDialog;
 
 namespace MeetCore
 {
@@ -115,10 +115,10 @@ namespace MeetCore
                 Color = MeetBase.Blazor.PaletteColors.White
             };
 
-            var parameters = new DialogParameters<UpdateLayoutRoomDialog> { { x => x.Model, new UpdateLayoutModel(request) } };
+            var parameters = new DialogParameters<UpdateLayoutDialog> { { x => x.Model, new UpdateLayoutModel(request) } };
 
             // Creates and opens a dialog with the specified type
-            var dialog = await DialogService.ShowAsync<UpdateLayoutRoomDialog>(null, parameters, mDialogOptions);
+            var dialog = await DialogService.ShowAsync<UpdateLayoutDialog>(null, parameters, mDialogOptions);
 
             // Once the dialog is closed...
             // Gets the result
@@ -151,7 +151,7 @@ namespace MeetCore
                 if(updatedModel.File is not null)
                 {
                     // Adds the model
-                    var imageResponse = await Client.AddDepartmentLayoutImageAsync(response.Result.Id, updatedModel.File);
+                    var imageResponse = await Client.SetDepartmentLayoutImageAsync(response.Result.Id, updatedModel.File);
 
                     // If there was an error...
                     if (!imageResponse.IsSuccessful)
@@ -183,10 +183,10 @@ namespace MeetCore
                 DisplayTheme = model.DisplayTheme,
             };
 
-            var parameters = new DialogParameters<UpdateLayoutRoomDialog> { { x => x.Model, new UpdateLayoutModel(request) } };
+            var parameters = new DialogParameters<UpdateLayoutDialog> { { x => x.Model, new UpdateLayoutModel(request) } };
 
             // Creates and opens a dialog with the specified type
-            var dialog = await DialogService.ShowAsync<UpdateLayoutRoomDialog>(null, parameters, mDialogOptions);
+            var dialog = await DialogService.ShowAsync<UpdateLayoutDialog>(null, parameters, mDialogOptions);
 
             // Once the dialog is closed...
             // Gets the result
@@ -219,7 +219,7 @@ namespace MeetCore
                 if (updatedModel.File is not null)
                 {
                     // Adds the model
-                    var imageResponse = await Client.AddDepartmentLayoutImageAsync(response.Result.Id, updatedModel.File);
+                    var imageResponse = await Client.SetDepartmentLayoutImageAsync(response.Result.Id, updatedModel.File);
 
                     // If there was an error...
                     if (!imageResponse.IsSuccessful)

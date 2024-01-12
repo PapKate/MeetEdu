@@ -8,9 +8,24 @@
         #region Public Properties
 
         /// <summary>
+        /// The host URL
+        /// </summary>
+        public const string HostURL = "https://localhost:44307";
+
+        /// <summary>
         /// The app name
         /// </summary>
         public const string AppName = "MeetEdu";
+
+        /// <summary>
+        /// The departments 
+        /// </summary>
+        public const string Departments = "Departments";
+
+        /// <summary>
+        /// The department layouts
+        /// </summary>
+        public const string Layouts = "Layouts";
 
         /// <summary>
         /// Popular searches
@@ -51,11 +66,6 @@
         /// Log out
         /// </summary>
         public const string LogOut = "Log out";
-
-        /// <summary>
-        /// Departments
-        /// </summary>
-        public const string Departments = "Departments";
 
         /// <summary>
         /// Faculty

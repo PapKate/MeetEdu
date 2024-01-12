@@ -31,7 +31,7 @@
                                 AdornmentIcon="@Icons.Material.Filled.Palette"
                                 PickerVariant="PickerVariant.Inline"
                                 DisableAlpha="true" />
-                <MudSelect T="RoomDisplayTheme" @bind-Value="@Model.Model.DisplayTheme"
+                <MudSelect T="ImageDisplayTheme" @bind-Value="@Model.Model.DisplayTheme"
                            Placeholder="Display theme"
                            Class="dialogInput"
                            FullWidth="true"
@@ -39,7 +39,7 @@
                            Adornment="Adornment.Start"
                            AdornmentIcon="@MudIconPaths.Account"
                            AnchorOrigin="Origin.BottomCenter">
-                    @foreach (var value in Enum.GetValues<RoomDisplayTheme>())
+                    @foreach (var value in Enum.GetValues<ImageDisplayTheme>())
                     {
                         <MudSelectItem Value="@value">@value</MudSelectItem>
                     }

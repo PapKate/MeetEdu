@@ -164,37 +164,35 @@ namespace MeetEdu
         #region Layouts
 
         /// <summary>
-        /// Add a department layout
+        /// Sets a department layout image
         /// </summary>
         /// <param name="layoutId">The layout id</param>
         /// <param name="file">The file</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutImageAsync(ObjectId layoutId, IFormFile file, CancellationToken cancellationToken = default)
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> SetDepartmentLayoutImageAsync(ObjectId layoutId, IFormFile file, CancellationToken cancellationToken = default)
         {
-            //if (!model.Rooms.IsNullOrEmpty())
-            //    foreach(var room in model.Rooms)
-            //    {
-            //        var relativePath = Path.Combine(departmentId.ToString(), Path.GetRandomFileName() + ".png");
-            //        var filePath = Path.Combine(DI.GetRequiredService<IWebHostEnvironment>().WebRootPath, relativePath);
+            var webRootPath = DI.GetRequiredService<IWebHostEnvironment>().WebRootPath;
+            var directoryPath = $"{MeetEduConstants.Departments.ToLower()}/{MeetEduConstants.Layouts.ToLower()}/{layoutId}";
 
-            //        var image = Convert.FromBase64String(room.ImageUrl);
+            // Creates a directory for the layout if it doesn't already exist
+            Directory.CreateDirectory(Path.Combine(webRootPath, directoryPath));
+            
+            // Creates the relative path where the image will be saved
+            var relativePath = Path.Combine(directoryPath, Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + ".png");
+            // Creates the path in the wwwroot folder where the image will be saved
+            var filePath = Path.Combine(webRootPath, relativePath);
 
-            //        await File.WriteAllBytesAsync(filePath, image);
+            // Copies the file to the location
+            await file.CopyToAsync(new FileStream(filePath, FileMode.Create), cancellationToken);
 
-            //        var url = new Uri(Path.Combine("http://appointment.com/", relativePath));
+            var link = Path.Combine(MeetEduConstants.HostURL, relativePath);
+            // Gets the source of the image's location
+            var url = new Uri(Path.Combine(link.Replace("\\", "/")));
+            // Creates a model with the image source
+            var model = new DepartmentLayoutRequestModel() { ImageFileSource = url };
 
-            //    }
-
-            var relativePath = Path.Combine(layoutId.ToString(), Path.GetRandomFileName() + ".png");
-            var filePath = Path.Combine(DI.GetRequiredService<IWebHostEnvironment>().WebRootPath, relativePath);
-
-            await using FileStream fs = new(filePath, FileMode.Create);
-            await file.OpenReadStream().CopyToAsync(fs);
-
-            var url = new Uri(Path.Combine("http://appointment.com/", relativePath));
-            var model = new DepartmentLayoutRequestModel() { ImageFile = url };
-
+            // Updates the department layout
             return await UpdateDepartmentLayoutAsync(layoutId, model, cancellationToken);
         }
 

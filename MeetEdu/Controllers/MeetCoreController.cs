@@ -368,13 +368,14 @@ namespace MeetEdu
         /// <summary>
         /// Creates a department layout
         /// </summary>
+        /// <param name="departmentLayoutId">The id</param>
         /// <param name="file">The model</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpPost]
         [Route(MeetCoreAPIRoutes.DepartmentLayoutImagesRoute)]
-        public async Task<ActionResult<DepartmentLayoutResponseModel>> AddDepartmentLayoutImageAsync([FromForm] IFormFile file, CancellationToken cancellationToken = default)
-            => (await DI.DepartmentsRepository.AddDepartmentLayoutImageAsync(DepartmentId, file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+        public async Task<ActionResult<DepartmentLayoutResponseModel>> SetDepartmentLayoutImageAsync([FromRoute] string departmentLayoutId, [FromForm] IFormFile file, CancellationToken cancellationToken = default)
+            => (await DI.DepartmentsRepository.SetDepartmentLayoutImageAsync(departmentLayoutId.ToObjectId(), file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         #endregion
 

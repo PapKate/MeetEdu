@@ -174,47 +174,52 @@
             <inheritdoc/>
             </summary>
         </member>
-        <member name="T:MeetCore.UpdateLayoutRoomDialog">
+        <member name="T:MeetCore.UpdateLayoutDialog">
             <summary>
             The dialog for editing the room
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateLayoutRoomDialog.mPhotoLabel">
+        <member name="F:MeetCore.UpdateLayoutDialog.mPhotoLabel">
             <summary>
             The photo input label
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateLayoutRoomDialog.MudDialog">
+        <member name="P:MeetCore.UpdateLayoutDialog.MudDialog">
             <summary>
             The dialog instance
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateLayoutRoomDialog.Model">
+        <member name="P:MeetCore.UpdateLayoutDialog.Model">
             <summary>
             THe model
             </summary>
         </member>
-        <member name="M:MeetCore.UpdateLayoutRoomDialog.#ctor">
+        <member name="M:MeetCore.UpdateLayoutDialog.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="T:MeetCore.UpdateLayoutRoomDialog.UpdateLayoutModel">
+        <member name="M:MeetCore.UpdateLayoutDialog.Save">
+            <summary>
+            Saves the changes
+            </summary>
+        </member>
+        <member name="T:MeetCore.UpdateLayoutDialog.UpdateLayoutModel">
             <summary>
             The dialog's model
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateLayoutRoomDialog.UpdateLayoutModel.Model">
+        <member name="P:MeetCore.UpdateLayoutDialog.UpdateLayoutModel.Model">
             <summary>
             The model
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateLayoutRoomDialog.UpdateLayoutModel.File">
+        <member name="P:MeetCore.UpdateLayoutDialog.UpdateLayoutModel.File">
             <summary>
             The image
             </summary>
         </member>
-        <member name="M:MeetCore.UpdateLayoutRoomDialog.UpdateLayoutModel.#ctor(MeetBase.Web.DepartmentLayoutRequestModel)">
+        <member name="M:MeetCore.UpdateLayoutDialog.UpdateLayoutModel.#ctor(MeetBase.Web.DepartmentLayoutRequestModel)">
             <summary>
             Default constructor
             </summary>

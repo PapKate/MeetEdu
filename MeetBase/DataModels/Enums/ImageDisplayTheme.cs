@@ -4,7 +4,7 @@ namespace MeetBase
     /// <summary>
     /// Provides enumeration over the room display theme
     /// </summary>
-    public enum RoomDisplayTheme
+    public enum ImageDisplayTheme
     {
         /// <summary>
         /// Left

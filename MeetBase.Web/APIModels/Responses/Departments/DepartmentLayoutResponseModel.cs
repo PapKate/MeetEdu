@@ -58,12 +58,12 @@ namespace MeetBase.Web
         /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? ImageUrl { get; set; }
+        public Uri? ImageFileSource { get; set; }
 
         /// <summary>
         /// The display theme
         /// </summary>
-        public RoomDisplayTheme DisplayTheme { get; set; }
+        public ImageDisplayTheme DisplayTheme { get; set; }
 
         #endregion
 

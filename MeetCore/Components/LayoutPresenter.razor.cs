@@ -58,9 +58,9 @@ namespace MeetCore
 
             if (Layout is not null) 
             {
-                if (Layout.DisplayTheme == RoomDisplayTheme.Left)
+                if (Layout.DisplayTheme == ImageDisplayTheme.Left)
                     mRoomDisplayThemeClass = "layoutRoomLeftContainer";
-                else if (Layout.DisplayTheme == RoomDisplayTheme.Right)
+                else if (Layout.DisplayTheme == ImageDisplayTheme.Right)
                     mRoomDisplayThemeClass = "layoutRoomRightContainer";
                 else
                     mRoomDisplayThemeClass = "layoutRoomCenterContainer";

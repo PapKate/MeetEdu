@@ -7,8 +7,8 @@
 @if(Layout is not null)
 {
     <div class="layoutRoomContainer @mRoomDisplayThemeClass" style="@BackgroundVariable.SetCssColor(Layout.Color.IsNullOrEmpty() ? Amber.HexToRGBA(0.5) : Layout.Color.HexToRGBA(0.5))">
-        <div class="@(Layout.DisplayTheme == RoomDisplayTheme.Center ? "layoutRoomImageFullContainer" : "layoutRoomImageContainer")">
-            <img class="@(Layout.DisplayTheme == RoomDisplayTheme.Center ? "layoutRoomImageFull" : "layoutRoomImage")" src="@Layout.ImageUrl?.ToString()" alt="@Layout.Name" />
+        <div class="@(Layout.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFullContainer" : "layoutRoomImageContainer")">
+            <img class="@(Layout.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFull" : "layoutRoomImage")" src="@Layout.ImageFileSource?.ToString()" alt="@Layout.Name" />
         </div>
     
         <div class="layoutRoomTextContainer">

@@ -4,7 +4,20 @@ using MudBlazor.Services;
 
 using System.Reflection;
 
+//var config = new ConfigurationBuilder()
+//    .AddJsonFile("appsettings.json", optional: false)
+//    .Build();
+
+//var host = config["Host"]!;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//builder.WebHost
+//    .UseUrls(host)
+//    .ConfigureKestrel((context, options) =>
+//    {
+//        options.Limits.MaxRequestBodySize = 737280000;
+//    });
 
 // Add services to the container.
 

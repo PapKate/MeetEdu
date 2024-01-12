@@ -2599,6 +2599,26 @@
             An error that should get hidden
             </summary>
         </member>
+        <member name="T:MeetBase.ImageDisplayTheme">
+            <summary>
+            Provides enumeration over the room display theme
+            </summary>
+        </member>
+        <member name="F:MeetBase.ImageDisplayTheme.Left">
+            <summary>
+            Left
+            </summary>
+        </member>
+        <member name="F:MeetBase.ImageDisplayTheme.Right">
+            <summary>
+            Right
+            </summary>
+        </member>
+        <member name="F:MeetBase.ImageDisplayTheme.Center">
+            <summary>
+            Center
+            </summary>
+        </member>
         <member name="T:MeetBase.OrderCondition">
             <summary>
             Provides enumeration for the order conditions
@@ -2612,26 +2632,6 @@
         <member name="F:MeetBase.OrderCondition.Descending">
             <summary>
             Descending sort order
-            </summary>
-        </member>
-        <member name="T:MeetBase.RoomDisplayTheme">
-            <summary>
-            Provides enumeration over the room display theme
-            </summary>
-        </member>
-        <member name="F:MeetBase.RoomDisplayTheme.Left">
-            <summary>
-            Left
-            </summary>
-        </member>
-        <member name="F:MeetBase.RoomDisplayTheme.Right">
-            <summary>
-            Right
-            </summary>
-        </member>
-        <member name="F:MeetBase.RoomDisplayTheme.Center">
-            <summary>
-            Center
             </summary>
         </member>
         <member name="T:MeetBase.SecretaryRole">

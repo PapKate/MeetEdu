@@ -81,44 +81,29 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:MeetEdu.FrameworkConstructionExtensions">
-            <summary>
-            Extension methods 
-            </summary>
-        </member>
-        <member name="F:MeetEdu.FrameworkConstructionExtensions.RequestModelSuffix">
-            <summary>
-            The request model suffix
-            </summary>
-        </member>
-        <member name="F:MeetEdu.FrameworkConstructionExtensions.EntitySuffix">
-            <summary>
-            The entity suffix
-            </summary>
-        </member>
-        <member name="F:MeetEdu.FrameworkConstructionExtensions.EmbeddedPrefix">
-            <summary>
-            The embedded model suffix
-            </summary>
-        </member>
-        <member name="F:MeetEdu.FrameworkConstructionExtensions.ResponseModelSuffix">
-            <summary>
-            The response model suffix
-            </summary>
-        </member>
-        <member name="F:MeetEdu.FrameworkConstructionExtensions.APIArgsSuffix">
-            <summary>
-            The API args suffix
-            </summary>
-        </member>
         <member name="T:MeetEdu.MeetEduConstants">
             <summary>
             The constants for the MeetEdu app
             </summary>
         </member>
+        <member name="F:MeetEdu.MeetEduConstants.HostURL">
+            <summary>
+            The host URL
+            </summary>
+        </member>
         <member name="F:MeetEdu.MeetEduConstants.AppName">
             <summary>
             The app name
+            </summary>
+        </member>
+        <member name="F:MeetEdu.MeetEduConstants.Departments">
+            <summary>
+            The departments 
+            </summary>
+        </member>
+        <member name="F:MeetEdu.MeetEduConstants.Layouts">
+            <summary>
+            The department layouts
             </summary>
         </member>
         <member name="F:MeetEdu.MeetEduConstants.PopularSearches">
@@ -159,11 +144,6 @@
         <member name="F:MeetEdu.MeetEduConstants.LogOut">
             <summary>
             Log out
-            </summary>
-        </member>
-        <member name="F:MeetEdu.MeetEduConstants.Departments">
-            <summary>
-            Departments
             </summary>
         </member>
         <member name="F:MeetEdu.MeetEduConstants.Faculty">
@@ -454,10 +434,11 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.MeetCoreController.AddDepartmentLayoutImageAsync(Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.MeetCoreController.SetDepartmentLayoutImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
             <summary>
             Creates a department layout
             </summary>
+            <param name="departmentLayoutId">The id</param>
             <param name="file">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
@@ -1792,7 +1773,7 @@
             The note
             </summary>
         </member>
-        <member name="P:MeetEdu.DepartmentLayoutEntity.ImageUrl">
+        <member name="P:MeetEdu.DepartmentLayoutEntity.ImageFileSource">
             <summary>
             The image URL
             </summary>
@@ -2576,6 +2557,36 @@
             <typeparam name="T">The document type</typeparam>
             <param name="filters">The filters</param>
             <returns></returns>
+        </member>
+        <member name="T:MeetEdu.FrameworkConstructionExtensions">
+            <summary>
+            Extension methods 
+            </summary>
+        </member>
+        <member name="F:MeetEdu.FrameworkConstructionExtensions.RequestModelSuffix">
+            <summary>
+            The request model suffix
+            </summary>
+        </member>
+        <member name="F:MeetEdu.FrameworkConstructionExtensions.EntitySuffix">
+            <summary>
+            The entity suffix
+            </summary>
+        </member>
+        <member name="F:MeetEdu.FrameworkConstructionExtensions.EmbeddedPrefix">
+            <summary>
+            The embedded model suffix
+            </summary>
+        </member>
+        <member name="F:MeetEdu.FrameworkConstructionExtensions.ResponseModelSuffix">
+            <summary>
+            The response model suffix
+            </summary>
+        </member>
+        <member name="F:MeetEdu.FrameworkConstructionExtensions.APIArgsSuffix">
+            <summary>
+            The API args suffix
+            </summary>
         </member>
         <member name="T:MeetEdu.IMongoQueryableExtensions">
             <summary>
@@ -3443,9 +3454,9 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.DepartmentsRepository.AddDepartmentLayoutImageAsync(MongoDB.Bson.ObjectId,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.DepartmentsRepository.SetDepartmentLayoutImageAsync(MongoDB.Bson.ObjectId,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
             <summary>
-            Add a department layout
+            Sets a department layout image
             </summary>
             <param name="layoutId">The layout id</param>
             <param name="file">The file</param>

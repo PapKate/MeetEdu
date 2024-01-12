@@ -144,7 +144,7 @@
             The note
             </summary>
         </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.ImageFile">
+        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.ImageFileSource">
             <summary>
             The image URL
             </summary>
@@ -949,7 +949,7 @@
             The note
             </summary>
         </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.ImageUrl">
+        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.ImageFileSource">
             <summary>
             The image URL
             </summary>
@@ -2179,7 +2179,7 @@
             <param name="id">The id</param>
             <returns></returns>
         </member>
-        <member name="M:MeetBase.Web.MeetCoreClient.AddDepartmentLayoutImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile)">
+        <member name="M:MeetBase.Web.MeetCoreClient.SetDepartmentLayoutImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             Creates a department layout
             </summary>
@@ -2512,6 +2512,15 @@
             <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
             <returns></returns>
         </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PostFilesAsync(System.String,System.Collections.Generic.IEnumerable{MeetBase.Web.FileUploadGroupDataModel},`0)">
+            <summary>
+            POSTs a web request to an URL that contains the specified <paramref name="fileGroups"/> and returns a <see cref="T:System.Net.Http.HttpResponseMessage"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="fileGroups">Groups of files that contains all the required information to perform the binding to ASP.NET controller action</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetBase.Web.WebRequestsClient`1.GetAsync(System.String,`0)">
             <summary>
             GETs a web request to a URL and returns a <see cref="T:System.Net.Http.HttpResponseMessage"/>
@@ -2552,6 +2561,15 @@
             </summary>
             <param name="url">The URL</param>
             <param name="content">The content to put</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PutFilesAsync(System.String,System.Collections.Generic.IEnumerable{MeetBase.Web.FileUploadGroupDataModel},`0)">
+            <summary>
+            PUTs the specified <paramref name="fileGroups"/> at the specified <paramref name="url"/> and returns a <see cref="T:System.Net.Http.HttpResponseMessage"/>
+            </summary>
+            <param name="url">The URL</param>
+            <param name="fileGroups">Groups of files that contains all the required information to perform the binding to ASP.NET controller action</param>
             <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
             <returns></returns>
         </member>
@@ -2615,6 +2633,16 @@
             <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
             <returns></returns>
         </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PostFilesAsync``1(System.String,System.Collections.Generic.IEnumerable{MeetBase.Web.FileUploadGroupDataModel},`0)">
+            <summary>
+            POSTs a web request to an URL that contains the specified <paramref name="fileGroups"/> and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <typeparam name="TResponse">The type of the response</typeparam>
+            <param name="url">The URL</param>
+            <param name="fileGroups">Groups of files that contains all the required information to perform the binding to ASP.NET controller action</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetBase.Web.WebRequestsClient`1.GetAsync``1(System.String,`0)">
             <summary>
             GETs a web request to a URL and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
@@ -2629,6 +2657,16 @@
             </summary>
             <param name="url">The URL</param>
             <param name="content">The content to put</param>
+            <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.WebRequestsClient`1.PutFilesAsync``1(System.String,System.Collections.Generic.IEnumerable{MeetBase.Web.FileUploadGroupDataModel},`0)">
+            <summary>
+            PUTs the specified <paramref name="fileGroups"/> and returns a <see cref="T:MeetBase.Web.WebRequestResult`1"/>
+            </summary>
+            <typeparam name="TResponse">The type of the response</typeparam>
+            <param name="url">The URL</param>
+            <param name="fileGroups">Groups of files that contains all the required information to perform the binding to ASP.NET controller action</param>
             <param name="authenticationArgs">If specified, provides the Authorization header is set</param>
             <returns></returns>
         </member>
@@ -3178,6 +3216,39 @@
             </summary>
             <param name="name">The name</param>
             <param name="value">The value</param>
+        </member>
+        <member name="T:MeetBase.Web.FileUploadGroupDataModel">
+            <summary>
+            Represents a group of files that are sent to the ASP.NET API
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.FileUploadGroupDataModel.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:MeetBase.Web.FileUploadGroupDataModel.Files">
+            <summary>
+            The files
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.FileUploadGroupDataModel.#ctor(System.String,System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="name">
+            The name of the parameter of the Action of the ASP.NET controller that the file/s
+            should be assigned to.
+            </param>
+            <param name="files">The files</param>
+        </member>
+        <member name="M:MeetBase.Web.FileUploadGroupDataModel.#ctor(System.String,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Single file constructor
+            </summary>
+            <param name="name">
+            The name of the parameter of the Action of the ASP.NET controller that the file/s
+            should be assigned to.
+            </param>
+            <param name="file">The file</param>
         </member>
         <member name="T:MeetBase.Web.MeetCoreAPIRoutes">
             <summary>
