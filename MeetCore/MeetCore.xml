@@ -199,6 +199,11 @@
             Default constructor
             </summary>
         </member>
+        <member name="M:MeetCore.UpdateLayoutDialog.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
         <member name="M:MeetCore.UpdateLayoutDialog.Save">
             <summary>
             Saves the changes
@@ -362,9 +367,9 @@
             The presenter for a layout room
             </summary>
         </member>
-        <member name="F:MeetCore.LayoutPresenter.mRoomDisplayThemeClass">
+        <member name="F:MeetCore.LayoutPresenter.mLayout">
             <summary>
-            The CSS class for the display theme
+            The member of the <see cref="P:MeetCore.LayoutPresenter.Layout"/> property
             </summary>
         </member>
         <member name="P:MeetCore.LayoutPresenter.Layout">
@@ -377,19 +382,29 @@
             A flag indicating whether it is editable or not
             </summary>
         </member>
+        <member name="P:MeetCore.LayoutPresenter.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
         <member name="M:MeetCore.LayoutPresenter.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.LayoutPresenter.OnInitialized">
+        <member name="M:MeetCore.LayoutPresenter.ReplaceLayout(MeetBase.Web.DepartmentLayoutResponseModel)">
             <summary>
-            <inheritdoc/>
+            Re-renders the component
             </summary>
         </member>
         <member name="P:MeetCore.LayoutPresenter.EditButtonClicked">
             <summary>
             Fires when the edit button is clicked
+            </summary>
+        </member>
+        <member name="P:MeetCore.LayoutPresenter.DeleteButtonClicked">
+            <summary>
+            Fires when the delete button is clicked
             </summary>
         </member>
         <member name="T:MeetCore.MarkdownBlock">
@@ -1391,11 +1406,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Secretary_ContactFormPage.OnInitialized">
-            <summary>
-            <inheritdoc/>
-            </summary>
-        </member>
         <member name="T:MeetCore.Secretary_DepartmentFacultyPage">
             <summary>
             The faculty page
@@ -1527,6 +1537,11 @@
             The <see cref="N:MudBlazor"/> snack bar manager
             </summary>
         </member>
+        <member name="P:MeetCore.Secretary_DepartmentLayoutPage.LayoutPresenter">
+            <summary>
+            The layout presenter instance
+            </summary>
+        </member>
         <member name="M:MeetCore.Secretary_DepartmentLayoutPage.#ctor">
             <summary>
             Default constructor
@@ -1550,6 +1565,12 @@
         <member name="M:MeetCore.Secretary_DepartmentLayoutPage.UpdateLayout(MeetBase.Web.DepartmentLayoutResponseModel)">
             <summary>
             Updates the current <paramref name="model"/>
+            </summary>
+            <param name="model">The layout</param>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.DeleteLayout(MeetBase.Web.DepartmentLayoutResponseModel)">
+            <summary>
+            Deletes the current <paramref name="model"/>
             </summary>
             <param name="model">The layout</param>
         </member>

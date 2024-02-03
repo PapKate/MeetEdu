@@ -65,34 +65,6 @@ namespace MeetCore
 
         #endregion
 
-        #region Protected Methods
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        protected override async void OnInitialized()
-        {
-            //var response = await Client.GetDepartmentContactMessagesAsync(new() { IncludeDepartments = new List<string>() { StateManager.Department!.Id } });
-
-            //if (!response.IsSuccessful)
-            //{
-            //    Console.WriteLine(response.ErrorMessage);
-            //    // Show the error
-            //    Snackbar.Add(response.ErrorMessage, Severity.Info);
-            //    return;
-            //}
-
-            //if (!response.Result.Any())
-            //{
-            //    Snackbar.Add("No layouts", Severity.Error);
-            //    return;
-            //}
-            //var layout = response.Result.First();
-            //mLayoutDescription = layout.Description;
-        }
-
-        #endregion
-
         #region Private Methods
 
         private void SaveFormDescription(string? value)

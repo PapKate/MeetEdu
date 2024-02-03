@@ -1,8 +1,12 @@
-﻿using MeetBase.Web;
+﻿using MeetBase;
+using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 
 using MudBlazor;
+
+using System.Collections.Immutable;
+using System.Reflection;
 
 using static MeetCore.UpdateLayoutDialog;
 
@@ -17,12 +21,14 @@ namespace MeetCore
 
         private string mText = string.Empty;
 
-        private IEnumerable<DepartmentLayoutResponseModel>? mLayouts;
+        private List<DepartmentLayoutResponseModel>? mLayouts;
+
+        private readonly List<LayoutPresenter> mLayoutPresenters = new();
 
         /// <summary>
         /// The <see cref="MudDialog"/> options
         /// </summary>
-        private DialogOptions mDialogOptions = new() { FullWidth = true };
+        private readonly DialogOptions mDialogOptions = new() { FullWidth = true };
 
         #endregion
 
@@ -51,6 +57,17 @@ namespace MeetCore
         /// </summary>
         [Inject]
         protected ISnackbar Snackbar { get; set; } = default!;
+
+        /// <summary>
+        /// The layout presenter instance
+        /// </summary>
+        protected LayoutPresenter LayoutPresenter
+        {
+            set
+            {
+                mLayoutPresenters.Add(value);
+            }
+        }
 
         #endregion
 
@@ -106,64 +123,16 @@ namespace MeetCore
         /// <summary>
         /// Creates and adds a layout to the current department
         /// </summary>
-        private async void AddLayout()
+        private async Task AddLayout()
         {
             // Creates the request for adding the layout
             var request = new DepartmentLayoutRequestModel()
             {
                 DepartmentId = StateManager.Department!.Id,
-                Color = MeetBase.Blazor.PaletteColors.White
+                Color = MeetBase.Blazor.PaletteColors.Gray
             };
 
-            var parameters = new DialogParameters<UpdateLayoutDialog> { { x => x.Model, new UpdateLayoutModel(request) } };
-
-            // Creates and opens a dialog with the specified type
-            var dialog = await DialogService.ShowAsync<UpdateLayoutDialog>(null, parameters, mDialogOptions);
-
-            // Once the dialog is closed...
-            // Gets the result
-            var result = await dialog.Result;
-
-            // If there is no result or the dialog was closed by canceling the inner actions...
-            if (result is null || result.Canceled)
-            {
-                // Return
-                return;
-            }
-
-            // If the result is of the specified type...
-            if (result.Data is UpdateLayoutModel updatedModel)
-            {
-                // Adds the model
-                var response = await Client.AddDepartmentLayoutAsync(updatedModel.Model);
-                
-                // If there was an error...
-                if (!response.IsSuccessful)
-                {
-                    Console.WriteLine(response.ErrorMessage);
-                    // Show the error
-                    Snackbar.Add(response.ErrorMessage, Severity.Error);
-                    // Return
-                    return;
-                }
-                
-                // If an image was set..
-                if(updatedModel.File is not null)
-                {
-                    // Adds the model
-                    var imageResponse = await Client.SetDepartmentLayoutImageAsync(response.Result.Id, updatedModel.File);
-
-                    // If there was an error...
-                    if (!imageResponse.IsSuccessful)
-                    {
-                        Console.WriteLine(imageResponse.ErrorMessage);
-                        // Show the error
-                        Snackbar.Add(imageResponse.ErrorMessage, Severity.Error);
-                        // Return
-                        return;
-                    }
-                }
-            }
+            var response = await SetDepartmentLayoutImageAsync(request, Client.AddDepartmentLayoutAsync);
             GetLayouts();
         }
 
@@ -171,7 +140,7 @@ namespace MeetCore
         /// Updates the current <paramref name="model"/>
         /// </summary>
         /// <param name="model">The layout</param>
-        private async void UpdateLayout(DepartmentLayoutResponseModel model)
+        private async Task UpdateLayout(DepartmentLayoutResponseModel model)
         {
             var request = new DepartmentLayoutRequestModel()
             {
@@ -183,56 +152,24 @@ namespace MeetCore
                 DisplayTheme = model.DisplayTheme,
             };
 
-            var parameters = new DialogParameters<UpdateLayoutDialog> { { x => x.Model, new UpdateLayoutModel(request) } };
-
-            // Creates and opens a dialog with the specified type
-            var dialog = await DialogService.ShowAsync<UpdateLayoutDialog>(null, parameters, mDialogOptions);
-
-            // Once the dialog is closed...
-            // Gets the result
-            var result = await dialog.Result;
-
-            // If there is no result or the dialog was closed by canceling the inner actions...
-            if (result is null || result.Canceled)
+            var response = await SetDepartmentLayoutImageAsync(request, (request) => Client.UpdateDepartmentLayoutAsync(model.Id, request));
+            if (response is not null)
             {
-                // Return
-                return;
+                var layout = mLayouts!.First(x => x.Id == response.Id);
+                var index = mLayouts!.IndexOf(layout);
+                mLayouts?.Remove(layout);
+                mLayouts?.Insert(index, response);
+                mLayoutPresenters.First(x => x.Layout!.Id == response.Id).ReplaceLayout(response);
             }
+        }
 
-            // If the result is of the specified type...
-            if (result.Data is UpdateLayoutModel updatedModel)
-            {
-                // Updates the layout
-                var response = await Client.UpdateDepartmentLayoutAsync(model.Id, updatedModel.Model);
-
-                // If there was an error...
-                if (!response.IsSuccessful)
-                {
-                    Console.WriteLine(response.ErrorMessage);
-                    // Show the error
-                    Snackbar.Add(response.ErrorMessage, Severity.Error);
-                    // Return
-                    return;
-                }
-
-                // If an image was set..
-                if (updatedModel.File is not null)
-                {
-                    // Adds the model
-                    var imageResponse = await Client.SetDepartmentLayoutImageAsync(response.Result.Id, updatedModel.File);
-
-                    // If there was an error...
-                    if (!imageResponse.IsSuccessful)
-                    {
-                        Console.WriteLine(imageResponse.ErrorMessage);
-                        // Show the error
-                        Snackbar.Add(imageResponse.ErrorMessage, Severity.Error);
-                        // Return
-                        return;
-                    }
-                }
-            }
-            
+        /// <summary>
+        /// Deletes the current <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The layout</param>
+        private async Task DeleteLayout(DepartmentLayoutResponseModel model)
+        {
+            await Client.DeleteDepartmentLayoutAsync(model.Id);
             GetLayouts();
         }
 
@@ -256,8 +193,67 @@ namespace MeetCore
                 Snackbar.Add("No layouts", Severity.Error);
                 return;
             }
-            mLayouts = response.Result;
+            mLayouts = response.Result.ToList();
+
             StateHasChanged();
+        }
+
+        private async Task<DepartmentLayoutResponseModel?> SetDepartmentLayoutImageAsync(DepartmentLayoutRequestModel request, 
+                                                         Func<DepartmentLayoutRequestModel, Task<WebRequestResult<DepartmentLayoutResponseModel>>> requestAction)
+        {
+            var parameters = new DialogParameters<UpdateLayoutDialog> { { x => x.Model, new UpdateLayoutModel(request) } };
+
+            // Creates and opens a dialog with the specified type
+            var dialog = await DialogService.ShowAsync<UpdateLayoutDialog>(null, parameters, mDialogOptions);
+
+            // Once the dialog is closed...
+            // Gets the result
+            var result = await dialog.Result;
+
+            // If there is no result or the dialog was closed by canceling the inner actions...
+            if (result is null || result.Canceled)
+            {
+                // Return
+                return null;
+            }
+
+            // If the result is of the specified type...
+            if (result.Data is UpdateLayoutModel updatedModel)
+            {
+                // Performs the specified action
+                var response = await requestAction(updatedModel.Model);
+
+                // If there was an error...
+                if (!response.IsSuccessful)
+                {
+                    Console.WriteLine(response.ErrorMessage);
+                    // Show the error
+                    Snackbar.Add(response.ErrorMessage, Severity.Error);
+                    // Return
+                    return null;
+                }
+
+                // If an image was set...
+                if (updatedModel.File is not null)
+                {
+                    // Adds the model
+                    var responseWithImage = await Client.SetDepartmentLayoutImageAsync(response.Result.Id, updatedModel.File);
+
+                    // If there was an error...
+                    if (!responseWithImage.IsSuccessful)
+                    {
+                        Console.WriteLine(responseWithImage.ErrorMessage);
+                        // Show the error
+                        Snackbar.Add(responseWithImage.ErrorMessage, Severity.Error);
+                        // Return
+                        return null;
+                    }
+
+                    return responseWithImage.Result;
+                }
+                return response.Result;
+            }
+            return null;
         }
 
         #endregion

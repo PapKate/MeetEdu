@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model used for a user
     /// </summary>
-    public class UserRequestModel : BaseRequestModel
+    public class UserRequestModel : BaseRequestModel, IImageable
     {
         #region Public Properties
 

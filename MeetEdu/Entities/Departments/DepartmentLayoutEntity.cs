@@ -5,7 +5,7 @@ namespace MeetEdu
     /// <summary>
     /// Represents a company layout document in the MongoDB
     /// </summary>
-    public class DepartmentLayoutEntity : StandardEntity, IDescriptable, INoteable, IDepartmentIdentifiable<ObjectId>
+    public class DepartmentLayoutEntity : StandardEntity, IImageable, IDescriptable, INoteable, IDepartmentIdentifiable<ObjectId>
     {
         #region Private Members
 
@@ -49,7 +49,7 @@ namespace MeetEdu
         /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? ImageFileSource { get; set; }
+        public Uri? ImageUrl { get; set; }
 
         /// <summary>
         /// The display theme

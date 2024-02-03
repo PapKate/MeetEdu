@@ -482,18 +482,17 @@ namespace MeetBase.Web
                     // For every file...
                     foreach (var file in group.Files)
                     {
-                        // Get the bytes
-                        var bytes = File.ReadAllBytes(file.FileName);
+                        using var memoryStream = new MemoryStream();
+                        await file.CopyToAsync(memoryStream);
+                        var bytes = memoryStream.ToArray();
 
                         // Create the content that will be send
                         var byteArrayContent = new ByteArrayContent(bytes);
 
-                        // If the form file has headers...
-                        if (!file.Headers.IsNullOrEmpty())
-                            // For every header of the form file...
-                            foreach (var header in file.Headers)
-                                // Add it to the headers of the content
-                                byteArrayContent.Headers.Add(header.Key.ToString(), header.Value.ToString());
+                        // For every header of the form file...
+                        foreach (var header in file.Headers)
+                            // Add it to the headers of the content
+                            byteArrayContent.Headers.Add(header.Key.ToString(), header.Value.ToString());
 
                         // Add the content to the form
                         form.Add(byteArrayContent, group.Name, file.FileName);

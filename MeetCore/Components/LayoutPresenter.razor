@@ -6,9 +6,9 @@
 
 @if(Layout is not null)
 {
-    <div class="layoutRoomContainer @mRoomDisplayThemeClass" style="@BackgroundVariable.SetCssColor(Layout.Color.IsNullOrEmpty() ? Amber.HexToRGBA(0.5) : Layout.Color.HexToRGBA(0.5))">
+    <div class="layoutRoomContainer @mLayoutImageTheme" style="@BackgroundVariable.SetCssColor(Layout.Color.IsNullOrEmpty() ? Amber.HexToRGBA(0.5) : Layout.Color.HexToRGBA(0.5))">
         <div class="@(Layout.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFullContainer" : "layoutRoomImageContainer")">
-            <img class="@(Layout.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFull" : "layoutRoomImage")" src="@Layout.ImageFileSource?.ToString()" alt="@Layout.Name" />
+            <img class="@(Layout.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFull" : "layoutRoomImage")" src="@Layout.ImageUrl?.ToString()" alt="@Layout.Name" />
         </div>
     
         <div class="layoutRoomTextContainer">
@@ -18,13 +18,14 @@
 
         @if(IsEditable)
         {
-            <IconButton OnClick="@EditLayoutRoom"
-                        BackColor="@White"
-                        ForeColor="@(Layout.Color ?? DarkGray)"
-                        VectorSource="@IconPaths.PencilOutlinePath"
-                        BoxShadow="@BoxShadow"
-                        BorderRadius="@NormalBorderRadius"
-                        CssClasses="editButtonContainer " />
+            <EditToOptionsButton Alignment="Alignment.Vertical"
+                                 HasOverlay="true"
+                                 EditButton="@(new(White.HexToRGBA(0.6), Gray, IconPaths.PencilBoxMultipleOutlinePath))"
+                                 OptionButtons="@(new List<OptionButton>()
+                                                {
+                                                    new(White.HexToRGBA(0.6), Orange, IconPaths.PencilOutlinePath, EventCallback.Factory.Create(this, () => EditLayoutRoom())),
+                                                    new(White.HexToRGBA(0.6), Red, IconPaths.TrashCanOutlinePath, EventCallback.Factory.Create(this, () => DeleteLayoutRoom()))
+                                                })"/>
         }
     </div>
 }

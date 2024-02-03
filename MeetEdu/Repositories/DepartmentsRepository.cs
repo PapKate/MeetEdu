@@ -172,39 +172,23 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<DepartmentLayoutEntity>> SetDepartmentLayoutImageAsync(ObjectId layoutId, IFormFile file, CancellationToken cancellationToken = default)
         {
-            var webRootPath = DI.GetRequiredService<IWebHostEnvironment>().WebRootPath;
-            var directoryPath = $"{MeetEduConstants.Departments.ToLower()}/{MeetEduConstants.Layouts.ToLower()}/{layoutId}";
-
-            // Creates a directory for the layout if it doesn't already exist
-            Directory.CreateDirectory(Path.Combine(webRootPath, directoryPath));
-            
-            // Creates the relative path where the image will be saved
-            var relativePath = Path.Combine(directoryPath, Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + ".png");
-            // Creates the path in the wwwroot folder where the image will be saved
-            var filePath = Path.Combine(webRootPath, relativePath);
-
-            // Copies the file to the location
-            await file.CopyToAsync(new FileStream(filePath, FileMode.Create), cancellationToken);
-
-            var link = Path.Combine(MeetEduConstants.HostURL, relativePath);
-            // Gets the source of the image's location
-            var url = new Uri(Path.Combine(link.Replace("\\", "/")));
-            // Creates a model with the image source
-            var model = new DepartmentLayoutRequestModel() { ImageFileSource = url };
-
-            // Updates the department layout
-            return await UpdateDepartmentLayoutAsync(layoutId, model, cancellationToken);
+            return await RepositoryHelpers.SetImageAsync<DepartmentLayoutRequestModel, DepartmentLayoutEntity>(
+                                                layoutId, 
+                                                $"{MeetEduConstants.Departments.ToLower()}/{MeetEduConstants.Layouts.ToLower()}/",
+                                                file,
+                                                (model) => UpdateDepartmentLayoutAsync(layoutId, model, cancellationToken),
+                                                cancellationToken);
         }
 
         /// <summary>
         /// Add a department layout
         /// </summary>
-        /// <param name="departmentId">The department id</param>
+        /// <param name="layoutId">The department id</param>
         /// <param name="model">The model</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutAsync(ObjectId departmentId, DepartmentLayoutRequestModel model, CancellationToken cancellationToken = default) 
-            => await MeetEduDbMapper.DepartmentLayouts.AddAsync(DepartmentLayoutEntity.FromRequestModel(model, departmentId), cancellationToken);
+        public async Task<WebServerFailable<DepartmentLayoutEntity>> AddDepartmentLayoutAsync(ObjectId layoutId, DepartmentLayoutRequestModel model, CancellationToken cancellationToken = default) 
+            => await MeetEduDbMapper.DepartmentLayouts.AddAsync(DepartmentLayoutEntity.FromRequestModel(model, layoutId), cancellationToken);
 
         /// <summary>
         /// Updates the layout with the specified <paramref name="layoutId"/>

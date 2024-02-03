@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model for a department
     /// </summary>
-    public class DepartmentRequestModel : StandardRequestModel
+    public class DepartmentRequestModel : StandardRequestModel, IImageable
     {
         #region Public Properties
 

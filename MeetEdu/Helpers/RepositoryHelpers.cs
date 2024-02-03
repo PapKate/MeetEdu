@@ -196,6 +196,53 @@ namespace MeetEdu
             where TEntity : BaseEntity
             => await collection.FindOneAndDeleteAsync(x => x.Id == id, cancellationToken: cancellationToken);
 
+        #region Images
+
+        /// <summary>
+        /// Sets an image
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="directoryPath">The relative directory path</param>
+        /// <param name="file">The file</param>
+        /// <param name="updateModelAction"></param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public static async Task<WebServerFailable<TEntity>> SetImageAsync<TRequest, TEntity>(ObjectId id, string directoryPath, IFormFile file, Func<TRequest, Task<WebServerFailable<TEntity>>> updateModelAction, CancellationToken cancellationToken = default)
+            where TEntity : BaseEntity
+            where TRequest : BaseRequestModel, IImageable, new()
+        {
+            var webRootPath = DI.GetRequiredService<IWebHostEnvironment>().WebRootPath;
+            
+            var path = Path.Combine(webRootPath, directoryPath);
+            var folderImages = Directory.GetFiles(path);
+            var test = folderImages.Where(x => x.Contains(id.ToString() + "-"));
+            foreach (var image in test)
+                File.Delete(image);
+
+            // Creates a directory for the object if it doesn't already exist
+            Directory.CreateDirectory(Path.Combine(webRootPath, directoryPath));
+
+            // Creates the relative path where the image will be saved
+            var relativePath = Path.Combine(directoryPath, id.ToString() + "-" + Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + ".png");
+            // Creates the path in the wwwroot folder where the image will be saved
+            var filePath = Path.Combine(webRootPath, relativePath);
+
+            using var stream = new FileStream(filePath, FileMode.Create);
+            // Copies the file to the location
+            await file.CopyToAsync(stream, cancellationToken);
+
+            var link = Path.Combine(MeetEduConstants.HostURL, relativePath);
+            // Gets the source of the image's location
+            var url = new Uri(Path.Combine(link.Replace("\\", "/")));
+            // Creates a model with the image source
+            var model = new TRequest() { ImageUrl = url };
+
+            // Updates the entity
+            return await updateModelAction(model);
+        }
+
+        #endregion
+
         #endregion
     }
 }

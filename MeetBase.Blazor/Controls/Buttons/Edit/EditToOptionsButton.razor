@@ -1,0 +1,70 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetBase.Blazor
+
+@if (HasOverlay && !mIsEditButtonVisible)
+{
+    <div class="editToOptionsButtonsOverlay" @onclick="@(() => mIsEditButtonVisible = true)"></div>
+}
+<div class="editToOptionsButtonsContainer @(Alignment == Alignment.Vertical ? "editToOptionsButtonsVerticalContainer" : string.Empty)">
+    @if (mIsEditButtonVisible && EditButton is not null)
+    {
+        <IconButton BackColor="@EditButton.Background"
+                    ForeColor="@EditButton.Foreground"
+                    BorderRadius="@LargeBorderRadius"
+                    VectorSource="@EditButton.VectorSource"
+                    OnClick="@EditButton_OnClick"
+        CssClasses="optionButton" />
+    }
+    else
+    {
+        if(!OptionButtons.IsNullOrEmpty())
+        {
+            var index = 0;
+            foreach(var button in OptionButtons)
+            {
+                <IconButton @key="index"
+                            BackColor="@button.Background"
+                            ForeColor="@button.Foreground"
+                            BorderRadius="@SetButtonBorderRadius(index)"
+                            VectorSource="@button.VectorSource"
+                            OnClick="@(async() => { mIsEditButtonVisible = true; await button.OnClick.InvokeAsync();})"
+                            CssClasses="optionButton" />
+                index++;
+            }
+        }
+    }
+</div>
+
+<style>
+
+    .editToOptionsButtonsContainer {
+        position: absolute;
+        top: @XXLargePadding;
+        right: @XXLargePadding;
+        display: flex;
+    }
+
+    .editToOptionsButtonsOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width:100%;
+        height:100vh;
+    }
+
+    .editToOptionsButtonsVerticalContainer {
+        flex-direction: column;
+    }
+
+    .optionButton {
+        width: 3rem;
+        height: 3rem;
+        padding: @NormalPadding;
+        cursor: pointer;
+    }
+
+</style>

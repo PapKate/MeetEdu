@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model for a department layout
     /// </summary>
-    public class DepartmentLayoutRequestModel : StandardRequestModel
+    public class DepartmentLayoutRequestModel : StandardRequestModel, IImageable
     {
         #region Public Properties
 
@@ -25,12 +25,12 @@
         /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? ImageFileSource { get; set; }
+        public Uri? ImageUrl { get; set; }
 
         /// <summary>
         /// The display theme
         /// </summary>
-        public ImageDisplayTheme DisplayTheme { get; set; }
+        public ImageDisplayTheme? DisplayTheme { get; set; }
 
         #endregion
 

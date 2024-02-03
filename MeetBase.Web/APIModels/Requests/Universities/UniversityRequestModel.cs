@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model used for a university
     /// </summary>
-    public class UniversityRequestModel : StandardRequestModel
+    public class UniversityRequestModel : StandardRequestModel, IImageable
     {
         #region Public Properties
 

@@ -1,4 +1,5 @@
-﻿using MeetBase.Web;
+﻿using MeetBase;
+using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -22,6 +23,8 @@ namespace MeetCore
         private string mPhotoLabel = "Layout image";
 
         private IBrowserFile? mFile;
+
+        private ImageDisplayTheme mTheme;
 
         #endregion
 
@@ -53,6 +56,22 @@ namespace MeetCore
 
         #endregion
 
+        #region Protected Methods
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            if(Model is not null)
+            {
+                mTheme = Model.Model.DisplayTheme ?? ImageDisplayTheme.Left;
+            }
+        }
+
+        #endregion
+
         #region Private Methods
 
         /// <summary>
@@ -62,10 +81,11 @@ namespace MeetCore
         {
             if(Model is not null)
             {
+                Model.Model.DisplayTheme = mTheme;
                 Model.Model.Color = Model.Model?.Color?.Replace("#", string.Empty);
                 if (mFile is not null)
                 {
-                    using var stream = mFile.OpenReadStream();
+                    using var stream = mFile.OpenReadStream(512000000);
                     var memoryStream = new MemoryStream();
                     await stream.CopyToAsync(memoryStream);
 

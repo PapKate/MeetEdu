@@ -5,7 +5,7 @@ namespace MeetBase.Web
     /// <summary>
     /// Represents a company layout document in the MongoDB
     /// </summary>
-    public class DepartmentLayoutResponseModel : StandardResponseModel, IDescriptable, INoteable, IDepartmentIdentifiable<string>
+    public class DepartmentLayoutResponseModel : StandardResponseModel, IImageable, IDescriptable, INoteable, IDepartmentIdentifiable<string>
     {
         #region Private Members
 
@@ -58,7 +58,7 @@ namespace MeetBase.Web
         /// <summary>
         /// The image URL
         /// </summary>
-        public Uri? ImageFileSource { get; set; }
+        public Uri? ImageUrl { get; set; }
 
         /// <summary>
         /// The display theme

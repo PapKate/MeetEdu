@@ -1773,7 +1773,7 @@
             The note
             </summary>
         </member>
-        <member name="P:MeetEdu.DepartmentLayoutEntity.ImageFileSource">
+        <member name="P:MeetEdu.DepartmentLayoutEntity.ImageUrl">
             <summary>
             The image URL
             </summary>
@@ -3028,6 +3028,17 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.RepositoryHelpers.SetImageAsync``2(MongoDB.Bson.ObjectId,System.String,Microsoft.AspNetCore.Http.IFormFile,System.Func{``0,System.Threading.Tasks.Task{MeetEdu.WebServerFailable{``1}}},System.Threading.CancellationToken)">
+            <summary>
+            Sets an image
+            </summary>
+            <param name="id">The id</param>
+            <param name="directoryPath">The relative directory path</param>
+            <param name="file">The file</param>
+            <param name="updateModelAction"></param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetEdu.MongoDbDateOnlySerializer">
             <summary>
             An implementation of the <see cref="T:MongoDB.Bson.Serialization.IBsonSerializer"/> for the <see cref="T:System.DateOnly"/>
@@ -3467,7 +3478,7 @@
             <summary>
             Add a department layout
             </summary>
-            <param name="departmentId">The department id</param>
+            <param name="layoutId">The department id</param>
             <param name="model">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>

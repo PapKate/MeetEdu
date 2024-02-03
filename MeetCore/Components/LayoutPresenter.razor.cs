@@ -1,4 +1,5 @@
 ﻿using MeetBase;
+using MeetBase.Blazor;
 using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
@@ -12,10 +13,12 @@ namespace MeetCore
     {
         #region Private Members
 
+        private string mLayoutImageTheme = "layoutRoomRightContainer";
+
         /// <summary>
-        /// The CSS class for the display theme
+        /// The member of the <see cref="Layout"/> property
         /// </summary>
-        private string mRoomDisplayThemeClass = "layoutRoomRightContainer";
+        private DepartmentLayoutResponseModel? mLayout;
 
         #endregion
 
@@ -25,13 +28,31 @@ namespace MeetCore
         /// The layout room
         /// </summary>
         [Parameter]
-        public DepartmentLayoutResponseModel? Layout { get; set; }
+        public DepartmentLayoutResponseModel? Layout 
+        {
+            get => mLayout;
+            set
+            {
+                mLayout = value;
+                SetLayoutRoomTheme();
+            }
+        }
 
         /// <summary>
         /// A flag indicating whether it is editable or not
         /// </summary>
         [Parameter]
         public bool IsEditable { get; set; }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        /// The client
+        /// </summary>
+        [Inject]
+        protected MeetCoreClient Client { get; set; } = default!;
 
         #endregion
 
@@ -47,33 +68,41 @@ namespace MeetCore
 
         #endregion
 
-        #region Protected Methods
+        #region Public Methods
 
         /// <summary>
-        /// <inheritdoc/>
+        /// Re-renders the component
         /// </summary>
-        protected override void OnInitialized()
+        public void ReplaceLayout(DepartmentLayoutResponseModel layout)
         {
-            base.OnInitialized();
-
-            if (Layout is not null) 
-            {
-                if (Layout.DisplayTheme == ImageDisplayTheme.Left)
-                    mRoomDisplayThemeClass = "layoutRoomLeftContainer";
-                else if (Layout.DisplayTheme == ImageDisplayTheme.Right)
-                    mRoomDisplayThemeClass = "layoutRoomRightContainer";
-                else
-                    mRoomDisplayThemeClass = "layoutRoomCenterContainer";
-            }
+            Layout = layout;
         }
 
         #endregion
 
         #region Private Methods
 
+        private void SetLayoutRoomTheme()
+        {
+            if (Layout is not null)
+            {
+                if (Layout.DisplayTheme == ImageDisplayTheme.Left)
+                    mLayoutImageTheme = "layoutRoomLeftContainer";
+                else if (Layout.DisplayTheme == ImageDisplayTheme.Right)
+                    mLayoutImageTheme = "layoutRoomRightContainer";
+                else
+                    mLayoutImageTheme = "layoutRoomCenterContainer";
+            }
+        }
+
         private async void EditLayoutRoom()
         {
             await EditButtonClicked.InvokeAsync(Layout);
+        }
+
+        private async void DeleteLayoutRoom()
+        {
+            await DeleteButtonClicked.InvokeAsync(Layout);
         }
 
         #endregion
@@ -85,6 +114,12 @@ namespace MeetCore
         /// </summary>
         [Parameter]
         public EventCallback<DepartmentLayoutResponseModel> EditButtonClicked { get; set; }
+
+        /// <summary>
+        /// Fires when the delete button is clicked
+        /// </summary>
+        [Parameter]
+        public EventCallback<DepartmentLayoutResponseModel> DeleteButtonClicked { get; set; }
 
         #endregion
     }

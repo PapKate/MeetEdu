@@ -144,7 +144,7 @@
             The note
             </summary>
         </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.ImageFileSource">
+        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.ImageUrl">
             <summary>
             The image URL
             </summary>
@@ -949,7 +949,7 @@
             The note
             </summary>
         </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.ImageFileSource">
+        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.ImageUrl">
             <summary>
             The image URL
             </summary>

@@ -300,7 +300,7 @@ namespace MeetBase.Web
         /// <param name="file">The file</param>
         /// <returns></returns>
         public Task<WebRequestResult<DepartmentLayoutResponseModel>> SetDepartmentLayoutImageAsync(string id, IFormFile file)
-            => WebRequestsClient.Instance.PostFilesAsync<DepartmentLayoutResponseModel>(
+            => WebRequestsClient.Instance.PutFilesAsync<DepartmentLayoutResponseModel>(
                 GetAbsoluteUrl(MeetCoreAPIRoutes.GetDepartmentLayoutImagesRoute(id)), 
                 new List<FileUploadGroupDataModel>() { new FileUploadGroupDataModel("file", file) }, 
                 null);

@@ -372,7 +372,7 @@ namespace MeetEdu
         /// <param name="file">The model</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPut]
         [Route(MeetCoreAPIRoutes.DepartmentLayoutImagesRoute)]
         public async Task<ActionResult<DepartmentLayoutResponseModel>> SetDepartmentLayoutImageAsync([FromRoute] string departmentLayoutId, [FromForm] IFormFile file, CancellationToken cancellationToken = default)
             => (await DI.DepartmentsRepository.SetDepartmentLayoutImageAsync(departmentLayoutId.ToObjectId(), file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
