@@ -7,14 +7,23 @@
 @if(Layout is not null)
 {
     <div class="layoutRoomContainer @mLayoutImageTheme" style="@BackgroundVariable.SetCssColor(Layout.Color.IsNullOrEmpty() ? Amber.HexToRGBA(0.5) : Layout.Color.HexToRGBA(0.5))">
-        <div class="@(Layout.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFullContainer" : "layoutRoomImageContainer")">
-            <img class="@(Layout.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFull" : "layoutRoomImage")" src="@Layout.ImageUrl?.ToString()" alt="@Layout.Name" />
-        </div>
-    
-        <div class="layoutRoomTextContainer">
+        @if(Layout.DisplayTheme != ImageDisplayTheme.Right)
+        {
+            <div class="@(Layout.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFullContainer" : "layoutRoomImageContainer")">
+                <img class="@(Layout.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFull" : "layoutRoomImage")" src="@Layout.ImageUrl?.ToString()" alt="@Layout.Name" />
+            </div>
+        }
+        <div class="layoutRoomTextContainer @(Layout.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomTextCenterContainer" : string.Empty)">
             <h3>@Layout.Name</h3>
             @((MarkupString)Markdig.Markdown.ToHtml(Layout.Note))
         </div>
+
+        @if (Layout.DisplayTheme == ImageDisplayTheme.Right)
+        {
+            <div class="layoutRoomImageContainer layoutRoomImageRightContainer">
+                <img class="layoutRoomImage" src="@Layout.ImageUrl?.ToString()" alt="@Layout.Name" />
+            </div>
+        }
 
         @if(IsEditable)
         {
@@ -36,24 +45,29 @@
         position: relative;
         width: 100%;
         height: auto;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        justify-items: self-end;
         align-items: center;
         background-color: @BackgroundVariable.GetCssVariable();
     }
 
     .layoutRoomTextContainer {
-        padding: @LargePadding @XXLargePadding;
+        padding: @LargePadding @XXLargePadding @LargePadding @XXLargePadding;
+    }
+
+    .layoutRoomTextCenterContainer {
+        justify-self: center;
     }
 
     .layoutRoomImageContainer {
         position: relative;
-        width: 60%;
-        max-width: 600px;
+        width: 100%;
         height: auto;
-        max-height: 340px;
-        padding: @XXLargePadding;
-        aspect-ratio: 1 / 1;
+        display: flex;
+    }
+
+    .layoutRoomImageRightContainer {
+        justify-content: flex-end;
     }
 
     .layoutRoomImageFullContainer {
@@ -63,8 +77,11 @@
 
     .layoutRoomImage {
         width: 100%;
+        max-width: 500px;
         height: 100%;
+        max-height: 340px;
         object-fit: contain;
+        border-radius: @VeryLargeBorderRadius;
     }
 
     .layoutRoomImageFull {
@@ -74,20 +91,24 @@
     }
 
     .layoutRoomCenterContainer {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        padding: 0;
         text-align: center;
     }
 
     .layoutRoomLeftContainer {
-        flex-direction: row;
+        grid-template-columns: 3fr 2fr;
+        justify-content: flex-start;
+        padding: @XXLargePadding;
         text-align: right;
     }
 
     .layoutRoomRightContainer {
-        flex-direction: row-reverse;
+        grid-template-columns: 2fr 3fr;
+        justify-content: flex-end;
+        padding: @XXLargePadding;
         text-align: left;
     }
-
 
     .editButtonContainer {
         position: absolute;
