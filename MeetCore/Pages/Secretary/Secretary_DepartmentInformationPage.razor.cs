@@ -130,7 +130,7 @@ namespace MeetCore
         /// </summary>
         private async void UpdateDepartment()
         {
-            var model = new UpdateDepartmentModel()
+            var model = new UpdateModel<DepartmentRequestModel>(new DepartmentRequestModel()
             {
                 Name = Department.Name,
                 Category = Department.Category,
@@ -139,7 +139,7 @@ namespace MeetCore
                 ImageUrl = Department.ImageUrl,
                 Color = Department.Color,
                 Location = Department.Location
-            };
+            });
 
             var parameters = new DialogParameters<UpdateDepartmentDialog> { { x => x.Model, model } };
 
@@ -158,18 +158,18 @@ namespace MeetCore
             }
 
             // If the result is of the specified type...
-            if (result.Data is UpdateDepartmentModel updatedModel)
+            if (result.Data is UpdateModel<DepartmentRequestModel> updatedModel)
             {
                 // Creates the request for updating the department
                 var departmentRequest = new DepartmentRequestModel()
                 {
-                    Name = updatedModel.Name,
-                    Category = updatedModel.Category,
-                    Email = updatedModel.Email,
-                    PhoneNumber = updatedModel.PhoneNumber,
-                    ImageUrl = updatedModel.ImageUrl,
-                    Color = updatedModel.Color,
-                    Location = updatedModel.Location
+                    Name = updatedModel.Model.Name,
+                    Category = updatedModel.Model.Category,
+                    Email = updatedModel.Model.Email,
+                    PhoneNumber = updatedModel.Model.PhoneNumber,
+                    ImageUrl = updatedModel.Model.ImageUrl,
+                    Color = updatedModel.Model.Color,
+                    Location = updatedModel.Model.Location
                 };
 
                 // Updates the department

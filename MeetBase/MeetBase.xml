@@ -4452,6 +4452,11 @@
             Login
             </summary>
         </member>
+        <member name="F:MeetBase.EnglishLocalization.Logout">
+            <summary>
+            Exit
+            </summary>
+        </member>
         <member name="F:MeetBase.EnglishLocalization.Continue">
             <summary>
             Continue

@@ -1,14 +1,8 @@
-﻿using MeetBase;
-using MeetBase.Web;
+﻿using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 
 using MudBlazor;
-
-using System.Collections.Immutable;
-using System.Reflection;
-
-using static MeetCore.UpdateLayoutDialog;
 
 namespace MeetCore
 {
@@ -201,7 +195,7 @@ namespace MeetCore
         private async Task<DepartmentLayoutResponseModel?> SetDepartmentLayoutImageAsync(DepartmentLayoutRequestModel request, 
                                                          Func<DepartmentLayoutRequestModel, Task<WebRequestResult<DepartmentLayoutResponseModel>>> requestAction)
         {
-            var parameters = new DialogParameters<UpdateLayoutDialog> { { x => x.Model, new UpdateLayoutModel(request) } };
+            var parameters = new DialogParameters<UpdateLayoutDialog> { { x => x.Model, new UpdateModel<DepartmentLayoutRequestModel>(request) } };
 
             // Creates and opens a dialog with the specified type
             var dialog = await DialogService.ShowAsync<UpdateLayoutDialog>(null, parameters, mDialogOptions);
@@ -218,7 +212,7 @@ namespace MeetCore
             }
 
             // If the result is of the specified type...
-            if (result.Data is UpdateLayoutModel updatedModel)
+            if (result.Data is UpdateModel<DepartmentLayoutRequestModel> updatedModel)
             {
                 // Performs the specified action
                 var response = await requestAction(updatedModel.Model);

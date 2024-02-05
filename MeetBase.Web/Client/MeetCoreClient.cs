@@ -112,6 +112,18 @@ namespace MeetBase.Web
         public Task<WebRequestResult<UserResponseModel>> DeleteUserAsync(string id)
             => WebRequestsClient.Instance.DeleteAsync<UserResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetUserRoute(id)), null);
 
+        /// <summary>
+        ///  Sets the image of the user with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="file">The file</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<UserResponseModel>> SetUserImageAsync(string id, IFormFile file)
+            => WebRequestsClient.Instance.PutFilesAsync<UserResponseModel>(
+                GetAbsoluteUrl(MeetCoreAPIRoutes.GetUserImagesRoute(id)),
+                new List<FileUploadGroupDataModel>() { new FileUploadGroupDataModel("file", file) },
+                null);
+
         #endregion
 
         #region Universities
@@ -475,7 +487,6 @@ namespace MeetBase.Web
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="model">The model</param>
-        /// <param name="user">The user</param>
         /// <returns></returns>
         public Task<WebRequestResult<ProfessorResponseModel>> UpdateProfessorAsync(string id, ProfessorRequestModel model)
             => WebRequestsClient.Instance.PutAsync<ProfessorResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetProfessorRoute(id)), model, null);

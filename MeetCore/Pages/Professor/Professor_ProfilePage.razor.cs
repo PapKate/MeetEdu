@@ -79,7 +79,7 @@ namespace MeetCore
         /// </summary>
         private async void UpdateProfessor()
         {
-            var model = new UpdateProfessorModel()
+            var model = new UpdateModel<UpdateProfessorModel>(new()
             {
                 Username = User.Username,
                 Email = User.Email,
@@ -92,7 +92,7 @@ namespace MeetCore
                 Rank = Professor.Rank,
                 Location = User.Location,
                 ImageUrl = User.ImageUrl
-            };
+            });
 
             var parameters = new DialogParameters<UpdateStaffMemberDialog<UpdateProfessorModel>> { { x => x.Model, model } };
 
@@ -111,13 +111,13 @@ namespace MeetCore
             }
 
             // If the result is of the specified type...
-            if (result.Data is UpdateProfessorModel updatedModel)
+            if (result.Data is UpdateModel<UpdateProfessorModel> updatedModel)
             {
                 // Creates the request for updating the professor
                 var professorRequest = new ProfessorRequestModel()
                 {
-                    Rank = updatedModel.Rank,
-                    Quote = updatedModel.Quote ?? string.Empty
+                    Rank = updatedModel.Model.Rank,
+                    Quote = updatedModel.Model.Quote ?? string.Empty
                 };
 
                 // Updates the professor
@@ -136,16 +136,16 @@ namespace MeetCore
                 // Creates the request for updating the user
                 var userRequest = new UserRequestModel()
                 {
-                    Username = updatedModel.Username,
-                    FirstName = updatedModel.FirstName,
-                    LastName = updatedModel.LastName,
-                    PasswordHash = updatedModel.PasswordHash,
-                    Email = updatedModel.Email,
-                    PhoneNumber = updatedModel.PhoneNumber,
-                    DateOfBirth = updatedModel.DateOfBirth,
-                    ImageUrl = updatedModel.ImageUrl,
-                    Location = updatedModel.Location,
-                    Color = updatedModel.Color!.Replace("#", string.Empty)
+                    Username = updatedModel.Model.Username,
+                    FirstName = updatedModel.Model.FirstName,
+                    LastName = updatedModel.Model.LastName,
+                    PasswordHash = updatedModel.Model.PasswordHash,
+                    Email = updatedModel.Model.Email,
+                    PhoneNumber = updatedModel.Model.PhoneNumber,
+                    DateOfBirth = updatedModel.Model.DateOfBirth,
+                    ImageUrl = updatedModel.Model.ImageUrl,
+                    Location = updatedModel.Model.Location,
+                    Color = updatedModel.Model.Color!.Replace("#", string.Empty)
                 };
 
                 // Updates the user

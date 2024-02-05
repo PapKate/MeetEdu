@@ -118,6 +118,23 @@ namespace MeetEdu
             return entity;
         }
 
+        /// <summary>
+        /// Sets the image of the user with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="file">The file</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<UserEntity>> SetUserImageAsync(ObjectId id, IFormFile file, CancellationToken cancellationToken = default)
+        {
+            return await RepositoryHelpers.SetImageAsync<UserRequestModel, UserEntity>(
+                                                id,
+                                                $"{MeetEduConstants.Users.ToLower()}/{file.Headers.First(x => x.Key == "userType").Value.ToString().ToLower()}/",
+                                                file,
+                                                (model) => UpdateUserAsync(id, model, cancellationToken),
+                                                cancellationToken);
+        }
+
         #endregion
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MeetBase;
+using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -7,6 +8,9 @@ using MudBlazor;
 
 namespace MeetCore
 {
+    /// <summary>
+    /// The dialog for updating a department
+    /// </summary>
     public partial class UpdateDepartmentDialog
     {
         #region Private Members
@@ -15,7 +19,8 @@ namespace MeetCore
         /// The photo input label
         /// </summary>
         private string mPhotoLabel = "Department logo";
-
+        private IBrowserFile? mFile;
+        private DepartmentType mCategory;
         /// <summary>
         /// The country code
         /// </summary>
@@ -45,7 +50,7 @@ namespace MeetCore
         /// The model
         /// </summary>
         [Parameter]
-        public UpdateDepartmentModel Model { get; set; } = new();
+        public UpdateModel<DepartmentRequestModel> Model { get; set; } = default!;
 
         #endregion
 
@@ -70,20 +75,27 @@ namespace MeetCore
         {
             base.OnInitialized();
 
-            mCountryCode = Model.PhoneNumber?.CountryCode ?? 30;
-            mPhoneNumber = Model.PhoneNumber?.Phone ?? string.Empty;
-            mLocation = Model.Location ?? new();
+            mCountryCode = Model.Model.PhoneNumber?.CountryCode ?? 30;
+            mPhoneNumber = Model.Model.PhoneNumber?.Phone ?? string.Empty;
+            mLocation = Model.Model.Location ?? new();
+            mCategory = Model.Model.Category ?? DepartmentType.Medicine;
         }
 
         #endregion
 
         #region Private Methods
 
-        private void Save()
+        private async void Save()
         {
-            Model.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
-            Model.Location = mLocation;
+            Model.Model.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
+            Model.Model.Location = mLocation;
+            Model.Model.Category = mCategory;
 
+            if (mFile is not null)
+            {
+                Model.File = await mFile.ToIFormFileAsync(mPhotoLabel);
+            }
+            
             MudDialog.Close(DialogResult.Ok(Model));
         }
 

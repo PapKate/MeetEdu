@@ -108,6 +108,20 @@ namespace MeetCore
             NavigationManager.Professor_NavigateToInboxPage("id");
         }
 
+        /// <summary>
+        /// Logs out the connected staff member and navigates to the login page
+        /// </summary>
+        public void NavigateToLoginPage()
+        {
+            // If no navigation manager is found...
+            if (NavigationManager is null)
+                // Returns
+                return;
+
+            // Navigates to the login page
+            NavigationManager.NavigateToLoginPage();
+        }
+
         #endregion
     }
 }

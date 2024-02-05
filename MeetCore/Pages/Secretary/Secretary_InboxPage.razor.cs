@@ -65,7 +65,7 @@ namespace MeetCore
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        protected override async void OnInitialized()
+        protected override void OnInitialized()
         {
             base.OnInitialized();
 

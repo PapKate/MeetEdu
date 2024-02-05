@@ -13,6 +13,14 @@ namespace MeetCore
     {
         #region Public Methods
 
+        /// <summary>
+        /// Navigates to the login page
+        /// <code>/</code>
+        /// </summary>
+        /// <param name="navigationManager">The navigation manager</param>
+        public static void NavigateToLoginPage(this NavigationManager navigationManager)
+            => navigationManager.NavigateTo("/");
+
         #region Secretary
 
         /// <summary>

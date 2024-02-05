@@ -2035,6 +2035,14 @@
             <param name="id">The id</param>
             <returns></returns>
         </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.SetUserImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+             Sets the image of the user with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="file">The file</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetBase.Web.MeetCoreClient.GetUniversitiesAsync(MeetBase.Web.APIArgs)">
             <summary>
             Gets the universities
@@ -2322,7 +2330,6 @@
             </summary>
             <param name="id">The id</param>
             <param name="model">The model</param>
-            <param name="user">The user</param>
             <returns></returns>
         </member>
         <member name="M:MeetBase.Web.MeetCoreClient.DeleteProfessorAsync(System.String)">
@@ -3307,6 +3314,20 @@
             <summary>
             Gets the route for the user with the specified <paramref name="userId"/>
             <code>/appointMate/api/v1/meetCore/users/4</code>
+            </summary>
+            <param name="userId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.UserImagesRoute">
+            <summary>
+            The user images route
+            <code>/appointMate/api/v1/meetCore/users/2/images</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetUserImagesRoute(System.String)">
+            <summary>
+            Gets the user images route for the one with the specified <paramref name="userId"/>
+            <code>/appointMate/api/v1/meetCore/users/3/images</code>
             </summary>
             <param name="userId">The id</param>
             <returns></returns>

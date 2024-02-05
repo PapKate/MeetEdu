@@ -72,6 +72,11 @@
         /// </summary>
         public const string Faculty = "Faculty";
 
+        /// <summary>
+        /// Users
+        /// </summary>
+        public const string Users = "Users";
+
         #endregion
     }
 }

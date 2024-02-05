@@ -12,14 +12,14 @@
         </div>
         <div class="dialogContentContainer">
             <span class="dialogContentTitle dialogContentFullRow">Department info</span>
-            <MudTextField @bind-Value="@Model.Name"
+            <MudTextField @bind-Value="@Model.Model.Name"
                           Placeholder="Name"
                           Class="dialogContentFullRow dialogInput"
                           FullWidth="true"
                           Variant="Variant.Text"
                           Adornment="Adornment.Start"
                           AdornmentIcon="@MudIconPaths.Account" />
-            <MudSelect T="DepartmentType" @bind-Value="@Model.Category"
+            <MudSelect T="DepartmentType" @bind-Value="@mCategory"
                        Placeholder="Category"
                        Class="dialogInput"
                        FullWidth="true"
@@ -32,8 +32,8 @@
                     <MudSelectItem Value="@value">@value</MudSelectItem>
                 }
             </MudSelect>
-            <MudColorPicker Placeholder="Color" @bind-Text="@Model.Color"
-                            Style="@($"color: {Model.Color.NormalizedColor()};")"
+            <MudColorPicker Placeholder="Color" @bind-Text="@Model.Model.Color"
+                            Style="@($"color: {Model.Model.Color.NormalizedColor()};")"
                             DisableModeSwitch="false"
                             DisableToolbar="false"
                             Class="dialogInput colorInput"
@@ -41,7 +41,7 @@
                             AdornmentIcon="@Icons.Material.Filled.Palette"
                             PickerVariant="PickerVariant.Inline"
                             DisableAlpha="true" />
-            <MudTextField @bind-Value="@Model.Email"
+            <MudTextField @bind-Value="@Model.Model.Email"
                           Placeholder="Email"
                           Class="dialogContentFullRow dialogInput"
                           FullWidth="true"
@@ -64,7 +64,7 @@
                               Adornment="Adornment.Start"
                               AdornmentIcon="@MudIconPaths.Phone" />
             </div>
-            <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => ControlHelpers.SetBrowserFileToModelImage(e, Model))" Class="dialogContentPhotoContainer">
+            <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => mFile = e)" Class="dialogContentPhotoContainer">
                 <ButtonTemplate>
                     <MudButton HtmlTag="label"
                                Variant="Variant.Text"
@@ -157,8 +157,8 @@
         padding: 12px 1rem;
         font-weight: 800;
         font-size: 120%;
-        background-color: @Model.Color.NormalizedColor();
-        color: @Model.Color.DarkOrWhite().NormalizedColor();
+        background-color: @Model.Model.Color.NormalizedColor();
+        color: @Model.Model.Color.DarkOrWhite().NormalizedColor();
         border-radius: 0 0 1rem 1rem;
         filter: @LightFilterDropShadow;
     }
@@ -248,7 +248,7 @@
         margin-left: 2.5rem;
         width: calc(100% - 4.5rem);
         height: 24px;
-        background-color: @Model.Color.NormalizedColor();
+        background-color: @Model.Model.Color.NormalizedColor();
         border-radius: @NormalBorderRadius;
     }
 

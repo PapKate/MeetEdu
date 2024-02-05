@@ -13,6 +13,11 @@
         public const string Login = "Login";
 
         /// <summary>
+        /// Exit
+        /// </summary>
+        public const string Logout = "Exit";
+
+        /// <summary>
         /// Continue
         /// </summary>
         public const string Continue = "Continue";

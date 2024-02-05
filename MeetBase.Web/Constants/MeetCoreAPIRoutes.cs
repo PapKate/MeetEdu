@@ -77,6 +77,20 @@ namespace MeetBase.Web
         /// <returns></returns>
         public static string GetUserRoute(string userId) => UsersRoute + $"/{userId}";
 
+        /// <summary>
+        /// The user images route
+        /// <code>/appointMate/api/v1/meetCore/users/2/images</code>
+        /// </summary>
+        public const string UserImagesRoute = UserRoute + "/images";
+
+        /// <summary>
+        /// Gets the user images route for the one with the specified <paramref name="userId"/>
+        /// <code>/appointMate/api/v1/meetCore/users/3/images</code>
+        /// </summary>
+        /// <param name="userId">The id</param>
+        /// <returns></returns>
+        public static string GetUserImagesRoute(string userId) => GetUserRoute(userId) + $"/images";
+
         #endregion
 
         #region Universities

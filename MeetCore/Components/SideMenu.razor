@@ -130,6 +130,17 @@
                     BoxShadow="none"
                     Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
     </div>
+
+    <div class="sideMenuItemContainer sideMenuBottomItemContainer">
+        <MenuButton Text="@EnglishLocalization.Logout"
+                    VectorSource="@IconPaths.ExitToAppPath"
+                    OnClick="@(() => NavigateToLoginPage())"
+                    BackColor="@White"
+                    ForeColor="@DarkGray"
+                    BorderRadius="0"
+                    BoxShadow="none"
+                    Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+    </div>
 </div>
 
 <style>
@@ -158,6 +169,11 @@
         flex-direction: row;
         justify-content: start;
         align-items: center;
+    }
+
+    .sideMenuBottomItemContainer {
+        position: absolute;
+        bottom: 0;
     }
 
     .sideMenuItemText {

@@ -29,6 +29,8 @@ namespace MeetBase.Blazor
         /// <returns></returns>
         public static string HexToRGBA(this string hex, double alpha)
         {
+            hex = hex.Replace("#", string.Empty);
+
             // Takes the first two characters of the hex value and converts them to an integer
             var r = Convert.ToInt32(hex.Substring(0, 2), 16);
             // Takes the second two characters of the hex value and converts them to an integer

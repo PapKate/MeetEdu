@@ -39,36 +39,47 @@
             
             @foreach(var shift in mWeeklyHours)
             {
-                <MudSelect T="DayOfWeek" Value="@shift.DayOfWeek"
-                           ValueChanged="@((e) => SetDayOfWeek(shift, e))"
-                           Placeholder="Day of week"
-                           Class="dialogInput"
-                           FullWidth="true"
-                           Variant="Variant.Text"
-                           Adornment="Adornment.Start"
-                           AdornmentIcon="@MudIconPaths.Account"
-                           AnchorOrigin="Origin.BottomCenter">
-                    @foreach (var value in Enum.GetValues<DayOfWeek>())
-                    {
-                        <MudSelectItem Value="@value">@value</MudSelectItem>
-                    }
-                </MudSelect>
-                <MudTextField T="string" Value="@shift.Text"
-                              ValueChanged="@((e) => SetText(shift, e))"
-                              Placeholder="Room"
-                              Class="dialogInput"
-                              FullWidth="true"
-                              Variant="Variant.Text"
-                              Adornment="Adornment.Start"
-                              AdornmentIcon="@MudIconPaths.Account" />
-                <MudTimePicker Time="@shift.Start.ToNullableTimeSpan()"
-                               TimeChanged="@((e) => SetStartingHour(shift, e))"
-                               Placeholder="Start"
-                               Editable="true" />
-                <MudTimePicker Time="@shift.End.ToNullableTimeSpan()" 
-                               TimeChanged="@((e) => SetEndingingHour(shift, e))"
-                               Placeholder="End"
-                               Editable="true" />
+                <div class="dialogContentFullRow shiftContainer" @key="@shift">
+                    <div class="dialogContentContainer" style="overflow-y:clip; padding: 0;">
+                        <MudSelect T="DayOfWeek" Value="@shift.DayOfWeek"
+                                   ValueChanged="@((e) => SetDayOfWeek(shift, e))"
+                                   Placeholder="Day of week"
+                                   Class="dialogInput"
+                                   FullWidth="true"
+                                   Variant="Variant.Text"
+                                   Adornment="Adornment.Start"
+                                   AdornmentIcon="@MudIconPaths.Account"
+                                   AnchorOrigin="Origin.BottomCenter">
+                            @foreach (var value in Enum.GetValues<DayOfWeek>())
+                            {
+                                <MudSelectItem Value="@value">@value</MudSelectItem>
+                            }
+                        </MudSelect>
+                        <MudTextField T="string" Value="@shift.Text"
+                                      ValueChanged="@((e) => SetText(shift, e))"
+                                      Placeholder="Room"
+                                      Class="dialogInput"
+                                      FullWidth="true"
+                                      Variant="Variant.Text"
+                                      Adornment="Adornment.Start"
+                                      AdornmentIcon="@MudIconPaths.Account" />
+                        <MudTimePicker Time="@shift.Start.ToNullableTimeSpan()"
+                                       TimeChanged="@((e) => SetStartingHour(shift, e))"
+                                       Placeholder="Start"
+                                       Editable="true" />
+                        <MudTimePicker Time="@shift.End.ToNullableTimeSpan()" 
+                                       TimeChanged="@((e) => SetEndingingHour(shift, e))"
+                                       Placeholder="End"
+                                       Editable="true" />
+                    </div>
+                    <IconButton VectorSource="@IconPaths.TrashCanOutlinePath"
+                                ForeColor="@Red"
+                                BackColor="transparent"
+                                BorderRadius="@SmallBorderRadius"
+                                BoxShadow="none"
+                                CssClasses="shiftDeleteButton"
+                                OnClick="@(() => mWeeklyHours.Remove(shift))"/>
+                </div>
             }
             <MudFab Class="dialogContentFullRow" 
                     StartIcon="@Icons.Material.Filled.Add" 
@@ -206,6 +217,19 @@
         height: 24px;
         background-color: @mColor.NormalizedColor();
         border-radius: @NormalBorderRadius;
+    }
+
+    .shiftContainer {
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        gap: 0.5rem;
+    }
+
+    .shiftDeleteButton {
+        width: 48px;
+        height: 48px;
+        padding: 0.5rem;
     }
 
 </style>

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 
 namespace MeetCore
-{ 
+{
+    /// <summary>
+    /// The check box
+    /// </summary>
     public partial class FieldCheckBox
     {
         #region Private Members

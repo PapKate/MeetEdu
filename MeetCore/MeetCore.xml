@@ -44,6 +44,11 @@
             <inheritdoc/>
             </summary>
         </member>
+        <member name="T:MeetCore.FieldCheckBox">
+            <summary>
+            The check box
+            </summary>
+        </member>
         <member name="F:MeetCore.FieldCheckBox.mIsChecked">
             <summary>
             The member of the <see cref="P:MeetCore.FieldCheckBox.IsChecked"/> property
@@ -134,6 +139,31 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetCore.UpdateModel`1">
+            <summary>
+            The base update dialog model
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateModel`1.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateModel`1.File">
+            <summary>
+            The image
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateModel`1.#ctor(`0)">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.UpdateDepartmentDialog">
+            <summary>
+            The dialog for updating a department
+            </summary>
+        </member>
         <member name="F:MeetCore.UpdateDepartmentDialog.mPhotoLabel">
             <summary>
             The photo input label
@@ -207,26 +237,6 @@
         <member name="M:MeetCore.UpdateLayoutDialog.Save">
             <summary>
             Saves the changes
-            </summary>
-        </member>
-        <member name="T:MeetCore.UpdateLayoutDialog.UpdateLayoutModel">
-            <summary>
-            The dialog's model
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateLayoutDialog.UpdateLayoutModel.Model">
-            <summary>
-            The model
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateLayoutDialog.UpdateLayoutModel.File">
-            <summary>
-            The image
-            </summary>
-        </member>
-        <member name="M:MeetCore.UpdateLayoutDialog.UpdateLayoutModel.#ctor(MeetBase.Web.DepartmentLayoutRequestModel)">
-            <summary>
-            Default constructor
             </summary>
         </member>
         <member name="T:MeetCore.UpdateScheduleDialog">
@@ -584,6 +594,11 @@
             Navigates the connected staff member to their inbox page
             </summary>
         </member>
+        <member name="M:MeetCore.SideMenu.NavigateToLoginPage">
+            <summary>
+            Logs out the connected staff member and navigates to the login page
+            </summary>
+        </member>
         <member name="T:MeetCore.MeetCoreContants">
             <summary>
             The constants for the <see cref="N:MeetCore"/> app
@@ -929,10 +944,30 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetCore.BrowserFileExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MeetCore.BrowserFileExtensions.ToIFormFileAsync(Microsoft.AspNetCore.Components.Forms.IBrowserFile,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="file"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
         <member name="T:MeetCore.CoreNavigationManagerExtensions">
             <summary>
             Extension methods for the <see cref="T:Microsoft.AspNetCore.Components.NavigationManager"/>
             </summary>
+        </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.NavigateToLoginPage(Microsoft.AspNetCore.Components.NavigationManager)">
+            <summary>
+            Navigates to the login page
+            <code>/</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
         </member>
         <member name="M:MeetCore.CoreNavigationManagerExtensions.Secretary_NavigateTo(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
             <summary>

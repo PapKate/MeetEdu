@@ -3,8 +3,6 @@ using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
 
 using MudBlazor;
 
@@ -40,7 +38,7 @@ namespace MeetCore
         /// THe model
         /// </summary>
         [Parameter]
-        public UpdateLayoutModel? Model { get; set; }
+        public UpdateModel<DepartmentLayoutRequestModel>? Model { get; set; }
 
         #endregion
 
@@ -83,17 +81,10 @@ namespace MeetCore
             {
                 Model.Model.DisplayTheme = mTheme;
                 Model.Model.Color = Model.Model?.Color?.Replace("#", string.Empty);
+                
                 if (mFile is not null)
                 {
-                    using var stream = mFile.OpenReadStream(512000000);
-                    var memoryStream = new MemoryStream();
-                    await stream.CopyToAsync(memoryStream);
-
-                    Model.File = new FormFile(memoryStream, 0, stream.Length, null, mPhotoLabel)
-                    {
-                        Headers = new HeaderDictionary(),
-                        ContentType = "image/jpeg"
-                    };
+                    Model.File = await mFile.ToIFormFileAsync(mPhotoLabel);
                 }
             }
             MudDialog.Close(DialogResult.Ok(Model));
@@ -102,42 +93,6 @@ namespace MeetCore
         private void Cancel()
         {
             MudDialog.Cancel();
-        }
-
-        #endregion
-
-        #region Classes
-
-        /// <summary>
-        /// The dialog's model
-        /// </summary>
-        public class UpdateLayoutModel
-        {
-            #region Public Properties
-
-            /// <summary>
-            /// The model
-            /// </summary>
-            public DepartmentLayoutRequestModel Model { get; set; }
-
-            /// <summary>
-            /// The image
-            /// </summary>
-            public IFormFile? File { get; set; }
-
-            #endregion
-
-            #region Constructors
-
-            /// <summary>
-            /// Default constructor
-            /// </summary>
-            public UpdateLayoutModel(DepartmentLayoutRequestModel model) : base()
-            {
-                Model = model;
-            }
-
-            #endregion
         }
 
         #endregion

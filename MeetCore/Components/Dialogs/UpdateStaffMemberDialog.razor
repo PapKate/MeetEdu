@@ -14,14 +14,14 @@
         </div>
         <div class="dialogContentContainer">
             <span class="dialogContentTitle dialogContentFullRow">Account info</span>
-            <MudTextField @bind-Value="@Model.Username"
+            <MudTextField @bind-Value="@Model.Model.Username"
                           Placeholder="Username"
                           Class="dialogContentFullRow dialogInput"
                           FullWidth="true"
                           Variant="Variant.Text"
                           Adornment="Adornment.Start"
                           AdornmentIcon="@MudIconPaths.Account" />
-            <MudTextField @bind-Value="@Model.Email"
+            <MudTextField @bind-Value="@Model.Model.Email"
                           Placeholder="Email"
                           Class="dialogContentFullRow dialogInput"
                           FullWidth="true"
@@ -42,7 +42,7 @@
                           Class="dialogInput"
                           Adornment="Adornment.Start"
                           AdornmentIcon="@MudIconPaths.KeyLink" />
-            <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => ControlHelpers.SetBrowserFileToModelImage(e, Model))" Class="dialogContentPhotoContainer">
+            <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => mFile = e)" Class="dialogContentPhotoContainer">
                 <ButtonTemplate>
                     <MudButton HtmlTag="label"
                                Variant="Variant.Text"
@@ -60,8 +60,8 @@
                 </SelectedTemplate>
             </MudFileUpload>
 
-            <MudColorPicker Placeholder="Color" @bind-Text="@Model.Color"
-                            Style="@($"color: {Model.Color.NormalizedColor()};")"
+            <MudColorPicker Placeholder="Color" @bind-Text="@Model.Model.Color"
+                            Style="@($"color: {Model.Model.Color.NormalizedColor()};")"
                             DisableModeSwitch="false"
                             DisableToolbar="false"
                             Class="dialogInput colorInput"
@@ -71,14 +71,14 @@
                             DisableAlpha="true" />
 
             <span class="dialogContentTitle dialogContentFullRow">User info</span>
-            <MudTextField @bind-Value="@Model.FirstName"
+            <MudTextField @bind-Value="@Model.Model.FirstName"
                           Placeholder="First name"
                           Class="dialogContentFullRow dialogInput"
                           FullWidth="true"
                           Variant="Variant.Text"
                           Adornment="Adornment.Start"
                           AdornmentIcon="@MudIconPaths.AbjadArabic" />
-            <MudTextField @bind-Value="@Model.LastName"
+            <MudTextField @bind-Value="@Model.Model.LastName"
                           Placeholder="Last name"
                           Class="dialogContentFullRow dialogInput"
                           FullWidth="true"
@@ -107,7 +107,7 @@
                            DisableToolbar="true" />
 
             <span class="dialogContentTitle dialogContentFullRow">Quote</span>
-            <MudTextField T="string" Placeholder="Write a quote that inspires you" Class="dialogContentFullRow" Variant="Variant.Text" @bind-Text="@Model.Quote" Lines="3" />
+            <MudTextField T="string" Placeholder="Write a quote that inspires you" Class="dialogContentFullRow" Variant="Variant.Text" @bind-Text="@Model.Model.Quote" Lines="3" />
 
             <span class="dialogContentTitle dialogContentFullRow">Location info</span>
             <div class="dialogLocationMapContainer">
@@ -160,12 +160,12 @@
 <style>
 
     .dialogSection {
-        background-color: @Model.Color.NormalizedColor();
-        color: @Model.Color.DarkOrWhite().NormalizedColor();
+        background-color: @Model.Model.Color.NormalizedColor();
+        color: @Model.Model.Color.DarkOrWhite().NormalizedColor();
     }
 
     .colorInput .mud-input-adornment-start:after {
-        background-color: @Model.Color.NormalizedColor();
+        background-color: @Model.Model.Color.NormalizedColor();
     }
 
 </style>

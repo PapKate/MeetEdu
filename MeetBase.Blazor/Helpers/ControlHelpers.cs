@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 
 using System.Drawing;
+using System.Reflection;
 
 namespace MeetBase.Blazor
 {

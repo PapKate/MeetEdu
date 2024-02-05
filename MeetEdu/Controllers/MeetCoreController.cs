@@ -115,6 +115,18 @@ namespace MeetEdu
         public async Task<ActionResult<UserResponseModel>> DeleteUserAsync([FromRoute] string userId)
             => (await DI.UsersRepository.DeleteUserAsync(userId.ToObjectId())).ToActionResult(x => x.ToResponseModel());
 
+        /// <summary>
+        /// Sets the image for the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The id</param>
+        /// <param name="file">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetCoreAPIRoutes.UserImagesRoute)]
+        public async Task<ActionResult<UserResponseModel>> SetUserImageAsync([FromRoute] string userId, [FromForm] IFormFile file, CancellationToken cancellationToken = default)
+            => (await DI.UsersRepository.SetUserImageAsync(userId.ToObjectId(),file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
         #endregion
 
         #region Universities

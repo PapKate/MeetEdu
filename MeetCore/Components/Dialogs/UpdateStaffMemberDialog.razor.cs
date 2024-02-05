@@ -1,6 +1,9 @@
 ﻿using MeetBase;
 
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.AspNetCore.Http;
 
 using MudBlazor;
 
@@ -13,6 +16,8 @@ namespace MeetCore
         where T : UpdateStaffMemberModel, new()
     {
         #region Private Members
+
+        private IBrowserFile? mFile;
 
         /// <summary>
         /// The password
@@ -63,7 +68,7 @@ namespace MeetCore
         /// The model
         /// </summary>
         [Parameter]
-        public T Model { get; set; } = new();
+        public UpdateModel<T> Model { get; set; } = default!;
 
         #endregion
 
@@ -88,24 +93,35 @@ namespace MeetCore
         {
             base.OnInitialized();
 
-            mCountryCode = Model.PhoneNumber?.CountryCode ?? 30;
-            mPhoneNumber = Model.PhoneNumber?.Phone ?? string.Empty;
-            mBirthDate = Model.DateOfBirth?.ToDateTime() ?? DateTime.Now;
-            mLocation = Model.Location ?? new();
+            if(Model is not null)
+            {
+                mCountryCode = Model.Model.PhoneNumber?.CountryCode ?? 30;
+                mPhoneNumber = Model.Model.PhoneNumber?.Phone ?? string.Empty;
+                mBirthDate = Model.Model.DateOfBirth?.ToDateTime() ?? DateTime.Now;
+                mLocation = Model.Model.Location ?? new();
+            }
         }
 
         #endregion
 
         #region Private Methods
 
-        private void Save()
+        private async void Save()
         {
-            Model.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
-            Model.Location = mLocation;
-            Model.DateOfBirth = mBirthDate?.ToDateOnly();
+            if(Model is not null)
+            {
+                Model.Model.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
+                Model.Model.Location = mLocation;
+                Model.Model.DateOfBirth = mBirthDate?.ToDateOnly();
 
-            if (!mPassword.IsNullOrEmpty() && mPassword == mConfirmPassword)
-                Model.PasswordHash = mPassword.EncryptPassword();
+                if (!mPassword.IsNullOrEmpty() && mPassword == mConfirmPassword)
+                    Model.Model.PasswordHash = mPassword.EncryptPassword();
+
+                if (mFile is not null)
+                {
+                    Model.File = await mFile.ToIFormFileAsync(mPhotoLabel);
+                }
+            }
 
             MudDialog.Close(DialogResult.Ok(Model));
         }
