@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Http;
 
 using MudBlazor;
+using Microsoft.Extensions.Primitives;
 
 namespace MeetCore
 {
@@ -70,6 +71,12 @@ namespace MeetCore
         [Parameter]
         public UpdateModel<T> Model { get; set; } = default!;
 
+        /// <summary>
+        /// A flag indicating whether the staff member is a secretary or not
+        /// </summary>
+        [Parameter]
+        public bool IsSecretary { get; set; }
+
         #endregion
 
         #region Constructors
@@ -119,7 +126,12 @@ namespace MeetCore
 
                 if (mFile is not null)
                 {
-                    Model.File = await mFile.ToIFormFileAsync(mPhotoLabel);
+                    var type = IsSecretary ? "Secretaries" : "Professors";
+                    
+                    Model.File = await mFile.ToIFormFileAsync(mPhotoLabel, new HeaderDictionary
+                    {
+                        { "userType", type }
+                    });
                 }
             }
 

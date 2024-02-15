@@ -3269,6 +3269,12 @@
             Extension methods for <see cref="T:System.TimeOnly"/>
             </summary>
         </member>
+        <member name="F:MeetBase.TimeOnlyExtensions.ShortTimeFormat">
+            <summary>
+            The short time format
+            <code>ex. 13:25 AM</code>
+            </summary>
+        </member>
         <member name="M:MeetBase.TimeOnlyExtensions.ToISO8601String(System.TimeOnly)">
             <summary>
             Returns a string that represents the specified <paramref name="value"/> using the ISO8601 format
@@ -3281,6 +3287,14 @@
             Returns a string that represents the specified <paramref name="value"/> using the ISO8601 format
             </summary>
             <param name="value">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.TimeOnlyExtensions.ToFormatedString(System.TimeOnly,System.String)">
+            <summary>
+            Returns a string that represents the specified <paramref name="value"/> using the specified <paramref name="format"/>
+            </summary>
+            <param name="value">The value</param>
+            <param name="format">The format</param>
             <returns></returns>
         </member>
         <member name="T:MeetBase.TypeExtensions">

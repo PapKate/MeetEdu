@@ -15,7 +15,10 @@ namespace MeetCore
        
         private string mText = string.Empty;
 
-        private bool mIsFirstNameChecked = false;
+        private bool mIsFirstNameChecked = true;
+        private bool mIsLastNameChecked = true;
+        private bool mIsEmailChecked = true;
+        private bool mIsPhoneNumberChecked = false;
 
         private int mSelectedIndex = 0;
 
@@ -66,6 +69,22 @@ namespace MeetCore
         #endregion
 
         #region Private Methods
+
+        private void EmailCheckbox_IsCheckedChanged(bool value)
+        {
+            mIsEmailChecked = value;
+
+            if (!mIsEmailChecked)
+                mIsPhoneNumberChecked = true;
+        }
+
+        private void PhoneNumberCheckbox_IsCheckedChanged(bool value)
+        {
+            mIsPhoneNumberChecked = value;
+
+            if (!mIsPhoneNumberChecked)
+                mIsEmailChecked = true;
+        }
 
         private void SaveFormDescription(string? value)
         {

@@ -6,7 +6,7 @@
 @namespace MeetCore
 
 <div class="fieldCheckBoxContainer">
-    <MudCheckBox @bind-Checked="@mIsChecked" Class="fieldCheckBox"></MudCheckBox>
+    <MudCheckBox T="bool" Checked="@IsChecked" CheckedChanged="@OnIsCheckedChanged" Class="fieldCheckBox"></MudCheckBox>
     <MudTextField T="string" Text="@Text" ReadOnly="true" Variant="Variant.Outlined" Class="fieldCheckBoxTextField" />
 </div>
 

@@ -49,11 +49,6 @@
             The check box
             </summary>
         </member>
-        <member name="F:MeetCore.FieldCheckBox.mIsChecked">
-            <summary>
-            The member of the <see cref="P:MeetCore.FieldCheckBox.IsChecked"/> property
-            </summary>
-        </member>
         <member name="P:MeetCore.FieldCheckBox.Text">
             <summary>
             The text
@@ -69,14 +64,14 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.FieldCheckBox.OnIsCheckedChanged">
+        <member name="M:MeetCore.FieldCheckBox.OnIsCheckedChanged(System.Boolean)">
             <summary>
             Changes the <see cref="P:MeetCore.FieldCheckBox.IsChecked"/> value
             </summary>
         </member>
         <member name="P:MeetCore.FieldCheckBox.IsCheckedChanged">
             <summary>
-            Fires when the <see cref="F:MeetCore.FieldCheckBox.mIsChecked"/>'s value changes
+            Fires when the <see cref="P:MeetCore.FieldCheckBox.IsChecked"/>'s value changes
             </summary>
         </member>
         <member name="T:MeetCore.AddProfessorDialog">
@@ -157,6 +152,31 @@
         <member name="M:MeetCore.UpdateModel`1.#ctor(`0)">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="F:MeetCore.DepartmentMessageDialog.mIsReplyButtonVisible">
+            <summary>
+            A flag indicating whether the reply button is visible
+            </summary>
+        </member>
+        <member name="P:MeetCore.DepartmentMessageDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="P:MeetCore.DepartmentMessageDialog.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="M:MeetCore.DepartmentMessageDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:MeetCore.DepartmentMessageDialog.ReplyOnClick">
+            <summary>
+            Fires when the reply button is clicked
             </summary>
         </member>
         <member name="T:MeetCore.UpdateDepartmentDialog">
@@ -360,6 +380,11 @@
         <member name="P:MeetCore.UpdateStaffMemberDialog`1.Model">
             <summary>
             The model
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateStaffMemberDialog`1.IsSecretary">
+            <summary>
+            A flag indicating whether the staff member is a secretary or not
             </summary>
         </member>
         <member name="M:MeetCore.UpdateStaffMemberDialog`1.#ctor">
@@ -864,6 +889,26 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetCore.DepartmentMesageModel">
+            <summary>
+            The model for viewing a department inbox message
+            </summary>
+        </member>
+        <member name="P:MeetCore.DepartmentMesageModel.Color">
+            <summary>
+            The staff member color
+            </summary>
+        </member>
+        <member name="P:MeetCore.DepartmentMesageModel.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="M:MeetCore.DepartmentMesageModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetCore.UpdateSecretaryModel">
             <summary>
             The model for updating a secretary
@@ -946,15 +991,24 @@
         </member>
         <member name="T:MeetCore.BrowserFileExtensions">
             <summary>
-            
+            Extension methods for <see cref="T:Microsoft.AspNetCore.Components.Forms.IBrowserFile"/>s
             </summary>
         </member>
         <member name="M:MeetCore.BrowserFileExtensions.ToIFormFileAsync(Microsoft.AspNetCore.Components.Forms.IBrowserFile,System.String)">
             <summary>
-            
+            Converts the specified <paramref name="file"/> to an <see cref="T:Microsoft.AspNetCore.Http.IFormFile"/>
             </summary>
-            <param name="file"></param>
-            <param name="name"></param>
+            <param name="file">The file</param>
+            <param name="name">The name</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetCore.BrowserFileExtensions.ToIFormFileAsync(Microsoft.AspNetCore.Components.Forms.IBrowserFile,System.String,Microsoft.AspNetCore.Http.HeaderDictionary)">
+            <summary>
+            Converts the specified <paramref name="file"/> to an <see cref="T:Microsoft.AspNetCore.Http.IFormFile"/>
+            </summary>
+            <param name="file">The file</param>
+            <param name="name">The name</param>
+            <param name="headers">The headers</param>
             <returns></returns>
         </member>
         <member name="T:MeetCore.CoreNavigationManagerExtensions">
@@ -1673,6 +1727,16 @@
         <member name="F:MeetCore.Secretary_InboxPage.mDialogOptions">
             <summary>
             The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_InboxPage.Secretary">
+            <summary>
+            The secretary
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_InboxPage.Department">
+            <summary>
+            The department
             </summary>
         </member>
         <member name="P:MeetCore.Secretary_InboxPage.Client">

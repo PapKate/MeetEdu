@@ -1,0 +1,119 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<MudDialog>
+    <DialogContent>
+        <div class="dialogSection">
+            <span class="dialogSectionText">Inbox message</span>
+        </div>
+        @if (Model.Model is not null)
+        {
+            <div class="inboxDialogFromContainer">
+                <span class="inboxDialogFrom">From:</span>
+                <span class="inboxDialogPropertyName">Full name <span class="inboxDialogPropertyValue">@Model.Model.FirstName @Model.Model.LastName</span></span>
+                @if(!Model.Model.Email.IsNullOrEmpty())
+                {
+                    <span class="inboxDialogPropertyName">Email <span class="inboxDialogPropertyValue">@Model.Model.Email</span></span>
+                }
+                @if (Model.Model.PhoneNumber is not null)
+                {
+                    <span class="inboxDialogPropertyName">Phone number <span class="inboxDialogPropertyValue">+@Model.Model.PhoneNumber.ToPhoneNumberString()</span></span>
+                }
+                <span class="inboxDialogPropertyName">Date send <span class="inboxDialogPropertyValue">@Model.Model.DateCreated.ToLocalTime().ToString()</span></span>
+            </div>
+
+            <p class="inboxDialogMessage">@Model.Model.Message</p>
+
+            @if (mIsReplyButtonVisible)
+            {
+                <div id="inboxDialogButtonsContainer" class="dialogActionsContainer">
+                    <MudButton Variant="Variant.Text" OnClick="@(() => mIsReplyButtonVisible = false)" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Model.Color};")">Reply</MudButton>
+                </div>
+            }
+            else
+            {
+                <div class="inboxDialogReplyMessage">
+                    <MudTextField T="string" Placeholder="Your reply..."
+                                  FullWidth="true"
+                                  DisableUnderLine="true"
+                                  Variant="Variant.Text"
+                                  Lines="12" />
+                </div>
+
+                <div id="inboxDialogButtonsContainer" class="dialogActionsContainer">
+                    <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@(() => mIsReplyButtonVisible = true)" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Red.NormalizedColor()};")">Cancel</MudButton>
+                    <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@SendReplyButton_OnClick" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Green.NormalizedColor()};")">Send</MudButton>
+                </div>
+            }
+        }
+    </DialogContent>
+</MudDialog>
+
+<style>
+
+    #inboxDialog {
+        padding-right: 24px;
+    }
+
+    .dialogSection {
+        background-color: @Model.Color.NormalizedColor();
+        color: @Model.Color.DarkOrWhite().NormalizedColor();
+    }
+
+    .inboxDialogFromContainer {
+        position:relative;
+        display: flex;
+        flex-direction:column;
+        gap: @MediumGap;
+        justify-content: start;
+        align-items: start;
+        padding-right: 24px;
+    }
+
+    .inboxDialogFrom {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .inboxDialogPropertyName {
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: @LargeMargin;
+    }
+
+    .inboxDialogPropertyValue {
+        font-weight: 400;
+        margin-left: @LargeMargin;
+    }
+
+    .inboxDialogMessage {
+        margin: 0;
+        width: 100%;
+        max-height: 240px;
+        font-size: 100%;
+        font-weight: 400;
+        margin-top: @VeryLargePadding;
+        overflow-y: auto;
+        padding-right: 1rem;
+    }
+
+    .inboxDialogReplyMessage {
+        padding: 0 @VeryLargePadding;
+        border: solid 2px @Model.Color.NormalizedColor();
+        border-radius: @LargeBorderRadius;
+        margin-right: 24px;
+        margin-top: 24px;
+    }
+
+    #inboxDialogButtonsContainer {
+        width: auto;
+        margin: @LargeMargin;
+        padding-right: 24px;
+    }
+
+</style>

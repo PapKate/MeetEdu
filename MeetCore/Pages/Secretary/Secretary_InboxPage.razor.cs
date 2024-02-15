@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
+using System.Reflection;
+
 namespace MeetCore
 {
     /// <summary>
@@ -16,7 +18,21 @@ namespace MeetCore
         /// </summary>
         private DialogOptions mDialogOptions = new() { FullWidth = true };
 
-        private IEnumerable<DepartmentContactMessageResponseModel> mContactMessages = new List<DepartmentContactMessageResponseModel>();
+        private IEnumerable<DepartmentContactMessageResponseModel> mDepartmentMessages = new List<DepartmentContactMessageResponseModel>();
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The secretary
+        /// </summary>
+        public SecretaryResponseModel Secretary => StateManager.Secretary!;
+
+        /// <summary>
+        /// The department
+        /// </summary>
+        public DepartmentResponseModel Department => StateManager.Department!;
 
         #endregion
 
@@ -81,14 +97,15 @@ namespace MeetCore
             //}
             //mContactMessages = response.Result;
 
-            mContactMessages = new List<DepartmentContactMessageResponseModel>()
+            mDepartmentMessages = new List<DepartmentContactMessageResponseModel>()
             {
                 new()
                 {
                     FirstName = "Katherine",
                     LastName = "Papadopoulou",
                     Email = "mail@mail.com",
-                    Message = "This is a message"
+                    Message = "Το ΤΜΗΥ&Π ιδρύθηκε το 1979 και λειτουργεί από το 1980. Είναι το πρωτοπόρο τμήμΤο ΤΜΗΥ&Π ιδρύθηκε το 1979 και λειτουργεί από το 1980. Είναι το πρωτοπόρο τμήμα στον \r\nχώρο της Τεχνολογίας Υπολογιστών, Πληροφορικής και Επικοινωνιών στην Ελλάδα. \r\nΒρίσκεται ανάμεσα στα καλύτερα Πανεπιστημιακά Τμήματα στην Ελλάδα και με μεγάλες \r\nδιακρίσεις διεθνώς. Ο σκοπός και η αποστολή του είναι η διδασκαλία και η έρευνα στην \r\nεπιστήμη και τεχνολογία των υπολογιστών και η μελέτη των εφαρμογών τους. Οι σπουδές στο \r\nΤμήμα απαιτούν την ενεργή, συνεπή και δημιουργική συμμετοχή των φοιτητών στις \r\nεκπαιδευτικές δραστηριότητες του Προγράμματος Σπουδών, στοιχεία απαραίτητα για την \r\nεπιτυχή ολοκλήρωση των σπουδών, αλλά το τελικό αποτέλεσμα δικαιώνει τις προσδοκίες των \r\nφοιτητών. Το τμήμα είναι οργανωμένο σε τρεις τομείς:Το ΤΜΗΥ&Π ιδρύθηκε το 1979 και λειτουργεί από το 1980. Είναι το πρωτοπόρο τμήμα στον \r\nχώρο της Τεχνολογίας Υπολογιστών, Πληροφορικής και Επικοινωνιών στην Ελλάδα. \r\nΒρίσκεται ανάμεσα στα καλύτερα Πανεπιστημιακά Τμήματα στην Ελλάδα και με μεγάλες \r\nδιακρίσεις διεθνώς. Ο σκοπός και η αποστολή του είναι η διδασκαλία και η έρευνα στην \r\nεπιστήμη και τεχνολογία των υπολογιστών και η μελέτη των εφαρμογών τους. Οι σπουδές στο \r\nΤμήμα απαιτούν την ενεργή, συνεπή και δημιουργική συμμετοχή των φοιτητών στις \r\nεκπαιδευτικές δραστηριότητες του Προγράμματος Σπουδών, στοιχεία απαραίτητα για την \r\nεπιτυχή ολοκλήρωση των σπουδών, αλλά το τελικό αποτέλεσμα δικαιώνει τις προσδοκίες των \r\nφοιτητών. Το τμήμα είναι οργανωμένο σε τρεις τομείς:α στον \r\nχώρο της Τεχνολογίας Υπολογιστών, Πληροφορικής και Επικοινωνιών στην Ελλάδα. \r\nΒρίσκεται ανάμεσα στα καλύτερα Πανεπιστημιακά Τμήματα στην Ελλάδα και με μεγάλες \r\nδιακρίσεις διεθνώς. Ο σκοπός και η αποστολή του είναι η διδασκαλία και η έρευνα στην \r\nεπιστήμη και τεχνολογία των υπολογιστών και η μελέτη των εφαρμογών τους. Οι σπουδές στο \r\nΤμήμα απαιτούν την ενεργή, συνεπή και δημιουργική συμμετοχή των φοιτητών στις \r\nεκπαιδευτικές δραστηριότητες του Προγράμματος Σπουδών, στοιχεία απαραίτητα για την \r\nεπιτυχή ολοκλήρωση των σπουδών, αλλά το τελικό αποτέλεσμα δικαιώνει τις προσδοκίες των \r\nφοιτητών. Το τμήμα είναι οργανωμένο σε τρεις τομείς:",
+                    DateCreated = DateTime.Now,
                 }
             };
 
@@ -99,9 +116,29 @@ namespace MeetCore
 
         #region Private Methods
 
-        private void ViewMessage()
+        private async void ViewMessage(DepartmentContactMessageResponseModel message)
         {
+            var model = new DepartmentMesageModel()
+            {
+                Color = Department.Color,
+                Model = message,
+            };
 
+            var parameters = new DialogParameters<DepartmentMessageDialog> { { x => x.Model, model } };
+
+            // Creates and opens a dialog with the specified type
+            var dialog = await DialogService.ShowAsync<DepartmentMessageDialog>(null, parameters, mDialogOptions);
+
+            // Once the dialog is closed...
+            // Gets the result
+            var result = await dialog.Result;
+
+            // If there is no result or the dialog was closed by canceling the inner actions...
+            if (result is null || result.Canceled)
+            {
+                // Return
+                return;
+            }
         }
 
         #endregion

@@ -214,10 +214,14 @@ namespace MeetEdu
             var webRootPath = DI.GetRequiredService<IWebHostEnvironment>().WebRootPath;
             
             var path = Path.Combine(webRootPath, directoryPath);
-            var folderImages = Directory.GetFiles(path);
-            var test = folderImages.Where(x => x.Contains(id.ToString() + "-"));
-            foreach (var image in test)
-                File.Delete(image);
+            if(Directory.Exists(path))
+            {
+                var folderImages = Directory.GetFiles(path);
+                var filteredImages = folderImages?.Where(x => x.Contains(id.ToString() + "-"));
+                if(!filteredImages.IsNullOrEmpty())
+                    foreach (var image in filteredImages)
+                        File.Delete(image);
+            }
 
             // Creates a directory for the object if it doesn't already exist
             Directory.CreateDirectory(Path.Combine(webRootPath, directoryPath));

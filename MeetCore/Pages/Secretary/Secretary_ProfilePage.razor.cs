@@ -149,7 +149,7 @@ namespace MeetCore
                 ImageUrl = User.ImageUrl
             });
 
-            var parameters = new DialogParameters<UpdateStaffMemberDialog<UpdateSecretaryModel>> { { x => x.Model, model } };
+            var parameters = new DialogParameters<UpdateStaffMemberDialog<UpdateSecretaryModel>> { { x => x.Model, model }, { x => x.IsSecretary, true } };
 
             // Creates and opens a dialog with the specified type
             var dialog = await DialogService.ShowAsync<UpdateStaffMemberDialog<UpdateSecretaryModel>>(null, parameters, mDialogOptions);
@@ -198,7 +198,6 @@ namespace MeetCore
                     Email = updatedModel.Model.Email,
                     PhoneNumber = updatedModel.Model.PhoneNumber,
                     DateOfBirth = updatedModel.Model.DateOfBirth,
-                    ImageUrl = updatedModel.Model.ImageUrl,
                     Location = updatedModel.Model.Location,
                     Color = updatedModel.Model.Color!.Replace("#", string.Empty)
                 };
@@ -214,7 +213,26 @@ namespace MeetCore
                     // Return
                     return;
                 }
+
                 StateManager.User = userResponse.Result;
+
+                // If an image was set...
+                if (updatedModel.File is not null)
+                {
+                    // Adds the model
+                    var responseWithImage = await Client.SetUserImageAsync(Secretary.UserId, updatedModel.File);
+
+                    // If there was an error...
+                    if (!responseWithImage.IsSuccessful)
+                    {
+                        Console.WriteLine(responseWithImage.ErrorMessage);
+                        // Show the error
+                        Snackbar.Add(responseWithImage.ErrorMessage, Severity.Error);
+                        // Return
+                        return;
+                    }
+                    StateManager.User = responseWithImage.Result;
+                }
 
                 StateHasChanged();
             }

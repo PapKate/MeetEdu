@@ -5,17 +5,29 @@ using Microsoft.AspNetCore.Http;
 namespace MeetCore
 {
     /// <summary>
-    /// 
+    /// Extension methods for <see cref="IBrowserFile"/>s
     /// </summary>
     public static class BrowserFileExtensions
     {
         /// <summary>
-        /// 
+        /// Converts the specified <paramref name="file"/> to an <see cref="IFormFile"/>
         /// </summary>
-        /// <param name="file"></param>
-        /// <param name="name"></param>
+        /// <param name="file">The file</param>
+        /// <param name="name">The name</param>
         /// <returns></returns>
-        public static async Task<IFormFile> ToIFormFileAsync(this IBrowserFile file, string name)
+        public static Task<IFormFile> ToIFormFileAsync(this IBrowserFile file, string name)
+        {
+            return file.ToIFormFileAsync(name, new HeaderDictionary());
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="file"/> to an <see cref="IFormFile"/>
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <param name="name">The name</param>
+        /// <param name="headers">The headers</param>
+        /// <returns></returns>
+        public static async Task<IFormFile> ToIFormFileAsync(this IBrowserFile file, string name, HeaderDictionary headers)
         {
             using var stream = file.OpenReadStream(512000000);
             var memoryStream = new MemoryStream();
@@ -23,7 +35,7 @@ namespace MeetCore
 
             return new FormFile(memoryStream, 0, stream.Length, null, name)
             {
-                Headers = new HeaderDictionary(),
+                Headers = headers,
                 ContentType = "image/jpeg"
             };
         }

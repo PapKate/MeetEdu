@@ -77,7 +77,7 @@
             @if ((mCurrentDate.DayOfWeek == DayOfWeek.Sunday ? mCurrentDate.AddDays(-6).GetFirstDayOfWeek().ToDateOnly() : mCurrentDate.GetFirstDayOfWeek().ToDateOnly()) == mFirstDateOfWeek.ToDateOnly()
             && mCurrentDate > mCurrentDate.Date.AddHours(7) && mCurrentDate < mCurrentDate.Date.AddHours(22))
             {
-                <span class="workHourContainer scheduleCurrentDateTimePointer" style="@TopVariable.SetCssVariable($"calc(48px * ({mCurrentDate.Hour}.{mCurrentDate.Minute * 48 / 60} - 7))")
+                <span class="workHourContainer scheduleCurrentDateTimePointer" style="@TopVariable.SetCssVariable($"calc(48px * ({mCurrentDate.Hour}.{mCurrentDate.Minute * 1 / 6} - 7))")
                                     @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(mCurrentDate.DayOfWeek == DayOfWeek.Sunday ? 7 : (int)mCurrentDate.DayOfWeek)} - 1))")
                                     @HeightVariable?.SetCssVariable("2px")
                                     @BackgroundVariable.SetCssColor($"{Green.HexToRGBA(1)}")

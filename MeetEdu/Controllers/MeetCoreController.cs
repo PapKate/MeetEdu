@@ -125,7 +125,7 @@ namespace MeetEdu
         [HttpPut]
         [Route(MeetCoreAPIRoutes.UserImagesRoute)]
         public async Task<ActionResult<UserResponseModel>> SetUserImageAsync([FromRoute] string userId, [FromForm] IFormFile file, CancellationToken cancellationToken = default)
-            => (await DI.UsersRepository.SetUserImageAsync(userId.ToObjectId(),file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+            => (await DI.UsersRepository.SetUserImageAsync(userId.ToObjectId(), file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         #endregion
 

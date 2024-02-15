@@ -7,15 +7,6 @@ namespace MeetCore
     /// </summary>
     public partial class FieldCheckBox
     {
-        #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="IsChecked"/> property
-        /// </summary>
-        private bool mIsChecked = true;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
@@ -49,10 +40,10 @@ namespace MeetCore
         /// <summary>
         /// Changes the <see cref="IsChecked"/> value
         /// </summary>
-        private async void OnIsCheckedChanged()
+        private void OnIsCheckedChanged(bool value)
         {
-            mIsChecked = !mIsChecked;
-            await IsCheckedChanged.InvokeAsync(mIsChecked);
+            IsChecked = value;
+            IsCheckedChanged.InvokeAsync(IsChecked);
         }
 
         #endregion
@@ -60,7 +51,7 @@ namespace MeetCore
         #region Public Events
 
         /// <summary>
-        /// Fires when the <see cref="mIsChecked"/>'s value changes
+        /// Fires when the <see cref="IsChecked"/>'s value changes
         /// </summary>
         [Parameter]
         public EventCallback<bool> IsCheckedChanged { get; set; }
