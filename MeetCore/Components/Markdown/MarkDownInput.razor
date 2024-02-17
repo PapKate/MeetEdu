@@ -5,7 +5,7 @@
 
 @namespace MeetCore
 
-<div class="textContainer">
+<div class="textContainer" id="@Id">
     @if (mIsTextReadOnly)
     {
         <MarkdownBlock Text="@Text" CssClass="textMarkDownContainer" />
@@ -13,40 +13,25 @@
     }
     else
     {
-        <MudTextField T="string" Placeholder="The department layout's additional information"
+        <MudTextField T="string" Placeholder="@Placeholder"
                         FullWidth="true"
                         Variant="Variant.Text"
                         ReadOnly="@mIsTextReadOnly"
-                        Lines="5"
+                        Lines="@Lines"
                         @bind-Text="@mInputText" />
     }
+    
+    <EditToOptionsButton Alignment="Alignment.Horizontal"
+                         HasOverlay="false"
+                         EditButton="@(new(White, EditButtonColor ?? Amber, IconPaths.PencilOutlinePath, EventCallback.Factory.Create(this, () => EditButton_OnClick())))"
+                         OptionButtons="@(new List<OptionButton>()
+                                            {
+                                                new(White, Green, IconPaths.CheckPath, EventCallback.Factory.Create(this, () => SaveButton_Onclick())),
+                                                new(White, Red, IconPaths.ClosePath, EventCallback.Factory.Create(this, () => CancelButton_Onclick()))
+                                            })" />
+    
 
-    <div class="editTextButtonsContainer">
-        @if (mIsTextReadOnly)
-        {
-            <IconButton BackColor="@White"
-                        ForeColor="@Amber"
-                        BorderRadius="@LargeBorderRadius"
-                        VectorSource="@IconPaths.PencilOutlinePath"
-                        OnClick="@EditButton_OnClick"
-                        CssClasses="editButton" />
-        }
-        else
-        {
-            <IconButton BackColor="@White"
-                        ForeColor="@Green"
-                        BorderRadius="@($"{LargeBorderRadius} 0 0 {LargeBorderRadius}")"
-                        VectorSource="@IconPaths.CheckPath"
-                        OnClick="@SaveButton_Onclick"
-                        CssClasses="editButton" />
-            <IconButton BackColor="@White"
-                        ForeColor="@Persimmon"
-                        BorderRadius="@($"0 {LargeBorderRadius} {LargeBorderRadius} 0")"
-                        VectorSource="@IconPaths.ClosePath"
-                        OnClick="@CancelButton_Onclick"
-                        CssClasses="editButton" />
-        }
-    </div>
+    @ChildContent
 </div>
 
 <style>

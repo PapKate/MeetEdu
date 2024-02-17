@@ -30,6 +30,11 @@ namespace MeetBase.Blazor
         #region Public Properties
 
         /// <summary>
+        /// The name
+        /// </summary>
+        public virtual string Name => "BaseVector";
+
+        /// <summary>
         /// The color
         /// </summary>
         [Parameter]

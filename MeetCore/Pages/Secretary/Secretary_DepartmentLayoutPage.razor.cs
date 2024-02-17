@@ -17,7 +17,7 @@ namespace MeetCore
 
         private List<DepartmentLayoutResponseModel>? mLayouts;
 
-        private readonly List<LayoutPresenter> mLayoutPresenters = new();
+        private readonly List<LayoutPresenter<DepartmentLayoutResponseModel>> mLayoutPresenters = new();
 
         /// <summary>
         /// The <see cref="MudDialog"/> options
@@ -55,7 +55,7 @@ namespace MeetCore
         /// <summary>
         /// The layout presenter instance
         /// </summary>
-        protected LayoutPresenter LayoutPresenter
+        protected LayoutPresenter<DepartmentLayoutResponseModel> LayoutPresenter
         {
             set
             {
@@ -195,10 +195,10 @@ namespace MeetCore
         private async Task<DepartmentLayoutResponseModel?> SetDepartmentLayoutImageAsync(DepartmentLayoutRequestModel request, 
                                                          Func<DepartmentLayoutRequestModel, Task<WebRequestResult<DepartmentLayoutResponseModel>>> requestAction)
         {
-            var parameters = new DialogParameters<UpdateLayoutDialog> { { x => x.Model, new UpdateModel<DepartmentLayoutRequestModel>(request) } };
+            var parameters = new DialogParameters<UpdateLayoutDialog<DepartmentLayoutRequestModel>> { { x => x.Model, new UpdateModel<DepartmentLayoutRequestModel>(request) } };
 
             // Creates and opens a dialog with the specified type
-            var dialog = await DialogService.ShowAsync<UpdateLayoutDialog>(null, parameters, mDialogOptions);
+            var dialog = await DialogService.ShowAsync<UpdateLayoutDialog<DepartmentLayoutRequestModel>>(null, parameters, mDialogOptions);
 
             // Once the dialog is closed...
             // Gets the result

@@ -23,6 +23,11 @@
         public const string Departments = "Departments";
 
         /// <summary>
+        /// The professors 
+        /// </summary>
+        public const string Professors = "Professors";
+
+        /// <summary>
         /// The department layouts
         /// </summary>
         public const string Layouts = "Layouts";

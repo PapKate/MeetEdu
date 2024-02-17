@@ -31,6 +31,11 @@ namespace MeetEdu
         /// </summary>
         public ObjectId DepartmentId { get; set; } = "651f8827192bdfa0fc7535c2".ToObjectId();
 
+        /// <summary>
+        /// The professor id
+        /// </summary>
+        public ObjectId ProfessorId { get; set; } = "652a6234db0c9bd9739c8a08".ToObjectId();
+
         #endregion
 
         #region Constructors
@@ -629,8 +634,8 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpPut]
         [Route(MeetCoreAPIRoutes.ProfessorRoute)]
-        public async Task<ActionResult<ProfessorResponseModel>> UpdateProfessorAsync([FromRoute] string professorId, [FromBody] KeyValuePair<ProfessorRequestModel, UserRequestModel> model, CancellationToken cancellationToken = default)
-            => (await DI.ProfessorsRepository.UpdateProfessorAsync(professorId.ToObjectId(), model.Key, model.Value, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+        public async Task<ActionResult<ProfessorResponseModel>> UpdateProfessorAsync([FromRoute] string professorId, [FromBody] ProfessorRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.ProfessorsRepository.UpdateProfessorAsync(professorId.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
         /// Deletes the professor with the specified <paramref name="professorId"/>
@@ -642,6 +647,81 @@ namespace MeetEdu
         [Route(MeetCoreAPIRoutes.ProfessorRoute)]
         public async Task<ActionResult<ProfessorResponseModel>> DeleteProfessorAsync([FromRoute] string professorId, CancellationToken cancellationToken = default)
             => (await DI.ProfessorsRepository.DeleteProfessorAsync(professorId.ToObjectId(), cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        #region Layout 
+
+        /// <summary>
+        /// Gets the professor office layouts
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetCoreAPIRoutes.ProfessorOfficeLayoutsRoute)]
+        public async Task<ActionResult<IEnumerable<ProfessorOfficeLayoutResponseModel>>> GetProfessorOfficeLayoutsAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.ProfessorOfficeLayouts,
+                                                    x => x.ToResponseModel(),
+                                                    null,null,
+                                                    cancellationToken, x => x.ProfessorId);
+
+        /// <summary>
+        /// Creates a professor office layout
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(MeetCoreAPIRoutes.ProfessorOfficeLayoutsRoute)]
+        public async Task<ActionResult<ProfessorOfficeLayoutResponseModel>> AddProfessorOfficeLayoutAsync([FromBody] ProfessorOfficeLayoutRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.ProfessorsRepository.AddProfessorOfficeLayoutAsync(ProfessorId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Gets the professor office layout with the specified <paramref name="professorOfficeLayoutId"/>
+        /// </summary>
+        /// <param name="professorOfficeLayoutId">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetCoreAPIRoutes.ProfessorOfficeLayoutRoute)]
+        public async Task<ActionResult<ProfessorOfficeLayoutResponseModel>?> GetProfessorOfficeLayoutAsync([FromRoute] string professorOfficeLayoutId, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.ProfessorOfficeLayouts, x => x.ToResponseModel(), x => x.Id == professorOfficeLayoutId.ToObjectId(), cancellationToken);
+
+        /// <summary>
+        /// Updates the professor office layout with the specified <paramref name="professorOfficeLayoutId"/>
+        /// </summary>
+        /// <param name="professorOfficeLayoutId">The id</param>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetCoreAPIRoutes.ProfessorOfficeLayoutRoute)]
+        public async Task<ActionResult<ProfessorOfficeLayoutResponseModel>> UpdateProfessorOfficeLayoutAsync([FromRoute] string professorOfficeLayoutId, [FromBody] ProfessorOfficeLayoutRequestModel model, CancellationToken cancellationToken = default)
+            => (await DI.ProfessorsRepository.UpdateProfessorOfficeLayoutAsync(professorOfficeLayoutId.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Deletes the professor office layout with the specified <paramref name="professorOfficeLayoutId"/>
+        /// </summary>
+        /// <param name="professorOfficeLayoutId">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route(MeetCoreAPIRoutes.ProfessorOfficeLayoutRoute)]
+        public async Task<ActionResult<ProfessorOfficeLayoutResponseModel>> DeleteProfessorOfficeLayoutAsync([FromRoute] string professorOfficeLayoutId, CancellationToken cancellationToken = default)
+            => (await DI.ProfessorsRepository.DeleteProfessorOfficeLayoutAsync(professorOfficeLayoutId.ToObjectId(), cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Creates a professor office layout
+        /// </summary>
+        /// <param name="professorOfficeLayoutId">The id</param>
+        /// <param name="file">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetCoreAPIRoutes.ProfessorOfficeLayoutImagesRoute)]
+        public async Task<ActionResult<ProfessorOfficeLayoutResponseModel>> SetProfessorOfficeLayoutImageAsync([FromRoute] string professorOfficeLayoutId, [FromForm] IFormFile file, CancellationToken cancellationToken = default)
+            => (await DI.ProfessorsRepository.SetProfessorOfficeLayoutImageAsync(professorOfficeLayoutId.ToObjectId(), file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        #endregion
 
         #endregion
 

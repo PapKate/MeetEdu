@@ -51,6 +51,11 @@ namespace MeetCore
         private DateTime? mBirthDate;
 
         /// <summary>
+        /// The website
+        /// </summary>
+        private Website mWebsite = new();
+
+        /// <summary>
         /// The location
         /// </summary>
         private Location mLocation = new Location();

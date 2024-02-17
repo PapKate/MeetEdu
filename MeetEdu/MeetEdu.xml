@@ -101,6 +101,11 @@
             The departments 
             </summary>
         </member>
+        <member name="F:MeetEdu.MeetEduConstants.Professors">
+            <summary>
+            The professors 
+            </summary>
+        </member>
         <member name="F:MeetEdu.MeetEduConstants.Layouts">
             <summary>
             The department layouts
@@ -224,6 +229,11 @@
         <member name="P:MeetEdu.MeetCoreController.DepartmentId">
             <summary>
             The department id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.MeetCoreController.ProfessorId">
+            <summary>
+            The professor id
             </summary>
         </member>
         <member name="M:MeetEdu.MeetCoreController.#ctor">
@@ -604,7 +614,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.MeetCoreController.UpdateProfessorAsync(System.String,System.Collections.Generic.KeyValuePair{MeetBase.Web.ProfessorRequestModel,MeetBase.Web.UserRequestModel},System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.MeetCoreController.UpdateProfessorAsync(System.String,MeetBase.Web.ProfessorRequestModel,System.Threading.CancellationToken)">
             <summary>
             Updates the professor with the specified <paramref name="professorId"/>
             </summary>
@@ -618,6 +628,56 @@
             Deletes the professor with the specified <paramref name="professorId"/>
             </summary>
             <param name="professorId">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.GetProfessorOfficeLayoutsAsync(MeetBase.Web.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the professor office layouts
+            </summary>
+            <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.AddProfessorOfficeLayoutAsync(MeetBase.Web.ProfessorOfficeLayoutRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Creates a professor office layout
+            </summary>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.GetProfessorOfficeLayoutAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the professor office layout with the specified <paramref name="professorOfficeLayoutId"/>
+            </summary>
+            <param name="professorOfficeLayoutId">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.UpdateProfessorOfficeLayoutAsync(System.String,MeetBase.Web.ProfessorOfficeLayoutRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Updates the professor office layout with the specified <paramref name="professorOfficeLayoutId"/>
+            </summary>
+            <param name="professorOfficeLayoutId">The id</param>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.DeleteProfessorOfficeLayoutAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the professor office layout with the specified <paramref name="professorOfficeLayoutId"/>
+            </summary>
+            <param name="professorOfficeLayoutId">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.SetProfessorOfficeLayoutImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>
+            Creates a professor office layout
+            </summary>
+            <param name="professorOfficeLayoutId">The id</param>
+            <param name="file">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -1019,6 +1079,11 @@
             The professors collection name
             </summary>
         </member>
+        <member name="F:MeetEdu.MeetEduDbMapper.ProfessorOfficeLayoutsCollectionName">
+            <summary>
+            The professor office layouts collection name
+            </summary>
+        </member>
         <member name="F:MeetEdu.MeetEduDbMapper.SecretariesCollectionName">
             <summary>
             The secretaries collection name
@@ -1102,6 +1167,11 @@
         <member name="P:MeetEdu.MeetEduDbMapper.Professors">
             <summary>
             The professors collection
+            </summary>
+        </member>
+        <member name="P:MeetEdu.MeetEduDbMapper.ProfessorOfficeLayouts">
+            <summary>
+            The professor office layouts collection
             </summary>
         </member>
         <member name="P:MeetEdu.MeetEduDbMapper.Secretaries">
@@ -1757,65 +1827,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:MeetEdu.DepartmentLayoutEntity">
-            <summary>
-            Represents a company layout document in the MongoDB
-            </summary>
-        </member>
-        <member name="F:MeetEdu.DepartmentLayoutEntity.mDescription">
-            <summary>
-            The member of the <see cref="P:MeetEdu.DepartmentLayoutEntity.Description"/> property
-            </summary>
-        </member>
-        <member name="F:MeetEdu.DepartmentLayoutEntity.mNote">
-            <summary>
-            The member of the <see cref="P:MeetEdu.DepartmentLayoutEntity.Note"/> property
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentLayoutEntity.DepartmentId">
-            <summary>
-            The company id
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentLayoutEntity.Description">
-            <summary>
-            The description
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentLayoutEntity.Note">
-            <summary>
-            The note
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentLayoutEntity.ImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentLayoutEntity.DisplayTheme">
-            <summary>
-            The display theme
-            </summary>
-        </member>
-        <member name="M:MeetEdu.DepartmentLayoutEntity.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="M:MeetEdu.DepartmentLayoutEntity.FromRequestModel(MeetBase.Web.DepartmentLayoutRequestModel,MongoDB.Bson.ObjectId)">
-            <summary>
-            Creates and returns a <see cref="T:MeetEdu.DepartmentLayoutEntity"/> from the specified <paramref name="model"/>
-            </summary>
-            <param name="model">The model</param>
-            <param name="companyId">The company id</param>
-            <returns></returns>
-        </member>
-        <member name="M:MeetEdu.DepartmentLayoutEntity.ToResponseModel">
-            <summary>
-            Creates and returns a <see cref="T:MeetBase.Web.DepartmentLayoutResponseModel"/> from the current <see cref="T:MeetEdu.DepartmentLayoutEntity"/>
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:MeetEdu.LabelEntity">
             <summary>
             Represents a label document in the MongoDB
@@ -1876,6 +1887,104 @@
             <summary>
             Default constructor
             </summary>
+        </member>
+        <member name="T:MeetEdu.DepartmentLayoutEntity">
+            <summary>
+            Represents a department layout document in the MongoDB
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentLayoutEntity.DepartmentId">
+            <summary>
+            The company id
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentLayoutEntity.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentLayoutEntity.FromRequestModel(MeetBase.Web.DepartmentLayoutRequestModel,MongoDB.Bson.ObjectId)">
+            <summary>
+            Creates and returns a <see cref="T:MeetEdu.DepartmentLayoutEntity"/> from the specified <paramref name="model"/>
+            </summary>
+            <param name="model">The model</param>
+            <param name="companyId">The company id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.DepartmentLayoutEntity.ToResponseModel">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Web.DepartmentLayoutResponseModel"/> from the current <see cref="T:MeetEdu.DepartmentLayoutEntity"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetEdu.LayoutEntity">
+            <summary>
+            Represents a layout document in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetEdu.LayoutEntity.mDescription">
+            <summary>
+            The member of the <see cref="P:MeetEdu.LayoutEntity.Description"/> property
+            </summary>
+        </member>
+        <member name="F:MeetEdu.LayoutEntity.mNote">
+            <summary>
+            The member of the <see cref="P:MeetEdu.LayoutEntity.Note"/> property
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LayoutEntity.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LayoutEntity.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LayoutEntity.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LayoutEntity.DisplayTheme">
+            <summary>
+            The display theme
+            </summary>
+        </member>
+        <member name="M:MeetEdu.LayoutEntity.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetEdu.ProfessorOfficeLayoutEntity">
+            <summary>
+            Represents a department layout document in the MongoDB
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorOfficeLayoutEntity.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorOfficeLayoutEntity.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorOfficeLayoutEntity.FromRequestModel(MeetBase.Web.ProfessorOfficeLayoutRequestModel,MongoDB.Bson.ObjectId)">
+            <summary>
+            Creates and returns a <see cref="T:MeetEdu.ProfessorOfficeLayoutEntity"/> from the specified <paramref name="model"/>
+            </summary>
+            <param name="model">The model</param>
+            <param name="professorId">The company id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ProfessorOfficeLayoutEntity.ToResponseModel">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Web.ProfessorOfficeLayoutResponseModel"/> from the current <see cref="T:MeetEdu.ProfessorOfficeLayoutEntity"/>
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:MeetEdu.MemberSavedDepartmentEntity">
             <summary>
@@ -3728,13 +3837,12 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.ProfessorsRepository.UpdateProfessorAsync(MongoDB.Bson.ObjectId,MeetBase.Web.ProfessorRequestModel,MeetBase.Web.UserRequestModel,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.ProfessorsRepository.UpdateProfessorAsync(MongoDB.Bson.ObjectId,MeetBase.Web.ProfessorRequestModel,System.Threading.CancellationToken)">
             <summary>
             Updates the professor with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
             <param name="professor">The professor</param>
-            <param name="user">The user</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -3743,6 +3851,41 @@
             Deletes the professor with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ProfessorsRepository.SetProfessorOfficeLayoutImageAsync(MongoDB.Bson.ObjectId,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>
+            Sets a professor office layout image
+            </summary>
+            <param name="professorId">The professor id</param>
+            <param name="file">The file</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ProfessorsRepository.AddProfessorOfficeLayoutAsync(MongoDB.Bson.ObjectId,MeetBase.Web.ProfessorOfficeLayoutRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Add a professor office layout
+            </summary>
+            <param name="professorId">The professor id</param>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ProfessorsRepository.UpdateProfessorOfficeLayoutAsync(MongoDB.Bson.ObjectId,MeetBase.Web.ProfessorOfficeLayoutRequestModel,System.Threading.CancellationToken)">
+            <summary>
+            Updates the layout with the specified <paramref name="layoutId"/>
+            </summary>
+            <param name="layoutId">The layout id</param>
+            <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ProfessorsRepository.DeleteProfessorOfficeLayoutAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the professor office layout with the specified <paramref name="layoutId"/>
+            </summary>
+            <param name="layoutId">The layout id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>

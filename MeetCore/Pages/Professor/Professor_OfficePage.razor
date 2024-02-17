@@ -2,11 +2,31 @@
 
 @inherits BasePage
 
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
+
 @namespace MeetCore
 
 <PageTitle>@EnglishLocalization.Office</PageTitle>
 
 <ApplicationContainer>
-    <h3>Office</h3>
-
+    @if (!mLayouts.IsNullOrEmpty())
+    {
+        @foreach (var departmentLayout in mLayouts)
+        {
+            <LayoutPresenter T="@ProfessorOfficeLayoutResponseModel" 
+                             @ref="@LayoutPresenter" @key="departmentLayout.Id"
+                             Layout="@departmentLayout" IsEditable="true"
+                             EditButtonClicked="@UpdateLayout"
+                             DeleteButtonClicked="@DeleteLayout" />
+        }
+    }
 </ApplicationContainer>
+
+<IconButton BackColor="@White"
+            ForeColor="@DarkGray"
+            VectorSource="@IconPaths.PlusPath"
+            BorderRadius="@CircleBorderRadius"
+            OnClick="@AddLayout"
+            CssClasses="editButton layoutAddButton" />

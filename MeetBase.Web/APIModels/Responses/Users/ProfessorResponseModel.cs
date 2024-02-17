@@ -20,7 +20,7 @@
         /// <summary>
         /// The member of the <see cref="Websites"/> property
         /// </summary>
-        private IEnumerable<Uri>? mWebsites;
+        private IEnumerable<Website>? mWebsites;
 
         #endregion
 
@@ -34,9 +34,9 @@
         /// <summary>
         /// The personal websites 
         /// </summary>
-        public IEnumerable<Uri> Websites
+        public IEnumerable<Website> Websites
         {
-            get => mWebsites ?? Enumerable.Empty<Uri>();
+            get => mWebsites ?? Enumerable.Empty<Website>();
             set => mWebsites = value;
         }
 

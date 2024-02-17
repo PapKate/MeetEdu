@@ -24,6 +24,12 @@ namespace MeetCore
         #region Public Properties
 
         /// <summary>
+        /// The id
+        /// </summary>
+        [Parameter]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// The placeholder
         /// </summary>
         [Parameter]
@@ -40,6 +46,18 @@ namespace MeetCore
         /// </summary>
         [Parameter]
         public string? Text { get; set; }
+
+        /// <summary>
+        /// The text
+        /// </summary>
+        [Parameter]
+        public string? EditButtonColor { get; set; }
+
+        /// <summary>
+        /// The child content
+        /// </summary>
+        [Parameter]
+        public RenderFragment ChildContent { get; set; }
 
         #endregion
 

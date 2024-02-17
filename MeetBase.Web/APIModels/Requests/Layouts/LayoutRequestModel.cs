@@ -1,16 +1,11 @@
 ﻿namespace MeetBase.Web
 {
     /// <summary>
-    /// Request model for a department layout
+    /// Request model for a layout
     /// </summary>
-    public class DepartmentLayoutRequestModel : StandardRequestModel, IImageable
+    public abstract class LayoutRequestModel : StandardRequestModel, IImageable
     {
         #region Public Properties
-
-        /// <summary>
-        /// The department id
-        /// </summary>
-        public string? DepartmentId { get; set; }
 
         /// <summary>
         /// The description
@@ -39,7 +34,7 @@
         /// <summary>
         /// Default constructor
         /// </summary>
-        public DepartmentLayoutRequestModel() : base()
+        public LayoutRequestModel() : base()
         {
 
         }

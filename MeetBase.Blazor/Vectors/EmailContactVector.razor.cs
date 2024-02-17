@@ -39,6 +39,15 @@
 
         #endregion
 
+        #region Public Properties
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public override string Name => "EmailContactVector";
+
+        #endregion
+
         #region Constructors
 
         /// <summary>

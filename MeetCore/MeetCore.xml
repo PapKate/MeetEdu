@@ -224,37 +224,37 @@
             <inheritdoc/>
             </summary>
         </member>
-        <member name="T:MeetCore.UpdateLayoutDialog">
+        <member name="T:MeetCore.UpdateLayoutDialog`1">
             <summary>
             The dialog for editing the room
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateLayoutDialog.mPhotoLabel">
+        <member name="F:MeetCore.UpdateLayoutDialog`1.mPhotoLabel">
             <summary>
             The photo input label
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateLayoutDialog.MudDialog">
+        <member name="P:MeetCore.UpdateLayoutDialog`1.MudDialog">
             <summary>
             The dialog instance
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateLayoutDialog.Model">
+        <member name="P:MeetCore.UpdateLayoutDialog`1.Model">
             <summary>
             THe model
             </summary>
         </member>
-        <member name="M:MeetCore.UpdateLayoutDialog.#ctor">
+        <member name="M:MeetCore.UpdateLayoutDialog`1.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.UpdateLayoutDialog.OnInitialized">
+        <member name="M:MeetCore.UpdateLayoutDialog`1.OnInitialized">
             <summary>
             <inheritdoc/>
             </summary>
         </member>
-        <member name="M:MeetCore.UpdateLayoutDialog.Save">
+        <member name="M:MeetCore.UpdateLayoutDialog`1.Save">
             <summary>
             Saves the changes
             </summary>
@@ -367,6 +367,11 @@
             The birth date
             </summary>
         </member>
+        <member name="F:MeetCore.UpdateStaffMemberDialog`1.mWebsite">
+            <summary>
+            The website
+            </summary>
+        </member>
         <member name="F:MeetCore.UpdateStaffMemberDialog`1.mLocation">
             <summary>
             The location
@@ -397,47 +402,47 @@
             <inheritdoc/>
             </summary>
         </member>
-        <member name="T:MeetCore.LayoutPresenter">
+        <member name="T:MeetCore.LayoutPresenter`1">
             <summary>
             The presenter for a layout room
             </summary>
         </member>
-        <member name="F:MeetCore.LayoutPresenter.mLayout">
+        <member name="F:MeetCore.LayoutPresenter`1.mLayout">
             <summary>
-            The member of the <see cref="P:MeetCore.LayoutPresenter.Layout"/> property
+            The member of the <see cref="P:MeetCore.LayoutPresenter`1.Layout"/> property
             </summary>
         </member>
-        <member name="P:MeetCore.LayoutPresenter.Layout">
+        <member name="P:MeetCore.LayoutPresenter`1.Layout">
             <summary>
             The layout room
             </summary>
         </member>
-        <member name="P:MeetCore.LayoutPresenter.IsEditable">
+        <member name="P:MeetCore.LayoutPresenter`1.IsEditable">
             <summary>
             A flag indicating whether it is editable or not
             </summary>
         </member>
-        <member name="P:MeetCore.LayoutPresenter.Client">
+        <member name="P:MeetCore.LayoutPresenter`1.Client">
             <summary>
             The client
             </summary>
         </member>
-        <member name="M:MeetCore.LayoutPresenter.#ctor">
+        <member name="M:MeetCore.LayoutPresenter`1.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.LayoutPresenter.ReplaceLayout(MeetBase.Web.DepartmentLayoutResponseModel)">
+        <member name="M:MeetCore.LayoutPresenter`1.ReplaceLayout(`0)">
             <summary>
             Re-renders the component
             </summary>
         </member>
-        <member name="P:MeetCore.LayoutPresenter.EditButtonClicked">
+        <member name="P:MeetCore.LayoutPresenter`1.EditButtonClicked">
             <summary>
             Fires when the edit button is clicked
             </summary>
         </member>
-        <member name="P:MeetCore.LayoutPresenter.DeleteButtonClicked">
+        <member name="P:MeetCore.LayoutPresenter`1.DeleteButtonClicked">
             <summary>
             Fires when the delete button is clicked
             </summary>
@@ -467,6 +472,11 @@
             The markdown text input
             </summary>
         </member>
+        <member name="P:MeetCore.MarkDownInput.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
         <member name="P:MeetCore.MarkDownInput.Placeholder">
             <summary>
             The placeholder
@@ -480,6 +490,16 @@
         <member name="P:MeetCore.MarkDownInput.Text">
             <summary>
             The text
+            </summary>
+        </member>
+        <member name="P:MeetCore.MarkDownInput.EditButtonColor">
+            <summary>
+            The text
+            </summary>
+        </member>
+        <member name="P:MeetCore.MarkDownInput.ChildContent">
+            <summary>
+            The child content
             </summary>
         </member>
         <member name="M:MeetCore.MarkDownInput.#ctor">
@@ -1410,6 +1430,68 @@
             The office page
             </summary>
         </member>
+        <member name="F:MeetCore.Professor_OfficePage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_OfficePage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_OfficePage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_OfficePage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_OfficePage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_OfficePage.LayoutPresenter">
+            <summary>
+            The layout presenter instance
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_OfficePage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_OfficePage.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_OfficePage.AddLayout">
+            <summary>
+            Creates and adds a layout to the current department
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_OfficePage.UpdateLayout(MeetBase.Web.ProfessorOfficeLayoutResponseModel)">
+            <summary>
+            Updates the current <paramref name="model"/>
+            </summary>
+            <param name="model">The layout</param>
+        </member>
+        <member name="M:MeetCore.Professor_OfficePage.DeleteLayout(MeetBase.Web.ProfessorOfficeLayoutResponseModel)">
+            <summary>
+            Deletes the current <paramref name="model"/>
+            </summary>
+            <param name="model">The layout</param>
+        </member>
+        <member name="M:MeetCore.Professor_OfficePage.GetLayouts">
+            <summary>
+            Gets the <see cref="T:MeetBase.Web.ProfessorOfficeLayoutResponseModel"/>s of the current <see cref="P:MeetCore.StateManagerCore.Professor"/>
+            </summary>
+        </member>
         <member name="T:MeetCore.Professor_ProfilePage">
             <summary>
             The profile page
@@ -1418,6 +1500,11 @@
         <member name="F:MeetCore.Professor_ProfilePage.mDialogOptions">
             <summary>
             The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="F:MeetCore.Professor_ProfilePage.mText">
+            <summary>
+            The <see cref="T:MeetCore.MarkDownInput"/> text
             </summary>
         </member>
         <member name="P:MeetCore.Professor_ProfilePage.Professor">
@@ -1455,6 +1542,11 @@
             Default constructor
             </summary>
         </member>
+        <member name="M:MeetCore.Professor_ProfilePage.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
         <member name="M:MeetCore.Professor_ProfilePage.UpdateProfessor">
             <summary>
             Updates the secretary and user info
@@ -1468,6 +1560,11 @@
         <member name="T:MeetCore.Secretary_ContactFormPage">
             <summary>
             The contact form page
+            </summary>
+        </member>
+        <member name="P:MeetCore.Secretary_ContactFormPage.Department">
+            <summary>
+            The department of the current secretary
             </summary>
         </member>
         <member name="P:MeetCore.Secretary_ContactFormPage.Client">
@@ -1493,6 +1590,21 @@
         <member name="M:MeetCore.Secretary_ContactFormPage.#ctor">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ContactFormPage.OnInitializedAsync">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ContactFormPage.SaveButton_OnClick">
+            <summary>
+            Saves the form changes and creates a <see cref="T:MeetBase.DepartmentContactMessageTemplate"/> for the department of the current <see cref="P:MeetCore.Secretary_ContactFormPage.Department"/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ContactFormPage.CancelButton_OnClick">
+            <summary>
+            Refreshes the form to the default values
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_DepartmentFacultyPage">

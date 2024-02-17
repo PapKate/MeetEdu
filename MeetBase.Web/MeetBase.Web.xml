@@ -124,41 +124,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:MeetBase.Web.DepartmentLayoutRequestModel">
-            <summary>
-            Request model for a department layout
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.DepartmentId">
-            <summary>
-            The department id
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.Description">
-            <summary>
-            The description
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.Note">
-            <summary>
-            The note
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.ImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.DisplayTheme">
-            <summary>
-            The display theme
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.DepartmentLayoutRequestModel.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
         <member name="T:MeetBase.Web.DepartmentRequestModel">
             <summary>
             Request model for a department
@@ -255,6 +220,66 @@
             </summary>
         </member>
         <member name="M:MeetBase.Web.LabelRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DepartmentLayoutRequestModel">
+            <summary>
+            Request model for a department layout request model
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutRequestModel.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DepartmentLayoutRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.LayoutRequestModel">
+            <summary>
+            Request model for a layout
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LayoutRequestModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LayoutRequestModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LayoutRequestModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LayoutRequestModel.DisplayTheme">
+            <summary>
+            The display theme
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.LayoutRequestModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.ProfessorOfficeLayoutRequestModel">
+            <summary>
+            Request model for a professor office layout
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorOfficeLayoutRequestModel.ProfessorId">
+            <summary>
+            The staff member id
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.ProfessorOfficeLayoutRequestModel.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -914,56 +939,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:MeetBase.Web.DepartmentLayoutResponseModel">
-            <summary>
-            Represents a company layout document in the MongoDB
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.DepartmentLayoutResponseModel.mDepartmentId">
-            <summary>
-            The member of the <see cref="P:MeetBase.Web.DepartmentLayoutResponseModel.DepartmentId"/> property
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.DepartmentLayoutResponseModel.mDescription">
-            <summary>
-            The member of the <see cref="P:MeetBase.Web.DepartmentLayoutResponseModel.Description"/> property
-            </summary>
-        </member>
-        <member name="F:MeetBase.Web.DepartmentLayoutResponseModel.mNote">
-            <summary>
-            The member of the <see cref="P:MeetBase.Web.DepartmentLayoutResponseModel.Note"/> property
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.DepartmentId">
-            <summary>
-            The department id
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.Description">
-            <summary>
-            The description
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.Note">
-            <summary>
-            The note
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.ImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.DisplayTheme">
-            <summary>
-            The display theme
-            </summary>
-        </member>
-        <member name="M:MeetBase.Web.DepartmentLayoutResponseModel.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
         <member name="T:MeetBase.Web.DepartmentResponseModel">
             <summary>
             Represents a department 
@@ -1186,6 +1161,86 @@
             </summary>
         </member>
         <member name="M:MeetBase.Web.EmbeddedLabelResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.DepartmentLayoutResponseModel">
+            <summary>
+            Represents a department layout response model
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentLayoutResponseModel.mDepartmentId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentLayoutResponseModel.DepartmentId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentLayoutResponseModel.DepartmentId">
+            <summary>
+            The department id
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.DepartmentLayoutResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.LayoutResponseModel">
+            <summary>
+            Represents a company layout response model
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.LayoutResponseModel.mDescription">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.LayoutResponseModel.Description"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.LayoutResponseModel.mNote">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.LayoutResponseModel.Note"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LayoutResponseModel.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LayoutResponseModel.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LayoutResponseModel.ImageUrl">
+            <summary>
+            The image URL
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.LayoutResponseModel.DisplayTheme">
+            <summary>
+            The display theme
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.LayoutResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.ProfessorOfficeLayoutResponseModel">
+            <summary>
+            Represents a department layout response model
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.ProfessorOfficeLayoutResponseModel.mProfessorId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.ProfessorOfficeLayoutResponseModel.ProfessorId"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorOfficeLayoutResponseModel.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.ProfessorOfficeLayoutResponseModel.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -1836,6 +1891,16 @@
             Limit the result to entries without specific department ids
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentRelatedAPIArgs.IncludeProfessors">
+            <summary>
+            Limit the result to entries with specific professor ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRelatedAPIArgs.ExcludeProfessors">
+            <summary>
+            Limit the result to entries without specific professor ids
+            </summary>
+        </member>
         <member name="M:MeetBase.Web.DepartmentRelatedAPIArgs.#ctor">
             <summary>
             Default constructor
@@ -2337,6 +2402,50 @@
             Deletes the professor with the specified <paramref name="id"/>
             </summary>
             <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetProfessorOfficeLayoutsAsync(MeetBase.Web.DepartmentRelatedAPIArgs)">
+            <summary>
+            Gets the department layouts
+            </summary>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.AddProfessorOfficeLayoutAsync(MeetBase.Web.ProfessorOfficeLayoutRequestModel)">
+            <summary>
+            Creates a department layout
+            </summary>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetProfessorOfficeLayoutAsync(System.String)">
+            <summary>
+            Gets the department layout with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.UpdateProfessorOfficeLayoutAsync(System.String,MeetBase.Web.ProfessorOfficeLayoutRequestModel)">
+            <summary>
+            Updates the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.DeleteProfessorOfficeLayoutAsync(System.String)">
+            <summary>
+            Deletes the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.SetProfessorOfficeLayoutImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Creates a department layout
+            </summary>
+            <param name="id">The id</param>
+            <param name="file">The file</param>
             <returns></returns>
         </member>
         <member name="M:MeetBase.Web.MeetCoreClient.GetAppointmentRulesAsync(MeetBase.Web.AppointmentRuleAPIArgs)">
@@ -3504,6 +3613,40 @@
             <code>/appointMate/api/v1/meetCore/professors/3</code>
             </summary>
             <param name="professorId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.ProfessorOfficeLayoutsRoute">
+            <summary>
+            The department layouts route
+            <code>/appointMate/api/v1/meetCore/professorOfficeLayouts</code>
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.ProfessorOfficeLayoutRoute">
+            <summary>
+            The department layout route
+            <code>/appointMate/api/v1/meetCore/professorOfficeLayouts/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetProfessorOfficeLayoutRoute(System.String)">
+            <summary>
+            Gets the department layout route for the one with the specified <paramref name="professorOfficeLayoutId"/>
+            <code>/appointMate/api/v1/meetCore/professorOfficeLayouts/3</code>
+            </summary>
+            <param name="professorOfficeLayoutId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.ProfessorOfficeLayoutImagesRoute">
+            <summary>
+            The department layout images route
+            <code>/appointMate/api/v1/meetCore/professorOfficeLayouts/2/images</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetProfessorOfficeLayoutImagesRoute(System.String)">
+            <summary>
+            Gets the department layout images route for the one with the specified <paramref name="professorOfficeLayoutId"/>
+            <code>/appointMate/api/v1/meetCore/professorOfficeLayouts/3/images</code>
+            </summary>
+            <param name="professorOfficeLayoutId">The id</param>
             <returns></returns>
         </member>
         <member name="F:MeetBase.Web.MeetCoreAPIRoutes.AppointmentRulesRoute">

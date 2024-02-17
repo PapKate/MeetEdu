@@ -65,6 +65,11 @@ namespace MeetEdu
         public const string ProfessorsCollectionName = Signature + "Professors";
 
         /// <summary>
+        /// The professor office layouts collection name
+        /// </summary>
+        public const string ProfessorOfficeLayoutsCollectionName = Signature + "ProfessorOfficeLayouts";
+
+        /// <summary>
         /// The secretaries collection name
         /// </summary>
         public const string SecretariesCollectionName = Signature + "Secretaries";
@@ -172,6 +177,11 @@ namespace MeetEdu
         /// The professors collection
         /// </summary>
         public static IMongoCollection<ProfessorEntity> Professors => DI.Database.GetCollection<ProfessorEntity>(ProfessorsCollectionName);
+
+        /// <summary>
+        /// The professor office layouts collection
+        /// </summary>
+        public static IMongoCollection<ProfessorOfficeLayoutEntity> ProfessorOfficeLayouts => DI.Database.GetCollection<ProfessorOfficeLayoutEntity>(ProfessorOfficeLayoutsCollectionName);
 
         #endregion
 

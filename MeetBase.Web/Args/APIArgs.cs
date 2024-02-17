@@ -126,6 +126,16 @@
         /// </summary>
         public IEnumerable<string>? ExcludeDepartments { get; set; }
 
+        /// <summary>
+        /// Limit the result to entries with specific professor ids
+        /// </summary>
+        public IEnumerable<string>? IncludeProfessors { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific professor ids
+        /// </summary>
+        public IEnumerable<string>? ExcludeProfessors { get; set; }
+
         #endregion
 
         #region Constructors

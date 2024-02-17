@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Usage", "BL0007:Component parameters should be auto properties", Justification = "<Pending>", Scope = "member", Target = "~P:MeetCore.LayoutPresenter.Layout")]
+[assembly: SuppressMessage("Usage", "BL0007:Component parameters should be auto properties", Justification = "<Pending>", Scope = "member", Target = "~P:MeetCore.LayoutPresenter`1.Layout")]

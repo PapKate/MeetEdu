@@ -15,7 +15,7 @@
         /// <summary>
         /// The personal websites 
         /// </summary>
-        public IEnumerable<Uri>? Websites { get; set; }
+        public IEnumerable<Website>? Websites { get; set; }
 
         /// <summary>
         /// The field of study

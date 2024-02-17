@@ -84,6 +84,15 @@
 
         #endregion
 
+        #region Public Properties
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public override string Name => "CoffeeContactVector";
+
+        #endregion
+
         #region Constructors
 
         /// <summary>

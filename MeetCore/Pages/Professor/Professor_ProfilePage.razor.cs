@@ -16,6 +16,11 @@ namespace MeetCore
         /// </summary>
         private DialogOptions mDialogOptions = new() { FullWidth = true };
 
+        /// <summary>
+        /// The <see cref="MarkDownInput"/> text
+        /// </summary>
+        private string? mText;
+
         #endregion
 
         #region Public Properties
@@ -72,7 +77,46 @@ namespace MeetCore
 
         #endregion
 
+        #region Protected Methods
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+            mText = Professor.ResearchInterests ?? string.Empty;
+        }
+
+        #endregion
+
         #region Private Methods
+
+        private async void SaveResearchInterests(string? value)
+        {
+            mText = value;
+            // Creates the request for updating the professor
+            var professorRequest = new ProfessorRequestModel()
+            {
+                ResearchInterests = mText
+            };
+
+            // Updates the professor
+            var professorResponse = await Client.UpdateProfessorAsync(Professor.Id, professorRequest);
+
+            // If there was an error...
+            if (!professorResponse.IsSuccessful)
+            {
+                // Show the error
+                Snackbar.Add(professorResponse.ErrorMessage, Severity.Error);
+                // Return
+                return;
+            }
+            StateManager.Professor = professorResponse.Result;
+
+            StateHasChanged();
+        }
 
         /// <summary>
         /// Updates the secretary and user info
@@ -94,7 +138,7 @@ namespace MeetCore
                 ImageUrl = User.ImageUrl
             });
 
-            var parameters = new DialogParameters<UpdateStaffMemberDialog<UpdateProfessorModel>> { { x => x.Model, model } };
+            var parameters = new DialogParameters<UpdateStaffMemberDialog<UpdateProfessorModel>> { { x => x.Model, model }, { x => x.IsSecretary, false } };
 
             // Creates and opens a dialog with the specified type
             var dialog = await DialogService.ShowAsync<UpdateStaffMemberDialog<UpdateProfessorModel>>(null, parameters, mDialogOptions);

@@ -1,18 +1,11 @@
-﻿using System.Xml.Linq;
-
-namespace MeetBase.Web
+﻿namespace MeetBase.Web
 {
     /// <summary>
-    /// Represents a company layout document in the MongoDB
+    /// Represents a company layout response model
     /// </summary>
-    public class DepartmentLayoutResponseModel : StandardResponseModel, IImageable, IDescriptable, INoteable, IDepartmentIdentifiable<string>
+    public class LayoutResponseModel : StandardResponseModel, IImageable, IDescriptable, INoteable
     {
         #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="DepartmentId"/> property
-        /// </summary>
-        private string? mDepartmentId;
 
         /// <summary>
         /// The member of the <see cref="Description"/> property
@@ -27,15 +20,6 @@ namespace MeetBase.Web
         #endregion
 
         #region Public Properties
-
-        /// <summary>
-        /// The department id
-        /// </summary>
-        public string DepartmentId
-        {
-            get => mDepartmentId ?? string.Empty;
-            set => mDepartmentId = value;
-        }
 
         /// <summary>
         /// The description
@@ -72,7 +56,7 @@ namespace MeetBase.Web
         /// <summary>
         /// Default constructor
         /// </summary>
-        public DepartmentLayoutResponseModel() : base()
+        public LayoutResponseModel() : base()
         {
 
         }

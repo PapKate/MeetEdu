@@ -46,10 +46,9 @@ namespace MeetEdu
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="professor">The professor</param>
-        /// <param name="user">The user</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<ProfessorEntity>> UpdateProfessorAsync(ObjectId id, ProfessorRequestModel professor, UserRequestModel user, CancellationToken cancellationToken = default)
+        public async Task<WebServerFailable<ProfessorEntity>> UpdateProfessorAsync(ObjectId id, ProfessorRequestModel professor, CancellationToken cancellationToken = default)
         {
             var professorEntity = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
@@ -59,15 +58,7 @@ namespace MeetEdu
 
             professorEntity = await MeetEduDbMapper.Professors.UpdateAsync(id, professor, cancellationToken);
 
-            var userEntity = await MeetEduDbMapper.Users.FirstAsync(professorEntity!.UserId, cancellationToken);
-
-            userEntity = await MeetEduDbMapper.Users.UpdateAsync(userEntity.Id, user, cancellationToken);
-
-            // If the user exists...
-            if (user is not null)
-                professorEntity.User = userEntity!.ToEmbeddedEntity();
-
-            return professorEntity;
+            return professorEntity!;
         }
 
         /// <summary>
@@ -92,6 +83,63 @@ namespace MeetEdu
 
             return entity;
         }
+
+        #region Layouts
+
+        /// <summary>
+        /// Sets a professor office layout image
+        /// </summary>
+        /// <param name="professorId">The professor id</param>
+        /// <param name="file">The file</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<ProfessorOfficeLayoutEntity>> SetProfessorOfficeLayoutImageAsync(ObjectId professorId, IFormFile file, CancellationToken cancellationToken = default)
+        {
+            return await RepositoryHelpers.SetImageAsync<ProfessorOfficeLayoutRequestModel, ProfessorOfficeLayoutEntity>(
+                                                professorId,
+                                                $"{MeetEduConstants.Professors.ToLower()}/{MeetEduConstants.Layouts.ToLower()}/",
+                                                file,
+                                                (model) => UpdateProfessorOfficeLayoutAsync(professorId, model, cancellationToken),
+                                                cancellationToken);
+        }
+
+        /// <summary>
+        /// Add a professor office layout
+        /// </summary>
+        /// <param name="professorId">The professor id</param>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<ProfessorOfficeLayoutEntity>> AddProfessorOfficeLayoutAsync(ObjectId professorId, ProfessorOfficeLayoutRequestModel model, CancellationToken cancellationToken = default)
+            => await MeetEduDbMapper.ProfessorOfficeLayouts.AddAsync(ProfessorOfficeLayoutEntity.FromRequestModel(model, professorId), cancellationToken);
+
+        /// <summary>
+        /// Updates the layout with the specified <paramref name="layoutId"/>
+        /// </summary>
+        /// <param name="layoutId">The layout id</param>
+        /// <param name="model">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<ProfessorOfficeLayoutEntity>> UpdateProfessorOfficeLayoutAsync(ObjectId layoutId, ProfessorOfficeLayoutRequestModel model, CancellationToken cancellationToken)
+        {
+            var entity = await MeetEduDbMapper.ProfessorOfficeLayouts.UpdateAsync(layoutId, model, cancellationToken);
+
+            if (entity is null)
+                return WebServerFailable.NotFound(layoutId, nameof(MeetEduDbMapper.ProfessorOfficeLayouts));
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Deletes the professor office layout with the specified <paramref name="layoutId"/>
+        /// </summary>
+        /// <param name="layoutId">The layout id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<ProfessorOfficeLayoutEntity>> DeleteProfessorOfficeLayoutAsync(ObjectId layoutId, CancellationToken cancellationToken = default)
+            => await MeetEduDbMapper.ProfessorOfficeLayouts.DeleteAsync(layoutId, cancellationToken);
+
+        #endregion
 
         #endregion
     }

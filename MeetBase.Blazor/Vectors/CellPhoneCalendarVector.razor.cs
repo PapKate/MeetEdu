@@ -61,6 +61,15 @@
 
         #endregion
 
+        #region Public Properties
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public override string Name => "CellPhoneCalendarVector";
+
+        #endregion
+
         #region Constructors
 
         /// <summary>

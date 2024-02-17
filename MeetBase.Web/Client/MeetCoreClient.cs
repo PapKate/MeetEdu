@@ -499,6 +499,63 @@ namespace MeetBase.Web
         public Task<WebRequestResult<ProfessorResponseModel>> DeleteProfessorAsync(string id)
             => WebRequestsClient.Instance.DeleteAsync<ProfessorResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetProfessorRoute(id)), null);
 
+        #region Layout 
+
+        /// <summary>
+        /// Gets the department layouts
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<IEnumerable<ProfessorOfficeLayoutResponseModel>>> GetProfessorOfficeLayoutsAsync(DepartmentRelatedAPIArgs args)
+            => WebRequestsClient.Instance.GetAsync<IEnumerable<ProfessorOfficeLayoutResponseModel>>(RouteHelpers.AttachParameters(GetAbsoluteUrl(MeetCoreAPIRoutes.ProfessorOfficeLayoutsRoute), args), null);
+
+        /// <summary>
+        /// Creates a department layout
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<ProfessorOfficeLayoutResponseModel>> AddProfessorOfficeLayoutAsync(ProfessorOfficeLayoutRequestModel model)
+            => WebRequestsClient.Instance.PostAsync<ProfessorOfficeLayoutResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.ProfessorOfficeLayoutsRoute), model, null);
+
+        /// <summary>
+        /// Gets the department layout with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<ProfessorOfficeLayoutResponseModel>> GetProfessorOfficeLayoutAsync(string id)
+            => WebRequestsClient.Instance.GetAsync<ProfessorOfficeLayoutResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetProfessorOfficeLayoutRoute(id)), null);
+
+        /// <summary>
+        /// Updates the department with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="model">The model</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<ProfessorOfficeLayoutResponseModel>> UpdateProfessorOfficeLayoutAsync(string id, ProfessorOfficeLayoutRequestModel model)
+            => WebRequestsClient.Instance.PutAsync<ProfessorOfficeLayoutResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetProfessorOfficeLayoutRoute(id)), model, null);
+
+        /// <summary>
+        /// Deletes the department with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<ProfessorOfficeLayoutResponseModel>> DeleteProfessorOfficeLayoutAsync(string id)
+            => WebRequestsClient.Instance.DeleteAsync<ProfessorOfficeLayoutResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetProfessorOfficeLayoutRoute(id)), null);
+
+        /// <summary>
+        /// Creates a department layout
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="file">The file</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<ProfessorOfficeLayoutResponseModel>> SetProfessorOfficeLayoutImageAsync(string id, IFormFile file)
+            => WebRequestsClient.Instance.PutFilesAsync<ProfessorOfficeLayoutResponseModel>(
+                GetAbsoluteUrl(MeetCoreAPIRoutes.GetProfessorOfficeLayoutImagesRoute(id)),
+                new List<FileUploadGroupDataModel>() { new FileUploadGroupDataModel("file", file) },
+                null);
+
+        #endregion
+
         #endregion
 
         #region Appointment Rules

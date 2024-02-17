@@ -1,5 +1,4 @@
 ﻿using MeetBase;
-using MeetBase.Blazor;
 using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
@@ -9,7 +8,8 @@ namespace MeetCore
     /// <summary>
     /// The presenter for a layout room
     /// </summary>
-    public partial class LayoutPresenter
+    public partial class LayoutPresenter<T>
+        where T : LayoutResponseModel, new()
     {
         #region Private Members
 
@@ -18,7 +18,7 @@ namespace MeetCore
         /// <summary>
         /// The member of the <see cref="Layout"/> property
         /// </summary>
-        private DepartmentLayoutResponseModel? mLayout;
+        private T mLayout = default!;
 
         #endregion
 
@@ -28,7 +28,7 @@ namespace MeetCore
         /// The layout room
         /// </summary>
         [Parameter]
-        public DepartmentLayoutResponseModel? Layout 
+        public T Layout 
         {
             get => mLayout;
             set
@@ -73,7 +73,7 @@ namespace MeetCore
         /// <summary>
         /// Re-renders the component
         /// </summary>
-        public void ReplaceLayout(DepartmentLayoutResponseModel layout)
+        public void ReplaceLayout(T layout)
         {
             Layout = layout;
         }
@@ -113,13 +113,13 @@ namespace MeetCore
         /// Fires when the edit button is clicked
         /// </summary>
         [Parameter]
-        public EventCallback<DepartmentLayoutResponseModel> EditButtonClicked { get; set; }
+        public EventCallback<T> EditButtonClicked { get; set; }
 
         /// <summary>
         /// Fires when the delete button is clicked
         /// </summary>
         [Parameter]
-        public EventCallback<DepartmentLayoutResponseModel> DeleteButtonClicked { get; set; }
+        public EventCallback<T> DeleteButtonClicked { get; set; }
 
         #endregion
     }

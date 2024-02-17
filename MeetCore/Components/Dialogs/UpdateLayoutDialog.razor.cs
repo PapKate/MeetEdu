@@ -11,7 +11,8 @@ namespace MeetCore
     /// <summary>
     /// The dialog for editing the room
     /// </summary>
-    public partial class UpdateLayoutDialog
+    public partial class UpdateLayoutDialog<T>
+        where T : LayoutRequestModel, new()
     {
         #region Private Members
 
@@ -38,7 +39,7 @@ namespace MeetCore
         /// THe model
         /// </summary>
         [Parameter]
-        public UpdateModel<DepartmentLayoutRequestModel>? Model { get; set; }
+        public UpdateModel<T>? Model { get; set; }
 
         #endregion
 
@@ -64,7 +65,7 @@ namespace MeetCore
             base.OnInitialized();
             if(Model is not null)
             {
-                mTheme = Model.Model.DisplayTheme ?? ImageDisplayTheme.Left;
+                mTheme = Model?.Model.DisplayTheme ?? ImageDisplayTheme.Left;
             }
         }
 
@@ -80,7 +81,7 @@ namespace MeetCore
             if(Model is not null)
             {
                 Model.Model.DisplayTheme = mTheme;
-                Model.Model.Color = Model.Model?.Color?.Replace("#", string.Empty);
+                Model.Model.Color = Model.Model?.Color?.Replace("#", string.Empty) ?? string.Empty;
                 
                 if (mFile is not null)
                 {

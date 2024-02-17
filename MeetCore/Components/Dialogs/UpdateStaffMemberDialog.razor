@@ -109,8 +109,29 @@
             <span class="dialogContentTitle dialogContentFullRow">Quote</span>
             <MudTextField T="string" Placeholder="Write a quote that inspires you" Class="dialogContentFullRow" Variant="Variant.Text" @bind-Text="@Model.Model.Quote" Lines="3" />
 
+            @if(!IsSecretary)
+            {
+                <span class="dialogContentTitle dialogContentFullRow">Websites</span>
+                <div class="professorWebsiteInputsContainer">
+                    <MudTextField @bind-Value="@mWebsite.Name"
+                                  Placeholder="Title"
+                                  Class="dialogContentFullRow dialogInput"
+                                  FullWidth="true"
+                                  Variant="Variant.Text"
+                                  Adornment="Adornment.Start"
+                                  AdornmentIcon="@MudIconPaths.AbjadArabic" />
+                    <MudTextField @bind-Value="@mWebsite.Link"
+                                  Placeholder="Link"
+                                  Class="dialogContentFullRow dialogInput"
+                                  FullWidth="true"
+                                  Variant="Variant.Text"
+                                  Adornment="Adornment.Start"
+                                  AdornmentIcon="@MudIconPaths.AbjadArabic" />
+                </div>
+            }
+
             <span class="dialogContentTitle dialogContentFullRow">Location info</span>
-            <div class="dialogLocationMapContainer">
+            <div class="@(IsSecretary ? "dialogLocationMapContainer" : "dialogProfessorLocationMapContainer")">
                 <img class="location" src="./icons/map.png" alt="map" />
             </div>
             <MudSelect T="CountryCode" @bind-Value="@mLocation.Country"
@@ -166,6 +187,12 @@
 
     .colorInput .mud-input-adornment-start:after {
         background-color: @Model.Model.Color.NormalizedColor();
+    }
+
+    .dialogProfessorLocationMapContainer {
+        grid-row: 16 / 20;
+        grid-column: 1 / 2;
+        position: relative;
     }
 
 </style>

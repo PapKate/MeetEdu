@@ -298,6 +298,44 @@ namespace MeetBase.Web
 
         #endregion
 
+        #region Professor Office Layouts
+
+        /// <summary>
+        /// The department layouts route
+        /// <code>/appointMate/api/v1/meetCore/professorOfficeLayouts</code>
+        /// </summary>
+        public const string ProfessorOfficeLayoutsRoute = BaseRoute + "/professorOfficeLayouts";
+
+        /// <summary>
+        /// The department layout route
+        /// <code>/appointMate/api/v1/meetCore/professorOfficeLayouts/3</code>
+        /// </summary>
+        public const string ProfessorOfficeLayoutRoute = ProfessorOfficeLayoutsRoute + "/{professorOfficeLayoutId}";
+
+        /// <summary>
+        /// Gets the department layout route for the one with the specified <paramref name="professorOfficeLayoutId"/>
+        /// <code>/appointMate/api/v1/meetCore/professorOfficeLayouts/3</code>
+        /// </summary>
+        /// <param name="professorOfficeLayoutId">The id</param>
+        /// <returns></returns>
+        public static string GetProfessorOfficeLayoutRoute(string professorOfficeLayoutId) => ProfessorOfficeLayoutsRoute + $"/{professorOfficeLayoutId}";
+
+        /// <summary>
+        /// The department layout images route
+        /// <code>/appointMate/api/v1/meetCore/professorOfficeLayouts/2/images</code>
+        /// </summary>
+        public const string ProfessorOfficeLayoutImagesRoute = ProfessorOfficeLayoutRoute + "/images";
+
+        /// <summary>
+        /// Gets the department layout images route for the one with the specified <paramref name="professorOfficeLayoutId"/>
+        /// <code>/appointMate/api/v1/meetCore/professorOfficeLayouts/3/images</code>
+        /// </summary>
+        /// <param name="professorOfficeLayoutId">The id</param>
+        /// <returns></returns>
+        public static string GetProfessorOfficeLayoutImagesRoute(string professorOfficeLayoutId) => GetProfessorOfficeLayoutRoute(professorOfficeLayoutId) + $"/images";
+
+        #endregion
+
         #region Appointment Rules
 
         /// <summary>

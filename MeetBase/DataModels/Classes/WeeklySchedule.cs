@@ -116,4 +116,49 @@ namespace MeetBase
 
         #endregion
     }
+
+    /// <summary>
+    /// The website
+    /// </summary>
+    public class Website : INameable
+    {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="Name"/> property
+        /// </summary>
+        private string? mName;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The name
+        /// </summary>
+        public string Name
+        {
+            get => mName ?? string.Empty;
+            set => mName = value;
+        }
+
+        /// <summary>
+        /// The link
+        /// </summary>
+        public Uri? Link { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Website() : base()
+        {
+
+        }
+
+        #endregion
+    }
 }

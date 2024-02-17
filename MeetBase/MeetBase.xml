@@ -550,14 +550,19 @@
             Represents a department contact message template
             </summary>
         </member>
+        <member name="F:MeetBase.DepartmentContactMessageTemplate.mVectorName">
+            <summary>
+            The member of the <see cref="P:MeetBase.DepartmentContactMessageTemplate.VectorName"/> property
+            </summary>
+        </member>
         <member name="F:MeetBase.DepartmentContactMessageTemplate.mNote">
             <summary>
             The member of the <see cref="P:MeetBase.DepartmentContactMessageTemplate.Note"/> property
             </summary>
         </member>
-        <member name="P:MeetBase.DepartmentContactMessageTemplate.Image">
+        <member name="P:MeetBase.DepartmentContactMessageTemplate.VectorName">
             <summary>
-            The image
+            The name of the vector component
             </summary>
         </member>
         <member name="P:MeetBase.DepartmentContactMessageTemplate.ContactMean">
@@ -1250,6 +1255,31 @@
             </summary>
         </member>
         <member name="M:MeetBase.Lecture.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Website">
+            <summary>
+            The website
+            </summary>
+        </member>
+        <member name="F:MeetBase.Website.mName">
+            <summary>
+            The member of the <see cref="P:MeetBase.Website.Name"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Website.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Website.Link">
+            <summary>
+            The link
+            </summary>
+        </member>
+        <member name="M:MeetBase.Website.#ctor">
             <summary>
             Default constructor
             </summary>

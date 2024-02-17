@@ -13,7 +13,7 @@ namespace MeetCore
     /// </summary>
     public partial class UpdateScheduleDialog
     {
-        #region Public Properties
+        #region Private Members
 
         /// <summary>
         /// The name
