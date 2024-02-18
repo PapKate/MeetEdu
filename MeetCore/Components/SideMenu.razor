@@ -120,16 +120,32 @@
                     BoxShadow="none"
                     Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
     </div>
-    <div class="sideMenuItemContainer">
-        <MenuButton Text="@EnglishLocalization.Inbox"
-                    VectorSource="@IconPaths.MailNewsletterIconPath"
-                    OnClick="@(() => NavigateToInboxPage())"
-                    BackColor="@White"
-                    ForeColor="@DarkGray"
-                    BorderRadius="0"
-                    BoxShadow="none"
-                    Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
-    </div>
+    @if(IsSecretary)
+    {
+        <div class="sideMenuItemContainer">
+            <MenuButton Text="@EnglishLocalization.Inbox"
+                        VectorSource="@IconPaths.MailNewsletterIconPath"
+                        OnClick="@(() => NavigateToInboxPage())"
+                        BackColor="@White"
+                        ForeColor="@DarkGray"
+                        BorderRadius="0"
+                        BoxShadow="none"
+                        Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+        </div>
+    }
+    else
+    {
+        <div class="sideMenuItemContainer">
+            <MenuButton Text="@EnglishLocalization.FormRules"
+                        VectorSource="@IconPaths.MailNewsletterIconPath"
+                        OnClick="@(() => NavigateToFormRulesPage())"
+                        BackColor="@White"
+                        ForeColor="@DarkGray"
+                        BorderRadius="0"
+                        BoxShadow="none"
+                        Style="@($"{WidthVariable.SetCssVariable("100%")}")" />
+        </div>
+    }
 
     <div class="sideMenuItemContainer sideMenuBottomItemContainer">
         <MenuButton Text="@EnglishLocalization.Logout"

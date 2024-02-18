@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using MeetBase.Web;
+
+using Microsoft.AspNetCore.Components;
 
 namespace MeetCore
 {
@@ -14,16 +16,36 @@ namespace MeetCore
         #region Public Properties
 
         /// <summary>
-        /// The navigation manager service
+        /// The secretary id
         /// </summary>
-        [Inject]
-        public NavigationManager? NavigationManager { get; set; }
+        public string SecretaryId => StateManager!.Secretary?.Id ?? string.Empty;
+        
+        /// <summary>
+        /// The professor id
+        /// </summary>
+        public string ProfessorId => StateManager!.Professor?.Id ?? string.Empty;
 
         /// <summary>
         /// A flag indicating whether the staff member is a secretary
         /// </summary>
         [Parameter]
         public bool IsSecretary { get; set; } = false;
+
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        /// The navigation manager service
+        /// </summary>
+        [Inject]
+        protected NavigationManager? NavigationManager { get; set; }
+
+        /// <summary>
+        /// The state management service
+        /// </summary>
+        [Inject]
+        protected StateManagerCore StateManager { get; set; } = default!;
 
         #endregion
 
@@ -55,13 +77,13 @@ namespace MeetCore
             if (IsSecretary)
             {
                 // Navigates to the secretary profile page
-                NavigationManager.Secretary_NavigateToProfilePage("1");
+                NavigationManager.Secretary_NavigateToProfilePage(SecretaryId);
                 // Returns
                 return;
             }
             
             // Navigates to the professor profile page
-            NavigationManager.Professor_NavigateToProfilePage("id");
+            NavigationManager.Professor_NavigateToProfilePage(ProfessorId);
         }
 
         /// <summary>
@@ -78,12 +100,12 @@ namespace MeetCore
             if (IsSecretary)
             {
                 // Navigates to the secretary data form page
-                NavigationManager.Secretary_NavigateToFormPage("1");
+                NavigationManager.Secretary_NavigateToFormPage(SecretaryId);
                 // Returns
                 return;
             }
             // Navigates to the professor data form page
-            NavigationManager.Professor_NavigateToFormPage("id");
+            NavigationManager.Professor_NavigateToFormPage(ProfessorId);
         }
 
         /// <summary>
@@ -100,12 +122,26 @@ namespace MeetCore
             if (IsSecretary)
             {
                 // Navigates to the secretary profile page
-                NavigationManager.Secretary_NavigateToInboxPage("1");
+                NavigationManager.Secretary_NavigateToInboxPage(SecretaryId);
                 // Returns
                 return;
             }
-            // Navigates to the professor profile page
-            NavigationManager.Professor_NavigateToInboxPage("id");
+        }
+
+        /// <summary>
+        /// Navigates the connected professor to their form rules page
+        /// </summary>
+        public void NavigateToFormRulesPage()
+        {
+            // If no navigation manager is found...
+            if (NavigationManager is null)
+                // Returns
+                return;
+
+            // Navigates to the professor form rules page
+            NavigationManager.Professor_NavigateToFormRulesPage(ProfessorId);
+            // Returns
+            return;
         }
 
         /// <summary>

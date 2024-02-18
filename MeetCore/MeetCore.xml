@@ -134,6 +134,31 @@
             Default constructor
             </summary>
         </member>
+        <member name="P:MeetCore.AppointmentRuleDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentRuleDialog.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="M:MeetCore.AppointmentRuleDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.AppointmentRuleDialog.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentRuleDialog.SaveOnClick">
+            <summary>
+            Fires when the reply button is clicked
+            </summary>
+        </member>
         <member name="T:MeetCore.UpdateModel`1">
             <summary>
             The base update dialog model
@@ -149,9 +174,19 @@
             The image
             </summary>
         </member>
+        <member name="M:MeetCore.UpdateModel`1.#ctor">
+            <summary>
+            Parameterless constructor
+            </summary>
+        </member>
         <member name="M:MeetCore.UpdateModel`1.#ctor(`0)">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetCore.DepartmentMessageDialog">
+            <summary>
+            The dialog for adding and editing a <see cref="T:MeetBase.Web.DepartmentContactMessageResponseModel"/>
             </summary>
         </member>
         <member name="F:MeetCore.DepartmentMessageDialog.mIsReplyButtonVisible">
@@ -367,9 +402,14 @@
             The birth date
             </summary>
         </member>
+        <member name="F:MeetCore.UpdateStaffMemberDialog`1.mWebsites">
+            <summary>
+            The websites
+            </summary>
+        </member>
         <member name="F:MeetCore.UpdateStaffMemberDialog`1.mWebsite">
             <summary>
-            The website
+            The current website
             </summary>
         </member>
         <member name="F:MeetCore.UpdateStaffMemberDialog`1.mLocation">
@@ -609,14 +649,29 @@
             The side menu component
             </summary>
         </member>
-        <member name="P:MeetCore.SideMenu.NavigationManager">
+        <member name="P:MeetCore.SideMenu.SecretaryId">
             <summary>
-            The navigation manager service
+            The secretary id
+            </summary>
+        </member>
+        <member name="P:MeetCore.SideMenu.ProfessorId">
+            <summary>
+            The professor id
             </summary>
         </member>
         <member name="P:MeetCore.SideMenu.IsSecretary">
             <summary>
             A flag indicating whether the staff member is a secretary
+            </summary>
+        </member>
+        <member name="P:MeetCore.SideMenu.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
+        <member name="P:MeetCore.SideMenu.StateManager">
+            <summary>
+            The state management service
             </summary>
         </member>
         <member name="M:MeetCore.SideMenu.#ctor">
@@ -637,6 +692,11 @@
         <member name="M:MeetCore.SideMenu.NavigateToInboxPage">
             <summary>
             Navigates the connected staff member to their inbox page
+            </summary>
+        </member>
+        <member name="M:MeetCore.SideMenu.NavigateToFormRulesPage">
+            <summary>
+            Navigates the connected professor to their form rules page
             </summary>
         </member>
         <member name="M:MeetCore.SideMenu.NavigateToLoginPage">
@@ -702,6 +762,11 @@
         <member name="F:MeetCore.Routes.FormRoute">
             <summary>
             The form page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.FormRulesRoute">
+            <summary>
+            The form rules page route
             </summary>
         </member>
         <member name="F:MeetCore.Routes.InboxRoute">
@@ -879,6 +944,21 @@
             The role
             </summary>
         </member>
+        <member name="P:MeetCore.UpdateProfessorModel.Websites">
+            <summary>
+            The personal websites 
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateProfessorModel.Field">
+            <summary>
+            The field of study
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateProfessorModel.ResearchInterests">
+            <summary>
+            The research interests
+            </summary>
+        </member>
         <member name="M:MeetCore.UpdateProfessorModel.#ctor">
             <summary>
             Default constructor
@@ -944,67 +1024,22 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:MeetCore.UpdateStaffMemberModel">
+        <member name="T:MeetCore.UpdateStaffMemberModel`1">
             <summary>
             The model for updating a staff member
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.Username">
+        <member name="P:MeetCore.UpdateStaffMemberModel`1.StaffMember">
             <summary>
-            The username
+            The staff member
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.FirstName">
+        <member name="M:MeetCore.UpdateStaffMemberModel`1.#ctor">
             <summary>
-            The first name
+            Parameterless constructor
             </summary>
         </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.LastName">
-            <summary>
-            The last name
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.PasswordHash">
-            <summary>
-            Gets or sets a salted and hashed representation of the password for this user.
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.Email">
-            <summary>
-            The email
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.PhoneNumber">
-            <summary>
-            The phone number
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.ImageUrl">
-            <summary>
-            The image URL
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.Color">
-            <summary>
-            The color
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.DateOfBirth">
-            <summary>
-            The birthday
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.Location">
-            <summary>
-            The location information
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateStaffMemberModel.Quote">
-            <summary>
-            The quote
-            </summary>
-        </member>
-        <member name="M:MeetCore.UpdateStaffMemberModel.#ctor">
+        <member name="M:MeetCore.UpdateStaffMemberModel`1.#ctor(MeetBase.Web.UserRequestModel,`0)">
             <summary>
             Default constructor
             </summary>
@@ -1193,7 +1228,7 @@
             <param name="value">The route value</param>
             <param name="queryParams">The optional query parameter values</param>
         </member>
-        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToInboxPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToFormRulesPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
             <summary>
             Navigates the professor with the specified <paramref name="id"/> to their inbox page
             <code>/professors/1/inbox</code>
@@ -1420,10 +1455,61 @@
             The contact form page
             </summary>
         </member>
-        <member name="T:MeetCore.Professor_InboxPage">
+        <member name="T:MeetCore.Professor_ContactFormRulesPage">
             <summary>
-            The inbox page
+            The contact form rules page
             </summary>
+        </member>
+        <member name="F:MeetCore.Professor_ContactFormRulesPage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ContactFormRulesPage.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ContactFormRulesPage.Department">
+            <summary>
+            The department
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ContactFormRulesPage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ContactFormRulesPage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ContactFormRulesPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ContactFormRulesPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_ContactFormRulesPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_ContactFormRulesPage.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_ContactFormRulesPage.EditRule(MeetBase.Web.AppointmentRuleResponseModel)">
+            <summary>
+            Edits the specified <paramref name="rule"/>
+            </summary>
+            <param name="rule">The rule</param>
         </member>
         <member name="T:MeetCore.Professor_OfficePage">
             <summary>

@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Components;
+using MeetBase.Web;
 
 using MudBlazor;
 
 namespace MeetCore
 {
+    /// <summary>
+    /// The dialog for adding and editing a <see cref="DepartmentContactMessageResponseModel"/>
+    /// </summary>
     public partial class DepartmentMessageDialog
     {
         #region Private Members

@@ -189,7 +189,7 @@ namespace MeetCore
             if (result.Data is UpdateModel<ProfessorOfficeLayoutRequestModel> updatedModel)
             {
                 // Performs the specified action
-                var response = await requestAction(updatedModel.Model);
+                var response = await requestAction(updatedModel.Model!);
 
                 // If there was an error...
                 if (!response.IsSuccessful)

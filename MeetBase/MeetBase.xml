@@ -4586,6 +4586,11 @@
             The form
             </summary>
         </member>
+        <member name="F:MeetBase.EnglishLocalization.FormRules">
+            <summary>
+            The form rules
+            </summary>
+        </member>
         <member name="F:MeetBase.EnglishLocalization.Appointments">
             <summary>
             The appointments

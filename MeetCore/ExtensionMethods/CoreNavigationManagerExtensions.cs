@@ -224,8 +224,8 @@ namespace MeetCore
         /// <param name="id">The professor id</param>
         /// <param name="value">The route value</param>
         /// <param name="queryParams">The optional query parameter values</param>
-        public static void Professor_NavigateToInboxPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string>? queryParams = null)
-            => navigationManager.Professor_NavigateTo(id, Routes.InboxRoute, value, queryParams);
+        public static void Professor_NavigateToFormRulesPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string>? queryParams = null)
+            => navigationManager.Professor_NavigateTo(id, Routes.FormRulesRoute, value, queryParams);
 
         #endregion
 

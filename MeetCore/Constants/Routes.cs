@@ -47,6 +47,11 @@
         public const string FormRoute = "/form";
 
         /// <summary>
+        /// The form rules page route
+        /// </summary>
+        public const string FormRulesRoute = "/formRules";
+
+        /// <summary>
         /// The inbox page route
         /// </summary>
         public const string InboxRoute = "/inbox";

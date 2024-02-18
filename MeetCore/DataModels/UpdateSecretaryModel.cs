@@ -1,11 +1,12 @@
 ﻿using MeetBase;
+using MeetBase.Web;
 
 namespace MeetCore
 {
     /// <summary>
     /// The model for updating a secretary
     /// </summary>
-    public class UpdateSecretaryModel : UpdateStaffMemberModel
+    public class UpdateSecretaryModel : UpdateStaffMemberModel<SecretaryRequestModel>
     {
         #region Public Properties
 

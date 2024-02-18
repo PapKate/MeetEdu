@@ -1,20 +1,19 @@
 ﻿using MeetBase;
+using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Http;
 
 using MudBlazor;
-using Microsoft.Extensions.Primitives;
 
 namespace MeetCore
 {
     /// <summary>
     /// Dialog for updating a professor
     /// </summary>
-    public partial class UpdateStaffMemberDialog<T>
-        where T : UpdateStaffMemberModel, new()
+    public partial class UpdateStaffMemberDialog<TStaffMember>
+        where TStaffMember : StaffMemberRequestModel, new()
     {
         #region Private Members
 
@@ -51,7 +50,12 @@ namespace MeetCore
         private DateTime? mBirthDate;
 
         /// <summary>
-        /// The website
+        /// The websites
+        /// </summary>
+        private List<Website> mWebsites = new();
+
+        /// <summary>
+        /// The current website
         /// </summary>
         private Website mWebsite = new();
 
@@ -74,7 +78,7 @@ namespace MeetCore
         /// The model
         /// </summary>
         [Parameter]
-        public UpdateModel<T> Model { get; set; } = default!;
+        public UpdateStaffMemberModel<TStaffMember> Model { get; set; } = default!;
 
         /// <summary>
         /// A flag indicating whether the staff member is a secretary or not
@@ -107,10 +111,18 @@ namespace MeetCore
 
             if(Model is not null)
             {
-                mCountryCode = Model.Model.PhoneNumber?.CountryCode ?? 30;
+                mCountryCode = Model.Model!.PhoneNumber?.CountryCode ?? 30;
                 mPhoneNumber = Model.Model.PhoneNumber?.Phone ?? string.Empty;
                 mBirthDate = Model.Model.DateOfBirth?.ToDateTime() ?? DateTime.Now;
                 mLocation = Model.Model.Location ?? new();
+
+                if (Model is UpdateStaffMemberModel<ProfessorRequestModel> professor)
+                {
+                    if (professor.StaffMember is not null && !professor.StaffMember.Websites.IsNullOrEmpty())
+                        mWebsites = professor.StaffMember.Websites.ToList();
+                    else
+                        AddNew();
+                }
             }
         }
 
@@ -118,16 +130,31 @@ namespace MeetCore
 
         #region Private Methods
 
+        private void AddNew()
+        {
+            mWebsites.Insert(0, new());
+            StateHasChanged();
+        }
+
         private async void Save()
         {
-            if(Model is not null)
+            mWebsites.RemoveAll(x => x == default);
+            mWebsites.RemoveAll(x => x.Link is null);
+            mWebsites.Where(x => x.Name.IsNullOrEmpty()).ForEach(x => x.Name = x.Link!.ToString());
+
+            if (Model is not null)
             {
-                Model.Model.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
+                Model.Model!.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
                 Model.Model.Location = mLocation;
                 Model.Model.DateOfBirth = mBirthDate?.ToDateOnly();
 
                 if (!mPassword.IsNullOrEmpty() && mPassword == mConfirmPassword)
                     Model.Model.PasswordHash = mPassword.EncryptPassword();
+
+                if (Model is UpdateStaffMemberModel<ProfessorRequestModel> professor)
+                {
+                    professor.StaffMember!.Websites = mWebsites;
+                }
 
                 if (mFile is not null)
                 {

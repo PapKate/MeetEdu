@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model for an appointment 
     /// </summary>
-    public class AppointmentRequestModel
+    public class AppointmentRequestModel 
     {
         #region Public Properties
 

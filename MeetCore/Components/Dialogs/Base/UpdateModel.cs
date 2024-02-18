@@ -15,7 +15,7 @@ namespace MeetCore
         /// <summary>
         /// The model
         /// </summary>
-        public T Model { get; set; }
+        public T? Model { get; set; }
 
         /// <summary>
         /// The image
@@ -25,6 +25,14 @@ namespace MeetCore
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Parameterless constructor
+        /// </summary>
+        public UpdateModel() : base()
+        {
+
+        }
 
         /// <summary>
         /// Default constructor

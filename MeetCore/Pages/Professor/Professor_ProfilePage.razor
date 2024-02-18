@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="staffMemberInfoContainer">
+        <div class="staffMemberInfoContainer" style="@ForegroundVariable.SetCssColor(User.Color)">
             <div class="staffMemberImageAndContactContainer">
                 <div class="staffMemberImageContainer">
                     <img class="staffMemberImage" src="@User.ImageUrl?.ToString()" alt="name" />
@@ -55,24 +55,24 @@
                 </div>
             </div>
             <div class="staffMemberPositionContainer">
-                <span class="staffMemberWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(User.Color)">Department</span>
+                <span class="staffMemberWeeklyScheduleTitle" >Department</span>
                 <span class="staffMemberPosition">@StateManager.Department?.Name</span>
             </div>
             @if(!Professor.Websites.IsNullOrEmpty())
             {
                 <div id="professorWebsites" class="staffMemberPositionContainer">
-                    <span class="staffMemberWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(User.Color)">Websites</span>
+                    <span class="staffMemberWeeklyScheduleTitle">Websites</span>
                     @foreach(var website in Professor.Websites)
                     {
                         <span class="staffMemberPosition professorWebsiteTitle">
-                            <a href="@website.Link" target="_blank" rel="noopener noreferrer">@website.Name</a>
+                            <a href="@website.Link" target="_blank" rel="noopener noreferrer" style="@ForegroundVariable.SetCssColor(User.Color)">@website.Name</a>
                         </span>
                     }
                 </div>
             }
             <div class="staffMemberWeeklyScheduleContainer">
                 <div class="staffMemberWeeklySchedule">
-                    <span class="staffMemberWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(User.Color)">Office hours</span>
+                    <span class="staffMemberWeeklyScheduleTitle">Office hours</span>
                 </div>
                 @if (Professor.WeeklySchedule is not null)
                 {
@@ -134,7 +134,12 @@
 
     .professorWebsiteTitle{
         grid-column-start: 2;
-        font-weight: @BoldFont;
+        color: @ForegroundVariable.GetCssVariable();
+        font-weight: 500;
+    }
+
+    .professorWebsiteTitle a{
+        color: @ForegroundVariable.GetCssVariable();
     }
 
     #professorResearchTextContainer {

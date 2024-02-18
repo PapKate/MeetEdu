@@ -103,6 +103,11 @@
         public const string Form = "Form";
 
         /// <summary>
+        /// The form rules
+        /// </summary>
+        public const string FormRules = "Form rules";
+
+        /// <summary>
         /// The appointments
         /// </summary>
         public const string Appointments = "Appointments";

@@ -1,0 +1,91 @@
+﻿
+@page "/professors/{Id}/formRules"
+
+@inherits BasePage
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<PageTitle>@EnglishLocalization.FormRules</PageTitle>
+
+<ApplicationContainer>
+
+    @if (!mRules.IsNullOrEmpty())
+    {
+        <div class="dataGridHeader" id="dataGridMyRulesHeader">My appointment rules</div>
+
+        <MudDataGrid Items="@mRules" T="AppointmentRuleResponseModel" ReadOnly="false"
+                     EditMode="@DataGridEditMode.Form" EditTrigger="@DataGridEditTrigger.Manual" 
+                     Bordered="true">
+            <Columns>
+                <PropertyColumn Property="x => x.Name" Title="Name" IsEditable="false" />
+                <TemplateColumn Title="Description" Sortable="false">
+                    <CellTemplate>
+                        <span class="description">
+                            @context.Item.Description
+                        </span>
+                    </CellTemplate>
+                </TemplateColumn>
+                <PropertyColumn Property="x => x.Duration" Title="Duration" IsEditable="false" />
+                <TemplateColumn Title="Remote" CellStyle="width: 4rem;" Sortable="true">
+                    <CellTemplate>
+                        <span class="hasRemoteOptionGridRowText" 
+                             style="@ForegroundVariable.SetCssColor(context.Item.HasRemoteOption ? Green : Red)">
+                            @context.Item.HasRemoteOption
+                        </span>
+                    </CellTemplate>
+                </TemplateColumn>
+                <TemplateColumn StickyRight="true" CellStyle="width: 3.5rem; padding:0;" Sortable="false">
+                    <CellTemplate>
+                        <IconButton Id="editRuleButton"
+                                    BackColor="transparent"
+                                    ForeColor="@context.Item.Color"
+                                    VectorSource="@IconPaths.PencilOutlinePath"
+                                    BoxShadow="none"
+                                    BorderRadius="0"
+                                    OnClick="@(() => EditRule(context.Item))"
+                                    CssClasses="dataGridButton" />
+                    </CellTemplate>
+                </TemplateColumn>
+            </Columns>
+        </MudDataGrid>
+    }
+
+</ApplicationContainer>
+
+
+<style>
+
+    .pageContainer {
+        height: 100%;
+    }
+
+    #dataGridMyRulesHeader {
+        background-color: @StateManager.User!.Color.NormalizedColor();
+        color: @StateManager.User.Color.DarkOrWhite().NormalizedColor();
+    }
+
+    #editRuleButton {
+        width: 3.5rem;
+        height: 100%;
+        padding: @VeryLargePadding;
+    }
+
+    .description {
+        width: 100%;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+    .hasRemoteOptionGridRowText {
+        color: @ForegroundVariable.GetCssVariable();
+        font-weight: @BoldFont;
+    }
+
+</style>
+

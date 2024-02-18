@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<MudDialog>
+    <DialogContent>
+        <div class="dialogSection">
+            <span class="dialogSectionText">Appointment rule</span>
+        </div>
+        <div class="dialogContentContainer">
+            <MudTextField @bind-Value="@Model.Name"
+                          Placeholder="Name"
+                          Class="dialogInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+            <MudColorPicker Placeholder="Color" @bind-Text="@Model.Color"
+                            Style="@($"color: {Model.Color.NormalizedColor()};")"
+                            DisableModeSwitch="false"
+                            DisableToolbar="false"
+                            Class="dialogInput colorInput"
+                            Adornment="@Adornment.Start"
+                            AdornmentIcon="@Icons.Material.Filled.Palette"
+                            PickerVariant="PickerVariant.Inline"
+                            DisableAlpha="true" />
+            <MudTextField T="string" @bind-Value="@Model.Description"
+                          Placeholder="Description"
+                          Class="dialogContentFullRow dialogInput"
+                          FullWidth="true"  
+                          Variant="Variant.Text"
+                          Lines="5" />
+            <MudTimePicker @bind-Time="@Model.Duration"
+                           Placeholder="Duration"
+                           Class="dialogInput"
+                           Editable="true" />
+            
+            <MudCheckBox T="bool" @bind-Value="@mHasRemoteOption"
+                         Label="Has remote option"
+                         Class="hasRemoteOptionCheckBox">
+            </MudCheckBox>
+            <MudTextField @bind-Value="@Model.Note"
+                          Placeholder="Note"
+                          FullWidth="true"
+                          Class="dialogInput dialogContentFullRow"
+                          Variant="Variant.Text" />
+        </div>
+    </DialogContent>
+    <DialogActions>
+        <div class="dialogActionsContainer">
+            <MudButton Variant="Variant.Text" Color="Color.Error" OnClick="@CancelButton_OnClick" Class="px-10">Cancel</MudButton>
+            <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@SaveButton_OnClick" Class="px-10">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>
+
+<style>
+
+    .dialogSection {
+        background-color: @Model.Color.NormalizedColor();
+        color: @Model.Color.DarkOrWhite().NormalizedColor();
+    }
+
+    .colorInput .mud-input-adornment-start:after {
+        background-color: @Model.Color.NormalizedColor();
+    }
+
+    .hasRemoteOptionCheckBox {
+        position:relative;
+        bottom: -10px;
+    }
+
+        .hasRemoteOptionCheckBox .mud-icon-root.mud-svg-icon {
+            fill: @($"{Model.Color.NormalizedColor() ?? Gray.NormalizedColor()}");
+        }
+
+</style>

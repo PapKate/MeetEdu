@@ -123,7 +123,8 @@ namespace MeetCore
         /// </summary>
         private async void UpdateProfessor()
         {
-            var model = new UpdateModel<UpdateProfessorModel>(new()
+            var model = new UpdateStaffMemberModel<ProfessorRequestModel>(
+            new()
             {
                 Username = User.Username,
                 Email = User.Email,
@@ -132,16 +133,20 @@ namespace MeetCore
                 LastName = User.LastName,
                 PhoneNumber = User.PhoneNumber,
                 DateOfBirth = User.DateOfBirth,
-                Quote = Professor.Quote,
-                Rank = Professor.Rank,
                 Location = User.Location,
                 ImageUrl = User.ImageUrl
+            },
+            new() 
+            {
+                Quote = Professor.Quote,
+                Rank = Professor.Rank,
+                Websites = Professor.Websites
             });
 
-            var parameters = new DialogParameters<UpdateStaffMemberDialog<UpdateProfessorModel>> { { x => x.Model, model }, { x => x.IsSecretary, false } };
+            var parameters = new DialogParameters<UpdateStaffMemberDialog<ProfessorRequestModel>> { { x => x.Model, model }, { x => x.IsSecretary, false } };
 
             // Creates and opens a dialog with the specified type
-            var dialog = await DialogService.ShowAsync<UpdateStaffMemberDialog<UpdateProfessorModel>>(null, parameters, mDialogOptions);
+            var dialog = await DialogService.ShowAsync<UpdateStaffMemberDialog<ProfessorRequestModel>>(null, parameters, mDialogOptions);
 
             // Once the dialog is closed...
             // Gets the result
@@ -155,13 +160,14 @@ namespace MeetCore
             }
 
             // If the result is of the specified type...
-            if (result.Data is UpdateModel<UpdateProfessorModel> updatedModel)
+            if (result.Data is UpdateStaffMemberModel<ProfessorRequestModel> updatedModel)
             {
                 // Creates the request for updating the professor
                 var professorRequest = new ProfessorRequestModel()
                 {
-                    Rank = updatedModel.Model.Rank,
-                    Quote = updatedModel.Model.Quote ?? string.Empty
+                    Rank = updatedModel.StaffMember!.Rank,
+                    Websites = updatedModel.StaffMember!.Websites,
+                    Quote = updatedModel.StaffMember.Quote ?? string.Empty
                 };
 
                 // Updates the professor
@@ -180,7 +186,7 @@ namespace MeetCore
                 // Creates the request for updating the user
                 var userRequest = new UserRequestModel()
                 {
-                    Username = updatedModel.Model.Username,
+                    Username = updatedModel.Model!.Username,
                     FirstName = updatedModel.Model.FirstName,
                     LastName = updatedModel.Model.LastName,
                     PasswordHash = updatedModel.Model.PasswordHash,

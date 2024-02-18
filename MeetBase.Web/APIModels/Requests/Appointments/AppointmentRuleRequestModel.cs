@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model for an appointment template
     /// </summary>
-    public class AppointmentRuleRequestModel
+    public class AppointmentRuleRequestModel : StandardRequestModel
     {
         #region Public Properties
 

@@ -134,7 +134,8 @@ namespace MeetCore
         /// </summary>
         private async void UpdateSecretary()
         {
-            var model = new UpdateModel<UpdateSecretaryModel>(new()
+            var model = new UpdateStaffMemberModel<SecretaryRequestModel> (
+            new()
             {
                 Username = User.Username,
                 Email = User.Email,
@@ -143,16 +144,19 @@ namespace MeetCore
                 LastName = User.LastName,
                 PhoneNumber = User.PhoneNumber,
                 DateOfBirth = User.DateOfBirth,
-                Quote = Secretary.Quote,
-                Role = Secretary.Role,
                 Location = User.Location, 
                 ImageUrl = User.ImageUrl
+            },
+            new() 
+            {
+                Quote = Secretary.Quote,
+                Role = Secretary.Role
             });
 
-            var parameters = new DialogParameters<UpdateStaffMemberDialog<UpdateSecretaryModel>> { { x => x.Model, model }, { x => x.IsSecretary, true } };
+            var parameters = new DialogParameters<UpdateStaffMemberDialog<SecretaryRequestModel>> { { x => x.Model, model }, { x => x.IsSecretary, true } };
 
             // Creates and opens a dialog with the specified type
-            var dialog = await DialogService.ShowAsync<UpdateStaffMemberDialog<UpdateSecretaryModel>>(null, parameters, mDialogOptions);
+            var dialog = await DialogService.ShowAsync<UpdateStaffMemberDialog<SecretaryRequestModel>>(null, parameters, mDialogOptions);
             
             // Once the dialog is closed...
             // Gets the result
@@ -166,13 +170,13 @@ namespace MeetCore
             }
 
             // If the result is of the specified type...
-            if(result.Data is UpdateModel<UpdateSecretaryModel> updatedModel)
+            if(result.Data is UpdateStaffMemberModel<SecretaryRequestModel> updatedModel)
             {
                 // Creates the request for updating the secretary
                 var secretaryRequest = new SecretaryRequestModel()
                 {
-                    Role = updatedModel.Model.Role,
-                    Quote = updatedModel.Model.Quote ?? string.Empty
+                    Role = updatedModel.StaffMember!.Role,
+                    Quote = updatedModel.StaffMember!.Quote ?? string.Empty
                 };
 
                 // Updates the secretary
@@ -191,7 +195,7 @@ namespace MeetCore
                 // Creates the request for updating the user
                 var userRequest = new UserRequestModel()
                 {
-                    Username = updatedModel.Model.Username,
+                    Username = updatedModel.Model!.Username,
                     FirstName = updatedModel.Model.FirstName,
                     LastName = updatedModel.Model.LastName,
                     PasswordHash = updatedModel.Model.PasswordHash,
