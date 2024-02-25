@@ -2422,6 +2422,11 @@
             The weekly schedule
             </summary>
         </member>
+        <member name="P:MeetEdu.StaffMemberEntity.ContactMessageTemplate">
+            <summary>
+            The appointment template
+            </summary>
+        </member>
         <member name="P:MeetEdu.StaffMemberEntity.User">
             <summary>
             The user
@@ -2657,6 +2662,14 @@
             <summary>
             Extension methods for <see cref="T:MeetBase.Web.APIArgs"/>
             </summary>
+        </member>
+        <member name="M:MeetEdu.APIArgsExtensions.CreateFilters``1(MeetBase.Web.AppointmentRuleAPIArgs)">
+            <summary>
+            Creates the filters for the specified <paramref name="args"/>
+            </summary>
+            <typeparam name="T">The document type</typeparam>
+            <param name="args">The arguments</param>
+            <returns></returns>
         </member>
         <member name="M:MeetEdu.APIArgsExtensions.CreateFilters``1(MeetBase.Web.DepartmentRelatedAPIArgs)">
             <summary>

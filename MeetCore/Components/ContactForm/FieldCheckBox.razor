@@ -7,7 +7,7 @@
 
 <div class="fieldCheckBoxContainer">
     <MudCheckBox T="bool" Checked="@IsChecked" CheckedChanged="@OnIsCheckedChanged" Class="fieldCheckBox"></MudCheckBox>
-    <MudTextField T="string" Text="@Text" ReadOnly="true" Variant="Variant.Outlined" Class="fieldCheckBoxTextField" />
+    <MudTextField T="string" Text="@Text" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
 </div>
 
 <style>
@@ -22,16 +22,6 @@
         align-items: center;
         gap: @MediumGap;
     }
-
-    .fieldCheckBoxTextField .mud-input.mud-input-outlined {
-        border-radius: @VeryLargeBorderRadius;
-        background: @White.NormalizedColor();
-        filter: @LightFilterDropShadow;
-    }
-
-        .fieldCheckBoxTextField .mud-input.mud-input-outlined .mud-input-outlined-border {
-            display: none;
-        }
 
     .fieldCheckBox .mud-icon-button {
         color: @White.NormalizedColor();

@@ -1,15 +1,94 @@
 ﻿@page "/professors/{Id}/form"
 
-@inherits BasePage
+@inherits FormPage
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
 
 @namespace MeetCore
 
 <PageTitle>@EnglishLocalization.Form</PageTitle>
 
 <ApplicationContainer>
+    
+    <MarkDownInput Text="@mDescription" Lines="5" TextChanged="@SaveFormDescription"/>
 
-    <h3>Contact form</h3>
+    <div class="formFieldsAndImageContainer">
+        <div class="formFieldsContainer">
+            <MudTextField T="string" Text="Rule" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
+            <MudTextField T="string" Text="Date" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
+            <MudTextField T="string" Text="Time start - Time end" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
+            <MudTextField T="string" Text="First name" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
+            <MudTextField T="string" Text="Last name" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
+            <MudTextField T="string" Text="Email" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
+            <MudTextField T="string" Text="Phone number" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
+            <MudTextField T="string" Text="Message" Lines="5" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
+        </div>
+        <div class="formImageContainer">
+            <MudCarousel Class="mud-width-full" Style="height:16rem;" ShowArrows="false" ShowBullets="false" AutoCycle="@false" TData="object"
+                         SelectedIndex="@mSelectedIndex">
+                <MudCarouselItem Transition="@Transition.Slide">
+                    <div class="formImage">
+                        <CoffeeContactVector Color="@User!.Color" />
+                    </div>
+                </MudCarouselItem>
+                <MudCarouselItem Transition="@Transition.Slide">
+                    <div class="formImage">
+                        <EmailContactVector Color="@User!.Color" />
+                    </div>
+                </MudCarouselItem>
+                <MudCarouselItem Transition="@Transition.Slide">
+                    <div class="formImage">
+                        <CellPhoneCalendarVector Color="@User!.Color" />
+                    </div>
+                </MudCarouselItem>
+            </MudCarousel>
+            <div class="formCarouselImagesContainer">
+                <div class="formCarouselImage @(mSelectedIndex == 0 ? "formCarouselImageSelected" : string.Empty)"
+                     @onclick="@(() => SetSelectedIndex(0))">
+                    <CoffeeContactVector Color="@User!.Color" />
+                </div>
+                <div class="formCarouselImage @(mSelectedIndex == 1 ? "formCarouselImageSelected" : string.Empty)"
+                     @onclick="@(() => SetSelectedIndex(1))">
+                    <EmailContactVector Color="@User!.Color" />
+                </div>
+                <div class="formCarouselImage @(mSelectedIndex == 2 ? "formCarouselImageSelected" : string.Empty)"
+                     @onclick="@(() => SetSelectedIndex(2))">
+                    <CellPhoneCalendarVector Color="@User!.Color" />
+                </div>
+            </div>
 
+            <MarkDownInput Text="@mNote" Lines="12" TextChanged="@SaveFormNote" />
+
+        </div>
+    </div>
+
+    <div class="formButtonsContainer">
+        <TextButton Text="Cancel"
+                    BackColor="transparent"
+                    ForeColor="@Red"
+                    HoverBackColor="@Red"
+                    HoverForeColor="@White"
+                    BorderRadius="0"
+                    BoxShadow="none"
+                    OnClick="@CancelButton_OnClickCore"
+                    CssClasses="formButton" />
+        <TextButton Text="Save"
+                    BackColor="transparent"
+                    ForeColor="@Green"
+                    HoverBackColor="@Green"
+                    HoverForeColor="@White"
+                    BorderRadius="0"
+                    BoxShadow="none"
+                    OnClick="@SaveButton_OnClickCore"
+                    CssClasses="formButton" />
+    </div>
 </ApplicationContainer>
 
-
+<style>
+    .formFieldsAndImageContainer {
+        background-color: @User!.Color.HexToRGBA(0.4);
+    }
+</style>

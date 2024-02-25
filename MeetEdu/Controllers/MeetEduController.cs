@@ -106,7 +106,7 @@ namespace MeetEdu
         public async Task<ActionResult<IEnumerable<DepartmentContactMessageResponseModel>>> GetDepartmentContactMessagesAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.DepartmentContactMessages,
                                                     x => x.ToResponseModel(),
-                                                    Builders<DepartmentContactMessageEntity>.Filter.Empty, args,
+                                                    args.CreateFilters<DepartmentContactMessageEntity>().AggregateFilters(), args,
                                                     cancellationToken, x => x.DepartmentId);
 
         /// <summary>

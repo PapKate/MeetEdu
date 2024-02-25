@@ -40,7 +40,7 @@ namespace MeetEdu.Helpers
             var query = collection.AsQueryable();
 
             if(filter is not null)
-                query.Where(x => filter.Inject());
+                query = query.Where(x => filter.Inject());
 
             // If there is an order selector...
             if (orderSelector is not null)

@@ -1,6 +1,10 @@
-﻿using MeetBase.Web;
+﻿using MeetBase;
+using MeetBase.Web;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
+
+using System.Data;
+using System.Reflection;
 
 namespace MeetCore
 {
@@ -16,7 +20,7 @@ namespace MeetCore
         /// </summary>
         private DialogOptions mDialogOptions = new() { FullWidth = true };
 
-        private IEnumerable<AppointmentRuleResponseModel> mRules = new List<AppointmentRuleResponseModel>();
+        private readonly List<AppointmentRuleResponseModel> mRules = new();
 
         #endregion
 
@@ -79,32 +83,30 @@ namespace MeetCore
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            base.OnInitialized();
+            await base.OnInitializedAsync();
 
-            //var response = await Client.GetDepartmentContactMessagesAsync(new() { IncludeDepartments = new List<string>() { StateManager.Department!.Id } });
+            var response = await Client.GetAppointmentRulesAsync(new() { IncludeProfessors = new List<string>() { StateManager.Professor!.Id } });
 
-            //// If there was an error...
-            //if (!response.IsSuccessful)
-            //{
-            //    // Show the error
-            //    Snackbar.Add(response.ErrorMessage, Severity.Info);
-            //    // Return
-            //    return;
-            //}
-            //mContactMessages = response.Result;
-
-            mRules = new List<AppointmentRuleResponseModel>()
+            // If there was an error...
+            if (!response.IsSuccessful)
             {
-                new()
-                {
-                    Name = "Name",
-                    Color = "343899",
-                    Description = "This is a very long long long description  very long long long description  very long long long description  very long long long description  very long long long description  very long long long description  very long long long description",
-                    Duration = new TimeSpan(0, 35, 00)
-                }
-            };
+                // Show the error
+                Snackbar.Add(response.ErrorMessage, Severity.Info);
+                // Return
+                return;
+            }
+
+            if(response.Result.IsNullOrEmpty())
+            {
+                // Show the error
+                Snackbar.Add("No rules", Severity.Info);
+                // Return
+                return;
+            }
+
+            mRules.AddRange(response.Result);
 
             StateHasChanged();
         }
@@ -112,6 +114,17 @@ namespace MeetCore
         #endregion
 
         #region Private Methods
+
+        private async void AddRule()
+        {
+            var result = await OpenRuleDialog(new AppointmentRuleRequestModel() { ProfessorId = Professor.Id }, Client.AddAppointmentRuleAsync);
+
+            if (result is not null) 
+            {
+                mRules.Add(result);
+                StateHasChanged();
+            }
+        }
 
         /// <summary>
         /// Edits the specified <paramref name="rule"/>
@@ -130,6 +143,20 @@ namespace MeetCore
                 ProfessorId = Professor.Id
             };
 
+            var result = await OpenRuleDialog(model, async (model) => await Client.UpdateAppointmentRuleAsync(rule.Id, model));
+
+            if (result is not null)
+            {
+                var index = mRules.IndexOf(rule);
+                mRules.Remove(rule);
+                mRules.Insert(index, result);
+                StateHasChanged();
+            }
+        }
+
+        private async Task<AppointmentRuleResponseModel?> OpenRuleDialog(AppointmentRuleRequestModel model,
+                                                                     Func<AppointmentRuleRequestModel, Task<WebRequestResult<AppointmentRuleResponseModel>>> requestAction)
+        {
             var parameters = new DialogParameters<AppointmentRuleDialog> { { x => x.Model, model } };
 
             // Creates and opens a dialog with the specified type
@@ -142,9 +169,32 @@ namespace MeetCore
             // If there is no result or the dialog was closed by canceling the inner actions...
             if (result is null || result.Canceled)
             {
-                // Return
-                return;
+                // Return 
+                return null;
             }
+
+            // If the result is of the specified type...
+            if (result.Data is AppointmentRuleRequestModel updatedModel)
+            {
+                // Updates the rule
+                var ruleResponse = await requestAction(updatedModel);
+
+                // If there was an error...
+                if (!ruleResponse.IsSuccessful)
+                {
+                    Console.WriteLine(ruleResponse.ErrorMessage);
+                    // Show the error
+                    Snackbar.Add(ruleResponse.ErrorMessage, Severity.Error);
+                    // Return
+                    return null;
+                }
+
+                // Return the rule
+                return ruleResponse.Result;
+            }
+            
+            // Return
+            return null;
         }
 
         #endregion

@@ -476,6 +476,11 @@
             The weekly schedule
             </summary>
         </member>
+        <member name="P:MeetBase.Web.StaffMemberRequestModel.ContactMessageTemplate">
+            <summary>
+            The appointment template
+            </summary>
+        </member>
         <member name="M:MeetBase.Web.StaffMemberRequestModel.#ctor">
             <summary>
             Default constructor
@@ -1583,6 +1588,11 @@
         <member name="P:MeetBase.Web.StaffMemberResponseModel.WeeklySchedule">
             <summary>
             The weekly schedule
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.StaffMemberResponseModel.ContactMessageTemplate">
+            <summary>
+            The appointment template
             </summary>
         </member>
         <member name="P:MeetBase.Web.StaffMemberResponseModel.User">

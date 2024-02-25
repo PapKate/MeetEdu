@@ -738,7 +738,7 @@ namespace MeetEdu
         public async Task<ActionResult<IEnumerable<AppointmentRuleResponseModel>>> GetAppointmentRulesAsync([FromQuery] AppointmentRuleAPIArgs args, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.AppointmentRules,
                                                     x => x.ToResponseModel(),
-                                                    Builders<AppointmentRuleEntity>.Filter.Empty, args,
+                                                    args.CreateFilters<AppointmentRuleEntity>().AggregateFilters(), args,
                                                     cancellationToken, x => x.DateCreated);
 
         /// <summary>

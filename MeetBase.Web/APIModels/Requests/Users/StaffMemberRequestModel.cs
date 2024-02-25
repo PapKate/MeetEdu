@@ -27,6 +27,11 @@
         /// </summary>
         public WeeklySchedule? WeeklySchedule { get; set; }
 
+        /// <summary>
+        /// The appointment template
+        /// </summary>
+        public AppointmentContactMessageTemplate? ContactMessageTemplate { get; set; }
+
         #endregion
 
         #region Constructors

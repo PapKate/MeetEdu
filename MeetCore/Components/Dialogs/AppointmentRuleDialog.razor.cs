@@ -5,6 +5,9 @@ using MudBlazor;
 
 namespace MeetCore
 {
+    /// <summary>
+    /// The dialog for creating and editing an appointment rule
+    /// </summary>
     public partial class AppointmentRuleDialog
     {
         #region Private Members
@@ -57,25 +60,16 @@ namespace MeetCore
 
         #region Private Methods
 
-        private async void SaveButton_OnClick()
+        private void SaveButton_OnClick()
         {
             Model.HasRemoteOption = mHasRemoteOption;
-            await SaveOnClick.InvokeAsync(Model);
+            MudDialog.Close(DialogResult.Ok(Model));
         }
 
         private void CancelButton_OnClick()
         {
             MudDialog.Cancel();
         }
-
-        #endregion
-
-        #region Public Events
-
-        /// <summary>
-        /// Fires when the reply button is clicked
-        /// </summary>
-        public EventCallback<AppointmentRuleRequestModel> SaveOnClick { get; set; }
 
         #endregion
     }

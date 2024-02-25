@@ -24,6 +24,34 @@ namespace MeetEdu
         /// <typeparam name="T">The document type</typeparam>
         /// <param name="args">The arguments</param>
         /// <returns></returns>
+        public static List<FilterDefinition<T>> CreateFilters<T>(this AppointmentRuleAPIArgs args)
+            where T : BaseEntity, IProfessorIdentifiable<ObjectId>
+        {
+            var filters = new List<FilterDefinition<T>>();
+
+            // If there is a limit to the departments to include...
+            if (!args.IncludeProfessors.IsNullOrEmpty())
+            {
+                var ids = args.IncludeProfessors.Select(x => x.ToObjectId()).ToList();
+                filters.Add(Builders<T>.Filter.In(x => x.ProfessorId, ids));
+            }
+
+            // If there is a limit to the departments to exclude...
+            if (!args.ExcludeProfessors.IsNullOrEmpty())
+            {
+                var ids = args.ExcludeProfessors.Select(x => x.ToObjectId()).ToList();
+                filters.Add(Builders<T>.Filter.Nin(x => x.ProfessorId, ids));
+            }
+
+            return filters;
+        }
+
+        /// <summary>
+        /// Creates the filters for the specified <paramref name="args"/>
+        /// </summary>
+        /// <typeparam name="T">The document type</typeparam>
+        /// <param name="args">The arguments</param>
+        /// <returns></returns>
         public static List<FilterDefinition<T>> CreateFilters<T>(this DepartmentRelatedAPIArgs args)
             where T : BaseEntity, IDepartmentIdentifiable<ObjectId>
         {

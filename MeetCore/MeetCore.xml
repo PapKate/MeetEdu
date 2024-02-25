@@ -134,6 +134,11 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetCore.AppointmentRuleDialog">
+            <summary>
+            The dialog for creating and editing an appointment rule
+            </summary>
+        </member>
         <member name="P:MeetCore.AppointmentRuleDialog.MudDialog">
             <summary>
             The dialog instance
@@ -152,11 +157,6 @@
         <member name="M:MeetCore.AppointmentRuleDialog.OnInitialized">
             <summary>
             <inheritdoc/>
-            </summary>
-        </member>
-        <member name="P:MeetCore.AppointmentRuleDialog.SaveOnClick">
-            <summary>
-            Fires when the reply button is clicked
             </summary>
         </member>
         <member name="T:MeetCore.UpdateModel`1">
@@ -1253,6 +1253,94 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetCore.FormPage">
+            <summary>
+            The base form page
+            </summary>
+        </member>
+        <member name="F:MeetCore.FormPage.mImageVectors">
+            <summary>
+            The list containing the vector components
+            </summary>
+        </member>
+        <member name="F:MeetCore.FormPage.mDescription">
+            <summary>
+            The descriptive text showing above the form
+            </summary>
+        </member>
+        <member name="F:MeetCore.FormPage.mNote">
+            <summary>
+            The descriptive text showing under the form icon
+            </summary>
+        </member>
+        <member name="F:MeetCore.FormPage.mSelectedIndex">
+            <summary>
+            The index of the selected vector component
+            </summary>
+        </member>
+        <member name="P:MeetCore.FormPage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.FormPage.StateManager">
+            <summary>
+            The state management service
+            </summary>
+        </member>
+        <member name="P:MeetCore.FormPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.FormPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.FormPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.FormPage.SaveFormDescription(System.String)">
+            <summary>
+            Saves the form description
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:MeetCore.FormPage.SaveFormNote(System.String)">
+            <summary>
+            Saves the form note
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:MeetCore.FormPage.SetSelectedIndex(System.Int32)">
+            <summary>
+            Sets the index of the selected vector in the carousel
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:MeetCore.FormPage.CancelButton_OnClickCore">
+            <summary>
+            Refreshes the form to the default values
+            </summary>
+        </member>
+        <member name="M:MeetCore.FormPage.SaveButton_OnClickCore">
+            <summary>
+            Saves the form changes 
+            </summary>
+        </member>
+        <member name="M:MeetCore.FormPage.CancelButton_OnClick">
+            <summary>
+            Additional implementations for when the cancel button is clicked
+            </summary>
+        </member>
+        <member name="M:MeetCore.FormPage.SaveButton_OnClick(System.String)">
+            <summary>
+            Additional implementations for when the save button is clicked
+            </summary>
+        </member>
         <member name="T:MeetCore.StateManagablePage">
             <summary>
             Provides abstractions over the <see cref="P:MeetCore.StateManagablePage.StateManager"/>
@@ -1455,6 +1543,31 @@
             The contact form page
             </summary>
         </member>
+        <member name="P:MeetCore.Professor_ContactFormPage.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_ContactFormPage.User">
+            <summary>
+            The user of the current <see cref="P:MeetCore.Professor_ContactFormPage.Professor"/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_ContactFormPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_ContactFormPage.OnInitializedAsync">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_ContactFormPage.SaveButton_OnClick(System.String)">
+            <summary>
+            Saves the form changes and creates a <see cref="T:MeetBase.AppointmentContactMessageTemplate"/> for the current <see cref="P:MeetCore.Professor_ContactFormPage.Professor"/>
+            </summary>
+        </member>
         <member name="T:MeetCore.Professor_ContactFormRulesPage">
             <summary>
             The contact form rules page
@@ -1500,7 +1613,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Professor_ContactFormRulesPage.OnInitialized">
+        <member name="M:MeetCore.Professor_ContactFormRulesPage.OnInitializedAsync">
             <summary>
             <inheritdoc/>
             </summary>
@@ -1648,29 +1761,29 @@
             The contact form page
             </summary>
         </member>
+        <member name="F:MeetCore.Secretary_ContactFormPage.mIsFirstNameChecked">
+            <summary>
+            A flag indicating whether the first name is checked
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ContactFormPage.mIsLastNameChecked">
+            <summary>
+            A flag indicating whether the last name is checked
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ContactFormPage.mIsEmailChecked">
+            <summary>
+            A flag indicating whether the email is checked
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ContactFormPage.mIsPhoneNumberChecked">
+            <summary>
+            A flag indicating whether the phone number is checked
+            </summary>
+        </member>
         <member name="P:MeetCore.Secretary_ContactFormPage.Department">
             <summary>
             The department of the current secretary
-            </summary>
-        </member>
-        <member name="P:MeetCore.Secretary_ContactFormPage.Client">
-            <summary>
-            The client
-            </summary>
-        </member>
-        <member name="P:MeetCore.Secretary_ContactFormPage.StateManager">
-            <summary>
-            The state management service
-            </summary>
-        </member>
-        <member name="P:MeetCore.Secretary_ContactFormPage.DialogService">
-            <summary>
-            The dialog service
-            </summary>
-        </member>
-        <member name="P:MeetCore.Secretary_ContactFormPage.Snackbar">
-            <summary>
-            The <see cref="N:MudBlazor"/> snack bar manager
             </summary>
         </member>
         <member name="M:MeetCore.Secretary_ContactFormPage.#ctor">
@@ -1683,14 +1796,32 @@
             <inheritdoc/>
             </summary>
         </member>
-        <member name="M:MeetCore.Secretary_ContactFormPage.SaveButton_OnClick">
+        <member name="M:MeetCore.Secretary_ContactFormPage.EmailCheckbox_IsCheckedChanged(System.Boolean)">
             <summary>
-            Saves the form changes and creates a <see cref="T:MeetBase.DepartmentContactMessageTemplate"/> for the department of the current <see cref="P:MeetCore.Secretary_ContactFormPage.Department"/>
+            Sets the phone number and email option values accordingly
             </summary>
+            <param name="value">The email option value</param>
+        </member>
+        <member name="M:MeetCore.Secretary_ContactFormPage.PhoneNumberCheckbox_IsCheckedChanged(System.Boolean)">
+            <summary>
+            Sets the phone number and email option values accordingly
+            </summary>
+            <param name="value">The phone number option value</param>
+        </member>
+        <member name="M:MeetCore.Secretary_ContactFormPage.GetContactMean">
+            <summary>
+            Gets the contact mean for the form template
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:MeetCore.Secretary_ContactFormPage.CancelButton_OnClick">
             <summary>
             Refreshes the form to the default values
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_ContactFormPage.SaveButton_OnClick(System.String)">
+            <summary>
+            Saves the form changes and creates a <see cref="T:MeetBase.DepartmentContactMessageTemplate"/> for the department of the current <see cref="P:MeetCore.Secretary_ContactFormPage.Department"/>
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_DepartmentFacultyPage">

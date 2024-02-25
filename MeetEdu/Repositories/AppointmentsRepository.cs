@@ -127,9 +127,7 @@ namespace MeetEdu
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.AppointmentRules));
 
-            entity = AppointmentRuleEntity.FromRequestModel(model);
-
-            await MeetEduDbMapper.AppointmentRules.UpdateAsync(entity!, cancellationToken);
+            entity = await MeetEduDbMapper.AppointmentRules.UpdateAsync(id, model, cancellationToken);
 
             return entity!;
         }

@@ -204,7 +204,6 @@
 
 
 
-
     .dataGridHeader {
         position: relative;
         display: flex;
@@ -214,9 +213,8 @@
         font-weight: 600;
         font-size: 120%;
         filter: @LightFilterDropShadow;
+        z-index: 2;
     }
-
-
 
 
 
@@ -468,6 +466,100 @@
     }
 
 
+    .readonlyFormField .mud-input.mud-input-outlined {
+        border-radius: @VeryLargeBorderRadius;
+        background: @White.NormalizedColor();
+        filter: @LightFilterDropShadow;
+    }
 
+        .readonlyFormField .mud-input.mud-input-outlined .mud-input-outlined-border {
+            display: none;
+        }
+
+    .formFieldsAndImageContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 4rem 2rem;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .formFieldsContainer, .formImageContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: @VeryLargeGap;
+    }
+
+    .formImage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: @VeryLargePadding;
+        filter: @LightFilterDropShadow;
+    }
+
+    .formCarouselImagesContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: @LargeGap;
+    }
+
+    .formCarouselImage {
+        position: relative;
+        width: 4rem;
+        height: 4rem;
+        padding: @NormalPadding;
+        border-radius: @NormalBorderRadius;
+        filter: @LightFilterDropShadow;
+        cursor: pointer;
+        border: solid 2px @White.NormalizedColor();
+    }
+
+    .formCarouselImageSelected {
+        background-color: @White.NormalizedColor();
+    }
+
+    .formButtonsContainer {
+        position: relative;
+        width: 100%;
+        height: 7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: @White.NormalizedColor();
+    }
+
+    .formButton {
+        width: 50%;
+        height: 52px;
+        font-size: 140%;
+    }
+
+    .formImageContainer .textContainer {
+        min-height: 320px;
+        text-align: center;
+    }
+
+    .formImageContainer .textMarkDownContainer {
+        min-height: 264px;
+    }
+
+    .formImageContainer .textDivider {
+        border-color: @DarkGray.NormalizedColor();
+    }
 
 </style>

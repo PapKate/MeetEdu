@@ -14,21 +14,21 @@
     else
     {
         <MudTextField T="string" Placeholder="@Placeholder"
-                        FullWidth="true"
-                        Variant="Variant.Text"
-                        ReadOnly="@mIsTextReadOnly"
-                        Lines="@Lines"
-                        @bind-Text="@mInputText" />
+                      FullWidth="true"
+                      Variant="Variant.Text"
+                      ReadOnly="@mIsTextReadOnly"
+                      Lines="@Lines"
+                      @bind-Text="@mInputText" />
     }
     
     <EditToOptionsButton Alignment="Alignment.Horizontal"
                          HasOverlay="false"
                          EditButton="@(new(White, EditButtonColor ?? Amber, IconPaths.PencilOutlinePath, EventCallback.Factory.Create(this, () => EditButton_OnClick())))"
                          OptionButtons="@(new List<OptionButton>()
-                                            {
-                                                new(White, Green, IconPaths.CheckPath, EventCallback.Factory.Create(this, () => SaveButton_Onclick())),
-                                                new(White, Red, IconPaths.ClosePath, EventCallback.Factory.Create(this, () => CancelButton_Onclick()))
-                                            })" />
+                                        {
+                                            new(White, Green, IconPaths.CheckPath, EventCallback.Factory.Create(this, () => SaveButton_Onclick())),
+                                            new(White, Red, IconPaths.ClosePath, EventCallback.Factory.Create(this, () => CancelButton_Onclick()))
+                                        })" />
     
 
     @ChildContent

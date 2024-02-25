@@ -158,7 +158,7 @@ namespace MeetEdu
         public static async Task<TEntity> UpdateAsync<TEntity>(this IMongoCollection<TEntity> collection, TEntity entity, CancellationToken cancellationToken = default)
             where TEntity : BaseEntity
         {
-            await collection.ReplaceOneAsync(x => x.Id == entity.Id, entity, new ReplaceOptions() { IsUpsert = false }, cancellationToken);
+            var result = await collection.ReplaceOneAsync(x => x.Id == entity.Id, entity, new ReplaceOptions() { IsUpsert = false }, cancellationToken);
 
             return entity;
         }

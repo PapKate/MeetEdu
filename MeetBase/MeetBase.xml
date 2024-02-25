@@ -545,24 +545,49 @@
             <param name="converter">A delegate that converts each element from one type to another type.</param>
             <returns></returns>
         </member>
+        <member name="T:MeetBase.AppointmentContactMessageTemplate">
+            <summary>
+            Represents the contact form massage template for an appointment of a staff member
+            </summary>
+        </member>
+        <member name="F:MeetBase.AppointmentContactMessageTemplate.mVectorName">
+            <summary>
+            The member of the <see cref="P:MeetBase.AppointmentContactMessageTemplate.VectorName"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.AppointmentContactMessageTemplate.mNote">
+            <summary>
+            The member of the <see cref="P:MeetBase.AppointmentContactMessageTemplate.Note"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.AppointmentContactMessageTemplate.mDescription">
+            <summary>
+            The member of the <see cref="P:MeetBase.AppointmentContactMessageTemplate.Description"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.AppointmentContactMessageTemplate.VectorName">
+            <summary>
+            The name of the vector component
+            </summary>
+        </member>
+        <member name="P:MeetBase.AppointmentContactMessageTemplate.Note">
+            <summary>
+            The note
+            </summary>
+        </member>
+        <member name="P:MeetBase.AppointmentContactMessageTemplate.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="M:MeetBase.AppointmentContactMessageTemplate.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetBase.DepartmentContactMessageTemplate">
             <summary>
             Represents a department contact message template
-            </summary>
-        </member>
-        <member name="F:MeetBase.DepartmentContactMessageTemplate.mVectorName">
-            <summary>
-            The member of the <see cref="P:MeetBase.DepartmentContactMessageTemplate.VectorName"/> property
-            </summary>
-        </member>
-        <member name="F:MeetBase.DepartmentContactMessageTemplate.mNote">
-            <summary>
-            The member of the <see cref="P:MeetBase.DepartmentContactMessageTemplate.Note"/> property
-            </summary>
-        </member>
-        <member name="P:MeetBase.DepartmentContactMessageTemplate.VectorName">
-            <summary>
-            The name of the vector component
             </summary>
         </member>
         <member name="P:MeetBase.DepartmentContactMessageTemplate.ContactMean">
@@ -570,9 +595,9 @@
             The mean of contact
             </summary>
         </member>
-        <member name="P:MeetBase.DepartmentContactMessageTemplate.Note">
+        <member name="M:MeetBase.DepartmentContactMessageTemplate.#ctor">
             <summary>
-            The note
+            Default constructor
             </summary>
         </member>
         <member name="T:MeetBase.Failable">

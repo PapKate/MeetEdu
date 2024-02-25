@@ -1,8 +1,5 @@
 ﻿using MeetBase;
-using MeetBase.Blazor;
 using MeetBase.Web;
-
-using Microsoft.AspNetCore.Components;
 
 using MudBlazor;
 
@@ -13,20 +10,29 @@ namespace MeetCore
     /// <summary>
     /// The contact form page
     /// </summary>
-    public partial class Secretary_ContactFormPage : BasePage
+    public partial class Secretary_ContactFormPage : FormPage
     {
         #region Private Members
 
-        private readonly List<Type> mImageVectors = new() { typeof(CoffeeContactVector), typeof(EmailContactVector), typeof(CellPhoneCalendarVector) };
-
-        private string? mText = string.Empty;
-
+        /// <summary>
+        /// A flag indicating whether the first name is checked
+        /// </summary>
         private bool mIsFirstNameChecked = true;
-        private bool mIsLastNameChecked = true;
-        private bool mIsEmailChecked = true;
-        private bool mIsPhoneNumberChecked = false;
 
-        private int mSelectedIndex = 0;
+        /// <summary>
+        /// A flag indicating whether the last name is checked
+        /// </summary>
+        private bool mIsLastNameChecked = true;
+
+        /// <summary>
+        /// A flag indicating whether the email is checked
+        /// </summary>
+        private bool mIsEmailChecked = true;
+
+        /// <summary>
+        /// A flag indicating whether the phone number is checked
+        /// </summary>
+        private bool mIsPhoneNumberChecked = false;
 
         #endregion
 
@@ -36,34 +42,6 @@ namespace MeetCore
         /// The department of the current secretary
         /// </summary>
         public DepartmentResponseModel Department => StateManager.Department!;
-
-        #endregion
-
-        #region Protected Properties
-
-        /// <summary>
-        /// The client
-        /// </summary>
-        [Inject]
-        protected MeetCoreClient Client { get; set; } = default!;
-
-        /// <summary>
-        /// The state management service
-        /// </summary>
-        [Inject]
-        protected StateManagerCore StateManager { get; set; } = default!;
-
-        /// <summary>
-        /// The dialog service
-        /// </summary>
-        [Inject]
-        protected IDialogService DialogService { get; set; } = default!;
-
-        /// <summary>
-        /// The <see cref="MudBlazor"/> snack bar manager
-        /// </summary>
-        [Inject]
-        protected ISnackbar Snackbar { get; set; } = default!;
 
         #endregion
 
@@ -105,8 +83,9 @@ namespace MeetCore
 
             var vector = mImageVectors.FirstOrDefault(x => x.GetTypeInfo().Name == Department?.ContactMessageTemplate?.VectorName);
             mSelectedIndex = vector is not null ? mImageVectors.IndexOf(vector) : 0;
-            mText = Department?.ContactMessageTemplate?.Note ?? string.Empty;
-            mIsEmailChecked = Department?.ContactMessageTemplate?.ContactMean == ContactMean.All 
+            mDescription = Department?.ContactMessageTemplate?.Description ?? string.Empty;
+            mNote = Department?.ContactMessageTemplate?.Note ?? string.Empty;
+            mIsEmailChecked = Department?.ContactMessageTemplate?.ContactMean == ContactMean.All
                            || Department?.ContactMessageTemplate?.ContactMean != ContactMean.PhoneNumber ? true : false;
 
             mIsPhoneNumberChecked = Department?.ContactMessageTemplate?.ContactMean == ContactMean.All
@@ -115,11 +94,11 @@ namespace MeetCore
             StateHasChanged();
         }
 
-        #endregion
-
-        #region Private Methods
-
-        private void EmailCheckbox_IsCheckedChanged(bool value)
+        /// <summary>
+        /// Sets the phone number and email option values accordingly
+        /// </summary>
+        /// <param name="value">The email option value</param>
+        protected void EmailCheckbox_IsCheckedChanged(bool value)
         {
             mIsEmailChecked = value;
 
@@ -127,7 +106,11 @@ namespace MeetCore
                 mIsPhoneNumberChecked = true;
         }
 
-        private void PhoneNumberCheckbox_IsCheckedChanged(bool value)
+        /// <summary>
+        /// Sets the phone number and email option values accordingly
+        /// </summary>
+        /// <param name="value">The phone number option value</param>
+        protected void PhoneNumberCheckbox_IsCheckedChanged(bool value)
         {
             mIsPhoneNumberChecked = value;
 
@@ -135,17 +118,11 @@ namespace MeetCore
                 mIsEmailChecked = true;
         }
 
-        private void SaveFormDescription(string? value)
-        {
-            mText = value;
-        }
-
-        private void SetSelectedIndex(int index)
-        {
-            mSelectedIndex = index;
-        }
-
-        private ContactMean GetContactMean()
+        /// <summary>
+        /// Gets the contact mean for the form template
+        /// </summary>
+        /// <returns></returns>
+        protected ContactMean GetContactMean()
         {
             if (mIsEmailChecked && mIsPhoneNumberChecked)
                 return ContactMean.All;
@@ -156,23 +133,31 @@ namespace MeetCore
         }
 
         /// <summary>
+        /// Refreshes the form to the default values
+        /// </summary>
+        protected override void CancelButton_OnClick()
+        {
+            mIsEmailChecked = true;
+            mIsPhoneNumberChecked = true;
+        }
+
+        /// <summary>
         /// Saves the form changes and creates a <see cref="DepartmentContactMessageTemplate"/> for the department of the current <see cref="Department"/>
         /// </summary>
-        private async void SaveButton_OnClick()
+        protected override async void SaveButton_OnClick(string vectorName)
         {
-            var vectorName = mImageVectors.ElementAt(mSelectedIndex).GetTypeInfo().Name;
-
             // Creates the request for updating the department
             var template = new DepartmentContactMessageTemplate()
             {
-                Note = mText ?? string.Empty,
+                Description = mDescription ?? string.Empty,
+                Note = mNote ?? string.Empty,
                 VectorName = vectorName,
                 ContactMean = GetContactMean()
             };
 
             // Updates the department
             var response = await Client.UpdateDepartmentAsync(Department!.Id, new DepartmentRequestModel()
-            { 
+            {
                 ContactMessageTemplate = template
             });
 
@@ -186,18 +171,6 @@ namespace MeetCore
                 return;
             }
 
-            StateHasChanged();
-        }
-
-        /// <summary>
-        /// Refreshes the form to the default values
-        /// </summary>
-        private void CancelButton_OnClick()
-        {
-            mText = string.Empty;
-            mIsEmailChecked = true;
-            mIsPhoneNumberChecked = true;
-            mSelectedIndex = 0;
             StateHasChanged();
         }
 
