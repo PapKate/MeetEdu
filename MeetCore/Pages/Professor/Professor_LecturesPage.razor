@@ -1,0 +1,104 @@
+﻿@page "/professors/{Id}/lectures"
+
+@inherits BasePage
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<PageTitle>@EnglishLocalization.Lectures</PageTitle>
+
+    <ApplicationContainer>
+
+        <div class="dataGridHeader" id="dataGridMyRulesHeader">My Lectures</div>
+
+        @if (!mLectures.IsNullOrEmpty())
+        {
+            <MudDataGrid Items="@mLectures" T="Lecture" ReadOnly="false"
+                         EditMode="@DataGridEditMode.Form" EditTrigger="@DataGridEditTrigger.Manual"
+                         Bordered="true">
+                <Columns>
+                    <PropertyColumn Property="x => x.Name" Title="Name" IsEditable="false" />
+                    <TemplateColumn Title="Schedule" Sortable="false" CellStyle="min-width: 8rem;" IsEditable="false">
+                        <CellTemplate>
+                            <div class="staffMemberWeeklySchedule">
+                                @if (!context.Item.WeeklyHours.IsNullOrEmpty())
+                                {
+                                    @foreach (var schedule in context.Item.WeeklyHours.OrderBy(x => x.DayOfWeek).GroupBy(x => x.DayOfWeek))
+                                    {
+                                        <div class="staffMemberWeeklyScheduleDayContainer" style="grid-template-columns: auto 1fr;">
+                                            <span class="staffMemberWeeklyScheduleDay">@schedule.Key</span>
+                                            @foreach (var timespan in schedule.OrderBy(x => x.Start))
+                                            {
+                                                <span class="staffMemberWeeklyScheduleTime">@timespan.Text &emsp; <span style="color: @LightGray.NormalizedColor();">|</span> &emsp; @timespan.Start.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat) - @timespan.End.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat)</span>
+                                            }
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </CellTemplate>
+                    </TemplateColumn>
+                    <TemplateColumn Title="Color" Sortable="false" CellStyle="min-width: 8rem;" IsEditable="false">
+                        <CellTemplate>
+                            <span class="dataGridColor" style="background-color: @context.Item.Color.NormalizedColor();"></span>
+                        </CellTemplate>
+                    </TemplateColumn>
+                    <TemplateColumn StickyRight="true" CellStyle="width: 3.5rem; padding:0;" Sortable="false">
+                        <CellTemplate>
+                            <IconButton Id="editRuleButton"
+                                        BackColor="transparent"
+                                        ForeColor="@Gray"
+                                        VectorSource="@IconPaths.PencilOutlinePath"
+                                        BoxShadow="none"
+                                        BorderRadius="0"
+                                        OnClick="@(() => EditLecture(context.Item))"
+                                        CssClasses="dataGridButton" />
+                        </CellTemplate>
+                    </TemplateColumn>
+                </Columns>
+            </MudDataGrid>
+        }
+
+</ApplicationContainer>
+
+<IconButton BackColor="@White"
+            ForeColor="@DarkGray"
+            VectorSource="@IconPaths.PlusPath"
+            BorderRadius="@CircleBorderRadius"
+            OnClick="@(() => EditLecture(new()))"
+            CssClasses="editButton layoutAddButton" />
+
+
+<style>
+
+    .pageContainer {
+        height: 100%;
+    }
+
+    #dataGridMyRulesHeader {
+        background-color: @StateManager.User!.Color.NormalizedColor();
+        color: @StateManager.User.Color.DarkOrWhite().NormalizedColor();
+    }
+
+    #editRuleButton {
+        width: 3.5rem;
+        height: 100%;
+        padding: @VeryLargePadding;
+    }
+
+    .description {
+        width: 100%;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+    .hasRemoteOptionGridRowText {
+        color: @ForegroundVariable.GetCssVariable();
+        font-weight: @BoldFont;
+    }
+
+</style>

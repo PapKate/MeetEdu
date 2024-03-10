@@ -75,7 +75,7 @@ namespace MeetCore
         {
             base.OnInitialized();
 
-            mCountryCode = Model.Model.PhoneNumber?.CountryCode ?? 30;
+            mCountryCode = Model.Model!.PhoneNumber?.CountryCode ?? 30;
             mPhoneNumber = Model.Model.PhoneNumber?.Phone ?? string.Empty;
             mLocation = Model.Model.Location ?? new();
             mCategory = Model.Model.Category ?? DepartmentType.Medicine;
@@ -87,7 +87,7 @@ namespace MeetCore
 
         private async void Save()
         {
-            Model.Model.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
+            Model.Model!.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
             Model.Model.Location = mLocation;
             Model.Model.Category = mCategory;
 

@@ -20,11 +20,6 @@ namespace MeetCore
         /// </summary>
         public WeeklySchedule? WeeklySchedule { get; set; }
 
-        /// <summary>
-        /// The lectures
-        /// </summary>
-        public IEnumerable<Lecture>? Lectures { get; set; }
-
         #endregion
 
         #region Constructors

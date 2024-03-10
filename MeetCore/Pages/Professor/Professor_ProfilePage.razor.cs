@@ -46,12 +46,6 @@ namespace MeetCore
         protected MeetCoreClient Client { get; set; } = default!;
 
         /// <summary>
-        /// The state management service
-        /// </summary>
-        [Inject]
-        protected StateManagerCore StateManager { get; set; } = default!;
-
-        /// <summary>
         /// The dialog service
         /// </summary>
         [Inject]
@@ -210,6 +204,24 @@ namespace MeetCore
                     return;
                 }
                 StateManager.User = userResponse.Result;
+
+                // If an image was set...
+                if (updatedModel.File is not null)
+                {
+                    // Adds the model
+                    var responseWithImage = await Client.SetUserImageAsync(Professor.UserId, updatedModel.File);
+
+                    // If there was an error...
+                    if (!responseWithImage.IsSuccessful)
+                    {
+                        Console.WriteLine(responseWithImage.ErrorMessage);
+                        // Show the error
+                        Snackbar.Add(responseWithImage.ErrorMessage, Severity.Error);
+                        // Return
+                        return;
+                    }
+                    StateManager.User = responseWithImage.Result;
+                }
 
                 StateHasChanged();
             }

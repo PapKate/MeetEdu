@@ -1,4 +1,5 @@
-﻿
+﻿@inherits BaseEditScheduleDialog
+
 @using static MeetBase.Blazor.PaletteColors
 @using static MeetBase.Blazor.CssVariables
 
@@ -12,7 +13,7 @@
             <span class="dialogSectionText">Update Schedule</span>
         </div>
         <div class="dialogContentContainer">
-            <span class="dialogContentTitle dialogContentFullRow">Schedule info</span>
+            <span class="dialogContentTitle dialogContentFullRow">Office hours info</span>
 
             <MudTextField @bind-Value="@mName"
                           Placeholder="Name"
@@ -39,7 +40,7 @@
             
             @foreach(var shift in mWeeklyHours)
             {
-                <div class="dialogContentFullRow shiftContainer" @key="@shift">
+                <div class="dialogContentFullRow shiftContainer" @key="@mIndex">
                     <div class="dialogContentContainer" style="overflow-y:clip; padding: 0;">
                         <MudSelect T="DayOfWeek" Value="@shift.DayOfWeek"
                                    ValueChanged="@((e) => SetDayOfWeek(shift, e))"
@@ -80,6 +81,7 @@
                                 CssClasses="shiftDeleteButton"
                                 OnClick="@(() => mWeeklyHours.Remove(shift))"/>
                 </div>
+                mIndex++;
             }
             <MudFab Class="dialogContentFullRow" 
                     StartIcon="@Icons.Material.Filled.Add" 
@@ -101,26 +103,11 @@
 <style>
     
     .dialogSection {
-        position: relative;
-        top: -0.8rem;
-        width: fit-content;
-        height: 48px;
-        margin: auto;
-        padding: 12px 1rem;
-        font-weight: 800;
-        font-size: 120%;
         background-color: @Model.Color.NormalizedColor();
         color: @Model.Color.DarkOrWhite().NormalizedColor();
-        border-radius: 0 0 1rem 1rem;
-        filter: @LightFilterDropShadow;
     }
 
     .colorInput .mud-input-adornment-start:after {
-        content: '';
-        position: absolute;
-        margin-left: 2.5rem;
-        width: calc(100% - 4.5rem);
-        height: 24px;
         background-color: @mColor.NormalizedColor();
         border-radius: @NormalBorderRadius;
     }

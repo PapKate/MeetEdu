@@ -62,6 +62,11 @@
         public const string ScheduleRoute = "/schedule";
 
         /// <summary>
+        /// The lectures page route
+        /// </summary>
+        public const string LecturesRoute = "/lectures";
+
+        /// <summary>
         /// The office page route
         /// </summary>
         public const string OfficeRoute = "/office";

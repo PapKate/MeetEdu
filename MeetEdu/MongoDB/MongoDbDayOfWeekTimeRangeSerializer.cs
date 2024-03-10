@@ -118,6 +118,12 @@ namespace MeetEdu
             context.Writer.WriteName(nameof(DayOfWeekTimeRange.End));
             MongoDbTimeOnlySerializer.Instance.Serialize(context, args, value.End);
 
+            if(!value.Text.IsNullOrEmpty())
+            {
+                context.Writer.WriteName(nameof(DayOfWeekTimeRange.Text));
+                context.Writer.WriteString(value.Text);
+            }
+
             context.Writer.WriteEndDocument();
         }
 

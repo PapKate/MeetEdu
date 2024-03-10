@@ -27,6 +27,11 @@
         /// </summary>
         public string? ResearchInterests { get; set; }
 
+        /// <summary>
+        /// The lectures
+        /// </summary>
+        public IEnumerable<Lecture>? Lectures { get; set; }
+
         #endregion
 
         #region Constructors

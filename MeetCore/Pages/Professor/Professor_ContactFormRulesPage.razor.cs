@@ -1,10 +1,9 @@
 ﻿using MeetBase;
 using MeetBase.Web;
-using Microsoft.AspNetCore.Components;
-using MudBlazor;
 
-using System.Data;
-using System.Reflection;
+using Microsoft.AspNetCore.Components;
+
+using MudBlazor;
 
 namespace MeetCore
 {
@@ -45,12 +44,6 @@ namespace MeetCore
         /// </summary>
         [Inject]
         protected MeetCoreClient Client { get; set; } = default!;
-
-        /// <summary>
-        /// The state management service
-        /// </summary>
-        [Inject]
-        protected StateManagerCore StateManager { get; set; } = default!;
 
         /// <summary>
         /// The dialog service

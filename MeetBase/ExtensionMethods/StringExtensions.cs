@@ -12,6 +12,16 @@ namespace MeetBase
         #region Public Methods
 
         /// <summary>
+        /// Converts the specified <paramref name="value"/> to an upper hex string with no #
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <remarks>ex. #44ff66 turned to 44FF66</remarks>
+        public static string ToHex(this string value) 
+        {  
+            return value.Replace("#", string.Empty).ToUpper(); 
+        }
+
+        /// <summary>
         /// Checks whether the string is null or empty
         /// </summary>
         /// <param name="value">The value</param>
@@ -112,7 +122,6 @@ namespace MeetBase
         }
 
         #endregion
-
 
         #region Private Methods
 

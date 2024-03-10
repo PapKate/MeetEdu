@@ -57,7 +57,7 @@ namespace MeetCore
         /// The child content
         /// </summary>
         [Parameter]
-        public RenderFragment ChildContent { get; set; }
+        public RenderFragment? ChildContent { get; set; }
 
         #endregion
 

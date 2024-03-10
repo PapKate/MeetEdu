@@ -66,7 +66,7 @@
                     <tr>
                         @foreach (var day in mWeekDays)
                         {
-                            <td style="height: 48px;"></td>
+                            <td class="scheduleTableCell"></td>
                         }
                     </tr>
                 }
@@ -77,7 +77,7 @@
             @if ((mCurrentDate.DayOfWeek == DayOfWeek.Sunday ? mCurrentDate.AddDays(-6).GetFirstDayOfWeek().ToDateOnly() : mCurrentDate.GetFirstDayOfWeek().ToDateOnly()) == mFirstDateOfWeek.ToDateOnly()
             && mCurrentDate > mCurrentDate.Date.AddHours(7) && mCurrentDate < mCurrentDate.Date.AddHours(22))
             {
-                <span class="workHourContainer scheduleCurrentDateTimePointer" style="@TopVariable.SetCssVariable($"calc(48px * ({mCurrentDate.Hour}.{mCurrentDate.Minute * 1 / 6} - 7))")
+                <span class="workHourContainer scheduleCurrentDateTimePointer" style="@TopVariable.SetCssVariable($"calc({CellHeight} * ({mCurrentDate.Hour}.{mCurrentDate.Minute * 1 / 6} - 7))")
                                     @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(mCurrentDate.DayOfWeek == DayOfWeek.Sunday ? 7 : (int)mCurrentDate.DayOfWeek)} - 1))")
                                     @HeightVariable?.SetCssVariable("2px")
                                     @BackgroundVariable.SetCssColor($"{Green.HexToRGBA(1)}")
@@ -90,9 +90,9 @@
                 @foreach (var workHour in WeeklySchedule.WeeklyHours)
                 {
                     <div class="workHourContainer"
-                         style="@TopVariable.SetCssVariable($"calc(48px * ({workHour.Start.Hour}.{workHour.Start.Minute * 1 / 6} - 7))")
+                         style="@TopVariable.SetCssVariable($"calc({CellHeight} * ({workHour.Start.Hour}.{workHour.Start.Minute * 1 / 6} - 7))")
                                 @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(workHour.DayOfWeek == DayOfWeek.Sunday ? 7 : (int)workHour.DayOfWeek)} - 1))")
-                                @HeightVariable?.SetCssVariable($"calc(48px * ({workHour.End.Hour}.{workHour.End.Minute * 1 / 6} - {workHour.Start.Hour}.{workHour.Start.Minute * 1 / 6}))")
+                                @HeightVariable?.SetCssVariable($"calc({CellHeight} * ({workHour.End.Hour}.{workHour.End.Minute * 1 / 6} - {workHour.Start.Hour}.{workHour.Start.Minute * 1 / 6}))")
                                 @BackgroundVariable.SetCssColor($"{WeeklySchedule.Color.HexToRGBA(0.2)}")
                                 @BorderBrushVariable.SetCssColor($"{WeeklySchedule.Color}")"
                         id="@($"{workHour.DayOfWeek}.{workHour.Start.ToString("hh:mm")}-{workHour.End.ToString("hh:mm")}")">
@@ -109,18 +109,15 @@
                     @foreach(var hourRange in lecture.WeeklyHours)
                     {
                         <div class="workHourContainer"
-                             style="@TopVariable.SetCssVariable($"calc(48px * ({hourRange.Start.Hour}.{hourRange.Start.Minute.ToString("00")} - 7))")
-                                    @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(int)hourRange.DayOfWeek} - 1))")
-                                    @HeightVariable.SetCssVariable($"calc(48px * ({hourRange.End.Hour}.{hourRange.End.Minute} - {hourRange.Start.Hour}.{hourRange.Start.Minute.ToString("00")}))")
+                             style="@TopVariable.SetCssVariable($"calc({CellHeight} * ({hourRange.Start.Hour}.{hourRange.Start.Minute.ToString("00")} - 7))")
+                                    @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(hourRange.DayOfWeek == DayOfWeek.Sunday ? 7 : (int)hourRange.DayOfWeek)} - 1))")
+                                    @HeightVariable.SetCssVariable($"calc({CellHeight} * ({hourRange.End.Hour}.{hourRange.End.Minute} - {hourRange.Start.Hour}.{hourRange.Start.Minute.ToString("00")}))")
                                     @BackgroundVariable.SetCssColor($"{lecture.Color.HexToRGBA(0.2)}")
                                     @BorderBrushVariable.SetCssColor($"{lecture.Color}")
                                     "
                              id="@($"{hourRange.DayOfWeek}.{hourRange.Start.ToString("hh:mm")}-{hourRange.End.ToString("hh:mm")}")">
-                            @if (!hourRange.Text.IsNullOrEmpty())
-                            {
-                                <span class="workHourName">@lecture.Name</span>
-                                <span class="workHourLocation">@hourRange.Text</span>
-                            }
+                            <span class="workHourName">@lecture.Name</span>
+                            <span class="workHourLocation">@hourRange.Text</span>
                         </div>
                     }
                 }
@@ -286,6 +283,10 @@
         left: -4px;
         font-size: 1rem;
         color: @Green.NormalizedColor();
+    }
+
+    .scheduleTableCell {
+        height: @CellHeight;
     }
 
     </style>

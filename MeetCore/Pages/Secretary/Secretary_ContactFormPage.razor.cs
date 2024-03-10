@@ -172,6 +172,7 @@ namespace MeetCore
             }
 
             StateHasChanged();
+            Snackbar.Add("Changes saved!", Severity.Success, new Action<SnackbarOptions>(x => x.SuccessIcon = Icons.Material.Outlined.CheckCircleOutline));
         }
 
         #endregion

@@ -1,13 +1,16 @@
-﻿using MeetBase.Web;
+﻿using MeetBase;
+using MeetBase.Web;
+
 using Microsoft.AspNetCore.Components;
+
 using MudBlazor;
 
 namespace MeetCore
 {
     /// <summary>
-    /// The schedule page
+    /// The professor lectures page
     /// </summary>
-    public partial class Professor_SchedulePage : BasePage
+    public partial class Professor_LecturesPage : BasePage
     {
         #region Private Members
 
@@ -15,6 +18,8 @@ namespace MeetCore
         /// The <see cref="MudDialog"/> options
         /// </summary>
         private DialogOptions mDialogOptions = new() { FullWidth = true };
+
+        private List<Lecture> mLectures = new();
 
         #endregion
 
@@ -26,9 +31,9 @@ namespace MeetCore
         public ProfessorResponseModel Professor => StateManager.Professor!;
 
         /// <summary>
-        /// The user
+        /// The department
         /// </summary>
-        public UserResponseModel User => StateManager.User!;
+        public DepartmentResponseModel Department => StateManager.Department!;
 
         #endregion
 
@@ -59,9 +64,25 @@ namespace MeetCore
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Professor_SchedulePage() : base()
+        public Professor_LecturesPage() : base()
         {
 
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        protected override async Task OnInitializedAsync()
+        {
+            await base.OnInitializedAsync();
+            mLectures = new();
+            mLectures.AddRange(Professor.Lectures);
+
+            StateHasChanged();
         }
 
         #endregion
@@ -69,19 +90,15 @@ namespace MeetCore
         #region Private Methods
 
         /// <summary>
-        /// Updates the weekly schedule of the secretary
+        /// Edits the specified <paramref name="model"/>
         /// </summary>
-        private async void UpdateSchedule()
+        /// <param name="model">The rule</param>
+        private async void EditLecture(Lecture model)
         {
-            var model = new UpdateScheduleModel()
-            {
-                Color = User.Color,
-                WeeklySchedule = Professor.WeeklySchedule,
-            };
-            var parameters = new DialogParameters<UpdateScheduleDialog> { { x => x.Model, model } };
+            var parameters = new DialogParameters<EditLectureDialog> { { x => x.Model, model } };
 
             // Creates and opens a dialog with the specified type
-            var dialog = await DialogService.ShowAsync<UpdateScheduleDialog>(null, parameters, mDialogOptions);
+            var dialog = await DialogService.ShowAsync<EditLectureDialog>(null, parameters, mDialogOptions);
 
             // Once the dialog is closed...
             // Gets the result
@@ -90,33 +107,45 @@ namespace MeetCore
             // If there is no result or the dialog was closed by canceling the inner actions...
             if (result is null || result.Canceled)
             {
-                // Return
+                // Return 
                 return;
             }
 
             // If the result is of the specified type...
-            if (result.Data is UpdateScheduleModel updatedModel)
+            if (result.Data is Lecture updatedModel)
             {
-                // Creates the request for updating the secretary
-                var secretaryRequest = new ProfessorRequestModel()
+                var updatedLectures = new List<Lecture>();
+                updatedLectures.AddRange(mLectures);
+
+                if(updatedLectures.Contains(model))
                 {
-                    WeeklySchedule = updatedModel.WeeklySchedule
+                    var index = updatedLectures.IndexOf(model);
+                    updatedLectures.Remove(model);
+
+                    updatedLectures.Insert(index, updatedModel);
+                }
+                else
+                    updatedLectures.Add(model);
+
+                var request = new ProfessorRequestModel()
+                {
+                    Lectures = updatedLectures
                 };
 
-                // Updates the secretary
-                var secretaryResponse = await Client.UpdateProfessorAsync(Professor.Id, secretaryRequest);
+                // Updates the professor
+                var response = await Client.UpdateProfessorAsync(Professor.Id, request);
 
                 // If there was an error...
-                if (!secretaryResponse.IsSuccessful)
+                if (!response.IsSuccessful)
                 {
-                    Console.WriteLine(secretaryResponse.ErrorMessage);
+                    Console.WriteLine(response.ErrorMessage);
                     // Show the error
-                    Snackbar.Add(secretaryResponse.ErrorMessage, Severity.Error);
+                    Snackbar.Add(response.ErrorMessage, Severity.Error);
                     // Return
                     return;
                 }
-                StateManager.Professor = secretaryResponse.Result;
 
+                StateManager.Professor = response.Result;
                 StateHasChanged();
             }
         }

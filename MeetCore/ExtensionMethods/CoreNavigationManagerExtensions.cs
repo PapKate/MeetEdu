@@ -173,6 +173,17 @@ namespace MeetCore
             => navigationManager.Professor_NavigateTo(id, Routes.ScheduleRoute, value, queryParams);
 
         /// <summary>
+        /// Navigates the professor with the specified <paramref name="id"/> to their lectures page
+        /// <code>/professors/1/lectures</code>
+        /// </summary>
+        /// <param name="navigationManager">The navigation manager</param>
+        /// <param name="id">The professor id</param>
+        /// <param name="value">The route value</param>
+        /// <param name="queryParams">The optional query parameter values</param>
+        public static void Professor_NavigateToLecturesPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string>? queryParams = null)
+            => navigationManager.Professor_NavigateTo(id, Routes.LecturesRoute, value, queryParams);
+
+        /// <summary>
         /// Navigates the professor with the specified <paramref name="id"/> to their office page
         /// <code>/professors/1/office</code>
         /// </summary>

@@ -1,0 +1,127 @@
+﻿@inherits BaseEditScheduleDialog
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<MudDialog>
+    <DialogContent>
+        @if (Model is not null)
+        {
+            <div class="dialogSection">
+                <span class="dialogSectionText">Lecture</span>
+            </div>
+            <div class="dialogContentContainer">
+                <span class="dialogContentTitle dialogContentFullRow">Basic info</span>
+
+                <MudTextField @bind-Value="@Model.Name"
+                    Placeholder="Name"
+                    Class="dialogInput"
+                    FullWidth="true"
+                    Variant="Variant.Text"
+                    Adornment="Adornment.Start"
+                    AdornmentIcon="@MudIconPaths.Account" />
+
+                <MudColorPicker Placeholder="Color" @bind-Text="@mColor"
+                    Style="@($"color: {mColor.NormalizedColor()};")"
+                    DisableModeSwitch="false"
+                    DisableToolbar="false"
+                    Class="dialogInput colorInput"
+                    Adornment="@Adornment.Start"
+                    AdornmentIcon="@Icons.Material.Filled.Palette"
+                    PickerVariant="PickerVariant.Inline"
+                    DisableAlpha="true" />
+
+                <span class="dialogContentTitle dialogContentFullRow">Lecture sessions</span>
+
+                @foreach (var session in mWeeklyHours)
+                {
+                    <div class="dialogContentFullRow shiftContainer" @key="@mIndex">
+                        <div class="dialogContentContainer" style="overflow-y:clip; padding: 0;">
+                            <MudSelect T="DayOfWeek" Value="@session.DayOfWeek"
+                                ValueChanged="@((e) => SetDayOfWeek(session, e))"
+                                Placeholder="Day of week"
+                                Class="dialogInput"
+                                FullWidth="true"
+                                Variant="Variant.Text"
+                                Adornment="Adornment.Start"
+                                AdornmentIcon="@MudIconPaths.Account"
+                                AnchorOrigin="Origin.BottomCenter">
+                                @foreach (var value in Enum.GetValues<DayOfWeek>())
+                                {
+                                    <MudSelectItem Value="@value">@value</MudSelectItem>
+                                }
+                            </MudSelect>
+                            <MudTextField T="string" Value="@session.Text"
+                                ValueChanged="@((e) => SetText(session, e))"
+                                Placeholder="Room"
+                                Class="dialogInput"
+                                FullWidth="true"
+                                Variant="Variant.Text"
+                                Adornment="Adornment.Start"
+                                AdornmentIcon="@MudIconPaths.Account" />
+                                <MudTimePicker Time="@session.Start.ToNullableTimeSpan()"
+                                TimeChanged="@((e) => SetStartingHour(session, e))"
+                                Placeholder="Start"
+                                Editable="true" />
+                            <MudTimePicker Time="@session.End.ToNullableTimeSpan()"
+                                TimeChanged="@((e) => SetEndingingHour(session, e))"
+                                Placeholder="End"
+                                Editable="true" />
+                        </div>
+                        <IconButton VectorSource="@IconPaths.TrashCanOutlinePath"
+                            ForeColor="@Red"
+                            BackColor="transparent"
+                            BorderRadius="@SmallBorderRadius"
+                            BoxShadow="none"
+                            CssClasses="shiftDeleteButton"
+                            OnClick="@(() => mWeeklyHours.Remove(session))" />
+                    </div>
+                    mIndex++;
+                }
+                <MudFab Class="dialogContentFullRow"
+                    StartIcon="@Icons.Material.Filled.Add"
+                    Size="Size.Small"
+                    DisableElevation="true"
+                    OnClick="@AddNew"
+                    Style="@($"color: {mColor.DarkOrWhite().NormalizedColor()}; background-color: {mColor.NormalizedColor()}; margin-top: 1rem; justify-self: center;")" />
+            </div>
+        }
+    </DialogContent>
+    <DialogActions>
+        <div class="dialogActionsContainer">
+            <MudButton Variant="Variant.Text" Color="Color.Error" OnClick="@Cancel" Class="px-10">Cancel</MudButton>
+            <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@Save" Class="px-10">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>
+
+
+<style>
+    
+    .dialogSection {
+        background-color: @mColor.NormalizedColor();
+        color: @mColor.DarkOrWhite().NormalizedColor();
+    }
+
+    .colorInput .mud-input-adornment-start:after {
+        background-color: @mColor.NormalizedColor();
+    }
+
+    .shiftContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .shiftDeleteButton {
+        width: 48px;
+        height: 48px;
+        padding: 0.5rem;
+    }
+
+</style>

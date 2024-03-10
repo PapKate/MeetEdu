@@ -102,7 +102,7 @@
         public string Color
         {
             get => mColor ?? string.Empty;
-            set => mColor = value;
+            set => mColor = value.ToHex();
         }
 
         #endregion

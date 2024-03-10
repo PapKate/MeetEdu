@@ -431,6 +431,11 @@
             The research interests
             </summary>
         </member>
+        <member name="P:MeetBase.Web.ProfessorRequestModel.Lectures">
+            <summary>
+            The lectures
+            </summary>
+        </member>
         <member name="M:MeetBase.Web.ProfessorRequestModel.#ctor">
             <summary>
             Default constructor
@@ -1484,6 +1489,11 @@
             The member of the <see cref="P:MeetBase.Web.ProfessorResponseModel.Websites"/> property
             </summary>
         </member>
+        <member name="F:MeetBase.Web.ProfessorResponseModel.mLectures">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.ProfessorResponseModel.Lectures"/> property
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.ProfessorResponseModel.Rank">
             <summary>
             The rank
@@ -1502,6 +1512,11 @@
         <member name="P:MeetBase.Web.ProfessorResponseModel.ResearchInterests">
             <summary>
             The research interests
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorResponseModel.Lectures">
+            <summary>
+            The lectures 
             </summary>
         </member>
         <member name="M:MeetBase.Web.ProfessorResponseModel.#ctor">

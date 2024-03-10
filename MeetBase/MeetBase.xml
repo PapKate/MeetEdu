@@ -1219,39 +1219,9 @@
             The weekly schedule
             </summary>
         </member>
-        <member name="F:MeetBase.WeeklySchedule.mWeeklyHours">
-            <summary>
-            The member of the <see cref="P:MeetBase.WeeklySchedule.WeeklyHours"/> property
-            </summary>
-        </member>
-        <member name="F:MeetBase.WeeklySchedule.mName">
-            <summary>
-            The member of the <see cref="P:MeetBase.WeeklySchedule.Name"/> property
-            </summary>
-        </member>
-        <member name="F:MeetBase.WeeklySchedule.mColor">
-            <summary>
-            The member of the <see cref="P:MeetBase.WeeklySchedule.Color"/> property
-            </summary>
-        </member>
         <member name="F:MeetBase.WeeklySchedule.mNote">
             <summary>
             The member of the <see cref="P:MeetBase.WeeklySchedule.Note"/> property
-            </summary>
-        </member>
-        <member name="P:MeetBase.WeeklySchedule.Name">
-            <summary>
-            The name
-            </summary>
-        </member>
-        <member name="P:MeetBase.WeeklySchedule.Color">
-            <summary>
-            The color
-            </summary>
-        </member>
-        <member name="P:MeetBase.WeeklySchedule.WeeklyHours">
-            <summary>
-            The weekly schedule hours
             </summary>
         </member>
         <member name="P:MeetBase.WeeklySchedule.Note">
@@ -1269,14 +1239,34 @@
             The lecture schedule
             </summary>
         </member>
-        <member name="P:MeetBase.Lecture.IsRemote">
+        <member name="F:MeetBase.Lecture.mWeeklyHours">
             <summary>
-            A flag indicating whether it is remote or not
+            The member of the <see cref="P:MeetBase.Lecture.WeeklyHours"/> property
             </summary>
         </member>
-        <member name="P:MeetBase.Lecture.Link">
+        <member name="F:MeetBase.Lecture.mName">
             <summary>
-            The link to the remote lecture
+            The member of the <see cref="P:MeetBase.Lecture.Name"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Lecture.mColor">
+            <summary>
+            The member of the <see cref="P:MeetBase.Lecture.Color"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.Lecture.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:MeetBase.Lecture.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="P:MeetBase.Lecture.WeeklyHours">
+            <summary>
+            The weekly schedule hours
             </summary>
         </member>
         <member name="M:MeetBase.Lecture.#ctor">
@@ -3259,6 +3249,13 @@
             Extension methods for strings
             </summary>
         </member>
+        <member name="M:MeetBase.StringExtensions.ToHex(System.String)">
+            <summary>
+            Converts the specified <paramref name="value"/> to an upper hex string with no #
+            </summary>
+            <param name="value">The value</param>
+            <remarks>ex. #44ff66 turned to 44FF66</remarks>
+        </member>
         <member name="M:MeetBase.StringExtensions.IsNullOrEmpty(System.String)">
             <summary>
             Checks whether the string is null or empty
@@ -4614,6 +4611,11 @@
         <member name="F:MeetBase.EnglishLocalization.FormRules">
             <summary>
             The form rules
+            </summary>
+        </member>
+        <member name="F:MeetBase.EnglishLocalization.Lectures">
+            <summary>
+            The lectures
             </summary>
         </member>
         <member name="F:MeetBase.EnglishLocalization.Appointments">

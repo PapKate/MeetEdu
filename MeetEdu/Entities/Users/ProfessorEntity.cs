@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using MeetBase;
+
 using MongoDB.Bson;
 
 namespace MeetEdu
@@ -23,7 +25,12 @@ namespace MeetEdu
         /// <summary>
         /// The member of the <see cref="Websites"/> property
         /// </summary>
-        private IEnumerable<Website>? mWebsites;
+        private IList<Website>? mWebsites;
+
+        /// <summary>
+        /// The member of the <see cref="Lectures"/> property
+        /// </summary>
+        private IList<Lecture>? mLectures;
 
         #endregion
 
@@ -37,9 +44,9 @@ namespace MeetEdu
         /// <summary>
         /// The personal websites 
         /// </summary>
-        public IEnumerable<Website> Websites 
+        public IList<Website> Websites 
         { 
-            get => mWebsites ?? Enumerable.Empty<Website>();
+            get => mWebsites ??= new List<Website>();
             set => mWebsites = value;
         }
 
@@ -59,6 +66,15 @@ namespace MeetEdu
         {
             get => mResearchInterests ?? string.Empty;
             set => mResearchInterests = value;
+        }
+
+        /// <summary>
+        /// The lectures 
+        /// </summary>
+        public IList<Lecture> Lectures
+        {
+            get => mLectures ??= new List<Lecture>();
+            set => mLectures = value;
         }
 
         #endregion

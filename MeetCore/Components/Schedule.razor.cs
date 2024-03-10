@@ -68,6 +68,12 @@ namespace MeetCore
         [Parameter]
         public bool IsEditable { get; set; }
 
+        /// <summary>
+        /// The cell height
+        /// </summary>
+        [Parameter]
+        public string CellHeight { get; set; } = "48px";
+
         #endregion
 
         #region Constructors

@@ -22,6 +22,11 @@
         /// </summary>
         private IEnumerable<Website>? mWebsites;
 
+        /// <summary>
+        /// The member of the <see cref="Lectures"/> property
+        /// </summary>
+        private IEnumerable<Lecture>? mLectures;
+
         #endregion
 
         #region Public Properties
@@ -56,6 +61,15 @@
         {
             get => mResearchInterests ?? string.Empty;
             set => mResearchInterests = value;
+        }
+
+        /// <summary>
+        /// The lectures 
+        /// </summary>
+        public IEnumerable<Lecture> Lectures
+        {
+            get => mLectures ?? Enumerable.Empty<Lecture>();
+            set => mLectures = value;
         }
 
         #endregion

@@ -159,6 +159,74 @@
             <inheritdoc/>
             </summary>
         </member>
+        <member name="T:MeetCore.BaseEditScheduleDialog">
+            <summary>
+            The base dialog for editing a schedule
+            </summary>
+        </member>
+        <member name="F:MeetCore.BaseEditScheduleDialog.mColor">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="F:MeetCore.BaseEditScheduleDialog.mIndex">
+            <summary>
+            The index
+            </summary>
+        </member>
+        <member name="F:MeetCore.BaseEditScheduleDialog.mWeeklyHours">
+            <summary>
+            The weekly schedule hours
+            </summary>
+        </member>
+        <member name="P:MeetCore.BaseEditScheduleDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="M:MeetCore.BaseEditScheduleDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.BaseEditScheduleDialog.SetStartingHour(MeetBase.DayOfWeekTimeRange,System.Nullable{System.TimeSpan})">
+            <summary>
+            Sets the starting hour to the specified <paramref name="shift"/>
+            </summary>
+            <param name="shift">The shift</param>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:MeetCore.BaseEditScheduleDialog.SetEndingingHour(MeetBase.DayOfWeekTimeRange,System.Nullable{System.TimeSpan})">
+            <summary>
+            Sets the ending hour to the specified <paramref name="shift"/>
+            </summary>
+            <param name="shift">The shift</param>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:MeetCore.BaseEditScheduleDialog.SetDayOfWeek(MeetBase.DayOfWeekTimeRange,System.DayOfWeek)">
+            <summary>
+            Sets the day of week to the specified <paramref name="shift"/>
+            </summary>
+            <param name="shift">The shift</param>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:MeetCore.BaseEditScheduleDialog.SetText(MeetBase.DayOfWeekTimeRange,System.String)">
+            <summary>
+            Sets the day of week to the specified <paramref name="shift"/>
+            </summary>
+            <param name="shift">The shift</param>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:MeetCore.BaseEditScheduleDialog.AddNew">
+            <summary>
+            Adds a new <see cref="T:MeetBase.DayOfWeekTimeRange"/> to the <see cref="F:MeetCore.BaseEditScheduleDialog.mWeeklyHours"/> list
+            </summary>
+        </member>
+        <member name="M:MeetCore.BaseEditScheduleDialog.Cancel">
+            <summary>
+            Closes the dialog
+            </summary>
+        </member>
         <member name="T:MeetCore.UpdateModel`1">
             <summary>
             The base update dialog model
@@ -212,6 +280,31 @@
         <member name="P:MeetCore.DepartmentMessageDialog.ReplyOnClick">
             <summary>
             Fires when the reply button is clicked
+            </summary>
+        </member>
+        <member name="T:MeetCore.EditLectureDialog">
+            <summary>
+            The dialog for editing a lecture
+            </summary>
+        </member>
+        <member name="P:MeetCore.EditLectureDialog.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="M:MeetCore.EditLectureDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.EditLectureDialog.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.EditLectureDialog.Save">
+            <summary>
+            Saves the changes
             </summary>
         </member>
         <member name="T:MeetCore.UpdateDepartmentDialog">
@@ -304,24 +397,9 @@
             The name
             </summary>
         </member>
-        <member name="F:MeetCore.UpdateScheduleDialog.mColor">
-            <summary>
-            The color
-            </summary>
-        </member>
-        <member name="F:MeetCore.UpdateScheduleDialog.mWeeklyHours">
-            <summary>
-            The weekly schedule hours
-            </summary>
-        </member>
         <member name="F:MeetCore.UpdateScheduleDialog.mNote">
             <summary>
             The note
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateScheduleDialog.MudDialog">
-            <summary>
-            The dialog instance
             </summary>
         </member>
         <member name="P:MeetCore.UpdateScheduleDialog.Model">
@@ -338,34 +416,6 @@
             <summary>
             <inheritdoc/>
             </summary>
-        </member>
-        <member name="M:MeetCore.UpdateScheduleDialog.SetStartingHour(MeetBase.DayOfWeekTimeRange,System.Nullable{System.TimeSpan})">
-            <summary>
-            Sets the starting hour to the specified <paramref name="shift"/>
-            </summary>
-            <param name="shift">The shift</param>
-            <param name="value">The value</param>
-        </member>
-        <member name="M:MeetCore.UpdateScheduleDialog.SetEndingingHour(MeetBase.DayOfWeekTimeRange,System.Nullable{System.TimeSpan})">
-            <summary>
-            Sets the ending hour to the specified <paramref name="shift"/>
-            </summary>
-            <param name="shift">The shift</param>
-            <param name="value">The value</param>
-        </member>
-        <member name="M:MeetCore.UpdateScheduleDialog.SetDayOfWeek(MeetBase.DayOfWeekTimeRange,System.DayOfWeek)">
-            <summary>
-            Sets the day of week to the specified <paramref name="shift"/>
-            </summary>
-            <param name="shift">The shift</param>
-            <param name="value">The value</param>
-        </member>
-        <member name="M:MeetCore.UpdateScheduleDialog.SetText(MeetBase.DayOfWeekTimeRange,System.String)">
-            <summary>
-            Sets the day of week to the specified <paramref name="shift"/>
-            </summary>
-            <param name="shift">The shift</param>
-            <param name="value">The value</param>
         </member>
         <member name="T:MeetCore.UpdateStaffMemberDialog`1">
             <summary>
@@ -622,6 +672,11 @@
             A flag indicating whether the schedule can be modified or not
             </summary>
         </member>
+        <member name="P:MeetCore.Schedule.CellHeight">
+            <summary>
+            The cell height
+            </summary>
+        </member>
         <member name="M:MeetCore.Schedule.#ctor">
             <summary>
             Default constructor
@@ -777,6 +832,11 @@
         <member name="F:MeetCore.Routes.ScheduleRoute">
             <summary>
             The schedule page route
+            </summary>
+        </member>
+        <member name="F:MeetCore.Routes.LecturesRoute">
+            <summary>
+            The lectures page route
             </summary>
         </member>
         <member name="F:MeetCore.Routes.OfficeRoute">
@@ -977,11 +1037,6 @@
         <member name="P:MeetCore.UpdateScheduleModel.WeeklySchedule">
             <summary>
             The weekly schedule
-            </summary>
-        </member>
-        <member name="P:MeetCore.UpdateScheduleModel.Lectures">
-            <summary>
-            The lectures
             </summary>
         </member>
         <member name="M:MeetCore.UpdateScheduleModel.#ctor">
@@ -1188,6 +1243,16 @@
             <param name="value">The route value</param>
             <param name="queryParams">The optional query parameter values</param>
         </member>
+        <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToLecturesPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates the professor with the specified <paramref name="id"/> to their lectures page
+            <code>/professors/1/lectures</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The professor id</param>
+            <param name="value">The route value</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
         <member name="M:MeetCore.CoreNavigationManagerExtensions.Professor_NavigateToOfficePage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
             <summary>
             Navigates the professor with the specified <paramref name="id"/> to their office page
@@ -1281,11 +1346,6 @@
         <member name="P:MeetCore.FormPage.Client">
             <summary>
             The client
-            </summary>
-        </member>
-        <member name="P:MeetCore.FormPage.StateManager">
-            <summary>
-            The state management service
             </summary>
         </member>
         <member name="P:MeetCore.FormPage.DialogService">
@@ -1593,11 +1653,6 @@
             The client
             </summary>
         </member>
-        <member name="P:MeetCore.Professor_ContactFormRulesPage.StateManager">
-            <summary>
-            The state management service
-            </summary>
-        </member>
         <member name="P:MeetCore.Professor_ContactFormRulesPage.DialogService">
             <summary>
             The dialog service
@@ -1624,6 +1679,57 @@
             </summary>
             <param name="rule">The rule</param>
         </member>
+        <member name="T:MeetCore.Professor_LecturesPage">
+            <summary>
+            The professor lectures page
+            </summary>
+        </member>
+        <member name="F:MeetCore.Professor_LecturesPage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_LecturesPage.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_LecturesPage.Department">
+            <summary>
+            The department
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_LecturesPage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_LecturesPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_LecturesPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_LecturesPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_LecturesPage.OnInitializedAsync">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_LecturesPage.EditLecture(MeetBase.Lecture)">
+            <summary>
+            Edits the specified <paramref name="model"/>
+            </summary>
+            <param name="model">The rule</param>
+        </member>
         <member name="T:MeetCore.Professor_OfficePage">
             <summary>
             The office page
@@ -1637,11 +1743,6 @@
         <member name="P:MeetCore.Professor_OfficePage.Client">
             <summary>
             The client
-            </summary>
-        </member>
-        <member name="P:MeetCore.Professor_OfficePage.StateManager">
-            <summary>
-            The state management service
             </summary>
         </member>
         <member name="P:MeetCore.Professor_OfficePage.DialogService">
@@ -1721,11 +1822,6 @@
             The client
             </summary>
         </member>
-        <member name="P:MeetCore.Professor_ProfilePage.StateManager">
-            <summary>
-            The state management service
-            </summary>
-        </member>
         <member name="P:MeetCore.Professor_ProfilePage.DialogService">
             <summary>
             The dialog service
@@ -1754,6 +1850,46 @@
         <member name="T:MeetCore.Professor_SchedulePage">
             <summary>
             The schedule page
+            </summary>
+        </member>
+        <member name="F:MeetCore.Professor_SchedulePage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_SchedulePage.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_SchedulePage.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_SchedulePage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_SchedulePage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_SchedulePage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_SchedulePage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_SchedulePage.UpdateSchedule">
+            <summary>
+            Updates the weekly schedule of the secretary
             </summary>
         </member>
         <member name="T:MeetCore.Secretary_ContactFormPage">
@@ -1839,11 +1975,6 @@
             The client
             </summary>
         </member>
-        <member name="P:MeetCore.Secretary_DepartmentFacultyPage.StateManager">
-            <summary>
-            The state management service
-            </summary>
-        </member>
         <member name="P:MeetCore.Secretary_DepartmentFacultyPage.DialogService">
             <summary>
             The dialog service
@@ -1895,11 +2026,6 @@
             The client
             </summary>
         </member>
-        <member name="P:MeetCore.Secretary_DepartmentInformationPage.StateManager">
-            <summary>
-            The state management service
-            </summary>
-        </member>
         <member name="P:MeetCore.Secretary_DepartmentInformationPage.DialogService">
             <summary>
             The dialog service
@@ -1938,11 +2064,6 @@
         <member name="P:MeetCore.Secretary_DepartmentLayoutPage.Client">
             <summary>
             The client
-            </summary>
-        </member>
-        <member name="P:MeetCore.Secretary_DepartmentLayoutPage.StateManager">
-            <summary>
-            The state management service
             </summary>
         </member>
         <member name="P:MeetCore.Secretary_DepartmentLayoutPage.DialogService">
@@ -2012,11 +2133,6 @@
             The client
             </summary>
         </member>
-        <member name="P:MeetCore.Secretary_DepartmentSecretaryPage.StateManager">
-            <summary>
-            The state management service
-            </summary>
-        </member>
         <member name="P:MeetCore.Secretary_DepartmentSecretaryPage.DialogService">
             <summary>
             The dialog service
@@ -2073,11 +2189,6 @@
             The client
             </summary>
         </member>
-        <member name="P:MeetCore.Secretary_InboxPage.StateManager">
-            <summary>
-            The state management service
-            </summary>
-        </member>
         <member name="P:MeetCore.Secretary_InboxPage.DialogService">
             <summary>
             The dialog service
@@ -2121,11 +2232,6 @@
         <member name="P:MeetCore.Secretary_ProfilePage.Client">
             <summary>
             The client
-            </summary>
-        </member>
-        <member name="P:MeetCore.Secretary_ProfilePage.StateManager">
-            <summary>
-            The state management service
             </summary>
         </member>
         <member name="P:MeetCore.Secretary_ProfilePage.DialogService">

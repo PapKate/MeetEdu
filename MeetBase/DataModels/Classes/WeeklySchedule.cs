@@ -6,24 +6,9 @@ namespace MeetBase
     /// <summary>
     /// The weekly schedule
     /// </summary>
-    public class WeeklySchedule : INameable, IColorable, INoteable
+    public class WeeklySchedule : Lecture, INoteable
     {
         #region Private Members
-
-        /// <summary>
-        /// The member of the <see cref="WeeklyHours"/> property
-        /// </summary>
-        private IEnumerable<DayOfWeekTimeRange>? mWeeklyHours;
-
-        /// <summary>
-        /// The member of the <see cref="Name"/> property
-        /// </summary>
-        private string? mName;
-
-        /// <summary>
-        /// The member of the <see cref="Color"/> property
-        /// </summary>
-        private string? mColor;
 
         /// <summary>
         /// The member of the <see cref="Note"/> property
@@ -33,33 +18,6 @@ namespace MeetBase
         #endregion
 
         #region Public Properties
-
-        /// <summary>
-        /// The name
-        /// </summary>
-        public string Name
-        {
-            get => mName ?? string.Empty;
-            set => mName = value;
-        }
-
-        /// <summary>
-        /// The color
-        /// </summary>
-        public string Color
-        {
-            get => mColor ?? string.Empty;
-            set => mColor = value;
-        }
-
-        /// <summary>
-        /// The weekly schedule hours
-        /// </summary>
-        public IEnumerable<DayOfWeekTimeRange> WeeklyHours
-        {
-            get => mWeeklyHours ?? Enumerable.Empty<DayOfWeekTimeRange>();
-            set => mWeeklyHours = value;
-        }
 
         /// <summary>
         /// The note
@@ -88,19 +46,55 @@ namespace MeetBase
     /// <summary>
     /// The lecture schedule
     /// </summary>
-    public class Lecture : WeeklySchedule
+    public class Lecture : INameable, IColorable
     {
+        #region Private Members
+
+        /// <summary>
+        /// The member of the <see cref="WeeklyHours"/> property
+        /// </summary>
+        private IEnumerable<DayOfWeekTimeRange>? mWeeklyHours;
+
+        /// <summary>
+        /// The member of the <see cref="Name"/> property
+        /// </summary>
+        private string? mName;
+
+        /// <summary>
+        /// The member of the <see cref="Color"/> property
+        /// </summary>
+        private string? mColor;
+
+        #endregion
+
         #region Public Properties
 
         /// <summary>
-        /// A flag indicating whether it is remote or not
+        /// The name
         /// </summary>
-        public bool IsRemote { get; set; }
+        public string Name
+        {
+            get => mName ?? string.Empty;
+            set => mName = value;
+        }
 
         /// <summary>
-        /// The link to the remote lecture
+        /// The color
         /// </summary>
-        public string? Link { get; set; }
+        public string Color
+        {
+            get => mColor ?? string.Empty;
+            set => mColor = value.ToHex();
+        }
+
+        /// <summary>
+        /// The weekly schedule hours
+        /// </summary>
+        public IEnumerable<DayOfWeekTimeRange> WeeklyHours
+        {
+            get => mWeeklyHours ?? Enumerable.Empty<DayOfWeekTimeRange>();
+            set => mWeeklyHours = value;
+        }
 
         #endregion
 

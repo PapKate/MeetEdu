@@ -10,14 +10,14 @@
 
 <MudDialog>
     <DialogContent>
-        <div class="dialogSection">
-            <span class="dialogSectionText">Update Layout Preview</span>
-        </div>
         @if(Model is not null)
         {
+            <div class="dialogSection">
+                <span class="dialogSectionText">Update Layout Preview</span>
+            </div>
             <div class="dialogContentContainer">
                 <span class="dialogContentTitle dialogContentFullRow">Department info</span>
-                <MudTextField @bind-Value="@Model.Model.Name"
+                <MudTextField @bind-Value="@Model.Model!.Name"
                               Placeholder="Name"
                               Class="dialogContentFullRow dialogInput"
                               FullWidth="true"
@@ -81,27 +81,12 @@
 <style>
     
     .dialogSection {
-        position: relative;
-        top: -0.8rem;
-        width: fit-content;
-        height: 48px;
-        margin: auto;
-        padding: 12px 1rem;
-        font-weight: 800;
-        font-size: 120%;
-        background-color: @Model?.Model.Color.NormalizedColor();
-        color: @Model?.Model.Color.DarkOrWhite().NormalizedColor();
-        border-radius: 0 0 1rem 1rem;
-        filter: @LightFilterDropShadow;
+        background-color: @Model?.Model!.Color.NormalizedColor();
+        color: @Model?.Model!.Color.DarkOrWhite().NormalizedColor();
     }
 
     .colorInput .mud-input-adornment-start:after {
-        content: '';
-        position: absolute;
-        margin-left: 2.5rem;
-        width: calc(100% - 4.5rem);
-        height: 24px;
-        background-color: @Model?.Model.Color.NormalizedColor();
+        background-color: @Model?.Model!.Color.NormalizedColor();
         border-radius: @NormalBorderRadius;
     }
 

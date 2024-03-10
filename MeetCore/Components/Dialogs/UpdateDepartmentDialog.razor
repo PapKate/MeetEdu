@@ -7,123 +7,126 @@
 
 <MudDialog>
     <DialogContent>
-        <div class="dialogSection">
-            <span class="dialogSectionText">Update Department</span>
-        </div>
-        <div class="dialogContentContainer">
-            <span class="dialogContentTitle dialogContentFullRow">Department info</span>
-            <MudTextField @bind-Value="@Model.Model.Name"
-                          Placeholder="Name"
-                          Class="dialogContentFullRow dialogInput"
-                          FullWidth="true"
-                          Variant="Variant.Text"
-                          Adornment="Adornment.Start"
-                          AdornmentIcon="@MudIconPaths.Account" />
-            <MudSelect T="DepartmentType" @bind-Value="@mCategory"
-                       Placeholder="Category"
-                       Class="dialogInput"
-                       FullWidth="true"
-                       Variant="Variant.Text"
-                       Adornment="Adornment.Start"
-                       AdornmentIcon="@MudIconPaths.Account"
-                       AnchorOrigin="Origin.BottomCenter">
-                @foreach (var value in Enum.GetValues<DepartmentType>())
-                {
-                    <MudSelectItem Value="@value">@value</MudSelectItem>
-                }
-            </MudSelect>
-            <MudColorPicker Placeholder="Color" @bind-Text="@Model.Model.Color"
-                            Style="@($"color: {Model.Model.Color.NormalizedColor()};")"
-                            DisableModeSwitch="false"
-                            DisableToolbar="false"
-                            Class="dialogInput colorInput"
-                            Adornment="@Adornment.Start"
-                            AdornmentIcon="@Icons.Material.Filled.Palette"
-                            PickerVariant="PickerVariant.Inline"
-                            DisableAlpha="true" />
-            <MudTextField @bind-Value="@Model.Model.Email"
-                          Placeholder="Email"
-                          Class="dialogContentFullRow dialogInput"
-                          FullWidth="true"
-                          Variant="Variant.Text"
-                          Adornment="Adornment.Start"
-                          AdornmentIcon="@MudIconPaths.Email" />
-            <div class="dialogPhoneNumberInputsContainer">
-                <MudTextField @bind-Value="@mCountryCode"
-                              Placeholder="CC"
-                              Class="dialogInput"
-                              FullWidth="true"
-                              Variant="Variant.Text"
-                              Adornment="Adornment.Start"
-                              AdornmentIcon="@MudIconPaths.Plus" />
-                <MudTextField @bind-Value="@mPhoneNumber"
-                              Placeholder="Phone number"
-                              Class="dialogInput"
-                              FullWidth="true"
-                              Variant="Variant.Text"
-                              Adornment="Adornment.Start"
-                              AdornmentIcon="@MudIconPaths.Phone" />
+        @if(Model is not null)
+        {
+            <div class="dialogSection">
+                <span class="dialogSectionText">Update Department</span>
             </div>
-            <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => mFile = e)" Class="dialogContentPhotoContainer">
-                <ButtonTemplate>
-                    <MudButton HtmlTag="label"
-                               Variant="Variant.Text"
-                               Class="mud-input mud-input-underline dialogInput"
-                               StartIcon="@Icons.Material.Filled.Image"
-                               for="@context">
-                        @mPhotoLabel
-                    </MudButton>
-                </ButtonTemplate>
-                <SelectedTemplate>
-                    @if (context != null)
-                    {
-                        mPhotoLabel = context.Name;
-                    }
-                </SelectedTemplate>
-            </MudFileUpload>
-
-
-            <span class="dialogContentTitle dialogContentFullRow">Location info</span>
-            <div class="dialogLocationGrid dialogContentFullRow dialogContentContainer">
-                <div class="dialogLocationMapContainer">
-                    <img class="location" src="./icons/map.png" alt="map" />
-                </div>
-                <MudSelect T="CountryCode" @bind-Value="@mLocation.Country"
-                           Placeholder="Country"
+            <div class="dialogContentContainer">
+                <span class="dialogContentTitle dialogContentFullRow">Department info</span>
+                <MudTextField @bind-Value="@Model.Model!.Name"
+                              Placeholder="Name"
+                              Class="dialogContentFullRow dialogInput"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Adornment="Adornment.Start"
+                              AdornmentIcon="@MudIconPaths.Account" />
+                <MudSelect T="DepartmentType" @bind-Value="@mCategory"
+                           Placeholder="Category"
                            Class="dialogInput"
                            FullWidth="true"
                            Variant="Variant.Text"
                            Adornment="Adornment.Start"
                            AdornmentIcon="@MudIconPaths.Account"
                            AnchorOrigin="Origin.BottomCenter">
-                    @foreach (var value in Enum.GetValues<CountryCode>())
+                    @foreach (var value in Enum.GetValues<DepartmentType>())
                     {
                         <MudSelectItem Value="@value">@value</MudSelectItem>
                     }
                 </MudSelect>
-                <MudTextField @bind-Value="@mLocation.City"
-                              Placeholder="City"
-                              Class="dialogInput locationInput"
+                <MudColorPicker Placeholder="Color" @bind-Text="@Model.Model.Color"
+                                Style="@($"color: {Model.Model.Color.NormalizedColor()};")"
+                                DisableModeSwitch="false"
+                                DisableToolbar="false"
+                                Class="dialogInput colorInput"
+                                Adornment="@Adornment.Start"
+                                AdornmentIcon="@Icons.Material.Filled.Palette"
+                                PickerVariant="PickerVariant.Inline"
+                                DisableAlpha="true" />
+                <MudTextField @bind-Value="@Model.Model.Email"
+                              Placeholder="Email"
+                              Class="dialogContentFullRow dialogInput"
                               FullWidth="true"
                               Variant="Variant.Text"
                               Adornment="Adornment.Start"
-                              AdornmentIcon="@MudIconPaths.Phone" />
-                <MudTextField @bind-Value="@mLocation.Postcode"
-                              Placeholder="Postcode"
-                              Class="dialogInput locationInput"
-                              FullWidth="true"
-                              Variant="Variant.Text"
-                              Adornment="Adornment.Start"
-                              AdornmentIcon="@MudIconPaths.Phone" />
-                <MudTextField @bind-Value="@mLocation.Address"
-                              Placeholder="Address"
-                              Class="dialogInput locationInput"
-                              FullWidth="true"
-                              Variant="Variant.Text"
-                              Adornment="Adornment.Start"
-                              AdornmentIcon="@MudIconPaths.Phone" />
+                              AdornmentIcon="@MudIconPaths.Email" />
+                <div class="dialogPhoneNumberInputsContainer">
+                    <MudTextField @bind-Value="@mCountryCode"
+                                  Placeholder="CC"
+                                  Class="dialogInput"
+                                  FullWidth="true"
+                                  Variant="Variant.Text"
+                                  Adornment="Adornment.Start"
+                                  AdornmentIcon="@MudIconPaths.Plus" />
+                    <MudTextField @bind-Value="@mPhoneNumber"
+                                  Placeholder="Phone number"
+                                  Class="dialogInput"
+                                  FullWidth="true"
+                                  Variant="Variant.Text"
+                                  Adornment="Adornment.Start"
+                                  AdornmentIcon="@MudIconPaths.Phone" />
+                </div>
+                <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => mFile = e)" Class="dialogContentPhotoContainer">
+                    <ButtonTemplate>
+                        <MudButton HtmlTag="label"
+                                   Variant="Variant.Text"
+                                   Class="mud-input mud-input-underline dialogInput"
+                                   StartIcon="@Icons.Material.Filled.Image"
+                                   for="@context">
+                            @mPhotoLabel
+                        </MudButton>
+                    </ButtonTemplate>
+                    <SelectedTemplate>
+                        @if (context != null)
+                        {
+                            mPhotoLabel = context.Name;
+                        }
+                    </SelectedTemplate>
+                </MudFileUpload>
+
+
+                <span class="dialogContentTitle dialogContentFullRow">Location info</span>
+                <div class="dialogLocationGrid dialogContentFullRow dialogContentContainer">
+                    <div class="dialogLocationMapContainer">
+                        <img class="location" src="./icons/map.png" alt="map" />
+                    </div>
+                    <MudSelect T="CountryCode" @bind-Value="@mLocation.Country"
+                               Placeholder="Country"
+                               Class="dialogInput"
+                               FullWidth="true"
+                               Variant="Variant.Text"
+                               Adornment="Adornment.Start"
+                               AdornmentIcon="@MudIconPaths.Account"
+                               AnchorOrigin="Origin.BottomCenter">
+                        @foreach (var value in Enum.GetValues<CountryCode>())
+                        {
+                            <MudSelectItem Value="@value">@value</MudSelectItem>
+                        }
+                    </MudSelect>
+                    <MudTextField @bind-Value="@mLocation.City"
+                                  Placeholder="City"
+                                  Class="dialogInput locationInput"
+                                  FullWidth="true"
+                                  Variant="Variant.Text"
+                                  Adornment="Adornment.Start"
+                                  AdornmentIcon="@MudIconPaths.Phone" />
+                    <MudTextField @bind-Value="@mLocation.Postcode"
+                                  Placeholder="Postcode"
+                                  Class="dialogInput locationInput"
+                                  FullWidth="true"
+                                  Variant="Variant.Text"
+                                  Adornment="Adornment.Start"
+                                  AdornmentIcon="@MudIconPaths.Phone" />
+                    <MudTextField @bind-Value="@mLocation.Address"
+                                  Placeholder="Address"
+                                  Class="dialogInput locationInput"
+                                  FullWidth="true"
+                                  Variant="Variant.Text"
+                                  Adornment="Adornment.Start"
+                                  AdornmentIcon="@MudIconPaths.Phone" />
+                </div>
             </div>
-        </div>
+        }
     </DialogContent>
     <DialogActions>
         <div class="dialogActionsContainer">
@@ -136,26 +139,11 @@
 <style>
     
     .dialogSection {
-        position: relative;
-        top: -0.8rem;
-        width: fit-content;
-        height: 48px;
-        margin: auto;
-        padding: 12px 1rem;
-        font-weight: 800;
-        font-size: 120%;
-        background-color: @Model.Model.Color.NormalizedColor();
+        background-color: @Model.Model!.Color.NormalizedColor();
         color: @Model.Model.Color.DarkOrWhite().NormalizedColor();
-        border-radius: 0 0 1rem 1rem;
-        filter: @LightFilterDropShadow;
     }
 
     .colorInput .mud-input-adornment-start:after {
-        content: '';
-        position: absolute;
-        margin-left: 2.5rem;
-        width: calc(100% - 4.5rem);
-        height: 24px;
         background-color: @Model.Model.Color.NormalizedColor();
         border-radius: @NormalBorderRadius;
     }

@@ -2272,6 +2272,11 @@
             The member of the <see cref="P:MeetEdu.ProfessorEntity.Websites"/> property
             </summary>
         </member>
+        <member name="F:MeetEdu.ProfessorEntity.mLectures">
+            <summary>
+            The member of the <see cref="P:MeetEdu.ProfessorEntity.Lectures"/> property
+            </summary>
+        </member>
         <member name="P:MeetEdu.ProfessorEntity.Rank">
             <summary>
             The rank
@@ -2290,6 +2295,11 @@
         <member name="P:MeetEdu.ProfessorEntity.ResearchInterests">
             <summary>
             The research interests
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorEntity.Lectures">
+            <summary>
+            The lectures 
             </summary>
         </member>
         <member name="M:MeetEdu.ProfessorEntity.#ctor">

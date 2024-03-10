@@ -8,7 +8,7 @@ namespace MeetCore
     /// <summary>
     /// Provides abstractions over the <see cref="StateManager"/>
     /// </summary>
-    public class StateManagablePage : BasePage, IDisposable
+    public class StateManagablePage : ComponentBase, IDisposable
     {
         #region Public Properties
 

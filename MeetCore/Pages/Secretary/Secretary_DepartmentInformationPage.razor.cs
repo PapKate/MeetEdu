@@ -38,12 +38,6 @@ namespace MeetCore
         protected MeetCoreClient Client { get; set; } = default!;
 
         /// <summary>
-        /// The state management service
-        /// </summary>
-        [Inject]
-        protected StateManagerCore StateManager { get; set; } = default!;
-
-        /// <summary>
         /// The dialog service
         /// </summary>
         [Inject]
@@ -163,7 +157,7 @@ namespace MeetCore
                 // Creates the request for updating the department
                 var departmentRequest = new DepartmentRequestModel()
                 {
-                    Name = updatedModel.Model.Name,
+                    Name = updatedModel.Model!.Name,
                     Category = updatedModel.Model.Category,
                     Email = updatedModel.Model.Email,
                     PhoneNumber = updatedModel.Model.PhoneNumber,

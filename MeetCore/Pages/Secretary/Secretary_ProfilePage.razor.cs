@@ -43,12 +43,6 @@ namespace MeetCore
         protected MeetCoreClient Client { get; set; } = default!;
 
         /// <summary>
-        /// The state management service
-        /// </summary>
-        [Inject]
-        protected StateManagerCore StateManager { get; set; } = default!;
-
-        /// <summary>
         /// The dialog service
         /// </summary>
         [Inject]

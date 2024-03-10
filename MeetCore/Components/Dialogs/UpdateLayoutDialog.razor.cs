@@ -65,7 +65,7 @@ namespace MeetCore
             base.OnInitialized();
             if(Model is not null)
             {
-                mTheme = Model?.Model.DisplayTheme ?? ImageDisplayTheme.Left;
+                mTheme = Model?.Model?.DisplayTheme ?? ImageDisplayTheme.Left;
             }
         }
 
@@ -80,7 +80,7 @@ namespace MeetCore
         {
             if(Model is not null)
             {
-                Model.Model.DisplayTheme = mTheme;
+                Model.Model!.DisplayTheme = mTheme;
                 Model.Model.Color = Model.Model?.Color?.Replace("#", string.Empty) ?? string.Empty;
                 
                 if (mFile is not null)

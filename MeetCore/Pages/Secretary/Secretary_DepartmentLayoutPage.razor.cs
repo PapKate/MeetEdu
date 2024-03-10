@@ -35,12 +35,6 @@ namespace MeetCore
         protected MeetCoreClient Client { get; set; } = default!;
 
         /// <summary>
-        /// The state management service
-        /// </summary>
-        [Inject]
-        protected StateManagerCore StateManager { get; set; } = default!;
-
-        /// <summary>
         /// The dialog service
         /// </summary>
         [Inject]
@@ -215,7 +209,7 @@ namespace MeetCore
             if (result.Data is UpdateModel<DepartmentLayoutRequestModel> updatedModel)
             {
                 // Performs the specified action
-                var response = await requestAction(updatedModel.Model);
+                var response = await requestAction(updatedModel.Model!);
 
                 // If there was an error...
                 if (!response.IsSuccessful)
