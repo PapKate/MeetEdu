@@ -51,9 +51,12 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<UniversityEntity>> UpdateUniversityAsync(ObjectId id, UniversityRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = UniversityEntity.FromRequestModelAsync(model);
-            entity.Id = id;
-            entity = await MeetEduDbMapper.Universities.UpdateAsync(entity, cancellationToken);
+            var entity = await MeetEduDbMapper.Universities.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+
+            if (entity is null)
+                return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Universities));
+
+            entity = await MeetEduDbMapper.Universities.UpdateAsync(id, model, cancellationToken);
 
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Universities));
@@ -79,6 +82,23 @@ namespace MeetEdu
             await MeetEduDbMapper.UniversityLabels.DeleteManyAsync(Builders<LabelEntity>.Filter.Eq(x => x.DepartmentId, id), cancellationToken);
 
             return entity;
+        }
+
+        /// <summary>
+        /// Sets the image of the university with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="file">The file</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<UniversityEntity>> SetUniversityImageAsync(ObjectId id, IFormFile file, CancellationToken cancellationToken = default)
+        {
+            return await RepositoryHelpers.SetImageAsync<UniversityRequestModel, UniversityEntity>(
+                                                id,
+                                                $"{MeetEduConstants.Universities.ToLower()}/",
+                                                file,
+                                                (model) => UpdateUniversityAsync(id, model, cancellationToken),
+                                                cancellationToken);
         }
 
         #region Labels

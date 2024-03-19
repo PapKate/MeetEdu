@@ -115,6 +115,20 @@ namespace MeetBase.Web
         /// <returns></returns>
         public static string GetUniversityRoute(string universityId) => UniversitiesRoute + $"/{universityId}";
 
+        /// <summary>
+        /// The user images route
+        /// <code>/appointMate/api/v1/meetCore/universities/2/images</code>
+        /// </summary>
+        public const string UniversityImagesRoute = UniversityRoute + "/images";
+
+        /// <summary>
+        /// Gets the user images route for the one with the specified <paramref name="universityId"/>
+        /// <code>/appointMate/api/v1/meetCore/universities/3/images</code>
+        /// </summary>
+        /// <param name="universityId">The id</param>
+        /// <returns></returns>
+        public static string GetUniversityImagesRoute(string universityId) => GetUniversityRoute(universityId) + $"/images";
+
         #endregion
 
         #region University Labels
@@ -162,6 +176,20 @@ namespace MeetBase.Web
         /// <param name="departmentId">The id</param>
         /// <returns></returns>
         public static string GetDepartmentRoute(string departmentId) => DepartmentsRoute + $"/{departmentId}";
+
+        /// <summary>
+        /// The user images route
+        /// <code>/appointMate/api/v1/meetCore/departments/2/images</code>
+        /// </summary>
+        public const string DepartmentImagesRoute = DepartmentRoute + "/images";
+
+        /// <summary>
+        /// Gets the user images route for the one with the specified <paramref name="departmentId"/>
+        /// <code>/appointMate/api/v1/meetCore/departments/3/images</code>
+        /// </summary>
+        /// <param name="departmentId">The id</param>
+        /// <returns></returns>
+        public static string GetDepartmentImagesRoute(string departmentId) => GetDepartmentRoute(departmentId) + $"/images";
 
         #endregion
 

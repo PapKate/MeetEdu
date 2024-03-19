@@ -3486,6 +3486,20 @@
             <param name="universityId">The id</param>
             <returns></returns>
         </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.UniversityImagesRoute">
+            <summary>
+            The user images route
+            <code>/appointMate/api/v1/meetCore/universities/2/images</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetUniversityImagesRoute(System.String)">
+            <summary>
+            Gets the user images route for the one with the specified <paramref name="universityId"/>
+            <code>/appointMate/api/v1/meetCore/universities/3/images</code>
+            </summary>
+            <param name="universityId">The id</param>
+            <returns></returns>
+        </member>
         <member name="F:MeetBase.Web.MeetCoreAPIRoutes.UniversityLabelsRoute">
             <summary>
             The university labels route
@@ -3522,6 +3536,20 @@
             <summary>
             Gets the department route for the one with the specified <paramref name="departmentId"/>
             <code>/appointMate/api/v1/meetCore/departments/3</code>
+            </summary>
+            <param name="departmentId">The id</param>
+            <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetCoreAPIRoutes.DepartmentImagesRoute">
+            <summary>
+            The user images route
+            <code>/appointMate/api/v1/meetCore/departments/2/images</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreAPIRoutes.GetDepartmentImagesRoute(System.String)">
+            <summary>
+            Gets the user images route for the one with the specified <paramref name="departmentId"/>
+            <code>/appointMate/api/v1/meetCore/departments/3/images</code>
             </summary>
             <param name="departmentId">The id</param>
             <returns></returns>
@@ -3774,6 +3802,20 @@
             The universities route
             <code>/appointMate/api/v1/meetEdu/universities</code>
             </summary>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.UniversityRoute">
+            <summary>
+            The university route
+            <code>/appointMate/api/v1/meetEdu/universities/3</code>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetEduAPIRoutes.GetUniversityRoute(System.String)">
+            <summary>
+            Gets the route for the university with the specified <paramref name="universityId"/>
+            <code>/appointMate/api/v1/meetEdu/universities/5</code>
+            </summary>
+            <param name="universityId">The id</param>
+            <returns></returns>
         </member>
         <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentsRoute">
             <summary>

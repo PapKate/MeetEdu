@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Globalization;
 using System.Xml.Linq;
 
 namespace MeetBase

@@ -172,6 +172,36 @@ namespace MeetBase
             { typeof(Object), "object" }
         };
 
+        /// <summary>
+        /// Returns a flag indicating whether the specified <paramref name="type"/> inherits from
+        /// the specified <paramref name="typeOrGenericTypeDefinition"/>. If the <paramref name="typeOrGenericTypeDefinition"/>
+        /// is the same as the <paramref name="type"/> then <see cref="false"/> is returned!
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="typeOrGenericTypeDefinition">The type or the generic type definition</param>
+        /// <returns></returns>
+        public static bool InheritsFrom(this Type type, Type typeOrGenericTypeDefinition)
+        {
+            // If the inserted type is the same as the other type or the generic type definition...
+            if (type == typeOrGenericTypeDefinition)
+                // Return false
+                return false;
+
+            // If the other type isn't a generic type definition...
+            if (!typeOrGenericTypeDefinition.IsGenericTypeDefinition)
+                // Simply return
+                return typeOrGenericTypeDefinition.IsAssignableFrom(type);
+
+            while (type is not null && type != typeof(object))
+            {
+                var current = type.IsGenericType ? type.GetGenericTypeDefinition() : type;
+                if (typeOrGenericTypeDefinition == current)
+                    return true;
+                type = type.BaseType!;
+            }
+            return false;
+        }
+
         #endregion
 
         #region Public Methods

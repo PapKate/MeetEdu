@@ -75,6 +75,20 @@
         /// </summary>
         public const string UniversitiesRoute = BaseRoute + "/universities";
 
+        /// <summary>
+        /// The university route
+        /// <code>/appointMate/api/v1/meetEdu/universities/3</code>
+        /// </summary>
+        public const string UniversityRoute = UniversitiesRoute + "/{universityId}";
+
+        /// <summary>
+        /// Gets the route for the university with the specified <paramref name="universityId"/>
+        /// <code>/appointMate/api/v1/meetEdu/universities/5</code>
+        /// </summary>
+        /// <param name="universityId">The id</param>
+        /// <returns></returns>
+        public static string GetUniversityRoute(string universityId) => UniversitiesRoute + $"/{universityId}";
+
         #endregion
 
         #region Departments

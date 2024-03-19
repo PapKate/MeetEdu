@@ -1,10 +1,10 @@
 ﻿
 using AutoMapper;
+using AutoMapper.EquivalencyExpression;
 using AutoMapper.Internal;
 
 using MongoDB.Bson;
 
-using System.Diagnostics;
 using System.Reflection;
 
 namespace MeetEdu
@@ -50,9 +50,10 @@ namespace MeetEdu
             // Create the configuration
             var configuration = new MapperConfiguration((cfg) =>
             {
-                cfg.Internal().AllowAdditiveTypeMapCreation = true;
+                cfg.AddCollectionMappers();
+                //cfg.Internal().AllowAdditiveTypeMapCreation = true;
                 cfg.Internal().MethodMappingEnabled = false;
-
+                
                 var assemblies = new List<Assembly>
                 {
                     // For the request models
@@ -85,6 +86,9 @@ namespace MeetEdu
                 // For every request model type...(RequestModel / CreateRequestModel / UpdateRequestModel -> Entity)
                 foreach (var requestModelType in requestModelTypes)
                 {
+                    if (requestModelType == typeof(ProfessorRequestModel))
+                        continue;
+
                     // Get the namespace map for the request DTO if any
                     var map = EntityToDTONamespaceMaps.FirstOrDefault(x => x.DTONamespace == requestModelType.Namespace);
 
@@ -129,6 +133,45 @@ namespace MeetEdu
                         cfg.CreateMap(entityType, embeddedEntityType);
                 }
 
+                cfg.CreateMap<ProfessorRequestModel, ProfessorEntity>()
+                    .ForMember(x => x.Lectures, x =>
+                    {
+                        x.Ignore();
+                    })
+                    .AfterMap((request, entity) => 
+                    {
+                        if (request.Lectures is null)
+                            return;
+                        entity.Lectures = request.Lectures.ToList();
+                    });
+
+                // The property types that should be ignored
+                var ignoredDestinationTypes = new List<Type>();
+
+                // Add embedded types and the enumerable presentation of the embedded entity types
+                ignoredDestinationTypes.AddRange(embeddedEntityTypes);
+                ignoredDestinationTypes.AddRange(embeddedEntityTypes.Select(x => typeof(IEnumerable<>).MakeGenericType(x)));
+
+                // Add the entities that contain an embedded entity type as a property
+                var entityPropertyTypesToIgnore = entityTypes.Where(x => x.GetProperties().Any(y => ignoredDestinationTypes.Contains(y.PropertyType))).ToList();
+                ignoredDestinationTypes.AddRange(entityPropertyTypesToIgnore);
+                ignoredDestinationTypes.AddRange(entityPropertyTypesToIgnore.Select(x => typeof(IEnumerable<>).MakeGenericType(x)));
+
+                // Do not map based on the ignored destination types
+                cfg.Internal().ForAllPropertyMaps((propertyMap) => true, (propertyMap, opts) =>
+                {
+                    if (propertyMap.SourceType != propertyMap.DestinationType && ignoredDestinationTypes.Contains(propertyMap.DestinationType))
+                        opts.Ignore();
+                });
+
+                cfg.Internal().ForAllPropertyMaps(
+                    propertyMap => propertyMap.SourceMember is not null &&
+                                   propertyMap.TypeMap.SourceType.Name.EndsWith(FrameworkConstructionExtensions.EntitySuffix) &&
+                                   propertyMap.TypeMap.DestinationType.Name.EndsWith(FrameworkConstructionExtensions.EntitySuffix) &&
+                                   propertyMap.SourceType.InheritsFrom(typeof(IEnumerable<>)) &&
+                                   propertyMap.DestinationType.InheritsFrom(typeof(IEnumerable<>)),
+                    (propertyMap, c) => c.MapFrom(propertyMap.SourceMember.Name));
+
                 // Do not map values when the values of the properties of the request models are null
                 cfg.Internal().ForAllMaps((map, options) =>
                 {
@@ -138,6 +181,13 @@ namespace MeetEdu
                             x.Condition((_, _, sourceValue) => sourceValue is not null);
                             x.UseDestinationValue();
                         });
+                });
+
+                // Set the DateModified to the current date after the map if the entity implements the IDateModifiable
+                cfg.Internal().ForAllMaps((map, options) =>
+                {
+                    if (map.SourceType.Name.EndsWith(FrameworkConstructionExtensions.RequestModelSuffix) && map.DestinationType.GetInterfaces().Any(x => x == typeof(IDateModifiable)))
+                        options.AfterMap((source, destination) => ((IDateModifiable)destination).DateModified = DateTimeOffset.Now);
                 });
 
                 cfg.Internal().ForAllMaps((map, options) =>
@@ -184,6 +234,7 @@ namespace MeetEdu
                 // DateTimeOffset from DateTime (NOTE: We always store date times in UTC in MongoDb)
                 cfg.CreateMap<DateTimeOffset, DateTime>().ConstructUsing((value) => value.UtcDateTime);
                 cfg.CreateMap<DateTimeOffset?, DateTime?>().ConstructUsing((value) => value == null ? null : value.Value.UtcDateTime);
+                
             });
 
             // Create the mapper

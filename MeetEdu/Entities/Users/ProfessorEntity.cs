@@ -73,7 +73,12 @@ namespace MeetEdu
         /// </summary>
         public IList<Lecture> Lectures
         {
-            get => mLectures ??= new List<Lecture>();
+            get
+            {
+                if(mLectures == null)
+                    mLectures = new List<Lecture>();
+                return mLectures;
+            }
             set => mLectures = value;
         }
 

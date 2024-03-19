@@ -146,6 +146,8 @@ namespace MeetCore
                 }
 
                 StateManager.Professor = response.Result;
+                mLectures = new();
+                mLectures.AddRange(Professor.Lectures);
                 StateHasChanged();
             }
         }

@@ -81,6 +81,23 @@ namespace MeetEdu
             return entity;
         }
 
+        /// <summary>
+        /// Sets the image of the department with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="file">The file</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        public async Task<WebServerFailable<DepartmentEntity>> SetDepartmentImageAsync(ObjectId id, IFormFile file, CancellationToken cancellationToken = default)
+        {
+            return await RepositoryHelpers.SetImageAsync<DepartmentRequestModel, DepartmentEntity>(
+                                                id,
+                                                $"{MeetEduConstants.Departments.ToLower()}/",
+                                                file,
+                                                (model) => UpdateDepartmentAsync(id, model, cancellationToken),
+                                                cancellationToken);
+        }
+
         #region Labels
 
         /// <summary>

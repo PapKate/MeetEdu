@@ -3409,6 +3409,16 @@
             Maps the type names to their related CSharp keywords
             </summary>
         </member>
+        <member name="M:MeetBase.TypeExtensions.InheritsFrom(System.Type,System.Type)">
+            <summary>
+            Returns a flag indicating whether the specified <paramref name="type"/> inherits from
+            the specified <paramref name="typeOrGenericTypeDefinition"/>. If the <paramref name="typeOrGenericTypeDefinition"/>
+            is the same as the <paramref name="type"/> then <see cref="!:false"/> is returned!
+            </summary>
+            <param name="type">The type</param>
+            <param name="typeOrGenericTypeDefinition">The type or the generic type definition</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetBase.TypeExtensions.IsComplexType(System.Type)">
             <summary>
             Checks whether the <paramref name="type"/> is a complex type

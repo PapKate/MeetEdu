@@ -68,13 +68,27 @@ namespace MeetEdu
         #region Universities
 
         /// <summary>
+        /// Gets the universities
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.UniversitiesRoute)]
+        public async Task<ActionResult<IEnumerable<UniversityResponseModel>>> GetUniversitiesAsync([FromQuery] APIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Universities,
+                                                    x => x.ToResponseModel(),
+                                                    Builders<UniversityEntity>.Filter.Empty, args,
+                                                    cancellationToken, x => x.Name);
+
+        /// <summary>
         /// Gets the university with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The memberId</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
-        [Route(MeetEduAPIRoutes.UniversitiesRoute)]
+        [Route(MeetEduAPIRoutes.UniversityRoute)]
         public async Task<ActionResult<UniversityResponseModel>?> GetUniversityAsync([FromRoute] string id, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetAsync(MeetEduDbMapper.Universities, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
 
@@ -271,7 +285,7 @@ namespace MeetEdu
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         [HttpGet]
-        [Route(MeetEduAPIRoutes.SavedProfessorsRoute)]
+        [Route(MeetEduAPIRoutes.SavedDepartmentsRoute)]
         public async Task<ActionResult<IEnumerable<DepartmentResponseModel>>> GetMemberSavedDepartmentsAsync([FromRoute] string id, CancellationToken cancellationToken = default)
         {
             // Get the user savedProfessors department with the specified user memberId

@@ -96,6 +96,11 @@
             The app name
             </summary>
         </member>
+        <member name="F:MeetEdu.MeetEduConstants.Universities">
+            <summary>
+            The universities 
+            </summary>
+        </member>
         <member name="F:MeetEdu.MeetEduConstants.Departments">
             <summary>
             The departments 
@@ -335,6 +340,15 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.MeetCoreController.SetUniversityImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>
+            Sets the image for the university with the specified <paramref name="universityId"/>
+            </summary>
+            <param name="universityId">The id</param>
+            <param name="file">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.MeetCoreController.GetUniversityLabelsAsync(MeetBase.Web.APIArgs,System.Threading.CancellationToken)">
             <summary>
             Gets the university labels
@@ -414,6 +428,15 @@
             Deletes the department with the specified <paramref name="departmentId"/>
             </summary>
             <param name="departmentId">The id</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.SetDepartmentImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>
+            Sets the image for the department with the specified <paramref name="departmentId"/>
+            </summary>
+            <param name="departmentId">The id</param>
+            <param name="file">The model</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -792,6 +815,14 @@
             Gets the user with the specified <paramref name="userId"/>
             </summary>
             <param name="userId">The memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.GetUniversitiesAsync(MeetBase.Web.APIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the universities
+            </summary>
+            <param name="args">The arguments</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -3559,6 +3590,15 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.DepartmentsRepository.SetDepartmentImageAsync(MongoDB.Bson.ObjectId,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>
+            Sets the image of the department with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="file">The file</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.DepartmentsRepository.AddDepartmentLabelAsync(MongoDB.Bson.ObjectId,MeetBase.Web.LabelRequestModel,System.Threading.CancellationToken)">
             <summary>
             Add a department label
@@ -3693,6 +3733,15 @@
             </summary>
             <param name="id">The university id</param>
             <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.UniversitiesRepository.SetUniversityImageAsync(MongoDB.Bson.ObjectId,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>
+            Sets the image of the university with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
+            <param name="file">The file</param>
+            <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.UniversitiesRepository.AddUniversityLabelAsync(MongoDB.Bson.ObjectId,MeetBase.Web.LabelRequestModel,System.Threading.CancellationToken)">

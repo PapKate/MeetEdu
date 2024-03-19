@@ -195,6 +195,18 @@ namespace MeetEdu
         public async Task<ActionResult<UniversityResponseModel>> DeleteUniversityAsync([FromRoute] string universityId, CancellationToken cancellationToken = default)
             => (await DI.UniversitiesRepository.DeleteUniversityAsync(universityId.ToObjectId(), cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
+        /// <summary>
+        /// Sets the image for the university with the specified <paramref name="universityId"/>
+        /// </summary>
+        /// <param name="universityId">The id</param>
+        /// <param name="file">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetCoreAPIRoutes.UniversityImagesRoute)]
+        public async Task<ActionResult<UniversityResponseModel>> SetUniversityImageAsync([FromRoute] string universityId, [FromForm] IFormFile file, CancellationToken cancellationToken = default)
+            => (await DI.UniversitiesRepository.SetUniversityImageAsync(universityId.ToObjectId(), file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
         #region Labels
 
         /// <summary>
@@ -320,6 +332,18 @@ namespace MeetEdu
         [Route(MeetCoreAPIRoutes.DepartmentRoute)]
         public async Task<ActionResult<DepartmentResponseModel>> DeleteDepartmentAsync([FromRoute] string departmentId, CancellationToken cancellationToken = default)
             => (await DI.DepartmentsRepository.DeleteDepartmentAsync(departmentId.ToObjectId(), cancellationToken)).ToActionResult(x => x.ToResponseModel());
+
+        /// <summary>
+        /// Sets the image for the department with the specified <paramref name="departmentId"/>
+        /// </summary>
+        /// <param name="departmentId">The id</param>
+        /// <param name="file">The model</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route(MeetCoreAPIRoutes.DepartmentImagesRoute)]
+        public async Task<ActionResult<DepartmentResponseModel>> SetDepartmentImageAsync([FromRoute] string departmentId, [FromForm] IFormFile file, CancellationToken cancellationToken = default)
+            => (await DI.DepartmentsRepository.SetDepartmentImageAsync(departmentId.ToObjectId(), file, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         #region Layout 
 

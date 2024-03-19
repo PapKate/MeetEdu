@@ -18,6 +18,11 @@
         public const string AppName = "MeetEdu";
 
         /// <summary>
+        /// The universities 
+        /// </summary>
+        public const string Universities = "Universities";
+
+        /// <summary>
         /// The departments 
         /// </summary>
         public const string Departments = "Departments";

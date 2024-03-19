@@ -93,7 +93,9 @@ namespace MeetCore
             // Creates the request for updating the professor
             var professorRequest = new ProfessorRequestModel()
             {
-                ResearchInterests = mText
+                ResearchInterests = mText,
+                Websites = Professor.Websites,
+                Lectures = Professor.Lectures
             };
 
             // Updates the professor
@@ -159,8 +161,8 @@ namespace MeetCore
                 // Creates the request for updating the professor
                 var professorRequest = new ProfessorRequestModel()
                 {
-                    Rank = updatedModel.StaffMember!.Rank,
                     Websites = updatedModel.StaffMember!.Websites,
+                    Rank = updatedModel.StaffMember!.Rank,
                     Quote = updatedModel.StaffMember.Quote ?? string.Empty
                 };
 
@@ -189,7 +191,7 @@ namespace MeetCore
                     DateOfBirth = updatedModel.Model.DateOfBirth,
                     ImageUrl = updatedModel.Model.ImageUrl,
                     Location = updatedModel.Model.Location,
-                    Color = updatedModel.Model.Color!.Replace("#", string.Empty)
+                    Color = updatedModel.Model.Color
                 };
 
                 // Updates the user
