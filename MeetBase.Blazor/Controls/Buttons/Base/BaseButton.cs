@@ -60,6 +60,12 @@ namespace MeetBase.Blazor
 
         #region Protected Methods
 
+        protected override async void OnMouseDownCore(MouseEventArgs e)
+        {
+            base.OnMouseDownCore(e);
+            await OnMiddleButtonClick.InvokeAsync(e);
+        }
+
         protected async Task OnBaseButtonClick(MouseEventArgs e)
         {
             await OnClick.InvokeAsync(e);
@@ -85,6 +91,12 @@ namespace MeetBase.Blazor
         /// </summary>
         [Parameter]
         public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+        /// <summary>
+        /// On mouse down event
+        /// </summary>
+        [Parameter]
+        public EventCallback<MouseEventArgs> OnMiddleButtonClick { get; set; }
 
         #endregion
     }

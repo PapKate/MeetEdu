@@ -76,11 +76,10 @@ namespace MeetCore
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        protected override void OnInitialized()
+        protected override void OnInitializedCore()
         {
-            base.OnInitialized();
-
             mText = Professor.ResearchInterests ?? string.Empty;
+            StateHasChanged();
         }
 
         #endregion

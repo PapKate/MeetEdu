@@ -1906,6 +1906,16 @@
             Arguments used for retrieving data that belong to a department layout
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentRelatedAPIArgs.IncludeUniversities">
+            <summary>
+            Limit the result to entries with specific university ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRelatedAPIArgs.ExcludeUniversities">
+            <summary>
+            Limit the result to entries without specific university ids
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentRelatedAPIArgs.IncludeDepartments">
             <summary>
             Limit the result to entries with specific department ids
@@ -2108,6 +2118,13 @@
             Creates a user
             </summary>
             <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.GetUserAsync(System.String)">
+            <summary>
+            Gets the user with the specified <paramref name="id"/>
+            </summary>
+            <param name="id">The id</param>
             <returns></returns>
         </member>
         <member name="M:MeetBase.Web.MeetCoreClient.UpdateUserAsync(System.String,MeetBase.Web.UserRequestModel)">

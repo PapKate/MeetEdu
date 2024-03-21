@@ -10,22 +10,10 @@ namespace MeetEdu
         #region Public Properties
 
         /// <summary>
-        /// The name
+        /// The university
         /// </summary>
         [Parameter]
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// The image
-        /// </summary>
-        [Parameter]
-        public string? Image { get; set; }
-
-        /// <summary>
-        /// The color
-        /// </summary>
-        [Parameter]
-        public string? Color { get; set; }
+        public UniversityResponseModel? University { get; set; }
 
         #endregion
 
@@ -38,6 +26,28 @@ namespace MeetEdu
         {
 
         }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Navigates to the page of professors or departments
+        /// </summary>
+        private async void UniversityButton_OnClick()
+        {
+            await OnClick.InvokeAsync();
+        }
+
+        #endregion
+
+        #region Public Events
+
+        /// <summary>
+        /// Fires when the university box is clicked
+        /// </summary>
+        [Parameter]
+        public EventCallback OnClick { get; set; }
 
         #endregion
     }

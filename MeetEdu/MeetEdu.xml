@@ -61,24 +61,24 @@
             The University display box
             </summary>
         </member>
-        <member name="P:MeetEdu.UniversityBox.Name">
+        <member name="P:MeetEdu.UniversityBox.University">
             <summary>
-            The name
-            </summary>
-        </member>
-        <member name="P:MeetEdu.UniversityBox.Image">
-            <summary>
-            The image
-            </summary>
-        </member>
-        <member name="P:MeetEdu.UniversityBox.Color">
-            <summary>
-            The color
+            The university
             </summary>
         </member>
         <member name="M:MeetEdu.UniversityBox.#ctor">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.UniversityBox.UniversityButton_OnClick">
+            <summary>
+            Navigates to the page of professors or departments
+            </summary>
+        </member>
+        <member name="P:MeetEdu.UniversityBox.OnClick">
+            <summary>
+            Fires when the university box is clicked
             </summary>
         </member>
         <member name="T:MeetEdu.MeetEduConstants">
@@ -272,6 +272,14 @@
             Creates a university
             </summary>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetCoreController.GetUserAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the user with the specified <paramref name="userId"/>
+            </summary>
+            <param name="userId">The id</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -834,6 +842,14 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.MeetEduController.GetDepartmentsAsync(MeetBase.Web.DepartmentAPIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the departments
+            </summary>
+            <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.MeetEduController.GetDepartmentAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Gets the department with the specified <paramref name="id"/>
@@ -873,6 +889,14 @@
             </summary>
             <param name="id">The id</param>
             <param name="model">The model</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.GetProfessorsAsync(MeetBase.Web.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the professors
+            </summary>
+            <param name="args">The arguments</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -3424,14 +3448,37 @@
             The main page
             </summary>
         </member>
-        <member name="P:MeetEdu.Index.SearchText">
+        <member name="F:MeetEdu.Index.mSearchText">
             <summary>
             The search text
+            </summary>
+        </member>
+        <member name="F:MeetEdu.Index.mUniversities">
+            <summary>
+            The universities
+            </summary>
+        </member>
+        <member name="F:MeetEdu.Index.mSearchBar">
+            <summary>
+            The search bar
+            </summary>
+        </member>
+        <member name="P:MeetEdu.Index.Controller">
+            <summary>
+            The controller
             </summary>
         </member>
         <member name="M:MeetEdu.Index.#ctor">
             <summary>
             Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.Index.OnInitializedAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:MeetEdu.Index.UniversityBox_OnClick(System.String)">
+            <summary>
+            Navigates to the respected page of professors or departments of the current department
             </summary>
         </member>
         <member name="T:MeetEdu.SearchPage">

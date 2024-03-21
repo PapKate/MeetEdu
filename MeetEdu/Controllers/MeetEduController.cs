@@ -75,7 +75,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpGet]
         [Route(MeetEduAPIRoutes.UniversitiesRoute)]
-        public async Task<ActionResult<IEnumerable<UniversityResponseModel>>> GetUniversitiesAsync([FromQuery] APIArgs args, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<UniversityResponseModel>>> GetUniversitiesAsync([FromQuery] APIArgs? args, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Universities,
                                                     x => x.ToResponseModel(),
                                                     Builders<UniversityEntity>.Filter.Empty, args,
@@ -95,6 +95,20 @@ namespace MeetEdu
         #endregion
 
         #region Departments
+
+        /// <summary>
+        /// Gets the departments
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.DepartmentsRoute)]
+        public async Task<ActionResult<IEnumerable<DepartmentResponseModel>>> GetDepartmentsAsync([FromQuery] DepartmentAPIArgs? args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Departments,
+                                                    x => x.ToResponseModel(),
+                                                    args?.CreateFilters().AggregateFilters(), args,
+                                                    cancellationToken, x => x.Name);
 
         /// <summary>
         /// Gets the department with the specified <paramref name="id"/>
@@ -163,6 +177,20 @@ namespace MeetEdu
         #endregion
 
         #region Professors
+
+        /// <summary>
+        /// Gets the professors
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.ProfessorsRoute)]
+        public async Task<ActionResult<IEnumerable<ProfessorResponseModel>>> GetProfessorsAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Professors,
+                                                    x => x.ToResponseModel(),
+                                                    args.CreateFilters<ProfessorEntity>().AggregateFilters(), args,
+                                                    cancellationToken, x => x.Field);
 
         /// <summary>
         /// Gets the professor with the specified <paramref name="id"/>

@@ -100,6 +100,17 @@ namespace MeetEdu
             => (await DI.UsersRepository.AddUserAsync(model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
+        /// Gets the user with the specified <paramref name="userId"/>
+        /// </summary>
+        /// <param name="userId">The id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetCoreAPIRoutes.UserRoute)]
+        public async Task<ActionResult<UserResponseModel>?> GetUserAsync([FromRoute] string userId, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetAsync(MeetEduDbMapper.Users, x => x.ToResponseModel(), x => x.Id == userId.ToObjectId(), cancellationToken);
+
+        /// <summary>
         /// Updates the user with the specified <paramref name="userId"/>
         /// </summary>
         /// <param name="userId">The id</param>

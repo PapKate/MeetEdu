@@ -5,10 +5,18 @@
 
 @namespace MeetEdu
 
-<Button BackColor="@Color" ForeColor="@Color.DarkOrWhite()" BorderRadius="@LargeBorderRadius" BoxShadow="@BoxShadow" CssClasses="uniBoxImageContainer">
-    <img class="uniBoxImage" src="@Image" alt="@Name"/>
-    <h1 class="uniboxName">@Name</h1>
-</Button>
+@if(University is not null)
+{
+    <Button BackColor="@University.Color" 
+            ForeColor="@University.Color.DarkOrWhite()" 
+            BorderRadius="@LargeBorderRadius" 
+            BoxShadow="@BoxShadow" 
+            CssClasses="uniBoxImageContainer"
+            OnClick="@UniversityButton_OnClick">
+        <img class="uniBoxImage" src="@University.ImageUrl?.ToString()" alt="@University.Name"/>
+        <h1 class="uniboxName">@University.Name</h1>
+    </Button>
+}
 
 <style>
 

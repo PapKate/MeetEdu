@@ -1,6 +1,7 @@
 ﻿using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace MeetCore
 {
@@ -46,6 +47,12 @@ namespace MeetCore
         /// </summary>
         [Inject]
         protected StateManagerCore StateManager { get; set; } = default!;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Inject]
+        protected IJSRuntime JSRuntime { get; set; } = default!;
 
         #endregion
 

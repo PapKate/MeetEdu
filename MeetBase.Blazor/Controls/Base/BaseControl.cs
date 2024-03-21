@@ -211,13 +211,13 @@ namespace MeetBase.Blazor
             IsMouseDown = true;
 
             OnStateChanged();
-            OnMouseDownCore();
+            OnMouseDownCore(e);
         }
 
         /// <summary>
         /// Handles the mouse down
         /// </summary>
-        protected virtual void OnMouseDownCore() { }
+        protected virtual void OnMouseDownCore(MouseEventArgs e) { }
 
         /// <summary>
         /// Handles the right click

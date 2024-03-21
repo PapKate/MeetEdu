@@ -55,6 +55,7 @@ builder.Services.AddSingleton(provider => MembersRepository.Instance);
 builder.Services.AddSingleton(provider => UniversitiesRepository.Instance);
 builder.Services.AddSingleton(provider => DepartmentsRepository.Instance);
 builder.Services.AddSingleton(provider => AppointmentsRepository.Instance);
+builder.Services.AddSingleton<MeetEduController>();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 

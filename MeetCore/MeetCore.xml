@@ -729,6 +729,11 @@
             The state management service
             </summary>
         </member>
+        <member name="P:MeetCore.SideMenu.JSRuntime">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:MeetCore.SideMenu.#ctor">
             <summary>
             Default constructor
@@ -1411,6 +1416,16 @@
             The state management service
             </summary>
         </member>
+        <member name="P:MeetCore.StateManagablePage.SessionStorageManager">
+            <summary>
+            The session storage management service
+            </summary>
+        </member>
+        <member name="P:MeetCore.StateManagablePage.Client">
+            <summary>
+            The client
+            </summary>
+        </member>
         <member name="M:MeetCore.StateManagablePage.#ctor">
             <summary>
             Default constructor
@@ -1422,9 +1437,7 @@
             </summary>
         </member>
         <member name="M:MeetCore.StateManagablePage.OnInitialized">
-            <summary>
-            Method invoked when the component is ready to start, having received its initial parameters from its parent in the render tree
-            </summary>
+            <inheritdoc/>
         </member>
         <member name="M:MeetCore.StateManagablePage.OnInitializedCore">
             <summary>
@@ -1471,13 +1484,13 @@
             Resets the sate manager values
             </summary>
         </member>
-        <member name="M:MeetCore.StateManagerCore.SetLoginUserData(System.Boolean,MeetBase.Web.UserResponseModel,MeetBase.Web.SecretaryResponseModel,MeetBase.Web.DepartmentResponseModel)">
+        <member name="M:MeetCore.StateManagerCore.SetLoggedInUserData(System.Boolean,MeetBase.Web.UserResponseModel,MeetBase.Web.SecretaryResponseModel,MeetBase.Web.DepartmentResponseModel)">
             <summary>
             Sets the values for the <see cref="P:MeetCore.StateManagerCore.User"/> and  <see cref="P:MeetCore.StateManagerCore.Secretary"/> properties
             </summary>
             <remarks>The method that will be accessed by the sender component to update the state</remarks>
         </member>
-        <member name="M:MeetCore.StateManagerCore.SetLoginUserData(System.Boolean,MeetBase.Web.UserResponseModel,MeetBase.Web.ProfessorResponseModel,MeetBase.Web.DepartmentResponseModel)">
+        <member name="M:MeetCore.StateManagerCore.SetLoggedInUserData(System.Boolean,MeetBase.Web.UserResponseModel,MeetBase.Web.ProfessorResponseModel,MeetBase.Web.DepartmentResponseModel)">
             <summary>
             Sets the values for the <see cref="P:MeetCore.StateManagerCore.User"/> and  <see cref="P:MeetCore.StateManagerCore.Professor"/> properties
             </summary>
@@ -1558,11 +1571,6 @@
             The navigation manager service
             </summary>
         </member>
-        <member name="P:MeetCore.Index.Client">
-            <summary>
-            The client
-            </summary>
-        </member>
         <member name="P:MeetCore.Index.Snackbar">
             <summary>
             The <see cref="N:MudBlazor"/> snack bar manager
@@ -1573,7 +1581,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Index.OnInitialized">
+        <member name="M:MeetCore.Index.OnInitializedCore">
             <summary>
             <inheritdoc/>
             </summary>
@@ -1765,7 +1773,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Professor_OfficePage.OnInitialized">
+        <member name="M:MeetCore.Professor_OfficePage.OnInitializedCore">
             <summary>
             <inheritdoc/>
             </summary>
@@ -1837,7 +1845,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Professor_ProfilePage.OnInitialized">
+        <member name="M:MeetCore.Professor_ProfilePage.OnInitializedCore">
             <summary>
             <inheritdoc/>
             </summary>
@@ -1990,7 +1998,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Secretary_DepartmentFacultyPage.OnInitialized">
+        <member name="M:MeetCore.Secretary_DepartmentFacultyPage.OnInitializedCore">
             <summary>
             <inheritdoc/>
             </summary>
@@ -2086,7 +2094,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.OnInitialized">
+        <member name="M:MeetCore.Secretary_DepartmentLayoutPage.OnInitializedCore">
             <summary>
             <inheritdoc/>
             </summary>
@@ -2148,7 +2156,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Secretary_DepartmentSecretaryPage.OnInitialized">
+        <member name="M:MeetCore.Secretary_DepartmentSecretaryPage.OnInitializedCore">
             <summary>
             <inheritdoc/>
             </summary>
@@ -2204,7 +2212,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetCore.Secretary_InboxPage.OnInitialized">
+        <member name="M:MeetCore.Secretary_InboxPage.OnInitializedCore">
             <summary>
             <inheritdoc/>
             </summary>

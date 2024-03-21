@@ -96,6 +96,14 @@ namespace MeetBase.Web
             => WebRequestsClient.Instance.PostAsync<UserResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.UsersRoute), model, null);
 
         /// <summary>
+        /// Gets the user with the specified <paramref name="id"/>
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<UserResponseModel>> GetUserAsync(string id)
+            => WebRequestsClient.Instance.GetAsync<UserResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetUserRoute(id)), null);
+
+        /// <summary>
         /// Updates the user with the specified <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id</param>

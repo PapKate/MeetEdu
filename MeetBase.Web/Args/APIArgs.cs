@@ -117,6 +117,16 @@
         #region Public Properties
 
         /// <summary>
+        /// Limit the result to entries with specific university ids
+        /// </summary>
+        public IEnumerable<string>? IncludeUniversities { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific university ids
+        /// </summary>
+        public IEnumerable<string>? ExcludeUniversities { get; set; }
+
+        /// <summary>
         /// Limit the result to entries with specific department ids
         /// </summary>
         public IEnumerable<string>? IncludeDepartments { get; set; }

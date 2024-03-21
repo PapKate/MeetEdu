@@ -12,104 +12,107 @@
 <PageTitle>@EnglishLocalization.Profile</PageTitle>
 
 <ApplicationContainer>
+    @if(Professor is not null)
+    {
+        <div class="staffMemberContainer" style="@BorderBrushVariable.SetCssColor(User.Color)">
 
-    <div class="staffMemberContainer" style="@BorderBrushVariable.SetCssColor(User.Color)">
-
-        <div class="staffMemberRibbonContainer" style="@BackgroundVariable.SetCssColor(User.Color) @ForegroundVariable.SetCssColor(User.Color.DarkOrWhite())">
-            <div></div>
-            <div class="staffMemberRibbon">
-                <div class="staffMemberRibbonInfoContainer">
-                    <span class="staffMemberRibbonInfo">@User.LastName @User.FirstName</span>
-                    <span class="staffMemberRibbonInfoDetails">@Professor.Rank</span>
-                </div>
-                <IconButton BackColor="transparent"
-                            ForeColor="@White"
-                            VectorSource="@IconPaths.PencilOutlinePath"
-                            BoxShadow="none"
-                            OnClick="@UpdateProfessor"
-                            CssClasses="staffmemberRibbonEditContainer" />
-            </div>
-        </div>
-
-        <div class="staffMemberInfoContainer" style="@ForegroundVariable.SetCssColor(User.Color)">
-            <div class="staffMemberImageAndContactContainer">
-                <div class="staffMemberImageContainer">
-                    <img class="staffMemberImage" src="@User.ImageUrl?.ToString()" alt="name" />
-                </div>
-                <div class="staffMemberContactContainer">
-                    <div class="staffMemberContactImage">
-                        <MapMarkerVector Color="@User.Color" />
+            <div class="staffMemberRibbonContainer" style="@BackgroundVariable.SetCssColor(User.Color) @ForegroundVariable.SetCssColor(User.Color.DarkOrWhite())">
+                <div></div>
+                <div class="staffMemberRibbon">
+                    <div class="staffMemberRibbonInfoContainer">
+                        <span class="staffMemberRibbonInfo">@User.LastName @User.FirstName</span>
+                        <span class="staffMemberRibbonInfoDetails">@Professor.Rank</span>
                     </div>
-                    <span class="staffMemberContactValue">@User.Location?.Address</span>
-
-                    <div class="staffMemberContactImage">
-                        <CallVector Color="@User.Color" />
-                    </div>
-                    <span class="staffMemberContactValue">+@User.PhoneNumber</span>
-
-                    <div class="staffMemberContactImage">
-                        <EmailVector Color="@User.Color" />
-                    </div>
-                    <span class="staffMemberContactValue">@User.Email</span>
-
+                    <IconButton BackColor="transparent"
+                                ForeColor="@White"
+                                VectorSource="@IconPaths.PencilOutlinePath"
+                                BoxShadow="none"
+                                OnClick="@UpdateProfessor"
+                                CssClasses="staffmemberRibbonEditContainer" />
                 </div>
             </div>
-            <div class="staffMemberPositionContainer">
-                <span class="staffMemberWeeklyScheduleTitle" >Department</span>
-                <span class="staffMemberPosition">@StateManager.Department?.Name</span>
-            </div>
-            @if(!Professor.Websites.IsNullOrEmpty())
-            {
-                <div id="professorWebsites" class="staffMemberPositionContainer">
-                    <span class="staffMemberWeeklyScheduleTitle">Websites</span>
-                    @foreach(var website in Professor.Websites)
-                    {
-                        <span class="staffMemberPosition professorWebsiteTitle">
-                            <a href="@website.Link" target="_blank" rel="noopener noreferrer" style="@ForegroundVariable.SetCssColor(User.Color)">@website.Name</a>
-                        </span>
-                    }
-                </div>
-            }
-            <div class="staffMemberWeeklyScheduleContainer">
-                <div class="staffMemberWeeklySchedule">
-                    <span class="staffMemberWeeklyScheduleTitle">Office hours</span>
-                </div>
-                @if (Professor.WeeklySchedule is not null)
-                {
-                    @foreach (var schedule in Professor.WeeklySchedule.WeeklyHours.OrderBy(x => x.DayOfWeek).GroupBy(x => x.DayOfWeek))
-                    {
-                        <div class="staffMemberWeeklyScheduleDayContainer">
-                            <span class="staffMemberWeeklyScheduleDay">@schedule.Key</span>
-                            @foreach (var timespan in schedule.OrderBy(x => x.Start))
-                            {
-                                <span class="staffMemberWeeklyScheduleTime">@timespan.Start.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat) - @timespan.End.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat)</span>
-                            }
+
+            <div class="staffMemberInfoContainer" style="@ForegroundVariable.SetCssColor(User.Color)">
+                <div class="staffMemberImageAndContactContainer">
+                    <div class="staffMemberImageContainer">
+                        <img class="staffMemberImage" src="@User.ImageUrl?.ToString()" alt="name" />
+                    </div>
+                    <div class="staffMemberContactContainer">
+                        <div class="staffMemberContactImage">
+                            <MapMarkerVector Color="@User.Color" />
                         </div>
-                    }
+                        <span class="staffMemberContactValue">@User.Location?.Address</span>
+
+                        <div class="staffMemberContactImage">
+                            <CallVector Color="@User.Color" />
+                        </div>
+                        <span class="staffMemberContactValue">+@User.PhoneNumber</span>
+
+                        <div class="staffMemberContactImage">
+                            <EmailVector Color="@User.Color" />
+                        </div>
+                        <span class="staffMemberContactValue">@User.Email</span>
+
+                    </div>
+                </div>
+                <div class="staffMemberPositionContainer">
+                    <span class="staffMemberWeeklyScheduleTitle" >Department</span>
+                    <span class="staffMemberPosition">@StateManager.Department?.Name</span>
+                </div>
+                @if(!Professor.Websites.IsNullOrEmpty())
+                {
+                    <div id="professorWebsites" class="staffMemberPositionContainer">
+                        <span class="staffMemberWeeklyScheduleTitle">Websites</span>
+                        @foreach(var website in Professor.Websites)
+                        {
+                            <span class="staffMemberPosition professorWebsiteTitle">
+                                <a href="@website.Link" target="_blank" rel="noopener noreferrer" style="@ForegroundVariable.SetCssColor(User.Color)">@website.Name</a>
+                            </span>
+                        }
+                    </div>
                 }
-                <span class="staffMemberWeeklyScheduleNote">@Professor.WeeklySchedule?.Note</span>
+                <div class="staffMemberWeeklyScheduleContainer">
+                    <div class="staffMemberWeeklySchedule">
+                        <span class="staffMemberWeeklyScheduleTitle">Office hours</span>
+                    </div>
+                    @if (Professor.WeeklySchedule is not null)
+                    {
+                        @foreach (var schedule in Professor.WeeklySchedule.WeeklyHours.OrderBy(x => x.DayOfWeek).GroupBy(x => x.DayOfWeek))
+                        {
+                            <div class="staffMemberWeeklyScheduleDayContainer">
+                                <span class="staffMemberWeeklyScheduleDay">@schedule.Key</span>
+                                @foreach (var timespan in schedule.OrderBy(x => x.Start))
+                                {
+                                    <span class="staffMemberWeeklyScheduleTime">@timespan.Start.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat) - @timespan.End.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat)</span>
+                                }
+                            </div>
+                        }
+                    }
+                    <span class="staffMemberWeeklyScheduleNote">@Professor.WeeklySchedule?.Note</span>
+                </div>
+            </div>
+
+            <div class="locationContainer">
+                <img class="location" src="./icons/map.png" alt="map" />
             </div>
         </div>
 
-        <div class="locationContainer">
-            <img class="location" src="./icons/map.png" alt="map" />
+        <div class="staffMemberQuoteContainer">
+            <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+            <span>"@Professor.Quote"</span>
+            <MudDivider DividerType="DividerType.Middle" Class="my-6" />
         </div>
-    </div>
 
-    <div class="staffMemberQuoteContainer">
-        <MudDivider DividerType="DividerType.Middle" Class="my-6" />
-        <span>"@Professor.Quote"</span>
-        <MudDivider DividerType="DividerType.Middle" Class="my-6" />
-    </div>
+        <MarkDownInput Id="professorResearchTextContainer"
+                       EditButtonColor="@User.Color"
+                       Lines="12"
+                       Placeholder="Tell us about your research interests here..."
+                       Text="@mText"
+                       TextChanged="@SaveResearchInterests">
+            <span class="professorResearchTitle" style="@ForegroundVariable.SetCssColor(User.Color)">Research interests</span>
+        </MarkDownInput>
+    }
 
-    <MarkDownInput Id="professorResearchTextContainer"
-                   EditButtonColor="@User.Color"
-                   Lines="12"
-                   Placeholder="Tell us about your research interests here..."
-                   Text="@mText"
-                   TextChanged="@SaveResearchInterests">
-        <span class="professorResearchTitle" style="@ForegroundVariable.SetCssColor(User.Color)">Research interests</span>
-    </MarkDownInput>
 </ApplicationContainer>
 
 

@@ -134,10 +134,7 @@ namespace MeetEdu
                 }
 
                 cfg.CreateMap<ProfessorRequestModel, ProfessorEntity>()
-                    .ForMember(x => x.Lectures, x =>
-                    {
-                        x.Ignore();
-                    })
+                    .ForMember(x => x.Lectures, x => x.Ignore())
                     .AfterMap((request, entity) => 
                     {
                         if (request.Lectures is null)

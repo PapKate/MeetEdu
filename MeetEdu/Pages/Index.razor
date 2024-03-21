@@ -30,7 +30,7 @@
             </h1>
         </div>
 
-        <SearchBar @bind-Text="@SearchText" />
+        <SearchBar @ref="@mSearchBar" @bind-Text="@mSearchText" />
 @* 
         <div class="searchSectionPopularSearchesContainer">
             <div class="searchSectionPopularSearchesHeader">
@@ -49,15 +49,15 @@
         </div> *@
     </div>
     <div class="uniCollaborationsContainer">
-        <UniversityBox Color="EBCA97" Name="University Of Patras" Image="./icons/papa.png" />
-        <UniversityBox Color="952927" Name="Aristotle University Of Thessaloniki" Image="./icons/apth.png" />
-        <UniversityBox Color="0067C8" Name="University Of Macedonia" Image="./icons/pamak.png" />
-        <UniversityBox Color="C5C5C5" Name="National Technical University of Athens" Image="./icons/metsovio.png" />
-
-        <UniversityBox Color="D8726A" Name="University Of Crete" Image="./icons/crete.png" />
-        <UniversityBox Color="646464" Name="National and Kapodistrian University of Athens" Image="./icons/ekpa.png" />
-        <UniversityBox Color="A1DAFB" Name="University Of Thessaly" Image="./icons/uth.png" />
-        <UniversityBox Color="B69A56" Name="Hellenic Mediterranean University" Image="./icons/mesogeiako.png" />
+        @if(!mUniversities.IsNullOrEmpty())
+        {
+            @foreach(var university in mUniversities)
+            {
+                <UniversityBox @key="@university.Id" 
+                               University="@university"
+                               OnClick="@(() => UniversityBox_OnClick(university.Id))"/>
+            }
+        }
     </div>
 </div>
 

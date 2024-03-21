@@ -1,4 +1,5 @@
 ﻿using MeetBase;
+using MeetBase.Blazor;
 using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
@@ -130,12 +131,6 @@ namespace MeetCore
         protected NavigationManager NavigationManager { get; set; } = default!;
 
         /// <summary>
-        /// The client
-        /// </summary>
-        [Inject]
-        protected MeetCoreClient Client { get; set; } = default!;
-
-        /// <summary>
         /// The <see cref="MudBlazor"/> snack bar manager
         /// </summary>
         [Inject]
@@ -160,12 +155,11 @@ namespace MeetCore
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        protected override void OnInitialized()
+        protected override async void OnInitializedCore()
         {
-            base.OnInitialized();
             // Resets the state manager values
             StateManager.ResetManager();
-
+            await SessionStorageManager.ClearAsync();
             StateManager.OnStateChange += StateHasChanged;
         }
 
@@ -211,11 +205,14 @@ namespace MeetCore
 
                 // Get user type - secretary or professor
                 var isSecretary = response.Result.Secretary is not null;
+                await SessionStorageManager.SetValueAsync(SessionStorageManager.IsSecretary, isSecretary);
+                var user = response.Result.User;
+                await SessionStorageManager.SetValueAsync(SessionStorageManager.UserId, response.Result.User.Id);
 
                 // If the connected user is a secretary...
-                if (response.Result.Secretary is not null)
+                if (isSecretary)
                 {
-                    var departmentResponse = await Client.GetDepartmentAsync(response.Result.Secretary.DepartmentId);
+                    var departmentResponse = await Client.GetDepartmentAsync(response.Result.Secretary!.DepartmentId);
 
                     // If there was an error...
                     if (!departmentResponse.IsSuccessful)
@@ -226,8 +223,12 @@ namespace MeetCore
                         return;
                     }
 
-                    Client.DepartmentId = response.Result.Secretary.DepartmentId;
-                    StateManager.SetLoginUserData(isSecretary, response.Result.User, response.Result.Secretary, departmentResponse.Result);
+                    Client.DepartmentId = departmentResponse.Result.Id;
+                    
+                    await SessionStorageManager.SetValueAsync(SessionStorageManager.DepartmentId, departmentResponse.Result.Id);
+                    await SessionStorageManager.SetValueAsync(SessionStorageManager.SecretaryId, response.Result.Secretary.Id);
+
+                    StateManager.SetLoggedInUserData(isSecretary, response.Result.User, response.Result.Secretary, departmentResponse.Result);
                     NavigationManager.Secretary_NavigateToProfilePage(response.Result.Secretary!.Id);
                 }
                 else
@@ -243,9 +244,12 @@ namespace MeetCore
                         return;
                     }
 
-                    Client.DepartmentId = response.Result.Professor.DepartmentId;
+                    Client.DepartmentId = departmentResponse.Result.Id;
 
-                    StateManager.SetLoginUserData(isSecretary, response.Result.User, response.Result.Professor, departmentResponse.Result);
+                    await SessionStorageManager.SetValueAsync(SessionStorageManager.DepartmentId, departmentResponse.Result.Id);
+                    await SessionStorageManager.SetValueAsync(SessionStorageManager.ProfessorId, response.Result.Professor.Id);
+
+                    StateManager.SetLoggedInUserData(isSecretary, response.Result.User, response.Result.Professor, departmentResponse.Result);
                     NavigationManager.Professor_NavigateToProfilePage(response.Result.Professor!.Id);
                 }
 

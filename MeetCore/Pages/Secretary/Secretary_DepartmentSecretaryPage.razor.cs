@@ -59,10 +59,8 @@ namespace MeetCore
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        protected override async void OnInitialized()
+        protected override async void OnInitializedCore()
         {
-            base.OnInitialized();
-
             var response = await Client.GetSecretariesAsync(new() { IncludeDepartments = new List<string>() { StateManager.Department!.Id } });
 
             // If there was an error...

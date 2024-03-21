@@ -76,7 +76,7 @@ namespace MeetCore
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        protected override void OnInitialized()
+        protected override void OnInitializedCore()
         {
             GetLayouts();
             mText = StateManager.Department!.LayoutDescription;
