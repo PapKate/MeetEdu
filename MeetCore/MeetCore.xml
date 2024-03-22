@@ -537,86 +537,6 @@
             Fires when the delete button is clicked
             </summary>
         </member>
-        <member name="T:MeetCore.MarkdownBlock">
-            <summary>
-            The markdown text block
-            </summary>
-        </member>
-        <member name="P:MeetCore.MarkdownBlock.CssClass">
-            <summary>
-            The CSS classes
-            </summary>
-        </member>
-        <member name="P:MeetCore.MarkdownBlock.Text">
-            <summary>
-            The text
-            </summary>
-        </member>
-        <member name="M:MeetCore.MarkdownBlock.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="T:MeetCore.MarkDownInput">
-            <summary>
-            The markdown text input
-            </summary>
-        </member>
-        <member name="P:MeetCore.MarkDownInput.Id">
-            <summary>
-            The id
-            </summary>
-        </member>
-        <member name="P:MeetCore.MarkDownInput.Placeholder">
-            <summary>
-            The placeholder
-            </summary>
-        </member>
-        <member name="P:MeetCore.MarkDownInput.Lines">
-            <summary>
-            A multi-line input will be shown if it is set to greater than one
-            </summary>
-        </member>
-        <member name="P:MeetCore.MarkDownInput.Text">
-            <summary>
-            The text
-            </summary>
-        </member>
-        <member name="P:MeetCore.MarkDownInput.EditButtonColor">
-            <summary>
-            The text
-            </summary>
-        </member>
-        <member name="P:MeetCore.MarkDownInput.ChildContent">
-            <summary>
-            The child content
-            </summary>
-        </member>
-        <member name="M:MeetCore.MarkDownInput.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="M:MeetCore.MarkDownInput.SaveButton_Onclick">
-            <summary>
-            Saves the description
-            </summary>
-        </member>
-        <member name="M:MeetCore.MarkDownInput.CancelButton_Onclick">
-            <summary>
-            Saves the description
-            </summary>
-        </member>
-        <member name="M:MeetCore.MarkDownInput.EditButton_OnClick">
-            <summary>
-            Saves the description
-            </summary>
-        </member>
-        <member name="P:MeetCore.MarkDownInput.TextChanged">
-            <summary>
-            Fires when the text is changed
-            </summary>
-        </member>
         <member name="T:MeetCore.Schedule">
             <summary>
             The schedule component
@@ -1348,11 +1268,6 @@
             The index of the selected vector component
             </summary>
         </member>
-        <member name="P:MeetCore.FormPage.Client">
-            <summary>
-            The client
-            </summary>
-        </member>
         <member name="P:MeetCore.FormPage.DialogService">
             <summary>
             The dialog service
@@ -1656,11 +1571,6 @@
             The department
             </summary>
         </member>
-        <member name="P:MeetCore.Professor_ContactFormRulesPage.Client">
-            <summary>
-            The client
-            </summary>
-        </member>
         <member name="P:MeetCore.Professor_ContactFormRulesPage.DialogService">
             <summary>
             The dialog service
@@ -1707,11 +1617,6 @@
             The department
             </summary>
         </member>
-        <member name="P:MeetCore.Professor_LecturesPage.Client">
-            <summary>
-            The client
-            </summary>
-        </member>
         <member name="P:MeetCore.Professor_LecturesPage.DialogService">
             <summary>
             The dialog service
@@ -1746,11 +1651,6 @@
         <member name="F:MeetCore.Professor_OfficePage.mDialogOptions">
             <summary>
             The <see cref="T:MudBlazor.MudDialog"/> options
-            </summary>
-        </member>
-        <member name="P:MeetCore.Professor_OfficePage.Client">
-            <summary>
-            The client
             </summary>
         </member>
         <member name="P:MeetCore.Professor_OfficePage.DialogService">
@@ -1812,7 +1712,7 @@
         </member>
         <member name="F:MeetCore.Professor_ProfilePage.mText">
             <summary>
-            The <see cref="T:MeetCore.MarkDownInput"/> text
+            The <see cref="T:MeetBase.Blazor.MarkDownInput"/> text
             </summary>
         </member>
         <member name="P:MeetCore.Professor_ProfilePage.Professor">
@@ -1823,11 +1723,6 @@
         <member name="P:MeetCore.Professor_ProfilePage.User">
             <summary>
             The user
-            </summary>
-        </member>
-        <member name="P:MeetCore.Professor_ProfilePage.Client">
-            <summary>
-            The client
             </summary>
         </member>
         <member name="P:MeetCore.Professor_ProfilePage.DialogService">
@@ -1873,11 +1768,6 @@
         <member name="P:MeetCore.Professor_SchedulePage.User">
             <summary>
             The user
-            </summary>
-        </member>
-        <member name="P:MeetCore.Professor_SchedulePage.Client">
-            <summary>
-            The client
             </summary>
         </member>
         <member name="P:MeetCore.Professor_SchedulePage.DialogService">
@@ -1978,11 +1868,6 @@
             The <see cref="T:MudBlazor.MudDialog"/> options
             </summary>
         </member>
-        <member name="P:MeetCore.Secretary_DepartmentFacultyPage.Client">
-            <summary>
-            The client
-            </summary>
-        </member>
         <member name="P:MeetCore.Secretary_DepartmentFacultyPage.DialogService">
             <summary>
             The dialog service
@@ -2029,11 +1914,6 @@
             The department
             </summary>
         </member>
-        <member name="P:MeetCore.Secretary_DepartmentInformationPage.Client">
-            <summary>
-            The client
-            </summary>
-        </member>
         <member name="P:MeetCore.Secretary_DepartmentInformationPage.DialogService">
             <summary>
             The dialog service
@@ -2067,11 +1947,6 @@
         <member name="F:MeetCore.Secretary_DepartmentLayoutPage.mDialogOptions">
             <summary>
             The <see cref="T:MudBlazor.MudDialog"/> options
-            </summary>
-        </member>
-        <member name="P:MeetCore.Secretary_DepartmentLayoutPage.Client">
-            <summary>
-            The client
             </summary>
         </member>
         <member name="P:MeetCore.Secretary_DepartmentLayoutPage.DialogService">
@@ -2136,11 +2011,6 @@
             The <see cref="T:MudBlazor.MudDialog"/> options
             </summary>
         </member>
-        <member name="P:MeetCore.Secretary_DepartmentSecretaryPage.Client">
-            <summary>
-            The client
-            </summary>
-        </member>
         <member name="P:MeetCore.Secretary_DepartmentSecretaryPage.DialogService">
             <summary>
             The dialog service
@@ -2192,11 +2062,6 @@
             The department
             </summary>
         </member>
-        <member name="P:MeetCore.Secretary_InboxPage.Client">
-            <summary>
-            The client
-            </summary>
-        </member>
         <member name="P:MeetCore.Secretary_InboxPage.DialogService">
             <summary>
             The dialog service
@@ -2235,11 +2100,6 @@
         <member name="P:MeetCore.Secretary_ProfilePage.User">
             <summary>
             The user
-            </summary>
-        </member>
-        <member name="P:MeetCore.Secretary_ProfilePage.Client">
-            <summary>
-            The client
             </summary>
         </member>
         <member name="P:MeetCore.Secretary_ProfilePage.DialogService">

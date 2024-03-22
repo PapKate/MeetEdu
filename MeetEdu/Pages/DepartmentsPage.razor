@@ -1,4 +1,4 @@
-﻿@page "/search"
+﻿@page "/departments"
 
 @using MeetBase.Blazor
 
@@ -7,27 +7,25 @@
 
 @namespace MeetEdu
 
-<PageTitle>@MeetEduConstants.AppName" Search</PageTitle>
+<PageTitle>@MeetEduConstants.AppName Search</PageTitle>
 
 <Header AppName="@MeetEduConstants.AppName"
         Username="Lime"
         BackColor="@Blue"
         ForeColor="@White" />
 
-<div class="backgroundContainer">
-    <img class="backgroundImageTopLeft" src="icons/blob2.png" alt="blob">
-    <img class="backgroundImageTopRight" src="icons/blob1.png" alt="blob" />
-    <img class="backgroundImageBottomLeft" src="icons/blob1.png" alt="blob" />
-    <img class="backgroundImageBottomRight" src="icons/blob2.png" alt="blob" />
-</div>
-
 <div class="appContainer searchPageContainer">
     <div class="searchPageSearchBarContainer">
         <SearchBar @bind-Text="@SearchText" />
     </div>
 
-    <DepartmentPreview />
-    <DepartmentPreview />
+    @if(!mDepartments.IsNullOrEmpty())
+    {
+        @foreach(var department in mDepartments)
+        {
+            <DepartmentPreview Model="@department" />
+        }
+    }
 
   @*<div class="searchPageProfessorsContainer">
         <ProfessorPreview />

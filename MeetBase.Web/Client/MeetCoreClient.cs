@@ -270,6 +270,18 @@ namespace MeetBase.Web
         public Task<WebRequestResult<DepartmentResponseModel>> DeleteDepartmentAsync(string id)
             => WebRequestsClient.Instance.DeleteAsync<DepartmentResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetDepartmentRoute(id)), null);
 
+        /// <summary>
+        /// Creates a department image
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="file">The file</param>
+        /// <returns></returns>
+        public Task<WebRequestResult<DepartmentResponseModel>> SetDepartmentImageAsync(string id, IFormFile file)
+            => WebRequestsClient.Instance.PutFilesAsync<DepartmentResponseModel>(
+                GetAbsoluteUrl(MeetCoreAPIRoutes.GetDepartmentImagesRoute(id)),
+                new List<FileUploadGroupDataModel>() { new FileUploadGroupDataModel("file", file) },
+                null);
+
         #region Layout 
 
         /// <summary>
@@ -314,7 +326,7 @@ namespace MeetBase.Web
             => WebRequestsClient.Instance.DeleteAsync<DepartmentLayoutResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.GetDepartmentLayoutRoute(id)), null);
 
         /// <summary>
-        /// Creates a department layout
+        /// Creates a department layout image
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="file">The file</param>

@@ -3413,7 +3413,7 @@
             <summary>
             Returns a flag indicating whether the specified <paramref name="type"/> inherits from
             the specified <paramref name="typeOrGenericTypeDefinition"/>. If the <paramref name="typeOrGenericTypeDefinition"/>
-            is the same as the <paramref name="type"/> then <see cref="!:false"/> is returned!
+            is the same as the <paramref name="type"/> then false is returned!
             </summary>
             <param name="type">The type</param>
             <param name="typeOrGenericTypeDefinition">The type or the generic type definition</param>

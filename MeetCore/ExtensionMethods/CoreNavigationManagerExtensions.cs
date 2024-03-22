@@ -1,5 +1,4 @@
 ﻿using MeetBase;
-using MeetBase.Blazor;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.WebUtilities;
@@ -31,7 +30,7 @@ namespace MeetCore
         /// <param name="route">The member route</param>
         /// <param name="value">The route value</param>
         /// <param name="queryParams">The optional query parameter values</param>
-        public static void Secretary_NavigateTo(this NavigationManager navigationManager, string id, string route, string? value = null, Dictionary<string, string>? queryParams = null)
+        public static void Secretary_NavigateTo(this NavigationManager navigationManager, string id, string route, string? value = null, Dictionary<string, string?>? queryParams = null)
         {
             var completeRoute = Routes.SecretariesRoute + $"/{id}" + route;
 
@@ -54,7 +53,7 @@ namespace MeetCore
         /// <param name="id">The secretary id</param>
         /// <param name="value">The route value</param>
         /// <param name="queryParams">The optional query parameter values</param>
-        public static void Secretary_NavigateToProfilePage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string>? queryParams = null) 
+        public static void Secretary_NavigateToProfilePage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string?>? queryParams = null) 
             => navigationManager.Secretary_NavigateTo(id, Routes.ProfileRoute, value, queryParams);
 
         /// <summary>
@@ -65,7 +64,7 @@ namespace MeetCore
         /// <param name="id">The secretary id</param>
         /// <param name="value">The route value</param>
         /// <param name="queryParams">The optional query parameter values</param>
-        public static void Secretary_NavigateToSecretaryPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string>? queryParams = null)
+        public static void Secretary_NavigateToSecretaryPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string?>? queryParams = null)
             => navigationManager.Secretary_NavigateTo(id, Routes.SecretaryRoute, value, queryParams);
 
         /// <summary>
@@ -76,7 +75,7 @@ namespace MeetCore
         /// <param name="id">The secretary id</param>
         /// <param name="value">The route value</param>
         /// <param name="queryParams">The optional query parameter values</param>
-        public static void Secretary_NavigateToInformationPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string>? queryParams = null)
+        public static void Secretary_NavigateToInformationPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string?>? queryParams = null)
             => navigationManager.Secretary_NavigateTo(id, Routes.InformationRoute, value, queryParams);
 
         /// <summary>
@@ -87,7 +86,7 @@ namespace MeetCore
         /// <param name="id">The secretary id</param>
         /// <param name="value">The route value</param>
         /// <param name="queryParams">The optional query parameter values</param>
-        public static void Secretary_NavigateToFacultyPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string>? queryParams = null)
+        public static void Secretary_NavigateToFacultyPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string?>? queryParams = null)
             => navigationManager.Secretary_NavigateTo(id, Routes.FacultyRoute, value, queryParams);
 
         /// <summary>
@@ -98,7 +97,7 @@ namespace MeetCore
         /// <param name="id">The secretary id</param>
         /// <param name="value">The route value</param>
         /// <param name="queryParams">The optional query parameter values</param>
-        public static void Secretary_NavigateToLayoutPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string>? queryParams = null)
+        public static void Secretary_NavigateToLayoutPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string?>? queryParams = null)
             => navigationManager.Secretary_NavigateTo(id, Routes.LayoutRoute, value, queryParams);
 
         /// <summary>
@@ -109,7 +108,7 @@ namespace MeetCore
         /// <param name="id">The secretary id</param>
         /// <param name="value">The route value</param>
         /// <param name="queryParams">The optional query parameter values</param>
-        public static void Secretary_NavigateToFormPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string>? queryParams = null)
+        public static void Secretary_NavigateToFormPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string?>? queryParams = null)
             => navigationManager.Secretary_NavigateTo(id, Routes.FormRoute, value, queryParams);
 
         /// <summary>
@@ -120,7 +119,7 @@ namespace MeetCore
         /// <param name="id">The secretary id</param>
         /// <param name="value">The route value</param>
         /// <param name="queryParams">The optional query parameter values</param>
-        public static void Secretary_NavigateToInboxPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string>? queryParams = null)
+        public static void Secretary_NavigateToInboxPage(this NavigationManager navigationManager, string id, string? value = null, Dictionary<string, string?>? queryParams = null)
             => navigationManager.Secretary_NavigateTo(id, Routes.InboxRoute, value, queryParams);
 
         #endregion

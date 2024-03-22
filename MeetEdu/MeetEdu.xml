@@ -4,6 +4,34 @@
         <name>MeetEdu</name>
     </assembly>
     <members>
+        <member name="T:MeetEdu.DepartmentPreview">
+            <summary>
+            The department preview
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentPreview.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentPreview.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentPreview.JSRuntime">
+            <summary>
+            The JS runtime service
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentPreview.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentPreview.OnAfterRenderAsync(System.Boolean)">
+            <inheritdoc/>
+        </member>
         <member name="T:MeetEdu.SearchBar">
             <summary>
             The search bar component
@@ -219,6 +247,36 @@
         <member name="F:MeetEdu.MeetEduWebServerConstants.TheCustomerServicePurchasedAmountCanNotBeSetToLessThanTheAmountOfTheScheduledPaymentsErrorMessage">
             <summary>
             Error message indicating that the purchased amount of a customer service can not be set to less than the amount of the scheduled payments
+            </summary>
+        </member>
+        <member name="T:MeetEdu.Routes">
+            <summary>
+            The app routes
+            </summary>
+        </member>
+        <member name="F:MeetEdu.Routes.DepartmentsRoute">
+            <summary>
+            The departments page
+            </summary>
+        </member>
+        <member name="F:MeetEdu.Routes.FacultyRoute">
+            <summary>
+            The faculty page
+            </summary>
+        </member>
+        <member name="F:MeetEdu.Routes.ProfessorsRoute">
+            <summary>
+            The professors page
+            </summary>
+        </member>
+        <member name="F:MeetEdu.Routes.ProfileRoute">
+            <summary>
+            The profile page route
+            </summary>
+        </member>
+        <member name="F:MeetEdu.Routes.AppointmentsRoute">
+            <summary>
+            The appointments page route
             </summary>
         </member>
         <member name="T:MeetEdu.MeetCoreController">
@@ -1071,6 +1129,45 @@
         <member name="M:MeetEdu.LoginResult.ToResponseModel">
             <summary>
             Creates and returns a <see cref="T:MeetBase.Web.UserResponseModel"/> from the current <see cref="T:MeetEdu.UserEntity"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetEdu.EntryPoint">
+            <summary>
+            Contains methods for filling the DB with data
+            </summary>
+        </member>
+        <member name="P:MeetEdu.EntryPoint.Controller">
+            <summary>
+            The controller
+            </summary>
+        </member>
+        <member name="M:MeetEdu.EntryPoint.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.EntryPoint.AddUniversityLabelsAsync">
+            <summary>
+            Adds labels to the DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.EntryPoint.AddUniversitiesAsync">
+            <summary>
+            Adds universities to the DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.EntryPoint.AddDepartmentsAsync">
+            <summary>
+            Adds departments to the DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.EntryPoint.AddSecretariesAsync">
+            <summary>
+            Adds secretaries to the DB
             </summary>
             <returns></returns>
         </member>
@@ -2759,6 +2856,48 @@
             <param name="filters">The filters</param>
             <returns></returns>
         </member>
+        <member name="T:MeetEdu.EduNavigationManagerExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Microsoft.AspNetCore.Components.NavigationManager"/>
+            </summary>
+        </member>
+        <member name="M:MeetEdu.EduNavigationManagerExtensions.NavigateToHomePage(Microsoft.AspNetCore.Components.NavigationManager)">
+            <summary>
+            Navigates to the home page
+            <code>/</code>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+        </member>
+        <member name="M:MeetEdu.EduNavigationManagerExtensions.NavigateToDepartmentsPage(Microsoft.AspNetCore.Components.NavigationManager,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates to the departments page
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetEdu.EduNavigationManagerExtensions.NavigateToDepartmentPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates to the department page of the one with the specified <paramref name="id"/>
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The department id</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetEdu.EduNavigationManagerExtensions.NavigateToFacultyPage(Microsoft.AspNetCore.Components.NavigationManager,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates to the faculty page
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
+        <member name="M:MeetEdu.EduNavigationManagerExtensions.NavigateToprofessorPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Navigates to the professor page
+            </summary>
+            <param name="navigationManager">The navigation manager</param>
+            <param name="id">The professor id</param>
+            <param name="queryParams">The optional query parameter values</param>
+        </member>
         <member name="T:MeetEdu.FrameworkConstructionExtensions">
             <summary>
             Extension methods 
@@ -3412,6 +3551,44 @@
             <param name="serializationInfo">The serialization information.</param>
             <returns></returns>
         </member>
+        <member name="T:MeetEdu.DepartmentsPage">
+            <summary>
+            The departments search page
+            </summary>
+        </member>
+        <member name="F:MeetEdu.DepartmentsPage.mDepartments">
+            <summary>
+            The departments
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentsPage.SearchText">
+            <summary>
+            The search text
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentsPage.UniversityId">
+            <summary>
+            The university id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentsPage.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentsPage.Controller">
+            <summary>
+            The controller
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentsPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentsPage.OnInitializedAsync">
+            <inheritdoc/>
+        </member>
         <member name="T:MeetEdu.Pages.ErrorModel">
             <summary>
             The error model
@@ -3443,6 +3620,11 @@
             On get
             </summary>
         </member>
+        <member name="P:MeetEdu.Pages.DepartmentPage.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
         <member name="T:MeetEdu.Index">
             <summary>
             The main page
@@ -3463,6 +3645,11 @@
             The search bar
             </summary>
         </member>
+        <member name="P:MeetEdu.Index.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
         <member name="P:MeetEdu.Index.Controller">
             <summary>
             The controller
@@ -3481,19 +3668,9 @@
             Navigates to the respected page of professors or departments of the current department
             </summary>
         </member>
-        <member name="T:MeetEdu.SearchPage">
+        <member name="M:MeetEdu.Index.SearchButton_OnClick">
             <summary>
-            The search page
-            </summary>
-        </member>
-        <member name="P:MeetEdu.SearchPage.SearchText">
-            <summary>
-            The search text
-            </summary>
-        </member>
-        <member name="M:MeetEdu.SearchPage.#ctor">
-            <summary>
-            Default constructor
+            Navigates to the respected page of professors or departments of the current department
             </summary>
         </member>
         <member name="T:MeetEdu.AccountsRepository">

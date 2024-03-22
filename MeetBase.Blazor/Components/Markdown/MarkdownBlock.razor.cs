@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace MeetCore
+namespace MeetBase.Blazor
 {
     /// <summary>
     /// The markdown text block

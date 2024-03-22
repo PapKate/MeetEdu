@@ -104,10 +104,10 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpGet]
         [Route(MeetEduAPIRoutes.DepartmentsRoute)]
-        public async Task<ActionResult<IEnumerable<DepartmentResponseModel>>> GetDepartmentsAsync([FromQuery] DepartmentAPIArgs? args, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<DepartmentResponseModel>>> GetDepartmentsAsync([FromQuery] DepartmentAPIArgs? args = null, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Departments,
                                                     x => x.ToResponseModel(),
-                                                    args?.CreateFilters().AggregateFilters(), args,
+                                                    args?.CreateFilters()?.AggregateFilters() ?? null, args,
                                                     cancellationToken, x => x.Name);
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Amazon.Runtime.Internal.Transform;
+
+using Microsoft.AspNetCore.Components;
 
 using MudBlazor;
 
@@ -29,6 +31,12 @@ namespace MeetEdu
         #endregion
 
         #region Protected Properties
+
+        /// <summary>
+        /// The navigation manager service
+        /// </summary>
+        [Inject]
+        protected NavigationManager? NavigationManager { get; set; }
 
         /// <summary>
         /// The controller
@@ -72,29 +80,45 @@ namespace MeetEdu
         /// <summary>
         /// Navigates to the respected page of professors or departments of the current department
         /// </summary>
-        private async void UniversityBox_OnClick(string universityId)
+        private void UniversityBox_OnClick(string universityId)
         {
-            if(mSearchBar!.IsSearchForDepartments)
+            // If no navigation manager is found...
+            if (NavigationManager is null)
+                // Returns
+                return;
+
+            NavigationManager.NavigateToDepartmentsPage(new Dictionary<string, string?>() 
             {
-                var deparmtnets = await Controller.GetDepartmentsAsync(new DepartmentAPIArgs() 
-                { 
-                    IncludeUniversities = new List<string>() 
-                    { 
-                        universityId 
-                    } 
+                new("UniversityId", universityId)
+            });
+        }
+
+        /// <summary>
+        /// Navigates to the respected page of professors or departments of the current department
+        /// </summary>
+        private void SearchButton_OnClick()
+        {
+            // If no navigation manager is found...
+            if (NavigationManager is null)
+                // Returns
+                return;
+
+            if (mSearchBar!.IsSearchForDepartments)
+            {
+                NavigationManager.NavigateToDepartmentsPage(new Dictionary<string, string?>()
+                {
+                    new("SearchText", mSearchText)
                 });
             }
             else
             {
-                var professors = await Controller.GetProfessorsAsync(new DepartmentRelatedAPIArgs()
+                NavigationManager.NavigateToFacultyPage(new Dictionary<string, string?>()
                 {
-                    IncludeUniversities = new List<string>()
-                    {
-                        universityId
-                    }
+                    new("SearchText", mSearchText)
                 });
             }
         }
+
 
         #endregion
     }

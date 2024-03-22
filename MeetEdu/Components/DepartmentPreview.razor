@@ -5,75 +5,88 @@
 @namespace MeetEdu
 @using MeetBase.Blazor;
 
-<div class="modelContainer departmentPreviewContainer" style="@BorderBrushVariable.SetCssColor(Orange)">
-    <div class="modelRibbonContainer" style="@BackgroundVariable.SetCssColor(Orange) @ForegroundVariable.SetCssColor(Orange.DarkOrWhite())">
-        <div class="modelEmptySpace"></div>
-        <div class="modelRibbon">
-            <div class="modelRibbonInfoContainer">
-                <h1 class="modelRibbonInfo">Computer Engineering & Informatics Department</h1>
-                <div class="modelRibbonInfoDetails">
-                    <h3 class="departmentPreviewRibbonUniName">University of Patras</h3>
-                    <div class="departmentPreviewStaffMembersContainer">
-                        <span class="departmentPreviewStaffMembers">- 32</span>
-                        <MudIcon Icon="@Icons.Material.Filled.Groups3" Size="@Size.Medium" />
+@if(Model is not null)
+{
+    <div class="modelContainer departmentPreviewContainer" style="@BorderBrushVariable.SetCssColor(Model.Color)" @onclick="@DepartmentContainer_OnClick">
+        <div class="modelRibbonContainer" style="@BackgroundVariable.SetCssColor(Model.Color) @ForegroundVariable.SetCssColor(Model.Color.DarkOrWhite())">
+            <div class="modelEmptySpace"></div>
+            <div class="modelRibbon">
+                <div class="modelRibbonInfoContainer">
+                    <h1 class="modelRibbonInfo">@Model.Name</h1>
+                    <div class="modelRibbonInfoDetails">
+                        <h3 class="departmentPreviewRibbonUniName">@Model.UniversityId</h3>
+                        <div class="departmentPreviewStaffMembersContainer">
+                            <span class="departmentPreviewStaffMembers">- @Model.Category</span>
+                            <MudIcon Icon="@Icons.Material.Filled.Groups3" Size="@Size.Medium" />
+                        </div>
                     </div>
+                </div>  
+
+                <IconButton BackColor="transparent" 
+                            ForeColor="@Model.Color.DarkOrWhite()" 
+                            VectorSource="@IconPaths.HeartOutlinePath" 
+                            HasAnimation="false"
+                            BoxShadow="none"
+                            CssClasses="departmentPreviewRibbonHeartContainer" />
+            </div>
+        </div>
+
+        <div class="modelInfoContainer">
+            <div class="modelImageAndContactContainer">
+                <div class="modelImageContainer">
+                    <img class="modelImage" src="@Model.ImageUrl?.ToString()" alt="@Model.Name" />
+                </div>
+                <div class="modelContactContainer">
+                    <div class="modelContactImage">
+                        <CallVector Color="@Model.Color" />
+                    </div>
+                    <span class="modelContactValue">@Model.PhoneNumber?.ToE164PhoneNumberString()</span>
+
+                    <div class="modelContactImage">
+                        <EmailMultipleVector Color="@Model.Color" />
+                    </div>
+                    <span class="modelContactValue">@Model.Email</span>
+                    
+                    <div class="modelContactImage">
+                        <MapMarkerVector Color="@Model.Color" />
+                    </div>
+                    <span class="modelContactValue">@(Model.Location is not null ? $"{Model.Location.Address}, {Model.Location.City}, {Model.Location.Postcode}" : "-")</span>
                 </div>
             </div>
 
-            <IconButton BackColor="transparent" 
-                        ForeColor="@Orange.DarkOrWhite()" 
-                        VectorSource="@IconPaths.HeartOutlinePath" 
-                        HasAnimation="false"
-                        CssClasses="departmentPreviewRibbonHeartContainer" />
-        </div>
-    </div>
-
-    <div class="modelInfoContainer">
-        <div class="modelImageAndContactContainer">
-            <div class="modelImageContainer">
-                <img class="modelImage" src="./icons/science.png" alt="name" />
-            </div>
-            <div class="modelContactContainer">
-                <img class="modelContactImage modelContactCallImage" src="./icons/call.png" alt="phone" />
-                <span class="modelContactValue">2610 623555</span>
-
-                <img class="modelContactImage modelContactTelephoneImage" src="./icons/telephone.png" alt="phone" />
-                <span class="modelContactValue">6944 511393</span>
-
-                <img class="modelContactImage modelContactLocationImage" src="./icons/map-mark.png" alt="phone" />
-                <span class="modelContactValue">Πανεπιστημιούπολη Πατρών, 26504</span>
-            </div>
-        </div>
-
-        <div class="modelWeeklyScheduleContainer">
-            <div class="modelWeeklySchedule">
-                <span class="modelWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(Orange)">Operating days & hours</span>
+             <div class="modelWeeklyScheduleContainer">
+                <div class="modelWeeklySchedule">
+                    <span class="modelWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(Model.Color)">Secretary</span>
+                </div>
+                @if(Model.WorkHours is not null)
+                {
+                    @foreach (var schedule in Model.WorkHours.WeeklyHours.OrderBy(x => x.DayOfWeek).GroupBy(x => x.DayOfWeek))
+                    {
+                        <div class="modelWeeklyScheduleDayContainer">
+                            <span class="modelWeeklyScheduleDay">@schedule.Key</span>
+                            @foreach(var timespan in schedule.OrderBy(x => x.Start))
+                            {
+                                <span class="modelWeeklyScheduleTime">@timespan.Start.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat) - @timespan.End.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat)</span>
+                            }
+                        </div>
+                    }
+                }
+                
                 <span class="modelWeeklyScheduleNote">Any other time outside of the working schedule of the secretary office needs prior notice.</span>
             </div>
-            <div class="modelWeeklyScheduleDayContainer">
-                <span class="modelWeeklyScheduleDay">Monday</span>
-                <span class="modelWeeklyScheduleTime">09:30 - 13:00</span>
-                <span class="modelWeeklyScheduleTime">19:00 - 20:00</span>
-            </div>
-            <div class="modelWeeklyScheduleDayContainer">
-                <span class="modelWeeklyScheduleDay">Wednesday</span>
-                <span class="modelWeeklyScheduleTime">19:00 - 20:00</span>
-            </div>
+
+        </div>
+        <div class="departmentPreviewDescription">
+            
+            @Model.Description
+        </div>
+
+        <div class="departmentPreviewMapContainer">
+            <div id="@Model.Id" class="departmentPreviewMap" ></div>
         </div>
 
     </div>
-    <div class="departmentPreviewDescription">
-        Το ΤΜΗΥ&Π ιδρύθηκε το 1979 και λειτουργεί από το 1980. Είναι το πρωτοπόρο τμήμα στον χώρο της Τεχνολογίας Υπολογιστών,
-        Πληροφορικής και Επικοινωνιών στην Ελλάδα. Βρίσκεται ανάμεσα στα καλύτερα Πανεπιστημιακά Τμήματα στην Ελλάδα και με μεγάλες
-        διακρίσεις διεθνώς. Ο σκοπός του είναι η διδασκαλία στην επιστήμη και τεχνολογία των υπολογιστών και η
-        μελέτη των εφαρμογών τους. 
-    </div>
-
-    <div class="departmentPreviewMapContainer">
-        <img class="departmentPreviewMap" src="./icons/mapCeid.png" alt="map" />
-    </div>
-
-</div>
+}
 
 <style>
     .departmentPreviewRibbonUniName {
@@ -83,8 +96,9 @@
 
     .departmentPreviewRibbonHeartContainer {
         position: relative;
-        width: 44px;
-        height: 44px;
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
     }
 
     .departmentPreviewStaffMembersContainer {
@@ -100,7 +114,7 @@
 
     .departmentPreviewDescription {
         grid-column-start: 1;
-        grid-column-end: 2;
+        grid-column-end: 3;
         position: relative;
         display: flex;
         padding: @LargePadding;
@@ -111,27 +125,24 @@
         grid-column-start: 2;
         grid-column-end: 3;
         position: relative;
-        top: 104px;
+        margin-top: 104px;
         width: 100%;
         height: fit-content;
         display: flex;
         padding: @LargePadding;
+        z-index: 1;
     }
 
     .departmentPreviewMap {
         position: relative;
         width: 100%;
-        height: auto;
+        height: 320px;
         border-radius: @LargeBorderRadius;
         border: solid 1px @Gray.NormalizedColor();
     }
 
 
     @@media screen and (max-width: 1060px) {
-
-        .departmentPreviewDescription {
-            grid-column-end: 3;
-        }
 
         .departmentPreviewContainer .modelContainer {
             grid-template-columns: 1fr 1fr;
@@ -162,6 +173,7 @@
         .departmentPreviewRibbonHeartContainer {
             width: 2rem;
             height: 2rem;
+            
         }
 
         .departmentPreviewContainer .modelRibbonContainer {

@@ -1,5 +1,17 @@
-﻿<h3>DepartmentPage</h3>
+﻿@page "/departments/{Id}"
+
+
+<h3>DepartmentPage</h3>
 
 @code {
+    #region Public Properties
+
+    /// <summary>
+    /// The id
+    /// </summary>
+    [Parameter]
+    public string? Id { get; set; }
+
+    #endregion
 
 }

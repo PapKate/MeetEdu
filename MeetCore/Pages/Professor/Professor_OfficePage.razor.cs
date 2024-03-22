@@ -25,12 +25,6 @@ namespace MeetCore
         #region Protected Properties
 
         /// <summary>
-        /// The client
-        /// </summary>
-        [Inject]
-        protected MeetCoreClient Client { get; set; } = default!;
-
-        /// <summary>
         /// The dialog service
         /// </summary>
         [Inject]

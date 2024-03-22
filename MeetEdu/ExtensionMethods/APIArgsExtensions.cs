@@ -1,13 +1,6 @@
-﻿
-using Amazon.SecurityToken.Model;
-
-using MeetEdu.Helpers;
-
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
-
-using System.Linq;
 
 namespace MeetEdu
 {
@@ -79,8 +72,11 @@ namespace MeetEdu
         /// </summary>
         /// <param name="args">The arguments</param>
         /// <returns></returns>
-        public static List<FilterDefinition<DepartmentEntity>> CreateFilters(this DepartmentAPIArgs args)
+        public static List<FilterDefinition<DepartmentEntity>>? CreateFilters(this DepartmentAPIArgs? args)
         {
+            if (args is null)
+                return null;
+
             var filters = new List<FilterDefinition<DepartmentEntity>>();
 
             // If there is a limit to the universities to include...
@@ -122,17 +118,20 @@ namespace MeetEdu
             return filters;
         }
 
-        
-
         /// <summary>
         /// Combines the specified <paramref name="filters"/>
         /// </summary>
         /// <typeparam name="T">The document type</typeparam>
         /// <param name="filters">The filters</param>
         /// <returns></returns>
-        public static FilterDefinition<T> AggregateFilters<T>(this List<FilterDefinition<T>> filters)
+        public static FilterDefinition<T>? AggregateFilters<T>(this List<FilterDefinition<T>>? filters)
             where T : BaseEntity
-            => Builders<T>.Filter.And(filters);
+        {
+            if (filters.IsNullOrEmpty())
+                return null;
+            
+            return Builders<T>.Filter.And(filters);
+        }
 
         #endregion
     }

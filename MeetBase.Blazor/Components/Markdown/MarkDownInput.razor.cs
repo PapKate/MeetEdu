@@ -1,12 +1,6 @@
-﻿using MeetBase.Blazor;
-using MeetBase.Web;
+﻿using Microsoft.AspNetCore.Components;
 
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
-
-using MudBlazor;
-
-namespace MeetCore
+namespace MeetBase.Blazor
 {
     /// <summary>
     /// The markdown text input

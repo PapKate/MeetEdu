@@ -32,12 +32,6 @@ namespace MeetCore
         #region Protected Properties
 
         /// <summary>
-        /// The client
-        /// </summary>
-        [Inject]
-        protected MeetCoreClient Client { get; set; } = default!;
-
-        /// <summary>
         /// The dialog service
         /// </summary>
         [Inject]
@@ -179,6 +173,25 @@ namespace MeetCore
                 }
                 StateManager.Department = departmentResponse.Result;
 
+                // If an image was set...
+                if (updatedModel.File is not null)
+                {
+                    // Adds the model
+                    var responseWithImage = await Client.SetDepartmentImageAsync(Department.Id, updatedModel.File);
+
+                    // If there was an error...
+                    if (!responseWithImage.IsSuccessful)
+                    {
+                        Console.WriteLine(responseWithImage.ErrorMessage);
+                        // Show the error
+                        Snackbar.Add(responseWithImage.ErrorMessage, Severity.Error);
+                        // Return
+                        return;
+                    }
+                    StateManager.Department = responseWithImage.Result;
+                }
+
+                StateHasChanged();
                 StateHasChanged();
             }
         }

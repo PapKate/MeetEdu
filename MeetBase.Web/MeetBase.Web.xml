@@ -2258,6 +2258,14 @@
             <param name="id">The id</param>
             <returns></returns>
         </member>
+        <member name="M:MeetBase.Web.MeetCoreClient.SetDepartmentImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Creates a department image
+            </summary>
+            <param name="id">The id</param>
+            <param name="file">The file</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetBase.Web.MeetCoreClient.GetDepartmentLayoutsAsync(MeetBase.Web.DepartmentRelatedAPIArgs)">
             <summary>
             Gets the department layouts
@@ -2296,7 +2304,7 @@
         </member>
         <member name="M:MeetBase.Web.MeetCoreClient.SetDepartmentLayoutImageAsync(System.String,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
-            Creates a department layout
+            Creates a department layout image
             </summary>
             <param name="id">The id</param>
             <param name="file">The file</param>

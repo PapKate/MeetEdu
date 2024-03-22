@@ -5,7 +5,6 @@
     /// </summary>
     public static class Routes
     {
-
         /// <summary>
         /// The secretaries route
         /// </summary>

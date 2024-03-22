@@ -166,8 +166,9 @@
     .modelWeeklyScheduleContainer {
         position: relative;
         display: grid;
-        grid-template-columns: 3fr 2fr;
+        grid-template-columns: 1fr 3fr;
         gap: @MediumGap @VeryLargeGap;
+        padding: @VeryLargePadding;
     }
 
     .modelWeeklySchedule {
@@ -187,10 +188,13 @@
     }
 
     .modelWeeklyScheduleNote {
+        grid-column-start: 1;
+        grid-column-end: 3;
         font-size: 92%;
     }
 
     .modelWeeklyScheduleDayContainer {
+        grid-column: 2 /3;
         position: relative;
         display: grid;
         grid-template-columns: 1fr 2fr;

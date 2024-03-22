@@ -1,4 +1,5 @@
-﻿using MeetBase.Web;
+﻿using MeetBase.Blazor;
+using MeetBase.Web;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
@@ -38,12 +39,6 @@ namespace MeetCore
         #endregion
 
         #region Protected Properties
-
-        /// <summary>
-        /// The client
-        /// </summary>
-        [Inject]
-        protected MeetCoreClient Client { get; set; } = default!;
 
         /// <summary>
         /// The dialog service
