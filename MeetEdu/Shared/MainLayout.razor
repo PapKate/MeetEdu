@@ -20,6 +20,31 @@
 
 <style>
 
+    .appContainer {
+        position: relative;
+        width: 64%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+     .searchPageContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 40px;
+    }
+
+    .searchPageSearchBarContainer {
+        position: relative;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
     .searchBarContainer {
         position: relative;
@@ -210,6 +235,27 @@
         grid-column-start: 2;
     }
 
+    
+    .sectionHeader {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: @VeryLargePadding;
+        font-weight: 600;
+        font-size: 120%;
+        filter: @LightFilterDropShadow;
+        z-index: 2;
+    }
+
+    .sectionDescription {
+        position: relative;
+        padding: 2% 12%;
+        text-align: center;
+    }
+
+
+
     @@media screen and (max-width: 1400px) {
         .appContainer {
             width: 100%;
@@ -223,6 +269,255 @@
 
         .searchBarContainer {
             width: 100%;
+        }
+    }
+
+
+    .staffMemberContainer {
+        position: relative;
+        top: 1rem;
+        width: 100%;
+        height: auto;
+        min-width: 420px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: @VeryLargePadding;
+        align-items: flex-end;
+    }
+
+    .staffMemberRibbonContainer {
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        top: 36px;
+        display: grid;
+        grid-template-columns: 216px 1fr;
+        gap: @VeryLargeGap;
+        padding: @NormalPadding;
+        font-size: 120%;
+        font-weight: 600;
+        background: @BackgroundVariable.GetCssVariable();
+        color: @ForegroundVariable.GetCssVariable();
+        filter: @LightFilterDropShadow;
+    }
+
+    .staffMemberRibbon {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .staffMemberRibbonInfoContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .staffMemberRibbonInfo {
+        font-size: 100%;
+        font-weight: 700;
+    }
+
+    .staffMemberRibbonInfoDetails {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: @VeryLargeGap;
+        font-size: 92%;
+        font-weight: 400;
+    }
+
+    .staffMemberInfoContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: @SmallGap;
+        padding: @LargePadding;
+    }
+
+    .staffMemberImageAndContactContainer {
+        position: relative;
+        top: -20px;
+        height: 200px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        gap: @LargeGap;
+    }
+
+    .staffMemberImageContainer {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        background: @White.NormalizedColor();
+        filter: @LightFilterDropShadow;
+        border-radius: @LargeBorderRadius;
+        border: solid 1px @BorderBrushVariable.GetCssVariable();
+        overflow: hidden;
+    }
+
+    .staffMemberImage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        filter: @LightFilterDropShadow;
+    }
+
+    .staffMemberContactContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        grid-auto-rows: 28px;
+        align-items: center;
+        gap: @MediumGap;
+    }
+
+    .staffMemberContactImage {
+        position: relative;
+        width: 28px;
+        height: 28px;
+        filter: @LightFilterDropShadow;
+    }
+
+    .staffMemberPositionContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: start;
+        gap: @MediumGap;
+        padding: 0 @VeryLargePadding 0 @VeryLargePadding;
+    }
+
+    .staffMemberPosition {
+        text-align: right;
+    }
+
+    .staffMemberWeeklyScheduleContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: @MediumGap @VeryLargeGap;
+        padding: @VeryLargePadding;
+    }
+
+    .staffMemberWeeklySchedule {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: @LargeGap;
+    }
+
+    .staffMemberWeeklyScheduleTitle {
+        font-size: 112%;
+        color: @ForegroundVariable.GetCssVariable();
+        font-weight: 700;
+    }
+
+    .staffMemberWeeklyScheduleNote {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        font-size: 92%;
+    }
+
+    .staffMemberWeeklyScheduleDayContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        justify-items: right;
+        gap: @MediumGap;
+    }
+
+    .staffMemberWeeklyScheduleDay {
+        font-weight: 600;
+    }
+
+    .staffMemberWeeklyScheduleTime {
+        grid-column-start: 2;
+    }
+
+    .locationContainer {
+        position: relative;
+        width: 100%;
+        height: min-content;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    .location {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        border-radius: @VeryLargeBorderRadius;
+        border: 1px solid @LightGray.NormalizedColor();
+    }
+
+    .staffMemberQuoteContainer {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-style: italic;
+        font-weight: 300;
+        text-align: center;
+        padding: 1rem;
+        gap: @LargeGap;
+    }
+
+    .staffMemberScheduleContainer {
+        padding: @VeryLargePadding;
+    }
+
+    .staffmemberRibbonEditContainer {
+        width: 3rem;
+        height: 3rem;
+        padding: 8px;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+
+    @@media screen and (max-width: 440px) {
+
+        .staffMemberImageAndContactContainer {
+            height: 160px;
+        }
+
+        .staffMemberContainer {
+            min-width: 360px;
+            width: 360px;
+            font-size: 90%;
+        }
+
+        .staffMemberRibbonContainer {
+            grid-template-columns: 132px 1fr;
+        }
+
+        .staffMemberImageContainer {
+            width: 120px;
+            height: 120px;
+        }
+
+        .staffMemberPositionContainer {
+            padding: @LargePadding @LargePadding 0 @LargePadding;
+        }
+
+        .staffMemberWeeklyScheduleContainer {
+            gap: @MediumGap @LargeGap;
+            padding: @LargePadding;
         }
     }
 

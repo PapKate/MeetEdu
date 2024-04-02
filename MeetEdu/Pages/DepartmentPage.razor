@@ -1,17 +1,108 @@
 ﻿@page "/departments/{Id}"
 
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
 
-<h3>DepartmentPage</h3>
+@using static MeetBase.Blazor.Personalization
 
-@code {
-    #region Public Properties
+@namespace MeetEdu
 
-    /// <summary>
-    /// The id
-    /// </summary>
-    [Parameter]
-    public string? Id { get; set; }
+<PageTitle>@MeetEduConstants.AppName @Department?.Name</PageTitle>
 
-    #endregion
+<Header AppName="@MeetEduConstants.AppName"
+        Username="Lime"
+        BackColor="@Blue"
+        ForeColor="@White" />
 
-}
+<div id="departmentPageAppContainer" class="appContainer searchPageContainer">
+    <div class="searchPageSearchBarContainer">
+        <SearchBar />
+    </div>
+
+    @if(Department is not null)
+    {
+        <div class="departmentPageContainer">
+            <br/>
+            <DepartmentPreview Model="@Department"/>
+
+            <div class="departmentPageSecretaryContainer">
+                <span class="sectionHeader">Secretary - IDOX</span>
+                <div class="sectionDescription">@Department.SecretaryDescription
+                Η Γραμματεία στεγάζεται στο πρώτο όροφο του Νέου Κτιρίου(οδός Καζαντζάκη) του Τμήματος Μηχανικών Η/Υ και Πληροφορικής του Πανεπιστημίου Πατρών. Δέχεται τους φοιτητές του Τμήματος Δευτέρα-Τετάρτη-Παρασκευή από τις 11:30πμ ως τις 13:30μμ.
+                </div>
+                @if(!Department.Secretaries.IsNullOrEmpty())
+                {
+                    <div class="departmentPageSecretariesSectionContainer">
+                        @foreach(var secretary in Department.Secretaries)
+                        {
+                            <SecretaryPreview Model="@secretary" Department="@Department" />
+                        }
+                    </div>
+                }
+            </div>
+            
+            @if (!mLayouts.IsNullOrEmpty())
+            {
+                <div class="departmentPageLayoutSectionContainer">
+                    <span class="sectionHeader">Department Layouts</span>
+                    <div class="sectionDescription">
+                        @Department.LayoutDescription
+                    </div>
+                    <div class="departmentPageLayoutsContainer">
+                            @foreach (var departmentLayout in mLayouts)
+                            {
+                                <LayoutPresenter Model="@departmentLayout" />
+                            }
+                    </div>
+                </div>
+            }
+
+            @if(Department.ContactMessageTemplate is not null)
+            {
+                <div class="departmentPageContactSectionContainer">
+                    <span class="sectionHeader">Contact</span>
+                    <div class="sectionDescription">
+                        @Department.ContactMessageTemplate?.Description
+                    </div>
+                    <DepartmentContactForm Department="@Department" FormTemplate="@Department.ContactMessageTemplate" />
+                </div>
+            }
+        </div>
+    }
+</div>
+
+
+<style>
+    
+    #departmentPageAppContainer {
+        padding-bottom: 0;
+    }
+
+    .departmentPageContainer {
+        border: 1px solid @LightGray.NormalizedColor();
+    }
+    
+    .sectionHeader {
+        margin-top: 2rem;
+        background-color: @Department?.Color.NormalizedColor();
+        color: @Department?.Color.DarkOrWhite().NormalizedColor();
+    }
+
+    .departmentPageSecretariesSectionContainer {
+        position:relative;
+        display: flex;
+        height: 400px;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: @VeryVeryLargeGap;
+        padding: @LargePadding;
+        overflow-y: auto;
+    }
+
+    .departmentPageContactSectionContainer {
+        margin-bottom: 4rem;
+    }
+
+</style>
+

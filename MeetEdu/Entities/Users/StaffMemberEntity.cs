@@ -89,11 +89,6 @@ namespace MeetEdu
         public ObjectId DepartmentId { get; set; }
 
         /// <summary>
-        /// The weekly schedule
-        /// </summary>
-        public WeeklySchedule? WeeklySchedule { get; set; }
-
-        /// <summary>
         /// The user
         /// </summary>
         public EmbeddedUserEntity? User { get; set; }

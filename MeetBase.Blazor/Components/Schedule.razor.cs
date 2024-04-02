@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Components;
 
-namespace MeetCore
+namespace MeetBase.Blazor
 {
     /// <summary>
     /// The schedule component

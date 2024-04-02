@@ -693,10 +693,10 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpGet]
         [Route(MeetCoreAPIRoutes.ProfessorOfficeLayoutsRoute)]
-        public async Task<ActionResult<IEnumerable<ProfessorOfficeLayoutResponseModel>>> GetProfessorOfficeLayoutsAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<ProfessorOfficeLayoutResponseModel>>> GetProfessorOfficeLayoutsAsync([FromQuery] ProfessorAPIArgs args, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.ProfessorOfficeLayouts,
                                                     x => x.ToResponseModel(),
-                                                    null,null,
+                                                    args.CreateFilters<ProfessorOfficeLayoutEntity>().AggregateFilters(), args,
                                                     cancellationToken, x => x.ProfessorId);
 
         /// <summary>

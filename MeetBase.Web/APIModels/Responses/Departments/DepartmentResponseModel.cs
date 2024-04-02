@@ -33,6 +33,11 @@
         private string? mLayoutDescription;
 
         /// <summary>
+        /// The member of the <see cref="SecretaryDescription"/> property
+        /// </summary>
+        private string? mSecretaryDescription;
+
+        /// <summary>
         /// The member of the <see cref="Fields"/> property
         /// </summary>
         private IEnumerable<string>? mFields;
@@ -41,6 +46,11 @@
         /// The member of the <see cref="Labels"/> property
         /// </summary>
         private IEnumerable<EmbeddedLabelResponseModel>? mLabels;
+
+        /// <summary>
+        /// The member of the <see cref="Secretaries"/> property
+        /// </summary>
+        private IEnumerable<EmbeddedSecretaryResponseModel>? mSecretaries;
 
         #endregion
 
@@ -97,6 +107,15 @@
         }
 
         /// <summary>
+        /// The secretary description
+        /// </summary>
+        public string SecretaryDescription
+        {
+            get => mSecretaryDescription ?? string.Empty;
+            set => mSecretaryDescription = value;
+        }
+
+        /// <summary>
         /// The note
         /// </summary>
         public string Note
@@ -142,6 +161,15 @@
         {
             get => mLabels ?? Enumerable.Empty<EmbeddedLabelResponseModel>();
             set => mLabels = value;
+        }
+
+        /// <summary>
+        /// The secretaries
+        /// </summary>
+        public IEnumerable<EmbeddedSecretaryResponseModel> Secretaries
+        {
+            get => mSecretaries ?? Enumerable.Empty<EmbeddedSecretaryResponseModel>();
+            set => mSecretaries = value;
         }
 
         #endregion

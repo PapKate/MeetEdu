@@ -1,0 +1,207 @@
+﻿@page "/professors/{Id}"
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetEdu
+
+<PageTitle>@MeetEduConstants.AppName @Professor?.User?.FirstName @Professor?.User?.LastName</PageTitle>
+
+<Header AppName="@MeetEduConstants.AppName"
+        Username="Lime"
+        BackColor="@Blue"
+        ForeColor="@White" />
+
+<div id="staffMemberPageAppContainer" class="appContainer searchPageContainer">
+    <div class="searchPageSearchBarContainer">
+        <SearchBar />
+    </div>
+
+    @if (Professor is not null && Professor.User is not null)
+    {
+        <div class="staffMemberPageContainer">
+            <div class="staffMemberContainer" style="@BorderBrushVariable.SetCssColor(Professor.User.Color)">
+
+                <div class="staffMemberRibbonContainer" style="@BackgroundVariable.SetCssColor(Professor.User.Color) @ForegroundVariable.SetCssColor(Professor.User.Color.DarkOrWhite())">
+                    <div></div>
+                    <div class="staffMemberRibbon">
+                        <div class="staffMemberRibbonInfoContainer">
+                            <span class="staffMemberRibbonInfo">@Professor.User.LastName @Professor.User.FirstName</span>
+                            <span class="staffMemberRibbonInfoDetails">@Professor.Rank</span>
+                        </div>
+                        <IconButton BackColor="transparent"
+                                    ForeColor="@Professor.User.Color.DarkOrWhite()"
+                                    VectorSource="@IconPaths.HeartOutlinePath"
+                                    HasAnimation="false"
+                                    BoxShadow="none"
+                                    CssClasses="professorRibbonHeartContainer" />
+                    </div>
+                </div>
+
+                <div class="staffMemberInfoContainer" style="@ForegroundVariable.SetCssColor(Professor.User.Color)">
+                    <div class="staffMemberImageAndContactContainer">
+                        <div class="staffMemberImageContainer">
+                            <img class="staffMemberImage" src="@Professor.User.ImageUrl?.ToString()" alt="name" />
+                        </div>
+                        <div class="staffMemberContactContainer">
+                            <div class="staffMemberContactImage">
+                                <MapMarkerVector Color="@Professor.User.Color" />
+                            </div>
+                            <span class="staffMemberContactValue">@Professor.User.Location?.Address</span>
+
+                            <div class="staffMemberContactImage">
+                                <CallVector Color="@Professor.User.Color" />
+                            </div>
+                            <span class="staffMemberContactValue">+@Professor.User.PhoneNumber</span>
+
+                            <div class="staffMemberContactImage">
+                                <EmailVector Color="@Professor.User.Color" />
+                            </div>
+                            <span class="staffMemberContactValue">@Professor.User.Email</span>
+
+                        </div>
+                    </div>
+                    <div class="staffMemberPositionContainer">
+                        <span class="staffMemberWeeklyScheduleTitle">Department</span>
+                        <span class="staffMemberPosition">@Professor.DepartmentId</span>
+                    </div>
+                    @if (!Professor.Websites.IsNullOrEmpty())
+                    {
+                        <div id="professorWebsites" class="staffMemberPositionContainer">
+                            <span class="staffMemberWeeklyScheduleTitle">Websites</span>
+                            @foreach (var website in Professor.Websites)
+                            {
+                                <span class="staffMemberPosition professorWebsiteTitle">
+                                    <a href="@website.Link" target="_blank" rel="noopener noreferrer" style="@ForegroundVariable.SetCssColor(Professor.User.Color)">@website.Name</a>
+                                </span>
+                            }
+                        </div>
+                    }
+                    <div class="staffMemberWeeklyScheduleContainer">
+                        <div class="staffMemberWeeklySchedule">
+                            <span class="staffMemberWeeklyScheduleTitle">Office hours</span>
+                        </div>
+                        @if (Professor.WeeklySchedule is not null)
+                        {
+                            @foreach (var schedule in Professor.WeeklySchedule.WeeklyHours.OrderBy(x => x.DayOfWeek).GroupBy(x => x.DayOfWeek))
+                            {
+                                <div class="staffMemberWeeklyScheduleDayContainer">
+                                    <span class="staffMemberWeeklyScheduleDay">@schedule.Key</span>
+                                    @foreach (var timespan in schedule.OrderBy(x => x.Start))
+                                    {
+                                        <span class="staffMemberWeeklyScheduleTime">@timespan.Start.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat) - @timespan.End.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat)</span>
+                                    }
+                                </div>
+                            }
+                        }
+                        <span class="staffMemberWeeklyScheduleNote">@Professor.WeeklySchedule?.Note</span>
+                    </div>
+                </div>
+
+                <div class="staffMemberPreviewMapContainer">
+                    <div id="@Professor.Id" class="staffMemberPreviewMap"></div>
+                </div>
+            </div>
+
+            <div class="staffMemberQuoteContainer">
+                <MudDivider DividerType="DividerType.Middle" Class="staffMemberPageDivider" />
+                <span>"@Professor.Quote"</span>
+                <MudDivider DividerType="DividerType.Middle" Class="staffMemberPageDivider" />
+            </div>
+
+            <div class="professorResearchContainer">
+                <span class="professorResearchTitle" style="@ForegroundVariable.SetCssColor(Professor.User.Color)">Research interests</span>
+                <MarkdownBlock Text="@Professor.ResearchInterests" CssClass="textMarkDownContainer" />
+            </div>
+            
+            @if(Professor.WeeklySchedule is not null)
+            {
+                <span class="sectionHeader">Calendar</span>
+                <div class="staffMemberScheduleContainer">
+                    <Schedule WeeklySchedule="@Professor.WeeklySchedule"
+                              Lectures="@Professor.Lectures"
+                              IsEditable="false" />
+                </div>
+            }
+
+            @if (Professor.ContactMessageTemplate is not null)
+            {
+                <div class="departmentPageContactSectionContainer">
+                    <span class="sectionHeader">Contact</span>
+                    <div class="sectionDescription">
+                        @Professor.ContactMessageTemplate?.Description
+                    </div>
+                    <ProfessorContactForm FormTemplate="Professor.ContactMessageTemplate" Professor="@Professor" AppointmentRules="@mAppointmentRules"/>
+                </div>
+            }
+
+        </div>
+    }
+</div>
+
+
+<style>
+    #staffMemberPageAppContainer {
+        padding-bottom: 0;
+    }
+
+    .sectionHeader {
+        background: @Professor?.User?.Color.NormalizedColor();
+        color: @Professor?.User?.Color.DarkOrWhite().NormalizedColor();
+    }
+
+    .professorResearchContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: @VeryLargeGap;
+        padding: @XXLargePadding;
+    }
+
+    .professorResearchTitle {
+        position: relative;
+        color: @ForegroundVariable.GetCssVariable();
+        font-size: 112%;
+        font-weight: 700;
+    }
+
+    .staffMemberPageContainer {
+        border: 1px solid @LightGray.NormalizedColor();
+    }
+
+    .staffMemberPageDivider {
+        margin: 0 1rem;
+    }
+
+    .professorRibbonHeartContainer {
+        position: relative;
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+    }
+
+    .staffMemberPreviewMapContainer {
+        grid-row-start: 1;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        position: relative;
+        margin-top: 78px;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        padding: @LargePadding;
+        z-index: 1;
+    }
+
+    .staffMemberPreviewMap {
+        position: relative;
+        width: 100%;
+        height: 320px;
+        border-radius: @LargeBorderRadius;
+        border: solid 1px @Gray.NormalizedColor();
+    }
+
+</style>
+

@@ -43,6 +43,11 @@
         public string? LayoutDescription { get; set; }
 
         /// <summary>
+        /// The secretary description
+        /// </summary>
+        public string? SecretaryDescription { get; set; }
+
+        /// <summary>
         /// The number of staff members
         /// </summary>
         public uint? TotalStaffMembers { get; set; }
@@ -76,6 +81,11 @@
         /// The labels
         /// </summary>
         public IEnumerable<string>? LabelIds { get; set; }
+
+        /// <summary>
+        /// The secretaries
+        /// </summary>
+        public IEnumerable<string>? SecretaryIds { get; set; }
 
         #endregion
 

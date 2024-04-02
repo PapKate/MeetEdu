@@ -33,6 +33,11 @@ namespace MeetEdu
         private string? mLayoutDescription;
 
         /// <summary>
+        /// The member of the <see cref="SecretaryDescription"/> property
+        /// </summary>
+        private string? mSecretaryDescription;
+
+        /// <summary>
         /// The member of the <see cref="Fields"/> property
         /// </summary>
         private IEnumerable<string>? mFields;
@@ -41,6 +46,11 @@ namespace MeetEdu
         /// The member of the <see cref="Labels"/> property
         /// </summary>
         private IEnumerable<EmbeddedLabelEntity>? mLabels;
+
+        /// <summary>
+        /// The member of the <see cref="Secretaries"/> property
+        /// </summary>
+        private IEnumerable<EmbeddedSecretaryEntity>? mSecretaries;
 
         #endregion
 
@@ -93,6 +103,15 @@ namespace MeetEdu
         }
 
         /// <summary>
+        /// The secretary description
+        /// </summary>
+        public string SecretaryDescription
+        {
+            get => mSecretaryDescription ?? string.Empty;
+            set => mSecretaryDescription = value;
+        }
+
+        /// <summary>
         /// The note
         /// </summary>
         public string Note
@@ -100,11 +119,6 @@ namespace MeetEdu
             get => mNote ?? string.Empty;
             set => mNote = value;
         }
-
-        /// <summary>
-        /// The number of staff members
-        /// </summary>
-        public uint TotalStaffMembers { get; set; }
 
         /// <summary>
         /// The work hours
@@ -138,6 +152,15 @@ namespace MeetEdu
         {
             get => mLabels ?? Enumerable.Empty<EmbeddedLabelEntity>();
             set => mLabels = value;
+        }
+
+        /// <summary>
+        /// The secretaries
+        /// </summary>
+        public IEnumerable<EmbeddedSecretaryEntity> Secretaries
+        {
+            get => mSecretaries ?? Enumerable.Empty<EmbeddedSecretaryEntity>();
+            set => mSecretaries = value;
         }
 
         #endregion

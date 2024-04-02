@@ -5,10 +5,7 @@ using static MeetBase.Blazor.CssVariables;
 
 namespace MeetEdu
 {
-    /// <summary>
-    /// The department preview
-    /// </summary>
-    public partial class DepartmentPreview
+    public partial class ProfessorPreview
     {
         #region Public Properties
 
@@ -16,7 +13,7 @@ namespace MeetEdu
         /// The model
         /// </summary>
         [Parameter]
-        public DepartmentResponseModel? Model { get; set; }
+        public ProfessorResponseModel? Model { get; set; }
 
         /// <summary>
         /// A flag indicating whether it is a preview or not
@@ -47,25 +44,8 @@ namespace MeetEdu
         /// <summary>
         /// Default constructor
         /// </summary>
-        public DepartmentPreview() : base()
+        public ProfessorPreview() : base()
         {
-
-        }
-
-        #endregion
-
-        #region Protected Methods
-
-        /// <inheritdoc/>
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            await base.OnAfterRenderAsync(firstRender);
-
-            if (firstRender)
-            {
-                if(Model!.Location is not null)
-                    await JSRuntime.InvokeVoidAsync("ShowLeafletMap", Model!.Id, Model.Location.Latitude, Model.Location.Longitude);
-            }
 
         }
 
@@ -77,8 +57,7 @@ namespace MeetEdu
         {
             if (IsPreview)
             {
-
-                return $"cursor: pointer; {BorderBrushVariable.SetCssColor(Model!.Color)}";
+                return $"cursor: pointer; {BorderBrushVariable.SetCssColor(Model!.User!.Color)}";
             }
             else
             {
@@ -86,7 +65,7 @@ namespace MeetEdu
             }
         }
 
-        private void DepartmentContainer_OnClick()
+        private void ProfessorContainer_OnClick()
         {
             if (!IsPreview)
                 return;
@@ -95,7 +74,7 @@ namespace MeetEdu
                 // Returns
                 return;
 
-            NavigationManager.NavigateToDepartmentPage(Model!.Id);
+            NavigationManager.NavigateToProfessorPage(Model!.Id);
         }
 
         #endregion

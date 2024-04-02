@@ -93,33 +93,6 @@ namespace MeetEdu
             });
         }
 
-        /// <summary>
-        /// Navigates to the respected page of professors or departments of the current department
-        /// </summary>
-        private void SearchButton_OnClick()
-        {
-            // If no navigation manager is found...
-            if (NavigationManager is null)
-                // Returns
-                return;
-
-            if (mSearchBar!.IsSearchForDepartments)
-            {
-                NavigationManager.NavigateToDepartmentsPage(new Dictionary<string, string?>()
-                {
-                    new("SearchText", mSearchText)
-                });
-            }
-            else
-            {
-                NavigationManager.NavigateToFacultyPage(new Dictionary<string, string?>()
-                {
-                    new("SearchText", mSearchText)
-                });
-            }
-        }
-
-
         #endregion
     }
 }

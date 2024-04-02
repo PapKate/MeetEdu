@@ -526,7 +526,7 @@ namespace MeetBase.Web
         /// </summary>
         /// <param name="args">The arguments</param>
         /// <returns></returns>
-        public Task<WebRequestResult<IEnumerable<ProfessorOfficeLayoutResponseModel>>> GetProfessorOfficeLayoutsAsync(DepartmentRelatedAPIArgs args)
+        public Task<WebRequestResult<IEnumerable<ProfessorOfficeLayoutResponseModel>>> GetProfessorOfficeLayoutsAsync(ProfessorAPIArgs args)
             => WebRequestsClient.Instance.GetAsync<IEnumerable<ProfessorOfficeLayoutResponseModel>>(RouteHelpers.AttachParameters(GetAbsoluteUrl(MeetCoreAPIRoutes.ProfessorOfficeLayoutsRoute), args), null);
 
         /// <summary>

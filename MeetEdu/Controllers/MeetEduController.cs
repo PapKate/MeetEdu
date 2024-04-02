@@ -174,6 +174,42 @@ namespace MeetEdu
 
         #endregion
 
+        #region Layouts
+
+        /// <summary>
+        /// Gets the department layouts
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.DepartmentLayoutsRoute)]
+        public async Task<ActionResult<IEnumerable<DepartmentLayoutResponseModel>>> GetDepartmentLayoutsAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.DepartmentLayouts,
+                                                    x => x.ToResponseModel(),
+                                                    args?.CreateFilters<DepartmentLayoutEntity>().AggregateFilters(), args,
+                                                    cancellationToken, x => x.DepartmentId);
+
+        #endregion
+
+        #endregion
+
+        #region Secretaries
+
+        /// <summary>
+        /// Gets the secretaries
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.SecretariesRoute)]
+        public async Task<ActionResult<IEnumerable<SecretaryResponseModel>>> GetSecretariesAsync([FromQuery] DepartmentRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Secretaries,
+                                                    x => x.ToResponseModel(),
+                                                    args?.CreateFilters<SecretaryEntity>().AggregateFilters(), args,
+                                                    cancellationToken, x => x.Role);
+
         #endregion
 
         #region Professors
@@ -202,6 +238,24 @@ namespace MeetEdu
         [Route(MeetEduAPIRoutes.ProfessorRoute)]
         public async Task<ActionResult<ProfessorResponseModel>?> GetProfessorAsync([FromRoute] string id, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetAsync(MeetEduDbMapper.Professors, x => x.ToResponseModel(), x => x.Id == id.ToObjectId(), cancellationToken);
+
+        #region Layout
+
+        /// <summary>
+        /// Gets the professor office layouts
+        /// </summary>
+        /// <param name="args">The arguments</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route(MeetEduAPIRoutes.ProfessorOfficeLayoutsRoute)]
+        public async Task<ActionResult<IEnumerable<ProfessorOfficeLayoutResponseModel>>> GetProfessorOfficeLayoutsAsync([FromQuery] ProfessorAPIArgs args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.ProfessorOfficeLayouts,
+                                                    x => x.ToResponseModel(),
+                                                    args.CreateFilters<ProfessorOfficeLayoutEntity>().AggregateFilters(), args,
+                                                    cancellationToken, x => x.ProfessorId);
+
+        #endregion
 
         #endregion
 

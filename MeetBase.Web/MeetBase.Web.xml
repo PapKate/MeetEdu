@@ -164,6 +164,11 @@
             The layout description
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.SecretaryDescription">
+            <summary>
+            The secretary description
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentRequestModel.TotalStaffMembers">
             <summary>
             The number of staff members
@@ -197,6 +202,11 @@
         <member name="P:MeetBase.Web.DepartmentRequestModel.LabelIds">
             <summary>
             The labels
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.SecretaryIds">
+            <summary>
+            The secretaries
             </summary>
         </member>
         <member name="M:MeetBase.Web.DepartmentRequestModel.#ctor">
@@ -979,6 +989,11 @@
             The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.LayoutDescription"/> property
             </summary>
         </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mSecretaryDescription">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.SecretaryDescription"/> property
+            </summary>
+        </member>
         <member name="F:MeetBase.Web.DepartmentResponseModel.mFields">
             <summary>
             The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Fields"/> property
@@ -987,6 +1002,11 @@
         <member name="F:MeetBase.Web.DepartmentResponseModel.mLabels">
             <summary>
             The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Labels"/> property
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mSecretaries">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Secretaries"/> property
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentResponseModel.UniversityId">
@@ -1017,6 +1037,11 @@
         <member name="P:MeetBase.Web.DepartmentResponseModel.LayoutDescription">
             <summary>
             The layout description
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.SecretaryDescription">
+            <summary>
+            The secretary description
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentResponseModel.Note">
@@ -1057,6 +1082,11 @@
         <member name="P:MeetBase.Web.DepartmentResponseModel.Labels">
             <summary>
             The labels
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Secretaries">
+            <summary>
+            The secretaries
             </summary>
         </member>
         <member name="M:MeetBase.Web.DepartmentResponseModel.#ctor">
@@ -1552,7 +1582,7 @@
         </member>
         <member name="T:MeetBase.Web.SecretaryResponseModel">
             <summary>
-            Request model used for a secretary 
+            Response model used for a secretary 
             </summary>
         </member>
         <member name="P:MeetBase.Web.SecretaryResponseModel.Role">
@@ -1561,6 +1591,21 @@
             </summary>
         </member>
         <member name="M:MeetBase.Web.SecretaryResponseModel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.EmbeddedSecretaryResponseModel">
+            <summary>
+            A minimal version of the <see cref="T:MeetBase.Web.SecretaryResponseModel"/>
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedSecretaryResponseModel.Role">
+            <summary>
+            The role
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.EmbeddedSecretaryResponseModel.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -1644,11 +1689,6 @@
         <member name="P:MeetBase.Web.EmbeddedStaffMemberResponseModel.DepartmentId">
             <summary>
             The department id
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.EmbeddedStaffMemberResponseModel.WeeklySchedule">
-            <summary>
-            The weekly schedule
             </summary>
         </member>
         <member name="P:MeetBase.Web.EmbeddedStaffMemberResponseModel.User">
@@ -1766,6 +1806,11 @@
             The member of the <see cref="P:MeetBase.Web.EmbeddedUserResponseModel.Username"/> property
             </summary>
         </member>
+        <member name="F:MeetBase.Web.EmbeddedUserResponseModel.mEmail">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.EmbeddedUserResponseModel.Email"/> property
+            </summary>
+        </member>
         <member name="F:MeetBase.Web.EmbeddedUserResponseModel.mColor">
             <summary>
             The member of the <see cref="P:MeetBase.Web.EmbeddedUserResponseModel.Color"/> property
@@ -1786,6 +1831,11 @@
             The last name
             </summary>
         </member>
+        <member name="P:MeetBase.Web.EmbeddedUserResponseModel.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.EmbeddedUserResponseModel.ImageUrl">
             <summary>
             The image URL
@@ -1794,6 +1844,16 @@
         <member name="P:MeetBase.Web.EmbeddedUserResponseModel.Color">
             <summary>
             The color
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedUserResponseModel.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.EmbeddedUserResponseModel.Location">
+            <summary>
+            The location information
             </summary>
         </member>
         <member name="M:MeetBase.Web.EmbeddedUserResponseModel.#ctor">
@@ -1937,6 +1997,26 @@
             </summary>
         </member>
         <member name="M:MeetBase.Web.DepartmentRelatedAPIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.ProfessorAPIArgs">
+            <summary>
+            Arguments used for retrieving data that belong to a department layout
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorAPIArgs.IncludeProfessors">
+            <summary>
+            Limit the result to entries with specific professor ids
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.ProfessorAPIArgs.ExcludeProfessors">
+            <summary>
+            Limit the result to entries without specific professor ids
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.ProfessorAPIArgs.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -2454,7 +2534,7 @@
             <param name="id">The id</param>
             <returns></returns>
         </member>
-        <member name="M:MeetBase.Web.MeetCoreClient.GetProfessorOfficeLayoutsAsync(MeetBase.Web.DepartmentRelatedAPIArgs)">
+        <member name="M:MeetBase.Web.MeetCoreClient.GetProfessorOfficeLayoutsAsync(MeetBase.Web.ProfessorAPIArgs)">
             <summary>
             Gets the department layouts
             </summary>
@@ -3882,6 +3962,12 @@
             <param name="departmentContactMessageId">The id</param>
             <returns></returns>
         </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.DepartmentLayoutsRoute">
+            <summary>
+            The department layouts route
+            <code>/appointMate/api/v1/meetEdu/departmentLayouts</code>
+            </summary>
+        </member>
         <member name="F:MeetBase.Web.MeetEduAPIRoutes.SecretariesRoute">
             <summary>
             The secretaries route
@@ -3921,6 +4007,12 @@
             </summary>
             <param name="professorId">The id</param>
             <returns></returns>
+        </member>
+        <member name="F:MeetBase.Web.MeetEduAPIRoutes.ProfessorOfficeLayoutsRoute">
+            <summary>
+            The department layouts route
+            <code>/appointMate/api/v1/meetCore/professorOfficeLayouts</code>
+            </summary>
         </member>
         <member name="F:MeetBase.Web.MeetEduAPIRoutes.AppointmentRulesRoute">
             <summary>

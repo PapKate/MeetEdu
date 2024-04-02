@@ -149,6 +149,11 @@ namespace MeetBase.Web
         private string? mUsername;
 
         /// <summary>
+        /// The member of the <see cref="Email"/> property
+        /// </summary>
+        private string? mEmail;
+
+        /// <summary>
         /// The member of the <see cref="Color"/> property
         /// </summary>
         private string? mColor;
@@ -185,6 +190,15 @@ namespace MeetBase.Web
         }
 
         /// <summary>
+        /// The email
+        /// </summary>
+        public string Email
+        {
+            get => mEmail ?? string.Empty;
+            set => mEmail = value;
+        }
+
+        /// <summary>
         /// The image URL
         /// </summary>
         public Uri? ImageUrl { get; set; }
@@ -197,6 +211,16 @@ namespace MeetBase.Web
             get => mColor ?? string.Empty;
             set => mColor = value;
         }
+
+        /// <summary>
+        /// The phone number
+        /// </summary>
+        public PhoneNumber? PhoneNumber { get; set; }
+
+        /// <summary>
+        /// The location information
+        /// </summary>
+        public Location? Location { get; set; }
 
         #endregion
 

@@ -1,13 +1,14 @@
-﻿@using static MeetBase.Blazor.PaletteColors
+﻿@using MeetBase.Blazor;
+
+@using static MeetBase.Blazor.PaletteColors
 @using static MeetBase.Blazor.CssVariables
 @using static MeetBase.Blazor.Personalization
 
 @namespace MeetEdu
-@using MeetBase.Blazor;
 
 @if(Model is not null)
 {
-    <div class="modelContainer departmentPreviewContainer" style="@BorderBrushVariable.SetCssColor(Model.Color)" @onclick="@DepartmentContainer_OnClick">
+    <div class="modelContainer departmentPreviewContainer" style="@SetStyle()" @onclick="@DepartmentContainer_OnClick">
         <div class="modelRibbonContainer" style="@BackgroundVariable.SetCssColor(Model.Color) @ForegroundVariable.SetCssColor(Model.Color.DarkOrWhite())">
             <div class="modelEmptySpace"></div>
             <div class="modelRibbon">
@@ -15,8 +16,8 @@
                     <h1 class="modelRibbonInfo">@Model.Name</h1>
                     <div class="modelRibbonInfoDetails">
                         <h3 class="departmentPreviewRibbonUniName">@Model.UniversityId</h3>
-                        <div class="departmentPreviewStaffMembersContainer">
-                            <span class="departmentPreviewStaffMembers">- @Model.Category</span>
+                        <div class="departmentPreviewCategoryContainer">
+                            <span class="departmentPreviewCategory">- @Model.Category</span>
                             <MudIcon Icon="@Icons.Material.Filled.Groups3" Size="@Size.Medium" />
                         </div>
                     </div>
@@ -33,7 +34,7 @@
 
         <div class="modelInfoContainer">
             <div class="modelImageAndContactContainer">
-                <div class="modelImageContainer">
+                <div class="modelImageContainer" style="@BorderBrushVariable.SetCssColor(Model!.Color)">
                     <img class="modelImage" src="@Model.ImageUrl?.ToString()" alt="@Model.Name" />
                 </div>
                 <div class="modelContactContainer">
@@ -70,14 +71,12 @@
                             }
                         </div>
                     }
+                    <span class="modelWeeklyScheduleNote">@Model.WorkHours.Note</span>
                 }
-                
-                <span class="modelWeeklyScheduleNote">Any other time outside of the working schedule of the secretary office needs prior notice.</span>
             </div>
 
         </div>
         <div class="departmentPreviewDescription">
-            
             @Model.Description
         </div>
 
@@ -101,14 +100,14 @@
         padding: 0;
     }
 
-    .departmentPreviewStaffMembersContainer {
+    .departmentPreviewCategoryContainer {
         position: relative;
         display: flex;
         align-items: center;
         gap: @LargeGap;
     }
 
-    .departmentPreviewStaffMembers {
+    .departmentPreviewCategory {
         font-weight: 700;
     }
 
@@ -209,7 +208,7 @@
             font-size: 92%;
         }
 
-        .departmentPreviewStaffMembers {
+        .departmentPreviewCategory {
             font-size: 92%;
         }
 

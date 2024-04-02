@@ -139,6 +139,16 @@
 
         #endregion
 
+        #region Department Layouts
+
+        /// <summary>
+        /// The department layouts route
+        /// <code>/appointMate/api/v1/meetEdu/departmentLayouts</code>
+        /// </summary>
+        public const string DepartmentLayoutsRoute = BaseRoute + "/departmentLayouts";
+
+        #endregion
+
         #region Secretaries
 
         /// <summary>
@@ -164,6 +174,7 @@
         #endregion
 
         #region Professors
+        
         /// <summary>
         /// The professors route
         /// <code>/appointMate/api/v1/meetEdu/professors</code>
@@ -183,6 +194,16 @@
         /// <param name="professorId">The id</param>
         /// <returns></returns>
         public static string GetProfessorRoute(string professorId) => ProfessorsRoute + $"/{professorId}";
+
+        #endregion
+
+        #region Professor Office Layouts
+
+        /// <summary>
+        /// The department layouts route
+        /// <code>/appointMate/api/v1/meetCore/professorOfficeLayouts</code>
+        /// </summary>
+        public const string ProfessorOfficeLayoutsRoute = BaseRoute + "/professorOfficeLayouts";
 
         #endregion
 

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Amazon.Runtime.Internal.Transform;
+
+using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
 namespace MeetEdu
@@ -67,6 +69,16 @@ namespace MeetEdu
 
         #endregion
 
+        #region Protected Properties
+
+        /// <summary>
+        /// The navigation manager service
+        /// </summary>
+        [Inject]
+        protected NavigationManager? NavigationManager { get; set; }
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -91,6 +103,36 @@ namespace MeetEdu
             Text = value;
             await TextChanged.InvokeAsync(value);
             return Text;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Navigates to the respected page of professors or departments of the current department
+        /// </summary>
+        private void SearchButton_OnClick()
+        {
+            // If no navigation manager is found...
+            if (NavigationManager is null)
+                // Returns
+                return;
+
+            if (IsSearchForDepartments)
+            {
+                NavigationManager.NavigateToDepartmentsPage(new Dictionary<string, string?>()
+                {
+                    new("SearchText", Text)
+                });
+            }
+            else
+            {
+                NavigationManager.NavigateToFacultyPage(new Dictionary<string, string?>()
+                {
+                    new("SearchText", Text)
+                });
+            }
         }
 
         #endregion

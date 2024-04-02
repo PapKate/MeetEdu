@@ -124,11 +124,6 @@
         }
 
         /// <summary>
-        /// The weekly schedule
-        /// </summary>
-        public WeeklySchedule? WeeklySchedule { get; set; }
-
-        /// <summary>
         /// The user
         /// </summary>
         public EmbeddedUserResponseModel? User { get; set; }

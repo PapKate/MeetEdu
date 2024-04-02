@@ -1,4 +1,4 @@
-﻿@page "/departments"
+﻿@page "/faculty"
 
 @using MeetBase.Blazor
 
@@ -6,6 +6,7 @@
 @using static MeetBase.Blazor.Personalization
 
 @namespace MeetEdu
+
 
 <PageTitle>@MeetEduConstants.AppName Search</PageTitle>
 
@@ -16,23 +17,20 @@
 
 <div class="appContainer searchPageContainer">
     <div class="searchPageSearchBarContainer">
-        <SearchBar @bind-Text="@SearchText" />
+        <SearchBar />
     </div>
 
-    @if(!mDepartments.IsNullOrEmpty())
+    @if(!mStaffMembers.IsNullOrEmpty())
     {
-        @foreach(var department in mDepartments)
-        {
-            <DepartmentPreview Model="@department" IsPreview="true" />
-        }
+        <div class="searchPageProfessorsContainer">
+            <ProfessorPreview />
+            @foreach (var staffMember in mStaffMembers)
+            {
+                <ProfessorPreview Model="@((ProfessorResponseModel)staffMember)" IsPreview="true"/>
+            }
+        </div>
     }
 
-  @*<div class="searchPageProfessorsContainer">
-        <ProfessorPreview />
-        <ProfessorPreview />
-        <ProfessorPreview />
-    </div>*@
-    
 </div>
 
 <style>
@@ -53,10 +51,28 @@
         align-items: center;
     }
 
+    .searchPageProfessorsContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: @VeryVeryLargeGap;
+    }
+
     @@media screen and (max-width: 1400px) {
         .searchPageSearchBarContainer {
             width: 100%;
         }
 
+        .searchPageProfessorsContainer {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
+
+    @@media screen and (max-width: 960px) {
+
+        .searchPageProfessorsContainer {
+            grid-template-columns: 1fr;
+        }
+    }
+
 </style>

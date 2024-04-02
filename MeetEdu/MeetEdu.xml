@@ -4,6 +4,44 @@
         <name>MeetEdu</name>
     </assembly>
     <members>
+        <member name="T:MeetEdu.DepartmentContactForm">
+            <summary>
+            The department contact form
+            </summary>
+        </member>
+        <member name="F:MeetEdu.DepartmentContactForm.mContactMessage">
+            <summary>
+            The appointment
+            </summary>
+        </member>
+        <member name="F:MeetEdu.DepartmentContactForm.mPhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="F:MeetEdu.DepartmentContactForm.mVectorComponent">
+            <summary>
+            The vector component
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentContactForm.Department">
+            <summary>
+            The department
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentContactForm.FormTemplate">
+            <summary>
+            The department message template
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentContactForm.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentContactForm.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
         <member name="T:MeetEdu.DepartmentPreview">
             <summary>
             The department preview
@@ -12,6 +50,11 @@
         <member name="P:MeetEdu.DepartmentPreview.Model">
             <summary>
             The model
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentPreview.IsPreview">
+            <summary>
+            A flag indicating whether it is a preview or not
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentPreview.NavigationManager">
@@ -31,6 +74,105 @@
         </member>
         <member name="M:MeetEdu.DepartmentPreview.OnAfterRenderAsync(System.Boolean)">
             <inheritdoc/>
+        </member>
+        <member name="T:MeetEdu.LayoutPresenter">
+            <summary>
+            The layout presenter
+            </summary>
+        </member>
+        <member name="P:MeetEdu.LayoutPresenter.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="M:MeetEdu.LayoutPresenter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.LayoutPresenter.SetLayoutRoomTheme">
+            <summary>
+            Sets the CSS class for the layout container
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetEdu.ProfessorContactForm">
+            <summary>
+            The professor contact form
+            </summary>
+        </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mAppointment">
+            <summary>
+            The appointment
+            </summary>
+        </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mPhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mIsRemote">
+            <summary>
+            The flag indicating whether the appointment is gonna be remote or not
+            </summary>
+        </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mRule">
+            <summary>
+            The selected rule
+            </summary>
+        </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mVectorComponent">
+            <summary>
+            The vector component
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorContactForm.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorContactForm.FormTemplate">
+            <summary>
+            The appointment template
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorContactForm.AppointmentRules">
+            <summary>
+            The appointment rules
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactForm.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactForm.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="P:MeetEdu.ProfessorPreview.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorPreview.IsPreview">
+            <summary>
+            A flag indicating whether it is a preview or not
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorPreview.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorPreview.JSRuntime">
+            <summary>
+            The JS runtime service
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorPreview.#ctor">
+            <summary>
+            Default constructor
+            </summary>
         </member>
         <member name="T:MeetEdu.SearchBar">
             <summary>
@@ -67,6 +209,11 @@
             A flag indicating whether the search regarding departments or not
             </summary>
         </member>
+        <member name="P:MeetEdu.SearchBar.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
         <member name="M:MeetEdu.SearchBar.#ctor">
             <summary>
             Default constructor
@@ -79,9 +226,39 @@
             <param name="value">The value</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.SearchBar.SearchButton_OnClick">
+            <summary>
+            Navigates to the respected page of professors or departments of the current department
+            </summary>
+        </member>
         <member name="P:MeetEdu.SearchBar.TextChanged">
             <summary>
             Fires when the <see cref="P:MeetEdu.SearchBar.Text"/> is changed
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SecretaryPreview.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SecretaryPreview.Department">
+            <summary>
+            The department
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SecretaryPreview.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SecretaryPreview.JSRuntime">
+            <summary>
+            The JS runtime service
+            </summary>
+        </member>
+        <member name="M:MeetEdu.SecretaryPreview.#ctor">
+            <summary>
+            Default constructor
             </summary>
         </member>
         <member name="T:MeetEdu.UniversityBox">
@@ -720,7 +897,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.MeetCoreController.GetProfessorOfficeLayoutsAsync(MeetBase.Web.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.MeetCoreController.GetProfessorOfficeLayoutsAsync(MeetBase.Web.ProfessorAPIArgs,System.Threading.CancellationToken)">
             <summary>
             Gets the professor office layouts
             </summary>
@@ -950,6 +1127,22 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.MeetEduController.GetDepartmentLayoutsAsync(MeetBase.Web.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the department layouts
+            </summary>
+            <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.GetSecretariesAsync(MeetBase.Web.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the secretaries
+            </summary>
+            <param name="args">The arguments</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.MeetEduController.GetProfessorsAsync(MeetBase.Web.DepartmentRelatedAPIArgs,System.Threading.CancellationToken)">
             <summary>
             Gets the professors
@@ -963,6 +1156,14 @@
             Gets the professor with the specified <paramref name="id"/>
             </summary>
             <param name="id">The memberId</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.MeetEduController.GetProfessorOfficeLayoutsAsync(MeetBase.Web.ProfessorAPIArgs,System.Threading.CancellationToken)">
+            <summary>
+            Gets the professor office layouts
+            </summary>
+            <param name="args">The arguments</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
@@ -1835,6 +2036,11 @@
             The member of the <see cref="P:MeetEdu.DepartmentEntity.LayoutDescription"/> property
             </summary>
         </member>
+        <member name="F:MeetEdu.DepartmentEntity.mSecretaryDescription">
+            <summary>
+            The member of the <see cref="P:MeetEdu.DepartmentEntity.SecretaryDescription"/> property
+            </summary>
+        </member>
         <member name="F:MeetEdu.DepartmentEntity.mFields">
             <summary>
             The member of the <see cref="P:MeetEdu.DepartmentEntity.Fields"/> property
@@ -1843,6 +2049,11 @@
         <member name="F:MeetEdu.DepartmentEntity.mLabels">
             <summary>
             The member of the <see cref="P:MeetEdu.DepartmentEntity.Labels"/> property
+            </summary>
+        </member>
+        <member name="F:MeetEdu.DepartmentEntity.mSecretaries">
+            <summary>
+            The member of the <see cref="P:MeetEdu.DepartmentEntity.Secretaries"/> property
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentEntity.UniversityId">
@@ -1875,14 +2086,14 @@
             The layout description
             </summary>
         </member>
+        <member name="P:MeetEdu.DepartmentEntity.SecretaryDescription">
+            <summary>
+            The secretary description
+            </summary>
+        </member>
         <member name="P:MeetEdu.DepartmentEntity.Note">
             <summary>
             The note
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentEntity.TotalStaffMembers">
-            <summary>
-            The number of staff members
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentEntity.WorkHours">
@@ -1913,6 +2124,11 @@
         <member name="P:MeetEdu.DepartmentEntity.Labels">
             <summary>
             The labels
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentEntity.Secretaries">
+            <summary>
+            The secretaries
             </summary>
         </member>
         <member name="M:MeetEdu.DepartmentEntity.#ctor">
@@ -2615,11 +2831,6 @@
             The company id
             </summary>
         </member>
-        <member name="P:MeetEdu.EmbeddedStaffMemberEntity.WeeklySchedule">
-            <summary>
-            The weekly schedule
-            </summary>
-        </member>
         <member name="P:MeetEdu.EmbeddedStaffMemberEntity.User">
             <summary>
             The user
@@ -2841,6 +3052,14 @@
             <param name="args">The arguments</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.APIArgsExtensions.CreateFilters``1(MeetBase.Web.ProfessorAPIArgs)">
+            <summary>
+            Creates the filters for the specified <paramref name="args"/>
+            </summary>
+            <typeparam name="T">The document type</typeparam>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.APIArgsExtensions.CreateFilters(MeetBase.Web.DepartmentAPIArgs)">
             <summary>
             Creates the filters for the specified <paramref name="args"/>
@@ -2890,7 +3109,7 @@
             <param name="navigationManager">The navigation manager</param>
             <param name="queryParams">The optional query parameter values</param>
         </member>
-        <member name="M:MeetEdu.EduNavigationManagerExtensions.NavigateToprofessorPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+        <member name="M:MeetEdu.EduNavigationManagerExtensions.NavigateToProfessorPage(Microsoft.AspNetCore.Components.NavigationManager,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
             <summary>
             Navigates to the professor page
             </summary>
@@ -3551,6 +3770,44 @@
             <param name="serializationInfo">The serialization information.</param>
             <returns></returns>
         </member>
+        <member name="T:MeetEdu.DepartmentPage">
+            <summary>
+            The department page
+            </summary>
+        </member>
+        <member name="F:MeetEdu.DepartmentPage.mLayouts">
+            <summary>
+            The layouts
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentPage.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentPage.Department">
+            <summary>
+            The department
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentPage.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentPage.Controller">
+            <summary>
+            The controller
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentPage.OnInitializedAsync">
+            <inheritdoc/>
+        </member>
         <member name="T:MeetEdu.DepartmentsPage">
             <summary>
             The departments search page
@@ -3620,10 +3877,38 @@
             On get
             </summary>
         </member>
-        <member name="P:MeetEdu.Pages.DepartmentPage.Id">
+        <member name="F:MeetEdu.FacultyPage.mStaffMembers">
             <summary>
-            The id
+            The staff members
             </summary>
+        </member>
+        <member name="P:MeetEdu.FacultyPage.SearchText">
+            <summary>
+            The search text
+            </summary>
+        </member>
+        <member name="P:MeetEdu.FacultyPage.UniversityId">
+            <summary>
+            The university id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.FacultyPage.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
+        <member name="P:MeetEdu.FacultyPage.Controller">
+            <summary>
+            The controller
+            </summary>
+        </member>
+        <member name="M:MeetEdu.FacultyPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.FacultyPage.OnInitializedAsync">
+            <inheritdoc/>
         </member>
         <member name="T:MeetEdu.Index">
             <summary>
@@ -3668,10 +3953,56 @@
             Navigates to the respected page of professors or departments of the current department
             </summary>
         </member>
-        <member name="M:MeetEdu.Index.SearchButton_OnClick">
+        <member name="T:MeetEdu.ProfessorPage">
             <summary>
-            Navigates to the respected page of professors or departments of the current department
+            The professor page
             </summary>
+        </member>
+        <member name="F:MeetEdu.ProfessorPage.mLayouts">
+            <summary>
+            The layouts
+            </summary>
+        </member>
+        <member name="F:MeetEdu.ProfessorPage.mAppointmentRules">
+            <summary>
+            The appointment rules
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorPage.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorPage.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorPage.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorPage.Controller">
+            <summary>
+            The controller
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorPage.JSRuntime">
+            <summary>
+            The JS runtime service
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorPage.OnInitializedAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:MeetEdu.ProfessorPage.OnAfterRenderAsync(System.Boolean)">
+            <inheritdoc/>
         </member>
         <member name="T:MeetEdu.AccountsRepository">
             <summary>

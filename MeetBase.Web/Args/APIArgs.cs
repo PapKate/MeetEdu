@@ -162,6 +162,38 @@
     }
 
     /// <summary>
+    /// Arguments used for retrieving data that belong to a department layout
+    /// </summary>
+    public class ProfessorAPIArgs : APIArgs
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// Limit the result to entries with specific professor ids
+        /// </summary>
+        public IEnumerable<string>? IncludeProfessors { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without specific professor ids
+        /// </summary>
+        public IEnumerable<string>? ExcludeProfessors { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public ProfessorAPIArgs() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
+    /// <summary>
     /// Arguments used for retrieving data that belong to a professor
     /// </summary>
     public class AppointmentRuleAPIArgs : APIArgs

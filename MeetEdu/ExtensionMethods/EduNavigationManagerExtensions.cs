@@ -85,7 +85,7 @@ namespace MeetEdu
         /// <param name="navigationManager">The navigation manager</param>
         /// <param name="id">The professor id</param>
         /// <param name="queryParams">The optional query parameter values</param>
-        public static void NavigateToprofessorPage(this NavigationManager navigationManager, string id, Dictionary<string, string?>? queryParams = null)
+        public static void NavigateToProfessorPage(this NavigationManager navigationManager, string id, Dictionary<string, string?>? queryParams = null)
         {
             var completeRoute = Routes.ProfessorsRoute + $"/{id}";
 

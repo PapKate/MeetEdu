@@ -46,6 +46,7 @@ namespace MeetBase.Blazor
                 mColor = value ?? PaletteColors.Black;
                 mDarkOrWhiteColor = mColor.DarkOrWhite();
                 mIsDark = mDarkOrWhiteColor == PaletteColors.DarkGray;
+                StateHasChanged();
             }
         }
 

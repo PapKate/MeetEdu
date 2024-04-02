@@ -1,0 +1,150 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetEdu
+
+@if (FormTemplate is not null && !AppointmentRules.IsNullOrEmpty())
+{
+    <div class="contactFormContainer">
+        <div class="contactFormInputsContainer">
+            <MudSelect T="AppointmentRuleResponseModel"
+                       @bind-Value="@mRule"
+                       Placeholder="Type"
+                       Class="formInput"
+                       FullWidth="true"
+                       AnchorOrigin="Origin.BottomCenter">
+                @foreach(var rule in AppointmentRules)
+                {
+                    <MudSelectItem Value="@rule">@rule.Name</MudSelectItem>
+                }
+            </MudSelect>
+
+            <MudTextField @bind-Value="@mAppointment.FirstName"
+                          Placeholder="First name"
+                          Class="formInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+
+            <MudTextField @bind-Value="@mAppointment.LastName"
+                          Placeholder="Last name"
+                          Class="formInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+
+            <MudTextField @bind-Value="@mAppointment.Email"
+                          Placeholder="Email"
+                          Class="formInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+
+            <MudTextField @bind-Value="@mPhoneNumber"
+                          Placeholder="Phone number"
+                          Class="formInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+
+            <MudTextField @bind-Value="@mAppointment.Message"
+                          Placeholder="Message"
+                          Lines="8"
+                          Class="formInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+
+            @if(mRule is not null && mRule.HasRemoteOption)
+            {
+                <MudCheckBox T="bool" @bind-Value="mIsRemote" Class="formCheckBox">Remote meeting</MudCheckBox>
+            }
+        </div>
+
+        <div class="contactFormImageContainer">
+            <div class="contactFormVectorContainer">
+                <DynamicComponent Type="@(typeof(EmailContactVector).Assembly.GetType(FormTemplate.VectorName))"
+                                  @ref="@mVectorComponent" />
+
+            </div>
+            <div class="contactFormNote">
+                @FormTemplate.Note
+            </div>
+
+        </div>
+    </div>
+}
+
+<style>
+
+    .contactFormContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        gap: @XXLargeGap;
+        padding: 3rem;
+        background-color: @Professor?.User!.Color.HexToRGBA(0.4);
+    }
+
+    .contactFormInputsContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: @VeryLargeGap;
+    }
+
+        .contactFormInputsContainer .mud-select {
+            width: 100%;
+        }
+
+    .formCheckBox {
+        width: 100%;
+        margin-top: -0.5rem;
+    }
+
+    .formInput {
+        position: relative;
+        padding: @SmallPadding @VeryLargePadding;
+        border-radius: @LargeBorderRadius;
+        filter: @LightFilterDropShadow;
+        background: @White.NormalizedColor();
+    }
+
+        .formInput .mud-input.mud-input-underline:before {
+            display: none;
+        }
+
+        .formInput .mud-input.mud-input-underline:after {
+            display: none;
+        }
+
+    .contactFormImageContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: @VeryLargeGap;
+    }
+
+    .contactFormVectorContainer {
+        position: relative;
+        height: 16rem;
+        filter: @LightFilterDropShadow;
+    }
+
+    .contactFormNote {
+        position: relative;
+        width: 64%;
+        text-align: center;
+    }
+
+    .mud-primary-hover {
+        background-color: @Professor?.User!.Color.HexToRGBA(0.2) !important;
+    }
+
+    .mud-primary-text {
+        color: @Professor?.User!.Color.NormalizedColor() !important;
+    }
+
+</style>

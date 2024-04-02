@@ -1,0 +1,117 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetEdu
+
+@if(FormTemplate is not null)
+{
+    <div class="contactFormContainer">
+        <div class="contactFormInputsContainer">
+
+            <MudTextField @bind-Value="@mContactMessage.FirstName"
+                          Placeholder="First name"
+                          Class="formInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+
+            <MudTextField @bind-Value="@mContactMessage.LastName"
+                          Placeholder="Last name"
+                          Class="formInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+
+            <MudTextField @bind-Value="@mContactMessage.Email"
+                          Placeholder="Email"
+                          Class="formInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+
+            <MudTextField @bind-Value="@mPhoneNumber"
+                          Placeholder="Phone number"
+                          Class="formInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+
+            <MudTextField @bind-Value="@mContactMessage.Message"
+                          Placeholder="Message"
+                          Lines="8"
+                          Class="formInput"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+        </div>
+
+        <div class="contactFormImageContainer">
+            <div class="contactFormVectorContainer">
+                <DynamicComponent Type="@(typeof(EmailContactVector).Assembly.GetType(FormTemplate.VectorName))" 
+                                  @ref="@mVectorComponent" />
+
+            </div>
+            <div class="contactFormNote">
+                @FormTemplate.Note
+            </div>
+
+        </div>
+    </div>
+}
+
+<style>
+
+    .contactFormContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        gap: @XXLargeGap;
+        padding: 3rem;
+        background-color: @Department!.Color.HexToRGBA(0.4);
+    }
+
+    .contactFormInputsContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: @VeryLargeGap;
+    }
+
+    .formInput {
+        position: relative;
+        padding: @SmallPadding @VeryLargePadding;
+        border-radius: @LargeBorderRadius;
+        filter: @LightFilterDropShadow;
+        background: @White.NormalizedColor();
+    }
+
+    .formInput .mud-input.mud-input-underline:before {
+        display: none;
+    }
+
+    .formInput .mud-input.mud-input-underline:after {
+        display: none;
+    }
+
+    .contactFormImageContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: @VeryLargeGap;
+    }
+
+    .contactFormVectorContainer {
+        position: relative;
+        height: 16rem;
+        filter: @LightFilterDropShadow;
+    }
+
+    .contactFormNote {
+        position: relative;
+        width: 64%;
+        text-align: center;
+    }
+
+</style>

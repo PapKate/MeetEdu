@@ -142,8 +142,8 @@ namespace MeetCore
         /// </summary>
         protected void SaveButton_OnClickCore()
         {
-            var vectorName = mImageVectors.ElementAt(mSelectedIndex).GetTypeInfo().Name;
-            SaveButton_OnClick(vectorName);
+            var vectorName = mImageVectors.ElementAt(mSelectedIndex).GetTypeInfo().FullName;
+            SaveButton_OnClick(vectorName!);
         }
 
         /// <summary>

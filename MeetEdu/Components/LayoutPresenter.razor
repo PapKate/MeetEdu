@@ -1,0 +1,101 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetEdu
+
+@if(Model is not null)
+{
+    <div class="layoutRoomContainer @SetLayoutRoomTheme()" style="@BackgroundVariable.SetCssColor(Model.Color.IsNullOrEmpty() ? Amber.HexToRGBA(0.5) : Model.Color.HexToRGBA(0.5))">
+        @if(Model.DisplayTheme != ImageDisplayTheme.Right)
+        {
+            <div class="@(Model.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFullContainer" : "layoutRoomImageContainer")">
+                <img class="@(Model.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomImageFull" : "layoutRoomImage")" src="@Model.ImageUrl?.ToString()" alt="@Model.Name" />
+            </div>
+        }
+        <div class="layoutRoomTextContainer @(Model.DisplayTheme == ImageDisplayTheme.Center ? "layoutRoomTextCenterContainer" : string.Empty)">
+            <h3>@Model.Name</h3>
+            @((MarkupString)Markdig.Markdown.ToHtml(Model.Note))
+        </div>
+
+        @if (Model.DisplayTheme == ImageDisplayTheme.Right)
+        {
+            <div class="layoutRoomImageContainer layoutRoomImageRightContainer">
+                <img class="layoutRoomImage" src="@Model.ImageUrl?.ToString()" alt="@Model.Name" />
+            </div>
+        }
+    </div>
+}
+
+<style>
+
+    .layoutRoomContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: grid;
+        justify-items: self-end;
+        align-items: center;
+        background-color: @BackgroundVariable.GetCssVariable();
+    }
+
+    .layoutRoomTextContainer {
+        padding: @LargePadding @XXLargePadding @LargePadding @XXLargePadding;
+    }
+
+    .layoutRoomTextCenterContainer {
+        justify-self: center;
+    }
+
+    .layoutRoomImageContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+    }
+
+    .layoutRoomImageRightContainer {
+        justify-content: flex-end;
+    }
+
+    .layoutRoomImageFullContainer {
+        position: relative;
+        width: 100%;
+    }
+
+    .layoutRoomImage {
+        width: 100%;
+        max-width: 500px;
+        height: 100%;
+        max-height: 340px;
+        object-fit: contain;
+        border-radius: @VeryLargeBorderRadius;
+    }
+
+    .layoutRoomImageFull {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+
+    .layoutRoomCenterContainer {
+        grid-template-columns: 1fr;
+        padding: 0;
+        text-align: center;
+    }
+
+    .layoutRoomLeftContainer {
+        grid-template-columns: 3fr 2fr;
+        justify-content: flex-start;
+        padding: @XXLargePadding;
+        text-align: right;
+    }
+
+    .layoutRoomRightContainer {
+        grid-template-columns: 2fr 3fr;
+        justify-content: flex-end;
+        padding: @XXLargePadding;
+        text-align: left;
+    }
+
+</style>
