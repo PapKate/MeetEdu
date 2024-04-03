@@ -1,4 +1,6 @@
-﻿namespace MeetBase
+﻿using System.ComponentModel;
+
+namespace MeetBase
 {
     /// <summary>
     /// Provides enumeration over the company types
@@ -6,28 +8,39 @@
     public enum DepartmentType
     {
         /// <summary>
-        /// Medicine
+        /// Health sciences
         /// </summary>
-        Medicine,
+        [Description("Health Sciences")]
+        HealthSciences,
 
         /// <summary>
-        /// Polytechnic
+        /// Engineering
         /// </summary>
-        Polytechnic,
+        [Description("Engineering")]
+        Engineering,
 
         /// <summary>
-        /// Science
+        /// Natural sciences
         /// </summary>
-        Science,
+        [Description("Natural Sciences")]
+        NaturalSciences,
 
         /// <summary>
-        /// Economics
+        /// Economics and business
         /// </summary>
-        Economics,
+        [Description("Economics & Business")]
+        EconomicsAndBusiness,
 
         /// <summary>
-        /// Agriculture
+        /// Agricultural sciences
         /// </summary>
-        Agriculture
+        [Description("Agricultural Sciences")]
+        AgriculturalSciences,
+
+        /// <summary>
+        /// Health rehabilitation sciences
+        /// </summary>
+        [Description("Health Rehabilitation Sciences")]
+        HealthRehabilitationSciences
     }
 }

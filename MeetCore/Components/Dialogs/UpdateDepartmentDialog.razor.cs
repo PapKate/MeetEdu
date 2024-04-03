@@ -3,6 +3,7 @@ using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.JSInterop;
 
 using MudBlazor;
 
@@ -54,6 +55,16 @@ namespace MeetCore
 
         #endregion
 
+        #region Protected Properties
+
+        /// <summary>
+        /// The JS runtime service
+        /// </summary>
+        [Inject]
+        protected IJSRuntime JSRuntime { get; set; } = default!;
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -78,7 +89,19 @@ namespace MeetCore
             mCountryCode = Model.Model!.PhoneNumber?.CountryCode ?? 30;
             mPhoneNumber = Model.Model.PhoneNumber?.Phone ?? string.Empty;
             mLocation = Model.Model.Location ?? new();
-            mCategory = Model.Model.Category ?? DepartmentType.Medicine;
+            mCategory = Model.Model.Category ?? DepartmentType.HealthSciences;
+        }
+
+        /// <inheritdoc/>
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            if (firstRender)
+            {
+                await Task.Delay(100);
+                await JSRuntime.InvokeVoidAsync("ShowLeafletSearchMap", "updateDepartmentMap", Model.Model?.Location?.Latitude ?? 38, Model.Model?.Location?.Longitude ?? 38);
+            }
         }
 
         #endregion

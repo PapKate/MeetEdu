@@ -342,6 +342,11 @@
             The model
             </summary>
         </member>
+        <member name="P:MeetCore.UpdateDepartmentDialog.JSRuntime">
+            <summary>
+            The JS runtime service
+            </summary>
+        </member>
         <member name="M:MeetCore.UpdateDepartmentDialog.#ctor">
             <summary>
             Default constructor
@@ -351,6 +356,9 @@
             <summary>
             <inheritdoc/>
             </summary>
+        </member>
+        <member name="M:MeetCore.UpdateDepartmentDialog.OnAfterRenderAsync(System.Boolean)">
+            <inheritdoc/>
         </member>
         <member name="T:MeetCore.UpdateLayoutDialog`1">
             <summary>

@@ -8,6 +8,8 @@
     <base href="/" />
     <link href="css/app.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css" />
     <link href="MeetCore.styles.css" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
     <!--<link href="./_content/MeetBase.Blazor/MeetBase.Blazor.bundle.scp.css" rel="stylesheet" />-->
@@ -15,6 +17,11 @@
 </head>
 
 <body>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-geosearch@latest/dist/bundle.min.js"></script>
+
     <div id="app">
         <svg class="loading-progress">
             <circle r="40%" cx="50%" cy="50%" />
@@ -28,10 +35,59 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    
+
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <!--<script src="_content/MeetBase.Blazor/js/sessionStorageFunctions.js" type="module"></script>-->
+
+    <script>
+        // you want to get it of the window global
+        const provider = new GeoSearch.OpenStreetMapProvider();
+
+        window.ShowLeafletSearchMap = (mapId, lat, lng) => {
+            var map = L.map(mapId).setView([lat, lng], 17);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 20,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            var markerIcon = L.icon({
+                iconUrl: './icons/placeholder.png',
+                iconSize: [40, 40]
+            });
+
+            L.Icon.Default.prototype.options.icon = './icons/placeholder.png';
+
+            var marker = L.marker([lat, lng], { icon: markerIcon }).addTo(map);
+
+            const myCustomMarker = {
+                icon: markerIcon,
+            };
+
+            const search = new GeoSearch.GeoSearchControl({
+                provider: new GeoSearch.OpenStreetMapProvider(),
+                marker: myCustomMarker
+            });
+            map.addControl(search);
+        };
+
+        window.ShowReadOnlyLeafletMap = (mapId, lat, lng) => {
+            debugger;
+            var map = L.map(mapId).setView([lat, lng], 17);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 20,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            var markerIcon = L.icon({
+                iconUrl: './icons/placeholder.png',
+                iconSize: [40, 40]
+            });
+
+            var marker = L.marker([lat, lng], { icon: markerIcon }).addTo(map);
+        };
+
+    </script>
 </body>
 
 </html>

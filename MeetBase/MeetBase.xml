@@ -2594,29 +2594,34 @@
             Provides enumeration over the company types
             </summary>
         </member>
-        <member name="F:MeetBase.DepartmentType.Medicine">
+        <member name="F:MeetBase.DepartmentType.HealthSciences">
             <summary>
-            Medicine
+            Health sciences
             </summary>
         </member>
-        <member name="F:MeetBase.DepartmentType.Polytechnic">
+        <member name="F:MeetBase.DepartmentType.Engineering">
             <summary>
-            Polytechnic
+            Engineering
             </summary>
         </member>
-        <member name="F:MeetBase.DepartmentType.Science">
+        <member name="F:MeetBase.DepartmentType.NaturalSciences">
             <summary>
-            Science
+            Natural sciences
             </summary>
         </member>
-        <member name="F:MeetBase.DepartmentType.Economics">
+        <member name="F:MeetBase.DepartmentType.EconomicsAndBusiness">
             <summary>
-            Economics
+            Economics and business
             </summary>
         </member>
-        <member name="F:MeetBase.DepartmentType.Agriculture">
+        <member name="F:MeetBase.DepartmentType.AgriculturalSciences">
             <summary>
-            Agriculture
+            Agricultural sciences
+            </summary>
+        </member>
+        <member name="F:MeetBase.DepartmentType.HealthRehabilitationSciences">
+            <summary>
+            Health rehabilitation sciences
             </summary>
         </member>
         <member name="T:MeetBase.ErrorType">

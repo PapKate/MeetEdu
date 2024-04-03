@@ -1360,6 +1360,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.EntryPoint.AddDepartmentLabelsAsync">
+            <summary>
+            Adds departments to the DB
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.EntryPoint.AddDepartmentsAsync">
             <summary>
             Adds departments to the DB
