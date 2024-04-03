@@ -1,4 +1,8 @@
-﻿namespace MeetBase
+﻿using Newtonsoft.Json;
+
+using System.Net;
+
+namespace MeetBase
 {
     /// <summary>
     /// Represents a location
@@ -26,11 +30,6 @@
         /// The member of the <see cref="Address"/> property
         /// </summary>
         private string? mAddress;
-
-        /// <summary>
-        /// The member of the <see cref="Address2"/> property
-        /// </summary>
-        private string? mAddress2;
 
         #endregion
 
@@ -82,16 +81,6 @@
         }
 
         /// <summary>
-        /// The second address
-        /// </summary>
-        public string Address2
-        {
-            get => mAddress2 ?? string.Empty;
-
-            set => mAddress2 = value;
-        }
-
-        /// <summary>
         /// The longitude for the first address
         /// </summary>
         public double Longitude { get; set; }
@@ -122,6 +111,48 @@
         /// </summary>
         /// <returns></returns>
         public override string ToString() => $"{Address}";
+
+        #endregion
+    }
+
+    /// <summary>
+    /// The geo-location
+    /// </summary>
+    public class GeoLocation
+    {
+        #region Private Properties
+
+        /// <summary>
+        /// The member of the <see cref="Label"/> property
+        /// </summary>
+        private string? mLabel;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The label
+        /// </summary>
+        [JsonProperty("label")]
+        public string Label
+        {
+            get => mLabel ?? string.Empty;
+
+            set => mLabel = value;
+        }
+
+        /// <summary>
+        /// The longitude 
+        /// </summary>
+        [JsonProperty("y")]
+        public double Longitude { get; set; }
+
+        /// <summary>
+        /// The latitude
+        /// </summary>
+        [JsonProperty("x")]
+        public double Latitude { get; set; }
 
         #endregion
     }

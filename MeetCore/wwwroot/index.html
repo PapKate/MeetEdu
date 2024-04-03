@@ -44,7 +44,7 @@
         // you want to get it of the window global
         const provider = new GeoSearch.OpenStreetMapProvider();
 
-        window.ShowLeafletSearchMap = (mapId, lat, lng) => {
+        window.ShowLeafletSearchMap = (mapId, lat, lng, dotnetReference) => {
             var map = L.map(mapId).setView([lat, lng], 17);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 20,
@@ -69,6 +69,10 @@
                 marker: myCustomMarker
             });
             map.addControl(search);
+            map.on('geosearch/showlocation', (result) => {
+                console.log(result.location);
+                dotnetReference.invokeMethodAsync("GetSearchResult", JSON.stringify(result.location));
+            });
         };
 
         window.ShowReadOnlyLeafletMap = (mapId, lat, lng) => {
@@ -86,6 +90,12 @@
 
             var marker = L.marker([lat, lng], { icon: markerIcon }).addTo(map);
         };
+
+        
+        function searchEventHandler(result) {
+            console.log(result.location);
+        }
+
 
     </script>
 </body>

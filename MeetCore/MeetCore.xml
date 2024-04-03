@@ -360,6 +360,12 @@
         <member name="M:MeetCore.UpdateDepartmentDialog.OnAfterRenderAsync(System.Boolean)">
             <inheritdoc/>
         </member>
+        <member name="M:MeetCore.UpdateDepartmentDialog.GetSearchResult(System.String)">
+            <summary>
+            Gets the location search result
+            </summary>
+            <param name="result"></param>
+        </member>
         <member name="T:MeetCore.UpdateLayoutDialog`1">
             <summary>
             The dialog for editing the room

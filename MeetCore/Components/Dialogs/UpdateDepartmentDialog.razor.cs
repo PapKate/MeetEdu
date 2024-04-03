@@ -7,6 +7,8 @@ using Microsoft.JSInterop;
 
 using MudBlazor;
 
+using Newtonsoft.Json;
+
 namespace MeetCore
 {
     /// <summary>
@@ -100,8 +102,27 @@ namespace MeetCore
             if (firstRender)
             {
                 await Task.Delay(100);
-                await JSRuntime.InvokeVoidAsync("ShowLeafletSearchMap", "updateDepartmentMap", Model.Model?.Location?.Latitude ?? 38, Model.Model?.Location?.Longitude ?? 38);
+                await JSRuntime.InvokeVoidAsync("ShowLeafletSearchMap", "updateDepartmentMap", Model.Model?.Location?.Latitude ?? 38, Model.Model?.Location?.Longitude ?? 38, DotNetObjectReference.Create(this));
             }
+        }
+
+        /// <summary>
+        /// Gets the location search result
+        /// </summary>
+        /// <param name="result"></param>
+        [JSInvokable]
+        public void GetSearchResult(string result)
+        {
+            Console.Write(result);
+
+            var geoLocation = JsonConvert.DeserializeObject<GeoLocation>(result);
+
+            if (geoLocation is null)
+                return;
+
+            var locationData = geoLocation.Label.Split(',');
+
+
         }
 
         #endregion

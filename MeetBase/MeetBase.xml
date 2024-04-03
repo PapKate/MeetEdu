@@ -898,11 +898,6 @@
             The member of the <see cref="P:MeetBase.Location.Address"/> property
             </summary>
         </member>
-        <member name="F:MeetBase.Location.mAddress2">
-            <summary>
-            The member of the <see cref="P:MeetBase.Location.Address2"/> property
-            </summary>
-        </member>
         <member name="P:MeetBase.Location.Country">
             <summary>
             The country
@@ -928,11 +923,6 @@
             The first address
             </summary>
         </member>
-        <member name="P:MeetBase.Location.Address2">
-            <summary>
-            The second address
-            </summary>
-        </member>
         <member name="P:MeetBase.Location.Longitude">
             <summary>
             The longitude for the first address
@@ -953,6 +943,31 @@
             Returns a string that represents the current object.
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:MeetBase.GeoLocation">
+            <summary>
+            The geo-location
+            </summary>
+        </member>
+        <member name="F:MeetBase.GeoLocation.mLabel">
+            <summary>
+            The member of the <see cref="P:MeetBase.GeoLocation.Label"/> property
+            </summary>
+        </member>
+        <member name="P:MeetBase.GeoLocation.Label">
+            <summary>
+            The label
+            </summary>
+        </member>
+        <member name="P:MeetBase.GeoLocation.Longitude">
+            <summary>
+            The longitude 
+            </summary>
+        </member>
+        <member name="P:MeetBase.GeoLocation.Latitude">
+            <summary>
+            The latitude
+            </summary>
         </member>
         <member name="T:MeetBase.Shipping">
             <summary>
