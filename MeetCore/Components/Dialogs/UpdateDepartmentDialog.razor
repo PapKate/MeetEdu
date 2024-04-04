@@ -86,9 +86,9 @@
 
 
                 <span class="dialogContentTitle dialogContentFullRow">Location info</span>
-                <div class="dialogLocationGrid dialogContentFullRow dialogContentContainer" style="padding:0">
+                <div class="dialogLocationGrid dialogContentFullRow " style="padding:0">
                     <div class="dialogLocationMapContainer dialogContentFullRow">
-                        <div id="updateDepartmentMap" class="updateDepartmentMap"></div>
+                        <LocationPointer MapId="updateDepartmentMap" Color="@Model.Model?.Color" @bind-Location="@mLocation"/>
                     </div>
                 </div>
             </div>

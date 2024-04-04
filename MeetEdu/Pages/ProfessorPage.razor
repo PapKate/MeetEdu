@@ -9,16 +9,8 @@
 
 <PageTitle>@MeetEduConstants.AppName @Professor?.User?.FirstName @Professor?.User?.LastName</PageTitle>
 
-<Header AppName="@MeetEduConstants.AppName"
-        Username="Lime"
-        BackColor="@Blue"
-        ForeColor="@White" />
-
-<div id="staffMemberPageAppContainer" class="appContainer searchPageContainer">
-    <div class="searchPageSearchBarContainer">
-        <SearchBar />
-    </div>
-
+<PageContainer Id="staffMemberPageAppContainer">
+    
     @if (Professor is not null && Professor.User is not null)
     {
         <div class="staffMemberPageContainer">
@@ -139,8 +131,7 @@
 
         </div>
     }
-</div>
-
+</PageContainer>
 
 <style>
     #staffMemberPageAppContainer {

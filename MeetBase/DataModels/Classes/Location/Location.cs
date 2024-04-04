@@ -81,12 +81,12 @@ namespace MeetBase
         }
 
         /// <summary>
-        /// The longitude for the first address
+        /// The longitude 
         /// </summary>
         public double Longitude { get; set; }
 
         /// <summary>
-        /// The latitude for the first address
+        /// The latitude 
         /// </summary>
         public double Latitude { get; set; }
 

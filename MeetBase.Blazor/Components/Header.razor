@@ -6,7 +6,7 @@
 @namespace MeetBase.Blazor
 
 <div class="headerContainer" style="@BackgroundVariable.SetCssColor(BackColor!) @ForegroundVariable.SetCssColor(ForeColor!)">
-    <h1 class="headerAppName">@AppName</h1>
+    <a class="headerAppName" href="/">@AppName</a>
        
     <div class="headerUserContainer">
         <span class="headerUserUsername">@(Username.IsNullOrEmpty() ? MeetBaseConstants.Explorer : Username)</span>
@@ -35,10 +35,12 @@
     }
 
     .headerAppName {
+        color: @White.NormalizedColor();
         font-size: 200%;
         font-weight: 800;
         filter: @LightFilterDropShadow;
-        cursor: default;
+        cursor: pointer;
+        border: none;
     }
 
     .headerUserContainer {

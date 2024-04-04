@@ -41,11 +41,17 @@
     <!--<script src="_content/MeetBase.Blazor/js/sessionStorageFunctions.js" type="module"></script>-->
 
     <script>
-        // you want to get it of the window global
         const provider = new GeoSearch.OpenStreetMapProvider();
+        var currentMap;
+
+        var markerIcon = L.icon({
+            iconUrl: './icons/placeholder.png',
+            iconSize: [40, 40]
+        });
 
         window.ShowLeafletSearchMap = (mapId, lat, lng, dotnetReference) => {
             var map = L.map(mapId).setView([lat, lng], 17);
+            currentMap = map;
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 20,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -76,26 +82,61 @@
         };
 
         window.ShowReadOnlyLeafletMap = (mapId, lat, lng) => {
-            debugger;
             var map = L.map(mapId).setView([lat, lng], 17);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 20,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
 
-            var markerIcon = L.icon({
-                iconUrl: './icons/placeholder.png',
-                iconSize: [40, 40]
-            });
-
             var marker = L.marker([lat, lng], { icon: markerIcon }).addTo(map);
         };
+
+        window.GetAddressFromCoordinates = (lat, lng, dotnetReference) => {
+            calculateAddressFromCoordinates(lat, lng)
+                .then(address => {
+                    console.log('Address:', address);
+                    removeAllMarkers(currentMap);
+                    L.marker([lat, lng], { icon: markerIcon }).addTo(currentMap);
+                    currentMap.setView([lat, lng], 17);
+                    dotnetReference.invokeMethodAsync("GetAddress", JSON.stringify(address));
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    return null;
+                });
+        }
 
         
         function searchEventHandler(result) {
             console.log(result.location);
         }
 
+        function calculateAddressFromCoordinates(lat, lng) {
+            return new Promise((resolve, reject) => {
+                const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.display_name) {
+                            resolve(data.display_name);
+                        } else {
+                            reject('No address found for the given coordinates');
+                        }
+                    })
+                    .catch(error => {
+                        reject('Error fetching address:', error);
+                    });
+            });
+        }
+
+        function removeAllMarkers(map) {
+            map.eachLayer(function (layer) {
+                if (layer instanceof L.Marker) {
+                    map.removeLayer(layer);
+                }
+            });
+        }
 
     </script>
 </body>

@@ -1,6 +1,7 @@
 ﻿using Amazon.Runtime.Internal.Transform;
 
 using Microsoft.AspNetCore.Components;
+
 using MudBlazor;
 
 namespace MeetEdu
@@ -77,6 +78,12 @@ namespace MeetEdu
         [Inject]
         protected NavigationManager? NavigationManager { get; set; }
 
+        /// <summary>
+        /// The search manager service
+        /// </summary>
+        [Inject]
+        protected SearchManager? SearchManager { get; set; }
+
         #endregion
 
         #region Constructors
@@ -92,6 +99,16 @@ namespace MeetEdu
         #endregion
 
         #region Protected Methods
+
+        /// <inheritdoc/>
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+            if(SearchManager is not null)
+                IsSearchForDepartments = SearchManager.SearchResultType == SearchResultType.Departments;
+
+        }
 
         /// <summary>
         /// Handles the text change
@@ -110,15 +127,29 @@ namespace MeetEdu
         #region Private Methods
 
         /// <summary>
+        /// Changes the search result type
+        /// </summary>
+        private void SearchCategoryButton_OnClick()
+        {
+            SearchManager?.SwitchSearchReultType();
+            IsSearchForDepartments = !IsSearchForDepartments;
+        }
+
+        /// <summary>
         /// Navigates to the respected page of professors or departments of the current department
         /// </summary>
-        private void SearchButton_OnClick()
+        private async void SearchButton_OnClick()
         {
+            await OnSearch.InvokeAsync();
+
             // If no navigation manager is found...
             if (NavigationManager is null)
                 // Returns
                 return;
 
+            if (SearchManager is not null)
+                SearchManager.Text = Text;
+            
             if (IsSearchForDepartments)
             {
                 NavigationManager.NavigateToDepartmentsPage(new Dictionary<string, string?>()
@@ -144,6 +175,12 @@ namespace MeetEdu
         /// </summary>
         [Parameter]
         public EventCallback<string> TextChanged { get; set; }
+
+        /// <summary>
+        /// Fires when the search button is clicked
+        /// </summary>
+        [Parameter]
+        public EventCallback<string> OnSearch { get; set; }
 
         #endregion
     }

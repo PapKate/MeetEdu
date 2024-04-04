@@ -81,9 +81,7 @@ namespace MeetCore
 
         #region Protected Methods
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         protected override void OnInitialized()
         {
             base.OnInitialized();
@@ -92,37 +90,6 @@ namespace MeetCore
             mPhoneNumber = Model.Model.PhoneNumber?.Phone ?? string.Empty;
             mLocation = Model.Model.Location ?? new();
             mCategory = Model.Model.Category ?? DepartmentType.HealthSciences;
-        }
-
-        /// <inheritdoc/>
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            await base.OnAfterRenderAsync(firstRender);
-
-            if (firstRender)
-            {
-                await Task.Delay(100);
-                await JSRuntime.InvokeVoidAsync("ShowLeafletSearchMap", "updateDepartmentMap", Model.Model?.Location?.Latitude ?? 38, Model.Model?.Location?.Longitude ?? 38, DotNetObjectReference.Create(this));
-            }
-        }
-
-        /// <summary>
-        /// Gets the location search result
-        /// </summary>
-        /// <param name="result"></param>
-        [JSInvokable]
-        public void GetSearchResult(string result)
-        {
-            Console.Write(result);
-
-            var geoLocation = JsonConvert.DeserializeObject<GeoLocation>(result);
-
-            if (geoLocation is null)
-                return;
-
-            var locationData = geoLocation.Label.Split(',');
-
-
         }
 
         #endregion

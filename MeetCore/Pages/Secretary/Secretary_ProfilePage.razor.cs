@@ -18,6 +18,11 @@ namespace MeetCore
         /// </summary>
         private DialogOptions mDialogOptions = new() { FullWidth = true };
 
+        /// <summary>
+        /// The bottom margin for the location container
+        /// </summary>
+        private string mBottomMargin = "0";
+
         #endregion
 
         #region Public Properties
@@ -58,6 +63,16 @@ namespace MeetCore
         public Secretary_ProfilePage() : base()
         {
             
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            mBottomMargin = Secretary.WeeklySchedule?.WeeklyHours.Count() < 4 || Secretary.WeeklySchedule is null ? "0" : "2rem";
         }
 
         #endregion

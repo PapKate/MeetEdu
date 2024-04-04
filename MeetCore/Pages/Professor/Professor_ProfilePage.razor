@@ -92,8 +92,8 @@
                 </div>
             </div>
 
-            <div class="locationContainer">
-                <img class="location" src="./icons/map.png" alt="map" />
+            <div class="locationContainer" style="margin-bottom: @mBottomMargin;">
+                <LocationPointer MapId="@Professor.Id" Color="@Professor.User?.Color" Location="@Professor.User?.Location" IsReadOnly="true" />
             </div>
         </div>
 

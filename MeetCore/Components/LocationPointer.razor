@@ -1,0 +1,77 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<div id="@Id" class="locationPointerContainer @CssClasses">
+    <div class="locationPointerMapContainer">
+        <div id="@MapId" class="locationPointerMap"></div>
+    </div>
+    @if(!IsReadOnly)
+    {
+        <div class="locationPointerInputsContainer">
+            <MudTextField @bind-Value="@mLatitude"
+                        Placeholder="Latitude"
+                        Class="locationPointerInput"
+                        Variant="Variant.Text"
+                        Adornment="Adornment.Start"
+                        AdornmentIcon="@MudIconPaths.Account" />
+        
+            <MudTextField @bind-Value="@mLongitude"
+                        Placeholder="Longitude"
+                        Class="locationPointerInput"
+                        Variant="Variant.Text"
+                        Adornment="Adornment.Start"
+                        AdornmentIcon="@MudIconPaths.Account" />
+        
+            <IconButton @ref="@mIconButton" 
+                        VectorSource="@IconPaths.ChevronLeftPath" 
+                        OnClick="@SetCoordinates"
+                        ForeColor="@Color.DarkOrWhite()"
+                        BackColor="@Color"
+                        CssClasses="locationPointerSearchButton" />
+        </div>
+    }
+</div>
+
+
+
+<style>
+    .locationPointerContainer {
+        position: relative;
+        width: 100%;
+    }
+
+    .locationPointerMapContainer {
+        position: relative;
+        width: 100%;
+        height: @MapHeight;
+     }
+
+    .locationPointerMap {
+        position: relative;
+        width: 100%;
+        height: @MapHeight;
+        border-radius: @LargeBorderRadius;
+        border: solid 1px @LightGray.NormalizedColor();
+    }
+
+    .locationPointerInputsContainer {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        gap: @LargeGap;
+        padding: 1rem 0;
+    }
+
+    .locationPointerSearchButton {
+        width: 2rem; 
+        height: 2rem;
+        padding: 0;
+        border-radius: @NormalBorderRadius;
+    }
+
+</style>

@@ -22,6 +22,11 @@ namespace MeetCore
         /// </summary>
         private string? mText;
 
+        /// <summary>
+        /// The bottom margin for the location container
+        /// </summary>
+        private string mBottomMargin = "0";
+
         #endregion
 
         #region Public Properties
@@ -73,6 +78,7 @@ namespace MeetCore
         /// </summary>
         protected override void OnInitializedCore()
         {
+            mBottomMargin = Professor.WeeklySchedule?.WeeklyHours.Count() < 4 || Professor.WeeklySchedule is null ? "0" : "2rem";
             mText = Professor.ResearchInterests ?? string.Empty;
             StateHasChanged();
         }

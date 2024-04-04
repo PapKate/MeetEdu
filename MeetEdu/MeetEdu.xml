@@ -96,6 +96,21 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:MeetEdu.PageContainer">
+            <summary>
+            The page container
+            </summary>
+        </member>
+        <member name="P:MeetEdu.PageContainer.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.PageContainer.ChildContent">
+            <summary>
+            The child content
+            </summary>
+        </member>
         <member name="T:MeetEdu.ProfessorContactForm">
             <summary>
             The professor contact form
@@ -214,10 +229,18 @@
             The navigation manager service
             </summary>
         </member>
+        <member name="P:MeetEdu.SearchBar.SearchManager">
+            <summary>
+            The search manager service
+            </summary>
+        </member>
         <member name="M:MeetEdu.SearchBar.#ctor">
             <summary>
             Default constructor
             </summary>
+        </member>
+        <member name="M:MeetEdu.SearchBar.OnInitialized">
+            <inheritdoc/>
         </member>
         <member name="M:MeetEdu.SearchBar.OnTextChanged(System.String)">
             <summary>
@@ -225,6 +248,11 @@
             </summary>
             <param name="value">The value</param>
             <returns></returns>
+        </member>
+        <member name="M:MeetEdu.SearchBar.SearchCategoryButton_OnClick">
+            <summary>
+            Changes the search result type
+            </summary>
         </member>
         <member name="M:MeetEdu.SearchBar.SearchButton_OnClick">
             <summary>
@@ -234,6 +262,11 @@
         <member name="P:MeetEdu.SearchBar.TextChanged">
             <summary>
             Fires when the <see cref="P:MeetEdu.SearchBar.Text"/> is changed
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SearchBar.OnSearch">
+            <summary>
+            Fires when the search button is clicked
             </summary>
         </member>
         <member name="P:MeetEdu.SecretaryPreview.Model">
@@ -1281,6 +1314,21 @@
             <param name="id">The memberId</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
+        </member>
+        <member name="T:MeetEdu.SearchResultType">
+            <summary>
+            Provides enumerations over the search result
+            </summary>
+        </member>
+        <member name="F:MeetEdu.SearchResultType.Departments">
+            <summary>
+            Departments
+            </summary>
+        </member>
+        <member name="F:MeetEdu.SearchResultType.Faculty">
+            <summary>
+            Faculty
+            </summary>
         </member>
         <member name="T:MeetEdu.LoginResult">
             <summary>
@@ -3603,6 +3651,36 @@
             <param name="updateModelAction"></param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
+        </member>
+        <member name="T:MeetEdu.SearchManager">
+            <summary>
+            The manager for searching
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SearchManager.SearchResultType">
+            <summary>
+            The type of the search result
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SearchManager.Text">
+            <summary>
+            The search text
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SearchManager.NavigationManager">
+            <summary>
+            The navigation manager service
+            </summary>
+        </member>
+        <member name="M:MeetEdu.SearchManager.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.SearchManager.SwitchSearchReultType">
+            <summary>
+            Switches between <see cref="F:MeetEdu.SearchResultType.Departments"/> and <see cref="F:MeetEdu.SearchResultType.Faculty"/>
+            </summary>
         </member>
         <member name="T:MeetEdu.MongoDbDateOnlySerializer">
             <summary>

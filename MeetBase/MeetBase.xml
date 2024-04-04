@@ -925,12 +925,12 @@
         </member>
         <member name="P:MeetBase.Location.Longitude">
             <summary>
-            The longitude for the first address
+            The longitude 
             </summary>
         </member>
         <member name="P:MeetBase.Location.Latitude">
             <summary>
-            The latitude for the first address
+            The latitude 
             </summary>
         </member>
         <member name="M:MeetBase.Location.#ctor">

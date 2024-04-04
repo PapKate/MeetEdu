@@ -153,44 +153,10 @@
             }
 
             <span class="dialogContentTitle dialogContentFullRow">Location info</span>
-            <div class="dialogLocationGrid dialogContentFullRow dialogContentContainer">
-                <div class="dialogLocationMapContainer">
-                    <img class="location" src="./icons/map.png" alt="map" />
+            <div class="dialogLocationGrid dialogContentFullRow " style="padding:0">
+                <div class="dialogLocationMapContainer dialogContentFullRow">
+                    <LocationPointer MapId="updateStaffMemberMap" Color="@Model.Model?.Color" @bind-Location="@mLocation" />
                 </div>
-                <MudSelect T="CountryCode" @bind-Value="@mLocation.Country"
-                           Placeholder="Country"
-                           Class="dialogInput"
-                           FullWidth="true"
-                           Variant="Variant.Text"
-                           Adornment="Adornment.Start"
-                           AdornmentIcon="@MudIconPaths.Account"
-                           AnchorOrigin="Origin.BottomCenter">
-                    @foreach (var value in Enum.GetValues<CountryCode>())
-                    {
-                        <MudSelectItem Value="@value">@value</MudSelectItem>
-                    }
-                </MudSelect>
-                <MudTextField @bind-Value="@mLocation.City"
-                              Placeholder="City"
-                              Class="dialogInput locationInput"
-                              FullWidth="true"
-                              Variant="Variant.Text"
-                              Adornment="Adornment.Start"
-                              AdornmentIcon="@MudIconPaths.Phone" />
-                <MudTextField @bind-Value="@mLocation.Postcode"
-                              Placeholder="Postcode"
-                              Class="dialogInput locationInput"
-                              FullWidth="true"
-                              Variant="Variant.Text"
-                              Adornment="Adornment.Start"
-                              AdornmentIcon="@MudIconPaths.Phone" />
-                <MudTextField @bind-Value="@mLocation.Address"
-                              Placeholder="Address"
-                              Class="dialogInput locationInput"
-                              FullWidth="true"
-                              Variant="Variant.Text"
-                              Adornment="Adornment.Start"
-                              AdornmentIcon="@MudIconPaths.Phone" />
             </div>
         </div>
     </DialogContent>

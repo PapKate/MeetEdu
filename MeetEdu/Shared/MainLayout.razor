@@ -19,7 +19,7 @@
 <MudSnackbarProvider />
 
 <style>
-
+    
     .appContainer {
         position: relative;
         width: 64%;
@@ -29,57 +29,16 @@
         align-items: center;
     }
 
-     .searchPageContainer {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-        padding: 40px;
+    @@media screen and (max-width: 1400px) {
+        .appContainer {
+            width: 100%;
+        }
     }
 
-    .searchPageSearchBarContainer {
-        position: relative;
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .searchBarContainer {
-        position: relative;
-        height: 40px;
-        width: 80%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        color: @DarkGray.NormalizedColor();
-        border: solid 1px @LightGray.NormalizedColor();
-        border-radius: @VeryLargeBorderRadius;
-        overflow: hidden;
-    }
-
-    .searchBarSearchArea {
-        position: relative;
-        width: 88%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding-left: @LargePadding;
-    }
-
-    .searchBarSearchButtons {
-        position: relative;
-        display: flex;
-    }
-
-    .searchButton {
-        height: 40px;
-    }
-
-    .searchCategoryButton {
-        min-width: 180px;
+    @@media screen and (max-width: 960px) {
+        .appContainer {
+            padding: @LargePadding;
+        }
     }
 
     .modelContainer {
@@ -254,23 +213,6 @@
         text-align: center;
     }
 
-
-
-    @@media screen and (max-width: 1400px) {
-        .appContainer {
-            width: 100%;
-        }
-    }
-
-    @@media screen and (max-width: 960px) {
-        .appContainer {
-            padding: @LargePadding;
-        }
-
-        .searchBarContainer {
-            width: 100%;
-        }
-    }
 
 
     .staffMemberContainer {

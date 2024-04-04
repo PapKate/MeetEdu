@@ -10,16 +10,7 @@
 
 <PageTitle>@MeetEduConstants.AppName Search</PageTitle>
 
-<Header AppName="@MeetEduConstants.AppName"
-        Username="Lime"
-        BackColor="@Blue"
-        ForeColor="@White" />
-
-<div class="appContainer searchPageContainer">
-    <div class="searchPageSearchBarContainer">
-        <SearchBar />
-    </div>
-
+<PageContainer>
     @if(!mStaffMembers.IsNullOrEmpty())
     {
         <div class="searchPageProfessorsContainer">
@@ -30,8 +21,7 @@
             }
         </div>
     }
-
-</div>
+</PageContainer>
 
 <style>
     .searchPageContainer {

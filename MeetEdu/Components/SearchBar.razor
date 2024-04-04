@@ -1,4 +1,10 @@
-﻿@namespace MeetEdu
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+
+@namespace MeetEdu
 
 <div class="searchBarContainer" style="--mud-default-borderradius:0">
     <div class="searchBarSearchArea">
@@ -25,13 +31,52 @@
                    Color="@mSearchBackColor"
                    Class="rounded-0 searchButton searchCategoryButton"
                    aria-label="categories"
-                   OnClick="@(() => IsSearchForDepartments = !IsSearchForDepartments)">
+                   OnClick="@SearchCategoryButton_OnClick">
             @mSearchCategory
         </MudButton>
     </div>
 </div>
 
 <style>
+
+    
+    .searchBarContainer {
+        position: relative;
+        height: 40px;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: @DarkGray.NormalizedColor();
+        border: solid 1px @LightGray.NormalizedColor();
+        border-radius: @VeryLargeBorderRadius;
+        overflow: hidden;
+    }
+
+    .searchBarSearchArea {
+        position: relative;
+        width: 88%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: @LargePadding;
+    }
+
+    .searchBarSearchButtons {
+        position: relative;
+        display: flex;
+    }
+
+    .searchButton {
+        height: 40px;
+    }
+
+    .searchCategoryButton {
+        min-width: 180px;
+    }
+
+
     .mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
         margin: 0;
     }

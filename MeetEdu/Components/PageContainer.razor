@@ -1,0 +1,47 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetEdu
+
+<Header AppName="@MeetEduConstants.AppName"
+        Username="Lime"
+        BackColor="@Blue"
+        ForeColor="@White" />
+
+<div id="@Id" class="appContainer searchPageContainer">
+    <div class="searchPageSearchBarContainer">
+        <SearchBar />
+    </div>
+
+    @ChildContent
+</div>
+
+<style>
+    
+     .searchPageContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 40px;
+    }
+
+    .searchPageSearchBarContainer {
+        position: relative;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @@media screen and (max-width: 960px) {
+
+        .searchBarContainer {
+            width: 100%;
+        }
+    }
+
+</style>

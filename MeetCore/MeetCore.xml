@@ -353,18 +353,7 @@
             </summary>
         </member>
         <member name="M:MeetCore.UpdateDepartmentDialog.OnInitialized">
-            <summary>
             <inheritdoc/>
-            </summary>
-        </member>
-        <member name="M:MeetCore.UpdateDepartmentDialog.OnAfterRenderAsync(System.Boolean)">
-            <inheritdoc/>
-        </member>
-        <member name="M:MeetCore.UpdateDepartmentDialog.GetSearchResult(System.String)">
-            <summary>
-            Gets the location search result
-            </summary>
-            <param name="result"></param>
         </member>
         <member name="T:MeetCore.UpdateLayoutDialog`1">
             <summary>
@@ -549,6 +538,110 @@
         <member name="P:MeetCore.LayoutPresenter`1.DeleteButtonClicked">
             <summary>
             Fires when the delete button is clicked
+            </summary>
+        </member>
+        <member name="T:MeetCore.LocationPointer">
+            <summary>
+            A component for setting a location
+            </summary>
+        </member>
+        <member name="F:MeetCore.LocationPointer.mLongitude">
+            <summary>
+            The longitude 
+            </summary>
+        </member>
+        <member name="F:MeetCore.LocationPointer.mLatitude">
+            <summary>
+            The latitude 
+            </summary>
+        </member>
+        <member name="F:MeetCore.LocationPointer.mColor">
+            <summary>
+            The member of the <see cref="P:MeetCore.LocationPointer.Color"/> property
+            </summary>
+        </member>
+        <member name="F:MeetCore.LocationPointer.mIconButton">
+            <summary>
+            The icon button
+            </summary>
+        </member>
+        <member name="P:MeetCore.LocationPointer.Id">
+            <summary>
+            The id
+            </summary>
+        </member>
+        <member name="P:MeetCore.LocationPointer.MapId">
+            <summary>
+            The map id
+            </summary>
+        </member>
+        <member name="P:MeetCore.LocationPointer.MapHeight">
+            <summary>
+            The map height
+            </summary>
+        </member>
+        <member name="P:MeetCore.LocationPointer.CssClasses">
+            <summary>
+            The additional CSS classes
+            </summary>
+        </member>
+        <member name="P:MeetCore.LocationPointer.IsReadOnly">
+            <summary>
+            A flag indicating whether the location is read only or not
+            </summary>
+        </member>
+        <member name="P:MeetCore.LocationPointer.Location">
+            <summary>
+            The location
+            </summary>
+        </member>
+        <member name="P:MeetCore.LocationPointer.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="P:MeetCore.LocationPointer.JSRuntime">
+            <summary>
+            The JS runtime service
+            </summary>
+        </member>
+        <member name="M:MeetCore.LocationPointer.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.LocationPointer.GetSearchResult(System.String)">
+            <summary>
+            Gets the location search result
+            </summary>
+            <param name="result"></param>
+        </member>
+        <member name="M:MeetCore.LocationPointer.GetAddress(System.String)">
+            <summary>
+            Gets the location search result
+            </summary>
+            <param name="result"></param>
+        </member>
+        <member name="M:MeetCore.LocationPointer.OnInitialized">
+            <inheritdoc/>
+        </member>
+        <member name="M:MeetCore.LocationPointer.OnAfterRenderAsync(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MeetCore.LocationPointer.SetLocationFromLabel(System.String)">
+            <summary>
+            Sets the <see cref="P:MeetCore.LocationPointer.Location"/> address according to the <paramref name="label"/>
+            </summary>
+            <param name="label">The label</param>
+        </member>
+        <member name="M:MeetCore.LocationPointer.SetCoordinates">
+            <summary>
+            Sets the coordinates of the <see cref="P:MeetCore.LocationPointer.Location"/>
+            </summary>
+        </member>
+        <member name="P:MeetCore.LocationPointer.LocationChanged">
+            <summary>
+            Fires when the <see cref="P:MeetCore.LocationPointer.Location"/> is changed
             </summary>
         </member>
         <member name="T:MeetCore.SideMenu">
@@ -1647,6 +1740,11 @@
             The <see cref="T:MeetBase.Blazor.MarkDownInput"/> text
             </summary>
         </member>
+        <member name="F:MeetCore.Professor_ProfilePage.mBottomMargin">
+            <summary>
+            The bottom margin for the location container
+            </summary>
+        </member>
         <member name="P:MeetCore.Professor_ProfilePage.Professor">
             <summary>
             The professor
@@ -2022,6 +2120,11 @@
         <member name="F:MeetCore.Secretary_ProfilePage.mDialogOptions">
             <summary>
             The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_ProfilePage.mBottomMargin">
+            <summary>
+            The bottom margin for the location container
             </summary>
         </member>
         <member name="P:MeetCore.Secretary_ProfilePage.Secretary">
