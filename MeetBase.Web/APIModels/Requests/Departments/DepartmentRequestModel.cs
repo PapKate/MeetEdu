@@ -13,6 +13,11 @@
         public string? UniversityId { get; set; }
 
         /// <summary>
+        /// The related websites 
+        /// </summary>
+        public IEnumerable<Website>? Websites { get; set; }
+
+        /// <summary>
         /// The email
         /// </summary>
         public string? Email { get; set; }
@@ -26,6 +31,11 @@
         /// The fields of study
         /// </summary>
         public IEnumerable<string>? Fields { get; set; }
+        
+        /// <summary>
+        /// The quote
+        /// </summary>
+        public string? Quote { get; set; }
 
         /// <summary>
         /// The description

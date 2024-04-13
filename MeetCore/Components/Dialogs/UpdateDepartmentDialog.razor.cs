@@ -39,6 +39,16 @@ namespace MeetCore
         /// </summary>
         private Location mLocation = new Location();
 
+        /// <summary>
+        /// The websites
+        /// </summary>
+        private List<Website> mWebsites = new();
+
+        /// <summary>
+        /// The current website
+        /// </summary>
+        private Website mWebsite = new();
+
         #endregion
 
         #region Public Properties
@@ -90,17 +100,32 @@ namespace MeetCore
             mPhoneNumber = Model.Model.PhoneNumber?.Phone ?? string.Empty;
             mLocation = Model.Model.Location ?? new();
             mCategory = Model.Model.Category ?? DepartmentType.HealthSciences;
+            if (!Model.Model.Websites.IsNullOrEmpty())
+                mWebsites = Model.Model.Websites.ToList();
+            else
+                AddNew();
         }
 
         #endregion
 
         #region Private Methods
 
+        private void AddNew()
+        {
+            mWebsites.Insert(0, new());
+            StateHasChanged();
+        }
+
         private async void Save()
         {
+            mWebsites.RemoveAll(x => x == default);
+            mWebsites.RemoveAll(x => x.Link is null);
+            mWebsites.Where(x => x.Name.IsNullOrEmpty()).ForEach(x => x.Name = x.Link!.ToString());
+
             Model.Model!.PhoneNumber = new PhoneNumber(mCountryCode, mPhoneNumber);
             Model.Model.Location = mLocation;
             Model.Model.Category = mCategory;
+            Model.Model.Websites = mWebsites;
 
             if (mFile is not null)
             {

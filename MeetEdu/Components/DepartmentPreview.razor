@@ -54,7 +54,18 @@
                     <span class="modelContactValue">@(Model.Location is not null ? $"{Model.Location.Address}, {Model.Location.City}, {Model.Location.Postcode}" : "-")</span>
                 </div>
             </div>
-
+            @if (!Model.Websites.IsNullOrEmpty())
+            {
+                <div id="professorWebsites" class="staffMemberPositionContainer">
+                    <span class="staffMemberWeeklyScheduleTitle" style="color:@Model.Color.NormalizedColor();">Websites</span>
+                    @foreach (var website in Model.Websites)
+                    {
+                        <span class="staffMemberPosition professorWebsiteTitle">
+                            <a href="@website.Link" target="_blank" rel="noopener noreferrer" style="@ForegroundVariable.SetCssColor(Model.Color)">@website.Name</a>
+                        </span>
+                    }
+                </div>
+            }
              <div class="modelWeeklyScheduleContainer">
                 <div class="modelWeeklySchedule">
                     <span class="modelWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(Model.Color)">Secretary</span>
@@ -76,12 +87,28 @@
             </div>
 
         </div>
-        <div class="departmentPreviewDescription">
-            @Model.Description
-        </div>
+
+        @if(!IsPreview)
+        {
+            <div class="departmentPreviewDescription">
+                @Model.Description
+
+                @if (Model.Fields is not null)
+                {
+                    @foreach (var field in Model.Fields)
+                    {
+                        <span class="departmentDescriptionField">
+                            <VectorIcon VectorSource="@IconPaths.BilliardsPath" Color="@Model.Color" />
+                            @field
+                        </span>
+                    }
+                }
+                <span class="departmentDescriptionNote">@Model.Note</span>
+            </div>
+        }
 
         <div class="departmentPreviewMapContainer">
-            <div id="@Model.Id" class="departmentPreviewMap" ></div>
+            <div id="@Model.Id" class="departmentPreviewMap"></div>
         </div>
 
     </div>
@@ -116,7 +143,26 @@
         grid-column-end: 3;
         position: relative;
         display: flex;
-        padding: @LargePadding;
+        flex-direction: column;
+        padding: 0 @XXLargePadding;
+    }
+
+    .departmentDescriptionField {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: @MediumGap;
+        margin-left: 2rem;
+    }
+
+        .departmentDescriptionField svg {
+            width: 24px;
+            transform: rotate(90deg);
+        }
+
+    .departmentDescriptionNote {
+        font-size: 92%;
     }
 
     .departmentPreviewMapContainer {

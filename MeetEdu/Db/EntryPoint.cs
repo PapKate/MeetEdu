@@ -181,6 +181,7 @@ namespace MeetEdu
                         Latitude = 38.289857021650526
                     },
                     ImageUrl = new Uri(""),
+                    Quote = "The future belongs to those who believe in the beauty of their dreams",
                     Description = "The C.E.I. department was founded in 1979 and has been operational since 1980. It is the pioneering department in the field of Computer Technology, Informatics, and Communications in Greece. It ranks among the top University Departments in Greece and has received significant international recognition. Its purpose and mission are teaching and research in the science and technology of computers and the study of their applications. Studies at the Department require active, consistent, and creative participation of students in the educational activities of the Curriculum, elements necessary for the successful completion of their studies, but the final result justifies the expectations of the students. The department is organized into three sectors:",
                     Note = "The department has also created or participated in collaboration with other university departments in several specialized postgraduate programs, which cover all cutting-edge subjects in science and technology.",
                     LayoutDescription = "",

@@ -50,6 +50,7 @@
                               Variant="Variant.Text"
                               Adornment="Adornment.Start"
                               AdornmentIcon="@MudIconPaths.Email" />
+
                 <div class="dialogPhoneNumberInputsContainer">
                     <MudTextField @bind-Value="@mCountryCode"
                                   Placeholder="CC"
@@ -84,7 +85,41 @@
                     </SelectedTemplate>
                 </MudFileUpload>
 
+                <span class="dialogContentTitle dialogContentFullRow">Quote</span>
+                <MudTextField T="string" Placeholder="Write a quote that defines the department" Class="dialogContentFullRow" Variant="Variant.Text" @bind-Text="@Model.Model!.Quote" Lines="3" />
 
+                <span class="dialogContentTitle dialogContentFullRow">Websites</span>
+
+                @foreach (var website in mWebsites)
+                {
+                    <div class="professorWebsiteInputsAndButtonContainer dialogContentFullRow" @key="@website">
+                        <div class="professorWebsiteInputsContainer dialogContentContainer" style="overflow-y:clip; padding: 0;">
+                            <MudTextField @bind-Value="@website.Name"
+                                          Placeholder="Name"
+                                          Class="dialogContentFullRow dialogInput"
+                                          FullWidth="true"
+                                          Variant="Variant.Text"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@MudIconPaths.AbjadArabic" />
+                            <MudTextField T="Uri" @bind-Value="@website.Link"
+                                          Converter="@(new MudBlazor.Converter<Uri>() { SetFunc = value => value?.ToString(), GetFunc = text => !text.IsNullOrEmpty() ? new Uri(text) : null })"
+                                          Placeholder="Link"
+                                          Class="dialogContentFullRow dialogInput"
+                                          FullWidth="true"
+                                          Variant="Variant.Text"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@MudIconPaths.AbjadArabic" />
+                        </div>
+
+                        <IconButton VectorSource="@IconPaths.TrashCanOutlinePath"
+                                    ForeColor="@Red"
+                                    BackColor="transparent"
+                                    BorderRadius="@SmallBorderRadius"
+                                    BoxShadow="none"
+                                    CssClasses="websiteDeleteButton"
+                                    OnClick="@(() => mWebsites.Remove(website))" />
+                    </div>
+                }
                 <span class="dialogContentTitle dialogContentFullRow">Location info</span>
                 <div class="dialogLocationGrid dialogContentFullRow " style="padding:0">
                     <div class="dialogLocationMapContainer dialogContentFullRow">
@@ -120,6 +155,19 @@
         height: 280px;
         border-radius: @LargeBorderRadius;
         border: solid 1px @LightGray.NormalizedColor();
+    }
+
+    .professorWebsiteInputsAndButtonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        gap: 0.5rem;
+    }
+
+    .websiteDeleteButton {
+        width: 48px;
+        height: 48px;
+        padding: 0.5rem;
     }
 
 </style>

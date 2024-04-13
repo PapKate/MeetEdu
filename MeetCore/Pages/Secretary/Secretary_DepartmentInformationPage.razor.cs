@@ -116,6 +116,63 @@ namespace MeetCore
         /// <summary>
         /// Updates the department information
         /// </summary>
+        private async void UpdateDepartmentContent()
+        {
+            var model = new UpdateModel<DepartmentRequestModel>(new DepartmentRequestModel()
+            {
+                Color = Department.Color,
+                Description = Department.Description,
+                Note = Department.Note,
+                Fields = Department.Fields
+            });
+
+            var parameters = new DialogParameters<UpdateDepartmentContentDialog> { { x => x.Model, model } };
+
+            // Creates and opens a dialog with the specified type
+            var dialog = await DialogService.ShowAsync<UpdateDepartmentContentDialog>(null, parameters, mDialogOptions);
+
+            // Once the dialog is closed...
+            // Gets the result
+            var result = await dialog.Result;
+
+            // If there is no result or the dialog was closed by canceling the inner actions...
+            if (result is null || result.Canceled)
+            {
+                // Return
+                return;
+            }
+
+            // If the result is of the specified type...
+            if (result.Data is UpdateModel<DepartmentRequestModel> updatedModel)
+            {
+                // Creates the request for updating the department
+                var departmentRequest = new DepartmentRequestModel()
+                {
+                    Description = updatedModel.Model!.Description,
+                    Note = updatedModel.Model.Note,
+                    Fields = updatedModel.Model.Fields,
+                };
+
+                // Updates the department
+                var departmentResponse = await Client.UpdateDepartmentAsync(Department.Id, departmentRequest);
+
+                // If there was an error...
+                if (!departmentResponse.IsSuccessful)
+                {
+                    // Show the error
+                    Snackbar.Add(departmentResponse.ErrorMessage, Severity.Error);
+                    // Return
+                    return;
+                }
+                StateManager.Department = departmentResponse.Result;
+
+                StateHasChanged();
+                StateHasChanged();
+            }
+        }
+        /// <summary>
+        /// Updates the department information
+        /// </summary>
         private async void UpdateDepartment()
         {
             var model = new UpdateModel<DepartmentRequestModel>(new DepartmentRequestModel()
@@ -126,7 +183,9 @@ namespace MeetCore
                 PhoneNumber = Department.PhoneNumber,
                 ImageUrl = Department.ImageUrl,
                 Color = Department.Color,
-                Location = Department.Location
+                Location = Department.Location,
+                Quote = Department.Quote,
+                Websites = Department.Websites
             });
 
             var parameters = new DialogParameters<UpdateDepartmentDialog> { { x => x.Model, model } };
@@ -157,7 +216,9 @@ namespace MeetCore
                     PhoneNumber = updatedModel.Model.PhoneNumber,
                     ImageUrl = updatedModel.Model.ImageUrl,
                     Color = updatedModel.Model.Color,
-                    Location = updatedModel.Model.Location
+                    Location = updatedModel.Model.Location,
+                    Quote = updatedModel.Model.Quote,
+                    Websites = updatedModel.Model.Websites
                 };
 
                 // Updates the department

@@ -1,0 +1,91 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<MudDialog>
+    <DialogContent>
+        @if (Model is not null && Model.Model is not null)
+        {
+            <div class="dialogSection">
+                <span class="dialogSectionText">Update Department</span>
+            </div>
+            <div class="dialogContentContainer">
+                <span class="dialogContentTitle dialogContentFullRow" style="padding:inherit;">Department Content</span>
+
+                <MudTextField T="string" 
+                              Placeholder="Description"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Lines="10"
+                              Class="dialogContentFullRow"
+                              @bind-Text="@Model.Model!.Description" />
+
+                <MudTextField T="string" Placeholder="Note"
+                              FullWidth="true"
+                              Variant="Variant.Text"
+                              Lines="3"
+                              Class="dialogContentFullRow"
+                              @bind-Text="@Model.Model!.Note" />
+
+                @foreach (var field in mFields)
+                {
+                    <div class="dialogContentFullRow fieldContainer" @key="@mIndex">
+                        <MudTextField T="string" @key="@mIndex"
+                                      Value="@field"
+                                      Placeholder="Description"
+                                      FullWidth="true"
+                                      Variant="Variant.Text"
+                                      Lines="1"
+                                      ValueChanged="@((e) => SetText(field, e))" />
+                        
+                        <IconButton VectorSource="@IconPaths.TrashCanOutlinePath"
+                                    ForeColor="@Red"
+                                    BackColor="transparent"
+                                    BorderRadius="@SmallBorderRadius"
+                                    BoxShadow="none"
+                                    CssClasses="fieldDeleteButton"
+                                    OnClick="@(() => mFields.Remove(field))" />
+                    </div>
+                    mIndex++;
+                }
+                <MudFab Class="dialogContentFullRow"
+                        StartIcon="@Icons.Material.Filled.Add"
+                        Size="Size.Small"
+                        DisableElevation="true"
+                        OnClick="@AddNew"
+                        Style="@($"color: {Model.Model.Color.DarkOrWhite().NormalizedColor()}; background-color: {Model.Model.Color.NormalizedColor()}; margin-top: 1rem; justify-self: center;")" />
+            </div>
+        }
+    </DialogContent>
+    <DialogActions>
+        <div class="dialogActionsContainer">
+            <MudButton Variant="Variant.Text" Color="Color.Error" OnClick="@Cancel" Class="px-10">Cancel</MudButton>
+            <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@Save" Class="px-10">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>
+
+<style>
+
+    .dialogSection {
+        background-color: @Model.Model!.Color.NormalizedColor();
+        color: @Model.Model.Color.DarkOrWhite().NormalizedColor();
+    }
+
+    .fieldContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .fieldDeleteButton {
+        width: 48px;
+        height: 48px;
+        padding: 0.5rem;
+    }
+
+</style>

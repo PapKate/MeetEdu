@@ -140,6 +140,29 @@ namespace MeetEdu
                         if (request.Lectures is null)
                             return;
                         entity.Lectures = request.Lectures.ToList();
+                    })
+                    .ForMember(x => x.Websites, x => x.Ignore())
+                    .AfterMap((request, entity) =>
+                    {
+                        if (request.Websites is null)
+                            return;
+                        entity.Websites = request.Websites.ToList();
+                    });
+
+                cfg.CreateMap<DepartmentRequestModel, DepartmentEntity>()
+                    .ForMember(x => x.Websites, x => x.Ignore())
+                    .AfterMap((request, entity) =>
+                    {
+                        if (request.Websites is null)
+                            return;
+                        entity.Websites = request.Websites.ToList();
+                    })
+                    .ForMember(x => x.Fields, x => x.Ignore())
+                    .AfterMap((request, entity) =>
+                    {
+                        if (request.Fields is null)
+                            return;
+                        entity.Fields = request.Fields.ToList();
                     });
 
                 // The property types that should be ignored

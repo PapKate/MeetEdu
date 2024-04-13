@@ -307,6 +307,51 @@
             Saves the changes
             </summary>
         </member>
+        <member name="F:MeetCore.UpdateDepartmentContentDialog.mIndex">
+            <summary>
+            The index
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateDepartmentContentDialog.mFields">
+            <summary>
+            The fields
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentContentDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentContentDialog.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="P:MeetCore.UpdateDepartmentContentDialog.JSRuntime">
+            <summary>
+            The JS runtime service
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateDepartmentContentDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.UpdateDepartmentContentDialog.OnInitialized">
+            <inheritdoc/>
+        </member>
+        <member name="M:MeetCore.UpdateDepartmentContentDialog.SetText(System.String,System.String)">
+            <summary>
+            Sets the new field
+            </summary>
+            <param name="oldValue">The previous value</param>
+            <param name="newValue">The new value</param>
+        </member>
+        <member name="M:MeetCore.UpdateDepartmentContentDialog.AddNew">
+            <summary>
+            Adds a new field to the list
+            </summary>
+        </member>
         <member name="T:MeetCore.UpdateDepartmentDialog">
             <summary>
             The dialog for updating a department
@@ -330,6 +375,16 @@
         <member name="F:MeetCore.UpdateDepartmentDialog.mLocation">
             <summary>
             The location
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateDepartmentDialog.mWebsites">
+            <summary>
+            The websites
+            </summary>
+        </member>
+        <member name="F:MeetCore.UpdateDepartmentDialog.mWebsite">
+            <summary>
+            The current website
             </summary>
         </member>
         <member name="P:MeetCore.UpdateDepartmentDialog.MudDialog">
@@ -1962,6 +2017,11 @@
         <member name="M:MeetCore.Secretary_DepartmentInformationPage.UpdateSchedule">
             <summary>
             Updates the weekly schedule of the department
+            </summary>
+        </member>
+        <member name="M:MeetCore.Secretary_DepartmentInformationPage.UpdateDepartmentContent">
+            <summary>
+            Updates the department information
             </summary>
         </member>
         <member name="M:MeetCore.Secretary_DepartmentInformationPage.UpdateDepartment">

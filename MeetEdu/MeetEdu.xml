@@ -2080,6 +2080,11 @@
             The member of the <see cref="P:MeetEdu.DepartmentEntity.Note"/> property
             </summary>
         </member>
+        <member name="F:MeetEdu.DepartmentEntity.mQuote">
+            <summary>
+            The member of the <see cref="P:MeetEdu.DepartmentEntity.Quote"/> property
+            </summary>
+        </member>
         <member name="F:MeetEdu.DepartmentEntity.mDescription">
             <summary>
             The member of the <see cref="P:MeetEdu.DepartmentEntity.Description"/> property
@@ -2100,6 +2105,11 @@
             The member of the <see cref="P:MeetEdu.DepartmentEntity.Fields"/> property
             </summary>
         </member>
+        <member name="F:MeetEdu.DepartmentEntity.mWebsites">
+            <summary>
+            The member of the <see cref="P:MeetEdu.DepartmentEntity.Websites"/> property
+            </summary>
+        </member>
         <member name="F:MeetEdu.DepartmentEntity.mLabels">
             <summary>
             The member of the <see cref="P:MeetEdu.DepartmentEntity.Labels"/> property
@@ -2115,6 +2125,11 @@
             The university id
             </summary>
         </member>
+        <member name="P:MeetEdu.DepartmentEntity.Websites">
+            <summary>
+            The related websites 
+            </summary>
+        </member>
         <member name="P:MeetEdu.DepartmentEntity.Email">
             <summary>
             The email
@@ -2128,6 +2143,11 @@
         <member name="P:MeetEdu.DepartmentEntity.Fields">
             <summary>
             The fields of study
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentEntity.Quote">
+            <summary>
+            The quote
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentEntity.Description">

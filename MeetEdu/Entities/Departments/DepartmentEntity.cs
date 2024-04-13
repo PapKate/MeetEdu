@@ -1,6 +1,8 @@
 ﻿
 using AutoMapper;
 
+using MeetBase;
+
 using MongoDB.Bson;
 
 namespace MeetEdu
@@ -23,6 +25,11 @@ namespace MeetEdu
         private string? mNote;
 
         /// <summary>
+        /// The member of the <see cref="Quote"/> property
+        /// </summary>
+        private string? mQuote;
+
+        /// <summary>
         /// The member of the <see cref="Description"/> property
         /// </summary>
         private string? mDescription;
@@ -43,6 +50,11 @@ namespace MeetEdu
         private IEnumerable<string>? mFields;
 
         /// <summary>
+        /// The member of the <see cref="Websites"/> property
+        /// </summary>
+        private IEnumerable<Website>? mWebsites;
+
+        /// <summary>
         /// The member of the <see cref="Labels"/> property
         /// </summary>
         private IEnumerable<EmbeddedLabelEntity>? mLabels;
@@ -60,6 +72,15 @@ namespace MeetEdu
         /// The university id
         /// </summary>
         public ObjectId UniversityId { get; set; }
+
+        /// <summary>
+        /// The related websites 
+        /// </summary>
+        public IEnumerable<Website> Websites
+        {
+            get => mWebsites ?? Enumerable.Empty<Website>();
+            set => mWebsites = value;
+        }
 
         /// <summary>
         /// The email
@@ -82,6 +103,15 @@ namespace MeetEdu
         {
             get => mFields ?? Enumerable.Empty<string>();
             set => mFields = value;
+        }
+
+        /// <summary>
+        /// The quote
+        /// </summary>
+        public string Quote
+        {
+            get => mQuote ?? string.Empty;
+            set => mQuote = value;
         }
 
         /// <summary>

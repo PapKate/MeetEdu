@@ -23,6 +23,11 @@
         private string? mNote;
 
         /// <summary>
+        /// The member of the <see cref="Quote"/> property
+        /// </summary>
+        private string? mQuote;
+
+        /// <summary>
         /// The member of the <see cref="Description"/> property
         /// </summary>
         private string? mDescription;
@@ -52,6 +57,11 @@
         /// </summary>
         private IEnumerable<EmbeddedSecretaryResponseModel>? mSecretaries;
 
+        /// <summary>
+        /// The member of the <see cref="Websites"/> property
+        /// </summary>
+        private IEnumerable<Website>? mWebsites;
+
         #endregion
 
         #region Public Properties
@@ -63,6 +73,15 @@
         {
             get => mUniversityId ?? string.Empty;
             set => mUniversityId = value;
+        }
+
+        /// <summary>
+        /// The related websites 
+        /// </summary>
+        public IEnumerable<Website> Websites
+        {
+            get => mWebsites ?? Enumerable.Empty<Website>();
+            set => mWebsites = value;
         }
 
         /// <summary>
@@ -86,6 +105,15 @@
         {
             get => mFields ?? Enumerable.Empty<string>();
             set => mFields = value;
+        }
+
+        /// <summary>
+        /// The quote
+        /// </summary>
+        public string Quote
+        {
+            get => mQuote ?? string.Empty;
+            set => mQuote = value;
         }
 
         /// <summary>

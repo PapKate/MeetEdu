@@ -134,6 +134,11 @@
             The university id
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Websites">
+            <summary>
+            The related websites 
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentRequestModel.Email">
             <summary>
             The email
@@ -147,6 +152,11 @@
         <member name="P:MeetBase.Web.DepartmentRequestModel.Fields">
             <summary>
             The fields of study
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentRequestModel.Quote">
+            <summary>
+            The quote
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentRequestModel.Description">
@@ -979,6 +989,11 @@
             The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Note"/> property
             </summary>
         </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mQuote">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Quote"/> property
+            </summary>
+        </member>
         <member name="F:MeetBase.Web.DepartmentResponseModel.mDescription">
             <summary>
             The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Description"/> property
@@ -1009,9 +1024,19 @@
             The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Secretaries"/> property
             </summary>
         </member>
+        <member name="F:MeetBase.Web.DepartmentResponseModel.mWebsites">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentResponseModel.Websites"/> property
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentResponseModel.UniversityId">
             <summary>
             The university id
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Websites">
+            <summary>
+            The related websites 
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentResponseModel.Email">
@@ -1027,6 +1052,11 @@
         <member name="P:MeetBase.Web.DepartmentResponseModel.Fields">
             <summary>
             The fields of study
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentResponseModel.Quote">
+            <summary>
+            The quote
             </summary>
         </member>
         <member name="P:MeetBase.Web.DepartmentResponseModel.Description">
