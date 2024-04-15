@@ -36,11 +36,11 @@
                            Placeholder="Duration"
                            Class="dialogInput"
                            Editable="true" />
-            
-            <MudCheckBox T="bool" @bind-Checked="@mHasRemoteOption" 
+            <MudCheckBox T="bool" @bind-Value="@mHasRemoteOption" 
                          Label="Has remote option"
                          Class="hasRemoteOptionCheckBox">
             </MudCheckBox>
+            <CronExpressionInput SelectedColor="@Model.Color" CssClasses="dialogInput dialogContentFullRow" />
             <MudTextField @bind-Value="@Model.Note"
                           Placeholder="Note"
                           FullWidth="true"

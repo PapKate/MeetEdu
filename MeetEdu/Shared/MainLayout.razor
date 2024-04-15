@@ -374,6 +374,7 @@
     }
 
     .staffMemberWeeklyScheduleDayContainer {
+        grid-column-start: 2;
         position: relative;
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -430,6 +431,23 @@
         padding: 8px;
         margin-right: 8px;
         cursor: pointer;
+    }
+
+    .contactFormButtonsContainer {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: @White.NormalizedColor();
+        border-radius: @LargeBorderRadius;
+        filter: @LightFilterDropShadow;
+        overflow: hidden;
+        margin-top: 4px;
+    }
+
+    .contactFormButton {
+        width: 100%;
     }
 
     @@media screen and (max-width: 440px) {

@@ -19,7 +19,7 @@ namespace MeetCore
         /// </summary>
         private DialogOptions mDialogOptions = new() { FullWidth = true };
 
-        private IEnumerable<ProfessorResponseModel> mProfessors = new List<ProfessorResponseModel>();
+        private List<ProfessorResponseModel> mProfessors = new();
 
         #endregion
 
@@ -68,7 +68,7 @@ namespace MeetCore
                 // Return
                 return;
             }
-            mProfessors = response.Result;
+            mProfessors = response.Result.ToList();
             
             StateHasChanged();
         }
@@ -176,6 +176,23 @@ namespace MeetCore
 
                 StateHasChanged();
             }
+        }
+
+        private async void RemoveProfessor(ProfessorResponseModel model)
+        {
+            var response = await Client.DeleteProfessorAsync(model.Id);
+
+            // If there was an error...
+            if (!response.IsSuccessful)
+            {
+                // Show the error
+                Snackbar.Add(response.ErrorMessage, Severity.Error);
+                // Return
+                return;
+            }
+            mProfessors.Remove(model);
+
+            StateHasChanged();
         }
 
         #endregion

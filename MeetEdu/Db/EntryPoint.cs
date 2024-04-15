@@ -7,6 +7,20 @@ namespace MeetEdu
     /// </summary>
     public class EntryPoint
     {
+        #region Public Properties
+
+        /// <summary>
+        /// The universities
+        /// </summary>
+        public static List<UniversityResponseModel> Universities = new();
+
+        /// <summary>
+        /// The university of Patras departments
+        /// </summary>
+        public static List<DepartmentResponseModel> PaPaDepartments = new();
+
+        #endregion
+
         #region Protected Properties
 
         /// <summary>
@@ -54,7 +68,7 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task AddUniversitiesAsync()
         {
-            var universities = new List<UniversityRequestModel>()
+            var universityRequests = new List<UniversityRequestModel>()
             { 
                 new()
                 {
@@ -139,19 +153,12 @@ namespace MeetEdu
                 }
             };
 
-            foreach (var university in universities)
+            foreach (var university in universityRequests)
             {
-                await Controller.AddUniversityAsync(university);
+                var result = await Controller.AddUniversityAsync(university);
+                if(result.Value is not null)
+                    Universities.Add(result.Value);
             }
-        }
-
-        /// <summary>
-        /// Adds departments to the DB
-        /// </summary>
-        /// <returns></returns>
-        public async Task AddDepartmentLabelsAsync()
-        {
-
         }
 
         /// <summary>
@@ -160,17 +167,19 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task AddDepartmentsAsync()
         {
-            var departments = new List<DepartmentRequestModel>()
+            #region Papa
+
+            var papaDepartmentRequests = new List<DepartmentRequestModel>()
             {
                 new()
                 {
-                    UniversityId = "",
+                    UniversityId = Universities[0].Id,
                     Name = "Computer Engineering & Informatics Department",
                     Color = "49B6FF",
                     Email = "secretary@ceid.upatras.com",
                     Category = DepartmentType.Engineering,
                     PhoneNumber = new PhoneNumber(30, "2610623555"),
-                    Location = new Location() 
+                    Location = new Location()
                     {
                         Country = CountryCode.GR,
                         State = "Achaia",
@@ -189,7 +198,7 @@ namespace MeetEdu
                     WorkHours = new()
                     {
                         Name = "Secretary hours",
-                        Color = "FF499E", 
+                        Color = "FF499E",
                         Note = "Closed Wednesday & Friday afternoons.",
                         WeeklyHours = new List<DayOfWeekTimeRange>()
                         {
@@ -203,21 +212,17 @@ namespace MeetEdu
                     {
                         Description = "Submit electronically any questions or requests you may have via the following form, and we will assist you promptly. We encourage your communication with us as we continuously strive to provide upgraded services to our customers. By completing this form, you help us improve the services we provide to you.",
                         Note = "For more information, contact us, we are available for any questions you may have."
-                    }, 
+                    },
                     Fields = new List<string>()
                     {
                         "Field of Applications and Foundations of Computer Science",
                         "Field of Computer Logic",
                         "Field of Computer Hardware and Architecture"
-                    },
-                    LabelIds = new List<string>()
-                    {
-
                     }
                 },
                 new()
                 {
-                    UniversityId = "",
+                    UniversityId = Universities[0].Id,
                     Name = "Electrical & Computer Engineering Department",
                     Color = "EEC643",
                     Email = "ecesecr@upatras.gr",
@@ -262,15 +267,11 @@ namespace MeetEdu
                         "Division of Electrical Power Systems",
                         "Division of Systems and Automatic Control",
                         "Division of Electronics and Computers"
-                    },
-                    LabelIds = new List<string>()
-                    {
-
                     }
                 },
                 new()
                 {
-                    UniversityId = "",
+                    UniversityId = Universities[0].Id,
                     Name = "Mechanical Engineering and Aeronautics Department",
                     Color = "DD1C1A",
                     Email = "secretar@mech.upatras.gr",
@@ -314,15 +315,11 @@ namespace MeetEdu
                         "Division of Applied Mechanics, Technology of Materials and Biomechanics",
                         "Division of Energy, Aeronautics & Enviroment",
                         "Division of Management & Organization Studies"
-                    },
-                    LabelIds = new List<string>()
-                    {
-
                     }
                 },
                 new()
                 {
-                    UniversityId = "",
+                    UniversityId = Universities[0].Id,
                     Name = "Architecture Department",
                     Color = "9E4770",
                     Email = "archisec@upatras.gr",
@@ -368,15 +365,11 @@ namespace MeetEdu
                         "Division of Urban Planning, Spatial Planning, and Regional Development",
                         "Division of History of Architecture, Art History, Architectural Morphology, and Restoration",
                         "Division of Architectural Design and Architectural Technology"
-                    },
-                    LabelIds = new List<string>()
-                    {
-
                     }
                 },
                 new()
                 {
-                    UniversityId = "",
+                    UniversityId = Universities[0].Id,
                     Name = "Civil Engineering Department",
                     Color = "6EEB83",
                     Email = "civil@upatras.gr",
@@ -420,15 +413,11 @@ namespace MeetEdu
                         "Division of Structural Engineering",
                         "Division of Geotechnical Engineering and Hydraulic Engineering",
                         "Division of Environmental Engineering and Transportation"
-                    },
-                    LabelIds = new List<string>()
-                    {
-
                     }
                 },
                 new()
                 {
-                    UniversityId = "",
+                    UniversityId = Universities[0].Id,
                     Name = "Chemical Engineering Department",
                     Color = "9448BC",
                     Email = "chemengsecr@upatras.gr",
@@ -457,8 +446,8 @@ namespace MeetEdu
                         WeeklyHours = new List<DayOfWeekTimeRange>()
                         {
                             new(string.Empty, DayOfWeek.Monday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
-                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(16, 00), new TimeOnly(17, 00)),
                             new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(16, 00), new TimeOnly(17, 00)),
                             new(string.Empty, DayOfWeek.Friday, new TimeOnly(10, 00), new TimeOnly(14, 00)),
                         }
                     },
@@ -472,18 +461,19 @@ namespace MeetEdu
                         "Division of Process & Environmental Engineering",
                         "Division of Chemical Technology and Applied Physical Chemistry",
                         "Division of Materials Science and Technology"
-                    },
-                    LabelIds = new List<string>()
-                    {
-
                     }
                 }
             };
 
-            foreach (var department in departments)
+            foreach (var department in papaDepartmentRequests)
             {
-                await Controller.AddDepartmentAsync(department);
-            }
+                var result = await Controller.AddDepartmentAsync(department);
+
+                if (result.Value is not null)
+                    PaPaDepartments.Add(result.Value);
+            } 
+
+            #endregion
         }
 
         /// <summary>
@@ -492,19 +482,125 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task AddSecretariesAsync()
         {
-            var users = new List<UserRequestModel>()
-            {
-                
-            };
+            #region CEID
 
-            var secretaries = new List<SecretaryRequestModel>()
+            var ceidSecretaryUserRequests = new List<UserRequestModel>()
             {
                 new()
                 {
-                    
-                    
+                    Username = "joanYian",
+                    PasswordHash = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+                    FirstName = "Iωάννα",
+                    LastName = "Γιαννακοπούλου",
+                    Email = "ioanna@ceid.upatras.gr",
+                    Color = "4056F4",
+                    DateOfBirth = new DateOnly(24, 8, 2000),
+                    PhoneNumber = new(30, "2610996941"),
+                    Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
+                },
+                new()
+                {
+                    Username = "vreAngel",
+                    PasswordHash = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+                    FirstName = "Αγγελική",
+                    LastName = "Βρη",
+                    Email = "aggeliki@ceid.upatras.gr",
+                    Color = "470FF4",
+                    DateOfBirth = new DateOnly(24, 8, 2000),
+                    PhoneNumber = new(30, "2610996940"),
+                    Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
+                },
+                new()
+                {
+                    Username = "maryJim",
+                    PasswordHash = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+                    FirstName = "Μαρία",
+                    LastName = "Δημητροπούλου",
+                    Email = "dimimar@ceid.upatras.gr",
+                    Color = "CEBBC9",
+                    DateOfBirth = new DateOnly(24, 8, 2000),
+                    PhoneNumber = new(30, "2610996939"),
+                    Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
+                },
+                new()
+                {
+                    Username = "conanBarbarian",
+                    PasswordHash = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+                    FirstName = "Μαριετίνα",
+                    LastName = "Βαρβαρίγου",
+                    Email = "varvarigou@ceid.upatras.gr",
+                    Color = "CE2D4F",
+                    DateOfBirth = new DateOnly(24, 8, 2000),
+                    PhoneNumber = new(30, "2610996945"),
+                    Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
+                },
+                new()
+                {
+                    Username = "anastasiaReading",
+                    PasswordHash = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+                    FirstName = "Αναστασία",
+                    LastName = "Αναγνωστοπούλου",
+                    Email = "secretary.undergraduate@ceid.upatras.gr",
+                    Color = "BF1363",
+                    DateOfBirth = new DateOnly(24, 8, 2000),
+                    PhoneNumber = new(30, "2610996955"),
+                    Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 }
             };
+
+            var ceidSecretaryUsers = new List<UserResponseModel>();
+
+            foreach (var user in ceidSecretaryUserRequests)
+            {
+                var result = await Controller.AddUserAsync(user);
+                if (result.Value is not null)
+                    ceidSecretaryUsers.Add(result.Value);
+            }
+
+            var ceidSecretaryRequests = new List<SecretaryRequestModel>()
+            {
+                new()
+                {
+                    UserId = ceidSecretaryUsers[0].Id,
+                    DepartmentId = PaPaDepartments[0].Id,
+                    Role = SecretaryRole.Secretary,
+                },
+                new()
+                {
+                    UserId = ceidSecretaryUsers[1].Id,
+                    DepartmentId = PaPaDepartments[0].Id,
+                    Role = SecretaryRole.PostGraduateSecretary,
+                },
+                new()
+                {
+                    UserId = ceidSecretaryUsers[2].Id,
+                    DepartmentId = PaPaDepartments[0].Id,
+                    Role = SecretaryRole.UnderGraduateSecretary,
+                },
+                new()
+                {
+                    UserId = ceidSecretaryUsers[3].Id,
+                    DepartmentId = PaPaDepartments[0].Id,
+                    Role = SecretaryRole.PostGraduateSecretary,
+                },
+                new()
+                {
+                    UserId = ceidSecretaryUsers[4].Id,
+                    DepartmentId = PaPaDepartments[0].Id,
+                    Role = SecretaryRole.UnderGraduateSecretary,
+                }
+            };
+
+            var ceidSecretaries = new List<SecretaryResponseModel>();
+
+            foreach (var secretary in ceidSecretaryRequests)
+            {
+                var result = await Controller.AddSecretaryAsync(secretary);
+                if (result.Value is not null)
+                    ceidSecretaries.Add(result.Value);
+            } 
+
+            #endregion
         }
 
         #endregion

@@ -1,0 +1,92 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<div class="cronExpressionInputContainer @CssClasses">
+    <div>
+        <span class="cronExpressionInputTitle mud-typography-body1">Minutes start</span>
+        <span class="mud-typography-body2" style="font-size:84%;">Please specify the preferred starting times for appointments created by this rule within your office hours</span>
+    </div>
+    
+    <div class="cronExpressionInputButtonsContainer">
+        @foreach(var i in mPossibleValues)
+        {
+            var index = i;
+            <TextButton @ref="@MinuteButton" @key="@i"
+                        Text="@(i.ToString())"
+                        BoxShadow="none"
+                        BorderStyle="@BorderStyle.Solid"
+                        BorderThickness="1px"
+                        CssClasses="cronExpressionInputButton"
+                        OnClick="@(() => MinuteButton_OnClick(index))"/>
+        }
+    </div>
+    <div class="cronExpressionInputActionsContainer">
+        <IconAndTextButton Text="Clear"
+                           VectorSource="@IconPaths.TrashCanOutlinePath"
+                           IconPlacement="@ContentPlacement.Right"
+                           ForeColor="@Red"
+                           BoxShadow="none"
+                           BorderRadius="@LargeBorderRadius"
+                           CssClasses="cronExpressionInputActionButton"
+                           OnClick="@ClearButton_OnClick" />
+        <IconAndTextButton Text="All"
+                           VectorSource="@IconPaths.CheckPath"
+                           IconPlacement="@ContentPlacement.Left"
+                           ForeColor="@SelectedColor"
+                           BoxShadow="none"
+                           BorderRadius="@LargeBorderRadius"
+                           CssClasses="cronExpressionInputActionButton" 
+                           OnClick="@AllButton_OnClick"/>
+    </div>
+</div>
+
+<style>
+    .cronExpressionInputContainer {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: @LargeGap;
+    }
+
+    .cronExpressionInputTitle {
+        height: 3rem;
+        display: flex;
+        align-items: end;
+    }
+
+    .cronExpressionInputButtonsContainer {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:center;
+        gap: @LargeGap;
+    }
+
+    .cronExpressionInputButton {
+        border-radius: @NormalBorderRadius;
+        width: 2rem;
+        height: 2rem;
+        padding: @SmallPadding;
+    }
+
+    .cronExpressionInputActionsContainer {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: @LargeGap;
+    }
+
+    .cronExpressionInputActionButton {
+        height: 40px;
+        padding: @SmallPadding;
+    }
+
+</style>

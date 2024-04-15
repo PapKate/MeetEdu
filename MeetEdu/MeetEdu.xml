@@ -1386,6 +1386,16 @@
             Contains methods for filling the DB with data
             </summary>
         </member>
+        <member name="F:MeetEdu.EntryPoint.Universities">
+            <summary>
+            The universities
+            </summary>
+        </member>
+        <member name="F:MeetEdu.EntryPoint.PaPaDepartments">
+            <summary>
+            The university of Patras departments
+            </summary>
+        </member>
         <member name="P:MeetEdu.EntryPoint.Controller">
             <summary>
             The controller
@@ -1405,12 +1415,6 @@
         <member name="M:MeetEdu.EntryPoint.AddUniversitiesAsync">
             <summary>
             Adds universities to the DB
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MeetEdu.EntryPoint.AddDepartmentLabelsAsync">
-            <summary>
-            Adds departments to the DB
             </summary>
             <returns></returns>
         </member>

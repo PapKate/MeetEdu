@@ -16,7 +16,10 @@ namespace MeetCore
         /// </summary>
         private DialogOptions mDialogOptions = new() { FullWidth = true };
 
-        private IEnumerable<SecretaryResponseModel> mSecretaries = new List<SecretaryResponseModel>();
+        /// <summary>
+        /// The secretaries
+        /// </summary>
+        private List<SecretaryResponseModel> mSecretaries = new();
 
         #endregion
 
@@ -65,7 +68,7 @@ namespace MeetCore
                 // Return
                 return;
             }
-            mSecretaries = response.Result;
+            mSecretaries = response.Result.ToList();
 
             StateHasChanged();
         }
@@ -166,13 +169,28 @@ namespace MeetCore
                     // Return
                     return;
                 }
-                var newList = new List<SecretaryResponseModel>();
-                newList.AddRange(mSecretaries);
-                newList.Add(secretaryResponse.Result);
-                mSecretaries = newList;
+                
+                mSecretaries.Add(secretaryResponse.Result);
 
                 StateHasChanged();
             }
+        }
+
+        private async void RemoveSecretary(SecretaryResponseModel model)
+        {
+            var secretaryResponse = await Client.DeleteSecretaryAsync(model.Id);
+
+            // If there was an error...
+            if (!secretaryResponse.IsSuccessful)
+            {
+                // Show the error
+                Snackbar.Add(secretaryResponse.ErrorMessage, Severity.Error);
+                // Return
+                return;
+            }
+            mSecretaries.Remove(model);
+
+            StateHasChanged();
         }
 
         #endregion

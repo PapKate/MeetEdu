@@ -74,6 +74,78 @@
             Fires when the <see cref="P:MeetCore.FieldCheckBox.IsChecked"/>'s value changes
             </summary>
         </member>
+        <member name="T:MeetCore.CronExpressionInput">
+            <summary>
+            An input for creating a CRON expression
+            </summary>
+        </member>
+        <member name="F:MeetCore.CronExpressionInput.mMinuteButtons">
+            <summary>
+            A list containing all the buttons
+            </summary>
+        </member>
+        <member name="P:MeetCore.CronExpressionInput.SelectedMinutes">
+            <summary>
+            A list containing the selected minutes
+            </summary>
+        </member>
+        <member name="P:MeetCore.CronExpressionInput.SelectedColor">
+            <summary>
+            The selected color
+            </summary>
+        </member>
+        <member name="P:MeetCore.CronExpressionInput.DefaultColor">
+            <summary>
+            The default color
+            </summary>
+        </member>
+        <member name="P:MeetCore.CronExpressionInput.CssClasses">
+            <summary>
+            The addition css classes
+            </summary>
+        </member>
+        <member name="P:MeetCore.CronExpressionInput.MinuteButton">
+            <summary>
+            The minute button
+            </summary>
+        </member>
+        <member name="M:MeetCore.CronExpressionInput.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.CronExpressionInput.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:MeetCore.CronExpressionInput.SetDefaultButtonStyle(MeetBase.Blazor.TextButton)">
+            <summary>
+            Sets the button style to the default one
+            </summary>
+            <param name="button">The button</param>
+        </member>
+        <member name="M:MeetCore.CronExpressionInput.SetSelectedButtonStyle(MeetBase.Blazor.TextButton)">
+            <summary>
+            Sets the button style to the selected one
+            </summary>
+            <param name="button">The button</param>
+        </member>
+        <member name="M:MeetCore.CronExpressionInput.MinuteButton_OnClick(System.Int32)">
+            <summary>
+            Sets the style of the button with the specified <paramref name="value"/> and
+            modifies the <see cref="F:MeetCore.CronExpressionInput.mMinuteButtons"/> list accordingly
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:MeetCore.CronExpressionInput.ClearButton_OnClick">
+            <summary>
+            Clears the list and resets the buttons to the default styles
+            </summary>
+        </member>
+        <member name="M:MeetCore.CronExpressionInput.AllButton_OnClick">
+            <summary>
+            Adds all the value st the list and sets the buttons to the selected style
+            </summary>
+        </member>
         <member name="T:MeetCore.AddProfessorDialog">
             <summary>
             The dialog for adding a professor
@@ -1677,6 +1749,12 @@
             </summary>
             <param name="rule">The rule</param>
         </member>
+        <member name="M:MeetCore.Professor_ContactFormRulesPage.RemoveRule(MeetBase.Web.AppointmentRuleResponseModel)">
+            <summary>
+            Removes the specified <paramref name="rule"/>
+            </summary>
+            <param name="rule">The rule</param>
+        </member>
         <member name="T:MeetCore.Professor_LecturesPage">
             <summary>
             The professor lectures page
@@ -1716,6 +1794,12 @@
             <summary>
             <inheritdoc/>
             </summary>
+        </member>
+        <member name="M:MeetCore.Professor_LecturesPage.RemoveLecture(MeetBase.Lecture)">
+            <summary>
+            Removes the specified <paramref name="model"/>
+            </summary>
+            <param name="model">The rule</param>
         </member>
         <member name="M:MeetCore.Professor_LecturesPage.EditLecture(MeetBase.Lecture)">
             <summary>
@@ -2099,6 +2183,11 @@
         <member name="F:MeetCore.Secretary_DepartmentSecretaryPage.mDialogOptions">
             <summary>
             The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="F:MeetCore.Secretary_DepartmentSecretaryPage.mSecretaries">
+            <summary>
+            The secretaries
             </summary>
         </member>
         <member name="P:MeetCore.Secretary_DepartmentSecretaryPage.DialogService">

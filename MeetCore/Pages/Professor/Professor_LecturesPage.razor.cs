@@ -84,6 +84,39 @@ namespace MeetCore
         #region Private Methods
 
         /// <summary>
+        /// Removes the specified <paramref name="model"/>
+        /// </summary>
+        /// <param name="model">The rule</param>
+        private async void RemoveLecture(Lecture model)
+        {
+            mLectures.Remove(model);
+
+            var request = new ProfessorRequestModel()
+            {
+                Lectures = mLectures
+            };
+
+            // Updates the professor
+            var response = await Client.UpdateProfessorAsync(Professor.Id, request);
+
+            // If there was an error...
+            if (!response.IsSuccessful)
+            {
+                Console.WriteLine(response.ErrorMessage);
+                // Show the error
+                Snackbar.Add(response.ErrorMessage, Severity.Error);
+                // Return
+                return;
+            }
+
+            StateManager.Professor = response.Result;
+            mLectures = new();
+            mLectures.AddRange(Professor.Lectures);
+            StateHasChanged();
+
+        }
+
+        /// <summary>
         /// Edits the specified <paramref name="model"/>
         /// </summary>
         /// <param name="model">The rule</param>

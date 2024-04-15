@@ -20,6 +20,11 @@
                 }
             </MudSelect>
 
+            @if (mRule is not null && mRule.HasRemoteOption)
+            {
+                <MudCheckBox T="bool" @bind-Value="mIsRemote" Class="formCheckBox">Remote meeting</MudCheckBox>
+            }
+
             <MudTextField @bind-Value="@mAppointment.FirstName"
                           Placeholder="First name"
                           Class="formInput"
@@ -51,10 +56,24 @@
                           FullWidth="true"
                           Variant="Variant.Text" />
 
-            @if(mRule is not null && mRule.HasRemoteOption)
-            {
-                <MudCheckBox T="bool" @bind-Value="mIsRemote" Class="formCheckBox">Remote meeting</MudCheckBox>
-            }
+            <div class="contactFormButtonsContainer">
+                <TextButton Text="Reset"
+                            BackColor="transparent"
+                            ForeColor="@Red"
+                            HoverBackColor="@Red"
+                            HoverForeColor="@White"
+                            BorderRadius="0"
+                            BoxShadow="none"
+                            CssClasses="contactFormButton" />
+                <TextButton Text="Send"
+                            BackColor="transparent"
+                            ForeColor="@Green"
+                            HoverBackColor="@Green"
+                            HoverForeColor="@White"
+                            BorderRadius="0"
+                            BoxShadow="none"
+                            CssClasses="contactFormButton" />
+            </div>
         </div>
 
         <div class="contactFormImageContainer">
@@ -100,6 +119,10 @@
     .formCheckBox {
         width: 100%;
         margin-top: -0.5rem;
+    }
+
+    .formCheckBox .mud-icon-button {
+            color: @White.NormalizedColor();
     }
 
     .formInput {

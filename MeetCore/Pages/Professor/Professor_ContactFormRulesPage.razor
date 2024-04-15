@@ -50,6 +50,18 @@
                                     CssClasses="dataGridButton" />
                     </CellTemplate>
                 </TemplateColumn>
+                <TemplateColumn StickyRight="true" CellStyle="width: 3.5rem; padding:0;" Sortable="false">
+                    <CellTemplate>
+                        <IconButton Id="editRuleButton"
+                                    BackColor="transparent"
+                                    ForeColor="@Red"
+                                    VectorSource="@IconPaths.TrashCanOutlinePath"
+                                    BoxShadow="none"
+                                    BorderRadius="0"
+                                    OnClick="@(() => RemoveRule(context.Item))"
+                                    CssClasses="dataGridButton" />
+                    </CellTemplate>
+                </TemplateColumn>
             </Columns>
         </MudDataGrid>
     }

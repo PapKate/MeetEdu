@@ -141,6 +141,33 @@ namespace MeetCore
             }
         }
 
+        /// <summary>
+        /// Removes the specified <paramref name="rule"/>
+        /// </summary>
+        /// <param name="rule">The rule</param>
+        private async void RemoveRule(AppointmentRuleResponseModel rule)
+        {
+            var response = await Client.DeleteAppointmentRuleAsync(rule.Id);
+
+            // If there was an error...
+            if (!response.IsSuccessful)
+            {
+                Console.WriteLine(response.ErrorMessage);
+                // Show the error
+                Snackbar.Add(response.ErrorMessage, Severity.Error);
+                // Return
+                return;
+            }
+
+            if (response.Result is not null)
+            {
+                mRules.Remove(rule);
+                StateHasChanged();
+            }
+            // Return the rule
+            return;
+        }
+
         private async Task<AppointmentRuleResponseModel?> OpenRuleDialog(AppointmentRuleRequestModel model,
                                                                      Func<AppointmentRuleRequestModel, Task<WebRequestResult<AppointmentRuleResponseModel>>> requestAction)
         {
