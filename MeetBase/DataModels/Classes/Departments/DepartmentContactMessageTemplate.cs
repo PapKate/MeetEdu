@@ -8,6 +8,11 @@
         #region Public Properties
 
         /// <summary>
+        /// The secretary role
+        /// </summary>
+        public SecretaryRole Role { get; set; }
+
+        /// <summary>
         /// The mean of contact
         /// </summary>
         public ContactMean ContactMean { get; set; }

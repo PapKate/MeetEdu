@@ -8,7 +8,17 @@
 {
     <div class="contactFormContainer">
         <div class="contactFormInputsContainer">
-
+            <MudSelect T="SecretaryRole"
+                       @bind-Value="@mContactMessage.Rule"
+                       Placeholder="Type"
+                       Class="formInput"
+                       FullWidth="true"
+                       AnchorOrigin="Origin.BottomCenter">
+                @foreach (var rule in Enum.GetValues<SecretaryRole>())
+                {
+                    <MudSelectItem Value="@rule">@rule</MudSelectItem>
+                }
+            </MudSelect>
             <MudTextField @bind-Value="@mContactMessage.FirstName"
                           Placeholder="First name"
                           Class="formInput"
@@ -48,7 +58,8 @@
                             HoverForeColor="@White"
                             BorderRadius="0"
                             BoxShadow="none"
-                            CssClasses="contactFormButton" />
+                            CssClasses="contactFormButton"
+                            OnClick="@ResetForm"/>
                 <TextButton Text="Send"
                             BackColor="transparent"
                             ForeColor="@Green"
@@ -95,6 +106,10 @@
         align-items: center;
         gap: @VeryLargeGap;
     }
+
+        .contactFormInputsContainer .mud-select {
+            width: 100%;
+        }
 
     .formInput {
         position: relative;

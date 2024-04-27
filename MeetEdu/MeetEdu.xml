@@ -42,6 +42,11 @@
         <member name="M:MeetEdu.DepartmentContactForm.OnAfterRender(System.Boolean)">
             <inheritdoc/>
         </member>
+        <member name="M:MeetEdu.DepartmentContactForm.ResetForm">
+            <summary>
+            Resets the contact form
+            </summary>
+        </member>
         <member name="T:MeetEdu.DepartmentPreview">
             <summary>
             The department preview

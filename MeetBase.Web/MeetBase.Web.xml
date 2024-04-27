@@ -119,6 +119,11 @@
             The message
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.Rule">
+            <summary>
+            The message rule
+            </summary>
+        </member>
         <member name="M:MeetBase.Web.DepartmentContactMessageRequestModel.#ctor">
             <summary>
             Default constructor

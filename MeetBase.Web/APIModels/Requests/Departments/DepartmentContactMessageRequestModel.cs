@@ -42,6 +42,11 @@
         /// </summary>
         public string? Message { get; set; }
 
+        /// <summary>
+        /// The message rule
+        /// </summary>
+        public SecretaryRole Rule { get; set; }
+
         #endregion
 
         #region Constructors

@@ -590,6 +590,11 @@
             Represents a department contact message template
             </summary>
         </member>
+        <member name="P:MeetBase.DepartmentContactMessageTemplate.Role">
+            <summary>
+            The secretary role
+            </summary>
+        </member>
         <member name="P:MeetBase.DepartmentContactMessageTemplate.ContactMean">
             <summary>
             The mean of contact

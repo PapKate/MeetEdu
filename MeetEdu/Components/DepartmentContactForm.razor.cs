@@ -67,6 +67,24 @@ namespace MeetEdu
                     vector.Color = Department!.Color;
                 }
             }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Resets the contact form
+        /// </summary>
+        private void ResetForm()
+        {
+            mPhoneNumber = null;
+            mContactMessage = new();
+            StateHasChanged();
+        }
+
+        private async void SendMessage()
+        {
 
         }
 
