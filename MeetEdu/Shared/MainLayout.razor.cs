@@ -31,7 +31,7 @@ namespace MeetEdu.Shared
                 {
                     Default = new Default()
                     {
-                        FontFamily = new[] { "Objektiv VF Trial", "sans-serif" }
+                        FontFamily = new[] { "Objektiv VF Trial", "Calibri", "sans-serif" }
                     }
                 },
                 Palette = new()

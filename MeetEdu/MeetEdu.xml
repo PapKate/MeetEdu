@@ -1406,7 +1406,7 @@
             The controller
             </summary>
         </member>
-        <member name="M:MeetEdu.EntryPoint.#ctor">
+        <member name="M:MeetEdu.EntryPoint.#ctor(MeetEdu.MeetCoreController)">
             <summary>
             Default constructor
             </summary>
@@ -4049,6 +4049,11 @@
             </summary>
         </member>
         <member name="P:MeetEdu.Index.Controller">
+            <summary>
+            The controller
+            </summary>
+        </member>
+        <member name="P:MeetEdu.Index.CoreController">
             <summary>
             The controller
             </summary>

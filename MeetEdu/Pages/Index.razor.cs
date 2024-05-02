@@ -44,6 +44,12 @@ namespace MeetEdu
         [Inject]
         protected MeetEduController Controller { get; set; } = default!;
 
+        /// <summary>
+        /// The controller
+        /// </summary>
+        [Inject]
+        protected MeetCoreController CoreController { get; set; } = default!;
+
         #endregion
 
         #region Constructors
@@ -63,8 +69,6 @@ namespace MeetEdu
         /// <inheritdoc/>
         protected override async Task OnInitializedAsync()
         {
-            await base.OnInitializedAsync();
-
             var response = await Controller.GetUniversitiesAsync(null);
 
             if (response is null || response.Value.IsNullOrEmpty())
@@ -91,6 +95,15 @@ namespace MeetEdu
             {
                 new("UniversityId", universityId)
             });
+        }
+
+        private async void AddMockData()
+        {
+            var entryPoint = new EntryPoint(CoreController);
+            
+            // Add the universities
+            await entryPoint.AddUniversitiesAsync();
+
         }
 
         #endregion
