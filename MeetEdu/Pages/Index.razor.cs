@@ -75,6 +75,8 @@ namespace MeetEdu
                 return;
 
             mUniversities = response.Value;
+
+            //AddMockData();
         }
 
         #endregion
@@ -102,7 +104,14 @@ namespace MeetEdu
             var entryPoint = new EntryPoint(CoreController);
             
             // Add the universities
-            await entryPoint.AddUniversitiesAsync();
+            //await entryPoint.AddUniversitiesAsync();
+
+            if(EntryPoint.Universities.IsNullOrEmpty())
+            {
+                EntryPoint.Universities = mUniversities!.ToList();
+            }
+
+            await entryPoint.AddDepartmentsAsync();
 
         }
 
