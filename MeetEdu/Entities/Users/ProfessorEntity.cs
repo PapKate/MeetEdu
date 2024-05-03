@@ -8,7 +8,7 @@ namespace MeetEdu
     /// <summary>
     /// Represents a professor document in the MongoDB
     /// </summary>
-    public class ProfessorEntity : StaffMemberEntity
+    public class ProfessorEntity : StaffMemberEntity, IEmbeddedable<EmbeddedProfessorEntity>
     {
         #region Private Members
 
@@ -103,15 +103,28 @@ namespace MeetEdu
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static async Task<ProfessorEntity> FromRequestModelAsync(ProfessorRequestModel model)
+        public static ProfessorEntity FromRequestModel(ProfessorRequestModel model)
         {
             var entity = new ProfessorEntity();
 
             DI.Mapper.Map(model, entity);
-
-            entity.User = !model.UserId.IsNullOrEmpty() ? await EntityHelpers.GetUserAsync(model.UserId) : null;
-
+            
+            UpdateNonAutoMapperValues(model, entity);
+            
             return entity;
+        }
+
+        /// <summary>
+        /// Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
+        /// NOTE: This method only affects the properties that can't be mapped by the <see cref="Mapper"/> and are not null!
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="entity">The entity</param>
+        /// <returns></returns>
+        public static async void UpdateNonAutoMapperValues(ProfessorRequestModel model, ProfessorEntity entity)
+        {
+            entity.User = !model.UserId.IsNullOrEmpty() ? await EntityHelpers.GetUserAsync(model.UserId) : null;
+            entity.Department = !model.DepartmentId.IsNullOrEmpty() ? await EntityHelpers.GetDepartmetAsync(model.DepartmentId) : null;
         }
 
         /// <summary>

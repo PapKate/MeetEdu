@@ -2,8 +2,6 @@
 
 using Microsoft.AspNetCore.Components;
 
-using MudBlazor;
-
 namespace MeetEdu
 {
     /// <summary>
@@ -75,8 +73,17 @@ namespace MeetEdu
                 return;
 
             mUniversities = response.Value;
+        }
 
-            //AddMockData();
+        /// <inheritdoc/>
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            if(firstRender)
+            {
+                //await AddMockData();
+            }
         }
 
         #endregion
@@ -99,7 +106,7 @@ namespace MeetEdu
             });
         }
 
-        private async void AddMockData()
+        private async Task AddMockData()
         {
             var entryPoint = new EntryPoint(CoreController);
             
@@ -108,10 +115,33 @@ namespace MeetEdu
 
             if(EntryPoint.Universities.IsNullOrEmpty())
             {
-                EntryPoint.Universities = mUniversities!.ToList();
+                var universitiesResponse = await Controller.GetUniversitiesAsync(null);
+
+                if (universitiesResponse is null || universitiesResponse.Value.IsNullOrEmpty())
+                    return;
+
+                var universities = universitiesResponse.Value;
+
+                EntryPoint.Universities = universities.ToList();
             }
 
-            await entryPoint.AddDepartmentsAsync();
+            // Add the departments
+            //await entryPoint.AddDepartmentsAsync();
+
+            if (EntryPoint.PaPaDepartments.IsNullOrEmpty())
+            {
+                var departmentsResponse = await Controller.GetDepartmentsAsync(null);
+
+                if (departmentsResponse is null || departmentsResponse.Value.IsNullOrEmpty())
+                    return;
+
+                var papaDepartments = departmentsResponse.Value;
+
+                EntryPoint.PaPaDepartments = papaDepartments!.ToList();
+            }
+
+            // Add the secretaries
+            //await entryPoint.AddSecretariesAsync();
 
         }
 

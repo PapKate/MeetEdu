@@ -10,7 +10,7 @@ namespace MeetEdu
     /// <summary>
     /// Represents a department document in the MongoDB
     /// </summary>
-    public class DepartmentEntity : StandardEntity, IImageable, INoteable, IUniversityIdentifiable<ObjectId>
+    public class DepartmentEntity : StandardEntity, IImageable, INoteable, IUniversityIdentifiable<ObjectId>, IEmbeddedable<EmbeddedDepartmentEntity>
     {
         #region Private Members
 

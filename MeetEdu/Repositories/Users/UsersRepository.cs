@@ -59,7 +59,7 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<UserEntity>> UpdateUserAsync(ObjectId id, UserRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await MeetEduDbMapper.Users.UpdateAsync(id, model);
+            var entity = await MeetEduDbMapper.Users.UpdateAsync(id, model, cancellationToken: cancellationToken);
 
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Users));
@@ -70,7 +70,7 @@ namespace MeetEdu
             if (secretary != null)
             {
                 secretary.User = entity.ToEmbeddedEntity();
-                await MeetEduDbMapper.Secretaries.UpdateAsync(secretary);
+                await MeetEduDbMapper.Secretaries.UpdateAsync(secretary, cancellationToken: cancellationToken);
              
                 return entity;
             }
@@ -81,7 +81,7 @@ namespace MeetEdu
             if (professor != null)
             {
                 professor.User = entity.ToEmbeddedEntity();
-                await MeetEduDbMapper.Professors.UpdateAsync(professor);
+                await MeetEduDbMapper.Professors.UpdateAsync(professor, cancellationToken: cancellationToken);
                 
                 return entity;
             }
@@ -92,7 +92,7 @@ namespace MeetEdu
             if (member != null)
             {
                 member.User = entity.ToEmbeddedEntity();
-                await MeetEduDbMapper.Members.UpdateAsync(member);
+                await MeetEduDbMapper.Members.UpdateAsync(member, cancellationToken: cancellationToken);
             }
 
             return entity;

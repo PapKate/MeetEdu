@@ -40,7 +40,7 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<MemberEntity>> AddMemberAsync(MemberRequestModel model)
         {
-            return await MeetEduDbMapper.Members.AddAsync(await MemberEntity.FromRequestModelAsync(model));
+            return await MeetEduDbMapper.Members.AddAsync(MemberEntity.FromRequestModel(model));
         }
 
         /// <summary>

@@ -2654,7 +2654,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetEdu.MemberEntity.FromRequestModelAsync(MeetBase.Web.MemberRequestModel)">
+        <member name="M:MeetEdu.MemberEntity.FromRequestModel(MeetBase.Web.MemberRequestModel)">
             <summary>
             Creates and returns a <see cref="T:MeetEdu.MemberEntity"/> from the specified <paramref name="model"/>
             </summary>
@@ -2758,11 +2758,20 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetEdu.ProfessorEntity.FromRequestModelAsync(MeetBase.Web.ProfessorRequestModel)">
+        <member name="M:MeetEdu.ProfessorEntity.FromRequestModel(MeetBase.Web.ProfessorRequestModel)">
             <summary>
             Creates and returns a <see cref="T:MeetEdu.ProfessorEntity"/> from the specified <paramref name="model"/>
             </summary>
             <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ProfessorEntity.UpdateNonAutoMapperValues(MeetBase.Web.ProfessorRequestModel,MeetEdu.ProfessorEntity)">
+            <summary>
+            Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
+            NOTE: This method only affects the properties that can't be mapped by the <see cref="T:AutoMapper.Mapper"/> and are not null!
+            </summary>
+            <param name="model">The model</param>
+            <param name="entity">The entity</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.ProfessorEntity.ToResponseModel">
@@ -2823,6 +2832,15 @@
             Creates and returns a <see cref="T:MeetEdu.SecretaryEntity"/> from the specified <paramref name="model"/>
             </summary>
             <param name="model">The model</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.SecretaryEntity.UpdateNonAutoMapperValuesAsync(MeetBase.Web.SecretaryRequestModel,MeetEdu.SecretaryEntity)">
+            <summary>
+            Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
+            NOTE: This method only affects the properties that can't be mapped by the <see cref="T:AutoMapper.Mapper"/> and are not null!
+            </summary>
+            <param name="model">The model</param>
+            <param name="entity">The entity</param>
             <returns></returns>
         </member>
         <member name="M:MeetEdu.SecretaryEntity.ToResponseModel">
@@ -2891,6 +2909,11 @@
         <member name="P:MeetEdu.StaffMemberEntity.User">
             <summary>
             The user
+            </summary>
+        </member>
+        <member name="P:MeetEdu.StaffMemberEntity.Department">
+            <summary>
+            The department
             </summary>
         </member>
         <member name="M:MeetEdu.StaffMemberEntity.#ctor">
@@ -3376,6 +3399,28 @@
             <param name="userId">The user id</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.EntityHelpers.GetSecretaryAsync(System.String)">
+            <summary>
+            Gets the secretary that has the specified <paramref name="secretaryId"/> and return the <see cref="T:MeetEdu.EmbeddedSecretaryEntity"/>
+            </summary>
+            <param name="secretaryId">The secretary id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.EntityHelpers.GetDepartmetAsync(System.String)">
+            <summary>
+            Gets the department that has the specified <paramref name="departmentId"/> and return the <see cref="T:MeetEdu.EmbeddedDepartmentEntity"/>
+            </summary>
+            <param name="departmentId">The department id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.EntityHelpers.GetEmbeddedEntityAsync``2(MongoDB.Driver.IMongoCollection{``0},System.String)">
+            <summary>
+            Gets the entity that has the specified <paramref name="id"/> and return the <typeparamref name="TEmbeddedEntity"/>
+            </summary>
+            <param name="collection"></param>
+            <param name="id">The id</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.EntityHelpers.FromRequestModel``1(System.Object)">
             <summary>
             Creates and returns an entity of the specified type using the specified
@@ -3679,6 +3724,18 @@
             <param name="file">The file</param>
             <param name="updateModelAction"></param>
             <param name="cancellationToken">The cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetEdu.IEmbeddedable`1">
+            <summary>
+            Provides abstractions for an entity that has an embedded version
+            </summary>
+            <typeparam name="TEmbeddedEntity">The embedded version of the entity</typeparam>
+        </member>
+        <member name="M:MeetEdu.IEmbeddedable`1.ToEmbeddedEntity">
+            <summary>
+            Creates and returns a <typeparamref name="TEmbeddedEntity"/> from the current entity
+            </summary>
             <returns></returns>
         </member>
         <member name="T:MeetEdu.SearchManager">
@@ -4064,6 +4121,9 @@
             </summary>
         </member>
         <member name="M:MeetEdu.Index.OnInitializedAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:MeetEdu.Index.OnAfterRenderAsync(System.Boolean)">
             <inheritdoc/>
         </member>
         <member name="M:MeetEdu.Index.UniversityBox_OnClick(System.String)">

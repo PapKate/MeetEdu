@@ -1,0 +1,40 @@
+﻿@namespace MeetBase.Blazor
+
+
+<div class="imageWithFallbackIconContainer @CssClasses" id="@Id" style="@nameof(AspectRatio).SetCustomCssVariable(AspectRatio)">
+    @if (mIsFallbackIconVisible)
+    {
+        <div class="imageWithFallbackIconIcon" style="@nameof(FallbackIconBackground).SetCustomCssColor(FallbackIconBackground) @nameof(FallbackIconMargin).SetCustomCssColor(FallbackIconMargin)">
+            <VectorIcon Color="@FallbackIconColor" VectorSource="@FallbackIconVectorSource" />
+        </div>
+    }
+    else
+    {
+        <img class="imageWithFallbackIconImage" src="@ImageSource" alt="@AlternateText" @onerror="@OnImageError">
+    }
+</div>
+
+<style>
+
+    .imageWithFallbackIconContainer {
+        position: relative;
+        width: fit-content;
+        height: 100%;
+        aspect-ratio: @nameof(AspectRatio).GetCustomCssVariable();
+    }
+
+    .imageWithFallbackIconIcon {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: @nameof(FallbackIconBackground).GetCustomCssVariable();
+        padding: @nameof(FallbackIconMargin).GetCustomCssVariable();
+    }
+
+    .imageWithFallbackIconImage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+</style>

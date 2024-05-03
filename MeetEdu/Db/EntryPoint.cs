@@ -490,7 +490,7 @@ namespace MeetEdu
                     LastName = "Γιαννακοπούλου",
                     Email = "ioanna@ceid.upatras.gr",
                     Color = "4056F4",
-                    DateOfBirth = new DateOnly(24, 8, 2000),
+                    DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new(30, "2610996941"),
                     Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 },
@@ -502,7 +502,7 @@ namespace MeetEdu
                     LastName = "Βρη",
                     Email = "aggeliki@ceid.upatras.gr",
                     Color = "470FF4",
-                    DateOfBirth = new DateOnly(24, 8, 2000),
+                    DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new(30, "2610996940"),
                     Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 },
@@ -514,7 +514,7 @@ namespace MeetEdu
                     LastName = "Δημητροπούλου",
                     Email = "dimimar@ceid.upatras.gr",
                     Color = "CEBBC9",
-                    DateOfBirth = new DateOnly(24, 8, 2000),
+                    DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new(30, "2610996939"),
                     Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 },
@@ -526,7 +526,7 @@ namespace MeetEdu
                     LastName = "Βαρβαρίγου",
                     Email = "varvarigou@ceid.upatras.gr",
                     Color = "CE2D4F",
-                    DateOfBirth = new DateOnly(24, 8, 2000),
+                    DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new(30, "2610996945"),
                     Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 },
@@ -538,7 +538,7 @@ namespace MeetEdu
                     LastName = "Αναγνωστοπούλου",
                     Email = "secretary.undergraduate@ceid.upatras.gr",
                     Color = "BF1363",
-                    DateOfBirth = new DateOnly(24, 8, 2000),
+                    DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new(30, "2610996955"),
                     Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 }
@@ -549,8 +549,9 @@ namespace MeetEdu
             foreach (var user in ceidSecretaryUserRequests)
             {
                 var result = await Controller.AddUserAsync(user);
-                if (result.Value is not null)
-                    ceidSecretaryUsers.Add(result.Value);
+
+                if (result.Result is not null && result.Result is ObjectResult userResult && userResult.Value is not null)
+                    ceidSecretaryUsers.Add((UserResponseModel)userResult.Value!);
             }
 
             var ceidSecretaryRequests = new List<SecretaryRequestModel>()
@@ -558,31 +559,31 @@ namespace MeetEdu
                 new()
                 {
                     UserId = ceidSecretaryUsers[0].Id,
-                    DepartmentId = PaPaDepartments[0].Id,
+                    DepartmentId = PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id,
                     Role = SecretaryRole.Secretary,
                 },
                 new()
                 {
                     UserId = ceidSecretaryUsers[1].Id,
-                    DepartmentId = PaPaDepartments[0].Id,
+                    DepartmentId = PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id,
                     Role = SecretaryRole.PostGraduateSecretary,
                 },
                 new()
                 {
                     UserId = ceidSecretaryUsers[2].Id,
-                    DepartmentId = PaPaDepartments[0].Id,
+                    DepartmentId = PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id,
                     Role = SecretaryRole.UnderGraduateSecretary,
                 },
                 new()
                 {
                     UserId = ceidSecretaryUsers[3].Id,
-                    DepartmentId = PaPaDepartments[0].Id,
+                    DepartmentId = PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id,
                     Role = SecretaryRole.PostGraduateSecretary,
                 },
                 new()
                 {
                     UserId = ceidSecretaryUsers[4].Id,
-                    DepartmentId = PaPaDepartments[0].Id,
+                    DepartmentId = PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id,
                     Role = SecretaryRole.UnderGraduateSecretary,
                 }
             };
@@ -592,8 +593,9 @@ namespace MeetEdu
             foreach (var secretary in ceidSecretaryRequests)
             {
                 var result = await Controller.AddSecretaryAsync(secretary);
-                if (result.Value is not null)
-                    ceidSecretaries.Add(result.Value);
+
+                if (result.Result is not null && result.Result is ObjectResult secretaryResult && secretaryResult.Value is not null)
+                    ceidSecretaries.Add((SecretaryResponseModel)secretaryResult.Value!);
             } 
 
             #endregion

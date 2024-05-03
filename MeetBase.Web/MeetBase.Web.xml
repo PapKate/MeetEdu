@@ -1695,6 +1695,11 @@
             The user
             </summary>
         </member>
+        <member name="P:MeetBase.Web.StaffMemberResponseModel.Department">
+            <summary>
+            The department
+            </summary>
+        </member>
         <member name="M:MeetBase.Web.StaffMemberResponseModel.#ctor">
             <summary>
             Default constructor

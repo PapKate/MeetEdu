@@ -1,9 +1,11 @@
-﻿namespace MeetEdu
+﻿using AutoMapper;
+
+namespace MeetEdu
 {
     /// <summary>
     /// Represents a secretary document in the MongoDB
     /// </summary>
-    public class SecretaryEntity : StaffMemberEntity
+    public class SecretaryEntity : StaffMemberEntity, IEmbeddedable<EmbeddedSecretaryEntity>
     {
         #region Public Properties
 
@@ -39,7 +41,22 @@
 
             DI.Mapper.Map(model, entity);
 
+            entity = await UpdateNonAutoMapperValuesAsync(model, entity);
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
+        /// NOTE: This method only affects the properties that can't be mapped by the <see cref="Mapper"/> and are not null!
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="entity">The entity</param>
+        /// <returns></returns>
+        public static async Task<SecretaryEntity> UpdateNonAutoMapperValuesAsync(SecretaryRequestModel model, SecretaryEntity entity)
+        {
             entity.User = !model.UserId.IsNullOrEmpty() ? await EntityHelpers.GetUserAsync(model.UserId) : null;
+            entity.Department = !model.DepartmentId.IsNullOrEmpty() ? await EntityHelpers.GetDepartmetAsync(model.DepartmentId) : null;
 
             return entity;
         }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a user document in the MongoDB
     /// </summary>
-    public class UserEntity: DateEntity, IImageable, IEmailable, IPhoneable, IColorable
+    public class UserEntity: DateEntity, IImageable, IEmailable, IPhoneable, IColorable, IEmbeddedable<EmbeddedUserEntity>
     {
         #region Private Members
 

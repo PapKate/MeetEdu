@@ -30,6 +30,16 @@
             </summary>
             <param name="name">The name</param>
         </member>
+        <member name="T:MeetBase.GlobalInfo">
+            <summary>
+            Global information
+            </summary>
+        </member>
+        <member name="F:MeetBase.GlobalInfo.CountryData">
+            <summary>
+            The country data for all of them
+            </summary>
+        </member>
         <member name="T:MeetBase.MeetBaseConstants">
             <summary>
             The constants for the MeetEdu app
@@ -544,6 +554,34 @@
             <typeparam name="TOutput">The type of the elements of the target array.</typeparam>
             <param name="converter">A delegate that converts each element from one type to another type.</param>
             <returns></returns>
+        </member>
+        <member name="T:MeetBase.CountryData">
+            <summary>
+            The information regarding a country
+            </summary>
+        </member>
+        <member name="P:MeetBase.CountryData.Country">
+            <summary>
+            The country name
+            </summary>
+        </member>
+        <member name="P:MeetBase.CountryData.CountryCode">
+            <summary>
+            The country code for phone numbers
+            </summary>
+        </member>
+        <member name="P:MeetBase.CountryData.IsoCodes">
+            <summary>
+            The representative ISO codes of the country
+            </summary>
+        </member>
+        <member name="M:MeetBase.CountryData.#ctor(System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="country">The name</param>
+            <param name="countryCode">The country code</param>
+            <param name="isoCodes">The ISO codes</param>
         </member>
         <member name="T:MeetBase.AppointmentContactMessageTemplate">
             <summary>

@@ -55,6 +55,11 @@ namespace MeetEdu
         /// </summary>
         public EmbeddedUserEntity? User { get; set; }
 
+        /// <summary>
+        /// The department
+        /// </summary>
+        public EmbeddedDepartmentEntity? Department { get; set; }
+
         #endregion
 
         #region Constructors

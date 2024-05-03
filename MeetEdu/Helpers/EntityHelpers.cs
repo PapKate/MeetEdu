@@ -34,10 +34,37 @@ namespace MeetEdu
         /// </summary>
         /// <param name="userId">The user id</param>
         /// <returns></returns>
-        public static async Task<EmbeddedUserEntity> GetUserAsync(string userId)
+        public static Task<EmbeddedUserEntity> GetUserAsync(string userId)
+            => GetEmbeddedEntityAsync<UserEntity, EmbeddedUserEntity>(MeetEduDbMapper.Users, userId);
+
+        /// <summary>
+        /// Gets the secretary that has the specified <paramref name="secretaryId"/> and return the <see cref="EmbeddedSecretaryEntity"/>
+        /// </summary>
+        /// <param name="secretaryId">The secretary id</param>
+        /// <returns></returns>
+        public static Task<EmbeddedSecretaryEntity> GetSecretaryAsync(string secretaryId) 
+            => GetEmbeddedEntityAsync<SecretaryEntity, EmbeddedSecretaryEntity>(MeetEduDbMapper.Secretaries, secretaryId);
+
+        /// <summary>
+        /// Gets the department that has the specified <paramref name="departmentId"/> and return the <see cref="EmbeddedDepartmentEntity"/>
+        /// </summary>
+        /// <param name="departmentId">The department id</param>
+        /// <returns></returns>
+        public static Task<EmbeddedDepartmentEntity> GetDepartmetAsync(string departmentId)
+            => GetEmbeddedEntityAsync<DepartmentEntity, EmbeddedDepartmentEntity>(MeetEduDbMapper.Departments, departmentId);
+
+        /// <summary>
+        /// Gets the entity that has the specified <paramref name="id"/> and return the <typeparamref name="TEmbeddedEntity"/>
+        /// </summary>
+        /// <param name="collection"></param>
+        /// <param name="id">The id</param>
+        /// <returns></returns>
+        public static async Task<TEmbeddedEntity> GetEmbeddedEntityAsync<TEntity, TEmbeddedEntity>(IMongoCollection<TEntity> collection, string id)
+            where TEntity : BaseEntity, IEmbeddedable<TEmbeddedEntity>
+            where TEmbeddedEntity : EmbeddedBaseEntity
         {
-            var user = await MeetEduDbMapper.Users.FirstOrDefaultAsync(x => x.Id == userId.ToObjectId());
-            return user.ToEmbeddedEntity();
+            var entity = await collection.FirstOrDefaultAsync(x => x.Id == id.ToObjectId());
+            return entity.ToEmbeddedEntity();
         }
 
         /// <summary>

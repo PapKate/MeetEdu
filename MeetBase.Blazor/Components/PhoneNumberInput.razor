@@ -1,0 +1,215 @@
+﻿@using static PaletteColors
+@using static Personalization
+
+@namespace MeetBase.Blazor
+
+<div style="width:100%;">
+<div class="phoneNumberInputContainer @CssClasses">
+    <div class="phoneNumberInputFlagContainer" @onclick="@Flag_OnClick">
+        <img class="phoneNumberInputFlag" src="@($"./flags/4x3/{Country?.IsoCodes?.FirstOrDefault()}.svg")"/>
+        <svg class="phoneNumberInputIcon @( mIsSearchBoxVisible ? "phoneNumberInputArrowPointingTop" : "phoneNumberInputArrowPointingBottom")"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+        </svg>
+    </div>
+
+    <div class="phoneNumberInputFieldArea">
+        @if(Country is not null)
+        {
+            <span class="phoneNumberInputCountryCode">+@Country.CountryCode</span>
+        }
+
+        <MudTextField T="string" @bind-Value="@Text" 
+                      Placeholder="@Placeholder"
+                      DisableUnderLine="true"
+                      FullWidth="true"
+                      Mask="@(new PatternMask(Pattern))"
+                      Class="phoneNumberInput"/>           
+    </div>
+</div>
+
+@if(mIsSearchBoxVisible)
+{
+    <MudAutocomplete T="CountryData" Value="Country" ValueChanged="@Search_ValueChanged"
+                     Placeholder="Search for a country"
+                     DisableUnderLine="true"
+                     SearchFunc="@Search"
+                     IsOpenChanged="@SearchInput_IsOpen"
+                     FullWidth="false"
+                     Class="phoneNumberInputSearchContainer"
+                     Style="@mSearchBoxStyle"
+                     Adornment="@Adornment.Start"
+                     AdornmentIcon="@Icons.Material.Filled.Search"
+                     ToStringFunc="@(e => e == null ? null : $"{e.Country} (+{e.CountryCode})")">
+        <ItemTemplate Context="e">
+            <MudText>
+                @if (e is not null)
+                {
+                    <div class="phoneNumberInputSearchValue">
+                        <img class="phoneNumberInputFlag" src="@($"./flags/4x3/{e?.IsoCodes?.FirstOrDefault()}.svg")" />
+                        <span class="phoneNumberInputSearchValueText">@e!.Country (+@e.CountryCode)</span>
+                    </div>
+                }
+            </MudText>
+        </ItemTemplate>
+        <ItemSelectedTemplate Context="e">
+            <MudText>
+                @if(e is not null)
+                {
+                    <div class="phoneNumberInputSearchSelectedValue">
+                        <div class="phoneNumberInputSearchSelectedValue">
+                                <img class="phoneNumberInputFlag" src="@($"./flags/4x3/{e?.IsoCodes?.FirstOrDefault()}.svg")" />
+                            <span class="phoneNumberInputSearchValueText">@e!.Country (+@e.CountryCode)</span>
+                        </div>
+                        <svg class="phoneNumberInputIcon phoneNumberInputSearchValueIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+                        </svg>
+                    </div>
+                }
+            </MudText>
+        </ItemSelectedTemplate>
+    </MudAutocomplete>
+}
+</div>
+<style>
+
+    .phoneNumberInputContainer {
+        position: relative;
+        height: 48px;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 8px;
+        border: solid #736F72 1px;
+        overflow: hidden;
+    }
+
+    .phoneNumberInputFlagContainer {
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        background: #E9E3E6;
+        cursor: pointer;
+        padding: 0 1rem;
+    }
+
+    .phoneNumberInputFlag {
+        width: 16px;
+        height: auto;
+    }
+
+    .phoneNumberInputIcon {
+        width: 18px;
+        color: #333138;
+        transition: all 0.2s ease-in-out; 
+    }
+
+    .phoneNumberInputArrowPointingTop {
+        transform: rotate(0deg);
+    }
+
+    .phoneNumberInputArrowPointingBottom {
+        transform: rotate(180deg);
+    }
+
+    .phoneNumberInputFieldArea {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .phoneNumberInputCountryCode {
+        color: #736F72;
+        font-size: 16px;
+    }
+
+    .phoneNumberInput {
+        width: 100%;
+        height: 100%;
+        color: #333138;
+        border: 0;
+    }
+
+        .phoneNumberInput.mud-input-control {
+            margin: 0;
+        }
+
+            .phoneNumberInput.mud-input-control > .mud-input-control-input-container {
+                height: 100%;
+                margin: 0;
+            }
+
+            .phoneNumberInput.mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
+                    height: 100%;
+                    margin: 0;
+            }
+
+    .phoneNumberInputSearchContainer.mud-input-control > .mud-input-control-input-container {
+        padding: 0 1rem;
+    }
+
+    .phoneNumberInputSearchContainer {
+        position: absolute;
+        top: 0.5rem;
+        left: 0rem;
+        max-width: 320px;
+        border-radius: 8px;
+        height: 40px;
+        justify-content:center;
+        background: @White.NormalizedColor();
+        z-index: 1204;
+        margin: 0;
+    }
+
+    .phoneNumberInputSearchContainer.mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
+        margin: 0;
+    }
+
+    .phoneNumberInputSearchValue {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .phoneNumberInputSearchSelectedValue {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .mud-elevation-8 {
+        box-shadow: none;
+        border: solid #E9E3E6 1px;
+        border-radius: 8px;
+        padding-top: 32px;
+        margin-top: -36px;
+        background: @White.NormalizedColor();
+        filter: @LightFilterDropShadow;
+    }
+
+    .overflow-y-auto {
+        overflow: hidden;
+    }
+
+    .mud-popover:not(.mud-popover-open) {
+        left: 0;
+    }
+
+</style>

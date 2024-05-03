@@ -38,7 +38,7 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<ProfessorEntity>> AddProfessorAsync(ProfessorRequestModel model, CancellationToken cancellationToken = default)
         {
-            return await MeetEduDbMapper.Professors.AddAsync(await ProfessorEntity.FromRequestModelAsync(model), cancellationToken);
+            return await MeetEduDbMapper.Professors.AddAsync(ProfessorEntity.FromRequestModel(model), cancellationToken);
         }
 
         /// <summary>

@@ -68,6 +68,11 @@
         /// </summary>
         public EmbeddedUserResponseModel? User { get; set; }
 
+        /// <summary>
+        /// The department
+        /// </summary>
+        public EmbeddedDepartmentResponseModel? Department { get; set; }
+
         #endregion
 
         #region Constructors

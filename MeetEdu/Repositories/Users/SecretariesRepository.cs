@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using SharpCompress.Common;
 
 namespace MeetEdu
 {
@@ -38,7 +39,22 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<SecretaryEntity>> AddSecretaryAsync(SecretaryRequestModel model, CancellationToken cancellationToken = default)
         {
-            return await MeetEduDbMapper.Secretaries.AddAsync(await SecretaryEntity.FromRequestModelAsync(model), cancellationToken);
+            var secretary = await MeetEduDbMapper.Secretaries.AddAsync(await SecretaryEntity.FromRequestModelAsync(model), cancellationToken);
+            
+            var department = await MeetEduDbMapper.Departments.FirstAsync(x => x.Id == model.DepartmentId!.ToObjectId());
+
+            // If the secretary is assigned to a department
+            if (department != null)
+            {
+                var secretaries = new List<EmbeddedSecretaryEntity>();
+                secretaries.AddRange(department.Secretaries);
+                secretaries.Add(secretary.ToEmbeddedEntity());
+                department.Secretaries = secretaries;
+
+                await MeetEduDbMapper.Departments.UpdateAsync(department, cancellationToken);
+            }
+            
+            return secretary;
         }
 
         /// <summary>
@@ -57,6 +73,20 @@ namespace MeetEdu
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Secretaries));
 
             secretaryEntity = await MeetEduDbMapper.Secretaries.UpdateAsync(id, model, cancellationToken);
+
+            var department = await MeetEduDbMapper.Departments.FirstAsync(x => x.Id == secretaryEntity!.DepartmentId, cancellationToken);
+
+            // If the secretary is assigned to a department
+            if (department != null)
+            {
+                var secretaries = new List<EmbeddedSecretaryEntity>();
+                secretaries.AddRange(department.Secretaries);
+                secretaries.Remove(secretaries.First(x => x.Id == secretaryEntity!.Id));
+                secretaries.Add(secretaryEntity!.ToEmbeddedEntity());
+                department.Secretaries = secretaries;
+
+                await MeetEduDbMapper.Departments.UpdateAsync(department, cancellationToken);
+            }
 
             return secretaryEntity!;
         }

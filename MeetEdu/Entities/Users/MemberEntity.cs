@@ -57,13 +57,11 @@ namespace MeetEdu
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static async Task<MemberEntity> FromRequestModelAsync(MemberRequestModel model)
+        public static MemberEntity FromRequestModel(MemberRequestModel model)
         {
             var entity = new MemberEntity();
 
             DI.Mapper.Map(model, entity);
-
-            entity.User = !model.UserId.IsNullOrEmpty() ? await EntityHelpers.GetUserAsync(model.UserId) : null; 
 
             UpdateNonAutoMapperValues(model, entity);
             
@@ -86,6 +84,8 @@ namespace MeetEdu
         /// <returns></returns>
         public static async void UpdateNonAutoMapperValues(MemberRequestModel model, MemberEntity entity)
         {
+            entity.User = !model.UserId.IsNullOrEmpty() ? await EntityHelpers.GetUserAsync(model.UserId) : null;
+
             var appointments = await MeetEduDbMapper.Appointments.SelectAsync(x => x.MemberId == entity.Id);
             entity.TotalAppointments = (uint)appointments.Count();
 

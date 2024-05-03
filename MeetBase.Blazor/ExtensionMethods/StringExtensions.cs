@@ -63,5 +63,22 @@ namespace MeetBase.Blazor
 
 
         #endregion
+
+        #region Content
+
+        /// <summary>
+        /// Returns the specified <paramref name="value"/> with its first letter to lower
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns></returns>
+        public static string FirstLetterToLower(this string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+
+            return char.ToLower(value[0]) + value.Substring(1);
+        }
+
+        #endregion
     }
 }
