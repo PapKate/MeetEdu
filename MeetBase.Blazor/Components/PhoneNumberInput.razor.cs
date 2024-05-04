@@ -22,10 +22,10 @@ namespace MeetBase.Blazor
         #region Public Properties
 
         /// <summary>
-        /// The css classes
+        /// The value
         /// </summary>
         [Parameter]
-        public string? CssClasses { get; set; }
+        public PhoneNumber? Value { get; set; }
 
         /// <summary>
         /// The text
@@ -37,13 +37,13 @@ namespace MeetBase.Blazor
         /// The phone number pattern
         /// </summary>
         [Parameter]
-        public string? Pattern { get; set; }
+        public string? Pattern { get; set; } = "000 000 0000";
 
         /// <summary>
         /// The input placeholder
         /// </summary>
         [Parameter]
-        public string? Placeholder { get; set; }
+        public string? Placeholder { get; set; } = "Phone number";
 
         /// <summary>
         /// The country value
@@ -69,6 +69,12 @@ namespace MeetBase.Blazor
         [Parameter]
         public bool HasLine { get; set; }
 
+        /// <summary>
+        /// The css classes
+        /// </summary>
+        [Parameter]
+        public string? CssClasses { get; set; }
+
         #endregion
 
         #region Constructors
@@ -93,9 +99,19 @@ namespace MeetBase.Blazor
 
             mCountryData = GlobalInfo.CountryData;
             var greece = GlobalInfo.CountryData.First(x => x.Country == "Greece");
+            var cyprus = GlobalInfo.CountryData.First(x => x.Country == "Cyprus");
+
+            if (Value is not null)
+            {
+                Country = mCountryData.FirstOrDefault(x => x.CountryCode == Value.CountryCode.ToString());
+                Text = Value.Phone;
+            }
 
             if (Country is null)
                 Country = greece;
+
+            mCountryData.Remove(cyprus);
+            mCountryData.Insert(1, cyprus);
 
             mCountryData.Remove(greece);
             mCountryData.Insert(0, greece);
@@ -151,7 +167,30 @@ namespace MeetBase.Blazor
         {
             Country = data;
             mIsSearchBoxVisible = false;
+            OnValueChanged();
         }
+
+        private void TextInput_ValueChanged(string value)
+        {
+            Text = value;
+            OnValueChanged();
+        }
+
+        private async void OnValueChanged()
+        {
+            Value = new PhoneNumber(Country!.CountryCode, Text!);
+            await ValueChanged.InvokeAsync();
+        }
+
+        #endregion
+
+        #region Public Events
+
+        /// <summary>
+        /// Fires when the <see cref="Value"/> is changed
+        /// </summary>
+        [Parameter]
+        public EventCallback<PhoneNumber> ValueChanged { get; set; }
 
         #endregion
     }

@@ -169,7 +169,7 @@ namespace MeetEdu
                     Color = "49B6FF",
                     Email = "secretary@ceid.upatras.com",
                     Category = DepartmentType.Engineering,
-                    PhoneNumber = new PhoneNumber(30, "2610623555"),
+                    PhoneNumber = new PhoneNumber("30", "2610623555"),
                     Location = new Location()
                     {
                         Country = CountryCode.GR,
@@ -219,7 +219,7 @@ namespace MeetEdu
                     Color = "EEC643",
                     Email = "ecesecr@upatras.gr",
                     Category = DepartmentType.Engineering,
-                    PhoneNumber = new PhoneNumber(30, "2610996492"),
+                    PhoneNumber = new PhoneNumber("30", "2610996492"),
                     Location = new Location()
                     {
                         Country = CountryCode.GR,
@@ -269,7 +269,7 @@ namespace MeetEdu
                     Color = "DD1C1A",
                     Email = "secretar@mech.upatras.gr",
                     Category = DepartmentType.Engineering,
-                    PhoneNumber = new PhoneNumber(30, "2610969400"),
+                    PhoneNumber = new PhoneNumber("30", "2610969400"),
                     Location = new Location()
                     {
                         Country = CountryCode.GR,
@@ -318,7 +318,7 @@ namespace MeetEdu
                     Color = "9E4770",
                     Email = "archisec@upatras.gr",
                     Category = DepartmentType.Engineering,
-                    PhoneNumber = new PhoneNumber(30, "2610997553"),
+                    PhoneNumber = new PhoneNumber("30", "2610997553"),
                     Location = new Location()
                     {
                         Country = CountryCode.GR,
@@ -368,7 +368,7 @@ namespace MeetEdu
                     Color = "6EEB83",
                     Email = "civil@upatras.gr",
                     Category = DepartmentType.Engineering,
-                    PhoneNumber = new PhoneNumber(30, "2610997553"),
+                    PhoneNumber = new PhoneNumber("30", "2610997553"),
                     Location = new Location()
                     {
                         Country = CountryCode.GR,
@@ -417,7 +417,7 @@ namespace MeetEdu
                     Color = "9448BC",
                     Email = "chemengsecr@upatras.gr",
                     Category = DepartmentType.Engineering,
-                    PhoneNumber = new PhoneNumber(30, "2610969500"),
+                    PhoneNumber = new PhoneNumber("30", "2610969500"),
                     Location = new Location()
                     {
                         Country = CountryCode.GR,
@@ -491,7 +491,7 @@ namespace MeetEdu
                     Email = "ioanna@ceid.upatras.gr",
                     Color = "4056F4",
                     DateOfBirth = new DateOnly(2000, 8, 24),
-                    PhoneNumber = new(30, "2610996941"),
+                    PhoneNumber = new("30", "2610996941"),
                     Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 },
                 new()
@@ -503,7 +503,7 @@ namespace MeetEdu
                     Email = "aggeliki@ceid.upatras.gr",
                     Color = "470FF4",
                     DateOfBirth = new DateOnly(2000, 8, 24),
-                    PhoneNumber = new(30, "2610996940"),
+                    PhoneNumber = new("30", "2610996940"),
                     Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 },
                 new()
@@ -515,7 +515,7 @@ namespace MeetEdu
                     Email = "dimimar@ceid.upatras.gr",
                     Color = "CEBBC9",
                     DateOfBirth = new DateOnly(2000, 8, 24),
-                    PhoneNumber = new(30, "2610996939"),
+                    PhoneNumber = new("30", "2610996939"),
                     Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 },
                 new()
@@ -527,7 +527,7 @@ namespace MeetEdu
                     Email = "varvarigou@ceid.upatras.gr",
                     Color = "CE2D4F",
                     DateOfBirth = new DateOnly(2000, 8, 24),
-                    PhoneNumber = new(30, "2610996945"),
+                    PhoneNumber = new("30", "2610996945"),
                     Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 },
                 new()
@@ -539,7 +539,7 @@ namespace MeetEdu
                     Email = "secretary.undergraduate@ceid.upatras.gr",
                     Color = "BF1363",
                     DateOfBirth = new DateOnly(2000, 8, 24),
-                    PhoneNumber = new(30, "2610996955"),
+                    PhoneNumber = new("30", "2610996955"),
                     Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
                 }
             };

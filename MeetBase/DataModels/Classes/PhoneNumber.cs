@@ -10,7 +10,7 @@
         /// <summary>
         /// The country code
         /// </summary>
-        public int CountryCode { get; }
+        public string CountryCode { get; }
 
         /// <summary>
         /// The phone
@@ -26,7 +26,7 @@
         /// </summary>
         /// <param name="countryCode">The country code</param>
         /// <param name="phone">The phone number</param>
-        public PhoneNumber(int countryCode, string phone)
+        public PhoneNumber(string countryCode, string phone)
         {
             CountryCode = countryCode;
             Phone = phone;

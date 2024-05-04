@@ -27,7 +27,7 @@ namespace MeetCore
         /// <summary>
         /// The country code
         /// </summary>
-        private int mCountryCode = 30;
+        private string mCountryCode = "30";
 
         /// <summary>
         /// The phone number
@@ -96,7 +96,7 @@ namespace MeetCore
         {
             base.OnInitialized();
 
-            mCountryCode = Model.Model!.PhoneNumber?.CountryCode ?? 30;
+            mCountryCode = Model.Model!.PhoneNumber?.CountryCode ?? "30";
             mPhoneNumber = Model.Model.PhoneNumber?.Phone ?? string.Empty;
             mLocation = Model.Model.Location ?? new();
             mCategory = Model.Model.Category ?? DepartmentType.HealthSciences;

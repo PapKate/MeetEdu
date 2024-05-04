@@ -37,7 +37,7 @@ namespace MeetCore
         /// <summary>
         /// The country code
         /// </summary>
-        private int mCountryCode = 30;
+        private string mCountryCode = "30";
 
         /// <summary>
         /// The phone number
@@ -111,7 +111,7 @@ namespace MeetCore
 
             if(Model is not null)
             {
-                mCountryCode = Model.Model!.PhoneNumber?.CountryCode ?? 30;
+                mCountryCode = Model.Model!.PhoneNumber?.CountryCode ?? "30";
                 mPhoneNumber = Model.Model.PhoneNumber?.Phone ?? string.Empty;
                 mBirthDate = Model.Model.DateOfBirth?.ToDateTime() ?? DateTime.Now;
                 mLocation = Model.Model.Location ?? new();

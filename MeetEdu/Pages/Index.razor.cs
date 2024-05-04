@@ -111,7 +111,7 @@ namespace MeetEdu
             var entryPoint = new EntryPoint(CoreController);
             
             // Add the universities
-            //await entryPoint.AddUniversitiesAsync();
+            await entryPoint.AddUniversitiesAsync();
 
             if(EntryPoint.Universities.IsNullOrEmpty())
             {
@@ -126,7 +126,7 @@ namespace MeetEdu
             }
 
             // Add the departments
-            //await entryPoint.AddDepartmentsAsync();
+            await entryPoint.AddDepartmentsAsync();
 
             if (EntryPoint.PaPaDepartments.IsNullOrEmpty())
             {
@@ -141,7 +141,7 @@ namespace MeetEdu
             }
 
             // Add the secretaries
-            //await entryPoint.AddSecretariesAsync();
+            await entryPoint.AddSecretariesAsync();
 
         }
 

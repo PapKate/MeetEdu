@@ -1126,7 +1126,7 @@
             The phone
             </summary>
         </member>
-        <member name="M:MeetBase.PhoneNumber.#ctor(System.Int32,System.String)">
+        <member name="M:MeetBase.PhoneNumber.#ctor(System.String,System.String)">
             <summary>
             Default constructor
             </summary>

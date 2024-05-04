@@ -3,13 +3,13 @@
 
 @namespace MeetBase.Blazor
 
-<div style="width:100%;">
+<div class="phoneNumberInputWrapper" style="width:100%;">
 <div class="phoneNumberInputContainer @CssClasses">
     <div class="phoneNumberInputFlagContainer" @onclick="@Flag_OnClick">
         <img class="phoneNumberInputFlag" src="@($"./flags/4x3/{Country?.IsoCodes?.FirstOrDefault()}.svg")"/>
         <svg class="phoneNumberInputIcon @( mIsSearchBoxVisible ? "phoneNumberInputArrowPointingTop" : "phoneNumberInputArrowPointingBottom")"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+                <path fill="currentColor" d="M7 10l5 5 5-5z" />
         </svg>
     </div>
 
@@ -19,24 +19,26 @@
             <span class="phoneNumberInputCountryCode">+@Country.CountryCode</span>
         }
 
-        <MudTextField T="string" @bind-Value="@Text" 
-                      Placeholder="@Placeholder"
-                      DisableUnderLine="true"
-                      FullWidth="true"
-                      Mask="@(new PatternMask(Pattern))"
-                      Class="phoneNumberInput"/>           
+        <MudTextField T="string" Value="@Text" OnDebounceIntervalElapsed="@TextInput_ValueChanged" DebounceInterval="2000"
+                    Placeholder="@Placeholder"
+                    DisableUnderLine="true"
+                    FullWidth="true"
+                    UserAttributes="@(new Dictionary<string, object>() { { "autocomplete", "one-time-code" } })"
+                    Mask="@(new PatternMask(Pattern))"
+                    Class="phoneNumberInput"/>           
     </div>
 </div>
 
 @if(mIsSearchBoxVisible)
 {
-    <MudAutocomplete T="CountryData" Value="Country" ValueChanged="@Search_ValueChanged"
+    <MudAutocomplete T="CountryData" Value="Country" ValueChanged="@Search_ValueChanged" 
                      Placeholder="Search for a country"
                      DisableUnderLine="true"
                      SearchFunc="@Search"
                      IsOpenChanged="@SearchInput_IsOpen"
                      FullWidth="false"
                      Class="phoneNumberInputSearchContainer"
+                     PopoverClass="phoneNumberInputValues"
                      Style="@mSearchBoxStyle"
                      Adornment="@Adornment.Start"
                      AdornmentIcon="@Icons.Material.Filled.Search"
@@ -72,6 +74,9 @@
 }
 </div>
 <style>
+    .phoneNumberInputWrapper {
+        width: 100%;
+    }
 
     .phoneNumberInputContainer {
         position: relative;
@@ -82,7 +87,7 @@
         align-items: center;
         gap: 1rem;
         border-radius: 8px;
-        border: solid #736F72 1px;
+        border: solid @White.ToDarkerColor(4).NormalizedColor() 1px;
         overflow: hidden;
     }
 
@@ -94,7 +99,7 @@
         justify-content: center;
         align-items: center;
         gap: 4px;
-        background: #E9E3E6;
+        background: @White.ToDarkerColor(1).NormalizedColor();
         cursor: pointer;
         padding: 0 1rem;
     }
@@ -105,17 +110,17 @@
     }
 
     .phoneNumberInputIcon {
-        width: 18px;
-        color: #333138;
+        width: 20px;
+        color: @White.ToDarkerColor(8).NormalizedColor();
         transition: all 0.2s ease-in-out; 
     }
 
     .phoneNumberInputArrowPointingTop {
-        transform: rotate(0deg);
+        transform: rotate(180deg);
     }
 
     .phoneNumberInputArrowPointingBottom {
-        transform: rotate(180deg);
+        transform: rotate(360deg);
     }
 
     .phoneNumberInputFieldArea {
@@ -130,14 +135,19 @@
     }
 
     .phoneNumberInputCountryCode {
-        color: #736F72;
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 16px;
+        color: @White.ToDarkerColor(10).NormalizedColor();
     }
 
     .phoneNumberInput {
         width: 100%;
         height: 100%;
-        color: #333138;
+        color: @DarkGray.NormalizedColor();
         border: 0;
     }
 
@@ -194,9 +204,9 @@
         gap: 1rem;
     }
 
-    .mud-elevation-8 {
+    .phoneNumberInputValues.mud-elevation-8 {
         box-shadow: none;
-        border: solid #E9E3E6 1px;
+        border: solid @White.ToDarkerColor(1).NormalizedColor() 1px;
         border-radius: 8px;
         padding-top: 32px;
         margin-top: -36px;
@@ -204,11 +214,11 @@
         filter: @LightFilterDropShadow;
     }
 
-    .overflow-y-auto {
+    .phoneNumberInputValues.overflow-y-auto {
         overflow: hidden;
     }
 
-    .mud-popover:not(.mud-popover-open) {
+    .phoneNumberInputValues.mud-popover:not(.mud-popover-open) {
         left: 0;
     }
 

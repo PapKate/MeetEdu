@@ -14,7 +14,7 @@ namespace MeetCore
         /// <summary>
         /// The country code
         /// </summary>
-        private int mCountryCode = 30;
+        private string mCountryCode = "30";
 
         /// <summary>
         /// The phone number
