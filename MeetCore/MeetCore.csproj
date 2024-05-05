@@ -9,7 +9,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>.\MeetCore.xml</DocumentationFile>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.36.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="7.0.17" />

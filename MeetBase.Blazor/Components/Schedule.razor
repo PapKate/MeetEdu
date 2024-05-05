@@ -111,7 +111,7 @@
                         <div class="workHourContainer"
                              style="@TopVariable.SetCssVariable($"calc({CellHeight} * ({hourRange.Start.Hour}.{hourRange.Start.Minute.ToString("00")} - 7))")
                                     @LeftVariable.SetCssVariable($"calc((100% / 7) * ({(hourRange.DayOfWeek == DayOfWeek.Sunday ? 7 : (int)hourRange.DayOfWeek)} - 1))")
-                                    @HeightVariable.SetCssVariable($"calc({CellHeight} * ({hourRange.End.Hour}.{hourRange.End.Minute} - {hourRange.Start.Hour}.{hourRange.Start.Minute.ToString("00")}))")
+                                    @HeightVariable.SetCssVariable($"calc({CellHeight} * ({hourRange.End.Hour}.{hourRange.End.Minute * 1 / 6} - {hourRange.Start.Hour}.{hourRange.Start.Minute * 1 / 6}))")
                                     @BackgroundVariable.SetCssColor($"{lecture.Color.HexToRGBA(0.2)}")
                                     @BorderBrushVariable.SetCssColor($"{lecture.Color}")
                                     "

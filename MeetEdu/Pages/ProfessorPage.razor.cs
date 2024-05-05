@@ -33,7 +33,7 @@ namespace MeetEdu
         /// <summary>
         /// The professor
         /// </summary>
-        public ProfessorResponseModel? Professor { get; set; }
+        public ProfessorResponseModel? Model { get; set; }
 
         #endregion
 
@@ -86,13 +86,13 @@ namespace MeetEdu
             if (result?.Value is null)
                 return;
 
-            Professor = result.Value;
+            Model = result.Value;
 
-            var layoutsResult = await Controller.GetProfessorOfficeLayoutsAsync(new ProfessorAPIArgs() { IncludeProfessors = new List<string>() { Professor.Id } });
+            var layoutsResult = await Controller.GetProfessorOfficeLayoutsAsync(new ProfessorAPIArgs() { IncludeProfessors = new List<string>() { Model.Id } });
 
             mLayouts = layoutsResult.Value;
 
-            var rules = await Controller.GetAppointmentRulesAsync(new AppointmentRuleAPIArgs() { IncludeProfessors = new List<string>() { Professor.Id } });
+            var rules = await Controller.GetAppointmentRulesAsync(new AppointmentRuleAPIArgs() { IncludeProfessors = new List<string>() { Model.Id } });
 
             mAppointmentRules = rules.Value;
         }
@@ -104,10 +104,10 @@ namespace MeetEdu
 
             if (firstRender)
             {
-                if (Professor!.User!.Location is not null)
+                if (Model!.User!.Location is not null)
                 {
                     await Task.Delay(100);
-                    await JSRuntime.InvokeVoidAsync("ShowLeafletMap", Professor!.Id, Professor.User.Location.Latitude, Professor.User.Location.Longitude);
+                    await JSRuntime.InvokeVoidAsync("ShowLeafletMap", Model!.Id, Model.User.Location.Latitude, Model.User.Location.Longitude);
                 }
             }
         }

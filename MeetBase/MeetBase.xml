@@ -2742,29 +2742,14 @@
             Descending sort order
             </summary>
         </member>
-        <member name="T:MeetBase.SecretaryRole">
-            <summary>
-            Provides enumeration over the secretary roles
-            </summary>
-        </member>
-        <member name="F:MeetBase.SecretaryRole.Secretary">
-            <summary>
-            Secretary
-            </summary>
-        </member>
-        <member name="F:MeetBase.SecretaryRole.PostGraduateSecretary">
-            <summary>
-            Post graduate secretary
-            </summary>
-        </member>
-        <member name="F:MeetBase.SecretaryRole.UnderGraduateSecretary">
-            <summary>
-            Under graduate secretary
-            </summary>
-        </member>
         <member name="T:MeetBase.ProfessorRank">
             <summary>
             Provides enumeration over the professor ranks
+            </summary>
+        </member>
+        <member name="F:MeetBase.ProfessorRank.Professor">
+            <summary>
+            Professor
             </summary>
         </member>
         <member name="F:MeetBase.ProfessorRank.AssistantProfessor">
@@ -2790,6 +2775,26 @@
         <member name="F:MeetBase.ProfessorRank.ExceptionalAssociateProfessor">
             <summary>
              Exceptional Associate Professor
+            </summary>
+        </member>
+        <member name="T:MeetBase.SecretaryRole">
+            <summary>
+            Provides enumeration over the secretary roles
+            </summary>
+        </member>
+        <member name="F:MeetBase.SecretaryRole.Secretary">
+            <summary>
+            Secretary
+            </summary>
+        </member>
+        <member name="F:MeetBase.SecretaryRole.PostGraduateSecretary">
+            <summary>
+            Post graduate secretary
+            </summary>
+        </member>
+        <member name="F:MeetBase.SecretaryRole.UnderGraduateSecretary">
+            <summary>
+            Under graduate secretary
             </summary>
         </member>
         <member name="T:MeetBase.SessionStatus">

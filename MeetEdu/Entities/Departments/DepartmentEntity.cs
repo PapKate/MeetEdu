@@ -176,6 +176,11 @@ namespace MeetEdu
         public DepartmentContactMessageTemplate? ContactMessageTemplate { get; set; }
 
         /// <summary>
+        /// The university
+        /// </summary>
+        public EmbeddedUniversityEntity? University { get; set; }
+
+        /// <summary>
         /// The labels
         /// </summary>
         public IEnumerable<EmbeddedLabelEntity> Labels
@@ -214,13 +219,13 @@ namespace MeetEdu
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static DepartmentEntity FromRequestModel(DepartmentRequestModel model)
+        public static async Task<DepartmentEntity> FromRequestModelAsync(DepartmentRequestModel model)
         {
             var entity = new DepartmentEntity();
 
             DI.Mapper.Map(model, entity);
 
-            UpdateNonAutoMapperValues(model, entity);
+            entity = await UpdateNonAutoMapperValues(model, entity);
 
             return entity;
         }
@@ -239,7 +244,7 @@ namespace MeetEdu
         /// <param name="model">The model</param>
         /// <param name="entity">The entity</param>
         /// <returns></returns>
-        public static async void UpdateNonAutoMapperValues(DepartmentRequestModel model, DepartmentEntity entity)
+        public static async Task<DepartmentEntity> UpdateNonAutoMapperValues(DepartmentRequestModel model, DepartmentEntity entity)
         {
             if (!model.LabelIds.IsNullOrEmpty())
             {
@@ -248,6 +253,14 @@ namespace MeetEdu
 
                 entity.Labels = labels.Select(l => l.ToEmbeddedEntity()).ToList();
             }
+
+            if(!model.UniversityId.IsNullOrEmpty())
+            {
+                var university = await MeetEduDbMapper.Universities.FirstOrDefaultAsync(x => x.Id == model.UniversityId.ToObjectId());
+                entity.University = university.ToEmbeddedEntity();
+            }
+
+            return entity;
         }
 
         /// <summary>

@@ -9,7 +9,7 @@
     <div class="contactFormContainer">
         <div class="contactFormInputsContainer">
             <MudSelect T="SecretaryRole"
-                       @bind-Value="@mContactMessage.Rule"
+                       @bind-Value="@mContactMessage.Role"
                        Placeholder="Type"
                        Class="formInput"
                        FullWidth="true"
@@ -37,12 +37,7 @@
                           FullWidth="true"
                           Variant="Variant.Text" />
 
-            @*<MudTextField @bind-Value="@mPhoneNumber"
-                          Placeholder="Phone number"
-                          Class="formInput"
-                          FullWidth="true"
-                          Variant="Variant.Text" />*@
-            <PhoneNumberInput CssClasses="phoneNumberFormInput" />
+            <PhoneNumberInput CssClasses="phoneNumberFormInput" @bind-Value="@mPhoneNumber" />
 
             <MudTextField @bind-Value="@mContactMessage.Message"
                           Placeholder="Message"
@@ -68,7 +63,8 @@
                             HoverForeColor="@White"
                             BorderRadius="0"
                             BoxShadow="none"
-                            CssClasses="contactFormButton" />
+                            CssClasses="contactFormButton"
+                            OnClick="@SendButton_OnClick" />
             </div>
         </div>
 
@@ -96,7 +92,7 @@
         align-items: center;
         gap: @XXLargeGap;
         padding: 3rem;
-        background-color: @Department!.Color.HexToRGBA(0.4);
+        background-color: @Color?.HexToRGBA(0.4);
     }
 
     .contactFormInputsContainer {
@@ -126,16 +122,6 @@
 
     .formInput .mud-input.mud-input-underline:after {
         display: none;
-    }
-
-    .phoneNumberFormInput {
-        position: relative;
-        width: 100%;
-        height: 40px;
-        border-radius: @LargeBorderRadius;
-        filter: @LightFilterDropShadow;
-        background: @White.NormalizedColor();
-        border: none;
     }
 
     .contactFormImageContainer {

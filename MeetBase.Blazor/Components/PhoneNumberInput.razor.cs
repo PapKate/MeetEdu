@@ -163,23 +163,23 @@ namespace MeetBase.Blazor
             }
         }
 
-        private void Search_ValueChanged(CountryData data)
+        private async void Search_ValueChanged(CountryData data)
         {
             Country = data;
             mIsSearchBoxVisible = false;
-            OnValueChanged();
+            await OnValueChanged();
         }
 
-        private void TextInput_ValueChanged(string value)
+        private async void TextInput_ValueChanged(string value)
         {
             Text = value;
-            OnValueChanged();
+            await OnValueChanged();
         }
 
-        private async void OnValueChanged()
+        private async Task OnValueChanged()
         {
             Value = new PhoneNumber(Country!.CountryCode, Text!);
-            await ValueChanged.InvokeAsync();
+            await ValueChanged.InvokeAsync(Value);
         }
 
         #endregion

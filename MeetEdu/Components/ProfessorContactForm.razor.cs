@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-
+using MudBlazor;
 using System.ComponentModel.DataAnnotations;
 
 namespace MeetEdu
@@ -19,7 +19,7 @@ namespace MeetEdu
         /// <summary>
         /// The phone number
         /// </summary>
-        private string? mPhoneNumber;
+        private PhoneNumber? mPhoneNumber;
 
         /// <summary>
         /// The flag indicating whether the appointment is gonna be remote or not
@@ -60,6 +60,22 @@ namespace MeetEdu
 
         #endregion
 
+        #region Protected Properties
+
+        /// <summary>
+        /// The <see cref="MudBlazor"/> snack bar manager
+        /// </summary>
+        [Inject]
+        protected ISnackbar Snackbar { get; set; } = default!;
+
+        /// <summary>
+        /// The controller
+        /// </summary>
+        [Inject]
+        protected MeetEduController Controller { get; set; } = default!;
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -85,7 +101,54 @@ namespace MeetEdu
                     vector.Color = Professor!.User!.Color;
                 }
             }
+        }
 
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Resets the contact form
+        /// </summary>
+        private void ResetForm()
+        {
+            mRule = null;
+            mPhoneNumber = null;
+            mAppointment = new();
+            StateHasChanged();
+        }
+
+        /// <summary>
+        /// Fires the event to send the message
+        /// </summary>
+        private async void SendButton_OnClick()
+        {
+            if(mRule is null || mPhoneNumber is null)
+            {
+                return;
+            }
+
+            mAppointment.PhoneNumber = mPhoneNumber;
+            mAppointment.RuleId = mRule.Id;
+            mAppointment.ProfessorId = Professor!.Id;
+
+            mAppointment.DateStart = DateTime.Now.AddDays(2);
+            // TODO: mAppointment.MemberId = "id";
+         
+            if (Professor is null)
+                return;
+
+            var appointmentResponse = await Controller.AddAppointmentAsync(mAppointment);
+
+            if (appointmentResponse.Value is null)
+            {
+                Snackbar.Add($"Error: {appointmentResponse.Value}", Severity.Error);
+
+                return;
+            }
+
+            // TODO: Success message
+            Snackbar.Add("Success: Appointment created!", Severity.Success);
         }
 
         #endregion

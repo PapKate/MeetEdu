@@ -5,6 +5,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
 using System.IO;
+using System.Net;
 using System.Threading;
 
 namespace MeetEdu
@@ -44,7 +45,7 @@ namespace MeetEdu
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
         public async Task<WebServerFailable<DepartmentEntity>> AddDepartmentAsync(DepartmentRequestModel model, CancellationToken cancellationToken = default) 
-            => await MeetEduDbMapper.Departments.AddAsync(DepartmentEntity.FromRequestModel(model), cancellationToken);
+            => await MeetEduDbMapper.Departments.AddAsync(await DepartmentEntity.FromRequestModelAsync(model), cancellationToken);
 
         /// <summary>
         /// Updates the department with the specified <paramref name="id"/>
@@ -147,7 +148,7 @@ namespace MeetEdu
         /// <param name="model">The model</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<DepartmentContactMessageEntity>> AddDepartmentContactMessageAsync(ObjectId departmentId, DepartmentContactMessageRequestModel model, CancellationToken cancellationToken = default)
+        public async Task<WebServerFailable<DepartmentContactMessageEntity>> AddDepartmentContactMessageAsync(ObjectId departmentId, DepartmentContactMessageRequestModel model, CancellationToken cancellationToken = default) 
             => await MeetEduDbMapper.DepartmentContactMessages.AddAsync(DepartmentContactMessageEntity.FromRequestModel(model, departmentId), cancellationToken);
 
         /// <summary>

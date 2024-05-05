@@ -183,6 +183,11 @@
         public DepartmentContactMessageTemplate? ContactMessageTemplate { get; set; }
 
         /// <summary>
+        /// The university
+        /// </summary>
+        public EmbeddedUniversityResponseModel? University { get; set; }
+
+        /// <summary>
         /// The labels
         /// </summary>
         public IEnumerable<EmbeddedLabelResponseModel> Labels

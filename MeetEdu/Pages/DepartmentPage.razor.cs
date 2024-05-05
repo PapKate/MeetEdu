@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MeetEdu
 {
@@ -79,6 +80,30 @@ namespace MeetEdu
             var layoutsResult = await Controller.GetDepartmentLayoutsAsync(new DepartmentRelatedAPIArgs() { IncludeDepartments = new List<string>() { Department.Id } });
 
             mLayouts = layoutsResult.Value;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Sends the message to the respective staff members
+        /// </summary>
+        /// <param name="message">The message</param>
+        private async void DepartmentContactForm_SendOnClick(DepartmentContactMessageRequestModel message)
+        {
+            if(Department is null)
+                return;
+
+            var messageResponse = await Controller.AddDepartmentContactMessageAsync(Department.Id, message);
+            
+            if (messageResponse.Value is null)
+            {
+                // TODO: Show error
+                return;
+            }
+
+            // TODO: Success message
         }
 
         #endregion

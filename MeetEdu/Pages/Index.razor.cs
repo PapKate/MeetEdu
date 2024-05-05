@@ -111,7 +111,7 @@ namespace MeetEdu
             var entryPoint = new EntryPoint(CoreController);
             
             // Add the universities
-            await entryPoint.AddUniversitiesAsync();
+            //await entryPoint.AddUniversitiesAsync();
 
             if(EntryPoint.Universities.IsNullOrEmpty())
             {
@@ -126,7 +126,7 @@ namespace MeetEdu
             }
 
             // Add the departments
-            await entryPoint.AddDepartmentsAsync();
+            //await entryPoint.AddDepartmentsAsync();
 
             if (EntryPoint.PaPaDepartments.IsNullOrEmpty())
             {
@@ -141,8 +141,29 @@ namespace MeetEdu
             }
 
             // Add the secretaries
-            await entryPoint.AddSecretariesAsync();
+            //await entryPoint.AddSecretariesAsync();
 
+            // Add the professors
+            //await entryPoint.AddProfessorsAsync();
+
+
+            if (EntryPoint.CeidProfessors.IsNullOrEmpty())
+            {
+                var professorsResponse = await Controller.GetProfessorsAsync(new() 
+                { 
+                    IncludeDepartments = new List<string>() { EntryPoint.PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id, } 
+                });
+
+                if (professorsResponse is null || professorsResponse.Value.IsNullOrEmpty())
+                    return;
+
+                var ceidProfessors = professorsResponse.Value;
+
+                EntryPoint.CeidProfessors = ceidProfessors!.ToList();
+            }
+
+
+            await entryPoint.AddAppointmentRules();
         }
 
         #endregion

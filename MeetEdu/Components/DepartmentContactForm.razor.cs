@@ -17,7 +17,7 @@ namespace MeetEdu
         /// <summary>
         /// The phone number
         /// </summary>
-        private string? mPhoneNumber;
+        private PhoneNumber? mPhoneNumber;
 
         /// <summary>
         /// The vector component
@@ -29,10 +29,10 @@ namespace MeetEdu
         #region Public Properties
 
         /// <summary>
-        /// The department
+        /// The color
         /// </summary>
         [Parameter]
-        public DepartmentResponseModel? Department { get; set; }
+        public string? Color { get; set; }
 
         /// <summary>
         /// The department message template
@@ -64,7 +64,7 @@ namespace MeetEdu
             {
                 if (mVectorComponent?.Instance is BaseVector vector)
                 {
-                    vector.Color = Department!.Color;
+                    vector.Color = Color ?? PaletteColors.Gray;
                 }
             }
         }
@@ -83,10 +83,25 @@ namespace MeetEdu
             StateHasChanged();
         }
 
-        private async void SendMessage()
+        /// <summary>
+        /// Fires the event to send the message
+        /// </summary>
+        private async void SendButton_OnClick()
         {
-
+            mContactMessage.PhoneNumber = mPhoneNumber;
+            // TODO: mContactMessage.MemberId = "id";
+            await SendButtonCliked.InvokeAsync(mContactMessage);
         }
+
+        #endregion
+
+        #region Public Events
+
+        /// <summary>
+        /// Fires when the send button is clicked
+        /// </summary>
+        [Parameter]
+        public EventCallback<DepartmentContactMessageRequestModel> SendButtonCliked { get; set; }
 
         #endregion
     }

@@ -38,10 +38,10 @@
                         @Department.LayoutDescription
                     </div>
                     <div class="departmentPageLayoutsContainer">
-                            @foreach (var departmentLayout in mLayouts)
-                            {
-                                <LayoutPresenter Model="@departmentLayout" />
-                            }
+                        @foreach (var departmentLayout in mLayouts)
+                        {
+                            <LayoutPresenter Model="@departmentLayout" />
+                        }
                     </div>
                 </div>
             }
@@ -53,7 +53,9 @@
                     <div class="sectionDescription">
                         @Department.ContactMessageTemplate?.Description
                     </div>
-                    <DepartmentContactForm Department="@Department" FormTemplate="@Department.ContactMessageTemplate" />
+                    <DepartmentContactForm FormTemplate="@Department.ContactMessageTemplate" 
+                                           Color="@Department.Color"
+                                           SendButtonCliked="@DepartmentContactForm_SendOnClick" />
                 </div>
             }
         </div>

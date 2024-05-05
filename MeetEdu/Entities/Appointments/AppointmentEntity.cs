@@ -1,13 +1,11 @@
-﻿using AutoMapper;
-
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 
 namespace MeetEdu
 {
     /// <summary>
     /// Represents an appointment document in the MongoDB
     /// </summary>
-    public class AppointmentEntity : DepartmentContactMessageEntity, IProfessorIdentifiable<ObjectId>
+    public class AppointmentEntity : BaseContactEntity
     {
         #region Public Properties
 
@@ -111,14 +109,14 @@ namespace MeetEdu
         /// Creates and returns a <see cref="AppointmentResponseModel"/> from the current <see cref="AppointmentEntity"/>
         /// </summary>
         /// <returns></returns>
-        public new AppointmentResponseModel ToResponseModel()
+        public AppointmentResponseModel ToResponseModel()
             => EntityHelpers.ToResponseModel<AppointmentResponseModel>(this);
 
         /// <summary>
         /// Creates and returns a <see cref="EmbeddedAppointmentEntity"/> from the current <see cref="AppointmentEntity"/>
         /// </summary>
         /// <returns></returns>
-        public new EmbeddedAppointmentEntity ToEmbeddedEntity()
+        public EmbeddedAppointmentEntity ToEmbeddedEntity()
             => EntityHelpers.ToEmbeddedEntity<EmbeddedAppointmentEntity>(this);
 
         #endregion

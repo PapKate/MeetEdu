@@ -24,9 +24,9 @@
             The vector component
             </summary>
         </member>
-        <member name="P:MeetEdu.DepartmentContactForm.Department">
+        <member name="P:MeetEdu.DepartmentContactForm.Color">
             <summary>
-            The department
+            The color
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentContactForm.FormTemplate">
@@ -45,6 +45,16 @@
         <member name="M:MeetEdu.DepartmentContactForm.ResetForm">
             <summary>
             Resets the contact form
+            </summary>
+        </member>
+        <member name="M:MeetEdu.DepartmentContactForm.SendButton_OnClick">
+            <summary>
+            Fires the event to send the message
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentContactForm.SendButtonCliked">
+            <summary>
+            Fires when the send button is clicked
             </summary>
         </member>
         <member name="T:MeetEdu.DepartmentPreview">
@@ -161,6 +171,16 @@
             The appointment rules
             </summary>
         </member>
+        <member name="P:MeetEdu.ProfessorContactForm.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorContactForm.Controller">
+            <summary>
+            The controller
+            </summary>
+        </member>
         <member name="M:MeetEdu.ProfessorContactForm.#ctor">
             <summary>
             Default constructor
@@ -168,6 +188,16 @@
         </member>
         <member name="M:MeetEdu.ProfessorContactForm.OnAfterRender(System.Boolean)">
             <inheritdoc/>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactForm.ResetForm">
+            <summary>
+            Resets the contact form
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactForm.SendButton_OnClick">
+            <summary>
+            Fires the event to send the message
+            </summary>
         </member>
         <member name="P:MeetEdu.ProfessorPreview.Model">
             <summary>
@@ -1401,6 +1431,11 @@
             The university of Patras departments
             </summary>
         </member>
+        <member name="F:MeetEdu.EntryPoint.CeidProfessors">
+            <summary>
+            The professors of CEID department
+            </summary>
+        </member>
         <member name="P:MeetEdu.EntryPoint.Controller">
             <summary>
             The controller
@@ -1432,6 +1467,12 @@
         <member name="M:MeetEdu.EntryPoint.AddSecretariesAsync">
             <summary>
             Adds secretaries to the DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.EntryPoint.AddProfessorsAsync">
+            <summary>
+            Adds professors
             </summary>
             <returns></returns>
         </member>
@@ -1958,29 +1999,95 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetEdu.BaseContactEntity">
+            <summary>
+            The base model for a contact entity
+            </summary>
+        </member>
+        <member name="F:MeetEdu.BaseContactEntity.mFirstName">
+            <summary>
+            The member of the <see cref="P:MeetEdu.BaseContactEntity.FirstName"/> property
+            </summary>
+        </member>
+        <member name="F:MeetEdu.BaseContactEntity.mLastName">
+            <summary>
+            The member of the <see cref="P:MeetEdu.BaseContactEntity.LastName"/> property
+            </summary>
+        </member>
+        <member name="F:MeetEdu.BaseContactEntity.mMessage">
+            <summary>
+            The member of the <see cref="P:MeetEdu.BaseContactEntity.Message"/> property
+            </summary>
+        </member>
+        <member name="F:MeetEdu.BaseContactEntity.mEmail">
+            <summary>
+            The member of the <see cref="P:MeetEdu.BaseContactEntity.Email"/> property
+            </summary>
+        </member>
+        <member name="P:MeetEdu.BaseContactEntity.MemberId">
+            <summary>
+            The member id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.BaseContactEntity.FirstName">
+            <summary>
+            The first name
+            </summary>
+        </member>
+        <member name="P:MeetEdu.BaseContactEntity.LastName">
+            <summary>
+            The last name
+            </summary>
+        </member>
+        <member name="P:MeetEdu.BaseContactEntity.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetEdu.BaseContactEntity.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="P:MeetEdu.BaseContactEntity.Message">
+            <summary>
+            The message
+            </summary>
+        </member>
+        <member name="M:MeetEdu.BaseContactEntity.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetEdu.EmbeddedBaseContactEntity">
+            <summary>
+            A minimal version of the <see cref="T:MeetEdu.EmbeddedBaseContactEntity"/> that contains the fields that are 
+            more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="F:MeetEdu.EmbeddedBaseContactEntity.mEmail">
+            <summary>
+            The member of the <see cref="P:MeetEdu.EmbeddedBaseContactEntity.Email"/> property
+            </summary>
+        </member>
+        <member name="P:MeetEdu.EmbeddedBaseContactEntity.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="P:MeetEdu.EmbeddedBaseContactEntity.PhoneNumber">
+            <summary>
+            The phone number
+            </summary>
+        </member>
+        <member name="M:MeetEdu.EmbeddedBaseContactEntity.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="T:MeetEdu.DepartmentContactMessageEntity">
             <summary>
             Represents a department contact message document in the MongoDB
-            </summary>
-        </member>
-        <member name="F:MeetEdu.DepartmentContactMessageEntity.mFirstName">
-            <summary>
-            The member of the <see cref="P:MeetEdu.DepartmentContactMessageEntity.FirstName"/> property
-            </summary>
-        </member>
-        <member name="F:MeetEdu.DepartmentContactMessageEntity.mLastName">
-            <summary>
-            The member of the <see cref="P:MeetEdu.DepartmentContactMessageEntity.LastName"/> property
-            </summary>
-        </member>
-        <member name="F:MeetEdu.DepartmentContactMessageEntity.mMessage">
-            <summary>
-            The member of the <see cref="P:MeetEdu.DepartmentContactMessageEntity.Message"/> property
-            </summary>
-        </member>
-        <member name="F:MeetEdu.DepartmentContactMessageEntity.mEmail">
-            <summary>
-            The member of the <see cref="P:MeetEdu.DepartmentContactMessageEntity.Email"/> property
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentContactMessageEntity.DepartmentId">
@@ -1988,34 +2095,9 @@
             The department id
             </summary>
         </member>
-        <member name="P:MeetEdu.DepartmentContactMessageEntity.MemberId">
+        <member name="P:MeetEdu.DepartmentContactMessageEntity.Role">
             <summary>
-            The member id
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentContactMessageEntity.FirstName">
-            <summary>
-            The first name
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentContactMessageEntity.LastName">
-            <summary>
-            The last name
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentContactMessageEntity.Email">
-            <summary>
-            The email
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentContactMessageEntity.PhoneNumber">
-            <summary>
-            The phone number
-            </summary>
-        </member>
-        <member name="P:MeetEdu.DepartmentContactMessageEntity.Message">
-            <summary>
-            The message
+            The role
             </summary>
         </member>
         <member name="M:MeetEdu.DepartmentContactMessageEntity.#ctor">
@@ -2049,24 +2131,14 @@
             more frequently used when embedding documents in the MongoDB
             </summary>
         </member>
-        <member name="F:MeetEdu.EmbeddedDepartmentContactMessageEntity.mEmail">
-            <summary>
-            The member of the <see cref="P:MeetEdu.EmbeddedDepartmentContactMessageEntity.Email"/> property
-            </summary>
-        </member>
         <member name="P:MeetEdu.EmbeddedDepartmentContactMessageEntity.DepartmentId">
             <summary>
             The company id
             </summary>
         </member>
-        <member name="P:MeetEdu.EmbeddedDepartmentContactMessageEntity.Email">
+        <member name="P:MeetEdu.EmbeddedDepartmentContactMessageEntity.Role">
             <summary>
-            The email
-            </summary>
-        </member>
-        <member name="P:MeetEdu.EmbeddedDepartmentContactMessageEntity.PhoneNumber">
-            <summary>
-            The phone number
+            The role
             </summary>
         </member>
         <member name="M:MeetEdu.EmbeddedDepartmentContactMessageEntity.#ctor">
@@ -2204,6 +2276,11 @@
             The contact message template
             </summary>
         </member>
+        <member name="P:MeetEdu.DepartmentEntity.University">
+            <summary>
+            The university
+            </summary>
+        </member>
         <member name="P:MeetEdu.DepartmentEntity.Labels">
             <summary>
             The labels
@@ -2219,7 +2296,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetEdu.DepartmentEntity.FromRequestModel(MeetBase.Web.DepartmentRequestModel)">
+        <member name="M:MeetEdu.DepartmentEntity.FromRequestModelAsync(MeetBase.Web.DepartmentRequestModel)">
             <summary>
             Creates and returns a <see cref="T:MeetEdu.DepartmentEntity"/> from the specified <paramref name="model"/>
             </summary>
@@ -2274,6 +2351,62 @@
             </summary>
         </member>
         <member name="M:MeetEdu.EmbeddedDepartmentEntity.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetEdu.ProfessorContactMessageEntity">
+            <summary>
+            Represents a professor contact message document in the MongoDB
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorContactMessageEntity.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorContactMessageEntity.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactMessageEntity.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactMessageEntity.FromRequestModel(MeetBase.Web.ProfessorContactMessageRequestModel,MongoDB.Bson.ObjectId)">
+            <summary>
+            Creates and returns a <see cref="T:MeetEdu.ProfessorContactMessageEntity"/> from the specified <paramref name="model"/>
+            </summary>
+            <param name="model">The model</param>
+            <param name="professorId">The professor id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactMessageEntity.ToResponseModel">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.Web.ProfessorContactMessageResponseModel"/> from the current <see cref="T:MeetEdu.ProfessorContactMessageEntity"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactMessageEntity.ToEmbeddedEntity">
+            <summary>
+            Creates and returns a <see cref="T:MeetEdu.EmbeddedProfessorContactMessageEntity"/> from the current <see cref="T:MeetEdu.ProfessorContactMessageEntity"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MeetEdu.EmbeddedProfessorContactMessageEntity">
+            <summary>
+            A minimal version of the <see cref="T:MeetEdu.ProfessorContactMessageEntity"/> that contains the fields that are 
+            more frequently used when embedding documents in the MongoDB
+            </summary>
+        </member>
+        <member name="P:MeetEdu.EmbeddedProfessorContactMessageEntity.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="M:MeetEdu.EmbeddedProfessorContactMessageEntity.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -2758,14 +2891,14 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetEdu.ProfessorEntity.FromRequestModel(MeetBase.Web.ProfessorRequestModel)">
+        <member name="M:MeetEdu.ProfessorEntity.FromRequestModelAsync(MeetBase.Web.ProfessorRequestModel)">
             <summary>
             Creates and returns a <see cref="T:MeetEdu.ProfessorEntity"/> from the specified <paramref name="model"/>
             </summary>
             <param name="model">The model</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.ProfessorEntity.UpdateNonAutoMapperValues(MeetBase.Web.ProfessorRequestModel,MeetEdu.ProfessorEntity)">
+        <member name="M:MeetEdu.ProfessorEntity.UpdateNonAutoMapperValuesAsync(MeetBase.Web.ProfessorRequestModel,MeetEdu.ProfessorEntity)">
             <summary>
             Updates the values of the specified <paramref name="entity"/> with the values of the specified <paramref name="model"/>.
             NOTE: This method only affects the properties that can't be mapped by the <see cref="T:AutoMapper.Mapper"/> and are not null!
@@ -3978,6 +4111,12 @@
         <member name="M:MeetEdu.DepartmentPage.OnInitializedAsync">
             <inheritdoc/>
         </member>
+        <member name="M:MeetEdu.DepartmentPage.DepartmentContactForm_SendOnClick(MeetBase.Web.DepartmentContactMessageRequestModel)">
+            <summary>
+            Sends the message to the respective staff members
+            </summary>
+            <param name="message">The message</param>
+        </member>
         <member name="T:MeetEdu.DepartmentsPage">
             <summary>
             The departments search page
@@ -4151,7 +4290,7 @@
             The id
             </summary>
         </member>
-        <member name="P:MeetEdu.ProfessorPage.Professor">
+        <member name="P:MeetEdu.ProfessorPage.Model">
             <summary>
             The professor
             </summary>

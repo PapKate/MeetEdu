@@ -15,9 +15,10 @@
                 <div class="modelRibbonInfoContainer">
                     <h1 class="modelRibbonInfo">@Model.Name</h1>
                     <div class="modelRibbonInfoDetails">
-                        <h3 class="departmentPreviewRibbonUniName">@Model.UniversityId</h3>
+                        <h3 class="departmentPreviewRibbonUniName">@Model.University!.Name</h3>
+                        <span>-</span>
                         <div class="departmentPreviewCategoryContainer">
-                            <span class="departmentPreviewCategory">- @Model.Category</span>
+                            <span class="departmentPreviewCategory">@Model.Category</span>
                             <MudIcon Icon="@Icons.Material.Filled.Groups3" Size="@Size.Medium" />
                         </div>
                     </div>

@@ -28,7 +28,14 @@
             </div>
             <div class="professorImageAndContactContainer">
                 <div class="professorImageContainer">
-                    <img class="modelImage" src="@Model.User.ImageUrl?.ToString()" alt="@Model.User.Username" />
+                    <ImageWithFallbackIcon CssClasses="modelImage"
+                                           ImageSource="@Model.User!.ImageUrl?.ToString()"
+                                           AspectRatio="1 / 1"
+                                           FallbackIconVectorSource="@IconPaths.AccountPath"
+                                           FallbackIconColor="@Model.User.Color"
+                                           FallbackIconBackground="@Model.User.Color.DarkOrWhite()"
+                                           FallbackIconMargin="1rem"
+                                           AlternateText="@Model.User.Username" />
                 </div>
                 <div class="modelContactContainer">
                     <div class="modelContactImage">

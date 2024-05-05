@@ -20,11 +20,6 @@
                 }
             </MudSelect>
 
-            @if (mRule is not null && mRule.HasRemoteOption)
-            {
-                <MudCheckBox T="bool" @bind-Value="mIsRemote" Class="formCheckBox">Remote meeting</MudCheckBox>
-            }
-
             <MudTextField @bind-Value="@mAppointment.FirstName"
                           Placeholder="First name"
                           Class="formInput"
@@ -43,11 +38,7 @@
                           FullWidth="true"
                           Variant="Variant.Text" />
 
-            <MudTextField @bind-Value="@mPhoneNumber"
-                          Placeholder="Phone number"
-                          Class="formInput"
-                          FullWidth="true"
-                          Variant="Variant.Text" />
+            <PhoneNumberInput CssClasses="phoneNumberFormInput" @bind-Value="@mPhoneNumber" />
 
             <MudTextField @bind-Value="@mAppointment.Message"
                           Placeholder="Message"
@@ -55,6 +46,8 @@
                           Class="formInput"
                           FullWidth="true"
                           Variant="Variant.Text" />
+
+            <MudCheckBox T="bool" @bind-Value="mIsRemote" ReadOnly="@(mRule is null || !mRule.HasRemoteOption)" Class="formCheckBox">Remote meeting</MudCheckBox>
 
             <div class="contactFormButtonsContainer">
                 <TextButton Text="Reset"
@@ -64,7 +57,8 @@
                             HoverForeColor="@White"
                             BorderRadius="0"
                             BoxShadow="none"
-                            CssClasses="contactFormButton" />
+                            CssClasses="contactFormButton"
+                            OnClick="@ResetForm"/>
                 <TextButton Text="Send"
                             BackColor="transparent"
                             ForeColor="@Green"
@@ -72,7 +66,8 @@
                             HoverForeColor="@White"
                             BorderRadius="0"
                             BoxShadow="none"
-                            CssClasses="contactFormButton" />
+                            CssClasses="contactFormButton"
+                            OnClick="@SendButton_OnClick"/>
             </div>
         </div>
 
@@ -116,9 +111,10 @@
             width: 100%;
         }
 
-    .formCheckBox {
+    .formCheckBox.mud-input-control.mud-input-control-boolean-input {
         width: 100%;
-        margin-top: -0.5rem;
+        color: @White.NormalizedColor();
+        margin-top: -1rem;
     }
 
     .formCheckBox .mud-icon-button {

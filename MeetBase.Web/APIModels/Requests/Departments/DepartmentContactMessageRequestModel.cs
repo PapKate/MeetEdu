@@ -3,7 +3,7 @@
     /// <summary>
     /// Request model for a department contact message
     /// </summary>
-    public class DepartmentContactMessageRequestModel : BaseRequestModel
+    public class DepartmentContactMessageRequestModel : BaseContactRequestModel
     {
         #region Public Properties
 
@@ -13,39 +13,9 @@
         public string? DepartmentId { get; set; }
 
         /// <summary>
-        /// The member id
+        /// The role
         /// </summary>
-        public string? MemberId { get; set; }
-
-        /// <summary>
-        /// The first name
-        /// </summary>
-        public string? FirstName { get; set; }
-
-        /// <summary>
-        /// The last name
-        /// </summary>
-        public string? LastName { get; set; }
-
-        /// <summary>
-        /// The email
-        /// </summary>
-        public string? Email { get; set; }
-
-        /// <summary>
-        /// The phone number
-        /// </summary>
-        public PhoneNumber? PhoneNumber { get; set; }
-
-        /// <summary>
-        /// The message
-        /// </summary>
-        public string? Message { get; set; }
-
-        /// <summary>
-        /// The message rule
-        /// </summary>
-        public SecretaryRole Rule { get; set; }
+        public SecretaryRole Role { get; set; }
 
         #endregion
 

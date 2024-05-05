@@ -7,24 +7,24 @@
 
 @namespace MeetEdu
 
-<PageTitle>@MeetEduConstants.AppName @Professor?.User?.FirstName @Professor?.User?.LastName</PageTitle>
+<PageTitle>@MeetEduConstants.AppName @Model?.User?.FirstName @Model?.User?.LastName</PageTitle>
 
 <PageContainer Id="staffMemberPageAppContainer">
     
-    @if (Professor is not null && Professor.User is not null)
+    @if (Model is not null && Model.User is not null)
     {
         <div class="staffMemberPageContainer">
-            <div class="staffMemberContainer" style="@BorderBrushVariable.SetCssColor(Professor.User.Color)">
+            <div class="staffMemberContainer" style="@BorderBrushVariable.SetCssColor(Model.User.Color)">
 
-                <div class="staffMemberRibbonContainer" style="@BackgroundVariable.SetCssColor(Professor.User.Color) @ForegroundVariable.SetCssColor(Professor.User.Color.DarkOrWhite())">
+                <div class="staffMemberRibbonContainer" style="@BackgroundVariable.SetCssColor(Model.User.Color) @ForegroundVariable.SetCssColor(Model.User.Color.DarkOrWhite())">
                     <div></div>
                     <div class="staffMemberRibbon">
                         <div class="staffMemberRibbonInfoContainer">
-                            <span class="staffMemberRibbonInfo">@Professor.User.LastName @Professor.User.FirstName</span>
-                            <span class="staffMemberRibbonInfoDetails">@Professor.Rank</span>
+                            <span class="staffMemberRibbonInfo">@Model.User.LastName @Model.User.FirstName</span>
+                            <span class="staffMemberRibbonInfoDetails">@Model.Rank</span>
                         </div>
                         <IconButton BackColor="transparent"
-                                    ForeColor="@Professor.User.Color.DarkOrWhite()"
+                                    ForeColor="@Model.User.Color.DarkOrWhite()"
                                     VectorSource="@IconPaths.HeartOutlinePath"
                                     HasAnimation="false"
                                     BoxShadow="none"
@@ -32,41 +32,49 @@
                     </div>
                 </div>
 
-                <div class="staffMemberInfoContainer" style="@ForegroundVariable.SetCssColor(Professor.User.Color)">
+                <div class="staffMemberInfoContainer" style="@ForegroundVariable.SetCssColor(Model.User.Color)">
                     <div class="staffMemberImageAndContactContainer">
                         <div class="staffMemberImageContainer">
-                            <img class="staffMemberImage" src="@Professor.User.ImageUrl?.ToString()" alt="name" />
+                            <ImageWithFallbackIcon CssClasses="staffMemberImage"
+                                                   ImageSource="@Model.User!.ImageUrl?.ToString()"
+                                                   AspectRatio="1 / 1"
+                                                   FallbackIconVectorSource="@IconPaths.AccountPath"
+                                                   FallbackIconColor="@Model.User.Color"
+                                                   FallbackIconBackground="@Model.User.Color.DarkOrWhite()"
+                                                   FallbackIconMargin="1rem"
+                                                   AlternateText="@Model.User.Username" />
+
                         </div>
                         <div class="staffMemberContactContainer">
                             <div class="staffMemberContactImage">
-                                <MapMarkerVector Color="@Professor.User.Color" />
+                                <MapMarkerVector Color="@Model.User.Color" />
                             </div>
-                            <span class="staffMemberContactValue">@Professor.User.Location?.Address</span>
+                            <span class="staffMemberContactValue">@Model.User.Location?.Address</span>
 
                             <div class="staffMemberContactImage">
-                                <CallVector Color="@Professor.User.Color" />
+                                <CallVector Color="@Model.User.Color" />
                             </div>
-                            <span class="staffMemberContactValue">+@Professor.User.PhoneNumber</span>
+                            <span class="staffMemberContactValue">+@Model.User.PhoneNumber</span>
 
                             <div class="staffMemberContactImage">
-                                <EmailVector Color="@Professor.User.Color" />
+                                <EmailVector Color="@Model.User.Color" />
                             </div>
-                            <span class="staffMemberContactValue">@Professor.User.Email</span>
+                            <span class="staffMemberContactValue">@Model.User.Email</span>
 
                         </div>
                     </div>
                     <div class="staffMemberPositionContainer">
                         <span class="staffMemberWeeklyScheduleTitle">Department</span>
-                        <span class="staffMemberPosition">@Professor.DepartmentId</span>
+                        <span class="staffMemberPosition">@Model.Department!.Name</span>
                     </div>
-                    @if (!Professor.Websites.IsNullOrEmpty())
+                    @if (!Model.Websites.IsNullOrEmpty())
                     {
                         <div id="professorWebsites" class="staffMemberPositionContainer">
                             <span class="staffMemberWeeklyScheduleTitle">Websites</span>
-                            @foreach (var website in Professor.Websites)
+                            @foreach (var website in Model.Websites)
                             {
                                 <span class="staffMemberPosition professorWebsiteTitle">
-                                    <a href="@website.Link" target="_blank" rel="noopener noreferrer" style="@ForegroundVariable.SetCssColor(Professor.User.Color)">@website.Name</a>
+                                    <a href="@website.Link" target="_blank" rel="noopener noreferrer" style="@ForegroundVariable.SetCssColor(Model.User.Color)">@website.Name</a>
                                 </span>
                             }
                         </div>
@@ -75,9 +83,9 @@
                         <div class="staffMemberWeeklySchedule">
                             <span class="staffMemberWeeklyScheduleTitle">Office hours</span>
                         </div>
-                        @if (Professor.WeeklySchedule is not null)
+                        @if (Model.WeeklySchedule is not null)
                         {
-                            @foreach (var schedule in Professor.WeeklySchedule.WeeklyHours.OrderBy(x => x.DayOfWeek).GroupBy(x => x.DayOfWeek))
+                            @foreach (var schedule in Model.WeeklySchedule.WeeklyHours.OrderBy(x => x.DayOfWeek).GroupBy(x => x.DayOfWeek))
                             {
                                 <div class="staffMemberWeeklyScheduleDayContainer">
                                     <span class="staffMemberWeeklyScheduleDay">@schedule.Key</span>
@@ -88,44 +96,47 @@
                                 </div>
                             }
                         }
-                        <span class="staffMemberWeeklyScheduleNote">@Professor.WeeklySchedule?.Note</span>
+                        <span class="staffMemberWeeklyScheduleNote">@Model.WeeklySchedule?.Note</span>
                     </div>
                 </div>
 
                 <div class="staffMemberPreviewMapContainer">
-                    <div id="@Professor.Id" class="staffMemberPreviewMap"></div>
+                    <div id="@Model.Id" class="staffMemberPreviewMap"></div>
                 </div>
             </div>
 
             <div class="staffMemberQuoteContainer">
                 <MudDivider DividerType="DividerType.Middle" Class="staffMemberPageDivider" />
-                <span>"@Professor.Quote"</span>
-                <MudDivider DividerType="DividerType.Middle" Class="staffMemberPageDivider" />
+                @if (!Model.Quote.IsNullOrEmpty())
+                {
+                    <span>"@Model.Quote"</span>
+                    <MudDivider DividerType="DividerType.Middle" Class="staffMemberPageDivider" />
+                }
             </div>
 
             <div class="professorResearchContainer">
-                <span class="professorResearchTitle" style="@ForegroundVariable.SetCssColor(Professor.User.Color)">Research interests</span>
-                <MarkdownBlock Text="@Professor.ResearchInterests" CssClass="textMarkDownContainer" />
+                <span class="professorResearchTitle" style="@ForegroundVariable.SetCssColor(Model.User.Color)">Research interests</span>
+                <MarkdownBlock Text="@Model.ResearchInterests" CssClass="textMarkDownContainer" />
             </div>
             
-            @if(Professor.WeeklySchedule is not null)
+            @if(Model.WeeklySchedule is not null)
             {
                 <span class="sectionHeader">Calendar</span>
                 <div class="staffMemberScheduleContainer">
-                    <Schedule WeeklySchedule="@Professor.WeeklySchedule"
-                              Lectures="@Professor.Lectures"
+                    <Schedule WeeklySchedule="@Model.WeeklySchedule"
+                              Lectures="@Model.Lectures"
                               IsEditable="false" />
                 </div>
             }
 
-            @if (Professor.ContactMessageTemplate is not null)
+            @if (Model.ContactMessageTemplate is not null)
             {
                 <div class="departmentPageContactSectionContainer">
                     <span class="sectionHeader">Contact</span>
                     <div class="sectionDescription">
-                        @Professor.ContactMessageTemplate?.Description
+                        @Model.ContactMessageTemplate?.Description
                     </div>
-                    <ProfessorContactForm FormTemplate="Professor.ContactMessageTemplate" Professor="@Professor" AppointmentRules="@mAppointmentRules"/>
+                    <ProfessorContactForm FormTemplate="Model.ContactMessageTemplate" Professor="@Model" AppointmentRules="@mAppointmentRules"/>
                 </div>
             }
 
@@ -139,8 +150,8 @@
     }
 
     .sectionHeader {
-        background: @Professor?.User?.Color.NormalizedColor();
-        color: @Professor?.User?.Color.DarkOrWhite().NormalizedColor();
+        background: @Model?.User?.Color.NormalizedColor();
+        color: @Model?.User?.Color.DarkOrWhite().NormalizedColor();
     }
 
     .professorResearchContainer {
@@ -155,6 +166,11 @@
         position: relative;
         color: @ForegroundVariable.GetCssVariable();
         font-size: 112%;
+        font-weight: 700;
+    }
+
+    .professorWebsiteTitle {
+        grid-column-start: 2;
         font-weight: 700;
     }
 
@@ -184,6 +200,7 @@
         display: flex;
         padding: @LargePadding;
         z-index: 1;
+        align-self: center;
     }
 
     .staffMemberPreviewMap {

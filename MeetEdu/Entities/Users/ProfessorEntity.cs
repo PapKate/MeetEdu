@@ -103,13 +103,13 @@ namespace MeetEdu
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static ProfessorEntity FromRequestModel(ProfessorRequestModel model)
+        public static async Task<ProfessorEntity> FromRequestModelAsync(ProfessorRequestModel model)
         {
             var entity = new ProfessorEntity();
 
             DI.Mapper.Map(model, entity);
             
-            UpdateNonAutoMapperValues(model, entity);
+            entity = await UpdateNonAutoMapperValuesAsync(model, entity);
             
             return entity;
         }
@@ -121,10 +121,12 @@ namespace MeetEdu
         /// <param name="model">The model</param>
         /// <param name="entity">The entity</param>
         /// <returns></returns>
-        public static async void UpdateNonAutoMapperValues(ProfessorRequestModel model, ProfessorEntity entity)
+        public static async Task<ProfessorEntity> UpdateNonAutoMapperValuesAsync(ProfessorRequestModel model, ProfessorEntity entity)
         {
             entity.User = !model.UserId.IsNullOrEmpty() ? await EntityHelpers.GetUserAsync(model.UserId) : null;
             entity.Department = !model.DepartmentId.IsNullOrEmpty() ? await EntityHelpers.GetDepartmetAsync(model.DepartmentId) : null;
+
+            return entity;
         }
 
         /// <summary>

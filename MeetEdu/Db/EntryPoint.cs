@@ -20,6 +20,11 @@ namespace MeetEdu
         /// </summary>
         public static List<DepartmentResponseModel> PaPaDepartments = new();
 
+        /// <summary>
+        /// The professors of CEID department
+        /// </summary>
+        public static List<ProfessorResponseModel> CeidProfessors = new();
+
         #endregion
 
         #region Public Properties
@@ -492,7 +497,15 @@ namespace MeetEdu
                     Color = "4056F4",
                     DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new("30", "2610996941"),
-                    Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
+                    Location = new()
+                    {
+                        Address = "25is Martiou 7",
+                        City = "Kato Kastritsi",
+                        Country = CountryCode.GR,
+                        Postcode = "26441",
+                        Latitude = 38.29026909897528,
+                        Longitude = 21.795208116836363
+                    }
                 },
                 new()
                 {
@@ -504,7 +517,15 @@ namespace MeetEdu
                     Color = "470FF4",
                     DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new("30", "2610996940"),
-                    Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
+                    Location = new()
+                    {
+                        Address = "25is Martiou 7",
+                        City = "Kato Kastritsi",
+                        Country = CountryCode.GR,
+                        Postcode = "26441",
+                        Latitude = 38.29026909897528,
+                        Longitude = 21.795208116836363
+                    }
                 },
                 new()
                 {
@@ -516,7 +537,15 @@ namespace MeetEdu
                     Color = "CEBBC9",
                     DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new("30", "2610996939"),
-                    Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
+                    Location = new()
+                    {
+                        Address = "25is Martiou 7",
+                        City = "Kato Kastritsi",
+                        Country = CountryCode.GR,
+                        Postcode = "26441",
+                        Latitude = 38.29026909897528,
+                        Longitude = 21.795208116836363
+                    }
                 },
                 new()
                 {
@@ -528,7 +557,15 @@ namespace MeetEdu
                     Color = "CE2D4F",
                     DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new("30", "2610996945"),
-                    Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
+                    Location = new()
+                    {
+                        Address = "25is Martiou 7",
+                        City = "Kato Kastritsi",
+                        Country = CountryCode.GR,
+                        Postcode = "26441",
+                        Latitude = 38.29026909897528,
+                        Longitude = 21.795208116836363
+                    }
                 },
                 new()
                 {
@@ -540,7 +577,15 @@ namespace MeetEdu
                     Color = "BF1363",
                     DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new("30", "2610996955"),
-                    Location = new() { Latitude = 38.29026909897528, Longitude = 21.795208116836363 }
+                    Location = new()
+                    {
+                        Address = "25is Martiou 7",
+                        City = "Kato Kastritsi",
+                        Country = CountryCode.GR,
+                        Postcode = "26441",
+                        Latitude = 38.29026909897528,
+                        Longitude = 21.795208116836363
+                    }
                 }
             };
 
@@ -597,6 +642,561 @@ namespace MeetEdu
                 if (result.Result is not null && result.Result is ObjectResult secretaryResult && secretaryResult.Value is not null)
                     ceidSecretaries.Add((SecretaryResponseModel)secretaryResult.Value!);
             } 
+
+            #endregion
+        }
+
+        /// <summary>
+        /// Adds professors
+        /// </summary>
+        /// <returns></returns>
+        public async Task AddProfessorsAsync()
+        {
+            #region CEID
+
+            var ceidProfessorUserRequests = new List<UserRequestModel>()
+            {
+                new()
+                {
+                    Username = "sioutas",
+                    PasswordHash = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+                    FirstName = "Spyros",
+                    LastName = "Sioutas",
+                    Email = "sioutas@ceid.upatras.gr",
+                    Color = "4056F4",
+                    DateOfBirth = new DateOnly(2000, 8, 24),
+                    PhoneNumber = new("30", "2610996916"),
+                    Location = new()
+                    {
+                        Address = "25is Martiou 7",
+                        City = "Kato Kastritsi",
+                        Country = CountryCode.GR,
+                        Postcode = "26441",
+                        Latitude = 38.29026909897528,
+                        Longitude = 21.795208116836363
+                    }
+                },
+                new()
+                {
+                    Username = "vstefan",
+                    PasswordHash = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+                    FirstName = "Vangelis",
+                    LastName = "Stefanopoulos",
+                    Email = "vstefan@ceid.upatras.gr",
+                    Color = "470FF4",
+                    DateOfBirth = new DateOnly(2000, 8, 24),
+                    PhoneNumber = new("30", "2610996913"),
+                    Location = new()
+                    {
+                        Address = "25is Martiou 7",
+                        City = "Kato Kastritsi",
+                        Country = CountryCode.GR,
+                        Postcode = "26441",
+                        Latitude = 38.29026909897528,
+                        Longitude = 21.795208116836363
+                    }
+                },
+                new()
+                {
+                    Username = "ktsichlas",
+                    PasswordHash = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+                    FirstName = "Kostas",
+                    LastName = "Tsichlas",
+                    Email = "ktsichlas@ceid.upatras.gr",
+                    Color = "CEBBC9",
+                    DateOfBirth = new DateOnly(2000, 8, 24),
+                    PhoneNumber = new("30", "2610996908"),
+                    Location = new()
+                    {
+                        Address = "25is Martiou 7",
+                        City = "Kato Kastritsi",
+                        Country = CountryCode.GR,
+                        Postcode = "26441",
+                        Latitude = 38.29026909897528,
+                        Longitude = 21.795208116836363
+                    }
+                },
+                new()
+                {
+                    Username = "makri",
+                    PasswordHash = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+                    FirstName = "Christos",
+                    LastName = "Makris",
+                    Email = "makri@ceid.upatras.gr",
+                    Color = "CE2D4F",
+                    DateOfBirth = new DateOnly(2000, 8, 24),
+                    PhoneNumber = new("30", "2610996968"),
+                    Location = new()
+                    {
+                        Address = "25is Martiou 7",
+                        City = "Kato Kastritsi",
+                        Country = CountryCode.GR,
+                        Postcode = "26441",
+                        Latitude = 38.29026909897528,
+                        Longitude = 21.795208116836363
+                    }
+                },
+                new()
+                {
+                    Username = "vergos",
+                    PasswordHash = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+                    FirstName = "Haridimos",
+                    LastName = "Vergos",
+                    Email = "vergos@ceid.upatras.gr",
+                    Color = "BF1363",
+                    DateOfBirth = new DateOnly(2000, 8, 24),
+                    PhoneNumber = new("30", "2610996924"),
+                    Location = new() 
+                    {
+                        Address = "25is Martiou 7",
+                        City = "Kato Kastritsi",
+                        Country = CountryCode.GR,
+                        Postcode = "26441",
+                        Latitude = 38.29026909897528, 
+                        Longitude = 21.795208116836363 
+                    }
+                }
+            };
+
+            var ceidProfessorUsers = new List<UserResponseModel>();
+
+            foreach (var user in ceidProfessorUserRequests)
+            {
+                var result = await Controller.AddUserAsync(user);
+
+                if (result.Result is not null && result.Result is ObjectResult userResult && userResult.Value is not null)
+                    ceidProfessorUsers.Add((UserResponseModel)userResult.Value!);
+            }
+
+            var ceidProfessorRequests = new List<ProfessorRequestModel>()
+            {
+                new()
+                {
+                    UserId = ceidProfessorUsers[0].Id,
+                    DepartmentId = PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id,
+                    Quote = "The future belongs to those who believe in the beauty of their dreams",
+                    Rank = ProfessorRank.Professor,
+                    Field = "Division of Computer Software",
+                    ResearchInterests = "Multidimensional Data Structures, Decentralized Systems for Big Data Management, Spatio-Temporal Database Systems, Distributed Data Structures and P2P Overlays, Cloud Infrastructures, Indexing, Query Processing and Query Optimization, NoSQL databases, \r\nλ-calculus and functional programming (SCALA, PYTHON).",
+                    Websites = new List<Website>()
+                    {
+                        new()
+                        {
+                            Name = "Personal WebPage",
+                            Link = new Uri("https://www.ceid.upatras.gr/webpages/faculty/sioutas/")
+                        },
+                        new()
+                        {
+                            Name = "Spyros Sioutas @ Google Scholar",
+                            Link = new Uri("https://scholar.google.com/citations?user=F9-WPBoAAAAJ&hl=en")
+                        }
+                    },
+                    WeeklySchedule = new()
+                    {
+                        Name = "Office hours",
+                        Color = "FF499E",
+                        Note = "Always willing to discuss in detail any concern you might have at any given time!",
+                        WeeklyHours = new List<DayOfWeekTimeRange>()
+                        {
+                            new(string.Empty, DayOfWeek.Monday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(16, 00), new TimeOnly(17, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Friday, new TimeOnly(10, 00), new TimeOnly(14, 00)),
+                        },
+                        
+                    },
+                    Lectures = new List<Lecture>()
+                    {
+                        new()
+                        {
+                            Name = "Data Structures",
+                            Color = "1F75FE",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room C", DayOfWeek.Wednesday, new TimeOnly(9, 00), new TimeOnly(11, 00)),
+                                new("Room A", DayOfWeek.Thursday, new TimeOnly(18, 00), new TimeOnly(19, 30)),
+                            },
+                        },
+                        new()
+                        {
+                            Name = "Introduction to Programming",
+                            Color = "ED6A5A",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room B", DayOfWeek.Wednesday, new TimeOnly(12, 00), new TimeOnly(13, 30)),
+                            },
+                        },
+                        new()
+                        {
+                            Name = "Operating Systems",
+                            Color = "533747",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room A", DayOfWeek.Friday, new TimeOnly(14, 00), new TimeOnly(15, 30)),
+                            },
+                        }
+                    },
+                    ContactMessageTemplate = new()
+                    {
+                        Description = "Submit electronically any questions or requests you may have via the following form, and we will assist you promptly. We encourage your communication with us as we continuously strive to provide upgraded services to our customers. By completing this form, you help us improve the services we provide to you.",
+                        Note = "For more information, contact us, we are available for any questions you may have.",
+                        VectorName = typeof(EmailContactVector).FullName !
+                    }
+                },
+                new()
+                {
+                    UserId = ceidProfessorUsers[1].Id,
+                    DepartmentId = PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id,
+                    Rank = ProfessorRank.Professor,
+                    Field = "Division of Applications and Foundations of Computer Science",
+                    ResearchInterests = "Partial Differential Equations, Dynamical Systems, Applied Analysis.",
+                    Websites = new List<Website>()
+                    {
+                        new()
+                        {
+                            Name = "Personal WebPage",
+                            Link = new Uri("https://www.ceid.upatras.gr/webpages/faculty/vstefan/")
+                        }
+                    },
+                    WeeklySchedule = new()
+                    {
+                        Name = "Office hours",
+                        Color = "FF499E",
+                        Note = "Always willing to discuss in detail any concern you might have at any given time!",
+                        WeeklyHours = new List<DayOfWeekTimeRange>()
+                        {
+                            new(string.Empty, DayOfWeek.Monday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(16, 00), new TimeOnly(17, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Friday, new TimeOnly(10, 00), new TimeOnly(14, 00)),
+                        },
+
+                    },
+                    Lectures = new List<Lecture>()
+                    {
+                        new()
+                        {
+                            Name = "Data Structures",
+                            Color = "1F75FE",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room C", DayOfWeek.Wednesday, new TimeOnly(9, 00), new TimeOnly(11, 00)),
+                                new("Room A", DayOfWeek.Thursday, new TimeOnly(18, 00), new TimeOnly(19, 30)),
+                            },
+                        },
+                        new()
+                        {
+                            Name = "Introduction to Programming",
+                            Color = "ED6A5A",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room B", DayOfWeek.Wednesday, new TimeOnly(12, 00), new TimeOnly(13, 30)),
+                            },
+                        },
+                        new()
+                        {
+                            Name = "Operating Systems",
+                            Color = "533747",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room A", DayOfWeek.Friday, new TimeOnly(14, 00), new TimeOnly(15, 30)),
+                            },
+                        }
+                    },
+                    ContactMessageTemplate = new()
+                    {
+                        Description = "Submit electronically any questions or requests you may have via the following form, and we will assist you promptly. We encourage your communication with us as we continuously strive to provide upgraded services to our customers. By completing this form, you help us improve the services we provide to you.",
+                        Note = "For more information, contact us, we are available for any questions you may have.",
+                        VectorName = typeof(EmailContactVector).FullName !
+                    }
+                },
+                new()
+                {
+                    UserId = ceidProfessorUsers[2].Id,
+                    DepartmentId = PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id,
+                    Rank = ProfessorRank.AssociateProfessor,
+                    Field = "Division of Applications and Foundations of Computer Science",
+                    ResearchInterests = "Algorithms and Data Structures for Main and External Memory, Algorithms and Data Structures in Distributed Environments, Computational Geometry, String Algorithms - Bioinformatics, Graph Algorithms, Complexity (Lower bounds, interaction of Physics and Computer Science), Natural Algorithms, Complex Network Analysis.",
+                    Websites = new List<Website>()
+                    {
+                        new()
+                        {
+                            Name = "Personal WebPage",
+                            Link = new Uri("https://www.ceid.upatras.gr/webpages/faculty/ktsichlas/")
+                        },
+                        new()
+                        {
+                            Name = "Kostas Tsichlas @ Google Scholar",
+                            Link = new Uri("https://scholar.google.com/citations?user=-KUXfxsAAAAJ&hl=el&oi=ao")
+                        }
+                    },
+                    WeeklySchedule = new()
+                    {
+                        Name = "Office hours",
+                        Color = "FF499E",
+                        Note = "Always willing to discuss in detail any concern you might have at any given time!",
+                        WeeklyHours = new List<DayOfWeekTimeRange>()
+                        {
+                            new(string.Empty, DayOfWeek.Monday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(16, 00), new TimeOnly(17, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Friday, new TimeOnly(10, 00), new TimeOnly(14, 00)),
+                        },
+
+                    },
+                    Lectures = new List<Lecture>()
+                    {
+                        new()
+                        {
+                            Name = "Data Structures",
+                            Color = "1F75FE",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room C", DayOfWeek.Wednesday, new TimeOnly(9, 00), new TimeOnly(11, 00)),
+                                new("Room A", DayOfWeek.Thursday, new TimeOnly(18, 00), new TimeOnly(19, 30)),
+                            },
+                        },
+                        new()
+                        {
+                            Name = "Introduction to Programming",
+                            Color = "ED6A5A",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room B", DayOfWeek.Wednesday, new TimeOnly(12, 00), new TimeOnly(13, 30)),
+                            },
+                        },
+                        new()
+                        {
+                            Name = "Operating Systems",
+                            Color = "533747",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room A", DayOfWeek.Friday, new TimeOnly(14, 00), new TimeOnly(15, 30)),
+                            },
+                        }
+                    },
+                    ContactMessageTemplate = new()
+                    {
+                        Description = "Submit electronically any questions or requests you may have via the following form, and we will assist you promptly. We encourage your communication with us as we continuously strive to provide upgraded services to our customers. By completing this form, you help us improve the services we provide to you.",
+                        Note = "For more information, contact us, we are available for any questions you may have.",
+                        VectorName = typeof(EmailContactVector).FullName !
+                    }
+                },
+                new()
+                {
+                    UserId = ceidProfessorUsers[3].Id,
+                    DepartmentId = PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id,
+                    Rank = ProfessorRank.AssociateProfessor,
+                    Field = "Division of Computer Software",
+                    ResearchInterests = "Data Structures, Information Retrieval, Data Mining, String Management and Processing Algorithms, Computational Geometry, Internet Technologies. Bioinformatics, Multimedia Databases.",
+                    Websites = new List<Website>()
+                    {
+                        new()
+                        {
+                            Name = "Personal WebPage",
+                            Link = new Uri("https://www.ceid.upatras.gr/webpages/faculty/makri/indexen.htm")
+                        },
+                        new()
+                        {
+                            Name = "Christos Makris @ Google Scholar",
+                            Link = new Uri("https://scholar.google.gr/citations?user=Aer3e90AAAAJ&hl=el")
+                        },
+                        new()
+                        {
+                            Name = "Christos Makris @ Scopus",
+                            Link = new Uri("https://www.scopus.com/authid/detail.uri?authorId=7004435746")
+                        },
+                        new()
+                        {
+                            Name = "ORCID",
+                            Link = new Uri("https://orcid.org/0000-0003-2571-7449")
+                        }
+                    },
+                    WeeklySchedule = new()
+                    {
+                        Name = "Office hours",
+                        Color = "FF499E",
+                        Note = "Always willing to discuss in detail any concern you might have at any given time!",
+                        WeeklyHours = new List<DayOfWeekTimeRange>()
+                        {
+                            new(string.Empty, DayOfWeek.Monday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(16, 00), new TimeOnly(17, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Friday, new TimeOnly(10, 00), new TimeOnly(14, 00)),
+                        },
+
+                    },
+                    Lectures = new List<Lecture>()
+                    {
+                        new()
+                        {
+                            Name = "Data Structures",
+                            Color = "1F75FE",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room C", DayOfWeek.Wednesday, new TimeOnly(9, 00), new TimeOnly(11, 00)),
+                                new("Room A", DayOfWeek.Thursday, new TimeOnly(18, 00), new TimeOnly(19, 30)),
+                            },
+                        },
+                        new()
+                        {
+                            Name = "Introduction to Programming",
+                            Color = "ED6A5A",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room B", DayOfWeek.Wednesday, new TimeOnly(12, 00), new TimeOnly(13, 30)),
+                            },
+                        },
+                        new()
+                        {
+                            Name = "Operating Systems",
+                            Color = "533747",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room A", DayOfWeek.Friday, new TimeOnly(14, 00), new TimeOnly(15, 30)),
+                            },
+                        }
+                    },
+                    ContactMessageTemplate = new()
+                    {
+                        Description = "Submit electronically any questions or requests you may have via the following form, and we will assist you promptly. We encourage your communication with us as we continuously strive to provide upgraded services to our customers. By completing this form, you help us improve the services we provide to you.",
+                        Note = "For more information, contact us, we are available for any questions you may have.",
+                        VectorName = typeof(EmailContactVector).FullName !
+                    }
+                },
+                new()
+                {
+                    UserId = ceidProfessorUsers[4].Id,
+                    DepartmentId = PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id,
+                    Rank = ProfessorRank.Professor,
+                    Field = "Division of Computer Software",
+                    ResearchInterests = "Digital circuits and systems design\r\nArithmetic circuits for redundant number systems\r\nTesting, design for testability and BIST design\r\nLow power circuits design and low power testing\r\nFault tolerant circuits and systems design\r\nIP core watermarking",
+                    Websites = new List<Website>()
+                    {
+                        new()
+                        {
+                            Name = "Personal WebPage",
+                            Link = new Uri("http://pc-vlsi18.ceid.upatras.gr/")
+                        },
+                        new()
+                        {
+                            Name = "Haridimos T. Vergos @ Google Scholar",
+                            Link = new Uri("https://scholar.google.gr/citations?user=dYOrcUIAAAAJ")
+                        }
+                    },
+                    WeeklySchedule = new()
+                    {
+                        Name = "Office hours",
+                        Color = "FF499E",
+                        Note = "Always willing to discuss in detail any concern you might have at any given time!",
+                        WeeklyHours = new List<DayOfWeekTimeRange>()
+                        {
+                            new(string.Empty, DayOfWeek.Monday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(16, 00), new TimeOnly(17, 00)),
+                            new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
+                            new(string.Empty, DayOfWeek.Friday, new TimeOnly(10, 00), new TimeOnly(14, 00)),
+                        },
+
+                    },
+                    Lectures = new List<Lecture>()
+                    {
+                        new()
+                        {
+                            Name = "Data Structures",
+                            Color = "1F75FE",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room C", DayOfWeek.Wednesday, new TimeOnly(9, 00), new TimeOnly(11, 00)),
+                                new("Room A", DayOfWeek.Thursday, new TimeOnly(18, 00), new TimeOnly(19, 30)),
+                            },
+                        },
+                        new()
+                        {
+                            Name = "Introduction to Programming",
+                            Color = "ED6A5A",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room B", DayOfWeek.Wednesday, new TimeOnly(12, 00), new TimeOnly(13, 30)),
+                            },
+                        },
+                        new()
+                        {
+                            Name = "Operating Systems",
+                            Color = "533747",
+                            WeeklyHours = new List<DayOfWeekTimeRange>()
+                            {
+                                new("Room A", DayOfWeek.Friday, new TimeOnly(14, 00), new TimeOnly(15, 30)),
+                            },
+                        }
+                    },
+                    ContactMessageTemplate = new()
+                    {
+                        Description = "Submit electronically any questions or requests you may have via the following form, and we will assist you promptly. We encourage your communication with us as we continuously strive to provide upgraded services to our customers. By completing this form, you help us improve the services we provide to you.",
+                        Note = "For more information, contact us, we are available for any questions you may have.",
+                        VectorName = typeof(EmailContactVector).FullName !
+                    }
+                }
+            };
+
+            CeidProfessors = new List<ProfessorResponseModel>();
+
+            foreach (var professor in ceidProfessorRequests)
+            {
+                var result = await Controller.AddProfessorAsync(professor);
+
+                if (result.Result is not null && result.Result is ObjectResult professorResult && professorResult.Value is not null)
+                    CeidProfessors.Add((ProfessorResponseModel)professorResult.Value!);
+            }
+
+            #endregion
+        }
+
+        public async Task AddAppointmentRules()
+        {
+            #region Sioutas
+
+            var sioutasRules = new List<AppointmentRuleRequestModel>()
+            {
+                new()
+                {
+                    ProfessorId = CeidProfessors.First(x => x.User!.Username == "sioutas").Id,
+                    Name = "Bachelor's thesis",
+                    Color = "AB2346",
+                    Description = "Regarding a student thesis",
+                    HasRemoteOption = true,
+                    Duration = TimeSpan.FromMinutes(20),
+                    Note = "This is a note"
+                },
+                new()
+                {
+                    ProfessorId = CeidProfessors.First(x => x.User!.Username == "sioutas").Id,
+                    Name = "Lesson questions",
+                    Color = "05F140",
+                    Description = "Questions about a lesson",
+                    HasRemoteOption = true,
+                    Duration = TimeSpan.FromMinutes(10),
+                    Note = "This is a note"
+                },
+                new()
+                {
+                    ProfessorId = CeidProfessors.First(x => x.User!.Username == "sioutas").Id,
+                    Name = "Project discussion",
+                    Color = "EE8434",
+                    Description = "Questions about a project",
+                    HasRemoteOption = true,
+                    Duration = TimeSpan.FromMinutes(20),
+                    Note = "This is a note"
+                }
+            };
+
+            var rules = new List<AppointmentRuleResponseModel>();
+
+            foreach (var rule in sioutasRules)
+            {
+                var result = await Controller.AddAppointmentRuleAsync(rule);
+                if (result.Result is not null && result.Result is ObjectResult ruleResult && ruleResult.Value is not null)
+                    rules.Add((AppointmentRuleResponseModel)ruleResult.Value!);
+            }
 
             #endregion
         }

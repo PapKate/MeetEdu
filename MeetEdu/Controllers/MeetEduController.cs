@@ -222,10 +222,10 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpGet]
         [Route(MeetEduAPIRoutes.ProfessorsRoute)]
-        public async Task<ActionResult<IEnumerable<ProfessorResponseModel>>> GetProfessorsAsync([FromQuery] DepartmentRelatedAPIArgs args, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<ProfessorResponseModel>>> GetProfessorsAsync([FromQuery] DepartmentRelatedAPIArgs? args, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Professors,
                                                     x => x.ToResponseModel(),
-                                                    args.CreateFilters<ProfessorEntity>().AggregateFilters(), args,
+                                                    args?.CreateFilters<ProfessorEntity>().AggregateFilters(), args,
                                                     cancellationToken, x => x.Field);
 
         /// <summary>

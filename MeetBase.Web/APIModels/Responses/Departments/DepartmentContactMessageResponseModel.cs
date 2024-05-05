@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a department contact message 
     /// </summary>
-    public class DepartmentContactMessageResponseModel : DateResponseModel, IDepartmentIdentifiable<string>, IMemberIdentifiable<string?>
+    public class DepartmentContactMessageResponseModel : BaseContactResponseModel, IDepartmentIdentifiable<string>
     {
         #region Private Members
 
@@ -11,26 +11,6 @@
         /// The member of the <see cref="DepartmentId"/> property
         /// </summary>
         private string? mDepartmentId;
-
-        /// <summary>
-        /// The member of the <see cref="FirstName"/> property
-        /// </summary>
-        private string? mFirstName;
-
-        /// <summary>
-        /// The member of the <see cref="LastName"/> property
-        /// </summary>
-        private string? mLastName;
-
-        /// <summary>
-        /// The member of the <see cref="Message"/> property
-        /// </summary>
-        private string? mMessage;
-
-        /// <summary>
-        /// The member of the <see cref="Email"/> property
-        /// </summary>
-        private string? mEmail;
 
         #endregion
 
@@ -46,50 +26,9 @@
         }
 
         /// <summary>
-        /// The member id
+        /// The role
         /// </summary>
-        public string? MemberId { get; set; }
-
-        /// <summary>
-        /// The first name
-        /// </summary>
-        public string FirstName
-        {
-            get => mFirstName ?? string.Empty;
-            set => mFirstName = value;
-        }
-
-        /// <summary>
-        /// The last name
-        /// </summary>
-        public string LastName
-        {
-            get => mLastName ?? string.Empty;
-            set => mLastName = value;
-        }
-
-        /// <summary>
-        /// The email
-        /// </summary>
-        public string Email
-        {
-            get => mEmail ?? string.Empty;
-            set => mEmail = value;
-        }
-
-        /// <summary>
-        /// The phone number
-        /// </summary>
-        public PhoneNumber? PhoneNumber { get; set; }
-
-        /// <summary>
-        /// The message
-        /// </summary>
-        public string Message
-        {
-            get => mMessage ?? string.Empty;
-            set => mMessage = value;
-        }
+        public SecretaryRole Role { get; set; }
 
         #endregion
 
@@ -110,7 +49,7 @@
     /// A minimal version of the <see cref="DepartmentContactMessageResponseModel"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedDepartmentContactMessageResponseModel : EmbeddedBaseResponseModel
+    public class EmbeddedDepartmentContactMessageResponseModel : EmbeddedBaseContactResponseModel
     {
         #region Private Members
 
@@ -118,11 +57,6 @@
         /// The member of the <see cref="DepartmentId"/> property
         /// </summary>
         private string? mDepartmentId;
-
-        /// <summary>
-        /// The member of the <see cref="Email"/> property
-        /// </summary>
-        private string? mEmail;
 
         #endregion
 
@@ -138,18 +72,9 @@
         }
 
         /// <summary>
-        /// The email
+        /// The role
         /// </summary>
-        public string Email
-        {
-            get => mEmail ?? string.Empty;
-            set => mEmail = value;
-        }
-
-        /// <summary>
-        /// The phone number
-        /// </summary>
-        public PhoneNumber? PhoneNumber { get; set; }
+        public SecretaryRole Role { get; set; }
 
         #endregion
 
@@ -165,4 +90,5 @@
 
         #endregion
     }
+
 }
