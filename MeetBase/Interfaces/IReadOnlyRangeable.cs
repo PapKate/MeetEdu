@@ -20,5 +20,18 @@
         T Maximum { get; }
 
         #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Creates and returns a <see cref="IReadOnlyRangeable{T}"/>
+        /// </summary>
+        /// <param name="minimum">The minimum value</param>
+        /// <param name="maximum">The maximum value</param>
+        /// <returns></returns>
+        public static IReadOnlyRangeable<T> Create(T minimum, T maximum)
+            => new Range<T>(minimum, maximum);
+
+        #endregion
     }
 }

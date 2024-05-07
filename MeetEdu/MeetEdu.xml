@@ -90,6 +90,75 @@
         <member name="M:MeetEdu.DepartmentPreview.OnAfterRenderAsync(System.Boolean)">
             <inheritdoc/>
         </member>
+        <member name="T:MeetEdu.SetAppointmentDateDialog">
+            <summary>
+            The dialog for setting an appointment date
+            </summary>
+        </member>
+        <member name="F:MeetEdu.SetAppointmentDateDialog.mSlotButtons">
+            <summary>
+            A list containing all the buttons
+            </summary>
+        </member>
+        <member name="F:MeetEdu.SetAppointmentDateDialog.mSlotIndex">
+            <summary>
+            The current selected index
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SetAppointmentDateDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SetAppointmentDateDialog.Slots">
+            <summary>
+            The possible appointment dates
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SetAppointmentDateDialog.Value">
+            <summary>
+            The selected slot
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SetAppointmentDateDialog.Color">
+            <summary>
+            The color
+            </summary>
+        </member>
+        <member name="P:MeetEdu.SetAppointmentDateDialog.SlotButton">
+            <summary>
+            The minute button
+            </summary>
+        </member>
+        <member name="M:MeetEdu.SetAppointmentDateDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.SetAppointmentDateDialog.SetDefaultButtonStyle(MeetBase.Blazor.TextButton)">
+            <summary>
+            Sets the button style to the default one
+            </summary>
+            <param name="button">The button</param>
+        </member>
+        <member name="M:MeetEdu.SetAppointmentDateDialog.SetSelectedButtonStyle(MeetBase.Blazor.TextButton)">
+            <summary>
+            Sets the button style to the selected one
+            </summary>
+            <param name="button">The button</param>
+        </member>
+        <member name="M:MeetEdu.SetAppointmentDateDialog.SlotButton_OnClick(System.Int32)">
+            <summary>
+            Sets the style of the button with the specified <paramref name="index"/> and
+            modifies the <see cref="F:MeetEdu.SetAppointmentDateDialog.mSlotButtons"/> list accordingly
+            </summary>
+            <param name="index">The button index</param>
+        </member>
+        <member name="P:MeetEdu.SetAppointmentDateDialog.ValueChanged">
+            <summary>
+            Fires when the <see cref="P:MeetEdu.SetAppointmentDateDialog.Value"/> is changed
+            </summary>
+        </member>
         <member name="T:MeetEdu.LayoutPresenter">
             <summary>
             The layout presenter
@@ -131,6 +200,11 @@
             The professor contact form
             </summary>
         </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
         <member name="F:MeetEdu.ProfessorContactForm.mAppointment">
             <summary>
             The appointment
@@ -156,6 +230,16 @@
             The vector component
             </summary>
         </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mSetDateButtonText">
+            <summary>
+            The text of the set date button
+            </summary>
+        </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mSetDateButton">
+            <summary>
+            The text button
+            </summary>
+        </member>
         <member name="P:MeetEdu.ProfessorContactForm.Professor">
             <summary>
             The professor
@@ -169,6 +253,11 @@
         <member name="P:MeetEdu.ProfessorContactForm.AppointmentRules">
             <summary>
             The appointment rules
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorContactForm.DialogService">
+            <summary>
+            The dialog service
             </summary>
         </member>
         <member name="P:MeetEdu.ProfessorContactForm.Snackbar">
@@ -188,6 +277,11 @@
         </member>
         <member name="M:MeetEdu.ProfessorContactForm.OnAfterRender(System.Boolean)">
             <inheritdoc/>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactForm.SetDate_OnClick">
+            <summary>
+            Sets the date for the contact
+            </summary>
         </member>
         <member name="M:MeetEdu.ProfessorContactForm.ResetForm">
             <summary>
@@ -1476,6 +1570,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.EntryPoint.AddAppointmentRules">
+            <summary>
+            Adds appointment rules to professors
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:MeetEdu.MeetEduDbMapper">
             <summary>
             Global access points for the MeetEdu application database 
@@ -1518,7 +1618,7 @@
         </member>
         <member name="F:MeetEdu.MeetEduDbMapper.AppointmentRulesCollectionName">
             <summary>
-            The appointment templates collection name
+            The appointment rules collection name
             </summary>
         </member>
         <member name="F:MeetEdu.MeetEduDbMapper.AppointmentsCollectionName">
@@ -1764,6 +1864,22 @@
             A flag indicating whether it is remote or not
             </summary>
         </member>
+        <member name="P:MeetEdu.AppointmentEntity.CalendarEvent">
+            <summary>
+            The calendar event
+            </summary>
+        </member>
+        <member name="P:MeetEdu.AppointmentEntity.MeetLink">
+            <summary>
+            The link of the meeting
+            </summary>
+            <remarks>ex.: Google Meet, Teams Meeting etc.</remarks>
+        </member>
+        <member name="P:MeetEdu.AppointmentEntity.Status">
+            <summary>
+            The status
+            </summary>
+        </member>
         <member name="P:MeetEdu.AppointmentEntity.Rule">
             <summary>
             The rule
@@ -1779,7 +1895,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:MeetEdu.AppointmentEntity.FromRequestModelAsync(MeetBase.Web.AppointmentRequestModel)">
+        <member name="M:MeetEdu.AppointmentEntity.FromRequestModel(MeetBase.Web.AppointmentRequestModel)">
             <summary>
             Creates and returns a <see cref="T:MeetEdu.AppointmentEntity"/> from the specified <paramref name="model"/>
             </summary>
@@ -1839,6 +1955,11 @@
             A flag indicating whether it is remote or not
             </summary>
         </member>
+        <member name="P:MeetEdu.EmbeddedAppointmentEntity.Status">
+            <summary>
+            The status
+            </summary>
+        </member>
         <member name="P:MeetEdu.EmbeddedAppointmentEntity.Rule">
             <summary>
             The rule
@@ -1869,6 +1990,11 @@
             The member of the <see cref="P:MeetEdu.AppointmentRuleEntity.Note"/> property
             </summary>
         </member>
+        <member name="F:MeetEdu.AppointmentRuleEntity.mStartMinutes">
+            <summary>
+            The member of the property <see cref="P:MeetEdu.AppointmentRuleEntity.StartMinutes"/>
+            </summary>
+        </member>
         <member name="P:MeetEdu.AppointmentRuleEntity.ProfessorId">
             <summary>
             The professor id
@@ -1897,6 +2023,21 @@
         <member name="P:MeetEdu.AppointmentRuleEntity.Duration">
             <summary>
             The duration
+            </summary>
+        </member>
+        <member name="P:MeetEdu.AppointmentRuleEntity.DateFrom">
+            <summary>
+            The date the rules is valid from
+            </summary>
+        </member>
+        <member name="P:MeetEdu.AppointmentRuleEntity.DateTo">
+            <summary>
+            The date the rules is valid to
+            </summary>
+        </member>
+        <member name="P:MeetEdu.AppointmentRuleEntity.StartMinutes">
+            <summary>
+            The possible start minutes of the appointment
             </summary>
         </member>
         <member name="M:MeetEdu.AppointmentRuleEntity.#ctor">

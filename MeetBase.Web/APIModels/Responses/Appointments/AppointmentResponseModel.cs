@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents an appointment 
     /// </summary>
-    public class AppointmentResponseModel : DepartmentContactMessageResponseModel, IProfessorIdentifiable<string>
+    public class AppointmentResponseModel : BaseContactResponseModel, IProfessorIdentifiable<string>
     {
         #region Private Members
 
@@ -70,6 +70,22 @@
         public bool IsRemote { get; set; }
 
         /// <summary>
+        /// The calendar event
+        /// </summary>
+        public string? CalendarEvent { get; set; }
+
+        /// <summary>
+        /// The link of the meeting
+        /// </summary>
+        /// <remarks>ex.: Google Meet, Teams Meeting etc.</remarks>
+        public string? MeetLink { get; set; }
+
+        /// <summary>
+        /// The status
+        /// </summary>
+        public AppointmentStatus Status { get; set; }
+
+        /// <summary>
         /// The rule
         /// </summary>
         public EmbeddedAppointmentRuleResponseModel? Rule { get; set; }
@@ -94,7 +110,7 @@
     /// A minimal version of the <see cref="AppointmentResponseModel"/> that contains the fields that are 
     /// more frequently used when embedding documents in the MongoDB
     /// </summary>
-    public class EmbeddedAppointmentResponseModel : EmbeddedDepartmentContactMessageResponseModel, IProfessorIdentifiable<string>
+    public class EmbeddedAppointmentResponseModel : EmbeddedBaseContactResponseModel, IProfessorIdentifiable<string>
     {
         #region Private Members
 
@@ -154,6 +170,11 @@
         /// A flag indicating whether it is remote or not
         /// </summary>
         public bool IsRemote { get; set; }
+
+        /// <summary>
+        /// The status
+        /// </summary>
+        public AppointmentStatus Status { get; set; }
 
         /// <summary>
         /// The subject

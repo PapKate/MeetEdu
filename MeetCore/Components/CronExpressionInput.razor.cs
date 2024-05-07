@@ -12,11 +12,11 @@ namespace MeetCore
     {
         #region Private Members
 
-        private List<int> mPossibleValues = new List<int>() 
+        private List<int> mPossibleValues = new List<int>()
         {
-            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
             30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59
-        };    
+        };
 
         /// <summary>
         /// A list containing all the buttons
@@ -31,7 +31,7 @@ namespace MeetCore
         /// A list containing the selected minutes
         /// </summary>
         [Parameter]
-        public List<int>? SelectedMinutes { get; set; }
+        public List<int>? Value { get; set; }
 
         /// <summary>
         /// The selected color
@@ -49,7 +49,7 @@ namespace MeetCore
         /// The addition css classes
         /// </summary>
         [Parameter]
-        public string? CssClasses { get; set; } 
+        public string? CssClasses { get; set; }
 
         #endregion
 
@@ -58,7 +58,7 @@ namespace MeetCore
         /// <summary>
         /// The minute button
         /// </summary>
-        protected TextButton? MinuteButton 
+        protected TextButton? MinuteButton
         {
             set
             {
@@ -90,14 +90,14 @@ namespace MeetCore
         {
             base.OnAfterRender(firstRender);
 
-            if(firstRender)
+            if (firstRender)
             {
                 // If no selected values are preset...
-                if (SelectedMinutes.IsNullOrEmpty())
-                    SelectedMinutes = new();
+                if (Value.IsNullOrEmpty())
+                    Value = new();
                 else
                 {
-                    foreach (var value in SelectedMinutes)
+                    foreach (var value in Value)
                     {
                         var button = mMinuteButtons.First(x => x.Text == value.ToString());
                         SetSelectedButtonStyle(button);
@@ -143,16 +143,16 @@ namespace MeetCore
         /// modifies the <see cref="mMinuteButtons"/> list accordingly
         /// </summary>
         /// <param name="value">The value</param>
-        private void MinuteButton_OnClick(int value)
+        private async void MinuteButton_OnClick(int value)
         {
             // Gets the button
             var button = mMinuteButtons.First(x => x.Text == value.ToString());
 
             // If the value is already selected...
-            if (SelectedMinutes!.Any(x => x == value))
+            if (Value!.Any(x => x == value))
             {
                 // Removes the value from the list
-                SelectedMinutes!.Remove(value);
+                Value!.Remove(value);
 
                 // Resets the colors
                 SetDefaultButtonStyle(button);
@@ -162,7 +162,8 @@ namespace MeetCore
             }
 
             // Adds the value from the list
-            SelectedMinutes!.Add(value);
+            Value!.Add(value);
+            await ValueChanged.InvokeAsync(Value);
 
             SetSelectedButtonStyle(button);
         }
@@ -170,21 +171,33 @@ namespace MeetCore
         /// <summary>
         /// Clears the list and resets the buttons to the default styles
         /// </summary>
-        private void ClearButton_OnClick()
+        private async void ClearButton_OnClick()
         {
-            SelectedMinutes!.Clear();
+            Value!.Clear();
             mMinuteButtons.ForEach(SetDefaultButtonStyle);
+            await ValueChanged.InvokeAsync(Value);
         }
 
         /// <summary>
         /// Adds all the value st the list and sets the buttons to the selected style
         /// </summary>
-        private void AllButton_OnClick()
+        private async void AllButton_OnClick()
         {
-            SelectedMinutes = new();
-            SelectedMinutes.AddRange(mPossibleValues);
+            Value = new();
+            Value.AddRange(mPossibleValues);
             mMinuteButtons.ForEach(SetSelectedButtonStyle);
+            await ValueChanged.InvokeAsync(Value);
         }
+
+        #endregion
+
+        #region Public Events
+
+        /// <summary>
+        /// Fires when the <see cref="Value"/> changes
+        /// </summary>
+        [Parameter]
+        public EventCallback<List<int>> ValueChanged { get; set; }
 
         #endregion
     }

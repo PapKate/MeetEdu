@@ -1377,6 +1377,31 @@
             Remote
             </summary>
         </member>
+        <member name="T:MeetBase.AppointmentStatus">
+            <summary>
+            Provides enumerations over the <see cref="T:MeetBase.AppointmentStatus"/>
+            </summary>
+        </member>
+        <member name="F:MeetBase.AppointmentStatus.Pending">
+            <summary>
+            Pending
+            </summary>
+        </member>
+        <member name="F:MeetBase.AppointmentStatus.Confirmed">
+            <summary>
+            Confirmed
+            </summary>
+        </member>
+        <member name="F:MeetBase.AppointmentStatus.Completed">
+            <summary>
+            Completed
+            </summary>
+        </member>
+        <member name="F:MeetBase.AppointmentStatus.Canceled">
+            <summary>
+            Canceled
+            </summary>
+        </member>
         <member name="T:MeetBase.Condition">
             <summary>
             Provides enumeration over the conditions
@@ -2797,26 +2822,6 @@
             Under graduate secretary
             </summary>
         </member>
-        <member name="T:MeetBase.SessionStatus">
-            <summary>
-            Provides enumerations over the <see cref="T:MeetBase.SessionStatus"/>
-            </summary>
-        </member>
-        <member name="F:MeetBase.SessionStatus.Pending">
-            <summary>
-            Pending
-            </summary>
-        </member>
-        <member name="F:MeetBase.SessionStatus.Completed">
-            <summary>
-            Completed
-            </summary>
-        </member>
-        <member name="F:MeetBase.SessionStatus.Canceled">
-            <summary>
-            Canceled
-            </summary>
-        </member>
         <member name="T:MeetBase.StringEqualityOperator">
             <summary>
             Provides enumeration over the string equality operator
@@ -3013,6 +3018,29 @@
             </summary>
         </member>
         <member name="M:MeetBase.PriceRange.#ctor(System.Double,System.Double)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="value1">The first value</param>
+            <param name="value2">The second value</param>
+        </member>
+        <member name="T:MeetBase.Range`1">
+            <summary>
+            Represents a range of values
+            </summary>
+            <typeparam name="T">The type of the values</typeparam>
+        </member>
+        <member name="P:MeetBase.Range`1.Minimum">
+            <summary>
+            The minimum value
+            </summary>
+        </member>
+        <member name="P:MeetBase.Range`1.Maximum">
+            <summary>
+            The maximum value
+            </summary>
+        </member>
+        <member name="M:MeetBase.Range`1.#ctor(`0,`0)">
             <summary>
             Default constructor
             </summary>
@@ -3312,6 +3340,109 @@
             <param name="fallBackValue">The value that is returned when the <paramref name="value"/> is null</param>
             <returns></returns>
         </member>
+        <member name="T:MeetBase.QuartzExtensions">
+            <summary>
+            Extension methods for <see cref="N:Quartz"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.QuartzExtensions.MergeOverlapping``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,``1,``1,``0})">
+            <summary>
+            Merges the rangeables that are overlapping to each other and creates new rangeables.
+            Input: 2     5      10     15
+                   |-----|       |-----|
+                       3     8         15    20
+                       |-----|         |-----|
+            Output: 2         8 10           20
+                    |---------|  |-----------|
+            </summary>
+            <typeparam name="TRangeable">The type of the rangeable</typeparam>
+            <typeparam name="T">The type of the values of the rangeables</typeparam>
+            <param name="source">The rangeables to merge</param>
+            <param name="implementationFactory">Creates and returns a rangeable using the specified minimum and maximum values</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.QuartzExtensions.OverlapsWith``1(MeetBase.IReadOnlyRangeable{``0},MeetBase.IReadOnlyRangeable{``0})">
+            <summary>
+            Determines if the specified <paramref name="second"/> rangeable is overlapping with the <paramref name="first"/> rangeable.
+            A range overlaps with another range either if they intersect or if the one range is contained in the other.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="first">The first rangeable</param>
+            <param name="second">The second rangeable</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.QuartzExtensions.Contains``1(MeetBase.IReadOnlyRangeable{``0},MeetBase.IReadOnlyRangeable{``0})">
+            <summary>
+            Determines if the specified <paramref name="second"/> rangeable is inside the bounds of the <paramref name="first"/> rangeable.
+            </summary>
+            <param name="first">The first rangeable</param>
+            <param name="second">The second rangeable</param>
+        </member>
+        <member name="M:MeetBase.QuartzExtensions.IntersectsWith``1(MeetBase.IReadOnlyRangeable{``0},MeetBase.IReadOnlyRangeable{``0})">
+            <summary>
+            Determines if the specified <paramref name="second"/> rangeable intersects with the <paramref name="first"/> rangeable.
+            </summary>
+            <param name="first">The first rangeable</param>
+            <param name="second">The second rangeable</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.QuartzExtensions.ContainsValue``1(MeetBase.IReadOnlyRangeable{``0},``0)">
+            <summary>
+            Determines if the provided value is inside the <paramref name="rangeable"/>.
+            </summary>
+            <param name="rangeable">The rangeable</param>
+            <param name="value">The range to test</param>
+        </member>
+        <member name="M:MeetBase.QuartzExtensions.MergeWith``2(MeetBase.IReadOnlyRangeable{``1},MeetBase.IReadOnlyRangeable{``1},System.Func{``1,``1,``0})">
+            <summary>
+            Merges the <paramref name="first"/> rangeable with the <paramref name="second"/> rangeable.
+            </summary>
+            <typeparam name="TRangeable">The type of the rangeable</typeparam>
+            <typeparam name="T">The </typeparam>
+            <param name="first">The first rangeable</param>
+            <param name="second">The second rangeable</param>
+            <param name="implementationFactory">Creates and returns a rangeable using the specified minimum and maximum values</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.QuartzExtensions.GetMin``1(MeetBase.IReadOnlyRangeable{``0},MeetBase.IReadOnlyRangeable{``0})">
+            <summary>
+            Gets the minimum value between the specified rangeables
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="first">The first rangeable</param>
+            <param name="second">The second rangeable</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.QuartzExtensions.GetMax``1(MeetBase.IReadOnlyRangeable{``0},MeetBase.IReadOnlyRangeable{``0})">
+            <summary>
+            Gets the maximum value between the specified rangeables
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="first">The first rangeable</param>
+            <param name="second">The second rangeable</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.QuartzExtensions.Subtract``2(``0,``0,System.Func{``1,``1,``0})">
+            <summary>
+            Subtracts the <paramref name="second"/> rangeable from the <paramref name="first"/> one
+            </summary>
+            <typeparam name="TRangeable">The type of the rangeable</typeparam>
+            <typeparam name="T">The type of the values of the rangeables</typeparam>
+            <param name="first">The first rangeable</param>
+            <param name="second">The second rangeable</param>
+            <param name="implementationFactory">Creates and returns a rangeable using the specified minimum and maximum values</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.QuartzExtensions.GetRecurrences(Quartz.CronExpression,System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Gets all the execution dates between the <paramref name="from"/> and the <paramref name="to"/> day span
+            using the specified <paramref name="cronExpression"/>
+            </summary>
+            <param name="cronExpression">The CRON expression</param>
+            <param name="from">The from date</param>
+            <param name="to">The to date</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.StringExtensions">
             <summary>
             Extension methods for strings
@@ -3524,26 +3655,28 @@
             <param name="type">The type</param>
             <returns></returns>
         </member>
-        <member name="T:MeetBase.NewtonsoftHelpers">
+        <member name="T:MeetBase.DateTimeOffsetHelpers">
             <summary>
-            Helper methods related to Newtonsoft
+            Helper methods for <see cref="T:System.DateTimeOffset"/>
             </summary>
         </member>
-        <member name="P:MeetBase.NewtonsoftHelpers.Settings">
+        <member name="F:MeetBase.DateTimeOffsetHelpers.Offset">
             <summary>
-            A single instance of the <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>
+            The offset
             </summary>
         </member>
-        <member name="M:MeetBase.NewtonsoftHelpers.ConfigureSerializer(Newtonsoft.Json.JsonSerializerSettings)">
+        <member name="M:MeetBase.DateTimeOffsetHelpers.CalculateOffset">
             <summary>
-            Configures the specified <paramref name="settings"/>
+            Calculates the offset for the country
             </summary>
-            <param name="settings">The settings</param>
+            <returns></returns>
         </member>
-        <member name="M:MeetBase.NewtonsoftHelpers.CreateSerializerSettings">
+        <member name="M:MeetBase.DateTimeOffsetHelpers.CalculateDateTimeOffset(System.DateTimeOffset,System.TimeOnly)">
             <summary>
-            Creates and returns a pre-configured <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>
+            Calculates a <see cref="T:System.DateTimeOffset"/> from the specified <paramref name="date"/> and <paramref name="time"/>
             </summary>
+            <param name="date">The date</param>
+            <param name="time">The time</param>
             <returns></returns>
         </member>
         <member name="T:MeetBase.IFailableHelpers">
@@ -3584,6 +3717,28 @@
             <param name="value">The value</param>
             <returns></returns>
         </member>
+        <member name="T:MeetBase.NewtonsoftHelpers">
+            <summary>
+            Helper methods related to Newtonsoft
+            </summary>
+        </member>
+        <member name="P:MeetBase.NewtonsoftHelpers.Settings">
+            <summary>
+            A single instance of the <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.NewtonsoftHelpers.ConfigureSerializer(Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Configures the specified <paramref name="settings"/>
+            </summary>
+            <param name="settings">The settings</param>
+        </member>
+        <member name="M:MeetBase.NewtonsoftHelpers.CreateSerializerSettings">
+            <summary>
+            Creates and returns a pre-configured <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.NumericHelpers">
             <summary>
             Helper methods for numbers
@@ -3613,6 +3768,45 @@
             Rounds the specified <paramref name="amount"/> using the specified options
             </summary>
             <param name="amount">The amount</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.QuartzHelpers">
+            <summary>
+            Helper methods for <see cref="N:Quartz"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.QuartzHelpers.CalculateAppointmentDates(System.DateTimeOffset,System.DateTimeOffset,System.Collections.Generic.IEnumerable{MeetBase.DayOfWeekTimeRange},System.TimeSpan,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.List{MeetBase.IReadOnlyRangeable{System.DateTimeOffset}})">
+            <summary>
+            Calculates the available appointment slots
+            </summary>
+            <param name="from">The start date</param>
+            <param name="to">The end date</param>
+            <param name="weeklySchedule">The schedule</param>
+            <param name="duration">The duration of the appointment</param>
+            <param name="startMinutes">The minutes that the appointment can start</param>
+            <param name="invalidSpans">The invalid time slots</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.QuartzHelpers.IsAppointmentDateValid(System.DateTimeOffset,System.DateTimeOffset,System.DateTimeOffset,System.Collections.Generic.IEnumerable{MeetBase.DayOfWeekTimeRange},System.TimeSpan,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.List{MeetBase.IReadOnlyRangeable{System.DateTimeOffset}})">
+            <summary>
+            Calculates the available appointment slots
+            </summary>
+            <param name="date"></param>
+            <param name="from">The start date</param>
+            <param name="to">The end date</param>
+            <param name="weeklySchedule">The schedule</param>
+            <param name="duration">The duration of the appointment</param>
+            <param name="startMinutes">The minutes that the appointment can start</param>
+            <param name="invalidSpans">The invalid time slots</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.QuartzHelpers.GetDateTimeOffsetRange(System.DateTimeOffset,System.DateTimeOffset,MeetBase.DayOfWeekTimeRange)">
+            <summary>
+            Converts a <paramref name="value"/> to a list of ranges according to the specified <paramref name="from"/> and <paramref name="to"/> dates
+            </summary>
+            <param name="from">The start date</param>
+            <param name="to">The end date</param>
+            <param name="value">The schedule</param>
             <returns></returns>
         </member>
         <member name="T:MeetBase.StringHelpers">
@@ -4505,6 +4699,14 @@
             <summary>
             The maximum value
             </summary>
+        </member>
+        <member name="M:MeetBase.IReadOnlyRangeable`1.Create(`0,`0)">
+            <summary>
+            Creates and returns a <see cref="T:MeetBase.IReadOnlyRangeable`1"/>
+            </summary>
+            <param name="minimum">The minimum value</param>
+            <param name="maximum">The maximum value</param>
+            <returns></returns>
         </member>
         <member name="T:MeetBase.ITotalDescriptable">
             <summary>

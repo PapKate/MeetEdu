@@ -80,7 +80,7 @@ namespace MeetEdu
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            if(firstRender)
+            if (firstRender)
             {
                 //await AddMockData();
             }
@@ -100,7 +100,7 @@ namespace MeetEdu
                 // Returns
                 return;
 
-            NavigationManager.NavigateToDepartmentsPage(new Dictionary<string, string?>() 
+            NavigationManager.NavigateToDepartmentsPage(new Dictionary<string, string?>()
             {
                 new("UniversityId", universityId)
             });
@@ -109,11 +109,11 @@ namespace MeetEdu
         private async Task AddMockData()
         {
             var entryPoint = new EntryPoint(CoreController);
-            
+
             // Add the universities
             //await entryPoint.AddUniversitiesAsync();
 
-            if(EntryPoint.Universities.IsNullOrEmpty())
+            if (EntryPoint.Universities.IsNullOrEmpty())
             {
                 var universitiesResponse = await Controller.GetUniversitiesAsync(null);
 
@@ -149,9 +149,9 @@ namespace MeetEdu
 
             if (EntryPoint.CeidProfessors.IsNullOrEmpty())
             {
-                var professorsResponse = await Controller.GetProfessorsAsync(new() 
-                { 
-                    IncludeDepartments = new List<string>() { EntryPoint.PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id, } 
+                var professorsResponse = await Controller.GetProfessorsAsync(new()
+                {
+                    IncludeDepartments = new List<string>() { EntryPoint.PaPaDepartments.First(x => x.Name == "Computer Engineering & Informatics Department").Id, }
                 });
 
                 if (professorsResponse is null || professorsResponse.Value.IsNullOrEmpty())
@@ -162,8 +162,8 @@ namespace MeetEdu
                 EntryPoint.CeidProfessors = ceidProfessors!.ToList();
             }
 
-
-            await entryPoint.AddAppointmentRules();
+            // Adds the appointment rules
+            //await entryPoint.AddAppointmentRules();
         }
 
         #endregion

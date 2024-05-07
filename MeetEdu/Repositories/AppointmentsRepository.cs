@@ -40,11 +40,54 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<AppointmentEntity>> AddAppointmentAsync(AppointmentRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await AppointmentEntity.FromRequestModelAsync(model);
+            // If the professor id is empty...
+            if (model.ProfessorId.IsNullOrEmpty())
+                // Return error
+                return "No professor was attached to this appointment.";
+
+            // If the rule id is empty...
+            if (model.RuleId.IsNullOrEmpty())
+                // Return error
+                return "No rule was attached to this appointment.";
+
+            var professor = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == model.ProfessorId.ToObjectId(), cancellationToken);
+
+            // If no professor is found...
+            if (professor is null)
+                // Return error
+                return "No professor was found.";
+
+            // If no professor is found...
+            if (professor.WeeklySchedule is null)
+                // Return error
+                return "Professor has no possible appointment schedule.";
+
+            // Gets the appointment rule with the specified id
+            var rule = await MeetEduDbMapper.AppointmentRules.FirstOrDefaultAsync(x => x.Id == model.RuleId.ToObjectId(), cancellationToken);
+
+            // If no rule is found...
+            if (rule is null)
+                // Return error
+                return "No rule was found.";
+
+            var professorAppointments = await MeetEduDbMapper.Appointments.SelectAsync(x => x.ProfessorId == professor.Id, cancellationToken);
+
+            var reservedTimeSlots = professorAppointments
+                                        .Select(x => (IReadOnlyRangeable<DateTimeOffset>)new Range<DateTimeOffset>(x.Date.ToDateTime(x.TimeStart), x.Date.ToDateTime(x.TimeEnd))).ToList();
+
+            var isValid = QuartzHelpers.IsAppointmentDateValid(model.DateStart, rule.DateFrom, rule.DateTo, professor.WeeklySchedule.WeeklyHours, rule.Duration, rule.StartMinutes, reservedTimeSlots);
+
+            if (!isValid)
+                return "Invalid selected time slot! Please try again.";
+
+            var entity = AppointmentEntity.FromRequestModel(model);
 
             // If no appointment can be created
             if (entity is null)
                 return "Cannot create a new appointment";
+
+            entity.Rule = rule.ToEmbeddedEntity();
+            entity.Professor = professor.ToEmbeddedEntity();
 
             return await MeetEduDbMapper.Appointments.AddAsync(entity, cancellationToken);
         }
@@ -64,11 +107,9 @@ namespace MeetEdu
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Appointments));
 
-            entity = await AppointmentEntity.FromRequestModelAsync(model);
-            
-            await MeetEduDbMapper.Appointments.UpdateAsync(entity!, cancellationToken);
+            await MeetEduDbMapper.Appointments.UpdateAsync(id, model, cancellationToken);
 
-            return entity!;
+            return entity;
         }
 
         /// <summary>

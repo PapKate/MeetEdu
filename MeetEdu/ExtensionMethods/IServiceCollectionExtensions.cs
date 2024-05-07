@@ -53,7 +53,7 @@ namespace MeetEdu
                 cfg.AddCollectionMappers();
                 //cfg.Internal().AllowAdditiveTypeMapCreation = true;
                 cfg.Internal().MethodMappingEnabled = false;
-                
+
                 var assemblies = new List<Assembly>
                 {
                     // For the request models
@@ -135,7 +135,7 @@ namespace MeetEdu
 
                 cfg.CreateMap<ProfessorRequestModel, ProfessorEntity>()
                     .ForMember(x => x.Lectures, x => x.Ignore())
-                    .AfterMap((request, entity) => 
+                    .AfterMap((request, entity) =>
                     {
                         if (request.Lectures is null)
                             return;
@@ -163,6 +163,15 @@ namespace MeetEdu
                         if (request.Fields is null)
                             return;
                         entity.Fields = request.Fields.ToList();
+                    });
+
+                cfg.CreateMap<AppointmentRuleRequestModel, AppointmentRuleEntity>()
+                    .ForMember(x => x.StartMinutes, x => x.Ignore())
+                    .AfterMap((request, entity) =>
+                    {
+                        if (request.StartMinutes is null)
+                            return;
+                        entity.StartMinutes = request.StartMinutes.ToList();
                     });
 
                 // The property types that should be ignored
@@ -254,7 +263,7 @@ namespace MeetEdu
                 // DateTimeOffset from DateTime (NOTE: We always store date times in UTC in MongoDb)
                 cfg.CreateMap<DateTimeOffset, DateTime>().ConstructUsing((value) => value.UtcDateTime);
                 cfg.CreateMap<DateTimeOffset?, DateTime?>().ConstructUsing((value) => value == null ? null : value.Value.UtcDateTime);
-                
+
             });
 
             // Create the mapper

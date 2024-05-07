@@ -2,14 +2,19 @@
 namespace MeetBase
 {
     /// <summary>
-    /// Provides enumerations over the <see cref="SessionStatus"/>
+    /// Provides enumerations over the <see cref="AppointmentStatus"/>
     /// </summary>
-    public enum SessionStatus
+    public enum AppointmentStatus
     {
         /// <summary>
         /// Pending
         /// </summary>
         Pending,
+        
+        /// <summary>
+        /// Confirmed
+        /// </summary>
+        Confirmed,
 
         /// <summary>
         /// Completed

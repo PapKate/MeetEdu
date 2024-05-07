@@ -84,7 +84,7 @@
             A list containing all the buttons
             </summary>
         </member>
-        <member name="P:MeetCore.CronExpressionInput.SelectedMinutes">
+        <member name="P:MeetCore.CronExpressionInput.Value">
             <summary>
             A list containing the selected minutes
             </summary>
@@ -144,6 +144,11 @@
         <member name="M:MeetCore.CronExpressionInput.AllButton_OnClick">
             <summary>
             Adds all the value st the list and sets the buttons to the selected style
+            </summary>
+        </member>
+        <member name="P:MeetCore.CronExpressionInput.ValueChanged">
+            <summary>
+            Fires when the <see cref="P:MeetCore.CronExpressionInput.Value"/> changes
             </summary>
         </member>
         <member name="T:MeetCore.AddProfessorDialog">

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using System.ComponentModel.DataAnnotations;
 
 namespace MeetEdu
 {
@@ -10,6 +9,11 @@ namespace MeetEdu
     public partial class ProfessorContactForm
     {
         #region Private Members
+
+        /// <summary>
+        /// The <see cref="MudDialog"/> options
+        /// </summary>
+        private DialogOptions mDialogOptions = new() { FullWidth = true };
 
         /// <summary>
         /// The appointment
@@ -36,6 +40,16 @@ namespace MeetEdu
         /// </summary>
         private DynamicComponent? mVectorComponent;
 
+        /// <summary>
+        /// The text of the set date button
+        /// </summary>
+        private string mSetDateButtonText = "Set date";
+
+        /// <summary>
+        /// The text button
+        /// </summary>
+        private TextButton mSetDateButton;
+
         #endregion
 
         #region Public Properties
@@ -61,6 +75,12 @@ namespace MeetEdu
         #endregion
 
         #region Protected Properties
+
+        /// <summary>
+        /// The dialog service
+        /// </summary>
+        [Inject]
+        protected IDialogService DialogService { get; set; } = default!;
 
         /// <summary>
         /// The <see cref="MudBlazor"/> snack bar manager
@@ -108,6 +128,54 @@ namespace MeetEdu
         #region Private Methods
 
         /// <summary>
+        /// Sets the date for the contact
+        /// </summary>
+        private async void SetDate_OnClick()
+        {
+            if (Professor?.WeeklySchedule is null || mRule is null)
+            {
+                return;
+            }
+
+            var availableSlots = QuartzHelpers.CalculateAppointmentDates(mRule.DateFrom, mRule.DateTo, Professor.WeeklySchedule.WeeklyHours, mRule.Duration, mRule.StartMinutes, new());
+
+            var supportedSlots = new List<IReadOnlyRangeable<DateTimeOffset>>();
+
+            foreach (var weeklyHour in Professor.WeeklySchedule.WeeklyHours)
+            {
+                supportedSlots.AddRange(availableSlots.Where(x => x.Minimum.DayOfWeek == weeklyHour.DayOfWeek
+                                                               && x.Minimum.Day == x.Maximum.Day
+                                                               && x.Minimum.Hour >= weeklyHour.Start.Hour
+                                                               && x.Maximum.Hour <= weeklyHour.End.Hour
+                                                               && new TimeOnly(x.Maximum.Hour, x.Maximum.Minute) <= weeklyHour.End).ToList());
+            }
+
+            var parameters = new DialogParameters<SetAppointmentDateDialog> { { x => x.Slots, supportedSlots }, { x => x.Color, Professor.User!.Color } };
+
+            // Creates and opens a dialog with the specified type
+            var dialog = await DialogService.ShowAsync<SetAppointmentDateDialog>(null, parameters, mDialogOptions);
+
+            // Once the dialog is closed...
+            // Gets the result
+            var result = await dialog.Result;
+
+            // If there is no result or the dialog was closed by canceling the inner actions...
+            if (result is null || result.Canceled)
+            {
+                // Return
+                return;
+            }
+
+            // If the result is of the specified type...
+            if (result.Data is IReadOnlyRangeable<DateTimeOffset> value)
+            {
+                mAppointment.DateStart = value.Minimum;
+                mSetDateButton.Text = $"{value.Minimum.ToString("dd/MM/yyyy")} {value.Minimum.ToString("hh:mm")} - {value.Maximum.ToString("hh:mm")}";
+                mSetDateButton.InvokeStateHasChanged();
+            }
+        }
+
+        /// <summary>
         /// Resets the contact form
         /// </summary>
         private void ResetForm()
@@ -123,7 +191,7 @@ namespace MeetEdu
         /// </summary>
         private async void SendButton_OnClick()
         {
-            if(mRule is null || mPhoneNumber is null)
+            if (mRule is null || mPhoneNumber is null)
             {
                 return;
             }
@@ -134,7 +202,7 @@ namespace MeetEdu
 
             mAppointment.DateStart = DateTime.Now.AddDays(2);
             // TODO: mAppointment.MemberId = "id";
-         
+
             if (Professor is null)
                 return;
 

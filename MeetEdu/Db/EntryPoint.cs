@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace MeetEdu
 {
@@ -57,8 +56,8 @@ namespace MeetEdu
         public async Task AddUniversityLabelsAsync()
         {
             var labels = new List<LabelRequestModel>()
-            { 
-            
+            {
+
             };
 
             foreach (var label in labels)
@@ -74,13 +73,13 @@ namespace MeetEdu
         public async Task AddUniversitiesAsync()
         {
             var universityRequests = new List<UniversityRequestModel>()
-            { 
+            {
                 new()
                 {
                     Name = "University of Patras",
                     Color = "EBCA97",
                     ImageUrl = new Uri("https://localhost:7125/universities/651a674479477d03820659bd-21roaglb.png"),
-                    LabelIds = new List<string>() 
+                    LabelIds = new List<string>()
                     {
                     }
                 },
@@ -207,7 +206,7 @@ namespace MeetEdu
                     ContactMessageTemplate = new()
                     {
                         Description = "Submit electronically any questions or requests you may have via the following form, and we will assist you promptly. We encourage your communication with us as we continuously strive to provide upgraded services to our customers. By completing this form, you help us improve the services we provide to you.",
-                        Note = "For more information, contact us, we are available for any questions you may have.", 
+                        Note = "For more information, contact us, we are available for any questions you may have.",
                         VectorName = typeof(EmailContactVector).FullName !
                     },
                     Fields = new List<string>()
@@ -256,7 +255,7 @@ namespace MeetEdu
                     ContactMessageTemplate = new()
                     {
                         Description = "Submit electronically any questions or requests you may have via the following form, and we will assist you promptly. We encourage your communication with us as we continuously strive to provide upgraded services to our customers. By completing this form, you help us improve the services we provide to you.",
-                        Note = "For more information, contact us, we are available for any questions you may have.", 
+                        Note = "For more information, contact us, we are available for any questions you may have.",
                         VectorName = typeof(EmailContactVector).FullName !
                     },
                     Fields = new List<string>()
@@ -306,7 +305,7 @@ namespace MeetEdu
                     ContactMessageTemplate = new()
                     {
                         Description = "Submit electronically any questions or requests you may have via the following form, and we will assist you promptly. We encourage your communication with us as we continuously strive to provide upgraded services to our customers. By completing this form, you help us improve the services we provide to you.",
-                        Note = "For more information, contact us, we are available for any questions you may have.", 
+                        Note = "For more information, contact us, we are available for any questions you may have.",
                         VectorName = typeof(EmailContactVector).FullName !
                     },
                     Fields = new List<string>()
@@ -472,7 +471,7 @@ namespace MeetEdu
 
                 if (result.Result is not null && result.Result is ObjectResult uniResult && uniResult.Value is not null)
                     PaPaDepartments.Add((DepartmentResponseModel)uniResult.Value!);
-            } 
+            }
 
             #endregion
         }
@@ -641,7 +640,7 @@ namespace MeetEdu
 
                 if (result.Result is not null && result.Result is ObjectResult secretaryResult && secretaryResult.Value is not null)
                     ceidSecretaries.Add((SecretaryResponseModel)secretaryResult.Value!);
-            } 
+            }
 
             #endregion
         }
@@ -746,14 +745,14 @@ namespace MeetEdu
                     Color = "BF1363",
                     DateOfBirth = new DateOnly(2000, 8, 24),
                     PhoneNumber = new("30", "2610996924"),
-                    Location = new() 
+                    Location = new()
                     {
                         Address = "25is Martiou 7",
                         City = "Kato Kastritsi",
                         Country = CountryCode.GR,
                         Postcode = "26441",
-                        Latitude = 38.29026909897528, 
-                        Longitude = 21.795208116836363 
+                        Latitude = 38.29026909897528,
+                        Longitude = 21.795208116836363
                     }
                 }
             };
@@ -803,7 +802,7 @@ namespace MeetEdu
                             new(string.Empty, DayOfWeek.Tuesday, new TimeOnly(12, 00), new TimeOnly(14, 00)),
                             new(string.Empty, DayOfWeek.Friday, new TimeOnly(10, 00), new TimeOnly(14, 00)),
                         },
-                        
+
                     },
                     Lectures = new List<Lecture>()
                     {
@@ -1151,6 +1150,10 @@ namespace MeetEdu
             #endregion
         }
 
+        /// <summary>
+        /// Adds appointment rules to professors
+        /// </summary>
+        /// <returns></returns>
         public async Task AddAppointmentRules()
         {
             #region Sioutas
@@ -1165,7 +1168,10 @@ namespace MeetEdu
                     Description = "Regarding a student thesis",
                     HasRemoteOption = true,
                     Duration = TimeSpan.FromMinutes(20),
-                    Note = "This is a note"
+                    Note = "This is a note",
+                    DateFrom = DateTimeOffset.Now,
+                    DateTo = DateTimeOffset.Now.AddMonths(6),
+                    StartMinutes = new List<int>() { 0, 20, 40 }
                 },
                 new()
                 {
@@ -1175,7 +1181,10 @@ namespace MeetEdu
                     Description = "Questions about a lesson",
                     HasRemoteOption = true,
                     Duration = TimeSpan.FromMinutes(10),
-                    Note = "This is a note"
+                    Note = "This is a note",
+                    DateFrom = DateTimeOffset.Now,
+                    DateTo = DateTimeOffset.Now.AddMonths(6),
+                    StartMinutes = new List<int>() { 0, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 }
                 },
                 new()
                 {
@@ -1185,7 +1194,10 @@ namespace MeetEdu
                     Description = "Questions about a project",
                     HasRemoteOption = true,
                     Duration = TimeSpan.FromMinutes(20),
-                    Note = "This is a note"
+                    Note = "This is a note",
+                    DateFrom = DateTimeOffset.Now,
+                    DateTo = DateTimeOffset.Now.AddMonths(6),
+                    StartMinutes = new List<int>() { 0, 15, 20, 30, 40, 45 }
                 }
             };
 

@@ -32,6 +32,21 @@
         /// </summary>
         public TimeSpan? Duration { get; set; }
 
+        /// <summary>
+        /// The date the rules is valid from
+        /// </summary>
+        public DateTimeOffset DateFrom { get; set; }
+
+        /// <summary>
+        /// The date the rules is valid to
+        /// </summary>
+        public DateTimeOffset DateTo { get; set; }
+
+        /// <summary>
+        /// The possible start minutes of the appointment
+        /// </summary>
+        public IEnumerable<int>? StartMinutes { get; set; }
+
         #endregion
 
         #region Constructors

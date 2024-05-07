@@ -26,6 +26,16 @@
                             AdornmentIcon="@Icons.Material.Filled.Palette"
                             PickerVariant="PickerVariant.Inline"
                             DisableAlpha="true" />
+            <MudDatePicker @bind-Date="@mDateFrom"
+                           Adornment="@Adornment.Start"
+                           Class="dialogInput"
+                           Placeholder="Date from"
+                           DisableToolbar="true" />
+            <MudDatePicker @bind-Date="@mDateTo"
+                           Adornment="@Adornment.Start"
+                           Class="dialogInput"
+                           Placeholder="Date to"
+                           DisableToolbar="true" />
             <MudTextField T="string" @bind-Value="@Model.Description"
                           Placeholder="Description"
                           Class="dialogContentFullRow dialogInput"
@@ -40,7 +50,10 @@
                          Label="Has remote option"
                          Class="hasRemoteOptionCheckBox">
             </MudCheckBox>
-            <CronExpressionInput SelectedColor="@Model.Color" CssClasses="dialogInput dialogContentFullRow" />
+            <CronExpressionInput @bind-Value="@mStartMinutes"
+                                 SelectedColor="@Model.Color" 
+                                 CssClasses="dialogInput dialogContentFullRow"
+                                 />
             <MudTextField @bind-Value="@Model.Note"
                           Placeholder="Note"
                           FullWidth="true"

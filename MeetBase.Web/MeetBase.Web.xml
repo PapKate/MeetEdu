@@ -29,6 +29,22 @@
             A flag indicating whether it is remote or not
             </summary>
         </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.CalendarEvent">
+            <summary>
+            The calendar event
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.MeetLink">
+            <summary>
+            The link of the meeting
+            </summary>
+            <remarks>ex.: Google Meet, Teams Meeting etc.</remarks>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRequestModel.Status">
+            <summary>
+            THe status
+            </summary>
+        </member>
         <member name="M:MeetBase.Web.AppointmentRequestModel.#ctor">
             <summary>
             Default constructor
@@ -62,6 +78,21 @@
         <member name="P:MeetBase.Web.AppointmentRuleRequestModel.Duration">
             <summary>
             The duration
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleRequestModel.DateFrom">
+            <summary>
+            The date the rules is valid from
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleRequestModel.DateTo">
+            <summary>
+            The date the rules is valid to
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleRequestModel.StartMinutes">
+            <summary>
+            The possible start minutes of the appointment
             </summary>
         </member>
         <member name="M:MeetBase.Web.AppointmentRuleRequestModel.#ctor">
@@ -681,6 +712,22 @@
             A flag indicating whether it is remote or not
             </summary>
         </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.CalendarEvent">
+            <summary>
+            The calendar event
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.MeetLink">
+            <summary>
+            The link of the meeting
+            </summary>
+            <remarks>ex.: Google Meet, Teams Meeting etc.</remarks>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentResponseModel.Status">
+            <summary>
+            The status
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.AppointmentResponseModel.Rule">
             <summary>
             The rule
@@ -742,6 +789,11 @@
             A flag indicating whether it is remote or not
             </summary>
         </member>
+        <member name="P:MeetBase.Web.EmbeddedAppointmentResponseModel.Status">
+            <summary>
+            The status
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.EmbeddedAppointmentResponseModel.Rule">
             <summary>
             The subject
@@ -772,6 +824,11 @@
             The member of the <see cref="P:MeetBase.Web.AppointmentRuleResponseModel.Note"/> property
             </summary>
         </member>
+        <member name="F:MeetBase.Web.AppointmentRuleResponseModel.mStartMinutes">
+            <summary>
+            The member of the property <see cref="P:MeetBase.Web.AppointmentRuleResponseModel.StartMinutes"/>
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.AppointmentRuleResponseModel.ProfessorId">
             <summary>
             The professor id
@@ -795,6 +852,21 @@
         <member name="P:MeetBase.Web.AppointmentRuleResponseModel.Duration">
             <summary>
             The duration
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleResponseModel.DateFrom">
+            <summary>
+            The date the rules is valid from
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleResponseModel.DateTo">
+            <summary>
+            The date the rules is valid to
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentRuleResponseModel.StartMinutes">
+            <summary>
+            The possible start minutes of the appointment
             </summary>
         </member>
         <member name="M:MeetBase.Web.AppointmentRuleResponseModel.#ctor">

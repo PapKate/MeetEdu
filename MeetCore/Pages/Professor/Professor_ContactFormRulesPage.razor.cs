@@ -85,7 +85,7 @@ namespace MeetCore
                 return;
             }
 
-            if(response.Result.IsNullOrEmpty())
+            if (response.Result.IsNullOrEmpty())
             {
                 // Show the error
                 Snackbar.Add("No rules", Severity.Info);
@@ -106,7 +106,7 @@ namespace MeetCore
         {
             var result = await OpenRuleDialog(new AppointmentRuleRequestModel() { ProfessorId = Professor.Id }, Client.AddAppointmentRuleAsync);
 
-            if (result is not null) 
+            if (result is not null)
             {
                 mRules.Add(result);
                 StateHasChanged();
@@ -127,7 +127,10 @@ namespace MeetCore
                 Description = rule.Description,
                 Duration = rule.Duration,
                 HasRemoteOption = rule.HasRemoteOption,
-                ProfessorId = Professor.Id
+                ProfessorId = Professor.Id,
+                DateFrom = rule.DateFrom,
+                DateTo = rule.DateTo,
+                StartMinutes = rule.StartMinutes
             };
 
             var result = await OpenRuleDialog(model, async (model) => await Client.UpdateAppointmentRuleAsync(rule.Id, model));
@@ -206,7 +209,7 @@ namespace MeetCore
                 // Return the rule
                 return ruleResponse.Result;
             }
-            
+
             // Return
             return null;
         }

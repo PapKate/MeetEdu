@@ -45,9 +45,9 @@ namespace MeetEdu
         public const string DepartmentLayoutsCollectionName = Signature + "DepartmentLayouts";
 
         /// <summary>
-        /// The appointment templates collection name
+        /// The appointment rules collection name
         /// </summary>
-        public const string AppointmentRulesCollectionName = Signature + "AppointmentTemplates";
+        public const string AppointmentRulesCollectionName = Signature + "AppointmentRules";
 
         /// <summary>
         /// The appointments collection name
@@ -149,7 +149,7 @@ namespace MeetEdu
         /// The users collection
         /// </summary>
         public static IMongoCollection<UserEntity> Users => DI.Database.GetCollection<UserEntity>(UsersCollectionName);
-        
+
         #endregion
 
         #region Members

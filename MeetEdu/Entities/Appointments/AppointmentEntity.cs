@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using AutoMapper;
+using MongoDB.Bson;
 
 namespace MeetEdu
 {
@@ -50,6 +51,22 @@ namespace MeetEdu
         public bool IsRemote { get; set; }
 
         /// <summary>
+        /// The calendar event
+        /// </summary>
+        public string? CalendarEvent { get; set; }
+
+        /// <summary>
+        /// The link of the meeting
+        /// </summary>
+        /// <remarks>ex.: Google Meet, Teams Meeting etc.</remarks>
+        public string? MeetLink { get; set; }
+
+        /// <summary>
+        /// The status
+        /// </summary>
+        public AppointmentStatus Status { get; set; }
+
+        /// <summary>
         /// The rule
         /// </summary>
         public EmbeddedAppointmentRuleEntity? Rule { get; set; }
@@ -80,27 +97,11 @@ namespace MeetEdu
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public static async Task<AppointmentEntity?> FromRequestModelAsync(AppointmentRequestModel model)
+        public static AppointmentEntity FromRequestModel(AppointmentRequestModel model)
         {
-            // If no rule or professor id is specified...
-            if (model.RuleId is null || model.ProfessorId is null)
-                return null;
-
-            // Gets the appointment rule with the specified id
-            var rule = await MeetEduDbMapper.AppointmentRules.FirstOrDefaultAsync(x => x.Id == model.RuleId.ToObjectId());
-            var professor = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.Id == model.ProfessorId.ToObjectId());
-
-            // If no rule or professor is found...
-            if (rule is null || professor is null)
-                // Return
-                return null;
-
             var entity = new AppointmentEntity();
 
             DI.Mapper.Map(model, entity);
-            entity.Rule = rule.ToEmbeddedEntity();
-            entity.Professor = professor.ToEmbeddedEntity();
-            entity.DateModified = DateTime.UtcNow;
 
             return entity;
         }
@@ -164,6 +165,11 @@ namespace MeetEdu
         /// A flag indicating whether it is remote or not
         /// </summary>
         public bool IsRemote { get; set; }
+
+        /// <summary>
+        /// The status
+        /// </summary>
+        public AppointmentStatus Status { get; set; }
 
         /// <summary>
         /// The rule

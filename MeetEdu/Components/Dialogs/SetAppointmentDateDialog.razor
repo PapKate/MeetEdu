@@ -1,0 +1,57 @@
+﻿@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetEdu
+
+<MudDialog>
+    <DialogContent>
+        <div class="dialogSection">
+            <span class="dialogSectionText">Set date</span>
+        </div>
+        @if(!Slots.IsNullOrEmpty())
+        {
+            var index = 0;
+            <div class="dialogContentContainer">
+                @foreach (var slot in Slots)
+                {
+                    var position = index;
+                    <TextButton @ref="@SlotButton" @key="@position"
+                                
+                                BoxShadow="none"
+                                BorderStyle="@BorderStyle.Solid"
+                                BorderThickness="1px"
+                                CssClasses="cronExpressionInputButton"
+                                OnClick="@(() => SlotButton_OnClick(position))" >
+                        <span>
+                            @slot.Minimum.ToString("dd/MM/yyyy")
+                            <br/>
+                            @slot.Minimum.ToString("HH:mm") - @slot.Maximum.ToString("HH:mm")
+                        </span>
+                    </TextButton>
+                    index++;
+                }
+            </div>
+        }
+    </DialogContent>
+    <DialogActions>
+        <div class="dialogActionsContainer">
+            <MudButton Variant="Variant.Text" Color="@MudBlazor.Color.Error" OnClick="@Cancel" Class="px-10">Cancel</MudButton>
+            <MudButton Variant="Variant.Text" Color="@MudBlazor.Color.Success" OnClick="@Save" Class="px-10">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>
+
+<style>
+
+    .dialogSection {
+        background-color: @Color?.NormalizedColor();
+        color: @Color?.DarkOrWhite().NormalizedColor();
+    }
+
+    .colorInput .mud-input-adornment-start:after {
+        background-color: @Color?.NormalizedColor();
+    }
+
+</style>

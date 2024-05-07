@@ -14,6 +14,12 @@ namespace MeetCore
 
         private bool mHasRemoteOption = false;
 
+        private DateTime? mDateFrom;
+
+        private DateTime? mDateTo;
+
+        private List<int>? mStartMinutes;
+
         #endregion
 
         #region Public Properties
@@ -54,6 +60,9 @@ namespace MeetCore
             base.OnInitialized();
 
             mHasRemoteOption = Model.HasRemoteOption ?? false;
+            mDateFrom = Model.DateFrom.ToLocalTime().DateTime;
+            mDateTo = Model.DateTo.ToLocalTime().DateTime;
+            mStartMinutes = Model.StartMinutes?.ToList();
         }
 
         #endregion
@@ -62,6 +71,13 @@ namespace MeetCore
 
         private void SaveButton_OnClick()
         {
+            if (mDateTo is null || mDateFrom is null)
+            {
+                return;
+            }
+
+            Model.DateFrom = new DateTimeOffset(mDateFrom.Value);
+            Model.DateTo = new DateTimeOffset(mDateTo.Value);
             Model.HasRemoteOption = mHasRemoteOption;
             MudDialog.Close(DialogResult.Ok(Model));
         }

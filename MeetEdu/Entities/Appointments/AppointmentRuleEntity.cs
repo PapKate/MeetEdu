@@ -24,6 +24,11 @@ namespace MeetEdu
         /// </summary>
         private string? mNote;
 
+        /// <summary>
+        /// The member of the property <see cref="StartMinutes"/>
+        /// </summary>
+        private IEnumerable<int>? mStartMinutes;
+
         #endregion
 
         #region Public Properties
@@ -69,6 +74,25 @@ namespace MeetEdu
         /// The duration
         /// </summary>
         public TimeSpan Duration { get; set; }
+
+        /// <summary>
+        /// The date the rules is valid from
+        /// </summary>
+        public DateTimeOffset DateFrom { get; set; }
+
+        /// <summary>
+        /// The date the rules is valid to
+        /// </summary>
+        public DateTimeOffset DateTo { get; set; }
+
+        /// <summary>
+        /// The possible start minutes of the appointment
+        /// </summary>
+        public IEnumerable<int> StartMinutes 
+        {
+            get => mStartMinutes ?? Enumerable.Empty<int>();
+            set => mStartMinutes = value; 
+        }
 
         #endregion
 

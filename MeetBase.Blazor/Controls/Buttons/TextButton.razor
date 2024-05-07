@@ -24,11 +24,14 @@
                     top: @mTop; left: @mLeft;">
         </div>
     </div>
-    <div class="textButtonContent" style="justify-content: @TextAlign;">
-        <span class="buttonText">
-            @Text
-        </span>
-    </div>
+    @if(!Text.IsNullOrEmpty())
+    {
+        <div class="textButtonContent" style="justify-content: @TextAlign;">
+            <span class="buttonText">
+                @Text
+            </span>
+        </div>
+    }
 
     @ChildContent
 
