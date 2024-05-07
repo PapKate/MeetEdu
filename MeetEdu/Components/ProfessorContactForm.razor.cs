@@ -143,14 +143,15 @@ namespace MeetEdu
 
             foreach (var weeklyHour in Professor.WeeklySchedule.WeeklyHours)
             {
-                supportedSlots.AddRange(availableSlots.Where(x => x.Minimum.DayOfWeek == weeklyHour.DayOfWeek
+                var selectResult = availableSlots.Where(x => x.Minimum.DayOfWeek == weeklyHour.DayOfWeek
                                                                && x.Minimum.Day == x.Maximum.Day
-                                                               && x.Minimum.Hour >= weeklyHour.Start.Hour
-                                                               && x.Maximum.Hour <= weeklyHour.End.Hour
-                                                               && new TimeOnly(x.Maximum.Hour, x.Maximum.Minute) <= weeklyHour.End).ToList());
+                                                               && new TimeOnly(x.Minimum.Hour, x.Minimum.Minute) >= weeklyHour.Start
+                                                               && new TimeOnly(x.Maximum.Hour, x.Maximum.Minute) <= weeklyHour.End).ToList();
+
+                supportedSlots.AddRange(selectResult);
             }
 
-            var parameters = new DialogParameters<SetAppointmentDateDialog> { { x => x.Slots, supportedSlots }, { x => x.Color, Professor.User!.Color } };
+            var parameters = new DialogParameters<SetAppointmentDateDialog> { { x => x.Slots, supportedSlots.OrderBy(x => x.Minimum) }, { x => x.Color, Professor.User!.Color } };
 
             // Creates and opens a dialog with the specified type
             var dialog = await DialogService.ShowAsync<SetAppointmentDateDialog>(null, parameters, mDialogOptions);
