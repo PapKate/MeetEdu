@@ -682,29 +682,9 @@
             The appointment rule id
             </summary>
         </member>
-        <member name="P:MeetBase.Web.AppointmentResponseModel.Date">
+        <member name="P:MeetBase.Web.AppointmentResponseModel.DateStart">
             <summary>
             The date
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.AppointmentResponseModel.TimeStart">
-            <summary>
-            The time that the appointment begins
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.AppointmentResponseModel.TimeEnd">
-            <summary>
-            The time that the appointment ends
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.AppointmentResponseModel.IsCanceled">
-            <summary>
-            A flag indicating whether the subscription was canceled or not
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.AppointmentResponseModel.DateCanceled">
-            <summary>
-            The date the customer subscription was canceled
             </summary>
         </member>
         <member name="P:MeetBase.Web.AppointmentResponseModel.IsRemote">
@@ -2235,17 +2215,27 @@
             Arguments used for retrieving data that belong to a professor
             </summary>
         </member>
-        <member name="P:MeetBase.Web.AppointmentRuleAPIArgs.IncludeProfessors">
-            <summary>
-            Limit the result to entries with specific professor ids
-            </summary>
-        </member>
-        <member name="P:MeetBase.Web.AppointmentRuleAPIArgs.ExcludeProfessors">
-            <summary>
-            Limit the result to entries without specific professor ids
-            </summary>
-        </member>
         <member name="M:MeetBase.Web.AppointmentRuleAPIArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.AppointmentAPIArgs">
+            <summary>
+            Arguments used for retrieving data that belong to a professor
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentAPIArgs.IncludeStatuses">
+            <summary>
+            Limit the result to entries with the specific statuses
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.AppointmentAPIArgs.ExcludeStatuses">
+            <summary>
+            Limit the result to entries without the specific statuses
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.AppointmentAPIArgs.#ctor">
             <summary>
             Default constructor
             </summary>
@@ -2823,7 +2813,7 @@
             <param name="id">The id</param>
             <returns></returns>
         </member>
-        <member name="M:MeetBase.Web.MeetCoreClient.GetAppointmentsAsync(MeetBase.Web.APIArgs)">
+        <member name="M:MeetBase.Web.MeetCoreClient.GetAppointmentsAsync(MeetBase.Web.AppointmentAPIArgs)">
             <summary>
             Gets the appointments
             </summary>

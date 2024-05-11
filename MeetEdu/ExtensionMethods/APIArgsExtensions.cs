@@ -20,20 +20,34 @@ namespace MeetEdu
         public static List<FilterDefinition<T>> CreateFilters<T>(this AppointmentRuleAPIArgs args)
             where T : BaseEntity, IProfessorIdentifiable<ObjectId>
         {
-            var filters = new List<FilterDefinition<T>>();
+            var filters = CreateFilters<T>((ProfessorAPIArgs)args);
 
-            // If there is a limit to the departments to include...
-            if (!args.IncludeProfessors.IsNullOrEmpty())
+            return filters;
+        }
+
+        /// <summary>
+        /// Creates the filters for the specified <paramref name="args"/>
+        /// </summary>
+        /// <typeparam name="T">The document type</typeparam>
+        /// <param name="args">The arguments</param>
+        /// <returns></returns>
+        public static List<FilterDefinition<T>> CreateFilters<T>(this AppointmentAPIArgs args)
+            where T : AppointmentEntity, IProfessorIdentifiable<ObjectId>
+        {
+            var filters = CreateFilters<T>((ProfessorAPIArgs)args);
+
+            // If there is a limit to the statuses to include...
+            if (!args.IncludeStatuses.IsNullOrEmpty())
             {
-                var ids = args.IncludeProfessors.Select(x => x.ToObjectId()).ToList();
-                filters.Add(Builders<T>.Filter.In(x => x.ProfessorId, ids));
+                var statuses = args.IncludeStatuses.ToList();
+                filters.Add(Builders<T>.Filter.In(x => x.Status, statuses));
             }
 
-            // If there is a limit to the departments to exclude...
-            if (!args.ExcludeProfessors.IsNullOrEmpty())
+            // If there is a limit to the statuses to exclude...
+            if (!args.ExcludeStatuses.IsNullOrEmpty())
             {
-                var ids = args.ExcludeProfessors.Select(x => x.ToObjectId()).ToList();
-                filters.Add(Builders<T>.Filter.Nin(x => x.ProfessorId, ids));
+                var statuses = args.ExcludeStatuses.ToList();
+                filters.Add(Builders<T>.Filter.Nin(x => x.Status, statuses));
             }
 
             return filters;
@@ -157,7 +171,7 @@ namespace MeetEdu
         {
             if (filters.IsNullOrEmpty())
                 return null;
-            
+
             return Builders<T>.Filter.And(filters);
         }
 

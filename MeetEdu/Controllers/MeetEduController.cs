@@ -287,10 +287,10 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpGet]
         [Route(MeetEduAPIRoutes.AppointmentsRoute)]
-        public async Task<ActionResult<IEnumerable<AppointmentResponseModel>>> GetAppointmentsAsync([FromQuery] APIArgs args, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<AppointmentResponseModel>>> GetAppointmentsAsync([FromQuery] AppointmentAPIArgs? args, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Appointments,
                                                     x => x.ToResponseModel(),
-                                                    Builders<AppointmentEntity>.Filter.Empty, args,
+                                                    args?.CreateFilters<AppointmentEntity>().AggregateFilters(), args,
                                                     cancellationToken, x => x.DateCreated);
 
         /// <summary>

@@ -7,7 +7,7 @@
 @if (FormTemplate is not null && !AppointmentRules.IsNullOrEmpty())
 {
     <div class="contactFormContainer">
-        <div class="contactFormInputsContainer">
+        <div class="contactFormInputsContainer @mFormCssClass">
             <MudSelect T="AppointmentRuleResponseModel"
                        @bind-Value="@mRule"
                        Placeholder="Type"
@@ -50,15 +50,14 @@
             <MudCheckBox T="bool" @bind-Value="mIsRemote" ReadOnly="@(mRule is null || !mRule.HasRemoteOption)" Class="formCheckBox">Remote meeting</MudCheckBox>
 
             <TextButton @ref="@mSetDateButton" Text="@mSetDateButtonText"
-                        BackColor="@White"
+                        BackColor="@Professor?.User!.Color.DarkOrWhite()"
                         ForeColor="@Professor?.User!.Color"
                         HoverBackColor="@Professor?.User!.Color"
-                        HoverForeColor="@White"
+                        HoverForeColor="@Professor?.User!.Color.DarkOrWhite()"
                         BorderRadius="0"
                         BoxShadow="none"
                         CssClasses="setDateFormButton"
-            OnClick="@SetDate_OnClick" />
-          
+                        OnClick="@SetDate_OnClick" />
 
             <div class="contactFormButtonsContainer">
                 <TextButton Text="Reset"
@@ -80,6 +79,39 @@
                             CssClasses="contactFormButton"
                             OnClick="@SendButton_OnClick"/>
             </div>
+        </div>
+
+        <div class="appointmentInformationContainer" style="visibility: @mAppointmentInfoCssStyle;">
+            @if(mRule is not null && mAppointment is not null)
+            {
+                <h2>Awesome!</h2>
+                <h3>Your appointment for a @mRule.Name has been created.</h3>
+                <div class="appointmentInformationDurationContainer">
+                    <h4 class="appointmentInformationDuration"><strong>Date:</strong> @mAppointment.DateStart.ToString("dd/MM/yyyy HH:mm")</h4>
+                    <h4 class="appointmentInformationDuration"><strong>Duration:</strong> @mRule.Duration.ToString()</h4>
+                    <span class="appointmentInformationNote">@(mRule.Note.IsNullOrEmpty() ? "Please be present at least 5 minutes earlier than the scheduled time." : mRule.Note)</span>
+                </div>
+
+                <TextButton Text="Download event"
+                            BackColor="@Professor?.User!.Color.DarkOrWhite()"
+                            ForeColor="@Professor?.User!.Color"
+                            HoverBackColor="@Professor?.User!.Color"
+                            HoverForeColor="@Professor?.User!.Color.DarkOrWhite()"
+                            BorderRadius="0"
+                            BoxShadow="none"
+                            CssClasses="setDateFormButton"
+                            OnClick="@DownloadEvent_OnClick" />
+
+                <TextButton Text="Return to form"
+                            ForeColor="@Professor?.User!.Color.DarkOrWhite()"
+                            BackColor="@Professor?.User!.Color"
+                            BorderRadius="0"
+                            BoxShadow="none"
+                            CssClasses="setDateFormButton"
+                            OnClick="@ReturnToForm_OnClick" />
+            }
+
+
         </div>
 
         <div class="contactFormImageContainer">
@@ -107,6 +139,10 @@
         gap: @XXLargeGap;
         padding: 3rem;
         background-color: @Professor?.User!.Color.HexToRGBA(0.4);
+    }
+
+    .hidden {
+        visibility: hidden;
     }
 
     .contactFormInputsContainer {
@@ -158,6 +194,35 @@
         .formInput .mud-input.mud-input-underline:after {
             display: none;
         }
+
+    .appointmentInformationContainer {
+        position: absolute;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: @VeryLargeGap;
+        padding: 3rem;
+        text-align: center;
+    }
+
+    .appointmentInformationDurationContainer {
+        padding: 2rem 0;
+        font-size: 120%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .appointmentInformationDuration {
+        font-weight: 400;
+    }
+
+    .appointmentInformationNote {
+        font-size: 92%;
+        align-self: center;
+    }
 
     .contactFormImageContainer {
         position: relative;

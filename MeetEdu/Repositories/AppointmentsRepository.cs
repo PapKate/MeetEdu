@@ -73,7 +73,7 @@ namespace MeetEdu
             var professorAppointments = await MeetEduDbMapper.Appointments.SelectAsync(x => x.ProfessorId == professor.Id, cancellationToken);
 
             var reservedTimeSlots = professorAppointments
-                                        .Select(x => (IReadOnlyRangeable<DateTimeOffset>)new Range<DateTimeOffset>(x.Date.ToDateTime(x.TimeStart), x.Date.ToDateTime(x.TimeEnd))).ToList();
+                                        .Select(x => (IReadOnlyRangeable<DateTimeOffset>)new Range<DateTimeOffset>(x.DateStart, x.DateStart + rule.Duration)).ToList();
 
             var isValid = QuartzHelpers.IsAppointmentDateValid(model.DateStart, rule.DateFrom, rule.DateTo, professor.WeeklySchedule.WeeklyHours, rule.Duration, rule.StartMinutes, reservedTimeSlots);
 
@@ -101,13 +101,11 @@ namespace MeetEdu
         /// <returns></returns>
         public async Task<WebServerFailable<AppointmentEntity>> UpdateAppointmentAsync(ObjectId id, AppointmentRequestModel model, CancellationToken cancellationToken = default)
         {
-            var entity = await MeetEduDbMapper.Appointments.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            var entity = await MeetEduDbMapper.Appointments.UpdateAsync(id, model, cancellationToken);
 
             // If the appointment does not exist...
             if (entity is null)
                 return WebServerFailable.NotFound(id, nameof(MeetEduDbMapper.Appointments));
-
-            await MeetEduDbMapper.Appointments.UpdateAsync(id, model, cancellationToken);
 
             return entity;
         }

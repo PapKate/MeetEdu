@@ -3101,6 +3101,18 @@
             <param name="value1">The first value</param>
             <param name="value2">The second value</param>
         </member>
+        <member name="T:MeetBase.CalendarExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Ical.Net.Calendar"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.CalendarExtensions.GetCalendarEvents(Ical.Net.Calendar)">
+            <summary>
+            Gets the calendar events of the specified <paramref name="calendar"/>
+            </summary>
+            <param name="calendar">The calendar</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.DateOnlyExtensions">
             <summary>
             The extension for the <see cref="T:System.DateOnly"/>
@@ -3655,6 +3667,31 @@
             <param name="type">The type</param>
             <returns></returns>
         </member>
+        <member name="T:MeetBase.CalendarHelpers">
+            <summary>
+            Provides helper methods for <see cref="N:Ical.Net"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.CalendarHelpers.CreateCalendarEvent(System.String,System.String,System.DateTime,System.TimeSpan)">
+            <summary>
+            Creates an new <see cref="T:Ical.Net.CalendarComponents.CalendarEvent"/>
+            </summary>
+            <param name="title">The title</param>
+            <param name="description">The description</param>
+            <param name="dateTime">The date and time</param>
+            <param name="duration">The duration</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.CalendarHelpers.GenerateCalendarEvent(System.String,System.String,System.DateTime,System.TimeSpan)">
+            <summary>
+            Creates an new <see cref="T:Ical.Net.CalendarComponents.CalendarEvent"/> and returns the JSON serialized version
+            </summary>
+            <param name="title">The title</param>
+            <param name="description">The description</param>
+            <param name="dateTime">The date and time</param>
+            <param name="duration">The duration</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetBase.DateTimeOffsetHelpers">
             <summary>
             Helper methods for <see cref="T:System.DateTimeOffset"/>
@@ -3775,7 +3812,7 @@
             Helper methods for <see cref="N:Quartz"/>
             </summary>
         </member>
-        <member name="M:MeetBase.QuartzHelpers.CalculateAppointmentDates(System.DateTimeOffset,System.DateTimeOffset,System.Collections.Generic.IEnumerable{MeetBase.DayOfWeekTimeRange},System.TimeSpan,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.List{MeetBase.IReadOnlyRangeable{System.DateTimeOffset}})">
+        <member name="M:MeetBase.QuartzHelpers.CalculateAppointmentDates(System.DateTimeOffset,System.DateTimeOffset,System.Collections.Generic.IEnumerable{MeetBase.DayOfWeekTimeRange},System.TimeSpan,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{MeetBase.IReadOnlyRangeable{System.DateTimeOffset}})">
             <summary>
             Calculates the available appointment slots
             </summary>
@@ -3784,7 +3821,7 @@
             <param name="weeklySchedule">The schedule</param>
             <param name="duration">The duration of the appointment</param>
             <param name="startMinutes">The minutes that the appointment can start</param>
-            <param name="invalidSpans">The invalid time slots</param>
+            <param name="reservedTimeSlots"></param>
             <returns></returns>
         </member>
         <member name="M:MeetBase.QuartzHelpers.IsAppointmentDateValid(System.DateTimeOffset,System.DateTimeOffset,System.DateTimeOffset,System.Collections.Generic.IEnumerable{MeetBase.DayOfWeekTimeRange},System.TimeSpan,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.List{MeetBase.IReadOnlyRangeable{System.DateTimeOffset}})">

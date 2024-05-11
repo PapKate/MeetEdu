@@ -17,6 +17,11 @@ namespace MeetBase.Blazor
 
         private List<CountryData> mCountryData = new();
 
+        /// <summary>
+        /// The member of the <see cref="Value"/> property
+        /// </summary>
+        private PhoneNumber? mValue = null;
+
         #endregion
 
         #region Public Properties
@@ -25,12 +30,25 @@ namespace MeetBase.Blazor
         /// The value
         /// </summary>
         [Parameter]
-        public PhoneNumber? Value { get; set; }
+        public PhoneNumber? Value
+        {
+            get => mValue;
+            set
+            {
+                mValue = value;
+
+                if (mValue is null)
+                {
+                    Text = null;
+                    if (!mCountryData.IsNullOrEmpty())
+                        Country = mCountryData[0];
+                }
+            }
+        }
 
         /// <summary>
         /// The text
         /// </summary>
-        [Parameter]
         public string? Text { get; set; }
 
         /// <summary>
@@ -48,8 +66,7 @@ namespace MeetBase.Blazor
         /// <summary>
         /// The country value
         /// </summary>
-        [Parameter]
-        public CountryData? Country { get; set; } 
+        public CountryData? Country { get; set; }
 
         /// <summary>
         /// A flag indicating whether it is required or not
@@ -84,7 +101,7 @@ namespace MeetBase.Blazor
         /// </summary>
         public PhoneNumberInput()
         {
-            
+
         }
 
         #endregion
@@ -128,7 +145,7 @@ namespace MeetBase.Blazor
 
             var searchedData = mCountryData.Where(x => x.Country.ToLower().Contains(value.ToLower()) || x.CountryCode.Contains(value)).ToList();
 
-            if(Country is not null)
+            if (Country is not null)
             {
                 searchedData.Remove(Country);
                 searchedData.Insert(0, Country);
@@ -146,7 +163,7 @@ namespace MeetBase.Blazor
         private void Flag_OnClick()
         {
             mIsSearchBoxVisible = !mIsSearchBoxVisible;
-            if(mIsSearchBoxVisible)
+            if (mIsSearchBoxVisible)
                 mSearchBoxStyle = mSearchBoxBorderStyle;
             else
                 mSearchBoxStyle = mSearchBoxOnlyBorderStyle;

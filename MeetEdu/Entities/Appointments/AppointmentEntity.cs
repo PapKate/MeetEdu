@@ -1,12 +1,11 @@
-﻿using AutoMapper;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 
 namespace MeetEdu
 {
     /// <summary>
     /// Represents an appointment document in the MongoDB
     /// </summary>
-    public class AppointmentEntity : BaseContactEntity
+    public class AppointmentEntity : BaseContactEntity, IProfessorIdentifiable<ObjectId>
     {
         #region Public Properties
 
@@ -23,27 +22,7 @@ namespace MeetEdu
         /// <summary>
         /// The date
         /// </summary>
-        public DateOnly Date { get; set; }
-
-        /// <summary>
-        /// The time that the appointment begins
-        /// </summary>
-        public TimeOnly TimeStart { get; set; }
-
-        /// <summary>
-        /// The time that the appointment ends
-        /// </summary>
-        public TimeOnly TimeEnd { get; set; }
-
-        /// <summary>
-        /// A flag indicating whether the subscription was canceled or not
-        /// </summary>
-        public bool IsCanceled { get; set; }
-
-        /// <summary>
-        /// The date the customer subscription was canceled
-        /// </summary>
-        public DateTimeOffset? DateCanceled { get; set; }
+        public DateTimeOffset DateStart { get; set; }
 
         /// <summary>
         /// A flag indicating whether it is remote or not
@@ -59,7 +38,7 @@ namespace MeetEdu
         /// The link of the meeting
         /// </summary>
         /// <remarks>ex.: Google Meet, Teams Meeting etc.</remarks>
-        public string? MeetLink { get; set; }
+        public Uri? MeetLink { get; set; }
 
         /// <summary>
         /// The status
@@ -87,7 +66,7 @@ namespace MeetEdu
         {
 
         }
-        
+
         #endregion
 
         #region Public Methods

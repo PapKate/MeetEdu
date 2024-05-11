@@ -36,7 +36,7 @@
         /// The link of the meeting
         /// </summary>
         /// <remarks>ex.: Google Meet, Teams Meeting etc.</remarks>
-        public string? MeetLink { get; set; }
+        public Uri? MeetLink { get; set; }
 
         /// <summary>
         /// THe status

@@ -1,0 +1,101 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
+
+@namespace MeetCore
+
+<MudDialog>
+    <DialogContent>
+        <div class="dialogSection">
+            <span class="dialogSectionText">Appointment</span>
+        </div>
+        <div class="dialogContentContainer">
+            <MudTextField Value="@Appointment.Rule!.Name"
+                          ReadOnly="true"
+                          Placeholder="Rule"
+                          Class="dialogInput dialogContentFullRow"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+            <MudTextField Value="@($"{Appointment.DateStart.ToString("dd/MM/yyyyy")} | {Appointment.DateStart.ToString("HH:mm")} - {(Appointment.DateStart + Appointment.Rule.Duration).ToString("HH:mm")}")"
+                          ReadOnly="true"
+                          Placeholder="Rule"
+                          Class="dialogInput dialogContentFullRow"
+                          FullWidth="true"
+                          Variant="Variant.Text" />
+            <MudTextField T="string" Value="@($"{Appointment.FirstName} {Appointment.LastName}")"
+                          ReadOnly="true"
+                          Placeholder="Full name"
+                          Class="dialogContentFullRow dialogInput"
+                          FullWidth="true"
+                          Variant="Variant.Text"/>
+            <MudTextField T="string" Value="@Appointment.Message"
+                          ReadOnly="true"
+                          Placeholder="Message"
+                          Class="dialogContentFullRow dialogInput"
+                          FullWidth="true"
+                          Variant="Variant.Text"
+                          Lines="3"/>
+            <MudCheckBox T="bool" Value="@Appointment.IsRemote"
+                         ReadOnly="true"
+                         Label="Is remote"
+                         Class="hasRemoteOptionCheckBox">
+            </MudCheckBox>
+            <MudSelect T="AppointmentStatus" @bind-Value="@Model.Status"
+                       Placeholder="Status"
+                        FullWidth="true"
+                        Class="dialogInput"
+                        Variant="Variant.Text">
+                @foreach (var value in Enum.GetValues<AppointmentStatus>())
+                {
+                    <MudSelectItem Value="@value">@value</MudSelectItem>
+                }
+            </MudSelect>
+            @if(Appointment.IsRemote)
+            {
+                <MudTextField T="Uri" @bind-Value="@Model.MeetLink"
+                              Placeholder="Meet link"
+                              Converter="@(new MudBlazor.Converter<Uri>() { SetFunc = value => value?.ToString(), GetFunc = text => !text.IsNullOrEmpty() ? new Uri(text) : null })"
+                              Class="dialogContentFullRow dialogInput"
+                              FullWidth="true"
+                              Variant="Variant.Text" />
+            }
+            <span class="addEventText">Add event to your calendar: </span>
+            <MudButton StartIcon="@MudIconPaths.Plus" Class="dialogInput" OnClick="@DownloadEvent_OnClick">Download</MudButton>
+        </div>
+    </DialogContent>
+    <DialogActions>
+        <div class="dialogActionsContainer">
+            <MudButton Variant="Variant.Text" Color="Color.Error" OnClick="@CancelButton_OnClick" Class="px-10">Cancel</MudButton>
+            <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@SaveButton_OnClick" Class="px-10">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>
+
+<style>
+
+    .dialogSection {
+        background-color: @Appointment.Rule?.Color.NormalizedColor();
+        color: @Appointment.Rule?.Color.DarkOrWhite().NormalizedColor();
+    }
+
+    .hasRemoteOptionCheckBox {
+        position: relative;
+        bottom: -10px;
+    }
+
+        .hasRemoteOptionCheckBox .mud-icon-root.mud-svg-icon {
+            fill: @($"{Appointment.Rule?.Color.NormalizedColor() ?? Gray.NormalizedColor()}");
+        }
+
+    .addEventText {
+        position:relative;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 112%;
+    }
+
+</style>

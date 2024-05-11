@@ -3,6 +3,8 @@
 @inherits BasePage
 
 @using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
 
 @namespace MeetCore
 
@@ -10,6 +12,91 @@
 
 <ApplicationContainer>
 
-    <h3>Active Appointments</h3>
+    <div class="dataGridHeader" id="dataGridMyRulesHeader">My appointments</div>
+
+    @if (!mAppointments.IsNullOrEmpty())
+    {
+        <MudDataGrid Items="@mAppointments" T="AppointmentResponseModel" ReadOnly="false"
+                     EditMode="@DataGridEditMode.Form" EditTrigger="@DataGridEditTrigger.Manual"
+                     Bordered="true" @ref="mDataGrid" >
+            <Columns>
+                <PropertyColumn Property="x => x!.Rule!.Name" Title="Rule" IsEditable="false" />
+                <TemplateColumn Title="Full Name" Sortable="false">
+                    <CellTemplate>
+                        <span class="description">
+                            @context.Item!.FirstName @context.Item.LastName
+                        </span>
+                    </CellTemplate>
+                </TemplateColumn>
+                <TemplateColumn Title="Time slot" Sortable="false">
+                    <CellTemplate>
+                        <span class="description">
+                            @context.Item!.DateStart.ToString("dd/MM/yyyy") | @context.Item!.DateStart.ToString("HH:mm") - @((context.Item!.DateStart + context.Item.Rule!.Duration).ToString("HH:mm"))
+                        </span>
+                    </CellTemplate>
+                </TemplateColumn>
+                <TemplateColumn Title="Remote" CellStyle="width: 4rem;" Sortable="true">
+                    <CellTemplate>
+                        <span class="hasRemoteOptionGridRowText"
+                              style="@ForegroundVariable.SetCssColor(context.Item!.IsRemote ? Green : Red)">
+                            @context.Item.IsRemote
+                        </span>
+                    </CellTemplate>
+                </TemplateColumn>
+                <TemplateColumn Title="Status" CellStyle="width: 4rem;" Sortable="true">
+                    <CellTemplate>
+                        <span class="hasRemoteOptionGridRowText"
+                              style="@ForegroundVariable.SetCssColor(context.Item!.Status == AppointmentStatus.Pending ? Amber : Blue)">
+                            @context.Item.Status.ToString()
+                        </span>
+                    </CellTemplate>
+                </TemplateColumn>
+                <TemplateColumn StickyRight="true" CellStyle="width: 3.5rem; padding:0;" Sortable="false">
+                    <CellTemplate>
+                        <IconButton Id="editRuleButton"
+                                    BackColor="transparent"
+                                    ForeColor="@Gray"
+                                    VectorSource="@IconPaths.PencilOutlinePath"
+                                    BoxShadow="none"
+                                    BorderRadius="0"
+                                    OnClick="@(async() => await EditAppointmetAsync(context.Item!))"
+                                    CssClasses="dataGridButton" />
+                    </CellTemplate>
+                </TemplateColumn>
+            </Columns>
+        </MudDataGrid>
+    }
 
 </ApplicationContainer>
+
+<style>
+
+    .pageContainer {
+        height: 100%;
+    }
+
+    #dataGridMyRulesHeader {
+        background-color: @StateManager.User!.Color.NormalizedColor();
+        color: @StateManager.User.Color.DarkOrWhite().NormalizedColor();
+    }
+
+    #editRuleButton {
+        width: 3.5rem;
+        height: 100%;
+        padding: @VeryLargePadding;
+    }
+
+    .description {
+        width: 100%;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+    .hasRemoteOptionGridRowText {
+        color: @ForegroundVariable.GetCssVariable();
+        font-weight: @BoldFont;
+    }
+
+</style>

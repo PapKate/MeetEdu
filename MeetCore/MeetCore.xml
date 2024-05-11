@@ -211,6 +211,46 @@
             Default constructor
             </summary>
         </member>
+        <member name="T:MeetCore.AppointmentDialog">
+            <summary>
+            The dialog for editing an appointment 
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentDialog.MudDialog">
+            <summary>
+            The dialog instance
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentDialog.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentDialog.Appointment">
+            <summary>
+            The appointment
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentDialog.JSRuntime">
+            <summary>
+            The <see cref="T:Microsoft.JSInterop.IJSRuntime"/> service
+            </summary>
+        </member>
+        <member name="M:MeetCore.AppointmentDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.AppointmentDialog.OnInitialized">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.AppointmentDialog.DownloadEvent_OnClick">
+            <summary>
+            Generates and downloads the calendar event
+            </summary>
+        </member>
         <member name="T:MeetCore.AppointmentRuleDialog">
             <summary>
             The dialog for creating and editing an appointment rule
@@ -1672,6 +1712,47 @@
             <summary>
             The active appointments page
             </summary>
+        </member>
+        <member name="F:MeetCore.Professor_AciveAppointmentsPage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_AciveAppointmentsPage.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_AciveAppointmentsPage.Department">
+            <summary>
+            The department
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_AciveAppointmentsPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_AciveAppointmentsPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_AciveAppointmentsPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_AciveAppointmentsPage.OnInitializedAsync">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_AciveAppointmentsPage.EditAppointmet(MeetBase.Web.AppointmentResponseModel)">
+            <summary>
+            Edits the specified <paramref name="appointment"/>
+            </summary>
+            <param name="appointment">The rule</param>
         </member>
         <member name="T:MeetCore.Professor_AppointmentsHistoryPage">
             <summary>

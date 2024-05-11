@@ -26,8 +26,8 @@ namespace MeetBase.Web
         /// <summary>
         /// The university id
         /// </summary>
-        public string UniversityId 
-        { 
+        public string UniversityId
+        {
             get => mUniversityId ?? string.Empty;
             set => mUniversityId = value;
         }
@@ -333,8 +333,8 @@ namespace MeetBase.Web
         /// <returns></returns>
         public Task<WebRequestResult<DepartmentLayoutResponseModel>> SetDepartmentLayoutImageAsync(string id, IFormFile file)
             => WebRequestsClient.Instance.PutFilesAsync<DepartmentLayoutResponseModel>(
-                GetAbsoluteUrl(MeetCoreAPIRoutes.GetDepartmentLayoutImagesRoute(id)), 
-                new List<FileUploadGroupDataModel>() { new FileUploadGroupDataModel("file", file) }, 
+                GetAbsoluteUrl(MeetCoreAPIRoutes.GetDepartmentLayoutImagesRoute(id)),
+                new List<FileUploadGroupDataModel>() { new FileUploadGroupDataModel("file", file) },
                 null);
 
         #endregion
@@ -630,7 +630,7 @@ namespace MeetBase.Web
         /// </summary>
         /// <param name="args">The arguments</param>
         /// <returns></returns>
-        public Task<WebRequestResult<IEnumerable<AppointmentResponseModel>>> GetAppointmentsAsync(APIArgs args)
+        public Task<WebRequestResult<IEnumerable<AppointmentResponseModel>>> GetAppointmentsAsync(AppointmentAPIArgs args)
             => WebRequestsClient.Instance.GetAsync<IEnumerable<AppointmentResponseModel>>(RouteHelpers.AttachParameters(GetAbsoluteUrl(MeetCoreAPIRoutes.AppointmentsRoute), args), null);
 
         /// <summary>
@@ -677,7 +677,7 @@ namespace MeetBase.Web
         /// </summary>
         /// <param name="url">The url</param>
         /// <returns></returns>
-        private static string GetAbsoluteUrl(string url) 
+        private static string GetAbsoluteUrl(string url)
             => $"https://localhost:44307" + url;
 
         #endregion

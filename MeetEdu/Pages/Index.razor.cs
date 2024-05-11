@@ -1,6 +1,7 @@
 ﻿using Amazon.Runtime.Internal.Transform;
 
 using Microsoft.AspNetCore.Components;
+using MudBlazor;
 
 namespace MeetEdu
 {
@@ -48,6 +49,12 @@ namespace MeetEdu
         [Inject]
         protected MeetCoreController CoreController { get; set; } = default!;
 
+        /// <summary>
+        /// The <see cref="MudBlazor"/> snack bar manager
+        /// </summary>
+        [Inject]
+        protected ISnackbar Snackbar { get; set; } = default!;
+
         #endregion
 
         #region Constructors
@@ -67,12 +74,14 @@ namespace MeetEdu
         /// <inheritdoc/>
         protected override async Task OnInitializedAsync()
         {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomCenter;
             var response = await Controller.GetUniversitiesAsync(null);
 
             if (response is null || response.Value.IsNullOrEmpty())
                 return;
 
             mUniversities = response.Value;
+
         }
 
         /// <inheritdoc/>

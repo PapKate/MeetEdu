@@ -17,7 +17,7 @@ namespace MeetBase
         /// <param name="weeklySchedule">The schedule</param>
         /// <param name="duration">The duration of the appointment</param>
         /// <param name="startMinutes">The minutes that the appointment can start</param>
-        /// <param name="invalidSpans">The invalid time slots</param>
+        /// <param name="reservedTimeSlots"></param>
         /// <returns></returns>
         public static IEnumerable<IReadOnlyRangeable<DateTimeOffset>> CalculateAppointmentDates(
             DateTimeOffset from,
@@ -25,10 +25,12 @@ namespace MeetBase
             IEnumerable<DayOfWeekTimeRange> weeklySchedule,
             TimeSpan duration,
             IEnumerable<int> startMinutes,
-            List<IReadOnlyRangeable<DateTimeOffset>> invalidSpans)
+            IEnumerable<IReadOnlyRangeable<DateTimeOffset>> reservedTimeSlots)
         {
             if (to < from)
                 return Enumerable.Empty<IReadOnlyRangeable<DateTimeOffset>>();
+
+            var invalidSpans = new List<IReadOnlyRangeable<DateTimeOffset>>() { new Range<DateTimeOffset>(from, to) };
 
             // Add according to the weekly schedule the ranges that are NOT in the weekly schedule
             foreach (var schedule in weeklySchedule)
@@ -52,6 +54,8 @@ namespace MeetBase
                     }
                 }
             }
+
+            invalidSpans.AddRange(reservedTimeSlots);
 
             // Merge the invalid spans
             invalidSpans = invalidSpans

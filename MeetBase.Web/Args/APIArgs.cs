@@ -108,7 +108,7 @@
 
         #endregion
     }
-    
+
     /// <summary>
     /// Arguments used for retrieving data that belong to a department layout
     /// </summary>
@@ -196,19 +196,9 @@
     /// <summary>
     /// Arguments used for retrieving data that belong to a professor
     /// </summary>
-    public class AppointmentRuleAPIArgs : APIArgs
+    public class AppointmentRuleAPIArgs : ProfessorAPIArgs
     {
         #region Public Properties
-
-        /// <summary>
-        /// Limit the result to entries with specific professor ids
-        /// </summary>
-        public IEnumerable<string>? IncludeProfessors { get; set; }
-
-        /// <summary>
-        /// Limit the result to entries without specific professor ids
-        /// </summary>
-        public IEnumerable<string>? ExcludeProfessors { get; set; }
 
         #endregion
 
@@ -218,6 +208,38 @@
         /// Default constructor
         /// </summary>
         public AppointmentRuleAPIArgs() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Arguments used for retrieving data that belong to a professor
+    /// </summary>
+    public class AppointmentAPIArgs : AppointmentRuleAPIArgs
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// Limit the result to entries with the specific statuses
+        /// </summary>
+        public IEnumerable<AppointmentStatus>? IncludeStatuses { get; set; }
+
+        /// <summary>
+        /// Limit the result to entries without the specific statuses
+        /// </summary>
+        public IEnumerable<AppointmentStatus>? ExcludeStatuses { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public AppointmentAPIArgs() : base()
         {
 
         }

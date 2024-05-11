@@ -240,6 +240,21 @@
             The text button
             </summary>
         </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mIsFormVisible">
+            <summary>
+            A flag indicating whether the form is visible or not
+            </summary>
+        </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mFormCssClass">
+            <summary>
+            Additional CSS class for the contact form container
+            </summary>
+        </member>
+        <member name="F:MeetEdu.ProfessorContactForm.mAppointmentInfoCssStyle">
+            <summary>
+            Additional CSS class for the appointment information
+            </summary>
+        </member>
         <member name="P:MeetEdu.ProfessorContactForm.Professor">
             <summary>
             The professor
@@ -265,9 +280,19 @@
             The <see cref="N:MudBlazor"/> snack bar manager
             </summary>
         </member>
+        <member name="P:MeetEdu.ProfessorContactForm.JSRuntime">
+            <summary>
+            The <see cref="T:Microsoft.JSInterop.IJSRuntime"/> service
+            </summary>
+        </member>
         <member name="P:MeetEdu.ProfessorContactForm.Controller">
             <summary>
             The controller
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ProfessorContactForm.IsFormVisible">
+            <summary>
+            A flag indicating whether the form is visible or not
             </summary>
         </member>
         <member name="M:MeetEdu.ProfessorContactForm.#ctor">
@@ -292,6 +317,28 @@
             <summary>
             Fires the event to send the message
             </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactForm.DownloadEvent_OnClick">
+            <summary>
+            Generates and downloads the calendar event
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactForm.ReturnToForm_OnClick">
+            <summary>
+            Resets and shows the form 
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactForm.GetReservedTimeSlotsAsync">
+            <summary>
+            Gets the reserved time slots of the <see cref="P:MeetEdu.ProfessorContactForm.Professor"/>
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ProfessorContactForm.GetAvailableTimeSlots(System.Collections.Generic.List{MeetBase.IReadOnlyRangeable{System.DateTimeOffset}})">
+            <summary>
+            Gets the available time slots for an appointment
+            </summary>
+            <param name="reservedTimeSlots">The reserved time slots from other appointments</param>
+            <returns></returns>
         </member>
         <member name="P:MeetEdu.ProfessorPreview.Model">
             <summary>
@@ -1337,7 +1384,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.MeetEduController.GetAppointmentsAsync(MeetBase.Web.APIArgs,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.MeetEduController.GetAppointmentsAsync(MeetBase.Web.AppointmentAPIArgs,System.Threading.CancellationToken)">
             <summary>
             Gets the appointments
             </summary>
@@ -1834,29 +1881,9 @@
             The appointment rule id
             </summary>
         </member>
-        <member name="P:MeetEdu.AppointmentEntity.Date">
+        <member name="P:MeetEdu.AppointmentEntity.DateStart">
             <summary>
             The date
-            </summary>
-        </member>
-        <member name="P:MeetEdu.AppointmentEntity.TimeStart">
-            <summary>
-            The time that the appointment begins
-            </summary>
-        </member>
-        <member name="P:MeetEdu.AppointmentEntity.TimeEnd">
-            <summary>
-            The time that the appointment ends
-            </summary>
-        </member>
-        <member name="P:MeetEdu.AppointmentEntity.IsCanceled">
-            <summary>
-            A flag indicating whether the subscription was canceled or not
-            </summary>
-        </member>
-        <member name="P:MeetEdu.AppointmentEntity.DateCanceled">
-            <summary>
-            The date the customer subscription was canceled
             </summary>
         </member>
         <member name="P:MeetEdu.AppointmentEntity.IsRemote">
@@ -3424,6 +3451,14 @@
             <param name="args">The arguments</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.APIArgsExtensions.CreateFilters``1(MeetBase.Web.AppointmentAPIArgs)">
+            <summary>
+            Creates the filters for the specified <paramref name="args"/>
+            </summary>
+            <typeparam name="T">The document type</typeparam>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.APIArgsExtensions.CreateFilters``1(MeetBase.Web.DepartmentRelatedAPIArgs)">
             <summary>
             Creates the filters for the specified <paramref name="args"/>
@@ -4393,6 +4428,11 @@
         <member name="P:MeetEdu.Index.CoreController">
             <summary>
             The controller
+            </summary>
+        </member>
+        <member name="P:MeetEdu.Index.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
             </summary>
         </member>
         <member name="M:MeetEdu.Index.#ctor">
