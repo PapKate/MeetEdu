@@ -1,15 +1,9 @@
-﻿using MeetBase.Web;
-
-using MeetEdu.Helpers;
+﻿using MeetEdu.Helpers;
 
 using Microsoft.AspNetCore.Mvc;
 
 using MongoDB.Bson;
 using MongoDB.Driver;
-
-using Newtonsoft.Json;
-
-using System.Text;
 
 namespace MeetEdu
 {
@@ -380,7 +374,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpPost]
         [Route(MeetCoreAPIRoutes.DepartmentLayoutsRoute)]
-        public async Task<ActionResult<DepartmentLayoutResponseModel>> AddDepartmentLayoutAsync([FromBody] DepartmentLayoutRequestModel model, CancellationToken cancellationToken = default) 
+        public async Task<ActionResult<DepartmentLayoutResponseModel>> AddDepartmentLayoutAsync([FromBody] DepartmentLayoutRequestModel model, CancellationToken cancellationToken = default)
             => (await DI.DepartmentsRepository.AddDepartmentLayoutAsync(DepartmentId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
@@ -569,10 +563,10 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpGet]
         [Route(MeetCoreAPIRoutes.SecretariesRoute)]
-        public async Task<ActionResult<IEnumerable<SecretaryResponseModel>>> GetSecretariesAsync([FromQuery] DepartmentRelatedAPIArgs? args, CancellationToken cancellationToken = default) 
-            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Secretaries, 
-                                                    x => x.ToResponseModel(), 
-                                                    args?.CreateFilters<SecretaryEntity>().AggregateFilters(), args, 
+        public async Task<ActionResult<IEnumerable<SecretaryResponseModel>>> GetSecretariesAsync([FromQuery] DepartmentRelatedAPIArgs? args, CancellationToken cancellationToken = default)
+            => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Secretaries,
+                                                    x => x.ToResponseModel(),
+                                                    args?.CreateFilters<SecretaryEntity>().AggregateFilters(), args,
                                                     cancellationToken, x => x.Role);
 
         /// <summary>
@@ -583,7 +577,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpPost]
         [Route(MeetCoreAPIRoutes.SecretariesRoute)]
-        public async Task<ActionResult<SecretaryResponseModel>> AddSecretaryAsync([FromBody] SecretaryRequestModel model, CancellationToken cancellationToken = default) 
+        public async Task<ActionResult<SecretaryResponseModel>> AddSecretaryAsync([FromBody] SecretaryRequestModel model, CancellationToken cancellationToken = default)
             => (await DI.SecretariesRepository.AddSecretaryAsync(model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
@@ -594,7 +588,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpGet]
         [Route(MeetCoreAPIRoutes.SecretaryRoute)]
-        public async Task<ActionResult<SecretaryResponseModel>?> GetSecretaryAsync([FromRoute] string secretaryId, CancellationToken cancellationToken = default) 
+        public async Task<ActionResult<SecretaryResponseModel>?> GetSecretaryAsync([FromRoute] string secretaryId, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetAsync(MeetEduDbMapper.Secretaries, x => x.ToResponseModel(), x => x.Id == secretaryId.ToObjectId(), cancellationToken);
 
         /// <summary>
@@ -606,7 +600,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpPut]
         [Route(MeetCoreAPIRoutes.SecretaryRoute)]
-        public async Task<ActionResult<SecretaryResponseModel>> UpdateSecretaryAsync([FromRoute] string secretaryId, [FromBody] SecretaryRequestModel model, CancellationToken cancellationToken = default) 
+        public async Task<ActionResult<SecretaryResponseModel>> UpdateSecretaryAsync([FromRoute] string secretaryId, [FromBody] SecretaryRequestModel model, CancellationToken cancellationToken = default)
             => (await DI.SecretariesRepository.UpdateSecretaryAsync(secretaryId.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
@@ -708,7 +702,7 @@ namespace MeetEdu
         [HttpPost]
         [Route(MeetCoreAPIRoutes.ProfessorOfficeLayoutsRoute)]
         public async Task<ActionResult<ProfessorOfficeLayoutResponseModel>> AddProfessorOfficeLayoutAsync([FromBody] ProfessorOfficeLayoutRequestModel model, CancellationToken cancellationToken = default)
-            => (await DI.ProfessorsRepository.AddProfessorOfficeLayoutAsync(ProfessorId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+            => (await DI.ProfessorsRepository.AddProfessorOfficeLayoutAsync(model.ProfessorId!.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
         /// Gets the professor office layout with the specified <paramref name="professorOfficeLayoutId"/>
@@ -833,10 +827,10 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpGet]
         [Route(MeetCoreAPIRoutes.AppointmentsRoute)]
-        public async Task<ActionResult<IEnumerable<AppointmentResponseModel>>> GetAppointmentsAsync([FromQuery] APIArgs args, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<AppointmentResponseModel>>> GetAppointmentsAsync([FromQuery] AppointmentAPIArgs args, CancellationToken cancellationToken = default)
             => await ControllerHelpers.GetManyAsync(MeetEduDbMapper.Appointments,
                                                     x => x.ToResponseModel(),
-                                                    Builders<AppointmentEntity>.Filter.Empty, args,
+                                                    args?.CreateFilters<AppointmentEntity>().AggregateFilters(), args,
                                                     cancellationToken, x => x.DateCreated);
 
         /// <summary>

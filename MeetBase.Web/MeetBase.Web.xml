@@ -1041,6 +1041,11 @@
             The member of the <see cref="P:MeetBase.Web.DepartmentContactMessageResponseModel.DepartmentId"/> property
             </summary>
         </member>
+        <member name="F:MeetBase.Web.DepartmentContactMessageResponseModel.mSecretaryId">
+            <summary>
+            The member of the <see cref="P:MeetBase.Web.DepartmentContactMessageResponseModel.SecretaryId"/> property
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.DepartmentId">
             <summary>
             The department id
@@ -1049,6 +1054,11 @@
         <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.Role">
             <summary>
             The role
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.SecretaryId">
+            <summary>
+            The secretary id
             </summary>
         </member>
         <member name="M:MeetBase.Web.DepartmentContactMessageResponseModel.#ctor">

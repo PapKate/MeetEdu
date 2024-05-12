@@ -44,6 +44,54 @@
             <inheritdoc/>
             </summary>
         </member>
+        <member name="F:MeetCore.AppointmentsDataGrid.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentsDataGrid.Appointments">
+            <summary>
+            The appointments
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentsDataGrid.IsEditable">
+            <summary>
+            A flag indicating whether the <see cref="P:MeetCore.AppointmentsDataGrid.Appointments"/> are editable or not
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentsDataGrid.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentsDataGrid.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.AppointmentsDataGrid.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.AppointmentsDataGrid.ActionButton_OnClick(MeetBase.Web.AppointmentResponseModel)">
+            <summary>
+            Edits the specified <paramref name="appointment"/>
+            </summary>
+            <param name="appointment">The rule</param>
+        </member>
+        <member name="M:MeetCore.AppointmentsDataGrid.SetStatusColor(MeetBase.AppointmentStatus)">
+            <summary>
+            Sets the color for the specified <paramref name="status"/>
+            </summary>
+            <param name="status">The status</param>
+            <returns></returns>
+        </member>
+        <member name="P:MeetCore.AppointmentsDataGrid.ActionButtonClicked">
+            <summary>
+            Fires when the action button of an appointment is clicked
+            </summary>
+        </member>
         <member name="T:MeetCore.FieldCheckBox">
             <summary>
             The check box
@@ -229,6 +277,11 @@
         <member name="P:MeetCore.AppointmentDialog.Appointment">
             <summary>
             The appointment
+            </summary>
+        </member>
+        <member name="P:MeetCore.AppointmentDialog.IsEditable">
+            <summary>
+            A flag indicating whether the <see cref="P:MeetCore.AppointmentDialog.Model"/> is editable or not
             </summary>
         </member>
         <member name="P:MeetCore.AppointmentDialog.JSRuntime">
@@ -1748,7 +1801,7 @@
             <inheritdoc/>
             </summary>
         </member>
-        <member name="M:MeetCore.Professor_AciveAppointmentsPage.EditAppointmet(MeetBase.Web.AppointmentResponseModel)">
+        <member name="M:MeetCore.Professor_AciveAppointmentsPage.EditAppointmetAsync(MeetBase.Web.AppointmentResponseModel)">
             <summary>
             Edits the specified <paramref name="appointment"/>
             </summary>
@@ -1758,6 +1811,47 @@
             <summary>
             The appointments history page
             </summary>
+        </member>
+        <member name="F:MeetCore.Professor_AppointmentsHistoryPage.mDialogOptions">
+            <summary>
+            The <see cref="T:MudBlazor.MudDialog"/> options
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_AppointmentsHistoryPage.Professor">
+            <summary>
+            The professor
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_AppointmentsHistoryPage.Department">
+            <summary>
+            The department
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_AppointmentsHistoryPage.DialogService">
+            <summary>
+            The dialog service
+            </summary>
+        </member>
+        <member name="P:MeetCore.Professor_AppointmentsHistoryPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_AppointmentsHistoryPage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_AppointmentsHistoryPage.OnInitializedAsync">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Professor_AppointmentsHistoryPage.ViewAppointmetAsync(MeetBase.Web.AppointmentResponseModel)">
+            <summary>
+            Views the specified <paramref name="appointment"/> details
+            </summary>
+            <param name="appointment">The rule</param>
         </member>
         <member name="T:MeetCore.Professor_ContactFormPage">
             <summary>

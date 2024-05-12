@@ -17,14 +17,15 @@
 
     <div class="formFieldsAndImageContainer">
         <div class="formFieldsContainer">
-            <MudTextField T="string" Text="Rule" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
-            <MudTextField T="string" Text="Date" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
-            <MudTextField T="string" Text="Time start - Time end" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
+            <MudTextField T="string" Text="Type" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
             <MudTextField T="string" Text="First name" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
             <MudTextField T="string" Text="Last name" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
             <MudTextField T="string" Text="Email" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
             <MudTextField T="string" Text="Phone number" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
             <MudTextField T="string" Text="Message" Lines="5" ReadOnly="true" Variant="Variant.Outlined" Class="readonlyFormField" />
+            <MudCheckBox T="bool" Value="false" ReadOnly="true" Class="formCheckBox">Remote meeting</MudCheckBox>
+            <MudButton Color="@Color.Info" Variant="@Variant.Filled" Class="readonlyFormButton">Set date</MudButton>
+            <MudButton Color="@Color.Dark" Variant="@Variant.Filled" Class="readonlyFormButton">Actions</MudButton>
         </div>
         <div class="formImageContainer">
             <MudCarousel Class="mud-width-full" Style="height:16rem;" ShowArrows="false" ShowBullets="false" AutoCycle="@false" TData="object"
@@ -91,4 +92,15 @@
     .formFieldsAndImageContainer {
         background-color: @User!.Color.HexToRGBA(0.4);
     }
+    
+    .readonlyFormButton {
+        height: 40px;
+        background:@White.NormalizedColor();
+        color: @Amber.NormalizedColor();
+        filter: @LightFilterDropShadow;
+        border-radius: 12px;
+        text-transform: none;
+        font-weight: 600;
+    }
+
 </style>

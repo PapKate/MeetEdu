@@ -89,17 +89,17 @@ namespace MeetEdu
         /// <summary>
         /// Sets a professor office layout image
         /// </summary>
-        /// <param name="professorId">The professor id</param>
+        /// <param name="layoutId">The professor id</param>
         /// <param name="file">The file</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns></returns>
-        public async Task<WebServerFailable<ProfessorOfficeLayoutEntity>> SetProfessorOfficeLayoutImageAsync(ObjectId professorId, IFormFile file, CancellationToken cancellationToken = default)
+        public async Task<WebServerFailable<ProfessorOfficeLayoutEntity>> SetProfessorOfficeLayoutImageAsync(ObjectId layoutId, IFormFile file, CancellationToken cancellationToken = default)
         {
             return await RepositoryHelpers.SetImageAsync<ProfessorOfficeLayoutRequestModel, ProfessorOfficeLayoutEntity>(
-                                                professorId,
+                                                layoutId,
                                                 $"{MeetEduConstants.Professors.ToLower()}/{MeetEduConstants.Layouts.ToLower()}/",
                                                 file,
-                                                (model) => UpdateProfessorOfficeLayoutAsync(professorId, model, cancellationToken),
+                                                (model) => UpdateProfessorOfficeLayoutAsync(layoutId, model, cancellationToken),
                                                 cancellationToken);
         }
 

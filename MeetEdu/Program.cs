@@ -21,7 +21,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers().AddNewtonsoftJson((options) => NewtonsoftHelpers.ConfigureSerializer(options.SerializerSettings));
+builder.Services.AddControllers((options) =>
+{
+    options.EnableEndpointRouting = false;
+    options.ModelBinderProviders.Insert(0, CommaSeparatedModelBinderProvider.Instance);
+}).AddNewtonsoftJson((options) => NewtonsoftHelpers.ConfigureSerializer(options.SerializerSettings));
 
 // AutoMapper
 builder.Services.AddMapper();

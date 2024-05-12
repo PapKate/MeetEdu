@@ -12,6 +12,11 @@
         /// </summary>
         private string? mDepartmentId;
 
+        /// <summary>
+        /// The member of the <see cref="SecretaryId"/> property
+        /// </summary>
+        private string? mSecretaryId;
+
         #endregion
 
         #region Public Properties
@@ -29,6 +34,15 @@
         /// The role
         /// </summary>
         public SecretaryRole Role { get; set; }
+
+        /// <summary>
+        /// The secretary id
+        /// </summary>
+        public string SecretaryId
+        {
+            get => mSecretaryId ?? string.Empty;
+            set => mSecretaryId = value;
+        }
 
         #endregion
 

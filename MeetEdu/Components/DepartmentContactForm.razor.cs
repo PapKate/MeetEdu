@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using MudBlazor;
 
 namespace MeetEdu
 {
@@ -42,6 +43,16 @@ namespace MeetEdu
 
         #endregion
 
+        #region Protected Properties
+
+        /// <summary>
+        /// The <see cref="MudBlazor"/> snack bar manager
+        /// </summary>
+        [Inject]
+        protected ISnackbar Snackbar { get; set; } = default!;
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -60,7 +71,7 @@ namespace MeetEdu
         protected override void OnAfterRender(bool firstRender)
         {
             base.OnAfterRender(firstRender);
-            if(firstRender)
+            if (firstRender)
             {
                 if (mVectorComponent?.Instance is BaseVector vector)
                 {
@@ -88,8 +99,31 @@ namespace MeetEdu
         /// </summary>
         private async void SendButton_OnClick()
         {
+            if (FormTemplate is null)
+            {
+                // Shows the error
+                Snackbar.Add($"Error: No form was found!", Severity.Error);
+
+                // Returns
+                return;
+            }
+
+            if (mPhoneNumber is null || mContactMessage == default
+             || mContactMessage.Message.IsNullOrEmpty()
+             || mContactMessage.FirstName.IsNullOrEmpty()
+             || mContactMessage.LastName.IsNullOrEmpty())
+            {
+                // Shows the error
+                Snackbar.Add($"Error: Please fill all form inputs and try again!", Severity.Error);
+
+                // Returns
+                return;
+            }
+
             mContactMessage.PhoneNumber = mPhoneNumber;
             // TODO: mContactMessage.MemberId = "id";
+
+
             await SendButtonCliked.InvokeAsync(mContactMessage);
         }
 

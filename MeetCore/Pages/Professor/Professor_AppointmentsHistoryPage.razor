@@ -2,12 +2,33 @@
 
 @inherits BasePage
 
+@using static MeetBase.Blazor.PaletteColors
+@using static MeetBase.Blazor.CssVariables
+@using static MeetBase.Blazor.Personalization
+
 @namespace MeetCore
 
 <PageTitle>@EnglishLocalization.Appointments @EnglishLocalization.History</PageTitle>
 
 <ApplicationContainer>
 
-    <h3>Appointments History</h3>
+    <div class="dataGridHeader" id="dataGridMyAppointmentsHistoryHeader">My history</div>
+
+    <AppointmentsDataGrid Appointments="@mAppointments"
+                          IsEditable="false"
+                          ActionButtonClicked="@(async (e) => await ViewAppointmetAsync(e))" />
 
 </ApplicationContainer>
+
+
+<style>
+    .pageContainer {
+        height: 100%;
+    }
+
+    #dataGridMyAppointmentsHistoryHeader {
+        background-color: @Gray.NormalizedColor();
+        color: @Gray.DarkOrWhite().NormalizedColor();
+    }
+
+</style>

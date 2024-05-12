@@ -36,6 +36,12 @@ namespace MeetCore
         [Parameter]
         public AppointmentResponseModel Appointment { get; set; } = default!;
 
+        /// <summary>
+        /// A flag indicating whether the <see cref="Model"/> is editable or not
+        /// </summary>
+        [Parameter]
+        public bool IsEditable { get; set; } = true;
+
         #endregion
 
         #region Protected Properties

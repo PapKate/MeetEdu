@@ -84,7 +84,7 @@ namespace MeetCore
             if (!response.IsSuccessful)
             {
                 // Show the error
-                Snackbar.Add(response.ErrorMessage, Severity.Info);
+                Snackbar.Add(response.ErrorMessage, Severity.Error);
                 // Return
                 return;
             }
@@ -92,7 +92,7 @@ namespace MeetCore
             if (response.Result.IsNullOrEmpty())
             {
                 // Show the error
-                Snackbar.Add("No appointments", Severity.Info);
+                Snackbar.Add("No appointments", Severity.Error);
                 // Return
                 return;
             }
@@ -152,10 +152,14 @@ namespace MeetCore
                     return;
                 }
 
+                if (appointmentResponse.Result.Status == AppointmentStatus.Canceled || appointmentResponse.Result.Status == AppointmentStatus.Completed)
+                {
+                    mAppointments.Remove(mAppointments.First(x => x.Id == appointmentResponse.Result.Id));
+                    return;
+                }
+
                 mAppointments.First(x => x.Id == appointmentResponse.Result.Id).Status = appointmentResponse.Result.Status;
                 mAppointments.First(x => x.Id == appointmentResponse.Result.Id).MeetLink = appointmentResponse.Result.MeetLink;
-
-                //((IMudStateHasChanged)mDatagrid).StateHasChanged();
             }
         }
 

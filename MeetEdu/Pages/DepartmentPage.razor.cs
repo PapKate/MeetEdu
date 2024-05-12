@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc;
+using MudBlazor;
 
 namespace MeetEdu
 {
@@ -45,6 +45,12 @@ namespace MeetEdu
         /// </summary>
         [Inject]
         protected MeetEduController Controller { get; set; } = default!;
+
+        /// <summary>
+        /// The <see cref="MudBlazor"/> snack bar manager
+        /// </summary>
+        [Inject]
+        protected ISnackbar Snackbar { get; set; } = default!;
 
         #endregion
 
@@ -92,18 +98,21 @@ namespace MeetEdu
         /// <param name="message">The message</param>
         private async void DepartmentContactForm_SendOnClick(DepartmentContactMessageRequestModel message)
         {
-            if(Department is null)
+            if (Department is null)
                 return;
 
             var messageResponse = await Controller.AddDepartmentContactMessageAsync(Department.Id, message);
-            
+
             if (messageResponse.Value is null)
             {
-                // TODO: Show error
+                // Shows the error
+                Snackbar.Add("Error: Message not sent", Severity.Error);
+
+                // Returns
                 return;
             }
 
-            // TODO: Success message
+            Snackbar.Add("Success: Message sent!", Severity.Success);
         }
 
         #endregion

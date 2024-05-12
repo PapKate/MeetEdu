@@ -129,6 +129,18 @@
                 </div>
             }
 
+            @if (!mLayouts.IsNullOrEmpty())
+            {
+                <div class="departmentPageLayoutSectionContainer">
+                    <span class="sectionHeader">Office Layouts</span>
+                    <div class="departmentPageLayoutsContainer">
+                        @foreach (var departmentLayout in mLayouts)
+                        {
+                            <LayoutPresenter Model="@departmentLayout" />
+                        }
+                    </div>
+                </div>
+            }
             @if (Model.ContactMessageTemplate is not null)
             {
                 <div class="departmentPageContactSectionContainer">

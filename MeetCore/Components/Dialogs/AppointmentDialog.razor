@@ -45,7 +45,8 @@
             <MudSelect T="AppointmentStatus" @bind-Value="@Model.Status"
                        Placeholder="Status"
                         FullWidth="true"
-                        Class="dialogInput"
+                       ReadOnly="@(!IsEditable)"
+                       Class="dialogInput"
                         Variant="Variant.Text">
                 @foreach (var value in Enum.GetValues<AppointmentStatus>())
                 {
@@ -59,6 +60,7 @@
                               Converter="@(new MudBlazor.Converter<Uri>() { SetFunc = value => value?.ToString(), GetFunc = text => !text.IsNullOrEmpty() ? new Uri(text) : null })"
                               Class="dialogContentFullRow dialogInput"
                               FullWidth="true"
+                              ReadOnly="@(!IsEditable)"
                               Variant="Variant.Text" />
             }
             <span class="addEventText">Add event to your calendar: </span>
@@ -66,10 +68,13 @@
         </div>
     </DialogContent>
     <DialogActions>
-        <div class="dialogActionsContainer">
-            <MudButton Variant="Variant.Text" Color="Color.Error" OnClick="@CancelButton_OnClick" Class="px-10">Cancel</MudButton>
-            <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@SaveButton_OnClick" Class="px-10">Save</MudButton>
-        </div>
+        @if (IsEditable)
+        {
+            <div class="dialogActionsContainer">
+                <MudButton Variant="Variant.Text" Color="Color.Error" OnClick="@CancelButton_OnClick" Class="px-10">Cancel</MudButton>
+                <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@SaveButton_OnClick" Class="px-10">Save</MudButton>
+            </div>
+        }
     </DialogActions>
 </MudDialog>
 

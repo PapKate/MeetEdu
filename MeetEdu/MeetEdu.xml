@@ -34,6 +34,11 @@
             The department message template
             </summary>
         </member>
+        <member name="P:MeetEdu.DepartmentContactForm.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
         <member name="M:MeetEdu.DepartmentContactForm.#ctor">
             <summary>
             Default constructor
@@ -1197,7 +1202,7 @@
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
         </member>
-        <member name="M:MeetEdu.MeetCoreController.GetAppointmentsAsync(MeetBase.Web.APIArgs,System.Threading.CancellationToken)">
+        <member name="M:MeetEdu.MeetCoreController.GetAppointmentsAsync(MeetBase.Web.AppointmentAPIArgs,System.Threading.CancellationToken)">
             <summary>
             Gets the appointments
             </summary>
@@ -1556,6 +1561,48 @@
             Creates and returns a <see cref="T:MeetBase.Web.UserResponseModel"/> from the current <see cref="T:MeetEdu.UserEntity"/>
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:MeetEdu.EnumCommaSeparatedModelBinder">
+            <summary>
+            Used for converting comma separated <see cref="T:System.Enum"/>s to <see cref="T:System.Collections.Generic.IEnumerable`1"/>s
+            </summary>
+        </member>
+        <member name="M:MeetEdu.EnumCommaSeparatedModelBinder.BindModelAsync(Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingContext)">
+            <summary>
+            Attempts to bind a model.
+            </summary>
+            <param name="bindingContext">The <see cref="T:Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingContext"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ReflectionHelpers.CreateList(System.Type)">
+            <summary>
+            Creates and returns a <see cref="T:System.Collections.Generic.List`1"/> that can contains items of the specified <paramref name="type"/>
+            </summary>
+            <param name="type">The type of the items the list contains</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetEdu.CommaSeparatedModelBinderProvider">
+            <summary>
+            Provides the <see cref="T:MeetEdu.EnumCommaSeparatedModelBinder"/> when necessary
+            </summary>
+        </member>
+        <member name="F:MeetEdu.CommaSeparatedModelBinderProvider.mInstace">
+            <summary>
+            The member of the <see cref="P:MeetEdu.CommaSeparatedModelBinderProvider.Instance"/> property
+            </summary>
+        </member>
+        <member name="P:MeetEdu.CommaSeparatedModelBinderProvider.Instance">
+            <summary>
+            The single instance of the <see cref="T:MeetEdu.CommaSeparatedModelBinderProvider"/>
+            </summary>
+        </member>
+        <member name="M:MeetEdu.CommaSeparatedModelBinderProvider.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.CommaSeparatedModelBinderProvider.GetBinder(Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderProviderContext)">
+            <inheritdoc/>
         </member>
         <member name="T:MeetEdu.EntryPoint">
             <summary>
@@ -4279,6 +4326,11 @@
             The controller
             </summary>
         </member>
+        <member name="P:MeetEdu.DepartmentPage.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
         <member name="M:MeetEdu.DepartmentPage.#ctor">
             <summary>
             Default constructor
@@ -4983,7 +5035,7 @@
             <summary>
             Sets a professor office layout image
             </summary>
-            <param name="professorId">The professor id</param>
+            <param name="layoutId">The professor id</param>
             <param name="file">The file</param>
             <param name="cancellationToken">The cancellation token</param>
             <returns></returns>
