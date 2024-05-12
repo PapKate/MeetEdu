@@ -125,6 +125,8 @@ namespace MeetEdu
 
 
             await SendButtonCliked.InvokeAsync(mContactMessage);
+
+            ResetForm();
         }
 
         #endregion

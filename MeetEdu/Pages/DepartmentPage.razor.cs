@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 using MudBlazor;
 
 namespace MeetEdu
@@ -103,7 +104,7 @@ namespace MeetEdu
 
             var messageResponse = await Controller.AddDepartmentContactMessageAsync(Department.Id, message);
 
-            if (messageResponse.Value is null)
+            if (messageResponse.Result is null || (messageResponse.Result is ObjectResult messageResult && messageResult.Value is null))
             {
                 // Shows the error
                 Snackbar.Add("Error: Message not sent", Severity.Error);
