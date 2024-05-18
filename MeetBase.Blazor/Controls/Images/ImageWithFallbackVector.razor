@@ -5,8 +5,9 @@
 <div class="imageWithFallbackIconContainer @CssClasses" id="@Id" style="@nameof(AspectRatio).SetCustomCssVariable(AspectRatio)">
     @if (mIsFallbackIconVisible)
     {
-        <div class="imageWithFallbackIconIcon" style="@nameof(FallbackIconBackground).SetCustomCssColor(FallbackIconBackground) @nameof(FallbackIconMargin).SetCustomCssColor(FallbackIconMargin)">
-            <VectorIcon Color="@FallbackIconColor" VectorSource="@FallbackIconVectorSource" />
+        <div class="imageWithFallbackIconIcon" style="@nameof(FallbackIconMargin).SetCustomCssColor(FallbackIconMargin)">
+            <DynamicComponent Type="@VectorType"
+                              @ref="@mVectorComponent" />
         </div>
     }
     else
@@ -28,7 +29,6 @@
         position: relative;
         width: 100%;
         height: 100%;
-        background: @nameof(FallbackIconBackground).GetCustomCssVariable();
         padding: @nameof(FallbackIconMargin).GetCustomCssVariable();
     }
 

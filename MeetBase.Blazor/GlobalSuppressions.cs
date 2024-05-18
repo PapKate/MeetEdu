@@ -8,3 +8,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Usage", "BL0007:Component parameters should be auto properties", Justification = "<Pending>", Scope = "namespaceanddescendants", Target = "~N:MeetBase.Blazor")]
 [assembly: SuppressMessage("", "CSS002:Unrecognized '@' block type.", Justification = "<Pending>", Scope = "namespaceanddescendants", Target = "~N:MeetBase.Blazor")]
 [assembly: SuppressMessage("", "CSS039:Unexpected character sequence in property value.", Justification = "<Pending>", Scope = "namespaceanddescendants", Target = "~N:MeetBase.Blazor")]
+[assembly: SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.", Justification = "<Pending>", Scope = "namespaceanddescendants", Target = "~N:MeetBase.Blazor")]

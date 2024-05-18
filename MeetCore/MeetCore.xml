@@ -600,6 +600,11 @@
             THe model
             </summary>
         </member>
+        <member name="P:MeetCore.UpdateLayoutDialog`1.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
         <member name="M:MeetCore.UpdateLayoutDialog`1.#ctor">
             <summary>
             Default constructor

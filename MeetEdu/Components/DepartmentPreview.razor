@@ -36,7 +36,13 @@
         <div class="modelInfoContainer">
             <div class="modelImageAndContactContainer">
                 <div class="modelImageContainer" style="@BorderBrushVariable.SetCssColor(Model!.Color)">
-                    <img class="modelImage" src="@Model.ImageUrl?.ToString()" alt="@Model.Name" />
+                    <ImageWithFallbackVector CssClasses="modelImage"
+                                             ImageSource="@Model.ImageUrl?.ToString()"
+                                             AspectRatio="1 / 1"
+                                             VectorType="@typeof(DepartmentVector)"
+                                             FallbackIconColor="@Model.Color"
+                                             FallbackIconMargin="1rem"
+                                             AlternateText="@Model.Name" />
                 </div>
                 <div class="modelContactContainer">
                     <div class="modelContactImage">
@@ -69,7 +75,7 @@
             }
              <div class="modelWeeklyScheduleContainer">
                 <div class="modelWeeklySchedule">
-                    <span class="modelWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(Model.Color)">Secretary</span>
+                    <span class="modelWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(Model.Color)">Secretary hours</span>
                 </div>
                 @if(Model.WorkHours is not null)
                 {

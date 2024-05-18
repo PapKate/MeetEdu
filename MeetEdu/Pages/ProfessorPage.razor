@@ -35,12 +35,11 @@
                 <div class="staffMemberInfoContainer" style="@ForegroundVariable.SetCssColor(Model.User.Color)">
                     <div class="staffMemberImageAndContactContainer">
                         <div class="staffMemberImageContainer">
-                            <ImageWithFallbackIcon CssClasses="staffMemberImage"
+                            <ImageWithFallbackVector CssClasses="staffMemberImage"
                                                    ImageSource="@Model.User!.ImageUrl?.ToString()"
                                                    AspectRatio="1 / 1"
-                                                   FallbackIconVectorSource="@IconPaths.AccountPath"
+                                                   VectorType="@typeof(AvatarVector)"
                                                    FallbackIconColor="@Model.User.Color"
-                                                   FallbackIconBackground="@Model.User.Color.DarkOrWhite()"
                                                    FallbackIconMargin="1rem"
                                                    AlternateText="@Model.User.Username" />
 
@@ -49,7 +48,7 @@
                             <div class="staffMemberContactImage">
                                 <MapMarkerVector Color="@Model.User.Color" />
                             </div>
-                            <span class="staffMemberContactValue">@Model.User.Location?.Address</span>
+                            <span class="staffMemberContactValue">@(Model.User.Location is not null ? $"{Model.User.Location.Address}, {Model.User.Location.City}, {Model.User.Location.Postcode}" : "-")</span>
 
                             <div class="staffMemberContactImage">
                                 <CallVector Color="@Model.User.Color" />

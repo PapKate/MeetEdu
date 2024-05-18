@@ -345,6 +345,11 @@
             <param name="reservedTimeSlots">The reserved time slots from other appointments</param>
             <returns></returns>
         </member>
+        <member name="T:MeetEdu.ProfessorPreview">
+            <summary>
+            The professor preview
+            </summary>
+        </member>
         <member name="P:MeetEdu.ProfessorPreview.Model">
             <summary>
             The model

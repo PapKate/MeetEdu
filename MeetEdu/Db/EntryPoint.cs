@@ -78,7 +78,7 @@ namespace MeetEdu
                 {
                     Name = "University of Patras",
                     Color = "EBCA97",
-                    ImageUrl = new Uri("https://localhost:7125/universities/651a674479477d03820659bd-21roaglb.png"),
+                    ImageUrl = new Uri("https://localhost:44307/universities/651a674479477d03820659bd-21roaglb.png"),
                     LabelIds = new List<string>()
                     {
                     }
@@ -87,7 +87,7 @@ namespace MeetEdu
                 {
                     Name = "University of Crete",
                     Color = "D8726A",
-                    ImageUrl = new Uri("https://localhost:7125/universities/65ede25ebc5eba24b98e3200-agr5bpoe.png"),
+                    ImageUrl = new Uri("https://localhost:44307/universities/65ede25ebc5eba24b98e3200-agr5bpoe.png"),
                     LabelIds = new List<string>()
                     {
                     }
@@ -96,7 +96,7 @@ namespace MeetEdu
                 {
                     Name = "National Technical University of Athens",
                     Color = "C5C5C5",
-                    ImageUrl = new Uri("https://localhost:7125/universities/65ede26abc5eba24b98e3201-peaoh1jd.png"),
+                    ImageUrl = new Uri("https://localhost:44307/universities/65ede26abc5eba24b98e3201-peaoh1jd.png"),
                     LabelIds = new List<string>()
                     {
                     }
@@ -105,7 +105,7 @@ namespace MeetEdu
                 {
                     Name = "University of Mecedonia",
                     Color = "0067C8",
-                    ImageUrl = new Uri("https://localhost:7125/universities/65ede276bc5eba24b98e3202-0f2tuas3.png"),
+                    ImageUrl = new Uri("https://localhost:44307/universities/65ede276bc5eba24b98e3202-0f2tuas3.png"),
                     LabelIds = new List<string>()
                     {
                     }
@@ -114,7 +114,7 @@ namespace MeetEdu
                 {
                     Name = "Aristotle University Of Thessaloniki",
                     Color = "952927",
-                    ImageUrl = new Uri("https://localhost:7125/universities/65ede280bc5eba24b98e3203-ukik44qp.png"),
+                    ImageUrl = new Uri("https://localhost:44307/universities/65ede280bc5eba24b98e3203-ukik44qp.png"),
                     LabelIds = new List<string>()
                     {
                     }
@@ -123,7 +123,7 @@ namespace MeetEdu
                 {
                     Name = "National and Kapodistrian University of Athens",
                     Color = "646464",
-                    ImageUrl = new Uri("https://localhost:7125/universities/65ede2e0bc5eba24b98e320d-npqjqpmr.png"),
+                    ImageUrl = new Uri("https://localhost:44307/universities/65ede2e0bc5eba24b98e320d-npqjqpmr.png"),
                     LabelIds = new List<string>()
                     {
                     }
@@ -132,7 +132,7 @@ namespace MeetEdu
                 {
                     Name = "University Of Thessaly",
                     Color = "A1DAFB",
-                    ImageUrl = new Uri("https://localhost:7125/universities/65ede2efbc5eba24b98e320e-vorvfk5r.png"),
+                    ImageUrl = new Uri("https://localhost:44307/universities/65ede2efbc5eba24b98e320e-vorvfk5r.png"),
                     LabelIds = new List<string>()
                     {
                     }
@@ -141,7 +141,7 @@ namespace MeetEdu
                 {
                     Name = "Hellenic Mediterranean University",
                     Color = "B69A56",
-                    ImageUrl = new Uri("https://localhost:7125/universities/65ede2fdbc5eba24b98e320f-h5cd55ml.png"),
+                    ImageUrl = new Uri("https://localhost:44307/universities/65ede2fdbc5eba24b98e320f-h5cd55ml.png"),
                     LabelIds = new List<string>()
                     {
                     }

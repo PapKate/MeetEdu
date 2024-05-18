@@ -1,13 +1,39 @@
 ﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MeetBase.Blazor
 {
-    public partial class ImageWithFallbackIcon
+    public partial class ImageWithFallbackIcon : BaseImageWithFallback
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// The vector source of the fallback icon
+        /// </summary>
+        [Parameter]
+        public VectorSource? FallbackIconVectorSource { get; set; }
+
+        /// <summary>
+        /// The background of the fallback icon
+        /// </summary>
+        [Parameter]
+        public string? FallbackIconBackground { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public ImageWithFallbackIcon() : base()
+        {
+
+        }
+
+        #endregion
+    }
+
+    public class BaseImageWithFallback : ComponentBase
     {
         #region Protected Members
 
@@ -42,22 +68,10 @@ namespace MeetBase.Blazor
         public string? AlternateText { get; set; }
 
         /// <summary>
-        /// The vector source of the fallback icon
-        /// </summary>
-        [Parameter]
-        public VectorSource? FallbackIconVectorSource { get; set; }
-
-        /// <summary>
-        /// The background of the fallback icon
-        /// </summary>
-        [Parameter]
-        public string? FallbackIconBackground { get; set; }
-
-        /// <summary>
         /// The color of the fallback icon
         /// </summary>
         [Parameter]
-        public string? FallbackIconColor { get; set; }
+        public string FallbackIconColor { get; set; } = PaletteColors.Amber;
 
         /// <summary>
         /// The margin of the fallback icon
@@ -84,7 +98,7 @@ namespace MeetBase.Blazor
         /// <summary>
         /// Default constructor
         /// </summary>
-        public ImageWithFallbackIcon() : base()
+        public BaseImageWithFallback() : base()
         {
 
         }

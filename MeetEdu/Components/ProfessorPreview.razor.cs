@@ -5,6 +5,9 @@ using static MeetBase.Blazor.CssVariables;
 
 namespace MeetEdu
 {
+    /// <summary>
+    /// The professor preview
+    /// </summary>
     public partial class ProfessorPreview
     {
         #region Public Properties

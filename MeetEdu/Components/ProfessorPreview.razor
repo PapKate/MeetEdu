@@ -28,12 +28,11 @@
             </div>
             <div class="professorImageAndContactContainer">
                 <div class="professorImageContainer">
-                    <ImageWithFallbackIcon CssClasses="modelImage"
+                    <ImageWithFallbackVector CssClasses="modelImage"
                                            ImageSource="@Model.User!.ImageUrl?.ToString()"
                                            AspectRatio="1 / 1"
-                                           FallbackIconVectorSource="@IconPaths.AccountPath"
+                                           VectorType="@typeof(AvatarVector)"
                                            FallbackIconColor="@Model.User.Color"
-                                           FallbackIconBackground="@Model.User.Color.DarkOrWhite()"
                                            FallbackIconMargin="1rem"
                                            AlternateText="@Model.User.Username" />
                 </div>

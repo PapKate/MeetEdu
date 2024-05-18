@@ -35,7 +35,13 @@
             <div class="staffMemberInfoContainer" style="@ForegroundVariable.SetCssColor(User.Color)">
                 <div class="staffMemberImageAndContactContainer">
                     <div class="staffMemberImageContainer">
-                        <img class="staffMemberImage" src="@User.ImageUrl?.ToString()" alt="name" />
+                        <ImageWithFallbackVector CssClasses="staffMemberImage"
+                                                 ImageSource="@User!.ImageUrl?.ToString()"
+                                                 AspectRatio="1 / 1"
+                                                 VectorType="@typeof(AvatarVector)"
+                                                 FallbackIconColor="@User.Color"
+                                                 FallbackIconMargin="1rem"
+                                                 AlternateText="@User.Username" />
                     </div>
                     <div class="staffMemberContactContainer">
                         <div class="staffMemberContactImage">

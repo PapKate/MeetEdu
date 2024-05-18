@@ -43,6 +43,16 @@ namespace MeetCore
 
         #endregion
 
+        #region Protected Properties
+
+        /// <summary>
+        /// The <see cref="MudBlazor"/> snack bar manager
+        /// </summary>
+        [Inject]
+        protected ISnackbar Snackbar { get; set; } = default!;
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -78,6 +88,16 @@ namespace MeetCore
         /// </summary>
         private async void Save()
         {
+            // If no image is set for the layout...
+            if(mFile is null)
+            {
+                // Shows the error
+                Snackbar.Add("Please add an image and try again!", Severity.Error);
+
+                // Returns
+                return;
+            }
+
             if(Model is not null)
             {
                 Model.Model!.DisplayTheme = mTheme;
