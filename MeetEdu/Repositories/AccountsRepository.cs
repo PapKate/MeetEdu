@@ -1,4 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace MeetEdu
 {
@@ -43,23 +48,79 @@ namespace MeetEdu
             if (!result.IsSuccessful)
                 // Return the bad request with the respective error message
                 return result.ErrorMessage;
+
             var user = result.Result!;
+
+            var claims = new List<Claim>
+            {
+                new(ClaimTypes.NameIdentifier, user.Id.ToString())
+            };
 
             var secretary = await MeetEduDbMapper.Secretaries.FirstOrDefaultAsync(x => x.UserId == user.Id);
 
-            // If the user is a secretary...
             if (secretary is not null)
-                return new LoginResult(user, secretary);
+                claims.Add(new(JwtTokenConstants.SecretaryIdClaimType, secretary.Id.ToString()));
 
             var professor = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.UserId == user.Id);
 
-            // If the user is a professor...
             if (professor is not null)
-                return new LoginResult(user, professor);
+                claims.Add(new(JwtTokenConstants.ProfessorIdClaimType, professor.Id.ToString()));
 
-            var member = await MeetEduDbMapper.Members.FirstOrDefaultAsync(x => x.UserId == user.Id);
+            //var member = await MeetEduDbMapper.Members.FirstOrDefaultAsync(x => x.UserId == user.Id);
 
-            return new LoginResult(user, member);
+            var token = GenerateJwtToken(claims);
+
+            return new LoginResult(user, token)
+            {
+                Secretary = secretary,
+                Professor = professor,
+                //Member = member
+            };
+        }
+
+        /// <summary>
+        /// Generates a JWT bearer token containing the users username.
+        /// NOTE: Since we do not encrypt the body of the token it is advisable not to put
+        ///       sensitive information at the user claims!
+        /// </summary>
+        /// <param name="claims">The claims of the user we want to encrypt in the token</param>
+        /// <returns></returns>
+        public static string GenerateJwtToken(ICollection<Claim> claims)
+        {
+            // Create the credentials used to generate the token
+            var credentials = new SigningCredentials(
+                // Get the secret key from configuration
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes("d7sd1rhq8QastquUv9idfdfxds4512fdfg67f")),
+                // Use HS256 algorithm
+                SecurityAlgorithms.HmacSha256);
+
+            // If no claims are inserter...
+            if (claims == null)
+                // Create a new list of claims to add the required claims
+                claims = new List<Claim>();
+
+            //// The username using the Identity name so it fills out the HttpContext.User.Identity.Name value
+            //claims.Add(new Claim(ClaimsIdentity.DefaultNameClaimType, user.Username));
+            //// Add user Id so that UserManager.GetUserAsync can find the user based on Id
+            //claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+            //// Add the current security stamp
+            //claims.Add(new Claim(JwtTokenConstants.SecurityStampClaimType, user.SecurityStamp ?? string.Empty));
+            //// Add the first name
+            //claims.Add(new Claim(JwtTokenConstants.FirstNameClaimType, user.FirstName));
+            //// Add the last name
+            //claims.Add(new Claim(JwtTokenConstants.LastNameClaimType, user.LastName));
+
+            // Generate the JWT Token
+            var token = new JwtSecurityToken(
+                issuer: "MeetEdu",
+                audience: "MeetEdu",
+                claims: claims,
+                signingCredentials: credentials,
+                // Expire if not used for 3 months
+                expires: DateTime.Now.Add(TimeSpan.FromDays(90)));
+
+            // Return the generated token
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
         /// <summary>

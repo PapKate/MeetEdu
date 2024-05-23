@@ -13,26 +13,7 @@ namespace MeetEdu
     [ApiController]
     public class MeetCoreController : Controller
     {
-        #region Public Properties
-
-        /// <summary>
-        /// The university id
-        /// </summary>
-        public ObjectId UniversityId { get; set; } = "651a674479477d03820659bd".ToObjectId();
-
-        /// <summary>
-        /// The department id
-        /// </summary>
-        public ObjectId DepartmentId { get; set; } = "651f8827192bdfa0fc7535c2".ToObjectId();
-
-        /// <summary>
-        /// The professor id
-        /// </summary>
-        public ObjectId ProfessorId { get; set; } = "652a6234db0c9bd9739c8a08".ToObjectId();
-
-        #endregion
-
-        #region Constructors
+       #region Constructors
 
         /// <summary>
         /// Default constructor
@@ -65,7 +46,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpPost]
         [Route(MeetCoreAPIRoutes.LogInRoute)]
-        public async Task<ActionResult<LoginResponse>> LoginAsync([FromBody] LogInRequestModel model)
+        public async Task<ActionResult<LoginResponseModel>> LoginAsync([FromBody] LogInRequestModel model)
             => (await DI.AccountsRepository.LoginAsync(model)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
@@ -237,7 +218,7 @@ namespace MeetEdu
         [HttpPost]
         [Route(MeetCoreAPIRoutes.UniversityLabelsRoute)]
         public async Task<ActionResult<LabelResponseModel>> AddUniversityLabelAsync([FromBody] LabelRequestModel model, CancellationToken cancellationToken = default)
-            => (await DI.UniversitiesRepository.AddUniversityLabelAsync(UniversityId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+            => (await DI.UniversitiesRepository.AddUniversityLabelAsync(model.CompanyId!.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
         /// Gets the university label with the specified <paramref name="universityLabelId"/>
@@ -375,7 +356,7 @@ namespace MeetEdu
         [HttpPost]
         [Route(MeetCoreAPIRoutes.DepartmentLayoutsRoute)]
         public async Task<ActionResult<DepartmentLayoutResponseModel>> AddDepartmentLayoutAsync([FromBody] DepartmentLayoutRequestModel model, CancellationToken cancellationToken = default)
-            => (await DI.DepartmentsRepository.AddDepartmentLayoutAsync(DepartmentId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+            => (await DI.DepartmentsRepository.AddDepartmentLayoutAsync(model.DepartmentId!.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
         /// Gets the department layout with the specified <paramref name="departmentLayoutId"/>
@@ -450,7 +431,7 @@ namespace MeetEdu
         [HttpPost]
         [Route(MeetCoreAPIRoutes.DepartmentLabelsRoute)]
         public async Task<ActionResult<LabelResponseModel>> AddDepartmentLabelAsync([FromBody] LabelRequestModel model, CancellationToken cancellationToken = default)
-            => (await DI.DepartmentsRepository.AddDepartmentLabelAsync(DepartmentId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+            => (await DI.DepartmentsRepository.AddDepartmentLabelAsync(model.CompanyId!.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
         /// Gets the department label with the specified <paramref name="departmentLabelId"/>
@@ -513,7 +494,7 @@ namespace MeetEdu
         [HttpPost]
         [Route(MeetCoreAPIRoutes.DepartmentContactMessagesRoute)]
         public async Task<ActionResult<DepartmentContactMessageResponseModel>> AddDepartmentContactMessageAsync([FromBody] DepartmentContactMessageRequestModel model, CancellationToken cancellationToken = default)
-            => (await DI.DepartmentsRepository.AddDepartmentContactMessageAsync(DepartmentId, model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
+            => (await DI.DepartmentsRepository.AddDepartmentContactMessageAsync(model.DepartmentId!.ToObjectId(), model, cancellationToken)).ToActionResult(x => x.ToResponseModel());
 
         /// <summary>
         /// Gets the department contact message with the specified <paramref name="departmentContactMessageId"/>

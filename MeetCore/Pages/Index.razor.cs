@@ -136,6 +136,12 @@ namespace MeetCore
         [Inject]
         protected ISnackbar Snackbar { get; set; } = default!;
 
+        /// <summary>
+        /// The <see cref="MeetCoreHubClient"/>
+        /// </summary>
+        [Inject]
+        protected MeetCoreHubClient HubClient { get; set; } = default!;
+
         #endregion
 
         #region Constructors
@@ -202,6 +208,8 @@ namespace MeetCore
                     // Return
                     return;
                 }
+                
+                await HubClient.ConnectAsync();
 
                 // Get user type - secretary or professor
                 var isSecretary = response.Result.Secretary is not null;

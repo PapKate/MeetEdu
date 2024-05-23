@@ -59,9 +59,15 @@ builder.Services.AddSingleton(provider => MembersRepository.Instance);
 builder.Services.AddSingleton(provider => UniversitiesRepository.Instance);
 builder.Services.AddSingleton(provider => DepartmentsRepository.Instance);
 builder.Services.AddSingleton(provider => AppointmentsRepository.Instance);
+
 builder.Services.AddSingleton<MeetEduController>();
 builder.Services.AddSingleton<MeetCoreController>();
+
 builder.Services.AddScoped<SearchManager>();
+
+builder.Services.AddSignalR().AddNewtonsoftJsonProtocol(options => NewtonsoftHelpers.ConfigureSerializer(options.PayloadSerializerSettings));
+builder.Services.AddScoped<ConnectionsManager>();
+builder.Services.AddTransient<AccountsHubClient>();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -100,11 +106,13 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.MapHub<AccountsHub>(HubConstants.Route);
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
 app.UseCors(MyAllowSpecificOrigins);
+
 
 app.UseAuthorization();
 

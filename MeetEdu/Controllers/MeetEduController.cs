@@ -45,7 +45,7 @@ namespace MeetEdu
         /// <returns></returns>
         [HttpPost]
         [Route(MeetEduAPIRoutes.LogInRoute)]
-        public async Task<ActionResult<LoginResponse>> LoginAsync([FromBody] LogInRequestModel model)
+        public async Task<ActionResult<LoginResponseModel>> LoginAsync([FromBody] LogInRequestModel model)
             => (await DI.AccountsRepository.LoginAsync(model)).ToActionResult(x => x.ToResponseModel());
 
         #endregion

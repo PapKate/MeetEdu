@@ -1746,6 +1746,11 @@
             The <see cref="N:MudBlazor"/> snack bar manager
             </summary>
         </member>
+        <member name="P:MeetCore.Index.HubClient">
+            <summary>
+            The <see cref="T:MeetBase.Web.MeetCoreHubClient"/>
+            </summary>
+        </member>
         <member name="M:MeetCore.Index.#ctor">
             <summary>
             Default constructor
@@ -2506,10 +2511,23 @@
             The theme provider
             </summary>
         </member>
+        <member name="P:MeetCore.Shared.MainLayout.Snackbar">
+            <summary>
+            The <see cref="N:MudBlazor"/> snack bar manager
+            </summary>
+        </member>
+        <member name="P:MeetCore.Shared.MainLayout.HubClient">
+            <summary>
+            The <see cref="T:MeetBase.Web.MeetCoreHubClient"/>
+            </summary>
+        </member>
         <member name="M:MeetCore.Shared.MainLayout.#ctor">
             <summary>
             Default constructor
             </summary>
+        </member>
+        <member name="M:MeetCore.Shared.MainLayout.OnAfterRender(System.Boolean)">
+            <inheritdoc/>
         </member>
     </members>
 </doc>
