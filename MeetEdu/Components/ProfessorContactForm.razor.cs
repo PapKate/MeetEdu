@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.JSInterop;
 using MudBlazor;
 using System.Data;
@@ -116,6 +117,12 @@ namespace MeetEdu
         /// </summary>
         [Inject]
         protected MeetEduController Controller { get; set; } = default!;
+        
+        /// <summary>
+        /// The hub client
+        /// </summary>
+        [Inject]
+        protected AccountsHubClient HubClient { get; set; } = default!;
 
         /// <summary>
         /// A flag indicating whether the form is visible or not
@@ -290,7 +297,9 @@ namespace MeetEdu
                 // Returns
                 return;
             }
-
+            
+            await HubClient.SendAppointmentsCreatedAsync(new List<AppointmentResponseModel>() { (AppointmentResponseModel)((ObjectResult)appointmentResponse.Result)!.Value! });
+            
             IsFormVisible = false;
             StateHasChanged();
 

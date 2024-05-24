@@ -295,6 +295,11 @@
             The controller
             </summary>
         </member>
+        <member name="P:MeetEdu.ProfessorContactForm.HubClient">
+            <summary>
+            The hub client
+            </summary>
+        </member>
         <member name="P:MeetEdu.ProfessorContactForm.IsFormVisible">
             <summary>
             A flag indicating whether the form is visible or not
@@ -5266,6 +5271,13 @@
             Returns the connections that belong to the user with the specified <paramref name="userId"/>
             </summary>
             <param name="userId">The user id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ConnectionsManager.GetProfessorConnections(MongoDB.Bson.ObjectId)">
+            <summary>
+            Returns the connections that belong to the user with the specified <paramref name="professorId"/>
+            </summary>
+            <param name="professorId">The user id</param>
             <returns></returns>
         </member>
         <member name="T:MeetEdu.ActiveConnectionInfo">

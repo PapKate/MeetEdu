@@ -1,8 +1,12 @@
 using MeetEdu;
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
 using MudBlazor.Services;
 
 using System.Reflection;
+using System.Text;
 
 //var config = new ConfigurationBuilder()
 //    .AddJsonFile("appsettings.json", optional: false)
@@ -33,7 +37,6 @@ builder.Services.AddMapper();
 builder.Services.AddEndpointsApiExplorer();
 MongoDbHelpers.Configure();
 
-
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo() { Title = "MeetEdu API", Version = "v1" });
@@ -44,10 +47,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor().AddCircuitOptions(o =>
-{
-    o.DetailedErrors = true;
-});
+builder.Services.AddServerSideBlazor();
 
 builder.Services.AddMudServices();
 
@@ -65,8 +65,55 @@ builder.Services.AddSingleton<MeetCoreController>();
 
 builder.Services.AddScoped<SearchManager>();
 
-builder.Services.AddSignalR().AddNewtonsoftJsonProtocol(options => NewtonsoftHelpers.ConfigureSerializer(options.PayloadSerializerSettings));
-builder.Services.AddScoped<ConnectionsManager>();
+// Adds a JWT bearer token authentication used for the native applications
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer((options) =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        // Validate issuer
+        ValidateIssuer = true,
+        // Validate audience
+        ValidateAudience = true,
+        // Validate expiration
+        ValidateLifetime = true,
+        // Validate signature
+        ValidateIssuerSigningKey = true,
+
+        // Set issuer
+        ValidIssuer = "MeetEdu",
+        // Set audience
+        ValidAudience = "MeetEdu",
+
+        // Set signing key
+        IssuerSigningKey = new SymmetricSecurityKey(
+                // Get our secret key from configuration
+                Encoding.UTF8.GetBytes("d7sd1rhq8QastquUv9idfdfxds4512fdfg67f")),
+    };
+
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var accessToken = context.Request.Query["access_token"];
+
+            // If the request is for our hub...
+            var path = context.HttpContext.Request.Path;
+            if (!string.IsNullOrEmpty(accessToken) &&
+                (path.StartsWithSegments("/hubs/accounts")))
+            {
+                // Read the token out of the query string
+                context.Token = accessToken;
+            }
+            return Task.CompletedTask;
+        }
+    };
+});
+
+builder.Services.AddSignalR(o =>
+{
+    o.EnableDetailedErrors = true;
+}).AddNewtonsoftJsonProtocol(options => NewtonsoftHelpers.ConfigureSerializer(options.PayloadSerializerSettings));
+builder.Services.AddSingleton<ConnectionsManager>();
 builder.Services.AddTransient<AccountsHubClient>();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -81,6 +128,11 @@ builder.Services.AddCors(options =>
                                 .AllowAnyHeader();
                       });
 });
+
+// Hosting doesn't add IHttpContextAccessor by default
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
 
 var app = builder.Build();
 
@@ -106,14 +158,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.MapHub<AccountsHub>(HubConstants.Route);
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+app.MapHub<AccountsHub>(HubConstants.Route);
 
 app.UseCors(MyAllowSpecificOrigins);
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

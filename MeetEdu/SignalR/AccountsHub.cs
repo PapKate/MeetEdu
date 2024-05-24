@@ -15,7 +15,7 @@ namespace MeetEdu
         /// 
         /// </summary>
         public ConnectionsManager ConnectionsManager { get; }
-        
+
         #endregion
 
         #region Constructors
@@ -38,10 +38,10 @@ namespace MeetEdu
             var httpContext = Context.GetHttpContext();
 
             // If no HTTP context is provided...
-            if(httpContext is null)
+            if (httpContext is null)
                 // Return
                 return Task.CompletedTask;
-            
+
             httpContext.TryGetProfessorId(out var professorId);
             httpContext.TryGetSecretaryId(out var secretaryId);
 
@@ -77,7 +77,7 @@ namespace MeetEdu
         private readonly List<ActiveConnectionInfo> mConnections = new();
 
         #endregion
-        
+
         #region Public Properties
 
         /// <summary>
@@ -141,6 +141,14 @@ namespace MeetEdu
         /// <returns></returns>
         public IEnumerable<ActiveConnectionInfo> GetUserConnections(ObjectId userId)
             => mConnections.Where(x => x.UserId == userId).ToList();
+
+        /// <summary>
+        /// Returns the connections that belong to the user with the specified <paramref name="professorId"/>
+        /// </summary>
+        /// <param name="professorId">The user id</param>
+        /// <returns></returns>
+        public IEnumerable<ActiveConnectionInfo> GetProfessorConnections(ObjectId professorId)
+            => mConnections.Where(x => x.ProfessorId == professorId).ToList();
 
         #endregion
     }
@@ -235,7 +243,7 @@ namespace MeetEdu
         {
             foreach (var group in appointments.GroupBy(x => x.ProfessorId))
             {
-                foreach(var connection in ConnectionsManager.GetUserConnections(group.Key.ToObjectId()))
+                foreach (var connection in ConnectionsManager.GetProfessorConnections(group.Key.ToObjectId()))
                 {
                     await Context.Clients.Client(connection.ConnectionId.ToString()).SendAsync(HubConstants.AppointmentsCreatedMethodName, group.ToList());
                 }

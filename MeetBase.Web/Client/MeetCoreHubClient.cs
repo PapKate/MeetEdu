@@ -69,7 +69,7 @@ namespace MeetBase.Web
         {
             var connection = new HubConnectionBuilder()
                 .AddNewtonsoftJsonProtocol(options => NewtonsoftHelpers.ConfigureSerializer(options.PayloadSerializerSettings))
-                .WithUrl("https://localhost:44307/" + HubConstants.Route, opts =>
+                .WithUrl("https://localhost:44307" + HubConstants.Route, opts =>
                 {
                     opts.AccessTokenProvider = () => Task.FromResult(client.Token);
                 })

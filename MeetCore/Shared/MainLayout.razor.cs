@@ -87,8 +87,8 @@ namespace MeetCore.Shared
         protected override void OnAfterRender(bool firstRender)
         {
             base.OnAfterRender(firstRender);
-
-            HubClient.AppointmentsCreated += ShowNotification;
+            if (firstRender)
+                HubClient.AppointmentsCreated += ShowNotification;
 
         }
 

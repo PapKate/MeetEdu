@@ -8,7 +8,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public const string Route = "hubs/accounts";
+        public const string Route = "/hubs/accounts";
 
         /// <summary>
         /// 

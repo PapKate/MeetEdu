@@ -209,8 +209,6 @@ namespace MeetCore
                     return;
                 }
                 
-                await HubClient.ConnectAsync();
-
                 // Get user type - secretary or professor
                 var isSecretary = response.Result.Secretary is not null;
                 await SessionStorageManager.SetValueAsync(SessionStorageManager.IsSecretary, isSecretary);
@@ -261,6 +259,7 @@ namespace MeetCore
                     NavigationManager.Professor_NavigateToProfilePage(response.Result.Professor!.Id);
                 }
 
+                await HubClient.ConnectAsync();
             }
             // Else if the forgot password is active...
             else if (IsForgotPasswordActive)
