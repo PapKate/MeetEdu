@@ -24,6 +24,11 @@ namespace MeetBase.Web
         #region Public Properties
 
         /// <summary>
+        /// The JWT token provided by the log in method
+        /// </summary>
+        public string? Token { get; private set; }
+
+        /// <summary>
         /// The university id
         /// </summary>
         public string UniversityId
@@ -72,8 +77,17 @@ namespace MeetBase.Web
         /// </summary>
         /// <param name="model">The model</param>
         /// <returns></returns>
-        public Task<WebRequestResult<LoginResponse>> LoginAsync(LogInRequestModel model)
-            => WebRequestsClient.Instance.PostAsync<LoginResponse>(GetAbsoluteUrl(MeetCoreAPIRoutes.LogInRoute), model, null);
+        public async Task<WebRequestResult<LoginResponseModel>> LoginAsync(LogInRequestModel model)
+        {
+            var response = await WebRequestsClient.Instance.PostAsync<LoginResponseModel>(GetAbsoluteUrl(MeetCoreAPIRoutes.LogInRoute), model, null);
+
+            if (!response.IsSuccessful)
+                return response;
+
+            Token = response.Result.Token;
+
+            return response;
+        }
 
         /// <summary>
         /// Resets the user password

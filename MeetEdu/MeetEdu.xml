@@ -295,6 +295,11 @@
             The controller
             </summary>
         </member>
+        <member name="P:MeetEdu.ProfessorContactForm.HubClient">
+            <summary>
+            The hub client
+            </summary>
+        </member>
         <member name="P:MeetEdu.ProfessorContactForm.IsFormVisible">
             <summary>
             A flag indicating whether the form is visible or not
@@ -678,21 +683,6 @@
         <member name="T:MeetEdu.MeetCoreController">
             <summary>
             Controller used for handing the requests related to a MeetCore related application
-            </summary>
-        </member>
-        <member name="P:MeetEdu.MeetCoreController.UniversityId">
-            <summary>
-            The university id
-            </summary>
-        </member>
-        <member name="P:MeetEdu.MeetCoreController.DepartmentId">
-            <summary>
-            The department id
-            </summary>
-        </member>
-        <member name="P:MeetEdu.MeetCoreController.ProfessorId">
-            <summary>
-            The professor id
             </summary>
         </member>
         <member name="M:MeetEdu.MeetCoreController.#ctor">
@@ -1546,19 +1536,14 @@
             The member
             </summary>
         </member>
-        <member name="M:MeetEdu.LoginResult.#ctor(MeetEdu.UserEntity,MeetEdu.SecretaryEntity)">
+        <member name="P:MeetEdu.LoginResult.Token">
             <summary>
-            Constructor for a secretary
+            The JWT token
             </summary>
         </member>
-        <member name="M:MeetEdu.LoginResult.#ctor(MeetEdu.UserEntity,MeetEdu.ProfessorEntity)">
+        <member name="M:MeetEdu.LoginResult.#ctor(MeetEdu.UserEntity,System.String)">
             <summary>
-            Constructor for a professor
-            </summary>
-        </member>
-        <member name="M:MeetEdu.LoginResult.#ctor(MeetEdu.UserEntity,MeetEdu.MemberEntity)">
-            <summary>
-            Constructor for a member
+            Default constructor
             </summary>
         </member>
         <member name="M:MeetEdu.LoginResult.ToResponseModel">
@@ -1566,48 +1551,6 @@
             Creates and returns a <see cref="T:MeetBase.Web.UserResponseModel"/> from the current <see cref="T:MeetEdu.UserEntity"/>
             </summary>
             <returns></returns>
-        </member>
-        <member name="T:MeetEdu.EnumCommaSeparatedModelBinder">
-            <summary>
-            Used for converting comma separated <see cref="T:System.Enum"/>s to <see cref="T:System.Collections.Generic.IEnumerable`1"/>s
-            </summary>
-        </member>
-        <member name="M:MeetEdu.EnumCommaSeparatedModelBinder.BindModelAsync(Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingContext)">
-            <summary>
-            Attempts to bind a model.
-            </summary>
-            <param name="bindingContext">The <see cref="T:Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingContext"/>.</param>
-            <returns></returns>
-        </member>
-        <member name="M:MeetEdu.ReflectionHelpers.CreateList(System.Type)">
-            <summary>
-            Creates and returns a <see cref="T:System.Collections.Generic.List`1"/> that can contains items of the specified <paramref name="type"/>
-            </summary>
-            <param name="type">The type of the items the list contains</param>
-            <returns></returns>
-        </member>
-        <member name="T:MeetEdu.CommaSeparatedModelBinderProvider">
-            <summary>
-            Provides the <see cref="T:MeetEdu.EnumCommaSeparatedModelBinder"/> when necessary
-            </summary>
-        </member>
-        <member name="F:MeetEdu.CommaSeparatedModelBinderProvider.mInstace">
-            <summary>
-            The member of the <see cref="P:MeetEdu.CommaSeparatedModelBinderProvider.Instance"/> property
-            </summary>
-        </member>
-        <member name="P:MeetEdu.CommaSeparatedModelBinderProvider.Instance">
-            <summary>
-            The single instance of the <see cref="T:MeetEdu.CommaSeparatedModelBinderProvider"/>
-            </summary>
-        </member>
-        <member name="M:MeetEdu.CommaSeparatedModelBinderProvider.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="M:MeetEdu.CommaSeparatedModelBinderProvider.GetBinder(Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderProviderContext)">
-            <inheritdoc/>
         </member>
         <member name="T:MeetEdu.EntryPoint">
             <summary>
@@ -3683,6 +3626,44 @@
             <param name="entityNamespace">The namespace of the entity</param>
             <param name="dtoNamespace">The namespace of the DTO</param>
         </member>
+        <member name="T:MeetEdu.JwtTokenExtensions">
+            <summary>
+            Extension methods for the JWT token
+            </summary>
+        </member>
+        <member name="M:MeetEdu.JwtTokenExtensions.GetUserId(System.Collections.Generic.IEnumerable{System.Security.Claims.Claim})">
+            <summary>
+            Searches the specified <paramref name="claims"/> collection for a claim with type <see cref="F:System.Security.Claims.ClaimTypes.NameIdentifier"/>
+            and extracts its value
+            </summary>
+            <param name="claims">The claims collection</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.JwtTokenExtensions.GetUserId(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Gets the user id from the specified <paramref name="context"/>
+            </summary>
+            <param name="context">The context</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.JwtTokenExtensions.TryGetSecretaryId(Microsoft.AspNetCore.Http.HttpContext,System.String@)">
+            <summary>
+            Searches the specified <paramref name="context"/> claims with type <see cref="F:MeetBase.Web.JwtTokenConstants.SecretaryIdClaimType"/>
+            and extracts its value
+            </summary>
+            <param name="context">The HTTP context</param>
+            <param name="secretaryId">The unique secretary id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.JwtTokenExtensions.TryGetProfessorId(Microsoft.AspNetCore.Http.HttpContext,System.String@)">
+            <summary>
+            Searches the specified <paramref name="context"/> claims with type <see cref="F:MeetBase.Web.JwtTokenConstants.ProfessorIdClaimType"/>
+            and extracts its value
+            </summary>
+            <param name="context">The HTTP context</param>
+            <param name="professorId">The unique professor id</param>
+            <returns></returns>
+        </member>
         <member name="T:MeetEdu.StringExtensions">
             <summary>
             Extension methods for strings
@@ -3950,6 +3931,53 @@
             <summary>
             Sets the global configurations to the MongoDb
             </summary>
+        </member>
+        <member name="T:MeetEdu.ReflectionHelpers">
+            <summary>
+            Reflection helper methods
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ReflectionHelpers.CreateList(System.Type)">
+            <summary>
+            Creates and returns a <see cref="T:System.Collections.Generic.List`1"/> that can contains items of the specified <paramref name="type"/>
+            </summary>
+            <param name="type">The type of the items the list contains</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetEdu.EnumCommaSeparatedModelBinder">
+            <summary>
+            Used for converting comma separated <see cref="T:System.Enum"/>s to <see cref="T:System.Collections.Generic.IEnumerable`1"/>s
+            </summary>
+        </member>
+        <member name="M:MeetEdu.EnumCommaSeparatedModelBinder.BindModelAsync(Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingContext)">
+            <summary>
+            Attempts to bind a model.
+            </summary>
+            <param name="bindingContext">The <see cref="T:Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingContext"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetEdu.CommaSeparatedModelBinderProvider">
+            <summary>
+            Provides the <see cref="T:MeetEdu.EnumCommaSeparatedModelBinder"/> when necessary
+            </summary>
+        </member>
+        <member name="F:MeetEdu.CommaSeparatedModelBinderProvider.mInstace">
+            <summary>
+            The member of the <see cref="P:MeetEdu.CommaSeparatedModelBinderProvider.Instance"/> property
+            </summary>
+        </member>
+        <member name="P:MeetEdu.CommaSeparatedModelBinderProvider.Instance">
+            <summary>
+            The single instance of the <see cref="T:MeetEdu.CommaSeparatedModelBinderProvider"/>
+            </summary>
+        </member>
+        <member name="M:MeetEdu.CommaSeparatedModelBinderProvider.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.CommaSeparatedModelBinderProvider.GetBinder(Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderProviderContext)">
+            <inheritdoc/>
         </member>
         <member name="T:MeetEdu.RepositoryHelpers">
             <summary>
@@ -4581,6 +4609,15 @@
             <param name="model">The model</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.AccountsRepository.GenerateJwtToken(System.Collections.Generic.ICollection{System.Security.Claims.Claim})">
+            <summary>
+            Generates a JWT bearer token containing the users username.
+            NOTE: Since we do not encrypt the body of the token it is advisable not to put
+                  sensitive information at the user claims!
+            </summary>
+            <param name="claims">The claims of the user we want to encrypt in the token</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.AccountsRepository.ValidateUserCredentialsAsync(MeetBase.Web.LogInRequestModel)">
             <summary>
             Validates the user <paramref name="credentials"/>
@@ -5174,6 +5211,135 @@
             <summary>
             Default constructor
             </summary>
+        </member>
+        <member name="T:MeetEdu.AccountsHub">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MeetEdu.AccountsHub.ConnectionsManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MeetEdu.AccountsHub.#ctor(MeetEdu.ConnectionsManager)">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.AccountsHub.OnConnectedAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:MeetEdu.AccountsHub.OnDisconnectedAsync(System.Exception)">
+            <inheritdoc/>
+        </member>
+        <member name="T:MeetEdu.ConnectionsManager">
+            <summary>
+            Provides methods for handling users connections
+            </summary>
+        </member>
+        <member name="F:MeetEdu.ConnectionsManager.mConnections">
+            <summary>
+            The member of the <see cref="P:MeetEdu.ConnectionsManager.Connections"/> property
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ConnectionsManager.Connections">
+            <summary>
+            The active connections
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ConnectionsManager.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.ConnectionsManager.AddConnection(MeetEdu.ActiveConnectionInfo)">
+            <summary>
+            Adds the <paramref name="userConnection"/>
+            </summary>
+            <param name="userConnection">The connection</param>
+        </member>
+        <member name="M:MeetEdu.ConnectionsManager.RemoveConnection(System.String)">
+            <summary>
+            Removes the connection with the specified <paramref name="connectionId"/>
+            </summary>
+            <param name="connectionId">The unique connection id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ConnectionsManager.GetUserConnections(MongoDB.Bson.ObjectId)">
+            <summary>
+            Returns the connections that belong to the user with the specified <paramref name="userId"/>
+            </summary>
+            <param name="userId">The user id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ConnectionsManager.GetProfessorConnections(MongoDB.Bson.ObjectId)">
+            <summary>
+            Returns the connections that belong to the user with the specified <paramref name="professorId"/>
+            </summary>
+            <param name="professorId">The user id</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetEdu.ActiveConnectionInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ActiveConnectionInfo.UserId">
+            <summary>
+            The user id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ActiveConnectionInfo.ProfessorId">
+            <summary>
+            The professor id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ActiveConnectionInfo.SecretaryId">
+            <summary>
+            The secretary id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ActiveConnectionInfo.ConnectionId">
+            <summary>
+            The connection id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ActiveConnectionInfo.DateCreated">
+            <inheritdoc/>
+        </member>
+        <member name="M:MeetEdu.ActiveConnectionInfo.#ctor(MongoDB.Bson.ObjectId,System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="userId"></param>
+            <param name="connectionId"></param>
+        </member>
+        <member name="T:MeetEdu.AccountsHubClient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MeetEdu.AccountsHubClient.Context">
+            <summary>
+            The context
+            </summary>
+        </member>
+        <member name="P:MeetEdu.AccountsHubClient.ConnectionsManager">
+            <summary>
+            The connections manager
+            </summary>
+        </member>
+        <member name="M:MeetEdu.AccountsHubClient.#ctor(Microsoft.AspNetCore.SignalR.IHubContext{MeetEdu.AccountsHub},MeetEdu.ConnectionsManager)">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetEdu.AccountsHubClient.SendAppointmentsCreatedAsync(System.Collections.Generic.IEnumerable{MeetBase.Web.AppointmentResponseModel})">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:MeetEdu.WebServerFailable">
             <summary>

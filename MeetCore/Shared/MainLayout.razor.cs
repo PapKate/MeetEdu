@@ -1,4 +1,7 @@
-﻿using MudBlazor;
+﻿using MeetBase.Web;
+using Microsoft.AspNetCore.Components;
+
+using MudBlazor;
 
 using static MeetBase.Blazor.PaletteColors;
 
@@ -15,6 +18,22 @@ namespace MeetCore.Shared
         /// The theme provider
         /// </summary>
         private MudTheme? mMeetCoreTheme;
+
+        #endregion
+
+        #region Protected Properties
+
+        /// <summary>
+        /// The <see cref="MudBlazor"/> snack bar manager
+        /// </summary>
+        [Inject]
+        protected ISnackbar Snackbar { get; set; } = default!;
+
+        /// <summary>
+        /// The <see cref="MeetCoreHubClient"/>
+        /// </summary>
+        [Inject]
+        protected MeetCoreHubClient HubClient { get; set; } = default!;
 
         #endregion
 
@@ -58,6 +77,28 @@ namespace MeetCore.Shared
                     ActionDisabledBackground = LightGray,
                 }
             };
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <inheritdoc/>
+        protected override void OnAfterRender(bool firstRender)
+        {
+            base.OnAfterRender(firstRender);
+            if (firstRender)
+                HubClient.AppointmentsCreated += ShowNotification;
+
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void ShowNotification(object? sender, IEnumerable<AppointmentResponseModel> appointments)
+        {
+            Snackbar.Add("Notification!");
         }
 
         #endregion

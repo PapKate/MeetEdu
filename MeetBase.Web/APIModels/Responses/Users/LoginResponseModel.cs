@@ -9,7 +9,7 @@ namespace MeetBase.Web
     /// <item>If it is a member, the <see cref="MemberResponseModel"/></item>
     /// </list>
     /// </summary>
-    public class LoginResponse
+    public class LoginResponseModel
     {
         #region Public Properties
 
@@ -33,6 +33,11 @@ namespace MeetBase.Web
         /// </summary>
         public MemberResponseModel? Member { get; set; }
 
+        /// <summary>
+        /// The token
+        /// </summary>
+        public string Token { get; }
+
         #endregion
 
         #region Constructors
@@ -40,9 +45,14 @@ namespace MeetBase.Web
         /// <summary>
         /// Default constructor
         /// </summary>
-        public LoginResponse() : base()
+        public LoginResponseModel(string token) : base()
         {
+            if (string.IsNullOrEmpty(token))
+            {
+                throw new ArgumentException($"'{nameof(token)}' cannot be null or empty.", nameof(token));
+            }
 
+            Token = token;
         }
 
         #endregion

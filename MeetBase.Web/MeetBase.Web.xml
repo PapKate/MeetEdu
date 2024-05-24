@@ -1592,7 +1592,7 @@
             Default constructor
             </summary>
         </member>
-        <member name="T:MeetBase.Web.LoginResponse">
+        <member name="T:MeetBase.Web.LoginResponseModel">
             <summary>
             Contains the <see cref="T:MeetBase.Web.UserResponseModel"/> and depending on the user role...
             <list type="bullet">
@@ -1602,27 +1602,32 @@
             </list>
             </summary>
         </member>
-        <member name="P:MeetBase.Web.LoginResponse.User">
+        <member name="P:MeetBase.Web.LoginResponseModel.User">
             <summary>
             The user
             </summary>
         </member>
-        <member name="P:MeetBase.Web.LoginResponse.Secretary">
+        <member name="P:MeetBase.Web.LoginResponseModel.Secretary">
             <summary>
             The secretary
             </summary>
         </member>
-        <member name="P:MeetBase.Web.LoginResponse.Professor">
+        <member name="P:MeetBase.Web.LoginResponseModel.Professor">
             <summary>
             The professor
             </summary>
         </member>
-        <member name="P:MeetBase.Web.LoginResponse.Member">
+        <member name="P:MeetBase.Web.LoginResponseModel.Member">
             <summary>
             The member
             </summary>
         </member>
-        <member name="M:MeetBase.Web.LoginResponse.#ctor">
+        <member name="P:MeetBase.Web.LoginResponseModel.Token">
+            <summary>
+            The token
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.LoginResponseModel.#ctor(System.String)">
             <summary>
             Default constructor
             </summary>
@@ -2366,6 +2371,11 @@
             The member of the <see cref="P:MeetBase.Web.MeetCoreClient.DepartmentId"/>
             </summary>
         </member>
+        <member name="P:MeetBase.Web.MeetCoreClient.Token">
+            <summary>
+            The JWT token provided by the log in method
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.MeetCoreClient.UniversityId">
             <summary>
             The university id
@@ -2865,6 +2875,85 @@
             </summary>
             <param name="url">The url</param>
             <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.MeetCoreHubClient">
+            <summary>
+            Provides events used for communication between the Client and the Server
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreHubClient.#ctor(MeetBase.Web.MeetCoreClient)">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreHubClient.RefreshAsync(MeetBase.Web.MeetCoreClient)">
+            <summary>
+            Closes the existing connection and opens a new one using the currently connected user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreHubClient.DisposeAsync">
+            <summary>
+            Closes the existing connection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreHubClient.ConnectAsync">
+            <summary>
+            Starts a connection to the server
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:MeetBase.Web.MeetCoreHubClient.Closed">
+            <inheritdoc cref="E:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed"/>
+        </member>
+        <member name="E:MeetBase.Web.MeetCoreHubClient.Reconnecting">
+            <inheritdoc cref="E:Microsoft.AspNetCore.SignalR.Client.HubConnection.Reconnecting"/>
+        </member>
+        <member name="E:MeetBase.Web.MeetCoreHubClient.Reconnected">
+            <inheritdoc cref="E:Microsoft.AspNetCore.SignalR.Client.HubConnection.Reconnected"/>
+        </member>
+        <member name="E:MeetBase.Web.MeetCoreHubClient.AppointmentsCreated">
+            <summary>
+            Event that fires every time appointments are created
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.IHubConnectionBuilderExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Microsoft.AspNetCore.SignalR.Client.IHubConnectionBuilder"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.IHubConnectionBuilderExtensions.WithNeverEndingAutomaticReconnectAttempts(Microsoft.AspNetCore.SignalR.Client.IHubConnectionBuilder)">
+            <summary>
+            Configures the <see cref="T:Microsoft.AspNetCore.SignalR.Client.HubConnection"/> to automatically
+            attempt to never stop trying to reconnect if the connection 
+            is lost.
+            </summary>
+            <param name="hubConnectionBuilder">The builder</param>
+            <returns></returns>
+        </member>
+        <member name="T:MeetBase.Web.NeverEndingReconnectRetryPolicy">
+            <summary>
+            An implementation of the <see cref="T:Microsoft.AspNetCore.SignalR.Client.IRetryPolicy"/> that never stops trying to connect to the SignalR hub
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.NeverEndingReconnectRetryPolicy.RetryTimeSpan">
+            <summary>
+            The retry time span
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.NeverEndingReconnectRetryPolicy.Instance">
+            <summary>
+            The single instance of the <see cref="T:MeetBase.Web.NeverEndingReconnectRetryPolicy"/>
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.NeverEndingReconnectRetryPolicy.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:MeetBase.Web.NeverEndingReconnectRetryPolicy.NextRetryDelay(Microsoft.AspNetCore.SignalR.Client.RetryContext)">
+            <inheritdoc/>
         </member>
         <member name="T:MeetBase.Web.MeetEduClient">
             <summary>
@@ -3704,6 +3793,51 @@
             should be assigned to.
             </param>
             <param name="file">The file</param>
+        </member>
+        <member name="T:MeetBase.Web.HubConstants">
+            <summary>
+            The Hub method names
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.HubConstants.Route">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.HubConstants.AppointmentsCreatedMethodName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MeetBase.Web.JwtTokenConstants">
+            <summary>
+            Constants related to JWT tokens
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.JwtTokenConstants.UniversityIdClaimType">
+            <summary>
+            The name of the claim related to the university id
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.JwtTokenConstants.DepartmentIdClaimType">
+            <summary>
+            The name of the claim related to the department id
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.JwtTokenConstants.SecretaryIdClaimType">
+            <summary>
+            The name of the claim related to the secretary id
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.JwtTokenConstants.ProfessorIdClaimType">
+            <summary>
+            The name of the claim related to the professor id
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.JwtTokenConstants.UsernameClaimType">
+            <summary>
+            The name of the claim related to the username
+            </summary>
         </member>
         <member name="T:MeetBase.Web.MeetCoreAPIRoutes">
             <summary>
