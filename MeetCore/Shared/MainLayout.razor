@@ -196,8 +196,6 @@
         background-color: transparent;
     }
 
-
-
     .dataGridHeader {
         position: relative;
         display: flex;
@@ -210,8 +208,185 @@
         z-index: 2;
     }
 
+    .modelContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        border-radius: @VeryLargeBorderRadius;
+        border: solid 1px @BorderBrushVariable.GetCssVariable();
+    }
 
+    .modelRibbonContainer {
+        position: absolute;
+        width: 100%;
+        height: 80px;
+        top: 24px;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: @VeryLargeGap;
+        padding: 0 @LargePadding;
+        background: @BackgroundVariable.GetCssVariable();
+        color: @ForegroundVariable.GetCssVariable();
+    }
 
+    .modelRibbon {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .modelRibbonInfoContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modelRibbonInfo {
+        font-size: 140%;
+        font-weight: 700;
+    }
+
+    .modelRibbonInfoDetails {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: @VeryLargeGap;
+    }
+
+    .staffMemberPositionContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: start;
+        gap: @MediumGap;
+        padding: 0 @VeryLargePadding 0 @VeryLargePadding;
+    }
+
+    .modelWebsiteName {
+        grid-column-start: 2;
+        color: @ForegroundVariable.GetCssVariable();
+        font-weight: 700;
+    }
+
+        .modelWebsiteName a {
+            color: @ForegroundVariable.GetCssVariable();
+        }
+
+    .modelInfoText {
+        text-align: right;
+    }
+
+    .modelInfoContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: @VeryVeryLargeGap;
+        padding: @LargePadding;
+    }
+
+    .modelImageAndContactContainer {
+        position: relative;
+        height: 200px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        gap: @LargeGap;
+    }
+
+    .modelImageContainer {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: @LargePadding;
+        background: @White.NormalizedColor();
+        border-radius: @LargeBorderRadius;
+        filter: @LightFilterDropShadow;
+        border: solid 1px @BorderBrushVariable.GetCssVariable();
+    }
+
+    .modelImage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        filter: @LightFilterDropShadow;
+    }
+
+    .modelContactContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        grid-auto-rows: 28px;
+        align-items: center;
+        gap: @MediumGap;
+    }
+
+    .modelContactImage {
+        position: relative;
+        width: 28px;
+        height: 28px;
+        filter: @LightFilterDropShadow;
+    }
+
+    .modelWeeklyScheduleContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: @VeryLargeGap;
+        padding: 0 @VeryLargePadding;
+    }
+
+    .modelWeeklySchedule {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: @LargeGap;
+    }
+
+    .modelWeeklyScheduleTitle {
+        font-size: 112%;
+        font-weight: 700;
+        color: @ForegroundVariable.GetCssVariable();
+    }
+
+    .modelWeeklyScheduleNote {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        display: flex;
+        font-size: 92%;
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+
+    .modelWeeklyScheduleDayContainer {
+        grid-column: 2 /3;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        justify-items: right;
+        gap: @MediumGap;
+    }
+
+    .modelWeeklyScheduleDay {
+        font-weight: 600;
+        width: 100%;
+    }
+
+    .modelWeeklyScheduleTime {
+        grid-column-start: 2;
+    }
 
     .staffMemberContainer {
         position: relative;
@@ -328,16 +503,7 @@
         filter: @LightFilterDropShadow;
     }
 
-    .staffMemberPositionContainer {
-        position: relative;
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        align-items: start;
-        gap: @MediumGap;
-        padding: 0 @VeryLargePadding 0 @VeryLargePadding;
-    }
-
-    .staffMemberPosition {
+    .modelInfoText {
         text-align: right;
     }
 
@@ -359,7 +525,7 @@
         gap: @LargeGap;
     }
 
-    .staffMemberWeeklyScheduleTitle {
+    .modelInfoTitle {
         font-size: 112%;
         color: @ForegroundVariable.GetCssVariable();
         font-weight: 700;
@@ -452,7 +618,7 @@
             height: 120px;
         }
 
-        .staffMemberPositionContainer {
+        .modelInfoContainer {
             padding: @LargePadding @LargePadding 0 @LargePadding;
         }
 

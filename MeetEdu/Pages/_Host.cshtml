@@ -48,7 +48,6 @@
     <script>
 
         window.ShowLeafletMap = (mapId, lat, lng) => {
-            debugger;
             var map = L.map(mapId).setView([lat, lng], 17);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 20,

@@ -2268,7 +2268,7 @@
             The <see cref="T:MudBlazor.MudDialog"/> options
             </summary>
         </member>
-        <member name="P:MeetCore.Secretary_DepartmentInformationPage.Department">
+        <member name="P:MeetCore.Secretary_DepartmentInformationPage.Model">
             <summary>
             The department
             </summary>

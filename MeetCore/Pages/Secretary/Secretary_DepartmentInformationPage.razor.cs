@@ -25,7 +25,7 @@ namespace MeetCore
         /// <summary>
         /// The department
         /// </summary>
-        public DepartmentResponseModel Department => StateManager.Department!;
+        public DepartmentResponseModel Model => StateManager.Department!;
 
         #endregion
 
@@ -66,8 +66,8 @@ namespace MeetCore
         {
             var model = new UpdateScheduleModel()
             {
-                Color = Department.Color,
-                WeeklySchedule = Department.WorkHours
+                Color = Model.Color,
+                WeeklySchedule = Model.WorkHours
             };
             var parameters = new DialogParameters<UpdateScheduleDialog> { { x => x.Model, model } };
 
@@ -95,7 +95,7 @@ namespace MeetCore
                 };
 
                 // Updates the department
-                var departmentResponse = await Client.UpdateDepartmentAsync(Department.Id, departmentRequest);
+                var departmentResponse = await Client.UpdateDepartmentAsync(Model.Id, departmentRequest);
 
                 // If there was an error...
                 if (!departmentResponse.IsSuccessful)
@@ -120,10 +120,10 @@ namespace MeetCore
         {
             var model = new UpdateModel<DepartmentRequestModel>(new DepartmentRequestModel()
             {
-                Color = Department.Color,
-                Description = Department.Description,
-                Note = Department.Note,
-                Fields = Department.Fields
+                Color = Model.Color,
+                Description = Model.Description,
+                Note = Model.Note,
+                Fields = Model.Fields
             });
 
             var parameters = new DialogParameters<UpdateDepartmentContentDialog> { { x => x.Model, model } };
@@ -154,7 +154,7 @@ namespace MeetCore
                 };
 
                 // Updates the department
-                var departmentResponse = await Client.UpdateDepartmentAsync(Department.Id, departmentRequest);
+                var departmentResponse = await Client.UpdateDepartmentAsync(Model.Id, departmentRequest);
 
                 // If there was an error...
                 if (!departmentResponse.IsSuccessful)
@@ -177,15 +177,15 @@ namespace MeetCore
         {
             var model = new UpdateModel<DepartmentRequestModel>(new DepartmentRequestModel()
             {
-                Name = Department.Name,
-                Category = Department.Category,
-                Email = Department.Email,
-                PhoneNumber = Department.PhoneNumber,
-                ImageUrl = Department.ImageUrl,
-                Color = Department.Color,
-                Location = Department.Location,
-                Quote = Department.Quote,
-                Websites = Department.Websites
+                Name = Model.Name,
+                Category = Model.Category,
+                Email = Model.Email,
+                PhoneNumber = Model.PhoneNumber,
+                ImageUrl = Model.ImageUrl,
+                Color = Model.Color,
+                Location = Model.Location,
+                Quote = Model.Quote,
+                Websites = Model.Websites
             });
 
             var parameters = new DialogParameters<UpdateDepartmentDialog> { { x => x.Model, model } };
@@ -222,7 +222,7 @@ namespace MeetCore
                 };
 
                 // Updates the department
-                var departmentResponse = await Client.UpdateDepartmentAsync(Department.Id, departmentRequest);
+                var departmentResponse = await Client.UpdateDepartmentAsync(Model.Id, departmentRequest);
 
                 // If there was an error...
                 if (!departmentResponse.IsSuccessful)
@@ -238,7 +238,7 @@ namespace MeetCore
                 if (updatedModel.File is not null)
                 {
                     // Adds the model
-                    var responseWithImage = await Client.SetDepartmentImageAsync(Department.Id, updatedModel.File);
+                    var responseWithImage = await Client.SetDepartmentImageAsync(Model.Id, updatedModel.File);
 
                     // If there was an error...
                     if (!responseWithImage.IsSuccessful)

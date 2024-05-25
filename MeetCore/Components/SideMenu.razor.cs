@@ -3,6 +3,8 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
+using System.Net;
+
 namespace MeetCore
 {
     /// <summary>
@@ -154,7 +156,7 @@ namespace MeetCore
         /// <summary>
         /// Logs out the connected staff member and navigates to the login page
         /// </summary>
-        public void NavigateToLoginPage()
+        public async void NavigateToLoginPage()
         {
             // If no navigation manager is found...
             if (NavigationManager is null)

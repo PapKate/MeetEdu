@@ -18,7 +18,7 @@
                         <h3 class="departmentPreviewRibbonUniName">@Model.University!.Name</h3>
                         <span>-</span>
                         <div class="departmentPreviewCategoryContainer">
-                            <span class="departmentPreviewCategory">@Model.Category</span>
+                            <span class="departmentPreviewCategory">@Model.Category.ToString().BreakWords()</span>
                             <MudIcon Icon="@Icons.Material.Filled.Groups3" Size="@Size.Medium" />
                         </div>
                     </div>
@@ -64,10 +64,10 @@
             @if (!Model.Websites.IsNullOrEmpty())
             {
                 <div id="professorWebsites" class="staffMemberPositionContainer">
-                    <span class="staffMemberWeeklyScheduleTitle" style="color:@Model.Color.NormalizedColor();">Websites</span>
+                    <span class="modelInfoTitle" style="color:@Model.Color.NormalizedColor();">Websites</span>
                     @foreach (var website in Model.Websites)
                     {
-                        <span class="staffMemberPosition professorWebsiteTitle">
+                        <span class="modelInfoText modelWebsiteName">
                             <a href="@website.Link" target="_blank" rel="noopener noreferrer" style="@ForegroundVariable.SetCssColor(Model.Color)">@website.Name</a>
                         </span>
                     }
@@ -247,10 +247,6 @@
 
         .departmentPreviewContainer .modelRibbonContainer {
             grid-template-columns: 132px 1fr;
-        }
-
-        .departmentPreviewContainer .modelWeeklyScheduleContainer {
-            grid-template-columns: 1fr 1fr ;
         }
 
         .departmentPreviewContainer .modelRibbonInfo {

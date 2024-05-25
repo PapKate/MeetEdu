@@ -21,7 +21,7 @@
                     <div class="staffMemberRibbon">
                         <div class="staffMemberRibbonInfoContainer">
                             <span class="staffMemberRibbonInfo">@Model.User.LastName @Model.User.FirstName</span>
-                            <span class="staffMemberRibbonInfoDetails">@Model.Rank</span>
+                            <span class="staffMemberRibbonInfoDetails">@Model.Rank.ToString().BreakWords()</span>
                         </div>
                         <IconButton BackColor="transparent"
                                     ForeColor="@Model.User.Color.DarkOrWhite()"
@@ -32,9 +32,9 @@
                     </div>
                 </div>
 
-                <div class="staffMemberInfoContainer" style="@ForegroundVariable.SetCssColor(Model.User.Color)">
-                    <div class="staffMemberImageAndContactContainer">
-                        <div class="staffMemberImageContainer">
+                <div class="modelInfoContainer" style="@ForegroundVariable.SetCssColor(Model.User.Color)">
+                    <div class="modelImageAndContactContainer">
+                        <div class="modelImageContainer">
                             <ImageWithFallbackVector CssClasses="staffMemberImage"
                                                    ImageSource="@Model.User!.ImageUrl?.ToString()"
                                                    AspectRatio="1 / 1"
@@ -44,58 +44,58 @@
                                                    AlternateText="@Model.User.Username" />
 
                         </div>
-                        <div class="staffMemberContactContainer">
-                            <div class="staffMemberContactImage">
+                        <div class="modelContactContainer">
+                            <div class="modelContactImage">
                                 <MapMarkerVector Color="@Model.User.Color" />
                             </div>
-                            <span class="staffMemberContactValue">@(Model.User.Location is not null ? $"{Model.User.Location.Address}, {Model.User.Location.City}, {Model.User.Location.Postcode}" : "-")</span>
+                            <span class="modelContactValue">@(Model.User.Location is not null ? $"{Model.User.Location.Address}, {Model.User.Location.City}, {Model.User.Location.Postcode}" : "-")</span>
 
-                            <div class="staffMemberContactImage">
+                            <div class="modelContactImage">
                                 <CallVector Color="@Model.User.Color" />
                             </div>
-                            <span class="staffMemberContactValue">+@Model.User.PhoneNumber</span>
+                            <span class="modelContactValue">+@Model.User.PhoneNumber</span>
 
-                            <div class="staffMemberContactImage">
+                            <div class="modelContactImage">
                                 <EmailVector Color="@Model.User.Color" />
                             </div>
-                            <span class="staffMemberContactValue">@Model.User.Email</span>
+                            <span class="modelContactValue">@Model.User.Email</span>
 
                         </div>
                     </div>
                     <div class="staffMemberPositionContainer">
-                        <span class="staffMemberWeeklyScheduleTitle">Department</span>
-                        <span class="staffMemberPosition">@Model.Department!.Name</span>
+                        <span class="modelInfoTitle">Department</span>
+                        <span class="modelInfoText">@Model.Department!.Name</span>
                     </div>
                     @if (!Model.Websites.IsNullOrEmpty())
                     {
                         <div id="professorWebsites" class="staffMemberPositionContainer">
-                            <span class="staffMemberWeeklyScheduleTitle">Websites</span>
+                            <span class="modelInfoTitle">Websites</span>
                             @foreach (var website in Model.Websites)
                             {
-                                <span class="staffMemberPosition professorWebsiteTitle">
+                                <span class="modelInfoText modelWebsiteName">
                                     <a href="@website.Link" target="_blank" rel="noopener noreferrer" style="@ForegroundVariable.SetCssColor(Model.User.Color)">@website.Name</a>
                                 </span>
                             }
                         </div>
                     }
-                    <div class="staffMemberWeeklyScheduleContainer">
-                        <div class="staffMemberWeeklySchedule">
-                            <span class="staffMemberWeeklyScheduleTitle">Office hours</span>
+                    <div class="modelWeeklyScheduleContainer">
+                        <div class="modelWeeklySchedule">
+                            <span class="modelWeeklyScheduleTitle">Office hours</span>
                         </div>
                         @if (Model.WeeklySchedule is not null)
                         {
                             @foreach (var schedule in Model.WeeklySchedule.WeeklyHours.OrderBy(x => x.DayOfWeek).GroupBy(x => x.DayOfWeek))
                             {
-                                <div class="staffMemberWeeklyScheduleDayContainer">
-                                    <span class="staffMemberWeeklyScheduleDay">@schedule.Key</span>
+                                <div class="modelWeeklyScheduleDayContainer">
+                                    <span class="modelWeeklyScheduleDay">@schedule.Key</span>
                                     @foreach (var timespan in schedule.OrderBy(x => x.Start))
                                     {
-                                        <span class="staffMemberWeeklyScheduleTime">@timespan.Start.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat) - @timespan.End.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat)</span>
+                                        <span class="modelWeeklyScheduleTime">@timespan.Start.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat) - @timespan.End.ToFormatedString(TimeOnlyExtensions.ShortTimeFormat)</span>
                                     }
                                 </div>
                             }
                         }
-                        <span class="staffMemberWeeklyScheduleNote">@Model.WeeklySchedule?.Note</span>
+                        <span class="modelWeeklyScheduleNote">@Model.WeeklySchedule?.Note</span>
                     </div>
                 </div>
 
@@ -165,6 +165,10 @@
         color: @Model?.User?.Color.DarkOrWhite().NormalizedColor();
     }
 
+    .modelImageAndContactContainer {
+        top: -1rem;
+    }
+
     .professorResearchContainer {
         position: relative;
         display: flex;
@@ -180,7 +184,7 @@
         font-weight: 700;
     }
 
-    .professorWebsiteTitle {
+    .modelWebsiteName {
         grid-column-start: 2;
         font-weight: 700;
     }
@@ -219,7 +223,7 @@
         width: 100%;
         height: 320px;
         border-radius: @LargeBorderRadius;
-        border: solid 1px @Gray.NormalizedColor();
+        border: solid 1px @LightGray.NormalizedColor();
     }
 
     #professorWebsites {

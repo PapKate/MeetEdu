@@ -14,6 +14,15 @@ namespace MeetBase.Web
 
         #endregion
 
+        #region Public Properties
+
+        /// <summary>
+        /// A flag indicating whether the hub is connected or not
+        /// </summary>
+        public bool IsConnected { get; set; }
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -35,11 +44,14 @@ namespace MeetBase.Web
         public async Task RefreshAsync(MeetCoreClient client)
         {
             await mConnection.StopAsync();
+            IsConnected = false;
+
             await mConnection.DisposeAsync();
             await Closed(null);
 
             mConnection = CreateConnection(client);
             await mConnection.StartAsync();
+            IsConnected = true;
         }
 
         /// <summary>
@@ -48,6 +60,7 @@ namespace MeetBase.Web
         /// <returns></returns>
         public async Task DisposeAsync()
         {
+            IsConnected = false;
             await mConnection.StopAsync();
             await mConnection.DisposeAsync();
         }
@@ -57,6 +70,16 @@ namespace MeetBase.Web
         /// </summary>
         /// <returns></returns>
         public async Task ConnectAsync()
+        {
+            await mConnection.StartAsync();
+            IsConnected = true;
+        }
+
+        /// <summary>
+        /// Closes a connection to the server
+        /// </summary>
+        /// <returns></returns>
+        public async Task DisconnectAsync()
         {
             await mConnection.StartAsync();
         }

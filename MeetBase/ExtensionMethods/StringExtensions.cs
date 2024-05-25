@@ -121,6 +121,30 @@ namespace MeetBase
             return builder.ToString();
         }
 
+        /// <summary>
+        /// Adds a space between words
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns></returns>
+        public static string BreakWords(this string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+
+            var result = string.Empty;
+
+            foreach (var c in value)
+            {
+                if (char.IsUpper(c) && result.Length > 0)
+                {
+                    result += ' ';
+                }
+                result += c;
+            }
+
+            return result;
+        }
+
         #endregion
 
         #region Private Methods

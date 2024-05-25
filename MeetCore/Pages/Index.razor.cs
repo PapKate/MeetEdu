@@ -258,8 +258,8 @@ namespace MeetCore
                     StateManager.SetLoggedInUserData(isSecretary, response.Result.User, response.Result.Professor, departmentResponse.Result);
                     NavigationManager.Professor_NavigateToProfilePage(response.Result.Professor!.Id);
                 }
-
-                await HubClient.ConnectAsync();
+                if(!HubClient.IsConnected)
+                    await HubClient.ConnectAsync();
             }
             // Else if the forgot password is active...
             else if (IsForgotPasswordActive)

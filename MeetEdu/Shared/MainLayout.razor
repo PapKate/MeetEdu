@@ -150,8 +150,8 @@
     .modelWeeklyScheduleContainer {
         position: relative;
         display: grid;
-        grid-template-columns: 1fr 3fr;
-        gap: @MediumGap @VeryLargeGap;
+        grid-template-columns: 1fr 2fr;
+        gap: @VeryLargeGap;
         padding: 0 @VeryLargePadding;
     }
 
@@ -173,8 +173,11 @@
 
     .modelWeeklyScheduleNote {
         grid-column-start: 1;
-        grid-column-end: 3;
+        grid-column-end: 2;
+        display: flex;
         font-size: 92%;
+        grid-row-start: 2;
+        grid-row-end: 4;
     }
 
     .modelWeeklyScheduleDayContainer {
@@ -188,6 +191,7 @@
 
     .modelWeeklyScheduleDay {
         font-weight: 600;
+        width:100%;
     }
 
     .modelWeeklyScheduleTime {
@@ -339,7 +343,7 @@
         padding: 0 @VeryLargePadding 0 @VeryLargePadding;
     }
 
-    .staffMemberPosition {
+    .modelInfoText {
         text-align: right;
     }
 
@@ -361,7 +365,7 @@
         gap: @LargeGap;
     }
 
-    .staffMemberWeeklyScheduleTitle {
+    .modelInfoTitle {
         font-size: 112%;
         color: @ForegroundVariable.GetCssVariable();
         font-weight: 700;
@@ -446,6 +450,16 @@
         margin-top: 4px;
     }
 
+    .modelWebsiteName {
+        grid-column-start: 2;
+        color: @ForegroundVariable.GetCssVariable();
+        font-weight: 700;
+    }
+
+        .modelWebsiteName a {
+            color: @ForegroundVariable.GetCssVariable();
+        }
+
     .contactFormButton {
         width: 100%;
     }
@@ -458,6 +472,10 @@
         filter: @LightFilterDropShadow;
         background: @White.NormalizedColor();
         border: none;
+    }
+
+    .leaflet-control-zoom {
+        display: none;
     }
 
     @@media screen and (max-width: 440px) {
@@ -481,7 +499,7 @@
             height: 120px;
         }
 
-        .staffMemberPositionContainer {
+        .modelInfoContainer {
             padding: @LargePadding @LargePadding 0 @LargePadding;
         }
 

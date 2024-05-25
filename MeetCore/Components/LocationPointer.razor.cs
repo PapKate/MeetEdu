@@ -57,7 +57,7 @@ namespace MeetCore
         /// The map height
         /// </summary>
         [Parameter]
-        public string MapHeight { get; set; } = "280px";
+        public string MapHeight { get; set; } = "320px";
 
         /// <summary>
         /// The additional CSS classes

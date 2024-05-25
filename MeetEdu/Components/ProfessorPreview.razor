@@ -18,7 +18,7 @@
 
         <div class="professorInfoContainer">
             <div class="professorHeaderContainer">
-                <span>@Model.Rank</span>
+                <span>@Model.Rank.ToString().BreakWords()</span>
                 <IconButton BackColor="transparent"
                             ForeColor="@Model.User.Color"
                             VectorSource="@IconPaths.HeartOutlinePath"

@@ -2881,6 +2881,11 @@
             Provides events used for communication between the Client and the Server
             </summary>
         </member>
+        <member name="P:MeetBase.Web.MeetCoreHubClient.IsConnected">
+            <summary>
+            A flag indicating whether the hub is connected or not
+            </summary>
+        </member>
         <member name="M:MeetBase.Web.MeetCoreHubClient.#ctor(MeetBase.Web.MeetCoreClient)">
             <summary>
             Default constructor
@@ -2901,6 +2906,12 @@
         <member name="M:MeetBase.Web.MeetCoreHubClient.ConnectAsync">
             <summary>
             Starts a connection to the server
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetBase.Web.MeetCoreHubClient.DisconnectAsync">
+            <summary>
+            Closes a connection to the server
             </summary>
             <returns></returns>
         </member>
