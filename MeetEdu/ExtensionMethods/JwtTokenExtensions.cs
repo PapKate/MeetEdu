@@ -24,6 +24,22 @@ namespace MeetEdu
         public static string GetUserId(this HttpContext context) => context.User.Claims.GetUserId();
 
         /// <summary>
+        /// Searches the specified <paramref name="context"/> claims with type <see cref="JwtTokenConstants.DepartmentIdClaimType"/>
+        /// and extracts its value
+        /// </summary>
+        /// <param name="context">The HTTP context</param>
+        /// <param name="departmentId">The unique department id</param>
+        /// <returns></returns>
+        public static bool TryGetDepartmentId(this HttpContext context, [NotNullWhen(true)] out string? departmentId)
+        {
+            // Set the id
+            departmentId = context.User.Claims.FirstOrDefault(x => x.Type == JwtTokenConstants.DepartmentIdClaimType)?.Value;
+
+            // Return whether there operation was successful
+            return departmentId != null;
+        }
+
+        /// <summary>
         /// Searches the specified <paramref name="context"/> claims with type <see cref="JwtTokenConstants.SecretaryIdClaimType"/>
         /// and extracts its value
         /// </summary>

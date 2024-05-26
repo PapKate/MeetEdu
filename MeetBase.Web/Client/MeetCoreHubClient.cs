@@ -104,6 +104,11 @@ namespace MeetBase.Web
                 AppointmentsCreated(this, models);
             });
 
+            connection.On<IEnumerable<DepartmentContactMessageResponseModel>>(HubConstants.MessagesCreatedMethodName, models =>
+            {
+                MessagesCreated(this, models);
+            });
+
             connection.Closed += async (x) => await Closed(x);
             connection.Reconnected += async (x) => await Reconnected(x);
             connection.Reconnecting += async (x) => await Reconnecting(x);
@@ -128,6 +133,11 @@ namespace MeetBase.Web
         /// Event that fires every time appointments are created
         /// </summary>
         public event EventHandler<IEnumerable<AppointmentResponseModel>> AppointmentsCreated = (sender, e) => { };
+
+        /// <summary>
+        /// Event that fires every time messages are created
+        /// </summary>
+        public event EventHandler<IEnumerable<DepartmentContactMessageResponseModel>> MessagesCreated = (sender, e) => { };
 
         #endregion
 

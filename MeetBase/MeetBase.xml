@@ -30,6 +30,26 @@
             </summary>
             <param name="name">The name</param>
         </member>
+        <member name="T:MeetBase.FormatConstants">
+            <summary>
+            Provides format patterns
+            </summary>
+        </member>
+        <member name="F:MeetBase.FormatConstants.DateFormat">
+            <summary>
+            The format of a date
+            </summary>
+        </member>
+        <member name="F:MeetBase.FormatConstants.TimeFormat">
+            <summary>
+            The format of a time
+            </summary>
+        </member>
+        <member name="F:MeetBase.FormatConstants.DateTimeFormat">
+            <summary>
+            The format of a date and time
+            </summary>
+        </member>
         <member name="T:MeetBase.GlobalInfo">
             <summary>
             Global information

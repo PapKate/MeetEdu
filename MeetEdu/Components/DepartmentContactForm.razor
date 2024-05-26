@@ -16,7 +16,7 @@
                        AnchorOrigin="Origin.BottomCenter">
                 @foreach (var rule in Enum.GetValues<SecretaryRole>())
                 {
-                    <MudSelectItem Value="@rule">@rule</MudSelectItem>
+                    <MudSelectItem Value="@rule">@rule.ToString().BreakWords()</MudSelectItem>
                 }
             </MudSelect>
             <MudTextField @bind-Value="@mContactMessage.FirstName"

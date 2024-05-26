@@ -74,6 +74,12 @@ namespace MeetBase.Blazor
         [Parameter]
         public string CellHeight { get; set; } = "48px";
 
+        /// <summary>
+        /// The color of the pointer of today
+        /// </summary>
+        [Parameter]
+        public string? PointerColor { get; set; }
+
         #endregion
 
         #region Constructors

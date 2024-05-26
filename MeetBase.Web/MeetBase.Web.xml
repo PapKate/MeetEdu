@@ -160,9 +160,19 @@
             The department id
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.SecretaryId">
+            <summary>
+            The id of the secretary that replied
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.Role">
             <summary>
             The role
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageRequestModel.Reply">
+            <summary>
+            The reply to the <see cref="P:MeetBase.Web.BaseContactRequestModel.Message"/>
             </summary>
         </member>
         <member name="M:MeetBase.Web.DepartmentContactMessageRequestModel.#ctor">
@@ -1051,14 +1061,24 @@
             The department id
             </summary>
         </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.SecretaryId">
+            <summary>
+            The secretary id
+            </summary>
+        </member>
         <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.Role">
             <summary>
             The role
             </summary>
         </member>
-        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.SecretaryId">
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.Reply">
             <summary>
-            The secretary id
+            The reply to the <see cref="P:MeetBase.Web.BaseContactResponseModel.Message"/>
+            </summary>
+        </member>
+        <member name="P:MeetBase.Web.DepartmentContactMessageResponseModel.Secretary">
+            <summary>
+            The secretary that replied
             </summary>
         </member>
         <member name="M:MeetBase.Web.DepartmentContactMessageResponseModel.#ctor">
@@ -2929,6 +2949,11 @@
             Event that fires every time appointments are created
             </summary>
         </member>
+        <member name="E:MeetBase.Web.MeetCoreHubClient.MessagesCreated">
+            <summary>
+            Event that fires every time messages are created
+            </summary>
+        </member>
         <member name="T:MeetBase.Web.IHubConnectionBuilderExtensions">
             <summary>
             Extension methods for the <see cref="T:Microsoft.AspNetCore.SignalR.Client.IHubConnectionBuilder"/>
@@ -3812,12 +3837,17 @@
         </member>
         <member name="F:MeetBase.Web.HubConstants.Route">
             <summary>
-            
+            The SignlR URL 
             </summary>
         </member>
         <member name="F:MeetBase.Web.HubConstants.AppointmentsCreatedMethodName">
             <summary>
-            
+            The name of the event that fires when appointments are created
+            </summary>
+        </member>
+        <member name="F:MeetBase.Web.HubConstants.MessagesCreatedMethodName">
+            <summary>
+            The name of the event that fires when messages are created
             </summary>
         </member>
         <member name="T:MeetBase.Web.JwtTokenConstants">

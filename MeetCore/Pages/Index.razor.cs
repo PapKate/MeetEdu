@@ -142,6 +142,12 @@ namespace MeetCore
         [Inject]
         protected MeetCoreHubClient HubClient { get; set; } = default!;
 
+        /// <summary>
+        /// The header manager for displaying the user data
+        /// </summary>
+        [Inject]
+        protected HeaderUserManager HeaderManager { get; set; } = default!;
+
         #endregion
 
         #region Constructors
@@ -209,11 +215,14 @@ namespace MeetCore
                     return;
                 }
                 
+                var user = response.Result.User;
+                await SessionStorageManager.SetValueAsync(SessionStorageManager.UserId, response.Result.User.Id);
+
                 // Get user type - secretary or professor
                 var isSecretary = response.Result.Secretary is not null;
                 await SessionStorageManager.SetValueAsync(SessionStorageManager.IsSecretary, isSecretary);
-                var user = response.Result.User;
-                await SessionStorageManager.SetValueAsync(SessionStorageManager.UserId, response.Result.User.Id);
+
+                HeaderManager.SetValues(user.Username, user.ImageUrl, user.Color);
 
                 // If the connected user is a secretary...
                 if (isSecretary)
@@ -258,6 +267,7 @@ namespace MeetCore
                     StateManager.SetLoggedInUserData(isSecretary, response.Result.User, response.Result.Professor, departmentResponse.Result);
                     NavigationManager.Professor_NavigateToProfilePage(response.Result.Professor!.Id);
                 }
+
                 if(!HubClient.IsConnected)
                     await HubClient.ConnectAsync();
             }

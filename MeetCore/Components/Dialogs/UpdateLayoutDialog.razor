@@ -43,7 +43,7 @@
                            AnchorOrigin="Origin.BottomCenter">
                     @foreach (var value in Enum.GetValues<ImageDisplayTheme>())
                     {
-                        <MudSelectItem Value="@value">@value</MudSelectItem>
+                        <MudSelectItem Value="@value">@value.ToString().BreakWords()</MudSelectItem>
                     }
                 </MudSelect>
                 <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="@((e) => mFile = e)" Class="dialogContentPhotoContainer">

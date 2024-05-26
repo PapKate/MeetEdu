@@ -16,7 +16,7 @@
             <div class="dialogSlotsContentContainer">
                 @foreach (var slotsPerDay in Slots.GroupBy(x => x.Minimum.Date))
                 {
-                    <span style="font-weight:800;">@slotsPerDay.First().Minimum.DayOfWeek @slotsPerDay.First().Minimum.Date.ToString("dd/MM/yyyy")</span>
+                    <span style="font-weight:800;">@slotsPerDay.First().Minimum.DayOfWeek @slotsPerDay.First().Minimum.Date.ToString(FormatConstants.DateFormat)</span>
                     <div class="dialogSlotsPerDayContainer">
                         @foreach (var slot in slotsPerDay)
                         {
@@ -28,7 +28,7 @@
                                         BorderThickness="1px"
                                         CssClasses="cronExpressionInputButton"
                                         OnClick="@(() => SlotButton_OnClick(position))" >
-                                <span>@slot.Minimum.ToString("HH:mm") - @slot.Maximum.ToString("HH:mm")</span>
+                                <span>@slot.Minimum.ToString(FormatConstants.TimeFormat) - @slot.Maximum.ToString(FormatConstants.TimeFormat)</span>
                             </TextButton>
                             index++;
                         }

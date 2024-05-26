@@ -427,9 +427,14 @@
             The dialog for adding and editing a <see cref="T:MeetBase.Web.DepartmentContactMessageResponseModel"/>
             </summary>
         </member>
-        <member name="F:MeetCore.DepartmentMessageDialog.mIsReplyButtonVisible">
+        <member name="F:MeetCore.DepartmentMessageDialog.mAreActionButtonsVisible">
             <summary>
-            A flag indicating whether the reply button is visible
+            A flag indicating whether the action buttons are visible or not
+            </summary>
+        </member>
+        <member name="F:MeetCore.DepartmentMessageDialog.mHasReply">
+            <summary>
+            A flag indicating whether the message has a reply or not
             </summary>
         </member>
         <member name="P:MeetCore.DepartmentMessageDialog.MudDialog">
@@ -447,9 +452,17 @@
             Default constructor
             </summary>
         </member>
-        <member name="P:MeetCore.DepartmentMessageDialog.ReplyOnClick">
+        <member name="M:MeetCore.DepartmentMessageDialog.OnInitialized">
+            <inheritdoc/>
+        </member>
+        <member name="M:MeetCore.DepartmentMessageDialog.Save">
             <summary>
-            Fires when the reply button is clicked
+            Saves the changes
+            </summary>
+        </member>
+        <member name="M:MeetCore.DepartmentMessageDialog.Cancel">
+            <summary>
+            Closes the dialog
             </summary>
         </member>
         <member name="T:MeetCore.EditLectureDialog">
@@ -904,9 +917,14 @@
             The state management service
             </summary>
         </member>
+        <member name="P:MeetCore.SideMenu.HeaderManager">
+            <summary>
+            The header manager for displaying the user data
+            </summary>
+        </member>
         <member name="P:MeetCore.SideMenu.JSRuntime">
             <summary>
-            
+            Represents an instance of a JavaScript runtime to which calls may be dispatched
             </summary>
         </member>
         <member name="M:MeetCore.SideMenu.#ctor">
@@ -1751,6 +1769,11 @@
             The <see cref="T:MeetBase.Web.MeetCoreHubClient"/>
             </summary>
         </member>
+        <member name="P:MeetCore.Index.HeaderManager">
+            <summary>
+            The header manager for displaying the user data
+            </summary>
+        </member>
         <member name="M:MeetCore.Index.#ctor">
             <summary>
             Default constructor
@@ -2528,6 +2551,16 @@
         </member>
         <member name="M:MeetCore.Shared.MainLayout.OnAfterRender(System.Boolean)">
             <inheritdoc/>
+        </member>
+        <member name="M:MeetCore.Shared.MainLayout.ShowAppointmentNotifications(System.Object,System.Collections.Generic.IEnumerable{MeetBase.Web.AppointmentResponseModel})">
+            <summary>
+            Shows the notification for each appointment in the list of <paramref name="appointments"/>
+            </summary>
+        </member>
+        <member name="M:MeetCore.Shared.MainLayout.ShowMessageNotifications(System.Object,System.Collections.Generic.IEnumerable{MeetBase.Web.DepartmentContactMessageResponseModel})">
+            <summary>
+            Shows the notification for each message in the list of<paramref name="messages"/>
+            </summary>
         </member>
     </members>
 </doc>

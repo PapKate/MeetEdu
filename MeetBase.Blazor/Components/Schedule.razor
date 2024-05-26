@@ -95,7 +95,7 @@
                                 @HeightVariable?.SetCssVariable($"calc({CellHeight} * ({workHour.End.Hour}.{workHour.End.Minute * 1 / 6} - {workHour.Start.Hour}.{workHour.Start.Minute * 1 / 6}))")
                                 @BackgroundVariable.SetCssColor($"{WeeklySchedule.Color.HexToRGBA(0.2)}")
                                 @BorderBrushVariable.SetCssColor($"{WeeklySchedule.Color}")"
-                        id="@($"{workHour.DayOfWeek}.{workHour.Start.ToString("hh:mm")}-{workHour.End.ToString("hh:mm")}")">
+                         id="@($"{workHour.DayOfWeek}.{workHour.Start.ToString(FormatConstants.TimeFormat)}-{workHour.End.ToString(FormatConstants.TimeFormat)}")">
                         
                         <span class="workHourName">@WeeklySchedule.Name</span>
                         <span class="workHourLocation">@workHour.Text</span>
@@ -115,7 +115,7 @@
                                     @BackgroundVariable.SetCssColor($"{lecture.Color.HexToRGBA(0.2)}")
                                     @BorderBrushVariable.SetCssColor($"{lecture.Color}")
                                     "
-                             id="@($"{hourRange.DayOfWeek}.{hourRange.Start.ToString("hh:mm")}-{hourRange.End.ToString("hh:mm")}")">
+                             id="@($"{hourRange.DayOfWeek}.{hourRange.Start.ToString(FormatConstants.TimeFormat)}-{hourRange.End.ToString(FormatConstants.TimeFormat)}")">
                             <span class="workHourName">@lecture.Name</span>
                             <span class="workHourLocation">@hourRange.Text</span>
                         </div>
@@ -233,7 +233,7 @@
     }
 
     .scheduleToday {
-        background-color: @("#006992".NormalizedColor());
+        background-color: @((PointerColor ?? Amber).NormalizedColor());
         color: @White.NormalizedColor();
     }
 

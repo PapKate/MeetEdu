@@ -53,7 +53,7 @@
                                    AnchorOrigin="Origin.BottomCenter">
                             @foreach (var value in Enum.GetValues<DayOfWeek>())
                             {
-                                <MudSelectItem Value="@value">@value</MudSelectItem>
+                                <MudSelectItem Value="@value">@value.ToString().BreakWords()</MudSelectItem>
                             }
                         </MudSelect>
                         <MudTextField T="string" Value="@shift.Text"

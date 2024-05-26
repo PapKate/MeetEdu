@@ -2,6 +2,7 @@
 using MeetBase.Web;
 
 using MudBlazor;
+using MeetBase;
 
 namespace MeetCore
 {
@@ -13,9 +14,14 @@ namespace MeetCore
         #region Private Members
 
         /// <summary>
-        /// A flag indicating whether the reply button is visible
+        /// A flag indicating whether the action buttons are visible or not
         /// </summary>
-        private bool mIsReplyButtonVisible = true;
+        private bool mAreActionButtonsVisible = true;
+
+        /// <summary>
+        /// A flag indicating whether the message has a reply or not
+        /// </summary>
+        private bool mHasReply = false;
 
         #endregion
 
@@ -47,21 +53,35 @@ namespace MeetCore
 
         #endregion
 
-        #region Private Methods
+        #region Protected Methods
 
-        private async void SendReplyButton_OnClick()
+        /// <inheritdoc/>
+        protected override void OnInitialized()
         {
-            await ReplyOnClick.InvokeAsync();
+            base.OnInitialized();
+
+            mHasReply = !Model.Model!.Reply.IsNullOrEmpty();
         }
 
         #endregion
 
-        #region Public Events
+        #region Private Methods
 
         /// <summary>
-        /// Fires when the reply button is clicked
+        /// Saves the changes
         /// </summary>
-        public EventCallback ReplyOnClick { get; set; }
+        private void Save()
+        {
+            MudDialog.Close(DialogResult.Ok(Model));
+        }
+
+        /// <summary>
+        /// Closes the dialog
+        /// </summary>
+        protected void Cancel()
+        {
+            MudDialog.Cancel();
+        }
 
         #endregion
     }

@@ -2258,9 +2258,24 @@
             The department id
             </summary>
         </member>
+        <member name="P:MeetEdu.DepartmentContactMessageEntity.SecretaryId">
+            <summary>
+            The id of the secretary that replied
+            </summary>
+        </member>
         <member name="P:MeetEdu.DepartmentContactMessageEntity.Role">
             <summary>
             The role
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentContactMessageEntity.Reply">
+            <summary>
+            The reply to the <see cref="P:MeetEdu.BaseContactEntity.Message"/>
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentContactMessageEntity.Secretary">
+            <summary>
+            The secretary that replied
             </summary>
         </member>
         <member name="M:MeetEdu.DepartmentContactMessageEntity.#ctor">
@@ -3646,6 +3661,15 @@
             <param name="context">The context</param>
             <returns></returns>
         </member>
+        <member name="M:MeetEdu.JwtTokenExtensions.TryGetDepartmentId(Microsoft.AspNetCore.Http.HttpContext,System.String@)">
+            <summary>
+            Searches the specified <paramref name="context"/> claims with type <see cref="F:MeetBase.Web.JwtTokenConstants.DepartmentIdClaimType"/>
+            and extracts its value
+            </summary>
+            <param name="context">The HTTP context</param>
+            <param name="departmentId">The unique department id</param>
+            <returns></returns>
+        </member>
         <member name="M:MeetEdu.JwtTokenExtensions.TryGetSecretaryId(Microsoft.AspNetCore.Http.HttpContext,System.String@)">
             <summary>
             Searches the specified <paramref name="context"/> claims with type <see cref="F:MeetBase.Web.JwtTokenConstants.SecretaryIdClaimType"/>
@@ -4357,6 +4381,11 @@
         <member name="P:MeetEdu.DepartmentPage.Controller">
             <summary>
             The controller
+            </summary>
+        </member>
+        <member name="P:MeetEdu.DepartmentPage.HubClient">
+            <summary>
+            The hub client
             </summary>
         </member>
         <member name="P:MeetEdu.DepartmentPage.Snackbar">
@@ -5277,7 +5306,14 @@
             <summary>
             Returns the connections that belong to the user with the specified <paramref name="professorId"/>
             </summary>
-            <param name="professorId">The user id</param>
+            <param name="professorId">The professor id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.ConnectionsManager.GetAllSecretaryConnections(MongoDB.Bson.ObjectId)">
+            <summary>
+            Returns the connections that belong to the user with the specified <paramref name="departmentId"/>
+            </summary>
+            <param name="departmentId">The department id</param>
             <returns></returns>
         </member>
         <member name="T:MeetEdu.ActiveConnectionInfo">
@@ -5298,6 +5334,11 @@
         <member name="P:MeetEdu.ActiveConnectionInfo.SecretaryId">
             <summary>
             The secretary id
+            </summary>
+        </member>
+        <member name="P:MeetEdu.ActiveConnectionInfo.DepartmentId">
+            <summary>
+            The department id
             </summary>
         </member>
         <member name="P:MeetEdu.ActiveConnectionInfo.ConnectionId">
@@ -5337,7 +5378,13 @@
         </member>
         <member name="M:MeetEdu.AccountsHubClient.SendAppointmentsCreatedAsync(System.Collections.Generic.IEnumerable{MeetBase.Web.AppointmentResponseModel})">
             <summary>
-            
+            Sends the notification that appointments where created
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MeetEdu.AccountsHubClient.SendMessagesCreatedAsync(System.Collections.Generic.IEnumerable{MeetBase.Web.DepartmentContactMessageResponseModel})">
+            <summary>
+            Sends the notification that appointments where created
             </summary>
             <returns></returns>
         </member>

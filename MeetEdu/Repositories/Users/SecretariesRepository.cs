@@ -81,7 +81,7 @@ namespace MeetEdu
             {
                 var secretaries = new List<EmbeddedSecretaryEntity>();
                 secretaries.AddRange(department.Secretaries);
-                secretaries.Remove(secretaries.First(x => x.Id == secretaryEntity!.Id));
+                secretaries.Remove(secretaries.First(x => x.Source == secretaryEntity!.Id));
                 secretaries.Add(secretaryEntity!.ToEmbeddedEntity());
                 department.Secretaries = secretaries;
 

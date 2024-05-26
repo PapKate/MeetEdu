@@ -44,11 +44,13 @@ namespace MeetEdu
 
             httpContext.TryGetProfessorId(out var professorId);
             httpContext.TryGetSecretaryId(out var secretaryId);
+            httpContext.TryGetDepartmentId(out var departmentId);
 
             ConnectionsManager.AddConnection(new ActiveConnectionInfo(httpContext.GetUserId().ToObjectId(), Context.ConnectionId)
             {
                 ProfessorId = professorId?.ToObjectId(),
-                SecretaryId = secretaryId?.ToObjectId()
+                SecretaryId = secretaryId?.ToObjectId(),
+                DepartmentId = departmentId?.ToObjectId()
             });
 
             return base.OnConnectedAsync();
@@ -145,10 +147,18 @@ namespace MeetEdu
         /// <summary>
         /// Returns the connections that belong to the user with the specified <paramref name="professorId"/>
         /// </summary>
-        /// <param name="professorId">The user id</param>
+        /// <param name="professorId">The professor id</param>
         /// <returns></returns>
         public IEnumerable<ActiveConnectionInfo> GetProfessorConnections(ObjectId professorId)
             => mConnections.Where(x => x.ProfessorId == professorId).ToList();
+
+        /// <summary>
+        /// Returns the connections that belong to the user with the specified <paramref name="departmentId"/>
+        /// </summary>
+        /// <param name="departmentId">The department id</param>
+        /// <returns></returns>
+        public IEnumerable<ActiveConnectionInfo> GetAllSecretaryConnections(ObjectId departmentId)
+            => mConnections.Where(x => x.DepartmentId == departmentId && x.ProfessorId is null).ToList();
 
         #endregion
     }
@@ -174,6 +184,11 @@ namespace MeetEdu
         /// The secretary id
         /// </summary>
         public ObjectId? SecretaryId { get; init; }
+
+        /// <summary>
+        /// The department id
+        /// </summary>
+        public ObjectId? DepartmentId { get; init; }
 
         /// <summary>
         /// The connection id
@@ -236,7 +251,7 @@ namespace MeetEdu
         #region Public Methods
 
         /// <summary>
-        /// 
+        /// Sends the notification that appointments where created
         /// </summary>
         /// <returns></returns>
         public async Task SendAppointmentsCreatedAsync(IEnumerable<AppointmentResponseModel> appointments)
@@ -246,6 +261,21 @@ namespace MeetEdu
                 foreach (var connection in ConnectionsManager.GetProfessorConnections(group.Key.ToObjectId()))
                 {
                     await Context.Clients.Client(connection.ConnectionId.ToString()).SendAsync(HubConstants.AppointmentsCreatedMethodName, group.ToList());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sends the notification that appointments where created
+        /// </summary>
+        /// <returns></returns>
+        public async Task SendMessagesCreatedAsync(IEnumerable<DepartmentContactMessageResponseModel> messages)
+        {
+            foreach (var group in messages.GroupBy(x => x.DepartmentId))
+            {
+                foreach (var connection in ConnectionsManager.GetAllSecretaryConnections(group.Key.ToObjectId()))
+                {
+                    await Context.Clients.Client(connection.ConnectionId.ToString()).SendAsync(HubConstants.MessagesCreatedMethodName, group.ToList());
                 }
             }
         }

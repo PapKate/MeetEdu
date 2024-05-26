@@ -31,7 +31,7 @@
                            AnchorOrigin="Origin.BottomCenter">
                     @foreach (var value in Enum.GetValues<DepartmentType>())
                     {
-                        <MudSelectItem Value="@value">@value</MudSelectItem>
+                        <MudSelectItem Value="@value">@value.ToString().BreakWords()</MudSelectItem>
                     }
                 </MudSelect>
                 <MudColorPicker Placeholder="Color" @bind-Text="@Model.Model.Color"

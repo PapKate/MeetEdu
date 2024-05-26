@@ -8,13 +8,22 @@
 <div class="headerContainer" style="@BackgroundVariable.SetCssColor(BackColor!) @ForegroundVariable.SetCssColor(ForeColor!)">
     <a class="headerAppName" href="/">@AppName</a>
        
-    <div class="headerUserContainer">
-        <span class="headerUserUsername">@(Username.IsNullOrEmpty() ? MeetBaseConstants.Explorer : Username)</span>
-        <div class="headerUserProfileImageContainer headerExplorerProfileImageContainer">
-            <img class="headerUserProfileImage" src="@(UserImageUrl is null ? SourceConstants.ExplorerProfileImage : UserImageUrl)" alt="userProfileImage" />
+    @if(Manager is not null && Manager.IsConnected)
+    {
+        <div class="headerUserContainer">
+            <span class="headerUserUsername">@Manager.Username</span>
+            <div class="headerUserProfileImageContainer headerExplorerProfileImageContainer"
+                 style="background: @Manager.Color.DarkOrWhite().HexToRGBA(0.8)">
+                <ImageWithFallbackVector CssClasses="headerUserProfileImage"
+                                         ImageSource="@Manager.ImageUrl?.ToString()"
+                                         AspectRatio="1 / 1"
+                                         VectorType="@typeof(AvatarVector)"
+                                         FallbackIconColor="@Manager.Color"
+                                         FallbackIconMargin="0"
+                                         AlternateText="@Manager.Username" />
+            </div>
         </div>
-    </div>
-
+    }
 </div>
 
 <style>
@@ -72,8 +81,10 @@
     }
 
     .headerExplorerProfileImageContainer {
-        padding: 3px;
-        background: @White.NormalizedColor();
+        padding: 8px;
+        background: @White.HexToRGBA(0.2);
+        border-radius: @CircleBorderRadius;
+        overflow:hidden;
     }
     
 </style>

@@ -127,6 +127,7 @@ namespace MeetCore
                     return;
                 }
                 StateManager.Secretary = secretaryResponse.Result;
+                Snackbar.Add("Changes saved", Severity.Success);
 
                 StateHasChanged();
             }
@@ -240,6 +241,7 @@ namespace MeetCore
                     }
                     StateManager.User = responseWithImage.Result;
                 }
+                Snackbar.Add("Changes saved", Severity.Success);
 
                 StateHasChanged();
             }

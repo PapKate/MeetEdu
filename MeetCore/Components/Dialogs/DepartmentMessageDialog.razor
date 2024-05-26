@@ -24,21 +24,61 @@
                 {
                     <span class="inboxDialogPropertyName">Phone number <span class="inboxDialogPropertyValue">+@Model.Model.PhoneNumber.ToPhoneNumberString()</span></span>
                 }
-                <span class="inboxDialogPropertyName">Date send <span class="inboxDialogPropertyValue">@Model.Model.DateCreated.ToLocalTime().ToString()</span></span>
+                <span class="inboxDialogPropertyName">Date send <span class="inboxDialogPropertyValue">@Model.Model.DateCreated.ToLocalTime().ToString(FormatConstants.DateTimeFormat)</span></span>
+            </div>
+            
+            <br/>
+
+            <div class="inboxDialogFromContainer">
+                <span class="inboxDialogFrom">To:</span>
+                <MudSelect T="SecretaryRole" @bind-Value="@Model.Model.Role"
+                           Placeholder="Role"
+                           Style=""
+                           Class="dialogInput"
+                           FullWidth="true"
+                           Variant="Variant.Text"
+                           Adornment="Adornment.Start"
+                           AnchorOrigin="Origin.BottomCenter">
+                    @foreach (var value in Enum.GetValues<SecretaryRole>())
+                    {
+                        <MudSelectItem Value="@value">@value.ToString().BreakWords()</MudSelectItem>
+                    }
+                </MudSelect>
             </div>
 
             <p class="inboxDialogMessage">@Model.Model.Message</p>
 
-            @if (mIsReplyButtonVisible)
+            @if(mHasReply)
             {
+                <div class="inboxDialogReplyMessage">
+                    <MudTextField T="string" @bind-Value="@Model.Model.Reply"
+                                  Placeholder="Your reply..."
+                                  FullWidth="true"
+                                  ReadOnly="true"
+                                  DisableUnderLine="true"
+                                  Variant="Variant.Text"
+                                  Lines="12" />
+                </div>
+            }
+
+            @if (mAreActionButtonsVisible)
+            {
+                @if(!mHasReply)
+                {
+                    <div id="inboxDialogReplyButtonContainer" class="dialogActionsContainer">
+                        <MudButton Variant="Variant.Text" OnClick="@(() => mAreActionButtonsVisible = false)" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Amber.NormalizedColor()};")">Reply</MudButton>
+                    </div>
+                }
                 <div id="inboxDialogButtonsContainer" class="dialogActionsContainer">
-                    <MudButton Variant="Variant.Text" OnClick="@(() => mIsReplyButtonVisible = false)" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Model.Color};")">Reply</MudButton>
+                    <MudButton Variant="Variant.Text" OnClick="@Cancel" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Red.NormalizedColor()};")">Cancel</MudButton>
+                    <MudButton Variant="Variant.Text" OnClick="@Save" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Green.NormalizedColor()};")">Save</MudButton>
                 </div>
             }
             else
             {
                 <div class="inboxDialogReplyMessage">
-                    <MudTextField T="string" Placeholder="Your reply..."
+                    <MudTextField T="string" @bind-Value="@Model.Model.Reply"
+                                  Placeholder="Your reply..."
                                   FullWidth="true"
                                   DisableUnderLine="true"
                                   Variant="Variant.Text"
@@ -46,8 +86,8 @@
                 </div>
 
                 <div id="inboxDialogButtonsContainer" class="dialogActionsContainer">
-                    <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@(() => mIsReplyButtonVisible = true)" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Red.NormalizedColor()};")">Cancel</MudButton>
-                    <MudButton Variant="Variant.Text" Color="Color.Success" OnClick="@SendReplyButton_OnClick" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Green.NormalizedColor()};")">Send</MudButton>
+                    <MudButton Variant="Variant.Text" OnClick="@Cancel" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Red.NormalizedColor()};")">Cancel</MudButton>
+                    <MudButton Variant="Variant.Text" OnClick="@Save" Class="px-10" Style="@($"text-transform:capitalize; font-weight: 700; color: {Green.NormalizedColor()};")">Save</MudButton>
                 </div>
             }
         }
@@ -55,6 +95,12 @@
 </MudDialog>
 
 <style>
+
+    .mud-select {
+        position: relative;
+        top: -1rem;
+        width: 100%;
+    }
 
     #inboxDialog {
         padding-right: 24px;
@@ -93,24 +139,25 @@
 
     .inboxDialogMessage {
         margin: 0;
-        width: 100%;
         max-height: 240px;
         font-size: 100%;
         font-weight: 400;
-        margin-top: @VeryLargePadding;
         overflow-y: auto;
-        padding-right: 1rem;
+        padding: @VeryLargePadding;
+        margin-right: @VeryVeryLargePadding;
+        border-radius: @LargeBorderRadius;
+        border: solid 2px @LightGray.NormalizedColor();
     }
 
     .inboxDialogReplyMessage {
         padding: 0 @VeryLargePadding;
         border: solid 2px @Model.Color.NormalizedColor();
         border-radius: @LargeBorderRadius;
-        margin-right: 24px;
-        margin-top: 24px;
+        margin-right: @VeryVeryLargePadding;
+        margin-top: @VeryVeryLargePadding;
     }
 
-    #inboxDialogButtonsContainer {
+    #inboxDialogButtonsContainer, #inboxDialogReplyButtonContainer {
         width: auto;
         margin: @LargeMargin;
         padding-right: 24px;

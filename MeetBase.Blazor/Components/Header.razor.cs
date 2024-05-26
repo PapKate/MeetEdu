@@ -27,17 +27,15 @@ namespace MeetBase.Blazor
         [Parameter]
         public string? ForeColor { get; set; }
 
-        /// <summary>
-        /// The username
-        /// </summary>
-        [Parameter]
-        public string? Username { get; set; }
+        #endregion
+
+        #region Protected Properties
 
         /// <summary>
-        /// The user image URL
+        /// The header manager for displaying the user data
         /// </summary>
-        [Parameter]
-        public Uri? UserImageUrl { get; set; }
+        [Inject]
+        protected HeaderUserManager? Manager { get; set; }
 
         #endregion
 

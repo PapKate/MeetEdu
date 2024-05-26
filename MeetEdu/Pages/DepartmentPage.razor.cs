@@ -48,6 +48,12 @@ namespace MeetEdu
         protected MeetEduController Controller { get; set; } = default!;
 
         /// <summary>
+        /// The hub client
+        /// </summary>
+        [Inject]
+        protected AccountsHubClient HubClient { get; set; } = default!;
+
+        /// <summary>
         /// The <see cref="MudBlazor"/> snack bar manager
         /// </summary>
         [Inject]
@@ -112,6 +118,8 @@ namespace MeetEdu
                 // Returns
                 return;
             }
+
+            await HubClient.SendMessagesCreatedAsync(new List<DepartmentContactMessageResponseModel>() { (DepartmentContactMessageResponseModel)((ObjectResult)messageResponse.Result)!.Value! });
 
             Snackbar.Add("Success: Message sent!", Severity.Success);
         }

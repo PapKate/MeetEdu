@@ -1,4 +1,5 @@
-﻿using MeetBase.Web;
+﻿using MeetBase.Blazor;
+using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -51,7 +52,13 @@ namespace MeetCore
         protected StateManagerCore StateManager { get; set; } = default!;
 
         /// <summary>
-        /// 
+        /// The header manager for displaying the user data
+        /// </summary>
+        [Inject]
+        protected HeaderUserManager HeaderManager { get; set; } = default!;
+
+        /// <summary>
+        /// Represents an instance of a JavaScript runtime to which calls may be dispatched
         /// </summary>
         [Inject]
         protected IJSRuntime JSRuntime { get; set; } = default!;
@@ -156,12 +163,14 @@ namespace MeetCore
         /// <summary>
         /// Logs out the connected staff member and navigates to the login page
         /// </summary>
-        public async void NavigateToLoginPage()
+        public void NavigateToLoginPage()
         {
             // If no navigation manager is found...
             if (NavigationManager is null)
                 // Returns
                 return;
+            
+            HeaderManager.Clear();
 
             // Navigates to the login page
             NavigationManager.NavigateToLoginPage();

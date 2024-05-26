@@ -241,7 +241,7 @@ namespace MeetEdu
             if (result.Data is IReadOnlyRangeable<DateTimeOffset> value)
             {
                 mAppointment.DateStart = value.Minimum;
-                mSetDateButton!.Text = $"{value.Minimum.ToString("dd/MM/yyyy")} {value.Minimum.ToString("HH:mm")} - {value.Maximum.ToString("HH:mm")}";
+                mSetDateButton!.Text = $"{value.Minimum.ToString(FormatConstants.DateFormat)} {value.Minimum.ToString(FormatConstants.TimeFormat)} - {value.Maximum.ToString(FormatConstants.TimeFormat)}";
                 mSetDateButton.InvokeStateHasChanged();
             }
         }

@@ -15,9 +15,24 @@ namespace MeetEdu
         public ObjectId DepartmentId { get; set; }
 
         /// <summary>
+        /// The id of the secretary that replied
+        /// </summary>
+        public ObjectId? SecretaryId { get; set; }
+
+        /// <summary>
         /// The role
         /// </summary>
         public SecretaryRole Role { get; set; }
+
+        /// <summary>
+        /// The reply to the <see cref="BaseContactEntity.Message"/>
+        /// </summary>
+        public string? Reply { get; set; }
+
+        /// <summary>
+        /// The secretary that replied
+        /// </summary>
+        public EmbeddedSecretaryEntity? Secretary { get; set; }
 
         #endregion
 

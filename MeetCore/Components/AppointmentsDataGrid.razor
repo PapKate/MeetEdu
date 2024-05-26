@@ -21,7 +21,7 @@
             <TemplateColumn Title="Time slot" Sortable="false">
                 <CellTemplate>
                     <span class="description">
-                        @context.Item!.DateStart.ToString("dd/MM/yyyy") | @context.Item!.DateStart.ToString("HH:mm") - @((context.Item!.DateStart + context.Item.Rule!.Duration).ToString("HH:mm"))
+                        @context.Item!.DateStart.ToString(FormatConstants.DateFormat) | @context.Item!.DateStart.ToString(FormatConstants.TimeFormat) - @((context.Item!.DateStart + context.Item.Rule!.Duration).ToString(FormatConstants.TimeFormat))
                     </span>
                 </CellTemplate>
             </TemplateColumn>

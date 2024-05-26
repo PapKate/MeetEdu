@@ -31,11 +31,6 @@
         }
 
         /// <summary>
-        /// The role
-        /// </summary>
-        public SecretaryRole Role { get; set; }
-
-        /// <summary>
         /// The secretary id
         /// </summary>
         public string SecretaryId
@@ -43,6 +38,21 @@
             get => mSecretaryId ?? string.Empty;
             set => mSecretaryId = value;
         }
+
+        /// <summary>
+        /// The role
+        /// </summary>
+        public SecretaryRole Role { get; set; }
+
+        /// <summary>
+        /// The reply to the <see cref="BaseContactResponseModel.Message"/>
+        /// </summary>
+        public string? Reply {  get; set; }
+
+        /// <summary>
+        /// The secretary that replied
+        /// </summary>
+        public EmbeddedSecretaryResponseModel? Secretary { get; set; }
 
         #endregion
 

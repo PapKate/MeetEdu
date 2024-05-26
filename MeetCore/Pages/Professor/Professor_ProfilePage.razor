@@ -104,9 +104,12 @@
         </div>
 
         <div class="staffMemberQuoteContainer">
-            <MudDivider DividerType="DividerType.Middle" Class="my-6" />
-            <span>"@Professor.Quote"</span>
-            <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+            @if(!Professor.Quote.IsNullOrEmpty())
+            {
+                <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+                <span>"@Professor.Quote"</span>
+                <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+            }
         </div>
 
         <MarkDownInput Id="professorResearchTextContainer"

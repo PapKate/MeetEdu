@@ -18,7 +18,7 @@
                           Class="dialogInput dialogContentFullRow"
                           FullWidth="true"
                           Variant="Variant.Text" />
-            <MudTextField Value="@($"{Appointment.DateStart.ToString("dd/MM/yyyyy")} | {Appointment.DateStart.ToString("HH:mm")} - {(Appointment.DateStart + Appointment.Rule.Duration).ToString("HH:mm")}")"
+            <MudTextField Value="@($"{Appointment.DateStart.ToString(FormatConstants.DateFormat)} | {Appointment.DateStart.ToString(FormatConstants.TimeFormat)} - {(Appointment.DateStart + Appointment.Rule.Duration).ToString(FormatConstants.TimeFormat)}")"
                           ReadOnly="true"
                           Placeholder="Rule"
                           Class="dialogInput dialogContentFullRow"
@@ -50,7 +50,7 @@
                         Variant="Variant.Text">
                 @foreach (var value in Enum.GetValues<AppointmentStatus>())
                 {
-                    <MudSelectItem Value="@value">@value</MudSelectItem>
+                    <MudSelectItem Value="@value">@value.ToString().BreakWords()</MudSelectItem>
                 }
             </MudSelect>
             @if(Appointment.IsRemote)

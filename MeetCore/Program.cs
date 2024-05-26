@@ -45,6 +45,8 @@ builder.Services.AddMudServices(config =>
     config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
 });
 
+builder.Services.AddSingleton<HeaderUserManager>();
+
 builder.Services.AddSingleton<MeetCoreClient>();
 builder.Services.AddSingleton<MeetCoreHubClient>();
 

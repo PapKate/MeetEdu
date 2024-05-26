@@ -87,7 +87,7 @@
                 <h2>Awesome!</h2>
                 <h3>Your appointment for a @mRule.Name has been created.</h3>
                 <div class="appointmentInformationDurationContainer">
-                    <h4 class="appointmentInformationDuration"><strong>Date:</strong> @mAppointment.DateStart.ToString("dd/MM/yyyy HH:mm")</h4>
+                    <h4 class="appointmentInformationDuration"><strong>Date:</strong> @mAppointment.DateStart.ToString(FormatConstants.DateTimeFormat)</h4>
                     <h4 class="appointmentInformationDuration"><strong>Duration:</strong> @mRule.Duration.ToString()</h4>
                     <span class="appointmentInformationNote">@(mRule.Note.IsNullOrEmpty() ? "Please be present at least 5 minutes earlier than the scheduled time." : mRule.Note)</span>
                 </div>

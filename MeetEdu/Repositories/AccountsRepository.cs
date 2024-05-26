@@ -59,12 +59,18 @@ namespace MeetEdu
             var secretary = await MeetEduDbMapper.Secretaries.FirstOrDefaultAsync(x => x.UserId == user.Id);
 
             if (secretary is not null)
+            {
                 claims.Add(new(JwtTokenConstants.SecretaryIdClaimType, secretary.Id.ToString()));
+                claims.Add(new(JwtTokenConstants.DepartmentIdClaimType, secretary.DepartmentId.ToString()));
+            }
 
             var professor = await MeetEduDbMapper.Professors.FirstOrDefaultAsync(x => x.UserId == user.Id);
 
             if (professor is not null)
+            {
                 claims.Add(new(JwtTokenConstants.ProfessorIdClaimType, professor.Id.ToString()));
+                claims.Add(new(JwtTokenConstants.DepartmentIdClaimType, professor.DepartmentId.ToString()));
+            }
 
             //var member = await MeetEduDbMapper.Members.FirstOrDefaultAsync(x => x.UserId == user.Id);
 

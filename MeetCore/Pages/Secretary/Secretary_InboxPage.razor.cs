@@ -1,4 +1,5 @@
-﻿using MeetBase.Web;
+﻿using MeetBase;
+using MeetBase.Web;
 
 using Microsoft.AspNetCore.Components;
 
@@ -19,6 +20,8 @@ namespace MeetCore
         private DialogOptions mDialogOptions = new() { FullWidth = true };
 
         private IEnumerable<DepartmentContactMessageResponseModel> mDepartmentMessages = new List<DepartmentContactMessageResponseModel>();
+
+        private IEnumerable<DepartmentContactMessageResponseModel> mSecretaryMessages = new List<DepartmentContactMessageResponseModel>();
 
         #endregion
 
@@ -69,31 +72,24 @@ namespace MeetCore
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        protected override void OnInitializedCore()
+        protected override async void OnInitializedCore()
         {
-            //var response = await Client.GetDepartmentContactMessagesAsync(new() { IncludeDepartments = new List<string>() { StateManager.Department!.Id } });
+            var response = await Client.GetDepartmentContactMessagesAsync(new() { IncludeDepartments = new List<string>() { StateManager.Department!.Id } });
 
-            //// If there was an error...
-            //if (!response.IsSuccessful)
-            //{
-            //    // Show the error
-            //    Snackbar.Add(response.ErrorMessage, Severity.Info);
-            //    // Return
-            //    return;
-            //}
-            //mContactMessages = response.Result;
-
-            mDepartmentMessages = new List<DepartmentContactMessageResponseModel>()
+            // If there was an error...
+            if (!response.IsSuccessful)
             {
-                new()
-                {
-                    FirstName = "Katherine",
-                    LastName = "Papadopoulou",
-                    Email = "mail@mail.com",
-                    Message = "Το ΤΜΗΥ&Π ιδρύθηκε το 1979 και λειτουργεί από το 1980. Είναι το πρωτοπόρο τμήμΤο ΤΜΗΥ&Π ιδρύθηκε το 1979 και λειτουργεί από το 1980. Είναι το πρωτοπόρο τμήμα στον \r\nχώρο της Τεχνολογίας Υπολογιστών, Πληροφορικής και Επικοινωνιών στην Ελλάδα. \r\nΒρίσκεται ανάμεσα στα καλύτερα Πανεπιστημιακά Τμήματα στην Ελλάδα και με μεγάλες \r\nδιακρίσεις διεθνώς. Ο σκοπός και η αποστολή του είναι η διδασκαλία και η έρευνα στην \r\nεπιστήμη και τεχνολογία των υπολογιστών και η μελέτη των εφαρμογών τους. Οι σπουδές στο \r\nΤμήμα απαιτούν την ενεργή, συνεπή και δημιουργική συμμετοχή των φοιτητών στις \r\nεκπαιδευτικές δραστηριότητες του Προγράμματος Σπουδών, στοιχεία απαραίτητα για την \r\nεπιτυχή ολοκλήρωση των σπουδών, αλλά το τελικό αποτέλεσμα δικαιώνει τις προσδοκίες των \r\nφοιτητών. Το τμήμα είναι οργανωμένο σε τρεις τομείς:Το ΤΜΗΥ&Π ιδρύθηκε το 1979 και λειτουργεί από το 1980. Είναι το πρωτοπόρο τμήμα στον \r\nχώρο της Τεχνολογίας Υπολογιστών, Πληροφορικής και Επικοινωνιών στην Ελλάδα. \r\nΒρίσκεται ανάμεσα στα καλύτερα Πανεπιστημιακά Τμήματα στην Ελλάδα και με μεγάλες \r\nδιακρίσεις διεθνώς. Ο σκοπός και η αποστολή του είναι η διδασκαλία και η έρευνα στην \r\nεπιστήμη και τεχνολογία των υπολογιστών και η μελέτη των εφαρμογών τους. Οι σπουδές στο \r\nΤμήμα απαιτούν την ενεργή, συνεπή και δημιουργική συμμετοχή των φοιτητών στις \r\nεκπαιδευτικές δραστηριότητες του Προγράμματος Σπουδών, στοιχεία απαραίτητα για την \r\nεπιτυχή ολοκλήρωση των σπουδών, αλλά το τελικό αποτέλεσμα δικαιώνει τις προσδοκίες των \r\nφοιτητών. Το τμήμα είναι οργανωμένο σε τρεις τομείς:α στον \r\nχώρο της Τεχνολογίας Υπολογιστών, Πληροφορικής και Επικοινωνιών στην Ελλάδα. \r\nΒρίσκεται ανάμεσα στα καλύτερα Πανεπιστημιακά Τμήματα στην Ελλάδα και με μεγάλες \r\nδιακρίσεις διεθνώς. Ο σκοπός και η αποστολή του είναι η διδασκαλία και η έρευνα στην \r\nεπιστήμη και τεχνολογία των υπολογιστών και η μελέτη των εφαρμογών τους. Οι σπουδές στο \r\nΤμήμα απαιτούν την ενεργή, συνεπή και δημιουργική συμμετοχή των φοιτητών στις \r\nεκπαιδευτικές δραστηριότητες του Προγράμματος Σπουδών, στοιχεία απαραίτητα για την \r\nεπιτυχή ολοκλήρωση των σπουδών, αλλά το τελικό αποτέλεσμα δικαιώνει τις προσδοκίες των \r\nφοιτητών. Το τμήμα είναι οργανωμένο σε τρεις τομείς:",
-                    DateCreated = DateTime.Now,
-                }
-            };
+                // Show the error
+                Snackbar.Add(response.ErrorMessage, Severity.Info);
+                // Return
+                return;
+            }
+
+            var messages = response.Result.ToList();
+
+            mDepartmentMessages = messages.Where(x => x.Reply.IsNullOrEmpty()).ToList();
+
+            mSecretaryMessages = messages.Where(x => x.SecretaryId == Secretary.Id).ToList();
 
             StateHasChanged();
         }
@@ -124,6 +120,36 @@ namespace MeetCore
             {
                 // Return
                 return;
+            }
+
+            // If the result is of the specified type...
+            if (result.Data is DepartmentMesageModel updatedModel)
+            {
+                // Creates the request for updating the secretary
+                var messageRequest = new DepartmentContactMessageRequestModel()
+                {
+                    SecretaryId = Secretary.Id,
+                    DepartmentId = StateManager.Department!.Id,
+                    Reply = updatedModel.Model!.Reply,
+                    Role = updatedModel.Model.Role
+                };
+
+                // Updates the message
+                var messageResponse = await Client.UpdateDepartmentContactMessageAsync(updatedModel.Model.Id, messageRequest);
+
+                // If there was an error...
+                if (!messageResponse.IsSuccessful)
+                {
+                    Console.WriteLine(messageResponse.ErrorMessage);
+                    // Show the error
+                    Snackbar.Add(messageResponse.ErrorMessage, Severity.Error);
+                    // Return
+                    return;
+                }
+                
+                Snackbar.Add("Changes saved", Severity.Success);
+                
+                StateHasChanged();
             }
         }
 
