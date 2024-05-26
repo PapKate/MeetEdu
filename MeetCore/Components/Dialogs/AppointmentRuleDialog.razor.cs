@@ -60,8 +60,8 @@ namespace MeetCore
             base.OnInitialized();
 
             mHasRemoteOption = Model.HasRemoteOption ?? false;
-            mDateFrom = Model.DateFrom.ToLocalTime().DateTime;
-            mDateTo = Model.DateTo.ToLocalTime().DateTime;
+            mDateFrom = Model.DateFrom.DateTime;
+            mDateTo = Model.DateTo.DateTime;
             mStartMinutes = Model.StartMinutes?.ToList();
         }
 
