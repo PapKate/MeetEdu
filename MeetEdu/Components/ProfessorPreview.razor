@@ -24,6 +24,7 @@
                             VectorSource="@IconPaths.HeartOutlinePath"
                             HasAnimation="false"
                             BoxShadow="none"
+                            Style="display:none;"
                             CssClasses="professorRibbonHeartContainer" />
             </div>
             <div class="professorImageAndContactContainer">
@@ -52,7 +53,7 @@
                 <span class="modelWeeklyScheduleTitle" style="@ForegroundVariable.SetCssColor(Model.User.Color)">Department</span>
                 <span class="professorPosition">Computer Engineering & Informatics</span>
                 <span class="modelWeeklyScheduleTitle" style="margin-top: 4px; @ForegroundVariable.SetCssColor(Model.User.Color)">Field</span>
-                <span class="professorPosition">Applications and Foundations of Computer Science</span>
+                <span class="professorPosition" style="text-align:center;">@Model.Field</span>
             </div>
             <div class="professorWeeklyScheduleContainer">
                 <div class="modelWeeklySchedule">
