@@ -1,1 +1,2 @@
-# AppointMate
+# MeetEdu - Main App
+# MeetCore - Management App
